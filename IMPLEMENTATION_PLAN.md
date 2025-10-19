@@ -510,11 +510,199 @@ end
 
 ---
 
-## Phase 9: Documentation & Polish
+## Phase 9: CLI Interface
+**Goal**: Add command-line interface following git-style patterns (exa, exa-search, exa-context, etc.)
+
+### Core Design
+- Main executable: `exe/exa` routes to subcommands
+- Output: JSON by default, `--output-format` flag for text/pretty
+- API Key: `EXA_API_KEY` env var + `--api-key` flag override
+- Start with core endpoints (search, context, get-contents), then research
+- Research commands include auto-polling with `--wait` flag
+
+### 9a. CLI Foundation & Executable Structure
+**Goal**: Set up CLI scaffolding with routing and basic option parsing
+
+**Tasks**:
+1. Create `exe/exa` main executable
+   - Shebang, executable permissions
+   - Routing logic to subcommands
+   - Global options: `--api-key`, `--help`, `--version`
+   - Error handling for unknown commands
+2. Create `lib/exa/cli/base.rb` shared CLI logic
+   - API key resolution (flag > env var)
+   - Output formatting (`--output-format json|text|pretty`)
+   - Common option parsing patterns
+   - Client initialization
+3. Write `test/cli/base_test.rb`
+   - Test API key resolution order
+   - Test output format selection
+   - Test error handling for missing API key
+4. Update gemspec to include executables
+5. Test: `bundle exec exe/exa --version` works
+
+**Verification**:
+```bash
+bundle exec exe/exa --version  # Shows version
+bundle exec exe/exa --help     # Shows usage
+bundle exec exe/exa unknown    # Shows error + suggestions
+```
+
+---
+
+### 9b. Search Command
+**Goal**: Implement `exa search` with full parameter support
+
+**Tasks**:
+1. Write `test/cli/search_test.rb` FIRST
+   - Test query argument parsing
+   - Test all optional flags match client params
+   - Test JSON output format
+   - Test pretty output format
+   - Test error handling (missing query, API errors)
+2. Create `exe/exa-search` executable
+   - Required: query (positional)
+   - Optional: --num-results, --include-domains, --exclude-domains, --start-crawl-date, --end-crawl-date, --use-autoprompt, --type (keyword|neural|auto)
+   - Maps flags to Client#search params
+3. Create `lib/exa/cli/formatters/search_formatter.rb`
+   - JSON: pass-through from API
+   - Pretty: formatted results with title, URL, score
+4. Integration test with VCR
+
+**Verification**:
+```bash
+exa search "ruby programming" --num-results 5
+exa search "AI" --output-format pretty --type neural
+```
+
+---
+
+### 9c. Context Command (Exa Code)
+**Goal**: Implement `exa context` for code search
+
+**Tasks**:
+1. Write `test/cli/context_test.rb` FIRST
+2. Create `exe/exa-context` executable
+   - Required: query
+   - Optional: --tokens-num (integer or "dynamic")
+3. Create `lib/exa/cli/formatters/context_formatter.rb`
+   - JSON: raw response
+   - Text: formatted code snippets
+4. Integration test with VCR
+
+**Verification**:
+```bash
+exa context "authentication with JWT in Ruby"
+exa context "React hooks useState" --tokens-num 5000
+```
+
+---
+
+### 9d. Get-Contents Command
+**Goal**: Implement `exa get-contents` for retrieving page content
+
+**Tasks**:
+1. Write `test/cli/get_contents_test.rb` FIRST
+2. Create `exe/exa-get-contents` executable
+   - Required: IDs (one or more, comma-separated)
+   - Optional: --text (boolean), --highlights, --summary
+3. Create `lib/exa/cli/formatters/contents_formatter.rb`
+   - JSON: array of content objects
+   - Pretty: formatted with sections
+4. Integration test
+
+**Verification**:
+```bash
+exa get-contents https://example.com/page1 --text
+exa get-contents id1,id2,id3 --highlights
+```
+
+---
+
+### 9e. Research Commands with Auto-Polling
+**Goal**: Implement research workflow with `--wait` flag
+
+**Tasks**:
+1. Write `test/cli/research_start_test.rb` FIRST
+   - Test basic start (returns task ID)
+   - Test --wait flag polls until complete
+   - Test --events flag includes event log
+   - Test timeout handling
+2. Create `exe/exa-research-start` executable
+   - Required: --instructions "..."
+   - Optional: --model, --output-schema (JSON), --wait, --events
+   - If --wait: poll research-get every N seconds until complete
+   - Show progress indicator during polling
+3. Create `lib/exa/cli/polling.rb` helper
+   - Exponential backoff polling logic
+   - Progress spinner/indicator
+   - Timeout after reasonable duration
+4. Create `exe/exa-research-get` executable
+   - Required: research_id
+   - Optional: --events, --stream
+5. Create `exe/exa-research-list` executable
+   - Optional: --cursor, --limit
+   - Pretty format shows table of tasks
+6. Create `lib/exa/cli/formatters/research_formatter.rb`
+   - Status-aware formatting
+   - Events display (if requested)
+
+**Verification**:
+```bash
+exa research-start --instructions "Find Ruby performance tips" --wait
+exa research-get abc-123 --events
+exa research-list --limit 20
+```
+
+---
+
+### 9f. Error Handling & User Experience
+**Goal**: Polish CLI with helpful errors and documentation
+
+**Tasks**:
+1. Write `test/cli/errors_test.rb`
+   - Test missing API key shows helpful message
+   - Test invalid options show usage
+   - Test API errors display cleanly
+2. Enhance error messages
+   - ConfigurationError: "Missing API key. Set EXA_API_KEY or use --api-key"
+   - ClientError: Show API error message + suggestion
+   - ServerError: "Exa API error. Try again or check status at..."
+3. Add command suggestions for typos
+4. Create comprehensive help text
+
+**Verification**:
+```bash
+exa search "test"  # Without API key shows helpful message
+exa serch "test"   # Shows: Did you mean: search?
+exa --help         # Shows all commands
+```
+
+---
+
+### 9g. Integration Testing & Documentation
+**Goal**: Verify end-to-end CLI workflows
+
+**Tasks**:
+1. Create `test/cli/integration_test.rb`
+   - Test full search workflow
+   - Test research start → get workflow
+   - Test output format switching
+   - Test API key configuration methods
+2. Add CLI section to README.md
+   - Installation instructions
+   - Basic usage examples
+   - All commands with options
+   - Configuration guide
+3. Create `examples/cli_usage.sh` with sample commands
+
+---
+
+## Phase 10: Documentation & Polish
 **Goal**: Make gem ready for release
 
 ### Tasks
-1. Write comprehensive README.md
+1. Write comprehensive README.md (if not completed in Phase 9g)
    - Installation
    - Quick start
    - All endpoints with examples
@@ -527,7 +715,7 @@ end
 
 ---
 
-## Phase 10: Release Preparation
+## Phase 11: Release Preparation
 **Goal**: Final checks before releasing
 
 ### Tasks
