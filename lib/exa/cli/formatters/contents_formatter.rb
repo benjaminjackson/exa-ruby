@@ -10,6 +10,8 @@ module Exa
             JSON.pretty_generate(result.to_h)
           when "pretty"
             format_pretty(result)
+          when "text"
+            format_text(result)
           else
             JSON.pretty_generate(result.to_h)
           end
@@ -33,6 +35,14 @@ module Exa
             output << ""
           end
           output.join("\n")
+        end
+
+        def self.format_text(result)
+          output = []
+          result.results.each do |content|
+            output << "#{content['url']}\n#{content['text'] || '(No text available)'}"
+          end
+          output.join("\n\n")
         end
       end
     end

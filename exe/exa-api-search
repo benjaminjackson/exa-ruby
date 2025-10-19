@@ -55,7 +55,7 @@ def parse_args(argv)
           --exclude-domains D   Comma-separated list of domains to exclude
           --use-autoprompt      Use Exa's autoprompt feature
           --api-key KEY         Exa API key (or set EXA_API_KEY env var)
-          --output-format FMT   Output format: json or pretty (default: json)
+          --output-format FMT   Output format: json, pretty, or text (default: json)
           --help, -h            Show this help message
 
         Examples:

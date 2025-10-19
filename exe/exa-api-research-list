@@ -32,7 +32,7 @@ while args.any?
         --api-key KEY           Exa API key (or use EXA_API_KEY env var)
         --cursor CURSOR         Pagination cursor for next page
         --limit LIMIT           Number of results per page (default: 10)
-        --output-format FORMAT  Output format: json or pretty (default: json)
+        --output-format FORMAT  Output format: json, pretty, or text (default: json)
         --help, -h              Show this help message
 
       Examples:

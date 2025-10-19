@@ -42,7 +42,7 @@ def parse_args(argv)
         Options:
           --text                Include full text content from sources
           --api-key KEY         Exa API key (or set EXA_API_KEY env var)
-          --output-format FMT   Output format: json or pretty (default: json)
+          --output-format FMT   Output format: json, pretty, or text (default: json)
           --help, -h            Show this help message
 
         Examples:

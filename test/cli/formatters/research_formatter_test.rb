@@ -214,4 +214,40 @@ class ResearchFormatterTest < Minitest::Test
     assert_equal 2, parsed["data"].length
     assert_equal false, parsed["has_more"]
   end
+
+  def test_text_format_for_completed_status
+    result = Exa::CLI::Formatters::ResearchFormatter.format_task(@completed_task, "text")
+
+    assert_includes result, "research_789"
+    assert_includes result, "COMPLETED"
+    assert_includes result, "2025-01-15T10:10:00Z"
+    assert_includes result, "Research findings about Ruby programming..."
+  end
+
+  def test_text_format_for_failed_status
+    result = Exa::CLI::Formatters::ResearchFormatter.format_task(@failed_task, "text")
+
+    assert_includes result, "research_fail"
+    assert_includes result, "FAILED"
+    assert_includes result, "Error: API rate limit exceeded"
+  end
+
+  def test_list_text_format_shows_task_ids
+    list = Exa::Resources::ResearchList.new(
+      data: [@pending_task, @running_task, @completed_task],
+      has_more: false,
+      next_cursor: nil
+    )
+
+    result = Exa::CLI::Formatters::ResearchFormatter.format_list(list, "text")
+
+    lines = result.split("\n")
+    assert_equal 3, lines.length
+    assert_includes result, "research_123"
+    assert_includes result, "PENDING"
+    assert_includes result, "research_456"
+    assert_includes result, "RUNNING"
+    assert_includes result, "research_789"
+    assert_includes result, "COMPLETED"
+  end
 end

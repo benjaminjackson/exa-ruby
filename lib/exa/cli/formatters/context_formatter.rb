@@ -10,6 +10,8 @@ module Exa
           case format
           when "json"
             JSON.pretty_generate(result.to_h)
+          when "pretty"
+            format_pretty(result)
           when "text"
             format_text(result)
           else
@@ -18,6 +20,24 @@ module Exa
         end
 
         private
+
+        def self.format_pretty(result)
+          output = []
+          output << "=" * 60
+          output << "Query: #{result.query}"
+          output << "=" * 60
+          output << ""
+          output << "Metadata:"
+          output << "  Request ID:   #{result.request_id}"
+          output << "  Results:      #{result.results_count}"
+          output << "  Cost:         $#{result.cost_dollars}"
+          output << "  Search Time:  #{result.search_time}ms"
+          output << ""
+          output << "Code Context:"
+          output << "-" * 60
+          output << result.response.to_s
+          output.join("\n")
+        end
 
         def self.format_text(result)
           output = []

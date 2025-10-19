@@ -60,6 +60,17 @@ class Exa::CLI::Formatters::ContentsFormatterTest < Minitest::Test
     refute_includes output, long_text
   end
 
+  def test_text_format_shows_url_and_text
+    result = create_contents_result
+    output = Exa::CLI::Formatters::ContentsFormatter.format(result, "text")
+
+    # Verify it includes URLs and text
+    assert_includes output, "https://example.com/1"
+    assert_includes output, "This is the text content for the first example."
+    assert_includes output, "https://example.com/2"
+    assert_includes output, "This is the text content for the second example."
+  end
+
   private
 
   def create_contents_result

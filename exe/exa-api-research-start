@@ -52,7 +52,7 @@ def parse_args(argv)
           --wait                Wait for task to complete (polls until done)
           --events              Include event log in output (only with --wait)
           --api-key KEY         Exa API key (or set EXA_API_KEY env var)
-          --output-format FMT   Output format: json or pretty (default: json)
+          --output-format FMT   Output format: json, pretty, or text (default: json)
           --help, -h            Show this help message
 
         Examples:

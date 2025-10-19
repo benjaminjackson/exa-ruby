@@ -36,7 +36,7 @@ while args.any?
         --api-key KEY           Exa API key (or use EXA_API_KEY env var)
         --events                Include task execution events in response
         --stream                Stream the response (for real-time updates)
-        --output-format FORMAT  Output format: json or pretty (default: json)
+        --output-format FORMAT  Output format: json, pretty, or text (default: json)
         --help, -h              Show this help message
 
       Examples:

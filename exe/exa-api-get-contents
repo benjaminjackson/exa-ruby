@@ -62,7 +62,7 @@ def print_help
   puts "  --highlights           Include highlights in response"
   puts "  --summary              Include summary in response"
   puts "  --api-key KEY          Exa API key (or set EXA_API_KEY env var)"
-  puts "  --output-format FMT    Output format: json, pretty (default: json)"
+  puts "  --output-format FMT    Output format: json, pretty, or text (default: json)"
   puts "  --help, -h             Show this help message"
   puts ""
   puts "Examples:"

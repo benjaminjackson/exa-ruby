@@ -29,6 +29,20 @@ class Exa::CLI::Formatters::ContextFormatterTest < Minitest::Test
     assert_includes parsed["response"], "Sample code"
   end
 
+  def test_pretty_format_shows_metadata_and_context
+    output = Exa::CLI::Formatters::ContextFormatter.format(@result, "pretty")
+
+    assert_includes output, "Query: ruby authentication"
+    assert_includes output, "Request ID:   req_123"
+    assert_includes output, "Results:      5"
+    assert_includes output, "Cost:         $0.0025"
+    assert_includes output, "Search Time:  150ms"
+    assert_includes output, "Code Context:"
+    assert_includes output, "Sample code"
+    assert_includes output, "def authenticate"
+    assert_includes output, "="
+  end
+
   def test_text_format_shows_code_snippets
     output = Exa::CLI::Formatters::ContextFormatter.format(@result, "text")
 

@@ -10,6 +10,8 @@ module Exa
             JSON.pretty_generate(result.to_h)
           when "pretty"
             format_pretty(result)
+          when "text"
+            format_text(result)
           else
             JSON.pretty_generate(result.to_h)
           end
@@ -39,6 +41,10 @@ module Exa
           output << "Cost: $#{result.cost_dollars}" if result.cost_dollars
 
           output.join("\n")
+        end
+
+        def self.format_text(result)
+          result.answer
         end
       end
     end

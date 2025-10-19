@@ -8,6 +8,8 @@ module Exa
             JSON.pretty_generate(task.to_h)
           when "pretty"
             format_task_pretty(task, show_events: show_events)
+          when "text"
+            format_task_text(task, show_events: show_events)
           else
             JSON.pretty_generate(task.to_h)
           end
@@ -19,6 +21,8 @@ module Exa
             JSON.pretty_generate(list.to_h)
           when "pretty"
             format_list_pretty(list)
+          when "text"
+            format_list_text(list)
           else
             JSON.pretty_generate(list.to_h)
           end
@@ -90,6 +94,24 @@ module Exa
             output << "End of results."
           end
 
+          output.join("\n")
+        end
+
+        def self.format_task_text(task, show_events: false)
+          output = []
+          output << "#{task.research_id} #{task.status.upcase} #{task.created_at}"
+          if task.status == "completed"
+            output << task.output.to_s
+          elsif task.status == "failed"
+            output << "Error: #{task.error}"
+          end
+          output.join("\n")
+        end
+
+        def self.format_list_text(list)
+          output = list.data.map do |task|
+            "#{task.research_id} #{task.status.upcase} #{task.created_at}"
+          end
           output.join("\n")
         end
       end

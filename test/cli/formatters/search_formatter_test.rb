@@ -31,6 +31,17 @@ class Exa::CLI::Formatters::SearchFormatterTest < Minitest::Test
     assert_includes output, "0.87"
   end
 
+  def test_text_format_shows_title_and_url
+    result = create_search_result
+    output = Exa::CLI::Formatters::SearchFormatter.format(result, "text")
+
+    # Verify it includes expected content
+    assert_includes output, "Example Title 1"
+    assert_includes output, "https://example.com/1"
+    assert_includes output, "Example Title 2"
+    assert_includes output, "https://example.com/2"
+  end
+
   def test_default_format_is_json
     result = create_search_result
     output = Exa::CLI::Formatters::SearchFormatter.format(result, nil)
