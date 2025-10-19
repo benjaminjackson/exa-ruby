@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/context
+    body:
+      encoding: UTF-8
+      string: '{"query":"pandas dataframe filtering","tokensNum":"dynamic"}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Oct 2025 18:39:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"83c4198a1d6794503b52134fd77159e4","query":"pandas dataframe filtering","response":"## Pandas DataFrame Filtering\n\n```python\nimport pandas as pd\n\n# Create a sample DataFrame\ndf = pd.DataFrame({\n    ''name'': [''Alice'', ''Bob'', ''Charlie''],\n    ''age'': [25, 30, 35],\n    ''city'': [''New York'', ''London'', ''Paris'']\n})\n\n# Filter by condition\ndf_filtered = df[df[''age''] > 25]\n\n# Filter with multiple conditions\ndf_filtered = df[(df[''age''] > 25) & (df[''city''] == ''London'')]\n\n# Using .loc and .query\ndf_filtered = df.loc[df[''age''] > 25]\ndf_filtered = df.query(''age > 25'')\n```\n\n## GroupBy Operations\n\n```python\n# GroupBy with aggregation\ngrouped = df.groupby(''city'')[''age''].mean()\n\n# Multiple aggregations\ngrouped = df.groupby(''city'').agg({\n    ''age'': [''mean'', ''max''],\n    ''name'': ''count''\n})\n```","resultsCount":380,"costDollars":"{\"total\":0.75,\"search\":{\"neural\":0.75}}","searchTime":2100.75,"outputTokens":3200}'
+  recorded_at: Sun, 19 Oct 2025 18:39:55 GMT
+recorded_with: VCR 6.2.0

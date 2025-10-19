@@ -186,4 +186,80 @@ class ClientTest < Minitest::Test
 
     assert_instance_of Exa::Resources::ContentsResult, result
   end
+
+  def test_context_method_exists
+    client = Exa::Client.new(api_key: "test_key")
+
+    assert client.respond_to?(:context)
+  end
+
+  def test_context_returns_context_result
+    stub_request(:post, "https://api.exa.ai/context")
+      .with(body: hash_including(query: "React hooks"))
+      .to_return(
+        status: 200,
+        body: {
+          requestId: "req_context_123",
+          query: "React hooks",
+          response: "## State Management\n```javascript\nconst [state, setState] = useState(0);\n```",
+          resultsCount: 502,
+          costDollars: "{\"total\":1}",
+          searchTime: 1.5,
+          outputTokens: 1200
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.context("React hooks")
+
+    assert_instance_of Exa::Resources::ContextResult, result
+    assert_equal "req_context_123", result.request_id
+    assert_equal "React hooks", result.query
+  end
+
+  def test_context_delegates_to_service
+    stub_request(:post, "https://api.exa.ai/context")
+      .with(body: hash_including(query: "Express middleware"))
+      .to_return(
+        status: 200,
+        body: { requestId: "abc123", query: "Express middleware", response: "code", resultsCount: 10, costDollars: "0.001", searchTime: 1.0, outputTokens: 500 }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    client.context("Express middleware")
+
+    assert_requested :post, "https://api.exa.ai/context", times: 1
+  end
+
+  def test_context_with_tokens_num_parameter
+    stub_request(:post, "https://api.exa.ai/context")
+      .with(body: hash_including(query: "test", tokensNum: 5000))
+      .to_return(
+        status: 200,
+        body: { requestId: "abc123", query: "test", response: "code", resultsCount: 10, costDollars: "0.001", searchTime: 1.0, outputTokens: 500 }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.context("test", tokensNum: 5000)
+
+    assert_instance_of Exa::Resources::ContextResult, result
+  end
+
+  def test_context_with_dynamic_tokens
+    stub_request(:post, "https://api.exa.ai/context")
+      .with(body: hash_including(query: "test", tokensNum: "dynamic"))
+      .to_return(
+        status: 200,
+        body: { requestId: "abc123", query: "test", response: "code", resultsCount: 10, costDollars: "0.001", searchTime: 1.0, outputTokens: 500 }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.context("test", tokensNum: "dynamic")
+
+    assert_instance_of Exa::Resources::ContextResult, result
+  end
 end

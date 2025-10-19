@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/context
+    body:
+      encoding: UTF-8
+      string: '{"query":"Express middleware","tokensNum":3000}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Oct 2025 18:39:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"82c4198a1d6794503b52134fd77159e3","query":"Express middleware","response":"## Express Middleware\n\n```javascript\nconst express = require(''express'');\nconst app = express();\n\n// Built-in middleware to parse JSON\napp.use(express.json());\n\n// Custom middleware\napp.use((req, res, next) => {\n  console.log(`${req.method} ${req.path}`);\n  next();\n});\n\n// Route handler\napp.get(''/'', (req, res) => {\n  res.send(''Hello World'');\n});\n\napp.listen(3000, () => console.log(''Server started''));\n```","resultsCount":250,"costDollars":"{\"total\":0.5,\"search\":{\"neural\":0.5}}","searchTime":1500.5,"outputTokens":2850}'
+  recorded_at: Sun, 19 Oct 2025 18:39:55 GMT
+recorded_with: VCR 6.2.0

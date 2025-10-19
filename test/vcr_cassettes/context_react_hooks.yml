@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/context
+    body:
+      encoding: UTF-8
+      string: '{"query":"how to use React hooks for state management"}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Oct 2025 18:39:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"81c4198a1d6794503b52134fd77159e2","query":"how to use React hooks for state management","response":"## State Management with useState Hook in React\n\nhttps://www.geeksforgeeks.org/reactjs/state-management-with-usestate-hook-in-react/\n\n```\nimport React, {\n  useState\n} from ''react'';\n\nfunction InputField() {\n  const [name, setName] = useState('''');\n\n  const handleChange = (event) => {\n    setName(event.target.value);\n  }\n\n  return (\n    <div>\n      Name:\n      <input onChange={handleChange} />\n      Entered name: {name}\n    </div>\n  );\n}\n\nexport default InputField;\n```\n\n## Basic useState Example\n\n```\nimport { useState } from ''react'';\n\nfunction Example() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>You clicked {count} times</p>\n      <button onClick={() => setCount(count + 1)}>\n        Click me\n      </button>\n    </div>\n  );\n}\n```\n\n## Custom Hook for Counter State Management\n\n```\nimport { useState } from \"react\";\n\nconst useCounter = () => {\n  const [count, setCount] = useState(0);\n\n  const increment = () => {\n    setCount((prevCount) => prevCount + 1);\n  };\n\n  const decrement = () => {\n    setCount((prevCount) => prevCount - 1);\n  };\n\n  return { count, increment, decrement };\n};\n\nexport default useCounter;\n```","resultsCount":502,"costDollars":"{\"total\":1,\"search\":{\"neural\":1}}","searchTime":3112.290825000033,"outputTokens":4805}'
+  recorded_at: Sun, 19 Oct 2025 18:39:55 GMT
+recorded_with: VCR 6.2.0

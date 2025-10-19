@@ -37,6 +37,10 @@ module Exa
       Services::ResearchGet.new(connection, research_id: research_id, **params).call
     end
 
+    def context(query, **params)
+      Services::Context.new(connection, query: query, **params).call
+    end
+
     private
 
     def connection
