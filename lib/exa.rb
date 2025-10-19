@@ -15,12 +15,16 @@ module Exa
 
     def reset
       self.api_key = nil
-      self.base_url = nil
-      self.timeout = nil
+      self.base_url = DEFAULT_BASE_URL
+      self.timeout = DEFAULT_TIMEOUT
     end
   end
 
+  # Constants for default values
+  DEFAULT_BASE_URL = "https://api.exa.ai"
+  DEFAULT_TIMEOUT = 30
+
   # Set defaults
-  self.base_url = "https://api.exa.ai"
-  self.timeout = 30
+  self.base_url = DEFAULT_BASE_URL
+  self.timeout = DEFAULT_TIMEOUT
 end
