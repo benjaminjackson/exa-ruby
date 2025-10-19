@@ -72,6 +72,11 @@ client = Exa::Client.new
 results = client.search("ruby programming")
 puts results.results.first["title"]
 
+# Get an answer to a question
+answer = client.answer("What are the latest trends in AI?")
+puts answer.answer
+puts answer.citations
+
 # Get code context
 code = client.context("React hooks")
 puts code.response
@@ -101,6 +106,26 @@ results.results.each do |item|
   puts item["title"]
   puts item["url"]
   puts item["score"]
+end
+```
+
+### Answer
+
+```ruby
+client = Exa::Client.new(api_key: "your-key")
+
+# Get an answer to a question
+answer = client.answer("What are the best practices for API design?")
+
+puts answer.answer        # The generated answer
+puts answer.citations     # Array of source citations
+puts answer.cost_dollars  # API cost
+
+# With text content from sources
+answer = client.answer("Latest AI breakthroughs", text: true)
+puts answer.answer
+answer.citations.each do |citation|
+  puts "#{citation["title"]} (#{citation['url']})"
 end
 ```
 
@@ -161,6 +186,7 @@ exa-api <command> [options]
 
 Commands:
   search          Search the web
+  answer          Generate answers to questions
   context         Get code context from repositories
   get-contents    Retrieve page contents
   research-start  Start a research task
@@ -197,6 +223,35 @@ exa-api search "AI" --output-format pretty
 - `--use-autoprompt` - Use Exa's autoprompt feature
 - `--output-format FORMAT` - json or pretty (default: json)
 - `--api-key KEY` - API key (or set EXA_API_KEY env var)
+
+### Answer Command
+
+Generate comprehensive answers to questions using Exa's answer generation feature:
+
+```bash
+# Basic question
+exa-api answer "What is the capital of France?"
+
+# Get answer with source citations
+exa-api answer "Latest developments in quantum computing"
+
+# Include full text from sources
+exa-api answer "Ruby on Rails best practices" --text
+
+# Pretty formatted output
+exa-api answer "How do I learn machine learning?" --output-format pretty
+```
+
+**Options:**
+- `QUERY` - Question to answer (required)
+- `--text` - Include full text content from source pages
+- `--output-format FORMAT` - json or pretty (default: json)
+- `--api-key KEY` - API key (or set EXA_API_KEY env var)
+
+**Response fields:**
+- `answer` - The generated answer to your question
+- `citations` - Array of source citations with URLs
+- `cost_dollars` - Cost of the API request
 
 ### Context Command (Code Search)
 
@@ -400,6 +455,9 @@ end
 ```bash
 # Find Ruby tutorials
 exa search "Ruby best practices" --num-results 5
+
+# Get an answer to a question
+exa answer "What is machine learning?"
 
 # Get code examples for async/await
 exa context "async/await error handling"
