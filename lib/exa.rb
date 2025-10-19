@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 require_relative "exa/version"
+require_relative "exa/error"
 
 module Exa
-  class Error < StandardError; end
-
   # Module-level configuration
   class << self
     attr_accessor :api_key, :base_url, :timeout
