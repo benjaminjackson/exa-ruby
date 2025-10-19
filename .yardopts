@@ -1,0 +1,8 @@
+--no-private
+--markup markdown
+--markup-provider redcarpet
+--title "exa-ai - Exa.ai Ruby Client"
+--output-dir doc
+lib/**/*.rb
+- CONTRIBUTING.md
+- LICENSE
