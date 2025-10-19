@@ -1,0 +1,197 @@
+openapi: 3.1.0
+info:
+  version: 1.2.0
+  title: Exa Search API
+  description: A comprehensive API for internet-scale search, allowing users to perform queries and retrieve results from a wide variety of sources using embeddings-based and traditional search.
+servers:
+  - url: https://api.exa.ai
+security:
+  - apikey: []
+paths:
+
+# This is a focused view of the search endpoint.
+# For complete component schemas, see spec/exa-openapi-spec.yaml lines 585-1907
+
+paths:
+  /search:
+    post:
+      operationId: search
+      summary: Search
+      description: Perform a search with a Exa prompt-engineered query and retrieve a list of relevant results. Optionally get contents.
+      x-codeSamples:
+        - lang: bash
+          label: Simple search and contents
+          source: |
+            curl -X POST 'https://api.exa.ai/search' \
+              -H 'x-api-key: YOUR-EXA-API-KEY' \
+              -H 'Content-Type: application/json' \
+              -d '{
+                "query": "Latest research in LLMs",
+                "text": true
+              }'
+        - lang: python
+          label: Simple search and contents
+          source: |
+            # pip install exa-py
+            from exa_py import Exa
+            exa = Exa('YOUR_EXA_API_KEY')
+
+            results = exa.search_and_contents(
+                "Latest research in LLMs", 
+                text=True
+            )
+
+            print(results)
+        - lang: javascript
+          label: Simple search and contents
+          source: |
+            // npm install exa-js
+            import Exa from 'exa-js';
+            const exa = new Exa('YOUR_EXA_API_KEY');
+
+            const results = await exa.searchAndContents(
+                'Latest research in LLMs', 
+                { text: true }
+            );
+
+            console.log(results);
+        - lang: php
+          label: Simple search and contents
+          source: ""
+        - lang: go
+          label: Simple search and contents
+          source: ""
+        - lang: java
+          label: Simple search and contents
+          source: ""
+        - lang: bash
+          label: Advanced search with filters
+          source: |
+            curl --request POST \
+              --url https://api.exa.ai/search \
+              --header 'x-api-key: <token>' \
+              --header 'Content-Type: application/json' \
+              --data '{
+              "query": "Latest research in LLMs",
+              "type": "auto",
+              "category": "research paper",
+              "numResults": 10,
+              "contents": {
+                "text": true,
+                "summary": {
+                  "query": "Main developments"
+                },
+                "subpages": 1,
+                "subpageTarget": "sources",
+                "extras": {
+                  "links": 1,
+                  "imageLinks": 1
+                }
+              }
+            }'
+        - lang: python
+          label: Advanced search with filters
+          source: |
+            # pip install exa-py
+            from exa_py import Exa
+            exa = Exa('YOUR_EXA_API_KEY')
+
+            results = exa.search_and_contents(
+                "Latest research in LLMs",
+                type="auto",
+                category="research paper",
+                num_results=10,
+                text=True,
+                summary={
+                    "query": "Main developments"
+                },
+                subpages=1,
+                subpage_target="sources",
+                extras={
+                    "links": 1,
+                    "image_links": 1
+                }
+            )
+
+            print(results)
+        - lang: javascript
+          label: Advanced search with filters
+          source: |
+            // npm install exa-js
+            import Exa from 'exa-js';
+            const exa = new Exa('YOUR_EXA_API_KEY');
+
+            const results = await exa.searchAndContents('Latest research in LLMs', {
+                type: 'auto',
+                category: 'research paper',
+                numResults: 10,
+                contents: {
+                    text: true,
+                    summary: {
+                        query: 'Main developments'
+                    },
+                    subpages: 1,
+                    subpageTarget: 'sources',
+                    extras: {
+                        links: 1,
+                        imageLinks: 1
+                    }
+                }
+            });
+
+            console.log(results);
+        - lang: php
+          label: Advanced search with filters
+          source: ""
+        - lang: go
+          label: Advanced search with filters
+          source: ""
+        - lang: java
+          label: Advanced search with filters
+          source: ""
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                  properties:
+                    query:
+                      type: string
+                      example: "Latest developments in LLM capabilities"
+                      description: The query string for the search.
+                    type:
+                      type: string
+                      enum:
+                        - keyword
+                        - neural
+                        - fast
+                        - auto
+                      description: The type of search. Neural uses an embeddings-based model, keyword is google-like SERP, and auto (default) intelligently combines the two. Fast uses streamlined versions of the neural and keyword models.
+                      example: "auto"
+                      default: "auto"
+                    category:
+                      type: string
+                      enum:
+                        - company
+                        - research paper
+                        - news
+                        - pdf
+                        - github
+                        - tweet
+                        - personal site
+                        - linkedin profile
+                        - financial report
+                      description: A data category to focus on.
+                      example: "research paper"
+                    userLocation:
+                      type: string
+                      description: The two-letter ISO country code of the user, e.g. US.
+                      example: "US"
+                  required:
+                    - query
+                - $ref: "#/components/schemas/CommonRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/SearchResponse"

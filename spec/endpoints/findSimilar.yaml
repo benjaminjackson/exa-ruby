@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  version: 1.2.0
+  title: Exa Search API
+  description: A comprehensive API for internet-scale search, allowing users to perform queries and retrieve results from a wide variety of sources using embeddings-based and traditional search.
+servers:
+  - url: https://api.exa.ai
+security:
+  - apikey: []
+paths:
+
+# This is a focused view of the findSimilar endpoint.
+# For complete component schemas, see spec/exa-openapi-spec.yaml lines 585-1907
+
+paths:
+  /findSimilar:
+    post:
+      operationId: findSimilar
+      summary: Find similar links
+      description: Find similar links to the link provided. Optionally get contents.
+      x-codeSamples:
+        - lang: bash
+          label: Find similar links
+          source: |
+            curl -X POST 'https://api.exa.ai/findSimilar' \
+              -H 'x-api-key: YOUR-EXA-API-KEY' \
+              -H 'Content-Type: application/json' \
+              -d '{
+                "url": "https://arxiv.org/abs/2307.06435",
+                "text": true
+              }'
+        - lang: python
+          label: Find similar links
+          source: |
+            # pip install exa-py
+            from exa_py import Exa
+            exa = Exa('YOUR_EXA_API_KEY')
+
+            results = exa.find_similar_and_contents(
+                url="https://arxiv.org/abs/2307.06435",
+                text=True
+            )
+
+            print(results)
+        - lang: javascript
+          label: Find similar links
+          source: |
+            // npm install exa-js
+            import Exa from 'exa-js';
+            const exa = new Exa('YOUR_EXA_API_KEY');
+
+            const results = await exa.findSimilarAndContents(
+                'https://arxiv.org/abs/2307.06435',
+                { text: true }
+            );
+
+            console.log(results);
+        - lang: php
+          label: Find similar links
+          source: ""
+        - lang: go
+          label: Find similar links
+          source: ""
+        - lang: java
+          label: Find similar links
+          source: ""
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - type: object
+                  properties:
+                    url:
+                      type: string
+                      example: "https://arxiv.org/abs/2307.06435"
+                      description: The url for which you would like to find similar links.
+                  required:
+                    - url
+                - $ref: "#/components/schemas/CommonRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/FindSimilarResponse"

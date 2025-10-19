@@ -72,6 +72,62 @@ test/
 │   └── ...
 └── integration/                # End-to-end tests
     └── search_integration_test.rb
+
+spec/
+├── exa-openapi-spec.yaml       # Full OpenAPI spec (reference)
+├── components.yaml             # Shared schemas and types
+├── endpoints/                  # Individual endpoint specs
+│   ├── search.yaml
+│   ├── findSimilar.yaml
+│   ├── contents.yaml
+│   ├── answer.yaml
+│   ├── research_v1.yaml
+│   └── research_v1_by_id.yaml
+└── README.md                   # Spec documentation
+```
+
+## API Reference
+
+**IMPORTANT**: When implementing any endpoint, ALWAYS reference the OpenAPI spec first.
+
+### Using the OpenAPI Specs
+
+The `spec/` directory contains the complete Exa API specification split into focused files:
+
+**Quick Reference Workflow:**
+1. **Start with the endpoint file** (`spec/endpoints/{endpoint_name}.yaml`)
+   - See request parameters, types, and required fields
+   - Review response structure and status codes
+   - Check code examples in Python/JavaScript for naming conventions
+
+2. **Reference components** (`spec/components.yaml`) for:
+   - Detailed schema definitions (anything with `$ref: "#/components/..."`)
+   - Common types like `SearchResult`, `Content`, error formats
+   - Shared request/response structures
+
+3. **Consult full spec** (`spec/exa-openapi-spec.yaml`) only when:
+   - You need to see relationships between multiple endpoints
+   - Endpoint files lack necessary context
+
+**Example**: Implementing `/search` endpoint
+```bash
+# Read the search endpoint spec
+# Focus on: requestBody.content.application/json.schema
+# and: responses.200
+head -200 spec/endpoints/search.yaml
+
+# Check SearchResult schema definition
+grep -A 50 "SearchResult:" spec/components.yaml
+```
+
+### Updating the Specs
+
+Download latest from Exa's repository:
+```bash
+curl -s https://raw.githubusercontent.com/exa-labs/openapi-spec/refs/heads/master/exa-openapi-spec.yaml \
+  -o spec/exa-openapi-spec.yaml
+
+# Then re-run the extraction script (see spec/README.md)
 ```
 
 ## Testing Commands
@@ -491,6 +547,10 @@ gem 'rake', '~> 13.0'
 
 When implementing a new API endpoint:
 
+- [ ] **Read the OpenAPI spec** for the endpoint (`spec/endpoints/{name}.yaml`)
+  - Review request parameters, types, and required fields
+  - Note response schema and status codes
+  - Check Python/JS examples for naming conventions
 - [ ] Define the resource object using frozen Struct or plain class
 - [ ] Write service object test with stubbed HTTP response
 - [ ] Implement service object with `#call` method
