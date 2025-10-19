@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"Ruby programming language"}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Oct 2025 15:51:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '9007199254740991'
+      X-Ratelimit-Remaining:
+      - '9007199254740990'
+      X-Ratelimit-Reset:
+      - '1760889093'
+      Etag:
+      - W/"89e-13OTNCWD6kMjHFqKIhNiC9fmnJE"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=o%2FL8oohbsdRhqzHQv448s9Hr4oCnC2%2B65PVrFMEusVvO4%2Fa1Pmix9XWVrcLWLBT8p3bRo%2FUEhDnDOQMs7UU21ju6%2BsH8XP%2BUSkLbFlaLRusSZfQhUw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 99116ff62d9c0f68-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJyZXF1ZXN0SWQiOiI0OTFkYzU0NDE3MTQxNmU0M2ZmZGY2YzNhODNmNDkwMSIsImF1dG9wcm9tcHRTdHJpbmciOiJSdWJ5IHByb2dyYW1taW5nIGxhbmd1YWdlIiwicmVzb2x2ZWRTZWFyY2hUeXBlIjoibmV1cmFsIiwicmVzdWx0cyI6W3siaWQiOiJodHRwczovL3d3dy5ydWJ5LWxhbmcub3JnL2VuLyIsInRpdGxlIjoiUnVieSBQcm9ncmFtbWluZyBMYW5ndWFnZSIsInVybCI6Imh0dHBzOi8vd3d3LnJ1YnktbGFuZy5vcmcvZW4vIiwiYXV0aG9yIjpudWxsfSx7ImlkIjoiaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUnVieV8ocHJvZ3JhbW1pbmdfbGFuZ3VhZ2UpIiwidGl0bGUiOiJSdWJ5IChwcm9ncmFtbWluZyBsYW5ndWFnZSkiLCJ1cmwiOiJodHRwczovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9SdWJ5Xyhwcm9ncmFtbWluZ19sYW5ndWFnZSkiLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL3d3dy5nZWVrc2ZvcmdlZWtzLm9yZy9ydWJ5L3J1YnktcHJvZ3JhbW1pbmctbGFuZ3VhZ2UvIiwidGl0bGUiOiJSdWJ5IFByb2dyYW1taW5nIExhbmd1YWdlIiwidXJsIjoiaHR0cHM6Ly93d3cuZ2Vla3Nmb3JnZWVrcy5vcmcvcnVieS9ydWJ5LXByb2dyYW1taW5nLWxhbmd1YWdlLyIsInB1Ymxpc2hlZERhdGUiOiIyMDI1LTA5LTA0VDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL3d3dy5wbHVyYWxzaWdodC5jb20vcmVzb3VyY2VzL2Jsb2cvY2xvdWQvd2hhdC1pcy10aGUtcnVieS1wcm9ncmFtbWluZy1sYW5ndWFnZSIsInRpdGxlIjoiV2hhdCBpcyB0aGUgUnVieSBwcm9ncmFtbWluZyBsYW5ndWFnZT8iLCJ1cmwiOiJodHRwczovL3d3dy5wbHVyYWxzaWdodC5jb20vcmVzb3VyY2VzL2Jsb2cvY2xvdWQvd2hhdC1pcy10aGUtcnVieS1wcm9ncmFtbWluZy1sYW5ndWFnZSIsImF1dGhvciI6bnVsbH0seyJpZCI6Imh0dHBzOi8vd3d3LnJ1YnktbGFuZy5vcmcvZW4vYWJvdXQvIiwidGl0bGUiOiJBYm91dCBSdWJ5IiwidXJsIjoiaHR0cHM6Ly93d3cucnVieS1sYW5nLm9yZy9lbi9hYm91dC8iLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL3d3dy5vcmFjbGUuY29tL2RldmVsb3Blci93aGF0LWlzLXJ1YnktZm9yLWRldmVsb3BlcnMvIiwidGl0bGUiOiJXaGF0IGlzIFJ1Ynk/IiwidXJsIjoiaHR0cHM6Ly93d3cub3JhY2xlLmNvbS9kZXZlbG9wZXIvd2hhdC1pcy1ydWJ5LWZvci1kZXZlbG9wZXJzLyIsImF1dGhvciI6bnVsbH0seyJpZCI6Imh0dHBzOi8vZ2l0aHViLmNvbS9ydWJ5L3J1YnkiLCJ0aXRsZSI6IlRoZSBSdWJ5IFByb2dyYW1taW5nIExhbmd1YWdlIiwidXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL3J1YnkvcnVieSIsImF1dGhvciI6bnVsbH0seyJpZCI6Imh0dHBzOi8vd2h5cnVieS5pbmZvLyIsInRpdGxlIjoiV2h5IFJ1Ynk/IOKAlCBEaXNjb3ZlciB3aHkgUnVieSBjb250aW51ZXMgdG8gYmUgYSBiZWxvdmVkIGxhbmd1YWdlIGZvciBkZXZlbG9wZXJzIHdvcmxkd2lkZSIsInVybCI6Imh0dHBzOi8vd2h5cnVieS5pbmZvLyIsInB1Ymxpc2hlZERhdGUiOiIyMDI1LTAxLTAxVDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOiJZdXJpIFNpZG9yb3YifSx7ImlkIjoiaHR0cHM6Ly93d3cuY29kZXBvcnRpbmcuYWkvbGFuZ3VhZ2UvcnVieS8iLCJ0aXRsZSI6IlByb2dyYW1taW5nIExhbmd1YWdlIFJ1YnkiLCJ1cmwiOiJodHRwczovL3d3dy5jb2RlcG9ydGluZy5haS9sYW5ndWFnZS9ydWJ5LyIsInB1Ymxpc2hlZERhdGUiOiIyMDI1LTA4LTIyVDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL3N0dWR5c21hcnRlci5jby51ay9leHBsYW5hdGlvbnMvY29tcHV0ZXItc2NpZW5jZS9jb21wdXRlci1wcm9ncmFtbWluZy9ydWJ5LXByb2dyYW1taW5nLWxhbmd1YWdlIiwidGl0bGUiOiJSdWJ5IFByb2dyYW1taW5nIExhbmd1YWdlOiBEZWZpbml0aW9uICYgVXNlcyIsInVybCI6Imh0dHBzOi8vc3R1ZHlzbWFydGVyLmNvLnVrL2V4cGxhbmF0aW9ucy9jb21wdXRlci1zY2llbmNlL2NvbXB1dGVyLXByb2dyYW1taW5nL3J1YnktcHJvZ3JhbW1pbmctbGFuZ3VhZ2UiLCJwdWJsaXNoZWREYXRlIjoiMjAyNC0xMC0zMFQwMDowMDowMC4wMDBaIiwiYXV0aG9yIjpudWxsfV0sInNlYXJjaFRpbWUiOjEzNjQuNywiY29zdERvbGxhcnMiOnsidG90YWwiOjAuMDA1LCJzZWFyY2giOnsibmV1cmFsIjowLjAwNX19fQ==
+  recorded_at: Sun, 19 Oct 2025 15:51:32 GMT
+recorded_with: VCR 6.3.1

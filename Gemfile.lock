@@ -9,6 +9,7 @@ GEM
   specs:
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    base64 (0.3.0)
     bigdecimal (3.3.1)
     crack (1.0.0)
       bigdecimal
@@ -29,6 +30,8 @@ GEM
     rake (13.3.0)
     rexml (3.4.4)
     uri (1.0.4)
+    vcr (6.3.1)
+      base64
     webmock (3.25.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -42,6 +45,7 @@ DEPENDENCIES
   exa!
   minitest (~> 5.0)
   rake (~> 13.0)
+  vcr (~> 6.0)
   webmock (~> 3.0)
 
 BUNDLED WITH
