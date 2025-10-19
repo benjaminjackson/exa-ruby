@@ -207,15 +207,245 @@ result.is_a?(Exa::Resources::SearchResult) # => true
 ---
 
 ## Phase 8: Additional Endpoints
-**Goal**: Repeat pattern for other endpoints
+**Goal**: Implement remaining endpoints following established patterns
 
-For each endpoint (FindSimilar, GetContents):
-1. Define resource object
-2. Write service test (TDD)
-3. Implement service
-4. Add to client
-5. Write integration test
+### 8a. FindSimilar and GetContents Endpoints
+These follow the same pattern as Search. For each:
+1. Define resource object using frozen Struct
+2. Write service test with stubbed HTTP responses
+3. Implement service with #call method
+4. Add method to Client class
+5. Write integration test with VCR cassette
 6. Verify all tests pass
+
+---
+
+### 8b. Answer Endpoint
+**Endpoint**: POST /answer
+**Reference**: spec/endpoints/answer.yaml
+
+**Resource Object** - `lib/exa/resources/answer.rb`
+```ruby
+module Exa
+  module Resources
+    class Answer < Struct.new(:answer, :citations, keyword_init: true)
+      def initialize(**)
+        super
+        freeze
+      end
+
+      def to_h
+        { answer: answer, citations: citations }
+      end
+    end
+  end
+end
+```
+
+**Implementation Pattern**:
+1. Create test/resources/answer_test.rb
+   - Test initialization with answer and citations array
+   - Test immutability
+2. Create test/services/answer_test.rb
+   - Stub POST to /answer
+   - Test request body includes query and search_type parameters
+   - Test successful response returns Answer resource
+   - Test error handling (401, 500, etc.)
+3. Create lib/exa/services/answer.rb
+   - Initialize with connection and params (query, search_type, num_results, etc.)
+   - POST to /answer endpoint
+   - Return Answer resource
+4. Add to Client: `def answer(**params)` method
+5. Create test/integration/answer_integration_test.rb
+
+---
+
+### 8c. Research Start Endpoint
+**Endpoint**: POST /research/v1
+**Reference**: spec/endpoints/research_v1.yaml
+**Note**: Creates async task, returns immediately with task ID
+
+**Resource Objects** - `lib/exa/resources/research_task.rb`
+
+Define a single `ResearchTask` resource that handles all status states (pending, running, completed, canceled, failed):
+
+```ruby
+module Exa
+  module Resources
+    class ResearchTask < Struct.new(
+      :research_id, :created_at, :status, :model, :instructions,
+      :output_schema, :events, :output, :cost_dollars, :finished_at,
+      :error, keyword_init: true
+    )
+      def initialize(**)
+        super
+        freeze
+      end
+
+      def pending? = status == 'pending'
+      def running? = status == 'running'
+      def completed? = status == 'completed'
+      def failed? = status == 'failed'
+      def canceled? = status == 'canceled'
+
+      def finished? = !running? && !pending?
+
+      def to_h
+        to_h_result = {
+          research_id: research_id,
+          created_at: created_at,
+          status: status,
+          model: model,
+          instructions: instructions
+        }
+        # Include optional fields based on status
+        to_h_result[:output_schema] = output_schema if output_schema
+        to_h_result[:events] = events if events
+        to_h_result[:output] = output if output
+        to_h_result[:cost_dollars] = cost_dollars if cost_dollars
+        to_h_result[:finished_at] = finished_at if finished_at
+        to_h_result[:error] = error if error
+        to_h_result
+      end
+    end
+  end
+end
+```
+
+**Implementation Pattern**:
+1. Create test/resources/research_task_test.rb
+   - Test initialization with all fields
+   - Test status predicate methods (pending?, running?, completed?, etc.)
+   - Test immutability
+   - Test to_h includes only relevant fields
+2. Create test/services/research_start_test.rb
+   - Stub POST to /research/v1
+   - Test request body includes instructions, model, output_schema, etc.
+   - Test successful response returns ResearchTask with status: 'pending'
+   - Test returns researchId for polling
+   - Test error handling (401, 400, 500, etc.)
+3. Create lib/exa/services/research_start.rb
+   - Initialize with connection and params (instructions, model, output_schema)
+   - POST to /research/v1 endpoint
+   - Return ResearchTask resource
+4. Add to Client: `def research_start(**params)` method
+5. Create test/integration/research_start_integration_test.rb
+
+---
+
+### 8d. Research List Endpoint
+**Endpoint**: GET /research/v1
+**Reference**: spec/endpoints/research_v1.yaml
+**Note**: Cursor-based pagination (NOT offset-based)
+
+**Resource Object** - `lib/exa/resources/research_list.rb`
+
+```ruby
+module Exa
+  module Resources
+    class ResearchList < Struct.new(:data, :has_more, :next_cursor, keyword_init: true)
+      def initialize(**)
+        super
+        freeze
+      end
+
+      def to_h
+        { data: data, has_more: has_more, next_cursor: next_cursor }
+      end
+    end
+  end
+end
+```
+
+**Implementation Pattern**:
+1. Create test/resources/research_list_test.rb
+   - Test initialization with data array, has_more, next_cursor
+   - Test immutability
+   - Test to_h serialization
+2. Create test/services/research_list_test.rb
+   - Stub GET to /research/v1
+   - Test query parameters: cursor (optional), limit (optional, default 10)
+   - Test successful response returns ResearchList with array of ResearchTask objects
+   - Test pagination: has_more=true, next_cursor is present for next page
+   - Test pagination: has_more=false when no more results
+   - Test error handling (401, 500, etc.)
+3. Create lib/exa/services/research_list.rb
+   - Initialize with connection and params (cursor: nil, limit: 10)
+   - GET to /research/v1 endpoint with query params
+   - Map response data array to ResearchTask objects
+   - Return ResearchList resource
+4. Add to Client: `def research_list(**params)` method (cursor: nil, limit: 10)
+5. Create test/integration/research_list_integration_test.rb
+   - Verify pagination works correctly
+   - Test fetching first page, then next page using next_cursor
+
+---
+
+### 8e. Research Get Endpoint
+**Endpoint**: GET /research/v1/{researchId}
+**Reference**: spec/endpoints/research_v1_by_id.yaml
+**Note**: Supports streaming via ?stream=true and detailed events via ?events=true
+
+**Implementation Pattern**:
+1. Create test/services/research_get_test.rb
+   - Stub GET to /research/v1/{researchId}
+   - Test path parameter researchId is included in URL
+   - Test query parameters: stream (optional, boolean), events (optional, boolean)
+   - Test response for each status:
+     - pending: returns ResearchTask with minimal fields
+     - running: returns ResearchTask with events array if ?events=true
+     - completed: returns ResearchTask with output and cost_dollars
+     - failed: returns ResearchTask with error field
+     - canceled: returns ResearchTask with finished_at
+   - Test error handling (401, 404, 500, etc.)
+   - NOTE: Streaming support (?stream=true) can be stubbed for now; implement live streaming in Phase 11
+2. Create lib/exa/services/research_get.rb
+   - Initialize with connection, research_id, and params (stream: false, events: false)
+   - GET to /research/v1/{researchId} endpoint with query params
+   - Return ResearchTask resource
+   - NOTE: For basic implementation, stream parameter is accepted but not processed
+3. Add to Client: `def research_get(research_id, **params)` method
+   - Args: research_id (required), stream: false, events: false
+4. Create test/integration/research_get_integration_test.rb
+   - Test fetching task with different statuses
+   - Test with ?events=true to verify event log inclusion
+   - Verify polling workflow: call research_get repeatedly until status changes
+
+---
+
+### Implementation Order for Phase 8
+
+1. Answer endpoint (simpler, good warm-up)
+2. FindSimilar endpoint
+3. GetContents endpoint
+4. Research Start (introduces async pattern)
+5. Research List (introduces pagination)
+6. Research Get (most complex, handles multiple states)
+
+**After Each Endpoint**:
+- Run full test suite: `bundle exec rake test`
+- Verify no regressions
+- Commit working code with conventional format
+
+---
+
+### Key Considerations
+
+**Research Endpoints Special Cases**:
+- ResearchTask resource must handle optional fields based on status
+- Research Get polling pattern: client code will loop calling research_get until status changes
+- Events field contains array of ResearchEventDtoClass objects (nested types) - for Phase 8, just accept as-is; detailed event parsing can be Phase 11+
+- Streaming support (?stream=true) uses Server-Sent Events - stub for now, implement in Phase 11
+
+**Testing Pagination**:
+- Test cursor-based pagination by stubbing multiple pages
+- Verify next_cursor is used correctly on subsequent calls
+- Verify has_more flag correctly indicates more results exist
+
+**Status-Based Testing**:
+- Each Research status variant needs separate test stubs
+- Verify optional fields are only present for appropriate statuses
+- Test to_h method includes only populated fields
 
 ---
 
