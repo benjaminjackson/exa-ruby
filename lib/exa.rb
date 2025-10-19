@@ -5,6 +5,7 @@ require_relative "exa/error"
 require_relative "exa/middleware/raise_error"
 require_relative "exa/connection"
 require_relative "exa/resources/search_result"
+require_relative "exa/services/search"
 
 module Exa
   # Module-level configuration
