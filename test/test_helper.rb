@@ -8,6 +8,7 @@ require "webmock/minitest"
 require "vcr"
 
 # Configure VCR for integration tests
+# VCR works with WebMock to record/replay HTTP interactions
 VCR.configure do |config|
   config.cassette_library_dir = "test/vcr_cassettes"
   config.hook_into :webmock
@@ -20,4 +21,4 @@ VCR.configure do |config|
 end
 
 # Disable external network connections in tests (VCR will manage allowed connections)
-WebMock.disable_net_connect!(allow_localhost: true, allow: "api.exa.ai")
+WebMock.disable_net_connect!(allow_localhost: true)

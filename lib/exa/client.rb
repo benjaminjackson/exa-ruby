@@ -21,6 +21,22 @@ module Exa
       Services::GetContents.new(connection, urls: urls, **options).call
     end
 
+    def answer(query, **options)
+      Services::Answer.new(connection, query: query, **options).call
+    end
+
+    def research_start(**params)
+      Services::ResearchStart.new(connection, **params).call
+    end
+
+    def research_list(**params)
+      Services::ResearchList.new(connection, **params).call
+    end
+
+    def research_get(research_id, **params)
+      Services::ResearchGet.new(connection, research_id: research_id, **params).call
+    end
+
     private
 
     def connection

@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/research/v1
+    body:
+      encoding: UTF-8
+      string: '{"instructions":"What species of ant are similar to honeypot ants?"}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 19 Oct 2025 18:52:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '180'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"b4-F+y7VQVyOJU6+CaHHnTNKcS5Gdg"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=aQanCBp4II2yds5tWUeoegKgLd8WQ3UdL4OtQP%2BshQyEcofWcPQHuCbURUVIUUXQRGW6F6Pgd%2BbH9boInXijbd%2F%2FqIE4bnSNUBQBYcCFEiGMjwQ4Hg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 991279325b4f4332-EWR
+    body:
+      encoding: UTF-8
+      string: '{"researchId":"r_01k7yx1yympe89szs2mfy3n0t8","createdAt":1760899955668,"model":"exa-research","instructions":"What
+        species of ant are similar to honeypot ants?","status":"running"}'
+  recorded_at: Sun, 19 Oct 2025 18:52:35 GMT
+recorded_with: VCR 6.3.1
