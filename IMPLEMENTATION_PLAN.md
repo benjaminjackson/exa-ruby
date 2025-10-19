@@ -108,11 +108,11 @@ conn.is_a?(Faraday::Connection) # => true
 ---
 
 ## Phase 4: First Resource Object (SearchResult)
-**Goal**: Create one resource object using Data.define
+**Goal**: Create one resource object using frozen Struct
 
 ### Tasks
 1. Create lib/exa/resources/search_result.rb
-   - Define SearchResult using Data.define
+   - Define SearchResult using Struct with keyword_init and freeze
    - Fields: results (array), autoprompt_string (string or nil)
    - Helper methods: `#empty?`, `#first`, `#to_h`
 2. Write test/resources/search_result_test.rb

@@ -34,7 +34,7 @@ Built-in Faraday middleware is battle-tested and should be included from the sta
 
 **Resource Objects**
 - Wrap API responses in domain objects (SearchResult, Content, etc.)
-- Use Ruby 3.2+ `Data.define` for immutable value objects (clean, idiomatic)
+- Use frozen Struct or plain classes with attr_reader for immutable value objects
 - Provide helper methods for common operations
 - Include `#to_h` for serialization
 
@@ -56,7 +56,7 @@ lib/
 │   │   ├── find_similar.rb
 │   │   └── get_contents.rb
 │   └── resources/              # Response wrapper objects
-│       ├── search_result.rb    # Using Data.define
+│       ├── search_result.rb    # Using frozen Struct
 │       ├── similar_result.rb
 │       ├── content.rb
 │       └── paginated_collection.rb
@@ -343,23 +343,32 @@ module Exa
 end
 ```
 
-### Resource Objects with Data.define
+### Resource Objects with Frozen Struct
 
 ```ruby
-# Ruby 3.2+ Data class - immutable by default, clean syntax
-SearchResult = Data.define(:items, :total, :query, :autoprompt_string) do
-  def first_item = items.first
-  def empty? = items.empty?
+# Using Struct with freeze for immutability
+module Exa
+  module Resources
+    class SearchResult < Struct.new(:results, :autoprompt_string, keyword_init: true)
+      def initialize(**)
+        super
+        freeze
+      end
 
-  def to_h
-    { items: items, total: total, query: query, autoprompt_string: autoprompt_string }
+      def first = results.first
+      def empty? = results.empty?
+
+      def to_h
+        { results: results, autoprompt_string: autoprompt_string }
+      end
+    end
   end
 end
 
 # Usage:
-result = SearchResult.new(items: [...], total: 10, query: "ruby", autoprompt_string: nil)
-result.items # => [...]
-result.items = [] # => raises FrozenError
+result = Exa::Resources::SearchResult.new(results: [...], autoprompt_string: nil)
+result.results # => [...]
+result.results = [] # => raises FrozenError
 ```
 
 ### Connection Configuration with Timeouts
@@ -460,7 +469,7 @@ binding.pry  # Drops into REPL
 
 - Prefer stdlib when sufficient
 - Use Faraday for HTTP (battle-tested, flexible)
-- Require Ruby 3.2+ for Data.define support
+- Require Ruby 3.0+ for modern syntax support
 - Avoid heavy dependencies for simple tasks
 - Pin major versions, allow minor/patch updates
 - Regular dependency audits for security
@@ -482,7 +491,7 @@ gem 'rake', '~> 13.0'
 
 When implementing a new API endpoint:
 
-- [ ] Define the resource object using `Data.define`
+- [ ] Define the resource object using frozen Struct or plain class
 - [ ] Write service object test with stubbed HTTP response
 - [ ] Implement service object with `#call` method
 - [ ] Add method to Client class
