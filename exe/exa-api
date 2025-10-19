@@ -10,6 +10,7 @@ require "exa/cli/base"
 module ExaCLI
   AVAILABLE_COMMANDS = {
     "search" => "Search the web",
+    "answer" => "Generate an answer to a question",
     "context" => "Get code context from repositories",
     "get-contents" => "Retrieve page contents",
     "research-start" => "Start a research task",
@@ -30,6 +31,8 @@ module ExaCLI
       exit 1
     when "search"
       exec File.expand_path("../exa-api-search", __FILE__), *ARGV[1..]
+    when "answer"
+      exec File.expand_path("../exa-api-answer", __FILE__), *ARGV[1..]
     when "context"
       exec File.expand_path("../exa-api-context", __FILE__), *ARGV[1..]
     when "get-contents"
