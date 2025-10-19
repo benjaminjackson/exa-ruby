@@ -9,7 +9,7 @@ Ruby client for the Exa.ai API with comprehensive command-line interface.
 Add to your Gemfile:
 
 ```ruby
-gem 'exa'
+gem 'exa-ai'
 ```
 
 Then run:
@@ -21,7 +21,7 @@ bundle install
 Or install directly:
 
 ```bash
-gem install exa
+gem install exa-ai
 ```
 
 ## Configuration
@@ -52,7 +52,7 @@ client = Exa::Client.new(api_key: "your-api-key-here")
 **Option 3: CLI Flag**
 
 ```bash
-exa-api search "query" --api-key YOUR_API_KEY
+exa-ai search "query" --api-key YOUR_API_KEY
 ```
 
 ## Ruby API Usage
@@ -182,7 +182,7 @@ end
 ### Main Commands
 
 ```bash
-exa-api <command> [options]
+exa-ai <command> [options]
 
 Commands:
   search          Search the web
@@ -200,18 +200,18 @@ Search the web using Exa's neural search:
 
 ```bash
 # Basic search
-exa-api search "ruby programming"
+exa-ai search "ruby programming"
 
 # With options
-exa-api search "machine learning" --num-results 10 --type keyword
+exa-ai search "machine learning" --num-results 10 --type keyword
 
 # Filter by domains
-exa-api search "tutorials" \
+exa-ai search "tutorials" \
   --include-domains "github.com,dev.to" \
   --exclude-domains "outdated-site.com"
 
 # Pretty output
-exa-api search "AI" --output-format pretty
+exa-ai search "AI" --output-format pretty
 ```
 
 **Options:**
@@ -230,16 +230,16 @@ Generate comprehensive answers to questions using Exa's answer generation featur
 
 ```bash
 # Basic question
-exa-api answer "What is the capital of France?"
+exa-ai answer "What is the capital of France?"
 
 # Get answer with source citations
-exa-api answer "Latest developments in quantum computing"
+exa-ai answer "Latest developments in quantum computing"
 
 # Include full text from sources
-exa-api answer "Ruby on Rails best practices" --text
+exa-ai answer "Ruby on Rails best practices" --text
 
 # Pretty formatted output
-exa-api answer "How do I learn machine learning?" --output-format pretty
+exa-ai answer "How do I learn machine learning?" --output-format pretty
 ```
 
 **Options:**
@@ -259,13 +259,13 @@ Find code snippets and context from open-source repositories:
 
 ```bash
 # Basic query
-exa-api context "authentication with JWT"
+exa-ai context "authentication with JWT"
 
 # With custom token allocation
-exa-api context "React hooks" --tokens-num 5000
+exa-ai context "React hooks" --tokens-num 5000
 
 # Text output
-exa-api context "async/await patterns" --output-format text
+exa-ai context "async/await patterns" --output-format text
 ```
 
 **Options:**
@@ -280,13 +280,13 @@ Retrieve the full text content from web pages:
 
 ```bash
 # Single page
-exa-api get-contents "https://example.com/article"
+exa-ai get-contents "https://example.com/article"
 
 # Multiple pages (comma-separated)
-exa-api get-contents "https://site1.com,https://site2.com"
+exa-ai get-contents "https://site1.com,https://site2.com"
 
 # With options
-exa-api get-contents "id1,id2,id3" \
+exa-ai get-contents "id1,id2,id3" \
   --text \
   --highlights \
   --output-format pretty
@@ -308,16 +308,16 @@ Start and manage long-running research tasks:
 
 ```bash
 # Start a task
-exa-api research-start --instructions "Find Ruby performance tips"
+exa-ai research-start --instructions "Find Ruby performance tips"
 
 # Start and wait for completion
-exa-api research-start \
+exa-ai research-start \
   --instructions "Analyze AI safety papers" \
   --model gpt-4 \
   --wait
 
 # With output schema
-exa-api research-start \
+exa-ai research-start \
   --instructions "Extract key metrics" \
   --output-schema '{"format":"json","fields":["metric","value"]}'
 ```
@@ -335,13 +335,13 @@ exa-api research-start \
 
 ```bash
 # Check task status
-exa-api research-get abc-123
+exa-ai research-get abc-123
 
 # With events
-exa-api research-get abc-123 --events
+exa-ai research-get abc-123 --events
 
 # Pretty output
-exa-api research-get abc-123 --output-format pretty
+exa-ai research-get abc-123 --output-format pretty
 ```
 
 **Options:**
@@ -355,16 +355,16 @@ exa-api research-get abc-123 --output-format pretty
 
 ```bash
 # List all tasks
-exa-api research-list
+exa-ai research-list
 
 # With pagination
-exa-api research-list --limit 20
+exa-ai research-list --limit 20
 
 # Next page
-exa-api research-list --cursor "next_page_cursor"
+exa-ai research-list --cursor "next_page_cursor"
 
 # Pretty table format
-exa-api research-list --output-format pretty
+exa-ai research-list --output-format pretty
 ```
 
 **Options:**
@@ -379,26 +379,26 @@ All commands support:
 - `--api-key KEY` - Override API key
 - `--output-format FORMAT` - json, pretty, or text (varies by command)
 - `--help, -h` - Show command help
-- `exa-api --version` - Show version
-- `exa-api --help` - Show available commands
+- `exa-ai --version` - Show version
+- `exa-ai --help` - Show available commands
 
 ### Output Formats
 
 **JSON (default)**
 ```bash
-exa-api search "ruby" --output-format json
+exa-ai search "ruby" --output-format json
 # Returns formatted JSON object
 ```
 
 **Pretty**
 ```bash
-exa-api search "ruby" --output-format pretty
+exa-ai search "ruby" --output-format pretty
 # Returns human-readable format with titles, URLs, scores
 ```
 
 **Text**
 ```bash
-exa-api context "React" --output-format text
+exa-ai context "React" --output-format text
 # Returns plain text output
 ```
 

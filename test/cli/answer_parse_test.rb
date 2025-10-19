@@ -3,10 +3,10 @@
 require "test_helper"
 
 # Tests for the answer CLI executable argument parsing
-# Note: This loads the exe/exa-api-answer script to test its parse_args function
+# Note: This loads the exe/exa-ai-answer script to test its parse_args function
 class AnswerParseTest < Minitest::Test
   def parse_args(argv)
-    # This simulates the parse_args function from exe/exa-api-answer
+    # This simulates the parse_args function from exe/exa-ai-answer
     args = {
       output_format: "json",
       api_key: nil,

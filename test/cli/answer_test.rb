@@ -5,7 +5,7 @@ require "test_helper"
 class Exa::CLI::AnswerTest < Minitest::Test
   def test_output_schema_flag_is_parsed_as_json
     # This test verifies that --output-schema accepts a JSON string
-    # The actual implementation is in exe/exa-api-answer parse_args function
+    # The actual implementation is in exe/exa-ai-answer parse_args function
     # This is an integration test showing the flag should work
 
     # Create a mock answer call to verify output_schema is passed

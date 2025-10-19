@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    exa (0.1.0)
+    exa-ai (0.1.0)
       faraday (~> 2.0)
 
 GEM
@@ -42,7 +42,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  exa!
+  exa-ai!
   minitest (~> 5.0)
   rake (~> 13.0)
   vcr (~> 6.0)
