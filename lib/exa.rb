@@ -2,6 +2,8 @@
 
 require_relative "exa/version"
 require_relative "exa/error"
+require_relative "exa/middleware/raise_error"
+require_relative "exa/connection"
 
 module Exa
   # Module-level configuration
