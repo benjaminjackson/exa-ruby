@@ -60,4 +60,49 @@ class Exa::CLI::Formatters::AnswerFormatterTest < Minitest::Test
     parsed = JSON.parse(output)
     assert parsed["answer"]
   end
+
+  def test_json_format_with_structured_answer
+    structured_answer = { "city" => "Albany", "state" => "New York" }
+    result = Exa::Resources::Answer.new(
+      answer: structured_answer,
+      citations: [{ "title" => "Wikipedia", "url" => "https://example.com" }],
+      cost_dollars: 0.01
+    )
+
+    output = Exa::CLI::Formatters::AnswerFormatter.format(result, "json")
+
+    parsed = JSON.parse(output)
+    assert_equal "Albany", parsed["answer"]["city"]
+    assert_equal "New York", parsed["answer"]["state"]
+  end
+
+  def test_pretty_format_with_structured_answer
+    structured_answer = { "city" => "Albany", "state" => "New York" }
+    result = Exa::Resources::Answer.new(
+      answer: structured_answer,
+      citations: [{ "title" => "Wikipedia", "url" => "https://example.com" }],
+      cost_dollars: 0.01
+    )
+
+    output = Exa::CLI::Formatters::AnswerFormatter.format(result, "pretty")
+
+    # Should show formatted JSON or similar structured representation
+    assert_includes output, "Albany"
+    assert_includes output, "New York"
+  end
+
+  def test_text_format_with_structured_answer
+    structured_answer = { "city" => "Albany", "state" => "New York" }
+    result = Exa::Resources::Answer.new(
+      answer: structured_answer,
+      citations: [],
+      cost_dollars: 0.01
+    )
+
+    output = Exa::CLI::Formatters::AnswerFormatter.format(result, "text")
+
+    # For structured answers, text format should show JSON representation
+    assert_includes output, "Albany"
+    assert_includes output, "New York"
+  end
 end

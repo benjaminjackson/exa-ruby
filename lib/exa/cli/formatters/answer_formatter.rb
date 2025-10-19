@@ -23,7 +23,13 @@ module Exa
           output = []
           output << "Answer:"
           output << "-" * 60
-          output << result.answer
+
+          # Handle both string and structured (hash) answers
+          if result.answer.is_a?(Hash)
+            output << JSON.pretty_generate(result.answer)
+          else
+            output << result.answer
+          end
           output << ""
 
           if result.citations && !result.citations.empty?
@@ -44,7 +50,12 @@ module Exa
         end
 
         def self.format_text(result)
-          result.answer
+          # Handle both string and structured (hash) answers
+          if result.answer.is_a?(Hash)
+            JSON.pretty_generate(result.answer)
+          else
+            result.answer
+          end
         end
       end
     end

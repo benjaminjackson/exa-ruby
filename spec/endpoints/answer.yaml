@@ -87,6 +87,23 @@ paths:
                   type: boolean
                   default: false
                   description: If true, the response includes full text content in the search results
+                outputSchema:
+                  type: object
+                  additionalProperties: {}
+                  description: JSON Schema describing the structure of the desired answer. When provided, the API will return a structured answer conforming to this schema instead of a text answer.
+                  example:
+                    type: object
+                    properties:
+                      city:
+                        type: string
+                        description: Name of the city
+                      state:
+                        type: string
+                        description: Name of the state
+                    required:
+                      - city
+                      - state
+                    additionalProperties: false
       responses:
         "200":
           $ref: "#/components/responses/AnswerResponse"

@@ -60,6 +60,47 @@ class AnswerTest < Minitest::Test
       body: hash_including(text: true)
   end
 
+  def test_call_includes_output_schema_parameter
+    output_schema = { type: "object", properties: { city: { type: "string" } } }
+    stub_request(:post, "https://api.exa.ai/answer")
+      .with(body: hash_including(query: "test query", output_schema: output_schema))
+      .to_return(
+        status: 200,
+        body: { answer: "Test", citations: [] }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Answer.new(@connection, query: "test query", output_schema: output_schema)
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/answer",
+      body: hash_including(output_schema: output_schema)
+  end
+
+  def test_call_with_output_schema_returns_structured_answer
+    output_schema = { type: "object", properties: { city: { type: "string" }, state: { type: "string" } } }
+    structured_answer = { "city" => "Albany", "state" => "New York" }
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(
+        status: 200,
+        body: {
+          answer: structured_answer,
+          citations: [{ title: "Albany", url: "https://example.com" }],
+          costDollars: { total: 0.01 }
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Answer.new(@connection, query: "What is the capital of New York?", output_schema: output_schema)
+    result = service.call
+
+    assert_instance_of Exa::Resources::Answer, result
+    assert_equal structured_answer, result.answer
+    assert_equal "Albany", result.answer["city"]
+    assert_equal "New York", result.answer["state"]
+    assert_equal 1, result.citations.length
+  end
+
   def test_call_returns_answer_object
     stub_request(:post, "https://api.exa.ai/answer")
       .to_return(
