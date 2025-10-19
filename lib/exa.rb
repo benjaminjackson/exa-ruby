@@ -5,7 +5,11 @@ require_relative "exa/error"
 require_relative "exa/middleware/raise_error"
 require_relative "exa/connection"
 require_relative "exa/resources/search_result"
+require_relative "exa/resources/find_similar_result"
+require_relative "exa/resources/contents_result"
 require_relative "exa/services/search"
+require_relative "exa/services/find_similar"
+require_relative "exa/services/get_contents"
 require_relative "exa/client"
 
 module Exa

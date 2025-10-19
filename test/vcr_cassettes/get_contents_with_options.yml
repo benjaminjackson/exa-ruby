@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/contents
+    body:
+      encoding: UTF-8
+      string: '{"urls":["https://arxiv.org/abs/2307.06435"],"text":{"maxCharacters":1000}}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Oct 2025 18:21:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '50'
+      X-Ratelimit-Remaining:
+      - '48'
+      X-Ratelimit-Reset:
+      - '1760898064'
+      Ratelimit-Policy:
+      - 2000;w=1
+      Ratelimit-Limit:
+      - '2000'
+      Ratelimit-Remaining:
+      - '1997'
+      Ratelimit-Reset:
+      - '1'
+      Etag:
+      - W/"5ce-sUAvPRhlJP1/dKVRsVZcZ1dg8rs"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=cT6CcBVyyTZx6%2BaIG0x9623aGz217YJl5eUZtZbr73SzvRJkljP3ud0gIhPwgsec8THzshTl5cqoUYFXjPX2ya%2B5JGPkeUjki4UTpkbebEfkCuM2dw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 99124afc9e0f4544-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"6e024bb268a812e3f36d07ebf0862cd6","results":[{"id":"https://arxiv.org/abs/2307.06435","title":"A
+        Comprehensive Overview of Large Language Models","url":"https://arxiv.org/abs/2307.06435","author":"[Submitted
+        on 12 Jul 2023 (v1), last revised 17 Oct 2024 (this version, v10)]","text":"#
+        Computer Science > Computation and Language\n\n**arXiv:2307.06435** (cs)\n\n\\[Submitted
+        on 12 Jul 2023 ( [v1](https://arxiv.org/abs/2307.06435v1)), last revised 17
+        Oct 2024 (this version, v10)\\]\n\n# Title:A Comprehensive Overview of Large
+        Language Models\n\nAuthors: [Humza Naveed](https://arxiv.org/search/cs?searchtype=author&query=Naveed,+H),
+        [Asad Ullah Khan](https://arxiv.org/search/cs?searchtype=author&query=Khan,+A+U),
+        [Shi Qiu](https://arxiv.org/search/cs?searchtype=author&query=Qiu,+S), [Muhammad
+        Saqib](https://arxiv.org/search/cs?searchtype=author&query=Saqib,+M), [Saeed
+        Anwar](https://arxiv.org/search/cs?searchtype=author&query=Anwar,+S), [Muhammad
+        Usman](https://arxiv.org/search/cs?searchtype=author&query=Usman,+M), [Naveed
+        Akhtar](https://arxiv.org/search/cs?searchtype=author&query=Akhtar,+N), [Nick
+        Barnes](https://arxiv.org/search/cs?searchtype=author&query=Barnes,+N), [Ajmal
+        Mian](https://arxiv.org/search/cs?searchtype=author&query=Mian,+A)\n\nView
+        a PDF of the paper titled A Com","image":""}],"statuses":[{"id":"https://arxiv.org/abs/2307.06435","status":"success"}],"costDollars":{"total":0.001,"contents":{"text":0.001}},"searchTime":8.448619999922812}'
+  recorded_at: Sun, 19 Oct 2025 18:21:02 GMT
+recorded_with: VCR 6.3.1

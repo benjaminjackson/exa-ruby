@@ -126,4 +126,64 @@ class ClientTest < Minitest::Test
       client.search("test query")
     end
   end
+
+  def test_find_similar_delegates_to_service
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+      .with(body: hash_including(url: "https://example.com"))
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.find_similar("https://example.com")
+
+    assert_instance_of Exa::Resources::FindSimilarResult, result
+  end
+
+  def test_find_similar_with_options
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+      .with(body: hash_including(url: "https://example.com", numResults: 20))
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.find_similar("https://example.com", numResults: 20)
+
+    assert_instance_of Exa::Resources::FindSimilarResult, result
+  end
+
+  def test_get_contents_delegates_to_service
+    stub_request(:post, "https://api.exa.ai/contents")
+      .with(body: hash_including(urls: ["https://example.com"]))
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123", statuses: [] }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.get_contents(["https://example.com"])
+
+    assert_instance_of Exa::Resources::ContentsResult, result
+  end
+
+  def test_get_contents_with_text_options
+    stub_request(:post, "https://api.exa.ai/contents")
+      .with(body: hash_including(urls: ["https://example.com"], text: true))
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123", statuses: [] }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.get_contents(["https://example.com"], text: true)
+
+    assert_instance_of Exa::Resources::ContentsResult, result
+  end
 end

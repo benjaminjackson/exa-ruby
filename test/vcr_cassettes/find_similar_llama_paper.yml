@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/findSimilar
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://arxiv.org/abs/2307.06435"}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 19 Oct 2025 18:21:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '9007199254740991'
+      X-Ratelimit-Remaining:
+      - '9007199254740990'
+      X-Ratelimit-Reset:
+      - '1760898063'
+      Etag:
+      - W/"e15-tobCQwIbXpMiDWsS8xm2rr8V64A"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=rDBecGzneEhrEdQuSICGVzYEr0DkcI4f2R3gnt0keP5jd4f%2F479J4Zbk%2F071%2Fb8gC0m%2Fp53TABTOEcRdJtg4dzkGUm6jhoYEeg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 99124af4686f8c72-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"09fdbe971614c4e6d96aa98dbeba9ce3","results":[{"id":"https://www.researchgate.net/publication/372341712_A_Comprehensive_Overview_of_Large_Language_Models","title":"(PDF)
+        A Comprehensive Overview of Large Language Models","url":"https://www.researchgate.net/publication/372341712_A_Comprehensive_Overview_of_Large_Language_Models","publishedDate":"2023-07-12T00:00:00.000Z","author":null,"score":0.9479102492332458},{"id":"https://ar5iv.labs.arxiv.org/html/2307.06435","title":"A
+        Comprehensive Overview of Large Language Models","url":"https://ar5iv.labs.arxiv.org/html/2307.06435","publishedDate":"2022-12-12T00:00:00.000Z","author":null,"score":0.9376184940338135},{"id":"https://arxiv.org/abs/2307.10188","title":"Several
+        categories of Large Language Models (LLMs): A Short Survey","url":"https://arxiv.org/abs/2307.10188","publishedDate":"2023-07-05T00:00:00.000Z","author":"[Submitted
+        on 5 Jul 2023]","score":0.9292043447494507},{"id":"https://arxiv.org/html/2402.06196v2","title":"Large
+        Language Models: A Survey","url":"https://arxiv.org/html/2402.06196v2","publishedDate":"2024-02-20T00:00:00.000Z","author":null,"score":0.9251595139503479},{"id":"https://export.arxiv.org/pdf/2303.18223v4.pdf","title":"","url":"https://export.arxiv.org/pdf/2303.18223v4.pdf","publishedDate":"2023-04-13T00:00:00.000Z","author":null,"score":0.9160302877426147},{"id":"https://www.researchgate.net/publication/378289524_A_Review_on_Large_Language_Models_Architectures_Applications_Taxonomies_Open_Issues_and_Challenges","title":"(PDF)
+        A Review on Large Language Models: Architectures, Applications, Taxonomies,
+        Open Issues and Challenges","url":"https://www.researchgate.net/publication/378289524_A_Review_on_Large_Language_Models_Architectures_Applications_Taxonomies_Open_Issues_and_Challenges","publishedDate":"2024-01-01T00:00:00.000Z","author":"Authors:","score":0.9158203601837158},{"id":"https://www.researchgate.net/publication/372278221_Large_Language_Models_A_Comprehensive_Survey_of_its_Applications_Challenges_Limitations_and_Future_Prospects","title":"(PDF)
+        Large Language Models: A Comprehensive Survey of its Applications, Challenges,
+        Limitations, and Future Prospects","url":"https://www.researchgate.net/publication/372278221_Large_Language_Models_A_Comprehensive_Survey_of_its_Applications_Challenges_Limitations_and_Future_Prospects","publishedDate":"2023-07-10T00:00:00.000Z","author":null,"score":0.9132415056228638},{"id":"https://link.springer.com/article/10.1007/s10462-024-10888-y?error=cookies_not_supported&code=1325ee84-5c42-419a-a716-1f870700ed5c","title":"Large
+        language models (LLMs): survey, technical frameworks, and future challenges","url":"https://link.springer.com/article/10.1007/s10462-024-10888-y?error=cookies_not_supported&code=1325ee84-5c42-419a-a716-1f870700ed5c","publishedDate":"2024-08-18T00:00:00.000Z","author":"Kumar,
+        Pranjal","score":0.9104284048080444},{"id":"https://www.mdpi.com/2076-3417/14/5/2074","title":"A
+        Review of Current Trends, Techniques, and Challenges in Large Language Models
+        (LLMs)","url":"https://www.mdpi.com/2076-3417/14/5/2074","publishedDate":"2024-03-01T00:00:00.000Z","author":"Venkat
+        Gudivada","score":0.910015881061554},{"id":"https://arxiv.org/abs/2403.18969","title":"A
+        Survey on Large Language Models from Concept to Implementation","url":"https://arxiv.org/abs/2403.18969","publishedDate":"2024-03-27T00:00:00.000Z","author":"[Submitted
+        on 27 Mar 2024 (v1), last revised 28 May 2024 (this version, v2)]","score":0.9072485566139221}],"costDollars":{"total":0.005,"search":{"neural":0.005}},"searchTime":151.91887099994346}'
+  recorded_at: Sun, 19 Oct 2025 18:21:01 GMT
+recorded_with: VCR 6.3.1

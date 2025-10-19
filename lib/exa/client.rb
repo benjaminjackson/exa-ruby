@@ -13,6 +13,14 @@ module Exa
       Services::Search.new(connection, query: query, **params).call
     end
 
+    def find_similar(url, **options)
+      Services::FindSimilar.new(connection, url: url, **options).call
+    end
+
+    def get_contents(urls, **options)
+      Services::GetContents.new(connection, urls: urls, **options).call
+    end
+
     private
 
     def connection
