@@ -41,7 +41,7 @@ def parse_args(argv)
       i += 2
     when "--help", "-h"
       puts <<~HELP
-        Usage: exa-search QUERY [OPTIONS]
+        Usage: exa-api search QUERY [OPTIONS]
 
         Search the web using Exa AI
 
@@ -59,10 +59,10 @@ def parse_args(argv)
           --help, -h            Show this help message
 
         Examples:
-          exa-search "ruby programming"
-          exa-search "machine learning" --num-results 5 --type keyword
-          exa-search "AI research" --include-domains arxiv.org,scholar.google.com
-          exa-search "tutorials" --output-format pretty
+          exa-api search "ruby programming"
+          exa-api search "machine learning" --num-results 5 --type keyword
+          exa-api search "AI research" --include-domains arxiv.org,scholar.google.com
+          exa-api search "tutorials" --output-format pretty
       HELP
       exit 0
     else
@@ -82,7 +82,7 @@ begin
   # Validate query
   if args[:query].nil? || args[:query].empty?
     $stderr.puts "Error: Query is required"
-    $stderr.puts "Run 'exa-search --help' for usage information"
+    $stderr.puts "Run 'exa-api search --help' for usage information"
     exit 1
   end
 

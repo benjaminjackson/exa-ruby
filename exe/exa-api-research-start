@@ -41,7 +41,7 @@ def parse_args(argv)
       i += 2
     when "--help", "-h"
       puts <<~HELP
-        Usage: exa-research-start --instructions "TEXT" [OPTIONS]
+        Usage: exa-api research-start --instructions "TEXT" [OPTIONS]
 
         Start a research task using Exa AI
 
@@ -56,10 +56,10 @@ def parse_args(argv)
           --help, -h            Show this help message
 
         Examples:
-          exa-research-start --instructions "Find Ruby performance tips"
-          exa-research-start --instructions "Analyze AI trends" --wait --events
-          exa-research-start --instructions "Summarize papers" --model gpt-4 --wait
-          exa-research-start --instructions "Find stats" --output-schema '{"type":"object"}'
+          exa-api research-start --instructions "Find Ruby performance tips"
+          exa-api research-start --instructions "Analyze AI trends" --wait --events
+          exa-api research-start --instructions "Summarize papers" --model gpt-4 --wait
+          exa-api research-start --instructions "Find stats" --output-schema '{"type":"object"}'
       HELP
       exit 0
     else
@@ -77,7 +77,7 @@ begin
   # Validate instructions
   if args[:instructions].nil? || args[:instructions].empty?
     $stderr.puts "Error: --instructions flag is required"
-    $stderr.puts "Run 'exa-research-start --help' for usage information"
+    $stderr.puts "Run 'exa-api research-start --help' for usage information"
     exit 1
   end
 
@@ -142,7 +142,7 @@ begin
     rescue Exa::CLI::Polling::TimeoutError => e
       $stderr.puts "\nError: Task did not complete within timeout period (5 minutes)"
       $stderr.puts "Task ID: #{task.research_id}"
-      $stderr.puts "You can check the status later with: exa-research-get #{task.research_id}"
+      $stderr.puts "You can check the status later with: exa-api research-get #{task.research_id}"
       exit 1
     end
   else

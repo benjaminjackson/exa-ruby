@@ -24,7 +24,7 @@ while args.any?
     output_format = args.shift
   when "--help", "-h"
     puts <<~HELP
-      Usage: exa research-list [options]
+      Usage: exa-api research-list [options]
 
       List research tasks with cursor-based pagination.
 
@@ -36,10 +36,10 @@ while args.any?
         --help, -h              Show this help message
 
       Examples:
-        exa research-list
-        exa research-list --limit 20
-        exa research-list --cursor next_page_cursor
-        exa research-list --output-format pretty
+        exa-api research-list
+        exa-api research-list --limit 20
+        exa-api research-list --cursor next_page_cursor
+        exa-api research-list --output-format pretty
     HELP
     exit 0
   else

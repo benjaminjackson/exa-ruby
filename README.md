@@ -52,7 +52,7 @@ client = Exa::Client.new(api_key: "your-api-key-here")
 **Option 3: CLI Flag**
 
 ```bash
-exa search "query" --api-key YOUR_API_KEY
+exa-api search "query" --api-key YOUR_API_KEY
 ```
 
 ## Ruby API Usage
@@ -157,7 +157,7 @@ end
 ### Main Commands
 
 ```bash
-exa <command> [options]
+exa-api <command> [options]
 
 Commands:
   search          Search the web
@@ -174,18 +174,18 @@ Search the web using Exa's neural search:
 
 ```bash
 # Basic search
-exa search "ruby programming"
+exa-api search "ruby programming"
 
 # With options
-exa search "machine learning" --num-results 10 --type keyword
+exa-api search "machine learning" --num-results 10 --type keyword
 
 # Filter by domains
-exa search "tutorials" \
+exa-api search "tutorials" \
   --include-domains "github.com,dev.to" \
   --exclude-domains "outdated-site.com"
 
 # Pretty output
-exa search "AI" --output-format pretty
+exa-api search "AI" --output-format pretty
 ```
 
 **Options:**
@@ -204,13 +204,13 @@ Find code snippets and context from open-source repositories:
 
 ```bash
 # Basic query
-exa context "authentication with JWT"
+exa-api context "authentication with JWT"
 
 # With custom token allocation
-exa context "React hooks" --tokens-num 5000
+exa-api context "React hooks" --tokens-num 5000
 
 # Text output
-exa context "async/await patterns" --output-format text
+exa-api context "async/await patterns" --output-format text
 ```
 
 **Options:**
@@ -225,13 +225,13 @@ Retrieve the full text content from web pages:
 
 ```bash
 # Single page
-exa get-contents "https://example.com/article"
+exa-api get-contents "https://example.com/article"
 
 # Multiple pages (comma-separated)
-exa get-contents "https://site1.com,https://site2.com"
+exa-api get-contents "https://site1.com,https://site2.com"
 
 # With options
-exa get-contents "id1,id2,id3" \
+exa-api get-contents "id1,id2,id3" \
   --text \
   --highlights \
   --output-format pretty
@@ -253,16 +253,16 @@ Start and manage long-running research tasks:
 
 ```bash
 # Start a task
-exa research-start --instructions "Find Ruby performance tips"
+exa-api research-start --instructions "Find Ruby performance tips"
 
 # Start and wait for completion
-exa research-start \
+exa-api research-start \
   --instructions "Analyze AI safety papers" \
   --model gpt-4 \
   --wait
 
 # With output schema
-exa research-start \
+exa-api research-start \
   --instructions "Extract key metrics" \
   --output-schema '{"format":"json","fields":["metric","value"]}'
 ```
@@ -280,13 +280,13 @@ exa research-start \
 
 ```bash
 # Check task status
-exa research-get abc-123
+exa-api research-get abc-123
 
 # With events
-exa research-get abc-123 --events
+exa-api research-get abc-123 --events
 
 # Pretty output
-exa research-get abc-123 --output-format pretty
+exa-api research-get abc-123 --output-format pretty
 ```
 
 **Options:**
@@ -300,16 +300,16 @@ exa research-get abc-123 --output-format pretty
 
 ```bash
 # List all tasks
-exa research-list
+exa-api research-list
 
 # With pagination
-exa research-list --limit 20
+exa-api research-list --limit 20
 
 # Next page
-exa research-list --cursor "next_page_cursor"
+exa-api research-list --cursor "next_page_cursor"
 
 # Pretty table format
-exa research-list --output-format pretty
+exa-api research-list --output-format pretty
 ```
 
 **Options:**
@@ -324,26 +324,26 @@ All commands support:
 - `--api-key KEY` - Override API key
 - `--output-format FORMAT` - json, pretty, or text (varies by command)
 - `--help, -h` - Show command help
-- `exa --version` - Show version
-- `exa --help` - Show available commands
+- `exa-api --version` - Show version
+- `exa-api --help` - Show available commands
 
 ### Output Formats
 
 **JSON (default)**
 ```bash
-exa search "ruby" --output-format json
+exa-api search "ruby" --output-format json
 # Returns formatted JSON object
 ```
 
 **Pretty**
 ```bash
-exa search "ruby" --output-format pretty
+exa-api search "ruby" --output-format pretty
 # Returns human-readable format with titles, URLs, scores
 ```
 
 **Text**
 ```bash
-exa context "React" --output-format text
+exa-api context "React" --output-format text
 # Returns plain text output
 ```
 

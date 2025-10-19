@@ -543,15 +543,15 @@ end
 
 **Verification**:
 ```bash
-bundle exec exe/exa --version  # Shows version
-bundle exec exe/exa --help     # Shows usage
-bundle exec exe/exa unknown    # Shows error + suggestions
+bundle exec exe/exa-api --version  # Shows version
+bundle exec exe/exa-api --help     # Shows usage
+bundle exec exe/exa-api unknown    # Shows error + suggestions
 ```
 
 ---
 
 ### 9b. Search Command
-**Goal**: Implement `exa search` with full parameter support
+**Goal**: Implement `exa-api search` with full parameter support
 
 **Tasks**:
 1. Write `test/cli/search_test.rb` FIRST
@@ -560,7 +560,7 @@ bundle exec exe/exa unknown    # Shows error + suggestions
    - Test JSON output format
    - Test pretty output format
    - Test error handling (missing query, API errors)
-2. Create `exe/exa-search` executable
+2. Create `exe/exa-api-search` executable
    - Required: query (positional)
    - Optional: --num-results, --include-domains, --exclude-domains, --start-crawl-date, --end-crawl-date, --use-autoprompt, --type (keyword|neural|auto)
    - Maps flags to Client#search params
@@ -571,18 +571,18 @@ bundle exec exe/exa unknown    # Shows error + suggestions
 
 **Verification**:
 ```bash
-exa search "ruby programming" --num-results 5
-exa search "AI" --output-format pretty --type neural
+exa-api search "ruby programming" --num-results 5
+exa-api search "AI" --output-format pretty --type neural
 ```
 
 ---
 
 ### 9c. Context Command (Exa Code)
-**Goal**: Implement `exa context` for code search
+**Goal**: Implement `exa-api context` for code search
 
 **Tasks**:
 1. Write `test/cli/context_test.rb` FIRST
-2. Create `exe/exa-context` executable
+2. Create `exe/exa-api-context` executable
    - Required: query
    - Optional: --tokens-num (integer or "dynamic")
 3. Create `lib/exa/cli/formatters/context_formatter.rb`
@@ -592,18 +592,18 @@ exa search "AI" --output-format pretty --type neural
 
 **Verification**:
 ```bash
-exa context "authentication with JWT in Ruby"
-exa context "React hooks useState" --tokens-num 5000
+exa-api context "authentication with JWT in Ruby"
+exa-api context "React hooks useState" --tokens-num 5000
 ```
 
 ---
 
 ### 9d. Get-Contents Command
-**Goal**: Implement `exa get-contents` for retrieving page content
+**Goal**: Implement `exa-api get-contents` for retrieving page content
 
 **Tasks**:
 1. Write `test/cli/get_contents_test.rb` FIRST
-2. Create `exe/exa-get-contents` executable
+2. Create `exe/exa-api-get-contents` executable
    - Required: IDs (one or more, comma-separated)
    - Optional: --text (boolean), --highlights, --summary
 3. Create `lib/exa/cli/formatters/contents_formatter.rb`
@@ -613,8 +613,8 @@ exa context "React hooks useState" --tokens-num 5000
 
 **Verification**:
 ```bash
-exa get-contents https://example.com/page1 --text
-exa get-contents id1,id2,id3 --highlights
+exa-api get-contents https://example.com/page1 --text
+exa-api get-contents id1,id2,id3 --highlights
 ```
 
 ---
@@ -628,7 +628,7 @@ exa get-contents id1,id2,id3 --highlights
    - Test --wait flag polls until complete
    - Test --events flag includes event log
    - Test timeout handling
-2. Create `exe/exa-research-start` executable
+2. Create `exe/exa-api-research-start` executable
    - Required: --instructions "..."
    - Optional: --model, --output-schema (JSON), --wait, --events
    - If --wait: poll research-get every N seconds until complete
@@ -637,10 +637,10 @@ exa get-contents id1,id2,id3 --highlights
    - Exponential backoff polling logic
    - Progress spinner/indicator
    - Timeout after reasonable duration
-4. Create `exe/exa-research-get` executable
+4. Create `exe/exa-api-research-get` executable
    - Required: research_id
    - Optional: --events, --stream
-5. Create `exe/exa-research-list` executable
+5. Create `exe/exa-api-research-list` executable
    - Optional: --cursor, --limit
    - Pretty format shows table of tasks
 6. Create `lib/exa/cli/formatters/research_formatter.rb`
@@ -649,9 +649,9 @@ exa get-contents id1,id2,id3 --highlights
 
 **Verification**:
 ```bash
-exa research-start --instructions "Find Ruby performance tips" --wait
-exa research-get abc-123 --events
-exa research-list --limit 20
+exa-api research-start --instructions "Find Ruby performance tips" --wait
+exa-api research-get abc-123 --events
+exa-api research-list --limit 20
 ```
 
 ---
@@ -673,9 +673,9 @@ exa research-list --limit 20
 
 **Verification**:
 ```bash
-exa search "test"  # Without API key shows helpful message
-exa serch "test"   # Shows: Did you mean: search?
-exa --help         # Shows all commands
+exa-api search "test"  # Without API key shows helpful message
+exa-api serch "test"   # Shows: Did you mean: search?
+exa-api --help         # Shows all commands
 ```
 
 ---

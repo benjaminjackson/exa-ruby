@@ -52,7 +52,7 @@ end
 def print_help
   puts "Exa Get-Contents - Retrieve page contents"
   puts ""
-  puts "Usage: exa-get-contents <ids> [options]"
+  puts "Usage: exa-api get-contents <ids> [options]"
   puts ""
   puts "Arguments:"
   puts "  ids                    Comma-separated list of IDs or URLs (required)"
@@ -66,9 +66,9 @@ def print_help
   puts "  --help, -h             Show this help message"
   puts ""
   puts "Examples:"
-  puts "  exa-get-contents 'https://example.com'"
-  puts "  exa-get-contents 'id1,id2,id3' --text"
-  puts "  exa-get-contents 'https://example.com' --highlights --output-format pretty"
+  puts "  exa-api get-contents 'https://example.com'"
+  puts "  exa-api get-contents 'id1,id2,id3' --text"
+  puts "  exa-api get-contents 'https://example.com' --highlights --output-format pretty"
 end
 
 begin
@@ -79,7 +79,7 @@ begin
   if options[:ids].empty?
     puts "Error: IDs argument required"
     puts ""
-    puts "Run 'exa-get-contents --help' for usage information."
+    puts "Run 'exa-api get-contents --help' for usage information."
     exit 1
   end
 
