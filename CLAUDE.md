@@ -8,24 +8,23 @@ Ruby client for the Exa.ai API. Follows pragmatic Ruby patterns with emphasis on
 
 **Configuration DSL**
 - `Exa.configure` block for setting API keys and options
-- Configuration stored in thread-safe singleton
-- Support for multiple configuration contexts (test/production)
+- Module-level configuration (simple, sufficient for most use cases)
+- Reset method for test isolation
 
 **Faraday Middleware Stack**
 - HTTP client built on Faraday for flexibility
-- Middleware for authentication, error handling, retries
-- Easy to test by stubbing at middleware level
-- Support for custom adapters and middleware
+- Start with built-in middleware from day 1:
+  - `:authorization` - Bearer token authentication
+  - `:json` - Request/response JSON encoding
+  - `:raise_error` - Consistent error handling
+  - `:logger` - Debug logging (conditional)
+- Custom middleware only for Exa-specific concerns:
+  - Custom error mapping (status codes to exception classes)
+- Connection configuration with timeouts (critical for production)
+- Support for custom adapters (enables test stubbing)
 
-**Middleware Decision**
-Start with minimal middleware - only extract cross-cutting concerns that apply to all requests:
-- Authentication (every request needs the API key header)
-- Error handling (consistent error response format across endpoints)
-- Optional: Retry logic if rate limits or transient failures are common
-
-Skip custom middleware for endpoint-specific logic - handle that in service objects. The goal is to keep service objects focused on business logic while avoiding unnecessary abstraction layers.
-
-Built-in Faraday middleware (json request/response, logger) is sufficient for most needs. Add custom middleware only when patterns emerge across multiple endpoints.
+**Middleware Philosophy**
+Built-in Faraday middleware is battle-tested and should be included from the start. Only create *custom* middleware when you need Exa-specific behavior that can't be handled by built-in middleware or service objects.
 
 **Service Objects**
 - One class per API operation (Search, FindSimilar, GetContents, etc.)
@@ -35,41 +34,44 @@ Built-in Faraday middleware (json request/response, logger) is sufficient for mo
 
 **Resource Objects**
 - Wrap API responses in domain objects (SearchResult, Content, etc.)
-- Provide accessor methods and helper methods
-- Immutable value objects where possible
+- Use Ruby 3.2+ `Data.define` for immutable value objects (clean, idiomatic)
+- Provide helper methods for common operations
+- Include `#to_h` for serialization
 
 ### Directory Structure
 
 ```
 lib/
-├── exa.rb                    # Main entry point, configuration
+├── exa.rb                       # Main entry point, module-level config
 ├── exa/
-│   ├── version.rb           # Gem version constant
-│   ├── configuration.rb     # Configuration management
-│   ├── client.rb            # Main client interface
-│   ├── error.rb             # Custom exception classes
-│   ├── connection.rb        # Faraday connection builder
-│   ├── middleware/          # Faraday middleware components
-│   ├── services/            # API operation service objects
+│   ├── version.rb              # Gem version constant
+│   ├── client.rb               # Main client interface
+│   ├── error.rb                # Exception hierarchy (detailed)
+│   ├── connection.rb           # Faraday builder with timeouts
+│   ├── middleware/             # Custom middleware only
+│   │   └── raise_error.rb      # Maps HTTP status to exceptions
+│   ├── services/               # API operation service objects
+│   │   ├── base.rb             # Shared service logic
 │   │   ├── search.rb
 │   │   ├── find_similar.rb
 │   │   └── get_contents.rb
-│   └── resources/           # Response wrapper objects
-│       ├── search_result.rb
+│   └── resources/              # Response wrapper objects
+│       ├── search_result.rb    # Using Data.define
+│       ├── similar_result.rb
 │       ├── content.rb
-│       └── base.rb
+│       └── paginated_collection.rb
 
 test/
-├── test_helper.rb           # Shared test setup and utilities
-├── exa_test.rb              # Tests for main module
-├── configuration_test.rb
+├── test_helper.rb              # WebMock, VCR setup
+├── vcr_cassettes/              # Recorded HTTP interactions
+├── exa_test.rb                 # Tests for main module
 ├── client_test.rb
-├── services/                # Service object tests
+├── connection_test.rb
+├── services/                   # Service object tests
 │   ├── search_test.rb
 │   └── ...
-└── resources/               # Resource object tests
-    ├── search_result_test.rb
-    └── ...
+└── integration/                # End-to-end tests
+    └── search_integration_test.rb
 ```
 
 ## Testing Commands
@@ -236,16 +238,9 @@ stub_request(:post, "https://api.exa.ai/search")
 ### Testing Configuration
 
 ```ruby
-def setup
-  # Save original config
-  @original_api_key = Exa.configuration.api_key
-end
-
 def teardown
-  # Restore config to avoid test pollution
-  Exa.configure do |config|
-    config.api_key = @original_api_key
-  end
+  # Reset config to avoid test pollution
+  Exa.reset
 end
 
 def test_configuration
@@ -253,7 +248,22 @@ def test_configuration
     config.api_key = "new_key"
   end
 
-  assert_equal "new_key", Exa.configuration.api_key
+  assert_equal "new_key", Exa.api_key
+end
+```
+
+### Using VCR for Integration Tests
+
+```ruby
+# Record real API interactions once, replay in tests
+def test_search_integration
+  VCR.use_cassette('search_ruby_programming') do
+    client = Exa::Client.new(api_key: ENV['EXA_API_KEY'])
+    result = client.search('ruby programming')
+
+    assert_instance_of Exa::Resources::SearchResult, result
+    refute_empty result.items
+  end
 end
 ```
 
@@ -303,27 +313,86 @@ end
 ```ruby
 # lib/exa/error.rb
 module Exa
-  class Error < StandardError; end
+  class Error < StandardError
+    attr_reader :response
 
+    def initialize(message = nil, response = nil)
+      @response = response
+      super(message)
+    end
+  end
+
+  # Client errors (4xx)
+  class ClientError < Error; end
+  class BadRequest < ClientError; end          # 400
+  class Unauthorized < ClientError; end        # 401
+  class Forbidden < ClientError; end           # 403
+  class NotFound < ClientError; end            # 404
+  class UnprocessableEntity < ClientError; end # 422
+  class TooManyRequests < ClientError; end     # 429 (rate limiting)
+
+  # Server errors (5xx)
+  class ServerError < Error; end
+  class InternalServerError < ServerError; end # 500
+  class BadGateway < ServerError; end          # 502
+  class ServiceUnavailable < ServerError; end  # 503
+  class GatewayTimeout < ServerError; end      # 504
+
+  # Configuration errors
   class ConfigurationError < Error; end
-  class AuthenticationError < Error; end
-  class RateLimitError < Error; end
-  class APIError < Error; end
 end
 ```
 
-### Immutable Value Objects
+### Resource Objects with Data.define
 
 ```ruby
-# Freeze attributes after initialization
-class SearchResult
-  attr_reader :items, :total, :query
+# Ruby 3.2+ Data class - immutable by default, clean syntax
+SearchResult = Data.define(:items, :total, :query, :autoprompt_string) do
+  def first_item = items.first
+  def empty? = items.empty?
 
-  def initialize(items:, total:, query:)
-    @items = items.freeze
-    @total = total
-    @query = query.freeze
-    freeze
+  def to_h
+    { items: items, total: total, query: query, autoprompt_string: autoprompt_string }
+  end
+end
+
+# Usage:
+result = SearchResult.new(items: [...], total: 10, query: "ruby", autoprompt_string: nil)
+result.items # => [...]
+result.items = [] # => raises FrozenError
+```
+
+### Connection Configuration with Timeouts
+
+```ruby
+# lib/exa/connection.rb
+module Exa
+  class Connection
+    def self.build(api_key:, **options)
+      Faraday.new(url: options[:base_url] || 'https://api.exa.ai') do |conn|
+        # Authentication
+        conn.request :authorization, 'Bearer', api_key
+
+        # Request/Response handling
+        conn.request :json
+        conn.response :json, content_type: /\bjson$/
+
+        # Logging (conditional)
+        if options[:debug]
+          conn.response :logger, Logger.new($stdout), headers: true, bodies: true
+        end
+
+        # Custom error handling
+        conn.use Exa::Middleware::RaiseError
+
+        # Timeouts (CRITICAL for production)
+        conn.options.timeout = options[:timeout] || 30
+        conn.options.open_timeout = options[:open_timeout] || 10
+
+        # Adapter (allow override for testing)
+        conn.adapter options[:adapter] || Faraday.default_adapter
+      end
+    end
   end
 end
 ```
@@ -391,6 +460,33 @@ binding.pry  # Drops into REPL
 
 - Prefer stdlib when sufficient
 - Use Faraday for HTTP (battle-tested, flexible)
+- Require Ruby 3.2+ for Data.define support
 - Avoid heavy dependencies for simple tasks
 - Pin major versions, allow minor/patch updates
 - Regular dependency audits for security
+
+## Key Dependencies
+
+```ruby
+# Runtime
+gem 'faraday', '~> 2.0'
+
+# Development & Testing
+gem 'minitest', '~> 5.0'
+gem 'webmock', '~> 3.0'
+gem 'vcr', '~> 6.0'
+gem 'rake', '~> 13.0'
+```
+
+## Implementation Checklist
+
+When implementing a new API endpoint:
+
+- [ ] Define the resource object using `Data.define`
+- [ ] Write service object test with stubbed HTTP response
+- [ ] Implement service object with `#call` method
+- [ ] Add method to Client class
+- [ ] Write integration test with VCR cassette
+- [ ] Verify error handling (401, 404, 500, etc.)
+- [ ] Update README with usage example
+- [ ] Run full test suite to ensure no regressions
