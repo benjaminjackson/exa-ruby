@@ -1,7 +1,27 @@
 # frozen_string_literal: true
 
 module Exa
+  # Main client for interacting with the Exa.ai API
+  #
+  # Provides methods for all supported Exa.ai operations including search,
+  # content retrieval, answer generation, and async research tasks.
+  #
+  # @example Basic usage
+  #   client = Exa::Client.new(api_key: "your-key")
+  #   results = client.search("ruby on rails")
+  #   results.results.each { |r| puts r.title }
+  #
+  # @example Using configuration
+  #   Exa.configure { |config| config.api_key = "your-key" }
+  #   client = Exa::Client.new
   class Client
+    # Initialize a new Exa client
+    #
+    # @param api_key [String, nil] API key for authentication. Falls back to Exa.api_key if not provided
+    # @param options [Hash] Connection options
+    # @option options [String] :base_url Custom API base URL (default: https://api.exa.ai)
+    # @option options [Integer] :timeout Request timeout in seconds (default: 30)
+    # @raise [ConfigurationError] If API key is not provided and not configured
     def initialize(api_key: nil, **options)
       @api_key = api_key || Exa.api_key
       @options = options
@@ -9,34 +29,80 @@ module Exa
       validate_api_key!
     end
 
+    # Execute a search query
+    #
+    # @param query [String] Search query
+    # @param params [Hash] Additional search parameters
+    # @option params [String] :type Search type (web, news, etc.)
+    # @option params [Array<String>] :include_domains Domains to include in results
+    # @option params [Array<String>] :exclude_domains Domains to exclude from results
+    # @option params [Integer] :num_results Number of results to return
+    # @return [Resources::SearchResult] Search results with metadata
     def search(query, **params)
       Services::Search.new(connection, query: query, **params).call
     end
 
+    # Find similar content to a given URL
+    #
+    # @param url [String] URL to find similar content for
+    # @param options [Hash] Search options
+    # @option options [Integer] :num_results Number of results to return
+    # @return [Resources::SearchResult] Similar results
     def find_similar(url, **options)
       Services::FindSimilar.new(connection, url: url, **options).call
     end
 
+    # Get full page contents for URLs
+    #
+    # @param urls [Array<String>, String] URL or URLs to fetch contents for
+    # @param options [Hash] Fetch options
+    # @return [Resources::ContentCollection] Collection of page contents
     def get_contents(urls, **options)
       Services::GetContents.new(connection, urls: urls, **options).call
     end
 
+    # Get AI-generated answers to a query
+    #
+    # @param query [String] Question or query
+    # @param options [Hash] Answer options
+    # @option options [String] :format Response format (default: standard)
+    # @return [Resources::Answer] AI-generated answer with sources
     def answer(query, **options)
       Services::Answer.new(connection, query: query, **options).call
     end
 
+    # Start an asynchronous research task
+    #
+    # @param params [Hash] Research parameters
+    # @return [Resources::Research] Research task with ID
     def research_start(**params)
       Services::ResearchStart.new(connection, **params).call
     end
 
+    # List all research tasks
+    #
+    # @param params [Hash] Listing parameters
+    # @option params [Integer] :limit Maximum number of tasks to return
+    # @return [Resources::ResearchList] List of research tasks
     def research_list(**params)
       Services::ResearchList.new(connection, **params).call
     end
 
+    # Get status and results of a research task
+    #
+    # @param research_id [String] Research task ID
+    # @param params [Hash] Fetch options
+    # @return [Resources::Research] Research task with current status and results
     def research_get(research_id, **params)
       Services::ResearchGet.new(connection, research_id: research_id, **params).call
     end
 
+    # Search code repositories
+    #
+    # @param query [String] Code search query
+    # @param params [Hash] Search parameters
+    # @option params [Array<String>] :languages Programming languages to search
+    # @return [Resources::SearchResult] Code search results
     def context(query, **params)
       Services::Context.new(connection, query: query, **params).call
     end

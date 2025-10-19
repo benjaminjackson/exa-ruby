@@ -34,4 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "webmock", "~> 3.0"
   spec.add_development_dependency "vcr", "~> 6.0"
+  spec.add_development_dependency "bundler-audit", "~> 0.9"
 end
