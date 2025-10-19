@@ -413,6 +413,66 @@ end
 
 ---
 
+### 8f. Context Endpoint (Exa Code)
+**Endpoint**: POST /context
+**Reference**: Context API documentation
+**Note**: Returns code snippets and context from open-source repositories
+
+**Resource Object** - `lib/exa/resources/context_result.rb`
+
+```ruby
+module Exa
+  module Resources
+    class ContextResult < Struct.new(
+      :request_id, :query, :response, :results_count,
+      :cost_dollars, :search_time, :output_tokens,
+      keyword_init: true
+    )
+      def initialize(**)
+        super
+        freeze
+      end
+
+      def to_h
+        {
+          request_id: request_id,
+          query: query,
+          response: response,
+          results_count: results_count,
+          cost_dollars: cost_dollars,
+          search_time: search_time,
+          output_tokens: output_tokens
+        }
+      end
+    end
+  end
+end
+```
+
+**Implementation Pattern**:
+1. Create test/resources/context_result_test.rb
+   - Test initialization with all fields
+   - Test immutability
+   - Test to_h serialization
+2. Create test/services/context_test.rb
+   - Stub POST to /context
+   - Test query parameter is required
+   - Test tokensNum parameter (optional, can be "dynamic" or integer)
+   - Test successful response returns ContextResult
+   - Test error handling (401, 400, 500, etc.)
+3. Create lib/exa/services/context.rb
+   - Initialize with connection and params (query required, tokensNum optional)
+   - POST to /context endpoint
+   - Return ContextResult resource with snake_case field names
+   - Convert camelCase response fields to snake_case (e.g., requestId → request_id)
+4. Add to Client: `def context(query, **params)` method
+   - Args: query (required), tokensNum: "dynamic" (optional)
+5. Create test/integration/context_integration_test.rb
+   - Verify endpoint returns code snippets
+   - Test with different token allocations
+
+---
+
 ### Implementation Order for Phase 8
 
 1. Answer endpoint (simpler, good warm-up)
@@ -421,6 +481,7 @@ end
 4. Research Start (introduces async pattern)
 5. Research List (introduces pagination)
 6. Research Get (most complex, handles multiple states)
+7. Context endpoint (Exa Code - simple POST with string response)
 
 **After Each Endpoint**:
 - Run full test suite: `bundle exec rake test`
