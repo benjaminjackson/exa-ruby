@@ -20,6 +20,13 @@ require_relative "exa/services/research_list"
 require_relative "exa/services/answer"
 require_relative "exa/services/context"
 require_relative "exa/client"
+require_relative "exa/cli/base"
+require_relative "exa/cli/polling"
+require_relative "exa/cli/error_handler"
+require_relative "exa/cli/formatters/search_formatter"
+require_relative "exa/cli/formatters/context_formatter"
+require_relative "exa/cli/formatters/contents_formatter"
+require_relative "exa/cli/formatters/research_formatter"
 
 module Exa
   # Module-level configuration

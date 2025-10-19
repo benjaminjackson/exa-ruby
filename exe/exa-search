@@ -1,0 +1,134 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Set up load paths
+require "bundler/setup"
+require "exa"
+
+# Parse command-line arguments
+def parse_args(argv)
+  args = {
+    output_format: "json",
+    api_key: nil
+  }
+
+  # Extract query (first non-flag argument)
+  query_parts = []
+  i = 0
+  while i < argv.length
+    arg = argv[i]
+    case arg
+    when "--num-results"
+      args[:num_results] = argv[i + 1].to_i
+      i += 2
+    when "--type"
+      args[:type] = argv[i + 1]
+      i += 2
+    when "--include-domains"
+      args[:include_domains] = argv[i + 1].split(",").map(&:strip)
+      i += 2
+    when "--exclude-domains"
+      args[:exclude_domains] = argv[i + 1].split(",").map(&:strip)
+      i += 2
+    when "--use-autoprompt"
+      args[:use_autoprompt] = true
+      i += 1
+    when "--api-key"
+      args[:api_key] = argv[i + 1]
+      i += 2
+    when "--output-format"
+      args[:output_format] = argv[i + 1]
+      i += 2
+    when "--help", "-h"
+      puts <<~HELP
+        Usage: exa-search QUERY [OPTIONS]
+
+        Search the web using Exa AI
+
+        Arguments:
+          QUERY                 Search query (required)
+
+        Options:
+          --num-results N       Number of results to return (default: 10)
+          --type TYPE           Search type: keyword, neural, or auto (default: auto)
+          --include-domains D   Comma-separated list of domains to include
+          --exclude-domains D   Comma-separated list of domains to exclude
+          --use-autoprompt      Use Exa's autoprompt feature
+          --api-key KEY         Exa API key (or set EXA_API_KEY env var)
+          --output-format FMT   Output format: json or pretty (default: json)
+          --help, -h            Show this help message
+
+        Examples:
+          exa-search "ruby programming"
+          exa-search "machine learning" --num-results 5 --type keyword
+          exa-search "AI research" --include-domains arxiv.org,scholar.google.com
+          exa-search "tutorials" --output-format pretty
+      HELP
+      exit 0
+    else
+      query_parts << arg
+      i += 1
+    end
+  end
+
+  args[:query] = query_parts.join(" ")
+  args
+end
+
+# Main execution
+begin
+  args = parse_args(ARGV)
+
+  # Validate query
+  if args[:query].nil? || args[:query].empty?
+    $stderr.puts "Error: Query is required"
+    $stderr.puts "Run 'exa-search --help' for usage information"
+    exit 1
+  end
+
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
+
+  # Resolve output format
+  output_format = Exa::CLI::Base.resolve_output_format(args[:output_format])
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Prepare search parameters
+  search_params = {}
+  search_params[:num_results] = args[:num_results] if args[:num_results]
+  search_params[:type] = args[:type] if args[:type]
+  search_params[:include_domains] = args[:include_domains] if args[:include_domains]
+  search_params[:exclude_domains] = args[:exclude_domains] if args[:exclude_domains]
+  search_params[:use_autoprompt] = args[:use_autoprompt] if args[:use_autoprompt]
+
+  # Execute search
+  result = client.search(args[:query], **search_params)
+
+  # Format and output result
+  output = Exa::CLI::Formatters::SearchFormatter.format(result, output_format)
+  puts output
+
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

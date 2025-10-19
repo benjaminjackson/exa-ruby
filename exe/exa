@@ -1,0 +1,92 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "exa"
+require "exa/cli/base"
+
+# Global CLI interface for Exa API
+
+module ExaCLI
+  AVAILABLE_COMMANDS = {
+    "search" => "Search the web",
+    "context" => "Get code context from repositories",
+    "get-contents" => "Retrieve page contents",
+    "research-start" => "Start a research task",
+    "research-get" => "Get research task status",
+    "research-list" => "List research tasks"
+  }.freeze
+
+  def self.run
+    case ARGV[0]
+    when "--version"
+      puts Exa::VERSION
+      exit 0
+    when "--help", "help", "-h", nil
+      print_help
+      exit 0
+    when "--api-key"
+      puts "Use --api-key flag with specific commands"
+      exit 1
+    when "search"
+      exec File.expand_path("../exa-search", __FILE__), *ARGV[1..]
+    when "context"
+      exec File.expand_path("../exa-context", __FILE__), *ARGV[1..]
+    when "get-contents"
+      exec File.expand_path("../exa-get-contents", __FILE__), *ARGV[1..]
+    when "research-start"
+      exec File.expand_path("../exa-research-start", __FILE__), *ARGV[1..]
+    when "research-get"
+      exec File.expand_path("../exa-research-get", __FILE__), *ARGV[1..]
+    when "research-list"
+      exec File.expand_path("../exa-research-list", __FILE__), *ARGV[1..]
+    else
+      print_error_for_command(ARGV[0])
+      exit 1
+    end
+  end
+
+  def self.print_help
+    puts "Exa CLI v#{Exa::VERSION}"
+    puts ""
+    puts "Usage: exa <command> [options]"
+    puts ""
+    puts "Commands:"
+    AVAILABLE_COMMANDS.each do |cmd, desc|
+      puts "  #{cmd.ljust(20)} #{desc}"
+    end
+    puts ""
+    puts "Global Options:"
+    puts "  --help, -h         Show this help message"
+    puts "  --version          Show version number"
+    puts ""
+    puts "Examples:"
+    puts "  exa search 'ruby programming'"
+    puts "  exa context 'React hooks' --tokens-num 5000"
+    puts "  exa research-start --instructions 'Find AI papers'"
+  end
+
+  def self.print_error_for_command(cmd)
+    return print_help if cmd.nil?
+
+    puts "Error: Unknown command '#{cmd}'"
+    puts ""
+
+    # Try to suggest similar commands
+    suggestion = suggest_command(cmd)
+    puts "Did you mean: #{suggestion}?" if suggestion
+
+    puts ""
+    puts "Run 'exa --help' for usage information."
+  end
+
+  def self.suggest_command(input)
+    # Simple suggestion based on string similarity
+    # If first char matches and length is similar, suggest it
+    input_start = input[0]
+    candidates = AVAILABLE_COMMANDS.keys.select { |c| c[0] == input_start }
+    candidates.first
+  end
+end
+
+ExaCLI.run

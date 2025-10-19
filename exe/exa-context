@@ -1,0 +1,104 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "exa"
+require "exa/cli/base"
+require "exa/cli/formatters/context_formatter"
+
+# Parse command line arguments
+def parse_args(args)
+  query = nil
+  api_key = nil
+  tokens_num = "dynamic"
+  output_format = nil
+
+  i = 0
+  while i < args.length
+    arg = args[i]
+
+    case arg
+    when "--api-key"
+      i += 1
+      api_key = args[i]
+    when "--tokens-num"
+      i += 1
+      tokens_num = args[i]
+      # Convert to integer if it's not "dynamic"
+      tokens_num = tokens_num.to_i unless tokens_num.downcase == "dynamic"
+    when "--output-format"
+      i += 1
+      output_format = args[i]
+    when "--help", "-h"
+      print_help
+      exit 0
+    else
+      # First non-flag argument is the query
+      query = arg if query.nil?
+    end
+
+    i += 1
+  end
+
+  { query: query, api_key: api_key, tokens_num: tokens_num, output_format: output_format }
+end
+
+def print_help
+  puts "Exa Context - Get code context from repositories"
+  puts ""
+  puts "Usage: exa-context <query> [options]"
+  puts ""
+  puts "Arguments:"
+  puts "  query                  Search query for code context (required)"
+  puts ""
+  puts "Options:"
+  puts "  --tokens-num NUM       Number of tokens for response (or 'dynamic', default: dynamic)"
+  puts "  --api-key KEY          Exa API key (or set EXA_API_KEY env var)"
+  puts "  --output-format FMT    Output format: json, text (default: json)"
+  puts "  --help, -h             Show this help message"
+  puts ""
+  puts "Examples:"
+  puts "  exa-context 'React hooks'"
+  puts "  exa-context 'authentication with JWT in Ruby' --tokens-num 5000"
+  puts "  exa-context 'React hooks' --output-format text"
+end
+
+begin
+  # Parse arguments
+  options = parse_args(ARGV)
+
+  # Validate query
+  unless options[:query]
+    puts "Error: Query argument required"
+    puts ""
+    puts "Run 'exa-context --help' for usage information."
+    exit 1
+  end
+
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(options[:api_key])
+
+  # Resolve output format
+  output_format = Exa::CLI::Base.resolve_output_format(options[:output_format])
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Build request parameters
+  params = {}
+  params[:tokens_num] = options[:tokens_num]
+
+  # Call API
+  result = client.context(options[:query], **params)
+
+  # Format and output
+  output = Exa::CLI::Formatters::ContextFormatter.format(result, output_format)
+  puts output
+rescue Exa::Error => e
+  puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  puts "Unexpected error: #{e.message}"
+  puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

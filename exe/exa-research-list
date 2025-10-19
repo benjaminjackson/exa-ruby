@@ -1,0 +1,95 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "exa"
+
+# Parse command-line arguments
+api_key = nil
+cursor = nil
+limit = 10
+output_format = "json"
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--api-key"
+    api_key = args.shift
+  when "--cursor"
+    cursor = args.shift
+  when "--limit"
+    limit = args.shift.to_i
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa research-list [options]
+
+      List research tasks with cursor-based pagination.
+
+      Options:
+        --api-key KEY           Exa API key (or use EXA_API_KEY env var)
+        --cursor CURSOR         Pagination cursor for next page
+        --limit LIMIT           Number of results per page (default: 10)
+        --output-format FORMAT  Output format: json or pretty (default: json)
+        --help, -h              Show this help message
+
+      Examples:
+        exa research-list
+        exa research-list --limit 20
+        exa research-list --cursor next_page_cursor
+        exa research-list --output-format pretty
+    HELP
+    exit 0
+  else
+    warn "Unknown option: #{arg}"
+    exit 1
+  end
+end
+
+begin
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(api_key)
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Build parameters
+  params = {limit: limit}
+  params[:cursor] = cursor if cursor
+
+  # Call API
+  result = client.research_list(**params)
+
+  # Format output
+  formatted = Exa::CLI::Formatters::ResearchFormatter.format_list(result, output_format)
+  puts formatted
+
+  # Show pagination info if there are more results
+  if result.has_more && result.next_cursor
+    if output_format == "pretty"
+      puts "\n" + "=" * 80
+      puts "More results available. Use --cursor #{result.next_cursor} to get next page."
+    else
+      warn "More results available. Use --cursor #{result.next_cursor} to get next page."
+    end
+  end
+
+rescue Exa::Unauthorized => e
+  warn "Authentication failed: #{e.message}"
+  warn "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
+  exit 1
+rescue Exa::ClientError => e
+  warn "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  warn "Server error: #{e.message}"
+  exit 1
+rescue Exa::Error => e
+  warn "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  warn "Unexpected error: #{e.message}"
+  exit 1
+end

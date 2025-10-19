@@ -1,0 +1,110 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "exa"
+
+# Parse command-line arguments
+api_key = nil
+research_id = nil
+events = false
+stream = false
+output_format = "json"
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--api-key"
+    api_key = args.shift
+  when "--events"
+    events = true
+  when "--stream"
+    stream = true
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa research-get <research_id> [options]
+
+      Get the status and results of a research task.
+
+      Arguments:
+        research_id             ID of the research task to retrieve
+
+      Options:
+        --api-key KEY           Exa API key (or use EXA_API_KEY env var)
+        --events                Include task execution events in response
+        --stream                Stream the response (for real-time updates)
+        --output-format FORMAT  Output format: json or pretty (default: json)
+        --help, -h              Show this help message
+
+      Examples:
+        exa research-get research_123
+        exa research-get research_123 --events
+        exa research-get research_123 --stream
+        exa research-get research_123 --output-format pretty
+    HELP
+    exit 0
+  else
+    # First positional argument is the research_id
+    if research_id.nil?
+      research_id = arg
+    else
+      warn "Unknown option: #{arg}"
+      exit 1
+    end
+  end
+end
+
+# Validate required arguments
+if research_id.nil?
+  warn "Error: Research ID argument required"
+  warn "Usage: exa research-get <research_id> [options]"
+  warn "Try 'exa research-get --help' for more information"
+  exit 1
+end
+
+begin
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(api_key)
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Build parameters
+  params = {}
+  params[:events] = events if events
+  params[:stream] = stream if stream
+
+  # Call API
+  result = client.research_get(research_id, **params)
+
+  # Format output
+  formatted = Exa::CLI::Formatters::ResearchFormatter.format_task(
+    result,
+    output_format,
+    show_events: events
+  )
+  puts formatted
+
+rescue Exa::NotFound => e
+  warn "Research task not found: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  warn "Authentication failed: #{e.message}"
+  warn "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
+  exit 1
+rescue Exa::ClientError => e
+  warn "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  warn "Server error: #{e.message}"
+  exit 1
+rescue Exa::Error => e
+  warn "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  warn "Unexpected error: #{e.message}"
+  exit 1
+end

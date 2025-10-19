@@ -19,8 +19,12 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://github.com/ben/exa-ruby/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem
-  spec.files = Dir.glob("{lib}/**/*") + %w[LICENSE README.md]
+  spec.files = Dir.glob("{lib,exe}/**/*") + %w[LICENSE README.md]
   spec.require_paths = ["lib"]
+
+  # Executables
+  spec.bindir = "exe"
+  spec.executables = ["exa", "exa-search", "exa-context", "exa-get-contents"]
 
   # Runtime dependencies
   spec.add_dependency "faraday", "~> 2.0"

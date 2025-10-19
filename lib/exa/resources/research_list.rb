@@ -7,7 +7,11 @@ module Exa
       end
 
       def to_h
-        { data: data, has_more: has_more, next_cursor: next_cursor }
+        {
+          data: data.map { |item| item.respond_to?(:to_h) ? item.to_h : item },
+          has_more: has_more,
+          next_cursor: next_cursor
+        }
       end
     end
   end
