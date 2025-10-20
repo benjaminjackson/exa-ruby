@@ -1,0 +1,94 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"JavaScript framework","contents":{"subpages":1,"subpageTarget":["docs","documentation","guide"]}}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 20 Oct 2025 03:34:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '9007199254740991'
+      X-Ratelimit-Remaining:
+      - '9007199254740990'
+      X-Ratelimit-Reset:
+      - '1760931291'
+      Etag:
+      - W/"b77-fybnTipqHpsBMWQgn9dvFzW9FPQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=kWtnHBq5GoKwXy26KYJLRbVgxb7E2UMGMLbJkZ8PrdUjG0ST4thvWgoPt4cPhz%2BXKpge5hUWDqimbDNUAt1ihOuJoWAYlx4OaQKoshQFr3IaXFxQ9g%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9915762d1cb032b1-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"fe98f2eb9d1432c3c669d34b90f0b197","autopromptString":"JavaScript
+        framework","resolvedSearchType":"neural","results":[{"id":"https://www.lambdatest.com/blog/best-javascript-frameworks/","title":"27
+        Best JavaScript Frameworks For 2025 | LambdaTest","url":"https://www.lambdatest.com/blog/best-javascript-frameworks/","publishedDate":"2025-01-03T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://www.contentful.com/blog/best-javascript-frameworks/","title":"Building
+        an app? These are the best JavaScript frameworks in 2025","url":"https://www.contentful.com/blog/best-javascript-frameworks/","publishedDate":"2025-01-30T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://hackr.io/blog/best-javascript-frameworks","title":"10
+        Best JavaScript Frameworks in 2025 [Updated] - Hackr.io","url":"https://hackr.io/blog/best-javascript-frameworks","author":null,"subpages":[]},{"id":"https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks","title":"Comparison
+        of JavaScript-based web frameworks - Wikipedia","url":"https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks","author":null,"subpages":[]},{"id":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries","title":"JavaScript
+        frameworks and libraries - Learn web development - MDN","url":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries","publishedDate":"2025-10-02T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://www.sencha.com/blog/how-to-choose-the-best-javascript-frameworks-in-2023/","title":"Choosing
+        the Best JavaScript Framework In 2025 - Sencha.com","url":"https://www.sencha.com/blog/how-to-choose-the-best-javascript-frameworks-in-2023/","publishedDate":"2024-07-24T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://www.youtube.com/watch?v=DAci3O2j31o","title":"Introduction
+        to JavaScript Frameworks - YouTube","url":"https://www.youtube.com/watch?v=DAci3O2j31o","publishedDate":"2025-05-20T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://generalassemb.ly/blog/what-is-a-javascript-framework/","title":"What
+        are JavaScript Frameworks? - General Assembly","url":"https://generalassemb.ly/blog/what-is-a-javascript-framework/","publishedDate":"2024-01-24T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Main_features","title":"Framework
+        main features - Learn web development | MDN","url":"https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Main_features","publishedDate":"2023-11-30T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://vuejs.org/","title":"Vue.js
+        - The Progressive JavaScript Framework | Vue.js","url":"https://vuejs.org/","author":null,"subpages":[]}],"searchTime":684.2,"costDollars":{"total":0.005,"search":{"neural":0.005}}}'
+  recorded_at: Mon, 20 Oct 2025 03:34:49 GMT
+recorded_with: VCR 6.3.1

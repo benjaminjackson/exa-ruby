@@ -1,0 +1,94 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"web development","contents":{"extras":{"links":3,"imageLinks":2}}}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 20 Oct 2025 03:35:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '9007199254740991'
+      X-Ratelimit-Remaining:
+      - '9007199254740990'
+      X-Ratelimit-Reset:
+      - '1760931306'
+      Etag:
+      - W/"177e-S0USZT6I2lKp5kSRETx+7XdPu8c"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=PaV5cDNUYjY74aX385TOYpGRMvnNH3Jes1EHVi7yE45aQSPu6lpwVUqHZodrR7IUS6bv3Uj1XlELdTqA6m7CnqHjtvxhEtfwJBYNbDxfngF4jO0%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 991576895e420f43-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"cbb5bd921b187bf7ebb690761f2fa5df","autopromptString":"web
+        development","resolvedSearchType":"neural","results":[{"id":"https://developer.mozilla.org/en-US/docs/Learn_web_development","title":"Learn
+        web development - MDN - Mozilla","url":"https://developer.mozilla.org/en-US/docs/Learn_web_development","publishedDate":"2025-04-28T00:00:00.000Z","author":"","image":"https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png","extras":{"links":["https://developer.mozilla.org/en-US/docs/Learn_web_development#content","https://developer.mozilla.org/en-US/docs/Learn_web_development#top-nav-search-input","https://developer.mozilla.org/en-US/docs/Learn_web_development#languages-switcher-button"],"imageLinks":[]}},{"id":"https://developer.mozilla.org/en-US/docs/Learn","title":"Learn
+        web development | MDN","url":"https://developer.mozilla.org/en-US/docs/Learn","publishedDate":"2024-09-07T00:00:00.000Z","author":"","image":"https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png","favicon":"https://developer.mozilla.org/favicon-48x48.bc390275e955dacb2e65.png","extras":{"links":["https://developer.mozilla.org/en-US/docs/Learn","https://developer.mozilla.org/en-US/docs/Learn","https://developer.mozilla.org/en-US/docs/Learn"],"imageLinks":[]}},{"id":"https://developer.mozilla.org/en-US/docs/Web","title":"Web
+        technology for developers | MDN","url":"https://developer.mozilla.org/en-US/docs/Web","publishedDate":"2025-02-21T00:00:00.000Z","author":"","image":"https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png","extras":{"links":["https://developer.mozilla.org/en-US/docs/Web#content","https://developer.mozilla.org/en-US/docs/Web#top-nav-search-input","https://developer.mozilla.org/en-US/docs/Web#languages-switcher-button"],"imageLinks":[]}},{"id":"https://developer.mozilla.org/en-US/docs/Learn_web_development/About","title":"About
+        Learn web development - Learn web development | MDN","url":"https://developer.mozilla.org/en-US/docs/Learn_web_development/About","publishedDate":"2025-04-11T00:00:00.000Z","author":"","image":"https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png","extras":{"links":["https://developer.mozilla.org/en-US/docs/Learn_web_development/About#content","https://developer.mozilla.org/en-US/docs/Learn_web_development/About#top-nav-search-input","https://developer.mozilla.org/en-US/docs/Learn_web_development/About#languages-switcher-button"],"imageLinks":[]}},{"id":"https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web","title":"Getting
+        started with the web - Learn web development | MDN","url":"https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web","publishedDate":"2024-02-04T00:00:00.000Z","author":"","image":"https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png","favicon":"https://developer.mozilla.org/favicon-48x48.cbbd161b.png","extras":{"links":["https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web","https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web","https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web"],"imageLinks":[]}},{"id":"https://developer.mozilla.org/en-US/","title":"MDN
+        Web Docs","url":"https://developer.mozilla.org/en-US/","publishedDate":"2025-05-13T00:52:12.000Z","author":"","image":"https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png","extras":{"links":["https://developer.mozilla.org/en-US/#content","https://developer.mozilla.org/en-US/#top-nav-search-input","https://developer.mozilla.org/en-US/"],"imageLinks":["https://developer.mozilla.org/static/media/mdn_contributor.14a24dcfda486f000754.png"]}},{"id":"https://developer.mozilla.org/en-US/docs/MDN","title":"MDN
+        Web Docs | MDN","url":"https://developer.mozilla.org/en-US/docs/MDN","publishedDate":"2025-02-06T00:00:00.000Z","author":"","image":"https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png","extras":{"links":["https://developer.mozilla.org/en-US/docs/MDN#content","https://developer.mozilla.org/en-US/docs/MDN#top-nav-search-input","https://developer.mozilla.org/en-US/docs/MDN#languages-switcher-button"],"imageLinks":[]}},{"id":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards","title":"Web
+        standards - Learn web development | MDN","url":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards","publishedDate":"2025-04-11T00:00:00.000Z","author":"","image":"https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png","extras":{"links":["https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards#content","https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards#top-nav-search-input","https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards#languages-switcher-button"],"imageLinks":[]}},{"id":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core","title":"Core
+        learning modules - Learn web development | MDN","url":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core","publishedDate":"2025-04-15T00:00:00.000Z","author":null,"extras":{"links":[],"imageLinks":[]}},{"id":"https://www.geeksforgeeks.org/web-development/","title":"Web
+        Development","url":"https://www.geeksforgeeks.org/web-development/","publishedDate":"2023-12-05T17:17:06.000Z","author":"GeeksforGeeks","image":"https://media.geeksforgeeks.org/wp-content/uploads/20231205165904/web-development-image.webp","extras":{"links":["https://www.geeksforgeeks.org/web-development/#main","https://www.geeksforgeeks.org/","https://www.geeksforgeeks.org/courses/dsa-to-development-coding-guide/"],"imageLinks":["https://media.geeksforgeeks.org/gfg-gg-logo.svg","https://media.geeksforgeeks.org/auth-dashboard-uploads/ep_right.svg"]}}],"searchTime":629.5,"costDollars":{"total":0.015,"search":{"neural":0.005},"contents":{"text":0.01}}}'
+  recorded_at: Mon, 20 Oct 2025 03:35:04 GMT
+recorded_with: VCR 6.3.1

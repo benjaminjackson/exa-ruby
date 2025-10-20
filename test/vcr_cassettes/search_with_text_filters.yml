@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"machine learning","includeText":["neural networks"],"excludeText":["cryptocurrency"]}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - Bearer <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 20 Oct 2025 03:34:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '9007199254740991'
+      X-Ratelimit-Remaining:
+      - '9007199254740990'
+      X-Ratelimit-Reset:
+      - '1760931292'
+      Etag:
+      - W/"af4-lTkXXzgeMuZFcRQWTBTx9ln5Y4o"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=BgNxkaHQ%2FpzLxvErwkrCFRIjBM2ACDVkTUS4QEJe2mEP%2FXnZ1x6QC%2BormT4l%2BYA8ptZ1Iq10QxrVFj0a9zbM%2FRdfX%2BN7uPGEttOX0uWMa3q1p3hmYA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 991576330db08c30-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"66c83904b7cc1bd5f92f6c50e7ae5752","autopromptString":"machine
+        learning","resolvedSearchType":"neural","results":[{"id":"https://en.wikipedia.org/wiki/Machine_learning","title":"Machine
+        learning","url":"https://en.wikipedia.org/wiki/Machine_learning","publishedDate":"2025-06-09T00:00:00.000Z","author":"Contributors
+        to Wikimedia projects"},{"id":"https://www.ibm.com/think/topics/machine-learning","title":"Machine
+        Learning","url":"https://www.ibm.com/think/topics/machine-learning","publishedDate":"2021-09-22T00:00:00.000Z","author":"IBM"},{"id":"https://www.salesforce.com/ca/artificial-intelligence/what-is-machine-learning/?bc=HA","title":"What
+        is Machine Learning?","url":"https://www.salesforce.com/ca/artificial-intelligence/what-is-machine-learning/?bc=HA","publishedDate":"2025-01-01T00:00:00.000Z","author":null},{"id":"https://www.sap.com/africa/products/artificial-intelligence/what-is-machine-learning.html","title":"Machine
+        Learning | Definition, types, and examples | SAP","url":"https://www.sap.com/africa/products/artificial-intelligence/what-is-machine-learning.html","publishedDate":"2025-01-01T00:00:00.000Z","author":null},{"id":"https://www.akamai.com/glossary/what-is-machine-learning-ml","title":"What
+        Is Machine Learning (ML)? | Akamai","url":"https://www.akamai.com/glossary/what-is-machine-learning-ml","publishedDate":"2025-04-03T00:00:00.000Z","author":null},{"id":"https://www.techtarget.com/searchenterpriseai/definition/machine-learning-ML","title":"What
+        is machine learning? Guide, definition and examples","url":"https://www.techtarget.com/searchenterpriseai/definition/machine-learning-ML","publishedDate":"2024-08-16T00:00:00.000Z","author":"Lev
+        Craig, Linda Tucci"},{"id":"https://www.tutorialspoint.com/machine_learning/machine_learning_basics.htm","title":"Machine
+        Learning Basics","url":"https://www.tutorialspoint.com/machine_learning/machine_learning_basics.htm","publishedDate":"2025-03-25T00:00:00.000Z","author":"TutorialsPoint"},{"id":"https://developers.google.com/machine-learning/glossary/fundamentals","title":"Machine
+        Learning Glossary: ML Fundamentals","url":"https://developers.google.com/machine-learning/glossary/fundamentals","publishedDate":"2025-04-07T00:00:00.000Z","author":null},{"id":"https://sas.com/el_gr/insights/analytics/machine-learning.html","title":"Machine
+        Learning: What it is and why it matters","url":"https://sas.com/el_gr/insights/analytics/machine-learning.html","publishedDate":"2025-07-09T00:00:00.000Z","author":null},{"id":"https://en.wikipedia.org/wiki/Neural_network_(machine_learning)","title":"Neural
+        network (machine learning) - Wikipedia","url":"https://en.wikipedia.org/wiki/Neural_network_(machine_learning)","author":null}],"searchTime":735.4,"costDollars":{"total":0.005,"search":{"neural":0.005}}}'
+  recorded_at: Mon, 20 Oct 2025 03:34:51 GMT
+recorded_with: VCR 6.3.1
