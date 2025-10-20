@@ -78,4 +78,175 @@ class SearchIntegrationTest < Minitest::Test
       # Just verify the first result has at least the core fields
     end
   end
+
+  # Test date range filtering
+  def test_search_with_date_range_filters
+    VCR.use_cassette("search_with_date_filters") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      result = client.search(
+        "AI research",
+        start_published_date: "2025-01-01T00:00:00.000Z",
+        end_published_date: "2025-12-31T23:59:59.999Z"
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+    end
+  end
+
+  # Test text inclusion/exclusion filtering
+  def test_search_with_text_filters
+    VCR.use_cassette("search_with_text_filters") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      result = client.search(
+        "machine learning",
+        include_text: ["neural networks"],
+        exclude_text: ["cryptocurrency"]
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+    end
+  end
+
+  # Test full webpage text extraction
+  def test_search_with_text_content_extraction
+    VCR.use_cassette("search_with_text_extraction") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      result = client.search(
+        "Ruby programming",
+        text: {
+          max_characters: 2000,
+          include_html_tags: true
+        }
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+
+      # Verify text is present in results when requested
+      first_result = result.first
+      assert first_result.key?("text") || first_result.key?("content"),
+             "Expected text extraction to be present in results"
+    end
+  end
+
+  # Test AI summary generation
+  def test_search_with_summary_generation
+    VCR.use_cassette("search_with_summary") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      result = client.search(
+        "climate change",
+        summary: {
+          query: "What are the main points about climate change?"
+        }
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+    end
+  end
+
+  # Test context string for RAG
+  def test_search_with_context_for_rag
+    VCR.use_cassette("search_with_context") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      result = client.search(
+        "quantum computing",
+        context: {
+          max_characters: 5000
+        }
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+    end
+  end
+
+  # Test subpage crawling
+  def test_search_with_subpage_crawling
+    VCR.use_cassette("search_with_subpages") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      result = client.search(
+        "JavaScript framework",
+        subpages: 1,
+        subpage_target: ["docs", "documentation", "guide"]
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+    end
+  end
+
+  # Test links extraction
+  def test_search_with_links_extraction
+    VCR.use_cassette("search_with_links") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      result = client.search(
+        "web development",
+        extras: {
+          links: 3,
+          image_links: 2
+        }
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+    end
+  end
+
+  # Test comprehensive multi-feature search
+  def test_search_with_multiple_features_combined
+    VCR.use_cassette("search_comprehensive") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      result = client.search(
+        "artificial intelligence",
+        type: "neural",
+        num_results: 5,
+        start_published_date: "2025-01-01T00:00:00.000Z",
+        end_published_date: "2025-12-31T23:59:59.999Z",
+        include_text: ["machine learning"],
+        text: {
+          max_characters: 3000,
+          include_html_tags: true
+        },
+        summary: {
+          query: "What are the latest developments?"
+        },
+        context: {
+          max_characters: 5000
+        },
+        subpages: 1,
+        subpage_target: ["research", "papers"],
+        extras: {
+          links: 3,
+          image_links: 2
+        }
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+      assert result.results.length <= 5
+    end
+  end
+
+  # Test parameter conversion (snake_case to camelCase)
+  def test_parameter_conversion_from_snake_case_to_camel_case
+    VCR.use_cassette("search_ruby_programming") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+
+      # Search with snake_case parameters (Ruby convention)
+      result = client.search(
+        "Ruby programming",
+        start_crawl_date: "2025-01-01T00:00:00.000Z",
+        end_crawl_date: "2025-12-31T23:59:59.999Z",
+        text: true
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+    end
+  end
 end
