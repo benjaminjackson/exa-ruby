@@ -57,6 +57,18 @@ def parse_args(argv)
       end
       args[:linkedin] = linkedin_type
       i += 2
+    when "--start-published-date"
+      args[:start_published_date] = argv[i + 1]
+      i += 2
+    when "--end-published-date"
+      args[:end_published_date] = argv[i + 1]
+      i += 2
+    when "--start-crawl-date"
+      args[:start_crawl_date] = argv[i + 1]
+      i += 2
+    when "--end-crawl-date"
+      args[:end_crawl_date] = argv[i + 1]
+      i += 2
     when "--help", "-h"
       puts <<~HELP
         Usage: exa-api search QUERY [OPTIONS]
@@ -67,19 +79,23 @@ def parse_args(argv)
           QUERY                 Search query (required)
 
         Options:
-          --num-results N       Number of results to return (default: 10)
-          --type TYPE           Search type: keyword, neural, fast, or auto (default: auto)
-          --category CAT        Focus on specific data category
-                                Options: "company", "research paper", "news", "pdf",
-                                "github", "tweet", "personal site", "linkedin profile",
-                                "financial report"
-          --include-domains D   Comma-separated list of domains to include
-          --exclude-domains D   Comma-separated list of domains to exclude
-          --use-autoprompt      Use Exa's autoprompt feature
-          --linkedin TYPE       Search LinkedIn: company, person, or all
-          --api-key KEY         Exa API key (or set EXA_API_KEY env var)
-          --output-format FMT   Output format: json, pretty, or text (default: json)
-          --help, -h            Show this help message
+          --num-results N              Number of results to return (default: 10)
+          --type TYPE                  Search type: keyword, neural, fast, or auto (default: auto)
+          --category CAT               Focus on specific data category
+                                       Options: "company", "research paper", "news", "pdf",
+                                       "github", "tweet", "personal site", "linkedin profile",
+                                       "financial report"
+          --include-domains D          Comma-separated list of domains to include
+          --exclude-domains D          Comma-separated list of domains to exclude
+          --start-published-date DATE  Filter by published date (ISO 8601 format)
+          --end-published-date DATE    Filter by published date (ISO 8601 format)
+          --start-crawl-date DATE      Filter by crawl date (ISO 8601 format)
+          --end-crawl-date DATE        Filter by crawl date (ISO 8601 format)
+          --use-autoprompt             Use Exa's autoprompt feature
+          --linkedin TYPE              Search LinkedIn: company, person, or all
+          --api-key KEY                Exa API key (or set EXA_API_KEY env var)
+          --output-format FMT          Output format: json, pretty, or text (default: json)
+          --help, -h                   Show this help message
 
         Examples:
           exa-api search "ruby programming"
@@ -130,6 +146,10 @@ begin
   search_params[:category] = args[:category] if args[:category]
   search_params[:includeDomains] = args[:include_domains] if args[:include_domains]
   search_params[:excludeDomains] = args[:exclude_domains] if args[:exclude_domains]
+  search_params[:start_published_date] = args[:start_published_date] if args[:start_published_date]
+  search_params[:end_published_date] = args[:end_published_date] if args[:end_published_date]
+  search_params[:start_crawl_date] = args[:start_crawl_date] if args[:start_crawl_date]
+  search_params[:end_crawl_date] = args[:end_crawl_date] if args[:end_crawl_date]
   search_params[:useAutoprompt] = args[:use_autoprompt] if args[:use_autoprompt]
 
   # Execute search based on LinkedIn type
