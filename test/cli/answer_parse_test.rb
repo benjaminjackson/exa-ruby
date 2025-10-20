@@ -24,6 +24,9 @@ class AnswerParseTest < Minitest::Test
       when "--output-schema"
         args[:output_schema] = argv[i + 1]
         i += 2
+      when "--system-prompt"
+        args[:system_prompt] = argv[i + 1]
+        i += 2
       when "--api-key"
         args[:api_key] = argv[i + 1]
         i += 2
@@ -74,5 +77,40 @@ class AnswerParseTest < Minitest::Test
     assert_equal '{}', result[:output_schema]
     assert_equal "key123", result[:api_key]
     assert_equal "pretty", result[:output_format]
+  end
+
+  def test_parse_system_prompt_flag
+    argv = ["What is Paris?", "--system-prompt", "Respond in the voice of a pirate"]
+    result = parse_args(argv)
+
+    assert_equal "Respond in the voice of a pirate", result[:system_prompt]
+    assert_equal "What is Paris?", result[:query]
+  end
+
+  def test_parse_system_prompt_with_text_flag
+    argv = ["test query", "--text", "--system-prompt", "Be concise"]
+    result = parse_args(argv)
+
+    assert_equal true, result[:text]
+    assert_equal "Be concise", result[:system_prompt]
+    assert_equal "test query", result[:query]
+  end
+
+  def test_parse_system_prompt_not_required
+    argv = ["test query"]
+    result = parse_args(argv)
+
+    assert_nil result[:system_prompt]
+    assert_equal "test query", result[:query]
+  end
+
+  def test_parse_system_prompt_with_all_flags
+    argv = ["query", "--api-key", "key123", "--system-prompt", "Pirate voice", "--output-schema", '{}', "--text"]
+    result = parse_args(argv)
+
+    assert_equal "Pirate voice", result[:system_prompt]
+    assert_equal "key123", result[:api_key]
+    assert_equal '{}', result[:output_schema]
+    assert_equal true, result[:text]
   end
 end

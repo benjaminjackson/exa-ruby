@@ -64,4 +64,45 @@ class Exa::CLI::AnswerTest < Minitest::Test
     assert_equal "Albany", result.answer["city"]
     assert_equal "New York", result.answer["state"]
   end
+
+  def test_system_prompt_flag_is_passed_to_api
+    stub_request(:post, "https://api.exa.ai/answer")
+      .with(body: hash_including(
+        query: "What is Paris?",
+        system_prompt: "Respond in the voice of a pirate"
+      ))
+      .to_return(
+        status: 200,
+        body: { answer: "Ahoy! Paris be a mighty fine city!", citations: [] }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.answer("What is Paris?", system_prompt: "Respond in the voice of a pirate")
+
+    assert_requested :post, "https://api.exa.ai/answer",
+      body: hash_including(system_prompt: "Respond in the voice of a pirate")
+    assert_instance_of Exa::Resources::Answer, result
+  end
+
+  def test_system_prompt_with_other_parameters
+    stub_request(:post, "https://api.exa.ai/answer")
+      .with(body: hash_including(
+        query: "test",
+        system_prompt: "Be concise",
+        text: true
+      ))
+      .to_return(
+        status: 200,
+        body: { answer: "test answer", citations: [] }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.answer("test", system_prompt: "Be concise", text: true)
+
+    assert_requested :post, "https://api.exa.ai/answer",
+      body: hash_including(system_prompt: "Be concise", text: true)
+    assert_instance_of Exa::Resources::Answer, result
+  end
 end

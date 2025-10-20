@@ -235,7 +235,7 @@ class SearchIntegrationTest < Minitest::Test
 
   # Test parameter conversion (snake_case to camelCase)
   def test_parameter_conversion_from_snake_case_to_camel_case
-    VCR.use_cassette("search_ruby_programming") do
+    VCR.use_cassette("search_with_crawl_dates") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
 
       # Search with snake_case parameters (Ruby convention)

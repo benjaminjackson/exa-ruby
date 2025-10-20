@@ -27,6 +27,9 @@ def parse_args(argv)
     when "--output-schema"
       args[:output_schema] = argv[i + 1]
       i += 2
+    when "--system-prompt"
+      args[:system_prompt] = argv[i + 1]
+      i += 2
     when "--api-key"
       args[:api_key] = argv[i + 1]
       i += 2
@@ -45,6 +48,7 @@ def parse_args(argv)
         Options:
           --text                Include full text content from sources
           --output-schema JSON  JSON schema for structured output
+          --system-prompt TEXT  System prompt to guide answer generation
           --api-key KEY         Exa API key (or set EXA_API_KEY env var)
           --output-format FMT   Output format: json, pretty, or text (default: json)
           --help, -h            Show this help message
@@ -54,6 +58,7 @@ def parse_args(argv)
           exa-api answer "Latest AI breakthroughs" --text
           exa-api answer "Ruby best practices" --output-format pretty
           exa-api answer "What is the capital of France?" --output-schema '{"type":"object","properties":{"city":{"type":"string"},"state":{"type":"string"}}}'
+          exa-api answer "What is Paris?" --system-prompt "Respond in the voice of a pirate"
       HELP
       exit 0
     else
@@ -89,6 +94,7 @@ begin
   # Prepare answer parameters
   answer_params = {}
   answer_params[:text] = args[:text] if args[:text]
+  answer_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
 
   # Parse output_schema as JSON if provided
   if args[:output_schema]

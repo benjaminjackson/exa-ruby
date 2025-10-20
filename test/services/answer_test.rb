@@ -153,4 +153,20 @@ class AnswerTest < Minitest::Test
       service.call
     end
   end
+
+  def test_call_includes_system_prompt_parameter
+    stub_request(:post, "https://api.exa.ai/answer")
+      .with(body: hash_including(query: "test query", system_prompt: "Respond in the voice of a pirate"))
+      .to_return(
+        status: 200,
+        body: { answer: "Test", citations: [] }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Answer.new(@connection, query: "test query", system_prompt: "Respond in the voice of a pirate")
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/answer",
+      body: hash_including(system_prompt: "Respond in the voice of a pirate")
+  end
 end
