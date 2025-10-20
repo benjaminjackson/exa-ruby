@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-10-20
+
+### Added
+
+#### Answer Endpoint Enhancements
+- **Streaming support** - `--stream` flag to stream answers as they're generated
+- **System prompt support** - `--system-prompt` flag for custom answer instructions
+
+#### Research CLI Enhancements
+- **Model selection** - Updated `research-start` command with model options
+
+#### Get Contents CLI Enhancements
+- **Advanced parameters** - Expanded `get-contents` command with additional content extraction options
+
+### Changed
+- N/A
+
+### Fixed
+- N/A
+
+### Deprecated
+- N/A
+
+### Removed
+- N/A
+
+### Security
+- N/A
+
 ## [0.2.0] - 2025-10-19
 
 ### Added
