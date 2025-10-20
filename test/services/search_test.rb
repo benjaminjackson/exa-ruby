@@ -136,4 +136,30 @@ class SearchTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/search"
   end
+
+  def test_call_converts_text_filter_parameters
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          includeText: ["peer-reviewed"],
+          excludeText: ["paid-partnership"]
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      include_text: ["peer-reviewed"],
+      exclude_text: ["paid-partnership"]
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
 end

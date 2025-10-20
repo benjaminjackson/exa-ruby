@@ -38,6 +38,8 @@ module Exa
         when :end_published_date then :endPublishedDate
         when :start_crawl_date then :startCrawlDate
         when :end_crawl_date then :endCrawlDate
+        when :include_text then :includeText
+        when :exclude_text then :excludeText
         else
           key
         end
