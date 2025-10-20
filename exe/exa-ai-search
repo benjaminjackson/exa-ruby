@@ -24,6 +24,15 @@ def parse_args(argv)
     when "--type"
       args[:type] = argv[i + 1]
       i += 2
+    when "--category"
+      category = argv[i + 1]
+      valid_categories = ["company", "research paper", "news", "pdf", "github", "tweet", "personal site", "linkedin profile", "financial report"]
+      unless valid_categories.include?(category)
+        $stderr.puts "Error: Category must be one of: #{valid_categories.map { |c| "\"#{c}\"" }.join(', ')}"
+        exit 1
+      end
+      args[:category] = category
+      i += 2
     when "--include-domains"
       args[:include_domains] = argv[i + 1].split(",").map(&:strip)
       i += 2
@@ -59,7 +68,11 @@ def parse_args(argv)
 
         Options:
           --num-results N       Number of results to return (default: 10)
-          --type TYPE           Search type: keyword, neural, or auto (default: auto)
+          --type TYPE           Search type: keyword, neural, fast, or auto (default: auto)
+          --category CAT        Focus on specific data category
+                                Options: "company", "research paper", "news", "pdf",
+                                "github", "tweet", "personal site", "linkedin profile",
+                                "financial report"
           --include-domains D   Comma-separated list of domains to include
           --exclude-domains D   Comma-separated list of domains to exclude
           --use-autoprompt      Use Exa's autoprompt feature
@@ -71,6 +84,8 @@ def parse_args(argv)
         Examples:
           exa-api search "ruby programming"
           exa-api search "machine learning" --num-results 5 --type keyword
+          exa-api search "Latest LLM research" --category "research paper"
+          exa-api search "AI startups" --category company
           exa-api search "Anthropic" --linkedin company
           exa-api search "Dario Amodei" --linkedin person
           exa-api search "AI" --linkedin all
@@ -112,6 +127,7 @@ begin
   search_params = {}
   search_params[:numResults] = args[:num_results] if args[:num_results]
   search_params[:type] = args[:type] if args[:type]
+  search_params[:category] = args[:category] if args[:category]
   search_params[:includeDomains] = args[:include_domains] if args[:include_domains]
   search_params[:excludeDomains] = args[:exclude_domains] if args[:exclude_domains]
   search_params[:useAutoprompt] = args[:use_autoprompt] if args[:use_autoprompt]
