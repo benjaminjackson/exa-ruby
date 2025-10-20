@@ -87,7 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### API Features
 - **Search endpoint** - Full-featured web search with query, type filters, include/exclude domains, and pagination
-- **Answer endpoint** - Direct answers and autoprompt synthesis for queries
+- **Answer endpoint** - Direct answers for queries
 - **Context endpoint** - Code search with language filtering and file type support
 - **Get Contents endpoint** - Retrieve full page contents from URLs
 - **Research endpoints** - Async research operations:

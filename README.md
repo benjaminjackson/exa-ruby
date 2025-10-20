@@ -220,7 +220,6 @@ exa-ai search "AI" --output-format pretty
 - `--type TYPE` - Search type: keyword, neural, or auto (default: auto)
 - `--include-domains DOMAINS` - Comma-separated domains to include
 - `--exclude-domains DOMAINS` - Comma-separated domains to exclude
-- `--use-autoprompt` - Use Exa's autoprompt feature
 - `--output-format FORMAT` - json or pretty (default: json)
 - `--api-key KEY` - API key (or set EXA_API_KEY env var)
 
@@ -619,8 +618,7 @@ client = Exa::Client.new
 results = client.search("kubernetes tutorial",
   num_results: 20,
   type: "neural",
-  include_domains: ["kubernetes.io", "github.com"],
-  use_autoprompt: true
+  include_domains: ["kubernetes.io", "github.com"]
 )
 
 results.results.each do |item|

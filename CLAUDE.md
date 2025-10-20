@@ -405,7 +405,7 @@ end
 # Using Struct with freeze for immutability
 module Exa
   module Resources
-    class SearchResult < Struct.new(:results, :autoprompt_string, keyword_init: true)
+    class SearchResult < Struct.new(:results, keyword_init: true)
       def initialize(**)
         super
         freeze
@@ -415,14 +415,14 @@ module Exa
       def empty? = results.empty?
 
       def to_h
-        { results: results, autoprompt_string: autoprompt_string }
+        { results: results }
       end
     end
   end
 end
 
 # Usage:
-result = Exa::Resources::SearchResult.new(results: [...], autoprompt_string: nil)
+result = Exa::Resources::SearchResult.new(results: [...])
 result.results # => [...]
 result.results = [] # => raises FrozenError
 ```

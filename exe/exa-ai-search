@@ -39,9 +39,6 @@ def parse_args(argv)
     when "--exclude-domains"
       args[:exclude_domains] = argv[i + 1].split(",").map(&:strip)
       i += 2
-    when "--use-autoprompt"
-      args[:use_autoprompt] = true
-      i += 1
     when "--api-key"
       args[:api_key] = argv[i + 1]
       i += 2
@@ -159,7 +156,6 @@ def parse_args(argv)
           --image-links N              Number of image links to extract
 
         General Options:
-          --use-autoprompt             Use Exa's autoprompt feature
           --linkedin TYPE              Search LinkedIn: company, person, or all
           --api-key KEY                Exa API key (or set EXA_API_KEY env var)
           --output-format FMT          Output format: json, pretty, or text (default: json)
@@ -271,7 +267,6 @@ begin
   search_params[:exclude_text] = args[:exclude_text] if args[:exclude_text]
   contents = build_contents(args)
   search_params.merge!(contents) if contents
-  search_params[:useAutoprompt] = args[:use_autoprompt] if args[:use_autoprompt]
 
   # Execute search based on LinkedIn type
   result = case args[:linkedin]

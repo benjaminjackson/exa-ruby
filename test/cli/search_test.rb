@@ -52,14 +52,6 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_equal ["spam.com", "bad.org"], args[:exclude_domains]
   end
 
-  def test_parses_use_autoprompt_flag
-    args = parse_search_args(["test query", "--use-autoprompt"])
-    assert_equal true, args[:use_autoprompt]
-
-    args = parse_search_args(["test query"])
-    assert_nil args[:use_autoprompt]
-  end
-
   def test_outputs_json_by_default
     args = parse_search_args(["test query"])
     assert_equal "json", args[:output_format]
@@ -131,9 +123,6 @@ class Exa::CLI::SearchTest < Minitest::Test
       when "--exclude-domains"
         args[:exclude_domains] = argv[i + 1].split(",").map(&:strip)
         i += 2
-      when "--use-autoprompt"
-        args[:use_autoprompt] = true
-        i += 1
       when "--api-key"
         args[:api_key] = argv[i + 1]
         i += 2
