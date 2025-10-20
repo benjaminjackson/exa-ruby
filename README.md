@@ -214,7 +214,7 @@ exa-ai search "tutorials" \
 exa-ai search "AI" --output-format pretty
 ```
 
-**Options:**
+**Basic Options:**
 - `QUERY` - Search query (required)
 - `--num-results N` - Number of results (default: 10)
 - `--type TYPE` - Search type: keyword, neural, or auto (default: auto)
@@ -223,6 +223,141 @@ exa-ai search "AI" --output-format pretty
 - `--use-autoprompt` - Use Exa's autoprompt feature
 - `--output-format FORMAT` - json or pretty (default: json)
 - `--api-key KEY` - API key (or set EXA_API_KEY env var)
+
+#### Advanced Search Options
+
+**Date Filtering:**
+```bash
+# Filter by published date
+exa-ai search "AI research" \
+  --start-published-date "2025-01-01T00:00:00.000Z" \
+  --end-published-date "2025-12-31T23:59:59.999Z"
+
+# Filter by crawl date
+exa-ai search "news" \
+  --start-crawl-date "2025-10-01T00:00:00.000Z" \
+  --end-crawl-date "2025-10-31T23:59:59.999Z"
+```
+
+**Text Filtering:**
+```bash
+# Results must include specific phrase
+exa-ai search "machine learning" --include-text "neural networks"
+
+# Results must exclude specific phrase
+exa-ai search "programming" --exclude-text "paid-partnership"
+
+# Combine inclusion and exclusion
+exa-ai search "Python" \
+  --include-text "open source" \
+  --exclude-text "deprecated"
+```
+
+**Content Extraction:**
+```bash
+# Extract full webpage text
+exa-ai search "Ruby" --text
+
+# Extract text with options
+exa-ai search "AI" \
+  --text \
+  --text-max-characters 3000 \
+  --include-html-tags
+
+# Generate AI summaries
+exa-ai search "climate change" \
+  --summary \
+  --summary-query "What are the main points?"
+
+# Format results as context for LLM RAG
+exa-ai search "kubernetes" \
+  --context \
+  --context-max-characters 5000
+
+# Crawl subpages
+exa-ai search "documentation" \
+  --subpages 1 \
+  --subpage-target about \
+  --subpage-target docs
+
+# Extract links from results
+exa-ai search "web development" \
+  --links 3 \
+  --image-links 2
+```
+
+**Advanced Ruby API:**
+```ruby
+client = Exa::Client.new(api_key: "your-key")
+
+# Date range filtering
+results = client.search("AI research",
+  start_published_date: "2025-01-01T00:00:00.000Z",
+  end_published_date: "2025-12-31T23:59:59.999Z"
+)
+
+# Text filtering
+results = client.search("machine learning",
+  include_text: ["neural networks"],
+  exclude_text: ["cryptocurrency"]
+)
+
+# Full webpage text extraction
+results = client.search("Ruby",
+  text: {
+    max_characters: 3000,
+    include_html_tags: true
+  }
+)
+
+# AI-powered summaries
+results = client.search("climate change",
+  summary: {
+    query: "What are the main points?"
+  }
+)
+
+# Context for RAG pipelines
+results = client.search("kubernetes",
+  context: {
+    max_characters: 5000
+  }
+)
+
+# Subpage crawling
+results = client.search("documentation",
+  subpages: 1,
+  subpage_target: ["about", "docs", "guide"]
+)
+
+# Links and image extraction
+results = client.search("web development",
+  extras: {
+    links: 3,
+    image_links: 2
+  }
+)
+
+# Combine multiple features
+results = client.search("AI",
+  num_results: 5,
+  start_published_date: "2025-01-01T00:00:00.000Z",
+  text: { max_characters: 3000 },
+  summary: { query: "Main developments?" },
+  context: { max_characters: 5000 },
+  subpages: 1,
+  subpage_target: ["research"],
+  extras: { links: 3, image_links: 2 }
+)
+
+# Access extracted content
+results.results.each do |result|
+  puts result["title"]
+  puts result["text"] if result["text"]        # Full webpage text
+  puts result["summary"] if result["summary"]  # AI summary
+  puts result["links"] if result["links"]      # Extracted links
+end
+```
 
 ### Answer Command
 

@@ -5,6 +5,80 @@ All notable changes to the exa-ai gem will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+#### Advanced Search Features
+- **Date range filtering** - Filter search results by publication date and crawl date:
+  - `start_published_date` / `end_published_date` - Results published within date range
+  - `start_crawl_date` / `end_crawl_date` - Results crawled within date range
+- **Text filtering** - Include and exclude results based on text content:
+  - `include_text` - Results must contain specified phrase
+  - `exclude_text` - Results must not contain specified phrase
+- **Full webpage text extraction** - Retrieve and process full page content:
+  - Boolean or advanced configuration with `max_characters` and `include_html_tags`
+  - Configurable character limits for API cost control
+  - Optional HTML tag preservation for LLM compatibility
+- **AI-powered summaries** - Generate structured summaries with custom prompts and schemas:
+  - Custom summary prompts for tailored LLM instructions
+  - JSON schema support for structured output
+  - Full customization of summary format and content
+- **Context formatting for RAG** - Format results as context strings for LLM retrieval-augmented generation:
+  - Automatic context string generation from search results
+  - Configurable character limits
+- **Subpage crawling** - Extract content from related subpages:
+  - Specify number of subpages to crawl
+  - Fuzzy text matching for subpage targeting (e.g., "about", "docs", "pricing")
+- **Links and image extraction** - Extract URLs and image URLs from results:
+  - Configurable count per result
+  - Separate image link extraction
+
+#### Parameter Conversion Infrastructure
+- **ParameterConverter** - Dedicated service for converting Ruby parameters to API format:
+  - Snake_case to camelCase conversion
+  - Nested content parameter handling
+  - Reusable component for future parameter transformations
+
+#### CLI Enhancements
+- Comprehensive date range flags: `--start-published-date`, `--end-published-date`, `--start-crawl-date`, `--end-crawl-date`
+- Text filtering flags: `--include-text`, `--exclude-text` (repeatable)
+- Content extraction flags:
+  - Text: `--text`, `--text-max-characters`, `--include-html-tags`
+  - Summary: `--summary`, `--summary-query`, `--summary-schema` (with @file syntax)
+  - Context: `--context`, `--context-max-characters`
+  - Subpages: `--subpages`, `--subpage-target` (repeatable)
+  - Links: `--links`, `--image-links`
+- Enhanced help text with organized option categories
+- JSON schema file loading with `@filename` syntax
+
+#### Testing
+- 9 new comprehensive integration tests covering all search features
+- Tests for individual features and multi-feature combinations
+- Parameter conversion validation tests
+
+#### Documentation
+- Extended README with advanced search examples
+- Complete CLI usage documentation for all new flags
+- Ruby API examples for all new features
+- Usage patterns for combining multiple features
+
+### Changed
+- Search command help text reorganized for clarity
+- Parameter handling through centralized ParameterConverter
+
+### Fixed
+- N/A
+
+### Deprecated
+- N/A
+
+### Removed
+- N/A
+
+### Security
+- N/A
+
 ## [0.1.0] - 2025-10-19
 
 ### Added
