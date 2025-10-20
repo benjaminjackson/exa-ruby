@@ -342,4 +342,23 @@ class ClientTest < Minitest::Test
 
     assert_instance_of Exa::Resources::SearchResult, result
   end
+
+  def test_answer_stream_delegates_to_service
+    sse_response = "data: {\"choices\":[{\"delta\":{\"role\":\"assistant\",\"content\":\"Hello\"}}]}\n\n"
+
+    stub_request(:post, "https://api.exa.ai/answer")
+      .with(body: hash_including(query: "test", stream: true))
+      .to_return(
+        status: 200,
+        body: sse_response,
+        headers: { "Content-Type" => "text/event-stream" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    chunks = []
+    client.answer_stream("test") { |chunk| chunks << chunk }
+
+    assert_equal 1, chunks.length
+    assert_equal "Hello", chunks[0]["choices"][0]["delta"]["content"]
+  end
 end

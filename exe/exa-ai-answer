@@ -12,7 +12,8 @@ def parse_args(argv)
   args = {
     output_format: "json",
     api_key: nil,
-    text: false
+    text: false,
+    stream: false
   }
 
   # Extract query (first non-flag argument)
@@ -23,6 +24,9 @@ def parse_args(argv)
     case arg
     when "--text"
       args[:text] = true
+      i += 1
+    when "--stream"
+      args[:stream] = true
       i += 1
     when "--output-schema"
       args[:output_schema] = argv[i + 1]
@@ -46,6 +50,7 @@ def parse_args(argv)
           QUERY                 Question or query to answer (required)
 
         Options:
+          --stream              Stream answer chunks in real-time
           --text                Include full text content from sources
           --output-schema JSON  JSON schema for structured output
           --system-prompt TEXT  System prompt to guide answer generation
@@ -55,6 +60,7 @@ def parse_args(argv)
 
         Examples:
           exa-api answer "What is the capital of France?"
+          exa-api answer "Latest AI breakthroughs" --stream
           exa-api answer "Latest AI breakthroughs" --text
           exa-api answer "Ruby best practices" --output-format pretty
           exa-api answer "What is the capital of France?" --output-schema '{"type":"object","properties":{"city":{"type":"string"},"state":{"type":"string"}}}'
@@ -106,12 +112,24 @@ begin
     end
   end
 
-  # Execute answer
-  result = client.answer(args[:query], **answer_params)
-
-  # Format and output result
-  output = Exa::CLI::Formatters::AnswerFormatter.format(result, output_format)
-  puts output
+  # Execute answer or streaming answer
+  if args[:stream]
+    # Streaming mode - output chunks in real-time
+    client.answer_stream(args[:query], **answer_params) do |chunk|
+      # Extract content from the streaming response format
+      # API returns: {"choices":[{"delta":{"content":"..."}}]}
+      if chunk["choices"]&.first&.dig("delta", "content")
+        print chunk["choices"][0]["delta"]["content"]
+        $stdout.flush
+      end
+    end
+    puts # Add newline at the end
+  else
+    # Non-streaming mode - collect full response and format
+    result = client.answer(args[:query], **answer_params)
+    output = Exa::CLI::Formatters::AnswerFormatter.format(result, output_format)
+    puts output
+  end
 
 rescue Exa::ConfigurationError => e
   $stderr.puts "Configuration error: #{e.message}"
