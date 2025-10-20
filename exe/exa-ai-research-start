@@ -47,7 +47,7 @@ def parse_args(argv)
 
         Options:
           --instructions TEXT   Research instructions (required)
-          --model MODEL         Model to use (e.g., gpt-4, gpt-3.5-turbo)
+          --model MODEL         Research model: exa-research (default), exa-research-pro, exa-research-fast
           --output-schema JSON  JSON schema string for structured output
           --wait                Wait for task to complete (polls until done)
           --events              Include event log in output (only with --wait)
@@ -58,7 +58,7 @@ def parse_args(argv)
         Examples:
           exa-api research-start --instructions "Find Ruby performance tips"
           exa-api research-start --instructions "Analyze AI trends" --wait --events
-          exa-api research-start --instructions "Summarize papers" --model gpt-4 --wait
+          exa-api research-start --instructions "Summarize papers" --model exa-research-pro --wait
           exa-api research-start --instructions "Find stats" --output-schema '{"type":"object"}'
       HELP
       exit 0

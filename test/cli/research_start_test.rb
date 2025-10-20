@@ -27,8 +27,8 @@ class Exa::CLI::ResearchStartTest < Minitest::Test
   end
 
   def test_parses_model_flag
-    args = parse_research_start_args(["--instructions", "test", "--model", "gpt-4"])
-    assert_equal "gpt-4", args[:model]
+    args = parse_research_start_args(["--instructions", "test", "--model", "exa-research-pro"])
+    assert_equal "exa-research-pro", args[:model]
   end
 
   def test_parses_output_schema_flag
