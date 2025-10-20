@@ -54,7 +54,7 @@ module Exa
       end
 
       def content_key?(key)
-        %i[text summary context subpages subpage_target].include?(key)
+        %i[text summary context subpages subpage_target extras].include?(key)
       end
 
       def convert_content_key(key)
@@ -82,6 +82,12 @@ module Exa
         when :context
           if value.is_a?(Hash)
             convert_hash_value(value, context_hash_mappings)
+          else
+            value
+          end
+        when :extras
+          if value.is_a?(Hash)
+            convert_hash_value(value, extras_hash_mappings)
           else
             value
           end
@@ -116,6 +122,12 @@ module Exa
       def context_hash_mappings
         {
           max_characters: :maxCharacters
+        }
+      end
+
+      def extras_hash_mappings
+        {
+          image_links: :imageLinks
         }
       end
     end

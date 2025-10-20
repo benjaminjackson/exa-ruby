@@ -356,4 +356,36 @@ class SearchTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/search"
   end
+
+  def test_call_handles_links_and_image_links_extraction
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: {
+            extras: {
+              links: 3,
+              imageLinks: 3
+            }
+          }
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      extras: {
+        links: 3,
+        image_links: 3
+      }
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
 end
