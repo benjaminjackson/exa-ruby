@@ -262,4 +262,84 @@ class ClientTest < Minitest::Test
 
     assert_instance_of Exa::Resources::ContextResult, result
   end
+
+  def test_linkedin_company_delegates_to_search
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(body: hash_including(
+        query: "Anthropic",
+        type: "keyword",
+        includeDomains: ["linkedin.com/company"]
+      ))
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "req_linkedin_123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.linkedin_company("Anthropic")
+
+    assert_instance_of Exa::Resources::SearchResult, result
+    assert_requested :post, "https://api.exa.ai/search", times: 1
+  end
+
+  def test_linkedin_company_with_num_results
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(body: hash_including(
+        query: "Google",
+        type: "keyword",
+        includeDomains: ["linkedin.com/company"],
+        numResults: 5
+      ))
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "req_linkedin_456" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.linkedin_company("Google", numResults: 5)
+
+    assert_instance_of Exa::Resources::SearchResult, result
+  end
+
+  def test_linkedin_person_delegates_to_search
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(body: hash_including(
+        query: "Dario Amodei",
+        type: "keyword",
+        includeDomains: ["linkedin.com/in"]
+      ))
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "req_linkedin_person_123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.linkedin_person("Dario Amodei")
+
+    assert_instance_of Exa::Resources::SearchResult, result
+    assert_requested :post, "https://api.exa.ai/search", times: 1
+  end
+
+  def test_linkedin_person_with_num_results
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(body: hash_including(
+        query: "Satya Nadella",
+        type: "keyword",
+        includeDomains: ["linkedin.com/in"],
+        numResults: 3
+      ))
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "req_linkedin_person_456" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.linkedin_person("Satya Nadella", numResults: 3)
+
+    assert_instance_of Exa::Resources::SearchResult, result
+  end
 end

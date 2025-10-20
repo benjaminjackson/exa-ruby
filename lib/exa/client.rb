@@ -107,6 +107,32 @@ module Exa
       Services::Context.new(connection, query: query, **params).call
     end
 
+    # Search for LinkedIn company pages
+    #
+    # Convenience method that restricts search to LinkedIn company profiles
+    # using keyword search for precise name matching.
+    #
+    # @param query [String] Company name to search
+    # @param params [Hash] Additional search parameters
+    # @option params [Integer] :numResults Number of results to return
+    # @return [Resources::SearchResult] LinkedIn company results
+    def linkedin_company(query, **params)
+      search(query, type: "keyword", includeDomains: ["linkedin.com/company"], **params)
+    end
+
+    # Search for LinkedIn profiles
+    #
+    # Convenience method that restricts search to LinkedIn individual profiles
+    # using keyword search for precise name matching.
+    #
+    # @param query [String] Person name to search
+    # @param params [Hash] Additional search parameters
+    # @option params [Integer] :numResults Number of results to return
+    # @return [Resources::SearchResult] LinkedIn profile results
+    def linkedin_person(query, **params)
+      search(query, type: "keyword", includeDomains: ["linkedin.com/in"], **params)
+    end
+
     private
 
     def connection
