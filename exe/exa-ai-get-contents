@@ -11,8 +11,18 @@ def parse_args(args)
   ids = []
   api_key = nil
   text = false
-  highlights = false
+  text_max_characters = nil
+  include_html_tags = false
   summary = false
+  summary_query = nil
+  summary_schema = nil
+  subpages = nil
+  subpage_target = []
+  links = nil
+  image_links = nil
+  context = false
+  context_max_characters = nil
+  livecrawl_timeout = nil
   output_format = nil
 
   i = 0
@@ -25,10 +35,48 @@ def parse_args(args)
       api_key = args[i]
     when "--text"
       text = true
-    when "--highlights"
-      highlights = true
+      i += 1
+    when "--text-max-characters"
+      i += 1
+      text_max_characters = args[i].to_i
+    when "--include-html-tags"
+      include_html_tags = true
+      i += 1
     when "--summary"
       summary = true
+      i += 1
+    when "--summary-query"
+      i += 1
+      summary_query = args[i]
+    when "--summary-schema"
+      i += 1
+      schema_arg = args[i]
+      summary_schema = if schema_arg.start_with?("@")
+                         JSON.parse(File.read(schema_arg[1..]))
+                       else
+                         JSON.parse(schema_arg)
+                       end
+    when "--subpages"
+      i += 1
+      subpages = args[i].to_i
+    when "--subpage-target"
+      i += 1
+      subpage_target << args[i]
+    when "--links"
+      i += 1
+      links = args[i].to_i
+    when "--image-links"
+      i += 1
+      image_links = args[i].to_i
+    when "--context"
+      context = true
+      i += 1
+    when "--context-max-characters"
+      i += 1
+      context_max_characters = args[i].to_i
+    when "--livecrawl-timeout"
+      i += 1
+      livecrawl_timeout = args[i].to_i
     when "--output-format"
       i += 1
       output_format = args[i]
@@ -41,34 +89,130 @@ def parse_args(args)
         ids_arg = arg
         ids = ids_arg.include?(",") ? ids_arg.split(",").map(&:strip) : [ids_arg]
       end
+      i += 1
     end
-
-    i += 1
   end
 
-  { ids: ids, api_key: api_key, text: text, highlights: highlights, summary: summary, output_format: output_format }
+  {
+    ids: ids,
+    api_key: api_key,
+    text: text,
+    text_max_characters: text_max_characters,
+    include_html_tags: include_html_tags,
+    summary: summary,
+    summary_query: summary_query,
+    summary_schema: summary_schema,
+    subpages: subpages,
+    subpage_target: subpage_target,
+    links: links,
+    image_links: image_links,
+    context: context,
+    context_max_characters: context_max_characters,
+    livecrawl_timeout: livecrawl_timeout,
+    output_format: output_format
+  }
+end
+
+# Build contents parameters from extracted flags
+def build_contents_params(args)
+  params = {}
+
+  # Text options
+  if args[:text]
+    if args[:text_max_characters] || args[:include_html_tags]
+      params[:text] = {}
+      params[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
+      params[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
+    else
+      params[:text] = true
+    end
+  end
+
+  # Summary options
+  if args[:summary]
+    if args[:summary_query] || args[:summary_schema]
+      params[:summary] = {}
+      params[:summary][:query] = args[:summary_query] if args[:summary_query]
+      params[:summary][:schema] = args[:summary_schema] if args[:summary_schema]
+    else
+      params[:summary] = true
+    end
+  end
+
+  # Context options
+  if args[:context]
+    if args[:context_max_characters]
+      params[:context] = { max_characters: args[:context_max_characters] }
+    else
+      params[:context] = true
+    end
+  end
+
+  # Subpages options
+  params[:subpages] = args[:subpages] if args[:subpages]
+  params[:subpage_target] = args[:subpage_target] if args[:subpage_target].any?
+
+  # Extras options
+  if args[:links] || args[:image_links]
+    params[:extras] = {}
+    params[:extras][:links] = args[:links] if args[:links]
+    params[:extras][:image_links] = args[:image_links] if args[:image_links]
+  end
+
+  # Livecrawl options
+  params[:livecrawl_timeout] = args[:livecrawl_timeout] if args[:livecrawl_timeout]
+
+  params.empty? ? nil : params
 end
 
 def print_help
-  puts "Exa Get-Contents - Retrieve page contents"
-  puts ""
-  puts "Usage: exa-api get-contents <ids> [options]"
-  puts ""
-  puts "Arguments:"
-  puts "  ids                    Comma-separated list of IDs or URLs (required)"
-  puts ""
-  puts "Options:"
-  puts "  --text                 Include page text in response"
-  puts "  --highlights           Include highlights in response"
-  puts "  --summary              Include summary in response"
-  puts "  --api-key KEY          Exa API key (or set EXA_API_KEY env var)"
-  puts "  --output-format FMT    Output format: json, pretty, or text (default: json)"
-  puts "  --help, -h             Show this help message"
-  puts ""
-  puts "Examples:"
-  puts "  exa-api get-contents 'https://example.com'"
-  puts "  exa-api get-contents 'id1,id2,id3' --text"
-  puts "  exa-api get-contents 'https://example.com' --highlights --output-format pretty"
+  puts <<~HELP
+    Usage: exa-api get-contents <urls> [options]
+
+    Retrieve full page contents from URLs
+
+    Arguments:
+      urls                   Comma-separated list of URLs (required)
+
+    Options:
+      Text Extraction:
+        --text                       Include page text in response
+        --text-max-characters N      Max characters for page text
+        --include-html-tags          Include HTML tags in text extraction
+
+      Summary:
+        --summary                    Include AI-generated summary
+        --summary-query PROMPT       Custom prompt for summary generation
+        --summary-schema FILE        JSON schema for summary structure (@file syntax)
+
+      Context:
+        --context                    Format results as context for LLM RAG
+        --context-max-characters N   Max characters for context string
+
+      Subpages:
+        --subpages N                 Number of subpages to crawl
+        --subpage-target PHRASE      Subpage target phrases (repeatable)
+
+      Extras:
+        --links N                    Number of links to extract per result
+        --image-links N              Number of image links to extract
+
+      Livecrawl:
+        --livecrawl-timeout N        Timeout for livecrawling in milliseconds
+
+      General:
+        --api-key KEY                Exa API key (or set EXA_API_KEY env var)
+        --output-format FMT          Output format: json, pretty, or text (default: json)
+        --help, -h                   Show this help message
+
+    Examples:
+      exa-api get-contents 'https://example.com'
+      exa-api get-contents 'https://example.com' --text
+      exa-api get-contents 'https://example.com' --text --text-max-characters 3000 --include-html-tags
+      exa-api get-contents 'url1,url2' --summary --summary-query "Be terse"
+      exa-api get-contents 'https://example.com' --subpages 1 --subpage-target about
+      exa-api get-contents 'https://example.com' --links 5 --image-links 10
+  HELP
 end
 
 begin
@@ -77,9 +221,9 @@ begin
 
   # Validate IDs
   if options[:ids].empty?
-    puts "Error: IDs argument required"
-    puts ""
-    puts "Run 'exa-api get-contents --help' for usage information."
+    $stderr.puts "Error: URLs argument required"
+    $stderr.puts ""
+    $stderr.puts "Run 'exa-api get-contents --help' for usage information."
     exit 1
   end
 
@@ -93,10 +237,8 @@ begin
   client = Exa::CLI::Base.build_client(api_key)
 
   # Build request parameters
-  params = {}
-  params[:text] = true if options[:text]
-  params[:highlights] = true if options[:highlights]
-  params[:summary] = true if options[:summary]
+  params = build_contents_params(options)
+  params ||= {}
 
   # Call API
   result = client.get_contents(options[:ids], **params)
@@ -104,11 +246,25 @@ begin
   # Format and output
   output = Exa::CLI::Formatters::ContentsFormatter.format(result, output_format)
   puts output
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
 rescue Exa::Error => e
-  puts "Error: #{e.message}"
+  $stderr.puts "Error: #{e.message}"
   exit 1
 rescue StandardError => e
-  puts "Unexpected error: #{e.message}"
-  puts e.backtrace.first(5) if ENV["DEBUG"]
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
   exit 1
 end
