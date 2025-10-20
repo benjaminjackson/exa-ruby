@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    exa-ai (0.1.0)
+    exa-ai (0.2.0)
       faraday (~> 2.0)
 
 GEM
