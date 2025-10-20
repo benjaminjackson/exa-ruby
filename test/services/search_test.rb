@@ -162,4 +162,60 @@ class SearchTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/search"
   end
+
+  def test_call_handles_contents_text_as_boolean
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: { text: true }
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      text: true
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_handles_contents_text_as_hash
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: {
+            text: {
+              maxCharacters: 3000,
+              includeHtmlTags: true
+            }
+          }
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      text: {
+        max_characters: 3000,
+        include_html_tags: true
+      }
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
 end

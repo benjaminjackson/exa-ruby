@@ -26,9 +26,17 @@ module Exa
 
       def convert_params(params)
         converted = {}
+        contents = {}
+
         params.each do |key, value|
-          converted[convert_key(key)] = value
+          if content_key?(key)
+            contents[convert_content_key(key)] = convert_content_value(key, value)
+          else
+            converted[convert_key(key)] = value
+          end
         end
+
+        converted[:contents] = contents if contents.any?
         converted
       end
 
@@ -43,6 +51,72 @@ module Exa
         else
           key
         end
+      end
+
+      def content_key?(key)
+        %i[text summary context subpages subpage_target].include?(key)
+      end
+
+      def convert_content_key(key)
+        case key
+        when :subpage_target then :subpageTarget
+        else
+          key
+        end
+      end
+
+      def convert_content_value(key, value)
+        case key
+        when :text
+          if value.is_a?(Hash)
+            convert_hash_value(value, text_hash_mappings)
+          else
+            value
+          end
+        when :summary
+          if value.is_a?(Hash)
+            convert_hash_value(value, summary_hash_mappings)
+          else
+            value
+          end
+        when :context
+          if value.is_a?(Hash)
+            convert_hash_value(value, context_hash_mappings)
+          else
+            value
+          end
+        else
+          value
+        end
+      end
+
+      def convert_hash_value(hash, mappings)
+        converted = {}
+        hash.each do |k, v|
+          converted_key = mappings[k] || k
+          converted[converted_key] = v
+        end
+        converted
+      end
+
+      def text_hash_mappings
+        {
+          max_characters: :maxCharacters,
+          include_html_tags: :includeHtmlTags
+        }
+      end
+
+      def summary_hash_mappings
+        {
+          query: :query,
+          schema: :schema
+        }
+      end
+
+      def context_hash_mappings
+        {
+          max_characters: :maxCharacters
+        }
       end
     end
   end
