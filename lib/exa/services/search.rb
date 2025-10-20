@@ -9,7 +9,7 @@ module Exa
       end
 
       def call
-        response = @connection.post("/search", @params)
+        response = @connection.post("/search", convert_params(@params))
         body = response.body
 
         Resources::SearchResult.new(
@@ -20,6 +20,27 @@ module Exa
           context: body["context"],
           cost_dollars: body["costDollars"]
         )
+      end
+
+      private
+
+      def convert_params(params)
+        converted = {}
+        params.each do |key, value|
+          converted[convert_key(key)] = value
+        end
+        converted
+      end
+
+      def convert_key(key)
+        case key
+        when :start_published_date then :startPublishedDate
+        when :end_published_date then :endPublishedDate
+        when :start_crawl_date then :startCrawlDate
+        when :end_crawl_date then :endCrawlDate
+        else
+          key
+        end
       end
     end
   end

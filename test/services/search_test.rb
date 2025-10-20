@@ -106,4 +106,34 @@ class SearchTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/search"
   end
+
+  def test_call_converts_date_range_parameters
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          startPublishedDate: "2025-10-12T04:00:00.000Z",
+          endPublishedDate: "2025-10-20T03:59:59.999Z",
+          startCrawlDate: "2025-10-12T04:00:00.000Z",
+          endCrawlDate: "2025-10-20T03:59:59.999Z"
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      start_published_date: "2025-10-12T04:00:00.000Z",
+      end_published_date: "2025-10-20T03:59:59.999Z",
+      start_crawl_date: "2025-10-12T04:00:00.000Z",
+      end_crawl_date: "2025-10-20T03:59:59.999Z"
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
 end
