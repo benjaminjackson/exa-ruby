@@ -69,6 +69,14 @@ def parse_args(argv)
     when "--end-crawl-date"
       args[:end_crawl_date] = argv[i + 1]
       i += 2
+    when "--include-text"
+      args[:include_text] ||= []
+      args[:include_text] << argv[i + 1]
+      i += 2
+    when "--exclude-text"
+      args[:exclude_text] ||= []
+      args[:exclude_text] << argv[i + 1]
+      i += 2
     when "--help", "-h"
       puts <<~HELP
         Usage: exa-api search QUERY [OPTIONS]
@@ -91,6 +99,8 @@ def parse_args(argv)
           --end-published-date DATE    Filter by published date (ISO 8601 format)
           --start-crawl-date DATE      Filter by crawl date (ISO 8601 format)
           --end-crawl-date DATE        Filter by crawl date (ISO 8601 format)
+          --include-text PHRASE        Include results with exact phrase (repeatable)
+          --exclude-text PHRASE        Exclude results with exact phrase (repeatable)
           --use-autoprompt             Use Exa's autoprompt feature
           --linkedin TYPE              Search LinkedIn: company, person, or all
           --api-key KEY                Exa API key (or set EXA_API_KEY env var)
@@ -150,6 +160,8 @@ begin
   search_params[:end_published_date] = args[:end_published_date] if args[:end_published_date]
   search_params[:start_crawl_date] = args[:start_crawl_date] if args[:start_crawl_date]
   search_params[:end_crawl_date] = args[:end_crawl_date] if args[:end_crawl_date]
+  search_params[:include_text] = args[:include_text] if args[:include_text]
+  search_params[:exclude_text] = args[:exclude_text] if args[:exclude_text]
   search_params[:useAutoprompt] = args[:use_autoprompt] if args[:use_autoprompt]
 
   # Execute search based on LinkedIn type
