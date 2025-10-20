@@ -77,6 +77,48 @@ def parse_args(argv)
       args[:exclude_text] ||= []
       args[:exclude_text] << argv[i + 1]
       i += 2
+    when "--text"
+      args[:text] = true
+      i += 1
+    when "--text-max-characters"
+      args[:text_max_characters] = argv[i + 1].to_i
+      i += 2
+    when "--include-html-tags"
+      args[:include_html_tags] = true
+      i += 1
+    when "--summary"
+      args[:summary] = true
+      i += 1
+    when "--summary-query"
+      args[:summary_query] = argv[i + 1]
+      i += 2
+    when "--summary-schema"
+      schema_arg = argv[i + 1]
+      args[:summary_schema] = if schema_arg.start_with?("@")
+                               JSON.parse(File.read(schema_arg[1..]))
+                             else
+                               JSON.parse(schema_arg)
+                             end
+      i += 2
+    when "--context"
+      args[:context] = true
+      i += 1
+    when "--context-max-characters"
+      args[:context_max_characters] = argv[i + 1].to_i
+      i += 2
+    when "--subpages"
+      args[:subpages] = argv[i + 1].to_i
+      i += 2
+    when "--subpage-target"
+      args[:subpage_target] ||= []
+      args[:subpage_target] << argv[i + 1]
+      i += 2
+    when "--links"
+      args[:links] = argv[i + 1].to_i
+      i += 2
+    when "--image-links"
+      args[:image_links] = argv[i + 1].to_i
+      i += 2
     when "--help", "-h"
       puts <<~HELP
         Usage: exa-api search QUERY [OPTIONS]
@@ -101,6 +143,22 @@ def parse_args(argv)
           --end-crawl-date DATE        Filter by crawl date (ISO 8601 format)
           --include-text PHRASE        Include results with exact phrase (repeatable)
           --exclude-text PHRASE        Exclude results with exact phrase (repeatable)
+
+        Content Extraction:
+          --text                       Include full webpage text
+          --text-max-characters N      Max characters for webpage text
+          --include-html-tags          Include HTML tags in text extraction
+          --summary                    Include AI-generated summary
+          --summary-query PROMPT       Custom prompt for summary generation
+          --summary-schema FILE        JSON schema for summary structure (@file syntax)
+          --context                    Format results as context for LLM RAG
+          --context-max-characters N   Max characters for context string
+          --subpages N                 Number of subpages to crawl
+          --subpage-target PHRASE      Subpage target phrases (repeatable)
+          --links N                    Number of links to extract per result
+          --image-links N              Number of image links to extract
+
+        General Options:
           --use-autoprompt             Use Exa's autoprompt feature
           --linkedin TYPE              Search LinkedIn: company, person, or all
           --api-key KEY                Exa API key (or set EXA_API_KEY env var)
@@ -127,6 +185,55 @@ def parse_args(argv)
 
   args[:query] = query_parts.join(" ")
   args
+end
+
+# Build contents parameter from extracted flags
+def build_contents(args)
+  contents = {}
+
+  # Text options
+  if args[:text]
+    if args[:text_max_characters] || args[:include_html_tags]
+      contents[:text] = {}
+      contents[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
+      contents[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
+    else
+      contents[:text] = true
+    end
+  end
+
+  # Summary options
+  if args[:summary]
+    if args[:summary_query] || args[:summary_schema]
+      contents[:summary] = {}
+      contents[:summary][:query] = args[:summary_query] if args[:summary_query]
+      contents[:summary][:schema] = args[:summary_schema] if args[:summary_schema]
+    else
+      contents[:summary] = true
+    end
+  end
+
+  # Context options
+  if args[:context]
+    if args[:context_max_characters]
+      contents[:context] = { max_characters: args[:context_max_characters] }
+    else
+      contents[:context] = true
+    end
+  end
+
+  # Subpages options
+  contents[:subpages] = args[:subpages] if args[:subpages]
+  contents[:subpage_target] = args[:subpage_target] if args[:subpage_target]
+
+  # Extras options
+  if args[:links] || args[:image_links]
+    contents[:extras] = {}
+    contents[:extras][:links] = args[:links] if args[:links]
+    contents[:extras][:image_links] = args[:image_links] if args[:image_links]
+  end
+
+  contents.empty? ? nil : contents
 end
 
 # Main execution
@@ -162,6 +269,8 @@ begin
   search_params[:end_crawl_date] = args[:end_crawl_date] if args[:end_crawl_date]
   search_params[:include_text] = args[:include_text] if args[:include_text]
   search_params[:exclude_text] = args[:exclude_text] if args[:exclude_text]
+  contents = build_contents(args)
+  search_params.merge!(contents) if contents
   search_params[:useAutoprompt] = args[:use_autoprompt] if args[:use_autoprompt]
 
   # Execute search based on LinkedIn type
