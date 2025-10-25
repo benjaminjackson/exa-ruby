@@ -1,10 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "bundler/setup"
-require "exa"
-require "exa/cli/base"
-require "exa/cli/formatters/contents_formatter"
+require "exa-ai"
 
 # Parse command line arguments
 def parse_args(args)

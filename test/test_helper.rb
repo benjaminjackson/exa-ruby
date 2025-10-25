@@ -2,7 +2,7 @@
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
-require "exa"
+require "exa-ai"
 require "minitest/autorun"
 require "webmock/minitest"
 require "vcr"

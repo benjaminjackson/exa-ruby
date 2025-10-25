@@ -11,7 +11,7 @@ module Exa
         env_key = ENV["EXA_API_KEY"]
         return env_key if env_key && !env_key.empty?
 
-        raise ConfigurationError,
+        raise Exa::ConfigurationError,
               "Missing API key. Set EXA_API_KEY environment variable or use --api-key flag"
       end
 
@@ -24,13 +24,13 @@ module Exa
 
         return format if valid_formats.include?(format)
 
-        raise ConfigurationError,
+        raise Exa::ConfigurationError,
               "Invalid output format: #{format}. Valid formats: #{valid_formats.join(', ')}"
       end
 
       # Build a client instance with the given API key
       def self.build_client(api_key, **options)
-        Client.new(api_key: api_key, **options)
+        Exa::Client.new(api_key: api_key, **options)
       end
 
       # Format output data based on format type

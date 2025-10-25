@@ -14,7 +14,7 @@ Complete reference for the Exa Ruby client library.
 ## Client Initialization
 
 ```ruby
-require 'exa'
+require 'exa-ai'
 
 # Using configuration
 Exa.configure do |config|

@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "bundler/setup"
-require "exa"
+require "exa-ai"
 
 # Parse command-line arguments
 api_key = nil

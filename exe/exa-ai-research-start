@@ -1,9 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Set up load paths
-require "bundler/setup"
-require "exa"
+require "exa-ai"
 
 # Parse command-line arguments
 def parse_args(argv)

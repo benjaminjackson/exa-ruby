@@ -35,7 +35,7 @@ export EXA_API_KEY="your-api-key-here"
 **Ruby Code**
 
 ```ruby
-require 'exa'
+require 'exa-ai'
 
 Exa.configure do |config|
   config.api_key = "your-api-key-here"
@@ -56,7 +56,7 @@ exa-ai search "query" --api-key YOUR_API_KEY
 ### Ruby API
 
 ```ruby
-require 'exa'
+require 'exa-ai'
 
 Exa.configure do |config|
   config.api_key = ENV['EXA_API_KEY']
@@ -113,7 +113,7 @@ The gem provides complete access to Exa's API endpoints:
 ## Error Handling
 
 ```ruby
-require 'exa'
+require 'exa-ai'
 
 client = Exa::Client.new(api_key: "your-key")
 
