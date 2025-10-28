@@ -11,8 +11,8 @@ http_interactions:
     headers:
       User-Agent:
       - Faraday v2.14.0
-      Authorization:
-      - Bearer <EXA_API_KEY>
+      x-api-key:
+      - <EXA_API_KEY>
       Content-Type:
       - application/json
       Accept-Encoding:
