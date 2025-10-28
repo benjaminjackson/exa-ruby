@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2025-10-28
+
+### Added
+
+#### CLI Features
+- **Answer formatter** - New answer formatter module imported into CLI for improved answer output formatting
+
+#### Testing
+- **CLI executable tests** - Comprehensive test suite validating CLI executables and their functionality
+
+### Changed
+- **Authentication header** - Migrated from Bearer token authentication to x-api-key header for API requests (internal change, no user-facing impact)
+
+### Fixed
+- **Gem name conflict** - Resolved conflict with unrelated 'exa' gem to ensure proper gem resolution
+
 ## [0.3.0] - 2025-10-20
 
 ### Added
