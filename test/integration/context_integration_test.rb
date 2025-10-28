@@ -7,7 +7,7 @@ class ContextIntegrationTest < Minitest::Test
     VCR.use_cassette("context_react_hooks") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
 
-      result = client.context("how to use React hooks for state management")
+      result = client.context("how to use React hooks for state management", tokensNum: 5000)
 
       assert_instance_of Exa::Resources::ContextResult, result
       refute_nil result.response
@@ -21,7 +21,7 @@ class ContextIntegrationTest < Minitest::Test
     VCR.use_cassette("context_react_hooks") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
 
-      result = client.context("how to use React hooks for state management")
+      result = client.context("how to use React hooks for state management", tokensNum: 5000)
 
       # Verify all expected methods respond
       assert_respond_to result, :request_id

@@ -7,12 +7,12 @@ class ConnectionTest < Minitest::Test
     assert_instance_of Faraday::Connection, connection
   end
 
-  def test_sets_authorization_header
+  def test_sets_api_key_header
     connection = Exa::Connection.build(api_key: "test_secret_key")
 
     # Make a test request to inspect headers
     stub_request(:get, "https://api.exa.ai/test")
-      .with(headers: { "Authorization" => "Bearer test_secret_key" })
+      .with(headers: { "x-api-key" => "test_secret_key" })
       .to_return(status: 200, body: "")
 
     connection.get("/test")

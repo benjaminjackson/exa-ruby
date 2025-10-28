@@ -92,8 +92,11 @@ class Exa::CLI::ContextTest < Minitest::Test
 
     stub_request(:post, "https://api.exa.ai/context")
       .with(
-        body: hash_including(query: query),
-        headers: { "Authorization" => "Bearer #{@api_key}" }
+        body: hash_including(
+          query: query,
+          tokensNum: tokens_num == "dynamic" ? "dynamic" : tokens_num.to_i
+        ),
+        headers: { "x-api-key" => @api_key }
       )
       .to_return(
         status: 200,
@@ -136,12 +139,8 @@ class Exa::CLI::ContextTest < Minitest::Test
         client = Exa::Client.new(api_key: @api_key)
 
         # Build params
-        params = {}
-        if tokens_num != "dynamic"
-          params[:tokens_num] = tokens_num.to_i
-        else
-          params[:tokens_num] = tokens_num
-        end
+        params = { tokensNum: tokens_num }
+        params[:tokensNum] = params[:tokensNum].to_i if tokens_num != "dynamic"
 
         result = client.context(query, **params)
 

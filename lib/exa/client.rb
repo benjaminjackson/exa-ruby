@@ -161,6 +161,7 @@ module Exa
       options = {}
       options[:base_url] = @options[:base_url] if @options[:base_url]
       options[:timeout] = @options[:timeout] if @options[:timeout]
+      options[:debug] = true if ENV["EXA_DEBUG"]
       options
     end
 

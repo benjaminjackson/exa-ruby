@@ -22,3 +22,12 @@ end
 
 # Disable external network connections in tests (VCR will manage allowed connections)
 WebMock.disable_net_connect!(allow_localhost: true)
+
+# Debug logging helper
+def with_debug_logging
+  original_debug = ENV["EXA_DEBUG"]
+  ENV["EXA_DEBUG"] = "true"
+  yield
+ensure
+  original_debug ? (ENV["EXA_DEBUG"] = original_debug) : ENV.delete("EXA_DEBUG")
+end
