@@ -1,0 +1,228 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"venture-backed SaaS companies","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:48:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '759'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f7-I6/EnPQa8DYizbQT5Dlu0gKM2IM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=PcaealdvJ1%2FveK26g%2BXYhJNuvfKWCxVXOl787ykW4e3oQGwvK%2Fn%2FlGI0xXjFcBMJl8%2BnZwmBn5xca6qB43uRyWtbobXQr%2Fer27ZNA6vIwuf8drjP5g%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bf9237e7ade9a-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kapw1wqtrq3wzz9h8jbmj0cm","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapw1x371d0t3fatnsj6ws3v","object":"webset_search","websetId":"webset_01kapw1wqtrq3wzz9h8jbmj0cm","status":"running","query":"venture-backed
+        SaaS companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:48:15.207Z","updatedAt":"2025-11-22T22:48:15.563Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:48:14.842Z","updatedAt":"2025-11-22T22:48:15.563Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:48:16 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw1wqtrq3wzz9h8jbmj0cm/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"E-commerce platforms with international shipping","count":2}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:48:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '504'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1f8-SoPNoq7sxf3uim+4aoZ7PJKdIqU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=CzZa4lcazT9sizHGhh0XH0JY91wZ2%2F%2BE0TwO7EHNSio%2BOjDZBdbO%2B2R7znDwO9IEE4%2FaXKFOoneTijxPxO16YBufEar9t6v8ue%2FlPUXyVVnEgzw%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bf9a02b60c327-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapw2gyen002q77hn21gfhkx","object":"webset_search","websetId":"webset_01kapw1wqtrq3wzz9h8jbmj0cm","status":"running","query":"E-commerce
+        platforms with international shipping","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:48:35.534Z","updatedAt":"2025-11-22T22:48:35.903Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:48:36 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw1wqtrq3wzz9h8jbmj0cm/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"Direct-to-consumer brands in fashion","count":2}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:48:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '492'
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1ec-Ux9NfFAbli7Jd7iqKlakAf2vKdI"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2BGrQqqb1PkzlBJjBAqY24enX0MbLo%2F6H46WCjcxZb%2Bghzhy9os309d%2BzR5UEeWpnErU0daP6wrkr5pm5ERYFxcZLEWhyP64IcEJApDtoT8Ake1ozXA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bf9aa485243bb-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapw2jjy3af87emqav3fjnf9","object":"webset_search","websetId":"webset_01kapw1wqtrq3wzz9h8jbmj0cm","status":"running","query":"Direct-to-consumer
+        brands in fashion","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:48:37.214Z","updatedAt":"2025-11-22T22:48:37.649Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:48:37 GMT
+recorded_with: VCR 6.3.1

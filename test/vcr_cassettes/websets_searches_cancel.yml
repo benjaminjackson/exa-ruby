@@ -1,0 +1,229 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"enterprise AI/ML infrastructure startups with Series
+        A funding","count":2}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:48:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '792'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"318-utAltH0mBHbEp/QOfabR5blPCxU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=weg8MkYZnensh9%2B09LzR3Hzn3VEhd8I%2FehC6YdNktBSzfTCtCS7nJJ5iV16jcjt1rJZQCZPCYQZSPRynyFnfRHKUB4e9%2FpiUxiTqCcjBZg8BNQk%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bf9c77af80cc8-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kapw2pc4ctnq2e1py5s4mf6n","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapw2ppt8d88a2w8rqce9ge0","object":"webset_search","websetId":"webset_01kapw2pc4ctnq2e1py5s4mf6n","status":"running","query":"enterprise
+        AI/ML infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:48:41.434Z","updatedAt":"2025-11-22T22:48:41.769Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:48:41.092Z","updatedAt":"2025-11-22T22:48:41.769Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:48:42 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw2pc4ctnq2e1py5s4mf6n/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"Cloud infrastructure companies with enterprise customers","count":2}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:49:06 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '512'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"200-nyJWn0ydA0zqcTaxo8TeOoZMnNc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=28sZhjgmFxzqXG0cobqE9rSDvOgUjdBP6rhoTh%2FGJMF5p77PnEnfYxxVqjkGrMWWhs2dfauWX0PDRBmrKzf3S8ohFs7LoSwXfqBUPULczYNsTdEbsw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bfa5b7996c44f-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapw3er629agjmw8jd34jn82","object":"webset_search","websetId":"webset_01kapw2pc4ctnq2e1py5s4mf6n","status":"running","query":"Cloud
+        infrastructure companies with enterprise customers","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:49:06.054Z","updatedAt":"2025-11-22T22:49:06.435Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:49:06 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw2pc4ctnq2e1py5s4mf6n/searches/wsearch_01kapw3er629agjmw8jd34jn82/cancel
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:49:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"216-SW6oZ6xFDgBybApzleXiHqpYpuc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=IpZ5z1xZCyieol%2FN9XVURMn1QBov1LWjczziaJGu%2FKI%2BUINqFxy1MHbOJANfPOuEkw7NCLwYtcNDWiO7ssiqpWwzaV%2FQQRtrENQB4q%2FR7Fo1Z6Niqg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bfa689fd6255d-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"wsearch_01kapw3er629agjmw8jd34jn82","object":"webset_search","websetId":"webset_01kapw2pc4ctnq2e1py5s4mf6n","status":"canceled","query":"Cloud
+        infrastructure companies with enterprise customers","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":"2025-11-22T22:49:07.422Z","canceledReason":null,"createdAt":"2025-11-22T22:49:06.054Z","updatedAt":"2025-11-22T22:49:07.680Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:49:08 GMT
+recorded_with: VCR 6.3.1

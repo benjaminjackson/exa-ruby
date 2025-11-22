@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Series A fintech startups in London","count":1}}'
+      string: '{"search":{"query":"London Fintechs","count":1}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -23,15 +23,13 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 22:52:53 GMT
+      - Sat, 22 Nov 2025 22:51:26 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '765'
+      - '745'
       Connection:
       - keep-alive
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -61,26 +59,28 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2fd-NGlTpq5Y5vo4xrWy0af0HtITxU8"
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DsirNXVUbBtOcMZS%2BLoDXc34wp1CcwWnI277FI7zBEgw3P8wpPN9NTe0t%2FXVAnnf5%2Fs3A7AZf48pWFOOa01YGNS6T5QaXL37Ls%2BWc43Sb8LjXP1ZMg%3D%3D"}]}'
+      - W/"2e9-ws518m4RRb7ez0LdWHe5sX3hxCY"
       Cf-Cache-Status:
       - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Brz1nqPvW0h3i92%2FV9kjTavD7MKfuSBU%2FWzGNPxUkhkYR1LKnCInt4E3HFP%2BLs7xRTiJmuh7cAbD2%2BahOBZStHaEqeVspuVYQbGNSTkUwsoh5DWu5A%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2bffea3c8b7d0e-EWR
+      - 9a2bfdca984058af-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapwabtw0enjmytxceg9ez3f","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapwac6q4nsby0513xr8dzd9","object":"webset_search","websetId":"webset_01kapwabtw0enjmytxceg9ez3f","status":"running","query":"Series
-        A fintech startups in London","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:52.823Z","updatedAt":"2025-11-22T22:52:53.186Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:52:52.444Z","updatedAt":"2025-11-22T22:52:53.186Z"}'
-  recorded_at: Sat, 22 Nov 2025 22:52:53 GMT
+      string: '{"id":"webset_01kapw7px5gf22fwd9pyphf977","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapw7q9bv49rg613k9vm9esy","object":"webset_search","websetId":"webset_01kapw7px5gf22fwd9pyphf977","status":"running","query":"London
+        Fintechs","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:51:25.867Z","updatedAt":"2025-11-22T22:51:26.349Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:51:25.477Z","updatedAt":"2025-11-22T22:51:26.349Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:51:26 GMT
 - request:
     method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapwabtw0enjmytxceg9ez3f/searches
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw7px5gf22fwd9pyphf977/searches
     body:
       encoding: UTF-8
-      string: '{"query":"European payment processing companies","count":2,"behavior":"override"}'
+      string: '{"query":"Paris Fintechs","count":2,"behavior":"append"}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -98,13 +98,15 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 22:52:55 GMT
+      - Sat, 22 Nov 2025 22:51:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '493'
+      - '468'
       Connection:
       - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -134,20 +136,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"1ed-K1OmgsjOJqJh0r1nbpzfyLWayCs"
+      - W/"1d4-o44nYc6gjgmBweT7ih4hmCatci4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=pRH0aeGz8zIba%2Bs8PMgU0QZmdS7tZMffFxM3NvybmcuY%2BmQNPlidPHHGejClPSSvXQdh7ACxeYA4M7RcpZPyCy4fkfT3qegCsQbVVBt89%2FiCCkdHjQ%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FpyOEuyT4mqH7FEipEE86CkqCCpJCjDt1B4P1D%2BOGwrO74LBgzY%2Bi0ls7GmHv9VzVNTiQjGaoGl6GyXScyUEbt%2BXlsNBLd5Q9NoGIrJ4z9QVPJbBIQ%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2bfff44c1b1016-EWR
+      - 9a2bfe5fbe5ce8a6-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"wsearch_01kapwae8n89442y0bvb7e9nag","object":"webset_search","websetId":"webset_01kapwabtw0enjmytxceg9ez3f","status":"running","query":"European
-        payment processing companies","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:54.933Z","updatedAt":"2025-11-22T22:52:55.276Z"}'
-  recorded_at: Sat, 22 Nov 2025 22:52:55 GMT
+      string: '{"id":"wsearch_01kapw8fzvmgqj6c30vexhkds2","object":"webset_search","websetId":"webset_01kapw7px5gf22fwd9pyphf977","status":"running","query":"Paris
+        Fintechs","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"append","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:51:51.163Z","updatedAt":"2025-11-22T22:51:52.301Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:51:52 GMT
 recorded_with: VCR 6.3.1

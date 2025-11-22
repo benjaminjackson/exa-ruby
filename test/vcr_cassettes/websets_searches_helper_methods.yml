@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Series A fintech startups in London","count":1}}'
+      string: '{"search":{"query":"EdTech companies","count":1}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -23,11 +23,11 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 22:52:53 GMT
+      - Sat, 22 Nov 2025 22:49:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '765'
+      - '746'
       Connection:
       - keep-alive
       Nel:
@@ -61,26 +61,26 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2fd-NGlTpq5Y5vo4xrWy0af0HtITxU8"
+      - W/"2ea-vqbNoexLaD67Y7UZFCEcgHX5thw"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DsirNXVUbBtOcMZS%2BLoDXc34wp1CcwWnI277FI7zBEgw3P8wpPN9NTe0t%2FXVAnnf5%2Fs3A7AZf48pWFOOa01YGNS6T5QaXL37Ls%2BWc43Sb8LjXP1ZMg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=34coRNItUfVDDHPfVy16p6VENUHCx0tOkXVoiG8BhF0U6fPPY0NyCK5LzdmdjqtC7o1jddc3G7W7DaVs%2FzGPro75u50l1oElRArvj2gl0W45gLtZ6w%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2bffea3c8b7d0e-EWR
+      - 9a2bfb1b5ead8b88-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapwabtw0enjmytxceg9ez3f","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapwac6q4nsby0513xr8dzd9","object":"webset_search","websetId":"webset_01kapwabtw0enjmytxceg9ez3f","status":"running","query":"Series
-        A fintech startups in London","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:52.823Z","updatedAt":"2025-11-22T22:52:53.186Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:52:52.444Z","updatedAt":"2025-11-22T22:52:53.186Z"}'
-  recorded_at: Sat, 22 Nov 2025 22:52:53 GMT
+      string: '{"id":"webset_01kapw4de7a9rjwkf2vhfkkdbz","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapw4dv05gndy32k4xbme7r1","object":"webset_search","websetId":"webset_01kapw4de7a9rjwkf2vhfkkdbz","status":"running","query":"EdTech
+        companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:49:37.888Z","updatedAt":"2025-11-22T22:49:38.279Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:49:37.479Z","updatedAt":"2025-11-22T22:49:38.279Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:49:38 GMT
 - request:
     method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapwabtw0enjmytxceg9ez3f/searches
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw4de7a9rjwkf2vhfkkdbz/searches
     body:
       encoding: UTF-8
-      string: '{"query":"European payment processing companies","count":2,"behavior":"override"}'
+      string: '{"query":"Online learning platforms for corporate training","count":2,"behavior":"override"}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -98,13 +98,15 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 22:52:55 GMT
+      - Sat, 22 Nov 2025 22:49:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '493'
+      - '504'
       Connection:
       - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -134,20 +136,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"1ed-K1OmgsjOJqJh0r1nbpzfyLWayCs"
+      - W/"1f8-KUu6AzaQRcVmLLph8hsxeVAPz+k"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=INoDuyaF0sxu2P9wrMvzOmBuD4a4pg4xyXcCzOk17oKHQYnJeOC%2FpDtsFVvpOzB9bxiugrLGKbbxOTgQIJkDmHHx9mGkKdTGpx0OrS7o7L5Ql%2FJmqg%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FpyOEuyT4mqH7FEipEE86CkqCCpJCjDt1B4P1D%2BOGwrO74LBgzY%2Bi0ls7GmHv9VzVNTiQjGaoGl6GyXScyUEbt%2BXlsNBLd5Q9NoGIrJ4z9QVPJbBIQ%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2bfff44c1b1016-EWR
+      - 9a2bfb9d0a921016-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"wsearch_01kapwae8n89442y0bvb7e9nag","object":"webset_search","websetId":"webset_01kapwabtw0enjmytxceg9ez3f","status":"running","query":"European
-        payment processing companies","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:54.933Z","updatedAt":"2025-11-22T22:52:55.276Z"}'
-  recorded_at: Sat, 22 Nov 2025 22:52:55 GMT
+      string: '{"id":"wsearch_01kapw50wp650jfkspzzbadmgh","object":"webset_search","websetId":"webset_01kapw4de7a9rjwkf2vhfkkdbz","status":"running","query":"Online
+        learning platforms for corporate training","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:49:57.398Z","updatedAt":"2025-11-22T22:49:57.777Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:49:58 GMT
 recorded_with: VCR 6.3.1
