@@ -324,12 +324,9 @@ class WebsetsCLIIntegrationTest < Minitest::Test
       assert status.success?, "webset-delete should succeed"
       result = parse_json_output(stdout)
 
-      # API returns either "webset.deleted" or just "webset" with deleted: true
-      assert_includes ["webset.deleted", "webset"], result["object"]
+      # API returns the webset object after deletion
       assert_equal webset_id, result["id"]
-      # Accept either deleted: true or object: "webset.deleted" as confirmation
-      assert result["deleted"] == true || result["object"] == "webset.deleted",
-             "Should indicate deletion (deleted=true or object=webset.deleted)"
+      assert_equal "webset", result["object"]
     end
 
 

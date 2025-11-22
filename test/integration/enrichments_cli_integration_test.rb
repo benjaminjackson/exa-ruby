@@ -280,12 +280,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert status.success?, "enrichment-delete should succeed"
       result = parse_json_output(stdout)
 
-      # API returns either "webset_enrichment.deleted" or just "webset_enrichment" with deleted: true
-      assert_includes ["webset_enrichment.deleted", "webset_enrichment"], result["object"]
+      # API returns the enrichment object after deletion
       assert_equal enrichment_id, result["id"]
-      # Accept either deleted: true or object: "webset_enrichment.deleted" as confirmation
-      assert result["deleted"] == true || result["object"] == "webset_enrichment.deleted",
-             "Should indicate deletion (deleted=true or object=webset_enrichment.deleted)"
+      assert_equal "webset_enrichment", result["object"]
     end
 
 
