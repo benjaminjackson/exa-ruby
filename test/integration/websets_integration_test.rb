@@ -93,7 +93,7 @@ class WebsetsIntegrationTest < Minitest::Test
         enrichments: [
           {
             description: "Find the company's primary contact email address",
-            format: "email"
+            format: "text"
           },
           {
             description: "Determine the company size category",
