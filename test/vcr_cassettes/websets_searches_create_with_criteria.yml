@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Series A fintech startups in London","count":1}}'
+      string: '{"search":{"query":"B2B SaaS","count":1}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -23,11 +23,11 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 22:52:53 GMT
+      - Sat, 22 Nov 2025 22:50:59 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '765'
+      - '738'
       Connection:
       - keep-alive
       Nel:
@@ -61,26 +61,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2fd-NGlTpq5Y5vo4xrWy0af0HtITxU8"
+      - W/"2e2-XjJNrHnuxiW+9BEeMs3vdJK81Hw"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DsirNXVUbBtOcMZS%2BLoDXc34wp1CcwWnI277FI7zBEgw3P8wpPN9NTe0t%2FXVAnnf5%2Fs3A7AZf48pWFOOa01YGNS6T5QaXL37Ls%2BWc43Sb8LjXP1ZMg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=SdlDf6Bz7%2Bz2uCW09SoJJxat533jzP7AzGa1f2B8jbKT%2BHX2F8KCJq3cwU3ls27aXFG%2FzszUJ0wVZLkPHNcJH4rxJQ7g9%2BbvzvDIy%2BwHaV2FdVE%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2bffea3c8b7d0e-EWR
+      - 9a2bfd1c1ed80ca0-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapwabtw0enjmytxceg9ez3f","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapwac6q4nsby0513xr8dzd9","object":"webset_search","websetId":"webset_01kapwabtw0enjmytxceg9ez3f","status":"running","query":"Series
-        A fintech startups in London","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:52.823Z","updatedAt":"2025-11-22T22:52:53.186Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:52:52.444Z","updatedAt":"2025-11-22T22:52:53.186Z"}'
-  recorded_at: Sat, 22 Nov 2025 22:52:53 GMT
+      string: '{"id":"webset_01kapw6vk9vqyqe1df215wrwh6","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapw6vy824pe0byxnet066ve","object":"webset_search","websetId":"webset_01kapw6vk9vqyqe1df215wrwh6","status":"running","query":"B2B
+        SaaS","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:50:57.864Z","updatedAt":"2025-11-22T22:50:58.212Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:50:57.513Z","updatedAt":"2025-11-22T22:50:58.212Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:50:59 GMT
 - request:
     method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapwabtw0enjmytxceg9ez3f/searches
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw6vk9vqyqe1df215wrwh6/searches
     body:
       encoding: UTF-8
-      string: '{"query":"European payment processing companies","count":2,"behavior":"override"}'
+      string: '{"query":"SaaS companies","count":2,"criteria":[{"description":"focused
+        on enterprise customers"},{"description":"raised Series A or later"}]}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -98,13 +99,15 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 22:52:55 GMT
+      - Sat, 22 Nov 2025 22:51:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '493'
+      - '594'
       Connection:
       - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -134,20 +137,20 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"1ed-K1OmgsjOJqJh0r1nbpzfyLWayCs"
+      - W/"252-TEqILv53LvOzXZSf1yVmOmcP1Z8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qQm0ZK6P0hJUbZ4%2FkhOVMCfuiKR2h0JrS1mm0dt4iZXA5Uv1s3dffxPTFjnR2lN1Jbm%2B%2B2SQPVyKxQjHzk5cHWpmTepSJ5CbgWEv7pdAK90w2jFiQA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FpyOEuyT4mqH7FEipEE86CkqCCpJCjDt1B4P1D%2BOGwrO74LBgzY%2Bi0ls7GmHv9VzVNTiQjGaoGl6GyXScyUEbt%2BXlsNBLd5Q9NoGIrJ4z9QVPJbBIQ%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2bfff44c1b1016-EWR
+      - 9a2bfdb18e6c8c06-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"wsearch_01kapwae8n89442y0bvb7e9nag","object":"webset_search","websetId":"webset_01kapwabtw0enjmytxceg9ez3f","status":"running","query":"European
-        payment processing companies","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:54.933Z","updatedAt":"2025-11-22T22:52:55.276Z"}'
-  recorded_at: Sat, 22 Nov 2025 22:52:55 GMT
+      string: '{"id":"wsearch_01kapw7kpqdk933c345pde83j3","object":"webset_search","websetId":"webset_01kapw6vk9vqyqe1df215wrwh6","status":"running","query":"SaaS
+        companies","entity":{"type":"company"},"criteria":[{"description":"focused
+        on enterprise customers","successRate":0},{"description":"raised Series A
+        or later","successRate":0}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:51:22.199Z","updatedAt":"2025-11-22T22:51:22.566Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:51:22 GMT
 recorded_with: VCR 6.3.1

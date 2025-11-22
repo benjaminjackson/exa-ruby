@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Series A fintech startups in London","count":1}}'
+      string: '{"search":{"query":"Climate tech companies","count":1}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -23,11 +23,11 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 22:52:53 GMT
+      - Sat, 22 Nov 2025 22:51:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '765'
+      - '752'
       Connection:
       - keep-alive
       Nel:
@@ -61,26 +61,26 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2fd-NGlTpq5Y5vo4xrWy0af0HtITxU8"
+      - W/"2f0-RPHPna1US3aHUxttrIjOv9Zskzw"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DsirNXVUbBtOcMZS%2BLoDXc34wp1CcwWnI277FI7zBEgw3P8wpPN9NTe0t%2FXVAnnf5%2Fs3A7AZf48pWFOOa01YGNS6T5QaXL37Ls%2BWc43Sb8LjXP1ZMg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=rNQ121bTAr48bZK9skbMCoAr6n924lkihPkcx7jKiYn%2Fh1bNxYxRwqAfmGIUGlm6CQVIO9p6YFtLPJr532r07G0I%2F6%2FUL%2F6skUBGSXXhHSgP0Jk3bA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2bffea3c8b7d0e-EWR
+      - 9a2bfe843a4141af-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapwabtw0enjmytxceg9ez3f","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapwac6q4nsby0513xr8dzd9","object":"webset_search","websetId":"webset_01kapwabtw0enjmytxceg9ez3f","status":"running","query":"Series
-        A fintech startups in London","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:52.823Z","updatedAt":"2025-11-22T22:52:53.186Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:52:52.444Z","updatedAt":"2025-11-22T22:52:53.186Z"}'
-  recorded_at: Sat, 22 Nov 2025 22:52:53 GMT
+      string: '{"id":"webset_01kapw8mksz5t30k1mz7rkvm07","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapw8n2fwd736bs7041mbw2m","object":"webset_search","websetId":"webset_01kapw8mksz5t30k1mz7rkvm07","status":"running","query":"Climate
+        tech companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:51:56.367Z","updatedAt":"2025-11-22T22:51:56.769Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:51:55.897Z","updatedAt":"2025-11-22T22:51:56.769Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:51:57 GMT
 - request:
     method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapwabtw0enjmytxceg9ez3f/searches
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw8mksz5t30k1mz7rkvm07/searches
     body:
       encoding: UTF-8
-      string: '{"query":"European payment processing companies","count":2,"behavior":"override"}'
+      string: '{"query":"Carbon capture and renewable energy startups","count":2,"metadata":{"test_key":"test_value","project":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -98,13 +98,15 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 22:52:55 GMT
+      - Sat, 22 Nov 2025 22:52:19 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '493'
+      - '500'
       Connection:
       - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -134,20 +136,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"1ed-K1OmgsjOJqJh0r1nbpzfyLWayCs"
+      - W/"1f4-qji845DMJWFNp1+FEOuuvyAjDkg"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=INTv%2BRGYoyu4oC%2FS3Gfj95m34RQsPXKjUz455VO9VEq5ihE8AEpMS1gKFAypgkq%2Bh5z2OGyFgo9GAJJH6w%2Fnf%2BbauyffYBlaQagcBo2MPwiT6f0pCg%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FpyOEuyT4mqH7FEipEE86CkqCCpJCjDt1B4P1D%2BOGwrO74LBgzY%2Bi0ls7GmHv9VzVNTiQjGaoGl6GyXScyUEbt%2BXlsNBLd5Q9NoGIrJ4z9QVPJbBIQ%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2bfff44c1b1016-EWR
+      - 9a2bff114ed12ef5-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"wsearch_01kapwae8n89442y0bvb7e9nag","object":"webset_search","websetId":"webset_01kapwabtw0enjmytxceg9ez3f","status":"running","query":"European
-        payment processing companies","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:54.933Z","updatedAt":"2025-11-22T22:52:55.276Z"}'
-  recorded_at: Sat, 22 Nov 2025 22:52:55 GMT
+      string: '{"id":"wsearch_01kapw9bdj16y754yy1jfmd0wd","object":"webset_search","websetId":"webset_01kapw8mksz5t30k1mz7rkvm07","status":"running","query":"Carbon
+        capture and renewable energy startups","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:52:19.250Z","updatedAt":"2025-11-22T22:52:19.609Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:52:19 GMT
 recorded_with: VCR 6.3.1

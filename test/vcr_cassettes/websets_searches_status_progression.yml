@@ -1,0 +1,226 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Healthcare technology startups","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:50:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '760'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f8-Dn+Rdo33UAg8d9NBMQG4RY2CLzo"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=PajtAtt4a8Dgf%2BgN03bi%2B1J%2FzRUWLFrdml9F2Ysvin6xZuzyxZMARAQmpXJ0D7nY4KKSfOqThncjt86bc2S9IMeVlYDG0VsPf8njTrHGiLTGH6dBSw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bfc643c55c794-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kapw5zyg7rw10nkc799hch93","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapw60an9qed26zq6ad846tb","object":"webset_search","websetId":"webset_01kapw5zyg7rw10nkc799hch93","status":"running","query":"Healthcare
+        technology startups","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:50:29.589Z","updatedAt":"2025-11-22T22:50:29.946Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:50:29.200Z","updatedAt":"2025-11-22T22:50:29.946Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:50:30 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw5zyg7rw10nkc799hch93/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"Digital health platforms with FDA approval","count":2}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:50:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '498'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1f2-LLZGGeuXx4OaiHxrvJTvlr4byQc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=iZSzW4wvRCGK61pXyLf5IK6zHX%2BoIN8SE%2B0X21azgLcBiRy6xaGnVJmGeIu2s5YOQ8WZKB4X7azHrWhdEbkpLBfby9NT%2BOYFurInlz35wZLH9lml8Q%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bfcfddd334382-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapw6r33r6wqg2x6j02934xc","object":"webset_search","websetId":"webset_01kapw5zyg7rw10nkc799hch93","status":"running","query":"Digital
+        health platforms with FDA approval","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:50:53.923Z","updatedAt":"2025-11-22T22:50:54.346Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:50:54 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapw5zyg7rw10nkc799hch93/searches/wsearch_01kapw6r33r6wqg2x6j02934xc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:50:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1f2-LLZGGeuXx4OaiHxrvJTvlr4byQc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=6XKR5VD16l0CB9J%2BPBY1plDYQVa8Nxhvb3N2YXhn86ilF%2FF77ZPDYKbz63gW300IL5LtJs1uKXGMl1Mj8jVTcvx%2Fs82isItd0f18b8cVaLs0hVXMSw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bfd0aabf4a0f4-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"wsearch_01kapw6r33r6wqg2x6j02934xc","object":"webset_search","websetId":"webset_01kapw5zyg7rw10nkc799hch93","status":"running","query":"Digital
+        health platforms with FDA approval","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:50:53.923Z","updatedAt":"2025-11-22T22:50:54.346Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:50:54 GMT
+recorded_with: VCR 6.3.1
