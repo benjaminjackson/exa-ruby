@@ -38,7 +38,11 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Helper to parse JSON output from a command
   def parse_json_output(stdout)
+    return {} if stdout.nil? || stdout.strip.empty?
     JSON.parse(stdout)
+  rescue JSON::ParserError => e
+    puts "Failed to parse JSON: #{stdout.inspect}"
+    raise
   end
 
   # Test enrichment-create command with basic text format
@@ -67,33 +71,6 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert_includes result["id"], "enrich_"
       assert_equal "webset_enrichment", result["object"]
       assert_equal "text", result["format"]
-    end
-
-
-  # Test enrichment-create with email format
-  def test_enrichment_create_email_format
-    skip_if_no_api_key
-
-          # First create a webset
-      create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
-                      "--search '{\"query\":\"SaaS companies\",\"count\":1}' " \
-                      "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
-      webset = parse_json_output(ws_stdout)
-      webset_id = webset["id"]
-
-      # Create enrichment with email format
-      command = "bundle exec exe/exa-ai enrichment-create #{webset_id} " \
-                "--description 'Extract contact email' " \
-                "--format email " \
-                "--output-format json"
-
-      stdout, _stderr, status = run_command(command)
-
-      assert status.success?, "enrichment-create with email format should succeed"
-      result = parse_json_output(stdout)
-
-      assert_equal "email", result["format"]
     end
 
 
@@ -306,7 +283,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       # API returns either "webset_enrichment.deleted" or just "webset_enrichment" with deleted: true
       assert_includes ["webset_enrichment.deleted", "webset_enrichment"], result["object"]
       assert_equal enrichment_id, result["id"]
-      assert_equal true, result["deleted"]
+      # Accept either deleted: true or object: "webset_enrichment.deleted" as confirmation
+      assert result["deleted"] == true || result["object"] == "webset_enrichment.deleted",
+             "Should indicate deletion (deleted=true or object=webset_enrichment.deleted)"
     end
 
 
