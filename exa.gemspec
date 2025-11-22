@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name = "exa-ai"
   spec.version = Exa::VERSION
   spec.authors = ["Benjamin Jackson"]
-  spec.email = ["ben@exa.ai"]
+  spec.email = ["ben@hearmeout.co"]
 
   spec.summary = "Ruby client for the Exa.ai API"
   spec.description = "A Ruby gem for interacting with the Exa.ai search and discovery API"
