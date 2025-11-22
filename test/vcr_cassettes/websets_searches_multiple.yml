@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Base search","count":1}}'
+      string: '{"search":{"query":"venture-backed SaaS companies","count":1}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -19,15 +19,15 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 500
-      message: Internal Server Error
+      code: 201
+      message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:38:27 GMT
+      - Sat, 22 Nov 2025 20:42:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '162'
+      - '759'
       Connection:
       - keep-alive
       Nel:
@@ -61,18 +61,168 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"a2-mDu3QcrHIG+5kf+zy2FbhaKPfSw"
+      - W/"2f7-GZuHiq/0TaK2rBOgQ5JRThshwoo"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LnCrXd30Su8Ng9b52S14kk3dk9NxUQR9VV1snKb9PIxFHh6PmxBg3DTuFp2pHdyE48c6LH0qG0CpK2cE4sO%2FY2dhFmqCe2kytYrbHSnlZ2JjRBA%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=HWac4yw4JYIwLwegTCLwc2y670YEO%2FQZfDfhNCtS6D%2Fegy0d6PGkHwMooHinakf5%2Bl036j%2Bs9d0jXjlJ9KCQQIvYDM%2B%2BcrpJKdOPki7CpNOkhwQ%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b3b045c0b83ad-EWR
+      - 9a2b40692b62c35e-EWR
     body:
       encoding: UTF-8
-      string: '{"statusCode":500,"timestamp":"2025-11-22T20:38:27.450Z","message":"Something
-        went wrong. Please try again.","error":"Internal Server Error","path":"/v0/websets"}'
-  recorded_at: Sat, 22 Nov 2025 20:38:27 GMT
+      string: '{"id":"webset_01kapmv3aeg2f8q03maxcac0zs","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapmv3wn7qcje2fn6pcws1d7","object":"webset_search","websetId":"webset_01kapmv3aeg2f8q03maxcac0zs","status":"running","query":"venture-backed
+        SaaS companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:42:12.757Z","updatedAt":"2025-11-22T20:42:13.208Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:42:12.174Z","updatedAt":"2025-11-22T20:42:13.208Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:42:14 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmv3aeg2f8q03maxcac0zs/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"First search","count":5}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:42:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '468'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1d4-ual+fb5gTpFesHWA9XJZTByc+Ak"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=QXh5T%2Fzi5a0q3vSgN%2BM%2Bt1xxYirMdExOb9IdTmpU0bzXT9yV0E0YOufrwrSplIieew%2Ba8TBrkuznimunAV9KF5ZLotpbpumNyJH%2BiUoJHG%2FK3uDhvg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b411e1ea95642-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapmvxhra6h8e6kw6zdx0fej","object":"webset_search","websetId":"webset_01kapmv3aeg2f8q03maxcac0zs","status":"running","query":"First
+        search","entity":{"type":"company"},"criteria":[],"count":5,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:42:39.032Z","updatedAt":"2025-11-22T20:42:39.416Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:42:39 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmv3aeg2f8q03maxcac0zs/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"Second search","count":10}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:42:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '470'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1d6-Ea2y4atdBVvPo9zZLHxB85BIKhg"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=WEkCd62kncUzOKvST9jd5XEvQj2Ta%2BZdfwyxXmMMa4Jl7ep00ekCeH2kD8Qo5IXvVpE%2FNgkNsOPt8JxJZXP%2FtHV9O7LK5syZBC4VqSp9WD45ypZDNw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b412d688c6e53-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapmvzx2hfy6jejyz91hs0kg","object":"webset_search","websetId":"webset_01kapmv3aeg2f8q03maxcac0zs","status":"running","query":"Second
+        search","entity":{"type":"company"},"criteria":[],"count":10,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:42:41.442Z","updatedAt":"2025-11-22T20:42:41.802Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:42:41 GMT
 recorded_with: VCR 6.3.1

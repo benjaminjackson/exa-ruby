@@ -315,8 +315,8 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_cancel") do
       webset = client.create_webset(
         search: {
-          query: "Long running search",
-          count: 1
+          query: "enterprise AI/ML infrastructure startups with Series A funding",
+          count: 2
         }
       )
       @webset_ids << webset.id
@@ -391,7 +391,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_multiple") do
       webset = client.create_webset(
         search: {
-          query: "Base search",
+          query: "venture-backed SaaS companies",
           count: 1
         }
       )
