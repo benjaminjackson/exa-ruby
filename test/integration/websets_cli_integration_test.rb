@@ -342,9 +342,12 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                        "--search '{\"query\":\"Manufacturing companies\",\"count\":1}' " \
                        "--output-format json"
 
-      create_stdout, _stderr, _create_status = run_command(create_command)
+      create_stdout, create_stderr, create_status = run_command(create_command)
+      assert create_status.success?, "webset-create should succeed. stderr: #{create_stderr}"
+
       created = parse_json_output(create_stdout)
       webset_id = created["id"]
+      assert webset_id, "webset-create should return a webset with an id. Response: #{created.inspect}"
 
       # Cancel it
       cancel_command = "bundle exec exe/exa-ai webset-cancel #{webset_id} --output-format json"
