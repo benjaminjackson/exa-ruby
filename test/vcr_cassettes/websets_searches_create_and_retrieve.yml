@@ -23,7 +23,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:35:57 GMT
+      - Sat, 22 Nov 2025 21:25:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -61,166 +61,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2e8-liDR7B7Q7Yb8cCA/YvOUHS7cG9w"
+      - W/"2e8-PLqMZ/lD/bszJBsO1FkIlUYZMho"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=E5Oa0t3g%2FsRkAATaOWB4VJ9f3k%2FeU%2FkmK48XdRrWqO8nQ3yaHJ4LRHecbh93lOmSxcUfGVXuqwZUSBhLIkxOrzFT0iJitTE8BPIU%2BUvdBjulvOj2ww%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jv2qqFfjlk7dGSXykuJz5xgcl8et5qApX8yK8N89i26hQsHyeL%2FoG5VlDi667SuJQ31SmTY0VRdGBSLiuCSeRWY%2BYFMFuaMXYI3Do1TUXGvC9xo%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b374fddda434d-EWR
+      - 9a2b80455a19df3f-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapmfkpbm6fvxpmhbm2t8qsw","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapmfm38kjy7jmabqkr3haj3","object":"webset_search","websetId":"webset_01kapmfkpbm6fvxpmhbm2t8qsw","status":"running","query":"Tech
-        companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:35:56.136Z","updatedAt":"2025-11-22T20:35:56.519Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:35:55.723Z","updatedAt":"2025-11-22T20:35:56.519Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:35:57 GMT
-- request:
-    method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmfkpbm6fvxpmhbm2t8qsw/searches
-    body:
-      encoding: UTF-8
-      string: '{"query":"AI companies","count":10}'
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 20:36:13 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '469'
-      Connection:
-      - keep-alive
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"1d5-SBqtypfIPghMGmFHABqGwn/yWjw"
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Q1%2BAM90BpYcieAiPzzbMU6dMF0FrjL8FozpkQtspSdHvlr9H7%2BqLlIUpuK0UuxdL7WScsY74Kyj%2BNsZm8TjcbjwWYmDn21JAL%2Fix1IvA1Rh9t4oYHQ%3D%3D"}]}'
-      Cf-Cache-Status:
-      - DYNAMIC
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b37b93ddc42e5-EWR
-    body:
-      encoding: UTF-8
-      string: '{"id":"wsearch_01kapmg4zm1pbx8v3mfsjx8fe6","object":"webset_search","websetId":"webset_01kapmfkpbm6fvxpmhbm2t8qsw","status":"running","query":"AI
-        companies","entity":{"type":"company"},"criteria":[],"count":10,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:36:13.428Z","updatedAt":"2025-11-22T20:36:13.813Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:36:13 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmfkpbm6fvxpmhbm2t8qsw/searches/wsearch_01kapmg4zm1pbx8v3mfsjx8fe6
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 20:36:14 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"1d5-SBqtypfIPghMGmFHABqGwn/yWjw"
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=z6GM0oAXswc3jQkW55RhfHu4%2FqHXoh04QJ0pNZTiWHY6%2Bygc3r18kO%2Bn08V%2FnGt7%2Fd1t7vQ8Zj7FXM3QA9r7Znv5RDhBBMEfmn28P1T2hlx6LC4%3D"}]}'
-      Cf-Cache-Status:
-      - DYNAMIC
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b37c39c590cac-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"wsearch_01kapmg4zm1pbx8v3mfsjx8fe6","object":"webset_search","websetId":"webset_01kapmfkpbm6fvxpmhbm2t8qsw","status":"running","query":"AI
-        companies","entity":{"type":"company"},"criteria":[],"count":10,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:36:13.428Z","updatedAt":"2025-11-22T20:36:13.813Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:36:14 GMT
+      string: '{"id":"webset_01kapqat1ey1ttyr0de7eb4ctc","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqatcqd581rc4j2gvyscfz","object":"webset_search","websetId":"webset_01kapqat1ey1ttyr0de7eb4ctc","status":"running","query":"Tech
+        companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:44.471Z","updatedAt":"2025-11-22T21:25:44.817Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:44.110Z","updatedAt":"2025-11-22T21:25:44.817Z"}'
+  recorded_at: Sat, 22 Nov 2025 21:25:45 GMT
 recorded_with: VCR 6.3.1

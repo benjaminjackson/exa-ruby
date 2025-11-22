@@ -23,7 +23,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:32:40 GMT
+      - Sat, 22 Nov 2025 21:28:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -61,93 +61,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2f4-JYbOdtsiSSP/D0nGSWjv+1yn1rQ"
+      - W/"2f4-y9ACpck2XMtcTgrwgDpjUHxTKcE"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=kZvPc6Cre7dSz%2FSeKk8BzMEva4moFzhMRqwYIaQZ5XhBZtRMWVnS4vKbKzh3Wrz%2FUWT%2BUAhFh3cpa%2Fj%2BeaHNR0xyEt2sVqBT1ZfXZlTe2nHmefTxeg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LMqaYV37kflz3QbejFZ9C1scRLb6BbRI2GoP%2FqeaGrqSow9mNUgk%2FMuHLTq7BI9aDy7uIU4VtW2puxuumFFei0IPQLkB23NQLIxhuHPmy06lQVThGQ%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b325bdeeb41de-EWR
+      - 9a2b84f7bcd026df-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapm9dj6xahjn1snvrbtrp1p","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapm9dynevkmg5hn587v6rts","object":"webset_search","websetId":"webset_01kapm9dj6xahjn1snvrbtrp1p","status":"running","query":"Test
-        helper methods","entity":{"type":"research_paper"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:32:33.237Z","updatedAt":"2025-11-22T20:32:39.263Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:32:32.838Z","updatedAt":"2025-11-22T20:32:39.263Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:32:40 GMT
-- request:
-    method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapm9dj6xahjn1snvrbtrp1p/searches
-    body:
-      encoding: UTF-8
-      string: '{"query":"Helper method test","count":5,"behavior":"override"}'
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 20:33:06 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '481'
-      Connection:
-      - keep-alive
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"1e1-gvg4CVv8/DntFhGYHoIz84Iano4"
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=bGzEt8bEDcH5L%2BV%2Bevs9ReNudsCvykxG92MM654aLwNEFcOSffBXAS7vt%2BKFwAcPkHjMDE9IsQYx4arXZdD32WwCnt1ZYchyfCNWF00kA%2Fo1HPk%3D"}]}'
-      Cf-Cache-Status:
-      - DYNAMIC
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b33220f35c35a-EWR
-    body:
-      encoding: UTF-8
-      string: '{"id":"wsearch_01kapmaea027c21appd24j8wea","object":"webset_search","websetId":"webset_01kapm9dj6xahjn1snvrbtrp1p","status":"running","query":"Helper
-        method test","entity":{"type":"research_paper"},"criteria":[],"count":5,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:33:06.368Z","updatedAt":"2025-11-22T20:33:06.763Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:33:06 GMT
+      string: '{"id":"webset_01kapqgnw6vred2qg6437cfcvz","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqgp6rwxv9t1kxhsv5k8q9","object":"webset_search","websetId":"webset_01kapqgnw6vred2qg6437cfcvz","status":"running","query":"Test
+        helper methods","entity":{"type":"research_paper"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:28:56.792Z","updatedAt":"2025-11-22T21:28:57.134Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:28:56.454Z","updatedAt":"2025-11-22T21:28:57.134Z"}'
+  recorded_at: Sat, 22 Nov 2025 21:28:57 GMT
 recorded_with: VCR 6.3.1
