@@ -1,0 +1,154 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"externalId":"test-override-searches","search":{"query":"Series A
+        fintech startups in London","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:23:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '785'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"311-2OJd8D4CfN9NNm4j+vTfzTFp/j4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=VNDXkH2wpzp3SizLlV98C6MQpw8j80zCUb6SkwGZrtfopJaoQvU3yY8X%2BMzXy96aV9hM15d%2BCVSvtaCDNIacKJhCBInYLcUFNF8uSZla3qDEDRss4w%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bd57e68674332-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaptnayt72jtd9x7hx99m38n","object":"webset","status":"running","externalId":"test-override-searches","title":null,"searches":[{"id":"wsearch_01kaptnbbdgqxkqz33bqaaqrgv","object":"webset_search","websetId":"webset_01kaptnayt72jtd9x7hx99m38n","status":"running","query":"Series
+        A fintech startups in London","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:23:55.245Z","updatedAt":"2025-11-22T22:23:55.630Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:23:54.842Z","updatedAt":"2025-11-22T22:23:55.630Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:23:56 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaptnayt72jtd9x7hx99m38n/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"European payment processing companies","count":2,"behavior":"override"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 22:23:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '493'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1ed-LW0Qx8ivb3cpheEGSmKAPPF46H4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=D02Eu8MvKynYG2j0i5r3M3DcjmB3kQQOrR%2BwP936K%2FzwnNR2NEZ2JNkfqnYxj8SEt7Ft3tfZEP5Ibi90Xo3Sozot%2FpGZbW7byh2yrmoh5sRPQ6oEMw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2bd588dee743fb-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kaptnddbafhf1s6h8nq8bjam","object":"webset_search","websetId":"webset_01kaptnayt72jtd9x7hx99m38n","status":"running","query":"European
+        payment processing companies","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:23:57.355Z","updatedAt":"2025-11-22T22:23:57.743Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:23:57 GMT
+recorded_with: VCR 6.3.1

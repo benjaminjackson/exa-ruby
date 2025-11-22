@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"AI startups","count":1}}'
+      string: '{"externalId":"test-minimal-params","search":{"query":"AI startups","count":1}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -23,11 +23,11 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:26:26 GMT
+      - Sat, 22 Nov 2025 22:21:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '741'
+      - '758'
       Connection:
       - keep-alive
       Nel:
@@ -61,18 +61,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2e5-uk+v+KdqXZEjnwmC+ki6YUTJwsk"
+      - W/"2f6-SfDFj9mwEZ+DGgXQH9M5AQcWo7k"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=yPhV9N0bGbRf9xA5e4s3seMtNn%2BV6GDSZxlrGdTmuSZDzAkNVjhXxZ1ELJ46jM5D%2FQFKTRul7y10L8pEm%2FLfHz6LxUq%2FeqPORsYMLVxGKVWihMNu%2Bw%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=H28PU6TwGmmKLdJQOEqPJUQLigxhfXsO9VTztGOwkjfEu9dEa9IlvFOMpjBpcfLbkwZIZHMQf31Z9Fn5yBnRDkT3ATVUSe7%2FSEYAoGZWtiGBobWp9g%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b81461ab01600-EWR
+      - 9a2bd1e13fa358c1-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapqc253hqzh7ytf5hycmg63","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqc2h9bpyww6te0eyvb50a","object":"webset_search","websetId":"webset_01kapqc253hqzh7ytf5hycmg63","status":"running","query":"AI
-        startups","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:26:25.577Z","updatedAt":"2025-11-22T21:26:25.960Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:26:25.187Z","updatedAt":"2025-11-22T21:26:25.960Z"}'
-  recorded_at: Sat, 22 Nov 2025 21:26:26 GMT
+      string: '{"id":"webset_01kaptgte56b8fz9tc9tex5gqg","object":"webset","status":"running","externalId":"test-minimal-params","title":null,"searches":[{"id":"wsearch_01kaptgttp4fsqng7j1pvya37t","object":"webset_search","websetId":"webset_01kaptgte56b8fz9tc9tex5gqg","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T22:21:27.254Z","updatedAt":"2025-11-22T22:21:27.701Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T22:21:26.853Z","updatedAt":"2025-11-22T22:21:27.701Z"}'
+  recorded_at: Sat, 22 Nov 2025 22:21:28 GMT
 recorded_with: VCR 6.3.1

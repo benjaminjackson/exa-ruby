@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "create_validator"
+require_relative "../websets_parameter_converter"
 
 module Exa
   module Services
@@ -15,7 +16,10 @@ module Exa
           # Validate parameters before making the API call
           CreateValidator.validate!(@params)
 
-          response = @connection.post("/websets/v0/websets", @params)
+          # Convert Ruby snake_case params to API camelCase
+          converted_params = WebsetsParameterConverter.convert(@params)
+
+          response = @connection.post("/websets/v0/websets", converted_params)
           body = response.body
 
           Resources::Webset.new(

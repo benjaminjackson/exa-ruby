@@ -31,6 +31,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_create_minimal") do
       # First create a webset
       webset = client.create_webset(
+        external_id: "test-minimal-params",
         search: {
           query: "AI startups",
           count: 1
@@ -47,14 +48,14 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "Machine learning companies",
-        count: 5
+        count: 2
       )
 
       assert_instance_of Exa::Resources::WebsetSearch, search
       assert_equal "webset_search", search.object
       assert_includes ["created", "running"], search.status
       assert_equal "Machine learning companies", search.query
-      assert_equal 5, search.count
+      assert_equal 2, search.count
     end
   end
 
@@ -66,6 +67,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_create_with_entity") do
       # Create a webset
       webset = client.create_webset(
+        external_id: "test-entity-type",
         search: {
           query: "Tech founders",
           count: 1,
@@ -82,7 +84,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "AI researchers",
-        count: 10,
+        count: 2,
         entity: { type: "person" }
       )
 
@@ -98,6 +100,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_create_with_criteria") do
       webset = client.create_webset(
+        external_id: "test-with-criteria",
         search: {
           query: "B2B SaaS",
           count: 1
@@ -117,7 +120,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "SaaS companies",
-        count: 20,
+        count: 2,
         criteria: criteria
       )
 
@@ -134,6 +137,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_create_with_recall") do
       webset = client.create_webset(
+        external_id: "test-with-recall",
         search: {
           query: "Biotech companies",
           count: 1
@@ -148,7 +152,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "Pharmaceutical startups",
-        count: 50,
+        count: 2,
         recall: true
       )
 
@@ -163,23 +167,21 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     webset = nil
     search = nil
 
-    VCR.use_cassette("websets_searches_create_with_override") do
+    VCR.use_cassette("websets_searches_override") do
       webset = client.create_webset(
+        external_id: "test-override-searches",
         search: {
-          query: "Initial companies",
+          query: "Series A fintech startups in London",
           count: 1
         }
       )
       @webset_ids << webset.id
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_create_with_override") do
+      # Create a search with override behavior
       search = client.create_webset_search(
         webset_id: webset.id,
-        query: "New search query",
-        count: 10,
+        query: "European payment processing companies",
+        count: 2,
         behavior: "override"
       )
 
@@ -197,8 +199,9 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_create_with_append") do
       webset = client.create_webset(
+        external_id: "test-append-behavior",
         search: {
-          query: "Initial companies",
+          query: "London Fintechs",
           count: 1
         }
       )
@@ -210,8 +213,8 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_create_with_append") do
       search = client.create_webset_search(
         webset_id: webset.id,
-        query: "Additional companies",
-        count: 5,
+        query: "Paris Fintechs",
+        count: 2,
         behavior: "append"
       )
 
@@ -231,6 +234,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_create_and_retrieve") do
       # Create a webset
       webset = client.create_webset(
+        external_id: "test-create-and-retrieve",
         search: {
           query: "Tech companies",
           count: 1
@@ -246,7 +250,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
       created_search = client.create_webset_search(
         webset_id: webset.id,
         query: "AI companies",
-        count: 10
+        count: 2
       )
 
       assert_instance_of Exa::Resources::WebsetSearch, created_search
@@ -261,7 +265,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
       assert_instance_of Exa::Resources::WebsetSearch, retrieved_search
       assert_equal search_id, retrieved_search.id
       assert_equal "AI companies", retrieved_search.query
-      assert_equal 10, retrieved_search.count
+      assert_equal 2, retrieved_search.count
     end
   end
 
@@ -273,8 +277,9 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_status_progression") do
       webset = client.create_webset(
+        external_id: "test-status-progression",
         search: {
-          query: "Companies for status test",
+          query: "Healthcare technology startups",
           count: 1
         }
       )
@@ -286,8 +291,8 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_status_progression") do
       search = client.create_webset_search(
         webset_id: webset.id,
-        query: "Status tracking test",
-        count: 5
+        query: "Digital health platforms with FDA approval",
+        count: 2
       )
 
       # Initial status should be created or running
@@ -314,6 +319,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_cancel") do
       webset = client.create_webset(
+        external_id: "test-cancel-search",
         search: {
           query: "enterprise AI/ML infrastructure startups with Series A funding",
           count: 2
@@ -327,8 +333,8 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_cancel") do
       search = client.create_webset_search(
         webset_id: webset.id,
-        query: "Query to cancel",
-        count: 100
+        query: "Cloud infrastructure companies with enterprise customers",
+        count: 2
       )
 
       # Cancel the search
@@ -352,8 +358,9 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_with_metadata") do
       webset = client.create_webset(
+        external_id: "test-with-metadata",
         search: {
-          query: "Companies for metadata test",
+          query: "Climate tech companies",
           count: 1
         }
       )
@@ -365,8 +372,8 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_with_metadata") do
       search = client.create_webset_search(
         webset_id: webset.id,
-        query: "Metadata test search",
-        count: 10,
+        query: "Carbon capture and renewable energy startups",
+        count: 2,
         metadata: {
           "test_key" => "test_value",
           "project" => "integration_test"
@@ -390,6 +397,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_multiple") do
       webset = client.create_webset(
+        external_id: "test-multiple-searches",
         search: {
           query: "venture-backed SaaS companies",
           count: 1
@@ -404,22 +412,22 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
       # Create first search
       search1 = client.create_webset_search(
         webset_id: webset.id,
-        query: "First search",
-        count: 5
+        query: "E-commerce platforms with international shipping",
+        count: 2
       )
 
       # Create second search
       search2 = client.create_webset_search(
         webset_id: webset.id,
-        query: "Second search",
-        count: 10
+        query: "Direct-to-consumer brands in fashion",
+        count: 2
       )
 
       assert_instance_of Exa::Resources::WebsetSearch, search1
       assert_instance_of Exa::Resources::WebsetSearch, search2
       refute_equal search1.id, search2.id
-      assert_equal "First search", search1.query
-      assert_equal "Second search", search2.query
+      assert_equal "E-commerce platforms with international shipping", search1.query
+      assert_equal "Direct-to-consumer brands in fashion", search2.query
     end
   end
 
@@ -430,8 +438,9 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_helper_methods") do
       webset = client.create_webset(
+        external_id: "test-helper-methods",
         search: {
-          query: "Test helper methods",
+          query: "EdTech companies",
           count: 1
         }
       )
@@ -443,8 +452,8 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_searches_helper_methods") do
       search = client.create_webset_search(
         webset_id: webset.id,
-        query: "Helper method test",
-        count: 5,
+        query: "Online learning platforms for corporate training",
+        count: 2,
         behavior: "override"
       )
 
