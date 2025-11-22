@@ -291,6 +291,32 @@ module Exa
       Services::Websets::CancelSearch.new(connection, webset_id: webset_id, id: id).call
     end
 
+    # Get a webset item by ID
+    #
+    # @param webset_id [String] Webset ID
+    # @param id [String] Item ID
+    # @return [Hash] The requested item
+    def get_item(webset_id:, id:)
+      Services::Websets::GetItem.new(connection, webset_id: webset_id, id: id).call
+    end
+
+    # Delete a webset item by ID
+    #
+    # @param webset_id [String] Webset ID
+    # @param id [String] Item ID
+    # @return [Boolean] True if deletion was successful
+    def delete_item(webset_id:, id:)
+      Services::Websets::DeleteItem.new(connection, webset_id: webset_id, id: id).call
+    end
+
+    # List all items in a webset
+    #
+    # @param webset_id [String] Webset ID
+    # @return [Array<Hash>] Array of items
+    def list_items(webset_id:)
+      Services::Websets::ListItems.new(connection, webset_id: webset_id).call
+    end
+
     private
 
     def connection
