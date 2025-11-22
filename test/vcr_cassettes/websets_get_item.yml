@@ -1,0 +1,683 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"AI/ML infrastructure startups with Series A funding","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:52:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '781'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"30d-B1FwCFjpL4Fof46Mjb6D9C6XKmM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=adDuA44whY6f4w5%2F5Iaz0mZ7P1SRtgWoUhRAz%2BkxyKVO5hYQc7sKGBfynfVj%2Bk%2F55kHgJLvOQbjTWDjKWXDNfWhwtCBc4OTqs038wxtGvB%2FYKxF6xQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b50169d5c7721-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:52:54.256Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:52:54.256Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:52:54 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnen8q5xt9gj5wqy5v8y83
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:52:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"318-KJ/9X3ah3wQPlPUrAnu98br1kts"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=K0uEEXJsQOqvSPJydCjT6PzBrYYiNe4FOjsTzLIBXQETV%2FAY8SRGPnoItj4YWE8uOIQv3mV5T2BS9nVqwu%2BTc5GHi5gRRrLe2b%2BV8jcjA6Xykek%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b503379290f47-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:52:54.256Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:52:54.256Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 20:52:55 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnen8q5xt9gj5wqy5v8y83
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:52:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e4-Pma/vXdGouzvmDzdqmxvTYRkBIQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tOvZyZXAPGavQ4nRNgLpTbtWuF8UEt9gdE2VVMFMSImLMnzdEBQh1sZEuJeeKwW7Z1HS5aeJH43R%2FV0GaAU9ZKNwGiNo0Ui1WMNqJSsae7Hf5tsSfw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b50443d65da80-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:52:56.975Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:52:56.975Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 20:52:58 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnen8q5xt9gj5wqy5v8y83
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:53:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e4-ZVuAAXNFlK2/LoYBOZwaPfSZtR8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=3WD0REUP3wAteVITSapF6eb4qe00rXbnuQXf6bp88%2BXXa1eRQsF0tp5GN7Wnnu5EwfQDHYdZn%2Fz23VkZegi5ZZhM3jmfTIIGOMz9c45jd%2BP6%2BXOv4A%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b5054bd95726f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":50}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:52:57.779Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:52:57.779Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 20:53:00 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnen8q5xt9gj5wqy5v8y83
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:53:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e7-VxVN75qsQcxXT7d6mX7+bQ5F3n4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ztwpO8774ENcaGz3sB119dfo3TqrwDS97ksEqgsifsTr5I4mo5jyPFSqKQGFxHjCAmoWmWJnTmxxQXc3qnaruJPYe4c51DsdU61G61S0Rz%2FJT7E%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b50654f04c335-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:52:57.779Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:52:57.779Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 20:53:03 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnen8q5xt9gj5wqy5v8y83
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:53:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e4-Eg98WK5keuK6Q9d8hTtCmqtJc2g"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jvQZubqjPmbXUN7ZtObjoCtLizRk2tH13UMIt%2Bh8MCDZEM3TqOcPU2X5%2Bistmpf2oAXS63mHaBMwbt%2F6dUxP4w7QI%2B1xmLsXV8w8RcMFStBgqfmEjg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b5075ad6fe55d-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:52:57.779Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:52:57.779Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 20:53:07 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnen8q5xt9gj5wqy5v8y83
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:53:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e4-Eg98WK5keuK6Q9d8hTtCmqtJc2g"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=WfYH2G2lnGnJPWjU3P47Qj23SFl%2BWLfswAFTCT2WfKPFbNXAeQ4cVc9otercGKeFtT6MXQnOSOnQQ%2FViTxZl7tus%2FQkyGqBZYSZkTx%2BCDweXV%2Fp11A%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b508bf85193b7-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:52:57.779Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:52:57.779Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 20:53:09 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnen8q5xt9gj5wqy5v8y83
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:53:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e3-ws6CbWGsPCUIijSb38roo9bOXQQ"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=kqWV57MmtUFigk14StszdOZqal7QcK1MifY4Hygjjevu5KwVHP2fwJ7BhbajNUfHTOXdcfHETD9GIerM6zpsa1K4k%2F1y3Kyonzth%2FsPpZpEJ8XgP7g%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b509d182bc62c-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"completed","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:53:10.988Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:53:10.988Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 20:53:12 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnen8q5xt9gj5wqy5v8y83
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:53:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e3-ws6CbWGsPCUIijSb38roo9bOXQQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=gvAjvB50veAhkur2c6BPyoMyty4NTd4%2BPMhp3wvcsND2zFyr8WmIhf7cUHrPeudu4TRtA2IvpDPryY0%2FVHKUAsS5vb5njEkBHFxGz4BxjD8nVc4IJg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b50a15d867d1e-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapnen8q5xt9gj5wqy5v8y83","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapnenwsmxsd55m295j67efa","object":"webset_search","websetId":"webset_01kapnen8q5xt9gj5wqy5v8y83","status":"completed","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:52:53.785Z","updatedAt":"2025-11-22T20:53:10.988Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:52:53.143Z","updatedAt":"2025-11-22T20:53:10.988Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 20:53:13 GMT
+recorded_with: VCR 6.3.1
