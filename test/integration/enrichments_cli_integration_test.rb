@@ -6,19 +6,21 @@ require "tempfile"
 require "open3"
 
 # Integration tests for Enrichments CLI commands
-# Tests the actual CLI executables with VCR for API interactions
+# Tests the actual CLI executables with real API calls
 #
-# NOTE: VCR cassettes for CLI commands must be recorded manually because VCR
-# cannot intercept HTTP calls from external processes (CLI commands run via Open3).
+# NOTE: These tests make REAL API calls and cannot use VCR because VCR cannot
+# intercept HTTP calls from external processes (CLI commands run via Open3).
 #
-# To record cassettes:
+# To run these tests:
 # 1. Set EXA_API_KEY environment variable
-# 2. Delete the cassette file you want to re-record from test/vcr_cassettes/
-# 3. Run the test - it will make a real API call and record the cassette
-# 4. The cassette will be used for subsequent test runs
+# 2. Run: bundle exec rake test TEST=test/integration/enrichments_cli_integration_test.rb
 #
-# Some tests (help, error handling) don't require cassettes and will always pass.
+# Tests are skipped in CI unless RUN_CLI_INTEGRATION_TESTS=true is set.
+# Help and error handling tests run without API calls.
 class EnrichmentsCLIIntegrationTest < Minitest::Test
+  def skip_if_no_api_key
+    skip "Set EXA_API_KEY to run CLI integration tests" unless ENV["EXA_API_KEY"] && !ENV["EXA_API_KEY"].empty?
+  end
   def setup
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
     ENV["EXA_API_KEY"] = @api_key
@@ -41,8 +43,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-create command with basic text format
   def test_enrichment_create_text_format
-    VCR.use_cassette("cli_enrichment_create_text") do
-      # First create a webset
+    skip_if_no_api_key
+
+          # First create a webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Tech companies\",\"count\":1}' " \
                       "--output-format json"
@@ -65,12 +68,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert_equal "webset_enrichment", result["object"]
       assert_equal "text", result["format"]
     end
-  end
+
 
   # Test enrichment-create with email format
   def test_enrichment_create_email_format
-    VCR.use_cassette("cli_enrichment_create_email") do
-      # First create a webset
+    skip_if_no_api_key
+
+          # First create a webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"SaaS companies\",\"count\":1}' " \
                       "--output-format json"
@@ -91,12 +95,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
       assert_equal "email", result["format"]
     end
-  end
+
 
   # Test enrichment-create with options format
   def test_enrichment_create_options_format
-    VCR.use_cassette("cli_enrichment_create_options") do
-      # First create a webset
+    skip_if_no_api_key
+
+          # First create a webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Startups\",\"count\":1}' " \
                       "--output-format json"
@@ -125,12 +130,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert_equal "options", result["format"]
       assert_equal 3, result["options"].length
     end
-  end
+
 
   # Test enrichment-create with options from file
   def test_enrichment_create_options_from_file
-    VCR.use_cassette("cli_enrichment_create_options_file") do
-      # First create a webset
+    skip_if_no_api_key
+
+          # First create a webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"E-commerce companies\",\"count\":1}' " \
                       "--output-format json"
@@ -165,12 +171,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
       options_file.unlink
     end
-  end
+
 
   # Test enrichment-get command
   def test_enrichment_get
-    VCR.use_cassette("cli_enrichment_get") do
-      # First create a webset and enrichment
+    skip_if_no_api_key
+
+          # First create a webset and enrichment
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Healthcare companies\",\"count\":1}' " \
                       "--output-format json"
@@ -197,12 +204,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert_equal enrichment_id, result["id"]
       assert_equal "webset_enrichment", result["object"]
     end
-  end
+
 
   # Test enrichment-list command
   def test_enrichment_list
-    VCR.use_cassette("cli_enrichment_list") do
-      # First create a webset with enrichments
+    skip_if_no_api_key
+
+          # First create a webset with enrichments
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Fintech companies\",\"count\":1}' " \
                       "--output-format json"
@@ -229,12 +237,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert result["data"].is_a?(Array)
       refute_empty result["data"]
     end
-  end
+
 
   # Test enrichment-update command
   def test_enrichment_update
-    VCR.use_cassette("cli_enrichment_update") do
-      # Create webset and enrichment
+    skip_if_no_api_key
+
+          # Create webset and enrichment
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Retail companies\",\"count\":1}' " \
                       "--output-format json"
@@ -263,12 +272,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert_equal enrichment_id, result["id"]
       assert_equal "Updated description", result["description"]
     end
-  end
+
 
   # Test enrichment-delete command
   def test_enrichment_delete
-    VCR.use_cassette("cli_enrichment_delete") do
-      # Create webset and enrichment
+    skip_if_no_api_key
+
+          # Create webset and enrichment
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Manufacturing companies\",\"count\":1}' " \
                       "--output-format json"
@@ -298,12 +308,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert_equal enrichment_id, result["id"]
       assert_equal true, result["deleted"]
     end
-  end
+
 
   # Test enrichment-cancel command
   def test_enrichment_cancel
-    VCR.use_cassette("cli_enrichment_cancel") do
-      # Create webset and enrichment
+    skip_if_no_api_key
+
+          # Create webset and enrichment
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Education companies\",\"count\":1}' " \
                       "--output-format json"
@@ -330,12 +341,13 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       assert_equal enrichment_id, result["id"]
       assert_includes ["cancelled", "idle", "pending", "running", "completed"], result["status"]
     end
-  end
+
 
   # Test enrichment-create with pretty output
   def test_enrichment_create_pretty_format
-    VCR.use_cassette("cli_enrichment_create_pretty") do
-      # Create webset
+    skip_if_no_api_key
+
+          # Create webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"AI companies\",\"count\":1}' " \
                       "--output-format json"
@@ -358,7 +370,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       # Verify it has indentation (pretty-printed)
       assert_includes stdout, "  "
     end
-  end
+
 
   # Test error handling for invalid format
   def test_enrichment_create_invalid_format
@@ -389,6 +401,8 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test error handling for options format without options
   def test_enrichment_create_options_without_options
+    skip_if_no_api_key
+
     command = "bundle exec exe/exa-ai enrichment-create ws_test " \
               "--description 'Test' " \
               "--format options " \
