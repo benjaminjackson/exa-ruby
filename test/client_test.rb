@@ -361,4 +361,185 @@ class ClientTest < Minitest::Test
     assert_equal 1, chunks.length
     assert_equal "Hello", chunks[0]["choices"][0]["delta"]["content"]
   end
+
+  def test_list_websets_returns_webset_collection
+    stub_request(:get, "https://api.exa.ai/websets/v0/websets")
+      .to_return(
+        status: 200,
+        body: {
+          data: [
+            { id: "ws_123", status: "idle" }
+          ],
+          hasMore: false,
+          nextCursor: nil
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.list_websets
+
+    assert_instance_of Exa::Resources::WebsetCollection, result
+    assert_equal 1, result.data.length
+  end
+
+  def test_list_websets_delegates_to_list_service
+    stub_request(:get, "https://api.exa.ai/websets/v0/websets")
+      .to_return(
+        status: 200,
+        body: { data: [], hasMore: false, nextCursor: nil }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    client.list_websets
+
+    assert_requested :get, "https://api.exa.ai/websets/v0/websets", times: 1
+  end
+
+  def test_list_websets_with_pagination_parameters
+    stub_request(:get, "https://api.exa.ai/websets/v0/websets")
+      .with(query: hash_including("cursor" => "next_page", "limit" => "10"))
+      .to_return(
+        status: 200,
+        body: {
+          data: [],
+          hasMore: true,
+          nextCursor: "cursor_abc"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.list_websets(cursor: "next_page", limit: 10)
+
+    assert_instance_of Exa::Resources::WebsetCollection, result
+    assert_equal true, result.has_more
+  end
+
+  def test_get_webset_returns_webset
+    stub_request(:get, "https://api.exa.ai/websets/v0/websets/ws_123")
+      .to_return(
+        status: 200,
+        body: {
+          id: "ws_123",
+          object: "webset",
+          status: "idle",
+          searches: [],
+          imports: [],
+          enrichments: [],
+          monitors: [],
+          excludes: [],
+          items: []
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.get_webset("ws_123")
+
+    assert_instance_of Exa::Resources::Webset, result
+    assert_equal "ws_123", result.id
+  end
+
+  def test_delete_webset_returns_deleted_webset
+    stub_request(:delete, "https://api.exa.ai/websets/v0/websets/ws_123")
+      .to_return(
+        status: 200,
+        body: {
+          id: "ws_123",
+          object: "webset",
+          status: "deleted",
+          searches: [],
+          imports: [],
+          enrichments: [],
+          monitors: [],
+          excludes: [],
+          items: []
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.delete_webset("ws_123")
+
+    assert_instance_of Exa::Resources::Webset, result
+    assert_equal "ws_123", result.id
+  end
+
+  def test_cancel_webset_returns_webset
+    stub_request(:post, "https://api.exa.ai/websets/v0/websets/ws_123/cancel")
+      .to_return(
+        status: 200,
+        body: {
+          id: "ws_123",
+          object: "webset",
+          status: "cancelled",
+          searches: [],
+          imports: [],
+          enrichments: [],
+          monitors: [],
+          excludes: [],
+          items: []
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.cancel_webset("ws_123")
+
+    assert_instance_of Exa::Resources::Webset, result
+  end
+
+  def test_update_webset_returns_updated_webset
+    stub_request(:post, "https://api.exa.ai/websets/v0/websets/ws_123")
+      .with(body: hash_including(metadata: { "tag" => "updated" }))
+      .to_return(
+        status: 200,
+        body: {
+          id: "ws_123",
+          object: "webset",
+          status: "idle",
+          metadata: { "tag" => "updated" },
+          searches: [],
+          imports: [],
+          enrichments: [],
+          monitors: [],
+          excludes: [],
+          items: []
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.update_webset("ws_123", metadata: { "tag" => "updated" })
+
+    assert_instance_of Exa::Resources::Webset, result
+  end
+
+  def test_create_webset_returns_new_webset
+    stub_request(:post, "https://api.exa.ai/websets/v0/websets")
+      .with(body: hash_including(search: { query: "test", count: 1 }))
+      .to_return(
+        status: 200,
+        body: {
+          id: "ws_new",
+          object: "webset",
+          status: "processing",
+          searches: [{ id: "search_1", query: "test" }],
+          imports: [],
+          enrichments: [],
+          monitors: [],
+          excludes: [],
+          items: []
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.create_webset(search: { query: "test", count: 1 })
+
+    assert_instance_of Exa::Resources::Webset, result
+    assert_equal "ws_new", result.id
+  end
 end
