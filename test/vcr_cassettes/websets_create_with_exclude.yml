@@ -1,0 +1,1286 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Tech companies in Seattle","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '755'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f3-1y7CbtGeXhpg35SGLtLV9N0r+6k"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qBLytjxzOUwsH5MypVx0R3C4dzmiR1M6UelktYDc%2Bow0IfJbVQySPKt29mrT37jcryz7p4PhlgMixxgmTUDi6Q0rqOKoVoMAgVOxmHJE8FDwg0o%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2984532a7d204a-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"running","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:03.522Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:03.522Z"}'
+  recorded_at: Sat, 22 Nov 2025 15:39:04 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3fzngs6bemq8kq1ajfwhs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2fe-3vpNZwAKod/1GQ4RX1Do/NQF4Os"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tcKaCLsqcHdq5mH9ly%2FiB0Pv8bS7N3R2TwqFxWucHIxgid7PNmjHSAiGwArZPD4ZPB6jWZEibuH42UaGXeWhgGxDoxyhACxJAzl2w%2BWe%2B0W7VOE3jQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2984776ae1efa1-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"running","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:03.522Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:03.522Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:04 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3fzngs6bemq8kq1ajfwhs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"385-jVal/+4i6RIF37cqEqEybu2mhUc"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LP6bbo2iJUa2TNOCJ5LViPGR3vrASUT36dgye3%2FwRd6v1HM90jGtWA1roI%2Fd5Zk%2Fhg0jiW2OlahXbL1DPxvfeDXrYVphBdIFPTEzrjAskmOIhVVLqg%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298487d85c43cb-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Seattle","searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"running","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector and is headquartered in Seattle, WA","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:07.274Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:07.274Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:08 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3fzngs6bemq8kq1ajfwhs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"384-enertjEO0aGtXhYEyD9l62gvO1g"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=YhE9v%2BnCqo9%2BdwebN%2B0WjvDH62W5Rxl24aWcviIyGSPUbMf2%2FdKRc0PXoMQ09078C8GjOmLyG%2FzR5%2Be21nWo8hQB4q1LJzZJJ%2FKtufkFnq99a5k%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29849f5ad32067-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Seattle","searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"running","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector and is headquartered in Seattle, WA","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:07.274Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:07.274Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:11 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3fzngs6bemq8kq1ajfwhs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"385-pJIQdIti/2jvfrrB7Bfm3+ZPRUk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=UKOUqi%2BSWqg6mDjl2YFK9x4V6xb0mvKA%2FgVkSzCUxa13qAhWGQjvQWEiohjPU6ru35H%2BoKvNFo4H%2BGrfmQw4oOcslbR2aaivNydEAdQnpV1iYhU%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2984b06ea60cbc-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Seattle","searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"running","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector and is headquartered in Seattle, WA","successRate":50}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:07.274Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:07.274Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:13 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3fzngs6bemq8kq1ajfwhs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"388-1Fcu7LiZ6gVlSf89//v8XU/738w"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=UL7J5QuPl0NLQJfijj4lftU7nwOEqUaoDzfKQbuStRhNgSxuwJSL3AgIwxrotWTwXRFsUKvzacCmiPWgfl525PCJCRF%2BtnP1n7hkGY3piUrBgSZAgQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2984c1789e4373-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Seattle","searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"running","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector and is headquartered in Seattle, WA","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:07.274Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:07.274Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:16 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3fzngs6bemq8kq1ajfwhs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"388-1Fcu7LiZ6gVlSf89//v8XU/738w"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=4ag%2FF4qahUK5JUWqZhYLlT8eRsQZhOGN6w3XIUqmnV0YFKyXQ9I4y2HLikZVwXUY%2Bh%2BQHnE9Ipuk8s5Ad793HtOVaFZ21GRmnUKrM73NRtl7Aj9wHg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2984d28e646e28-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Seattle","searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"running","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector and is headquartered in Seattle, WA","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:07.274Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:07.274Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:19 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3fzngs6bemq8kq1ajfwhs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"388-1Fcu7LiZ6gVlSf89//v8XU/738w"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=3J%2FQX7CAed23eBlWF2dGGwFnw%2Bxb37WagqkOY6tpaQP8c2Erztvf%2FIg0VxuytPQQDj1WExiAgARK5iDHJCF9jUsq83mg5OaqHuElSayIeNKP4cI%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2984e3589580e0-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Seattle","searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"running","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector and is headquartered in Seattle, WA","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:07.274Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:07.274Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:22 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3fzngs6bemq8kq1ajfwhs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"387-5wClngliRMEc9iT2dyT1qWDbtEM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=w06JeBHrQ2VjLx5%2FrkbhqbhmzSiFaDMAeJO56FDBOrxl40hXRZYwHwFBtlpK3AT%2F3zUO6S8kFZHDHMMhj6iRhOUhdrKKFh2QxpqDlLr6kB4v%2BTk%2FbQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2984f3ca4b8df5-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3fzngs6bemq8kq1ajfwhs","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        Tech in Seattle","searches":[{"id":"wsearch_01kap3g0kkb48461ggt47k5x25","object":"webset_search","websetId":"webset_01kap3fzngs6bemq8kq1ajfwhs","status":"completed","query":"Tech
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector and is headquartered in Seattle, WA","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:03.155Z","updatedAt":"2025-11-22T15:39:21.688Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:39:02.192Z","updatedAt":"2025-11-22T15:39:21.688Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:24 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Tech companies in Pacific Northwest","count":1},"exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}]}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '885'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"375-NMJ4FqOAl7liyMOd8PPZehO2NTM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FYN4PwYAcCPWv80g2D8R8XvUBAn1FpOBqwk1%2FSRq%2FcRVzIRXgGgS9RDGaf0KZkqyE9%2B0wrbhm0t8UoYJKQQ0IzO%2B8hAmIcxDL%2BacBNAg1vuAlNzSWA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2984f78f648ccd-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kap3gq3r94n3emhrkxnaj8sp","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3gqgp4twacqa856pdj7et","object":"webset_search","websetId":"webset_01kap3gq3r94n3emhrkxnaj8sp","status":"running","query":"Tech
+        companies in Pacific Northwest","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:26.614Z","updatedAt":"2025-11-22T15:39:27.101Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{},"createdAt":"2025-11-22T15:39:26.200Z","updatedAt":"2025-11-22T15:39:27.101Z"}'
+  recorded_at: Sat, 22 Nov 2025 15:39:27 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3gq3r94n3emhrkxnaj8sp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"380-ZoPMSNL0yx/cPmJVdfnsdgmQq6g"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=yKWVKIy%2FaVJMfP9oUVcuXUhErn2h450LMFqg2yjy8AxGb6l2JbbOF0gx2FL%2B0BvU5ExCRGFw59tTV5oZrXbVKJN2QfdqY00A53qI8dpFoOclprMo2g%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29850c4957d92a-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3gq3r94n3emhrkxnaj8sp","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3gqgp4twacqa856pdj7et","object":"webset_search","websetId":"webset_01kap3gq3r94n3emhrkxnaj8sp","status":"running","query":"Tech
+        companies in Pacific Northwest","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:26.614Z","updatedAt":"2025-11-22T15:39:27.101Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{},"createdAt":"2025-11-22T15:39:26.200Z","updatedAt":"2025-11-22T15:39:27.101Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:28 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3gq3r94n3emhrkxnaj8sp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"47e-K02/G/k6TpbNwHY1g4tPLtVP3RU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=0Ve7KZObDn5QU8lzhW%2B%2BcUzWHinBiwgQq1ZkvVfSMlaSGuY33LVXpUkN5yZ4oZAkuW5%2BnJw0I%2BE3XJzIWfsBs4pqxVUg0eI8di6uHtfKegCdN2od5A%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29851d0d66ae70-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3gq3r94n3emhrkxnaj8sp","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Pacific Northwest","searches":[{"id":"wsearch_01kap3gqgp4twacqa856pdj7et","object":"webset_search","websetId":"webset_01kap3gq3r94n3emhrkxnaj8sp","status":"running","query":"Tech
+        companies in Pacific Northwest","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector","successRate":0},{"description":"Company
+        is headquartered or has a significant presence in the Pacific Northwest (Washington,
+        Oregon, or Idaho)","successRate":0}],"count":1,"behavior":"override","exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:26.614Z","updatedAt":"2025-11-22T15:39:29.710Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{},"createdAt":"2025-11-22T15:39:26.200Z","updatedAt":"2025-11-22T15:39:29.710Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:31 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3gq3r94n3emhrkxnaj8sp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"481-tEHqEtLWlMdtn1yQ04YVYMCK4eA"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=3%2BAclm1YJgunGs5ZzIPYlzNZIsoipo8YnHxNX3lW%2FvgV%2BEBD43wLdiAJFRUtcFRAnBm3YY6OJH14hT670RGEw%2BMigf8Y3J50TYiJNpOoCMKGRBe83Q%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29852d5d8cc698-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3gq3r94n3emhrkxnaj8sp","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Pacific Northwest","searches":[{"id":"wsearch_01kap3gqgp4twacqa856pdj7et","object":"webset_search","websetId":"webset_01kap3gq3r94n3emhrkxnaj8sp","status":"running","query":"Tech
+        companies in Pacific Northwest","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector","successRate":100},{"description":"Company
+        is headquartered or has a significant presence in the Pacific Northwest (Washington,
+        Oregon, or Idaho)","successRate":100}],"count":1,"behavior":"override","exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:26.614Z","updatedAt":"2025-11-22T15:39:30.536Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{},"createdAt":"2025-11-22T15:39:26.200Z","updatedAt":"2025-11-22T15:39:30.536Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:36 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3gq3r94n3emhrkxnaj8sp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"481-tEHqEtLWlMdtn1yQ04YVYMCK4eA"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=AiF2Zy%2Fr20LVHjmpUkW0Wu3RoPT3DKU4%2B9DiErUpZqQfVvYYupqR3yRySgX2bzBU2PP5AdRS10NmamdXNz71xm3oKjk9nRpLHOvE6eOhLyNYwjSP%2BQ%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29854ee9da49c1-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3gq3r94n3emhrkxnaj8sp","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Pacific Northwest","searches":[{"id":"wsearch_01kap3gqgp4twacqa856pdj7et","object":"webset_search","websetId":"webset_01kap3gq3r94n3emhrkxnaj8sp","status":"running","query":"Tech
+        companies in Pacific Northwest","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector","successRate":100},{"description":"Company
+        is headquartered or has a significant presence in the Pacific Northwest (Washington,
+        Oregon, or Idaho)","successRate":100}],"count":1,"behavior":"override","exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:26.614Z","updatedAt":"2025-11-22T15:39:30.536Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{},"createdAt":"2025-11-22T15:39:26.200Z","updatedAt":"2025-11-22T15:39:30.536Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:39 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3gq3r94n3emhrkxnaj8sp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"481-tEHqEtLWlMdtn1yQ04YVYMCK4eA"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=iDKGaFE7rnWrHCqX576pGsN%2B7LxW8R84EE8rreWfyGbU9deYjT4XdO3yq8uwwBbwimlk%2FjgkvXlcj8bY5XbkYWCmX2%2BIKS1tMtDYG7Rm2nKVdwOyhQ%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2985604ed07206-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3gq3r94n3emhrkxnaj8sp","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Pacific Northwest","searches":[{"id":"wsearch_01kap3gqgp4twacqa856pdj7et","object":"webset_search","websetId":"webset_01kap3gq3r94n3emhrkxnaj8sp","status":"running","query":"Tech
+        companies in Pacific Northwest","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector","successRate":100},{"description":"Company
+        is headquartered or has a significant presence in the Pacific Northwest (Washington,
+        Oregon, or Idaho)","successRate":100}],"count":1,"behavior":"override","exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:26.614Z","updatedAt":"2025-11-22T15:39:30.536Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{},"createdAt":"2025-11-22T15:39:26.200Z","updatedAt":"2025-11-22T15:39:30.536Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:42 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3gq3r94n3emhrkxnaj8sp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"481-tEHqEtLWlMdtn1yQ04YVYMCK4eA"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ZoqWbBABKdghA%2B5n%2BGqnY0vApfRCzC1OzZxokTFMGvpwvxuuCF3AK%2BLWvuCN8PGozZY4kP4ETIwDFPft%2B28Zlz%2F7pi54mHWahIGw2ZquvD%2FoC67z4Q%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298570faf981e7-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3gq3r94n3emhrkxnaj8sp","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech in Pacific Northwest","searches":[{"id":"wsearch_01kap3gqgp4twacqa856pdj7et","object":"webset_search","websetId":"webset_01kap3gq3r94n3emhrkxnaj8sp","status":"running","query":"Tech
+        companies in Pacific Northwest","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector","successRate":100},{"description":"Company
+        is headquartered or has a significant presence in the Pacific Northwest (Washington,
+        Oregon, or Idaho)","successRate":100}],"count":1,"behavior":"override","exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:26.614Z","updatedAt":"2025-11-22T15:39:30.536Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{},"createdAt":"2025-11-22T15:39:26.200Z","updatedAt":"2025-11-22T15:39:30.536Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:44 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3gq3r94n3emhrkxnaj8sp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"480-kBsdDpEi13yhdlikO9B0fEpLgTc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=OXRw8iupsQUSEgJ1h3GI0OejMSUpgjSuqioF%2F%2FbJNvZEih0OvhYkS23%2B%2ByNWQIhvjAx1rUDLC64lqApYypzOTynzmxvJmzd90zv6fhStraqmYF9OhQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298582fe8b1c6b-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3gq3r94n3emhrkxnaj8sp","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        Tech in Pacific Northwest","searches":[{"id":"wsearch_01kap3gqgp4twacqa856pdj7et","object":"webset_search","websetId":"webset_01kap3gq3r94n3emhrkxnaj8sp","status":"completed","query":"Tech
+        companies in Pacific Northwest","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the technology sector","successRate":100},{"description":"Company
+        is headquartered or has a significant presence in the Pacific Northwest (Washington,
+        Oregon, or Idaho)","successRate":100}],"count":1,"behavior":"override","exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:26.614Z","updatedAt":"2025-11-22T15:39:44.325Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{},"createdAt":"2025-11-22T15:39:26.200Z","updatedAt":"2025-11-22T15:39:44.325Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:47 GMT
+recorded_with: VCR 6.3.1

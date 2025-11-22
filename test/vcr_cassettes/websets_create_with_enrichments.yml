@@ -1,0 +1,961 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Tech startups in NYC","count":1},"enrichments":[{"description":"Find
+        the company''s primary contact email address","format":"email"},{"description":"Determine
+        the company size category","format":"options","options":[{"label":"1-10 employees"},{"label":"11-50
+        employees"},{"label":"51-200 employees"},{"label":"201+ employees"}]}]}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1565'
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"61d-xwb06T7L7as+JxeItivtCjRbjTo"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=XDZSe9J6DjNTgfBgfurNiSvEGPBX2Wmmg3eE5BtuHhpuZmlA9x1tVl39cDiCkXWMj1z3aCkcIfVnUpyDEIOa1lo%2BpCGS5DYnDLuGMzuFdUXUcviR1A%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298aacfcb1fbfb-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"running","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:19.702Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Find
+        the company''s primary contact email address","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Determine
+        the company size category","format":"options","options":[{"label":"1-10 employees"},{"label":"11-50
+        employees"},{"label":"51-200 employees"},{"label":"201+ employees"}],"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:19.702Z"}'
+  recorded_at: Sat, 22 Nov 2025 15:43:20 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"628-lmw0r9qvmW8d3MuAksSzLzztua0"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=MUyJqttXozbo5lB%2FCfVgv%2FWKqWOmPPiHg2KdmZZkYDIobYqr88oZ%2BXiofQSbKjN7ZG%2FTBUzP9LHSwZhAF%2FnzSi0BZlVIEcIHMG0t5znhD0KndgT0mg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298ab99f128c23-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"running","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:19.702Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Find
+        the company''s primary contact email address","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Determine
+        the company size category","format":"options","options":[{"label":"1-10 employees"},{"label":"11-50
+        employees"},{"label":"51-200 employees"},{"label":"201+ employees"}],"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:19.702Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:21 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6b3-ihCqmWSEy3f9n8cb3cujmr3GhC0"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=48bOwmVPEf5DiwnZHa%2BSsDvALb1WB3yCo7OsYn5SDwLUlOb6FnBLqeXQn2Kv%2FDztY95iDSnFYtJF%2FPfhjHc1ld%2BTjdIXsjivFdfRQHKa4NiPyRUDbg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298aca69857aea-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"running","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:21.375Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Find
+        the company''s primary contact email address","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Determine
+        the company size category","format":"options","options":[{"label":"1-10 employees"},{"label":"11-50
+        employees"},{"label":"51-200 employees"},{"label":"201+ employees"}],"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:21.375Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:23 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6b4-gFFE6dEmE+1rVTkU3vjTeweieRY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Rt6V7uw%2BVIJw3SkgI8HXHqIj9rnPOnTOaR2CudxnBKr%2BQ6lHN5yzPZflgM96ZuCHduk9xPHt%2Fu18P%2FaD1o9m7rLy2Ulwlj%2FeLq3hIsplDHHoAo9NvA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298adb48841b53-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"running","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:21.375Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Find
+        the company''s primary contact email address","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Determine
+        the company size category","format":"options","options":[{"label":"1-10 employees"},{"label":"11-50
+        employees"},{"label":"51-200 employees"},{"label":"201+ employees"}],"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:21.375Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:26 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6b4-gFFE6dEmE+1rVTkU3vjTeweieRY"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=rX%2B6e1GLV3qTFFpqOMlFkuenP7IYh4HDohsj%2BElN0zb78fFVPovJgwgAMGWa1TfcPL5grAz%2FCqquHjwSxjMqa82FMlyhO%2B8ROgCn%2FATneRbOJQIyqw%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298aebef402caf-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"running","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:21.375Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Find
+        the company''s primary contact email address","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":null,"description":"Determine
+        the company size category","format":"options","options":[{"label":"1-10 employees"},{"label":"11-50
+        employees"},{"label":"51-200 employees"},{"label":"201+ employees"}],"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:19.291Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:21.375Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:29 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"787-tSWJcud/huO7oKTE5M6sIutyKhM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=37%2FG0dn6ODP4M6OX6D8RD2a9qZmV7usecOjX6OYSwhvk04KJ7om5MassOQ3HO5MfFN38WKij0UyomQculU4c1Oi4jBnwMDkPTJVMe7Vsslpres5zgA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298afd8b124414-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"running","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:21.375Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Contact
+        Email","description":"Find the company''s primary contact email address","format":"text","options":null,"instructions":"Find
+        the company''s primary contact email address in lowercase format (e.g., ''info@company.com'').","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Size
+        Category","description":"Determine the company size category","format":"options","options":[{"label":"1-10
+        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
+        employees"}],"instructions":"Select the company''s size category based on
+        total employee count using only the provided options.","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:31.752Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:32 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"787-tSWJcud/huO7oKTE5M6sIutyKhM"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=3Yn%2FpMFtRAZCEPZWx2xZiwhA2n42s2oUUQ4f0Oqrq1dDp%2BLmN7EEXBRlAJTmcjBE7jI%2BLkVsR9ix3wAIEq9HeN2AChpAySwde9JvHB8qTZAYNNd9jQ%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298b0ef993431a-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"running","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:21.375Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Contact
+        Email","description":"Find the company''s primary contact email address","format":"text","options":null,"instructions":"Find
+        the company''s primary contact email address in lowercase format (e.g., ''info@company.com'').","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Size
+        Category","description":"Determine the company size category","format":"options","options":[{"label":"1-10
+        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
+        employees"}],"instructions":"Select the company''s size category based on
+        total employee count using only the provided options.","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:31.752Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:34 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"789-RhM60GiFOjIxRSppSlMHuWo9ThU"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=oH1wKb3dLcBr3HyOt7DpfSBKi7rzl3Hru0VqtKog7PKwL9I8ZvhDE6yKBUfffujUCBJ%2BnbWdNgs3%2BL5PuSbu8xORdLDWdvJQ3UQ7w7dczm6Q3mA%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298b20dc82488c-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"completed","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:34.461Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Contact
+        Email","description":"Find the company''s primary contact email address","format":"text","options":null,"instructions":"Find
+        the company''s primary contact email address in lowercase format (e.g., ''info@company.com'').","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Size
+        Category","description":"Determine the company size category","format":"options","options":[{"label":"1-10
+        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
+        employees"}],"instructions":"Select the company''s size category based on
+        total employee count using only the provided options.","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:34.461Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:37 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"789-RhM60GiFOjIxRSppSlMHuWo9ThU"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=dM3zVCGfdNnjZ85TRLPbgm2sp3719PKcRnAOUModmpQORse8AEKakHe%2FlZsav3PZ8E7LmXWn9QGNY3ygX5v3TkQXmukdpCPQFVO%2FNVZtguh94M%2BbwA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298b326be74d51-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"completed","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:34.461Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Contact
+        Email","description":"Find the company''s primary contact email address","format":"text","options":null,"instructions":"Find
+        the company''s primary contact email address in lowercase format (e.g., ''info@company.com'').","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Size
+        Category","description":"Determine the company size category","format":"options","options":[{"label":"1-10
+        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
+        employees"}],"instructions":"Select the company''s size category based on
+        total employee count using only the provided options.","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:34.461Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:40 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"789-RhM60GiFOjIxRSppSlMHuWo9ThU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wgkZ39jQV6hLgehHpFeQfYTucXFgwc00uA2PAKjBMCCEJSdclhsaDUPgeW3g43gzXHbDCw1lSDS0c4XBlD7vn24%2FzxGhjAaWfNJ1lWtJDMDpHUp6QQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298b44bcc5de97-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"completed","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:34.461Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Contact
+        Email","description":"Find the company''s primary contact email address","format":"text","options":null,"instructions":"Find
+        the company''s primary contact email address in lowercase format (e.g., ''info@company.com'').","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Size
+        Category","description":"Determine the company size category","format":"options","options":[{"label":"1-10
+        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
+        employees"}],"instructions":"Select the company''s size category based on
+        total employee count using only the provided options.","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:34.461Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:43 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"789-RhM60GiFOjIxRSppSlMHuWo9ThU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=0vD%2Bpt8vSFHr1p5dTafDFIXrSZZF0Ptj65n79FB4fbw2pJxZq8ck5YbkpEiSi7aN3E%2FjmXj2n79e66BARzBdujhxwhnJRMtzzCdskfcH%2BKcxNNau%2BA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298b558ebd42cc-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"completed","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:34.461Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Contact
+        Email","description":"Find the company''s primary contact email address","format":"text","options":null,"instructions":"Find
+        the company''s primary contact email address in lowercase format (e.g., ''info@company.com'').","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Size
+        Category","description":"Determine the company size category","format":"options","options":[{"label":"1-10
+        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
+        employees"}],"instructions":"Select the company''s size category based on
+        total employee count using only the provided options.","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:31.752Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:34.461Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:46 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3qtcg6vefhfqwv3b4xf6f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:43:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"78a-pG1Z+h9MusOz4uJMter8h5jOcO8"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=cvKNb5XPaNecuaVxm%2FT0AGVAmzlDz%2BZm2Q4Zm1Me71GsNFbDPbnr1aE7J2sNMR5UGpDB5FVwGW%2F0OWXHMkezFbN%2F6zvScw%2FIT6rHQYiGoKHV249SzA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298b660c59dd37-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3qtcg6vefhfqwv3b4xf6f","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        Tech startups in NYC","searches":[{"id":"wsearch_01kap3qts33yb88z6sw13trq1c","object":"webset_search","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","status":"completed","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[{"description":"Company
+        is a technology-focused startup headquartered in New York City (NYC)","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:43:19.331Z","updatedAt":"2025-11-22T15:43:34.461Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiagktmj005hg91t9o1eph2o","object":"webset_enrichment","status":"completed","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Contact
+        Email","description":"Find the company''s primary contact email address","format":"text","options":null,"instructions":"Find
+        the company''s primary contact email address in lowercase format (e.g., ''info@company.com'').","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:46.808Z"},{"id":"wenrich_cmiagktmj005ig91twokutwzc","object":"webset_enrichment","status":"completed","websetId":"webset_01kap3qtcg6vefhfqwv3b4xf6f","title":"Size
+        Category","description":"Determine the company size category","format":"options","options":[{"label":"1-10
+        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
+        employees"}],"instructions":"Select the company''s size category based on
+        total employee count using only the provided options.","metadata":{},"createdAt":"2025-11-22T15:43:19.291Z","updatedAt":"2025-11-22T15:43:46.808Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:43:18.928Z","updatedAt":"2025-11-22T15:43:46.808Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:43:48 GMT
+recorded_with: VCR 6.3.1

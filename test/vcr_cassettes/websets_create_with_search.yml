@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"AI companies in San Francisco with 10-50 employees","count":1},"metadata":{"test":"integration_test","created_by":"exa-ruby"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '829'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"33d-E8UIa8ny9dGiNwMKQaq1E2fa4f8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=VqtATpg%2F72pN%2F4UYSMPE7yuO3qqfs0IOFQncjW61fXnot3%2FmARdTU7AiNY3vKV%2FCszgtXV3HMYgJhxgnCjHMDin%2BuoJmiEn0S6odfMIMju2%2Bv%2FDs9Q%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2986f8d85f8ae3-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kap3k75j2bkjgpq6vqhavc31","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3k7j3cpe5t439zhh0fjca","object":"webset_search","websetId":"webset_01kap3k75j2bkjgpq6vqhavc31","status":"running","query":"AI
+        companies in San Francisco with 10-50 employees","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:40:48.579Z","updatedAt":"2025-11-22T15:40:49.020Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{"test":"integration_test","created_by":"exa-ruby"},"createdAt":"2025-11-22T15:40:48.178Z","updatedAt":"2025-11-22T15:40:49.020Z"}'
+  recorded_at: Sat, 22 Nov 2025 15:40:49 GMT
+recorded_with: VCR 6.3.1

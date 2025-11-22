@@ -1,0 +1,1059 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"E-commerce companies in California with recent
+        funding","count":1,"entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months"},{"description":"focused on direct-to-consumer
+        products"}]},"enrichments":[{"description":"Extract the most recent funding
+        amount","format":"text"},{"description":"Find the company''s LinkedIn URL","format":"url"}],"metadata":{"project":"Q1-2024-research","team":"growth"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1660'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"67c-6qfoSu3604B1303VT1Dgbp3aE4g"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=YZ7Keu6n9%2B7UDwm8qfOVS4ro69BNhTyoBcCljqItZAHpo9bptVuJoR8Hf%2FIOxgPmiQV6eSsUXjQQ5sZXdpucoDy%2BDUAAFH60rZ3%2BMNwbuMPfujaxgA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2985875aee33a6-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":0},{"description":"focused on
+        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:51.276Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
+        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
+        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:51.276Z"}'
+  recorded_at: Sat, 22 Nov 2025 15:39:51 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"687-w6T9A7aDCZdpfByjzQzBVjTgLQo"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DKooULSI4l63kBKz%2BxUJ7ypgksFyr6YRoshJfg0HWUCeu%2B65Y9S5AlrbassrU4VqDiUG9lqJ45RsT3akBCf7pX3FvrR8DridVEliqU3vsbrnKXsR0Q%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2985a14ce7f981-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":0},{"description":"focused on
+        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:51.276Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
+        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
+        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:51.276Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:52 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6b7-E0184B9Zhx7hiZV07Z2/EphTarM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ReAvOhwsKhnut7wTkSLB5kOUo2O%2FRIb33E3XJh7Ym1f%2BqZYlaKDFx1l4JYvYX9nLaYPOlA1Hi2zCJc%2FdEEYRx06hCFpFB7%2F37AWBwl0Wd1wrWFsnVQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2985b19a60d218-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":3,"completion":7.5,"timeLeft":51},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:53.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
+        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
+        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:53.055Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:55 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:39:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6b9-Lcz366ee6JYVZFGgaHrtE0eIKJY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=evjEwzPFsXBzBh%2FH0Nd23VJgg23h4P7G61lYEHOLGhQasaBmE02yYGSwD656JH4DVgw3ov6j5O%2BTyLIjVx2DLrdAkDI5doH2zACOO6mOAQnHpTogSA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2985c228928df5-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":66.67},{"description":"focused
+        on direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":4,"completion":10,"timeLeft":61},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:53.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
+        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
+        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:53.055Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:39:57 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6b7-okB2/v9/4usN148vf/9V9FsO33o"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qZwOLxeHpih1PQDRcvZ%2F0FbOnlbQXtzy4KNN6iIrr%2BYEudGUztnY7f4esBGbtWDvVhosWMS82z6MQnJcryWi144yIP60MG0nX25YxdxW7hfApsoGLQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2985d27d3a4fa8-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":75},{"description":"focused on
+        direct-to-consumer products","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":5,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:53.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
+        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
+        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:53.055Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:40:00 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6b7-okB2/v9/4usN148vf/9V9FsO33o"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Jw05NXBZ8a%2BGPZedOnGhdmHS%2BsjxPihphu403%2FbIiTS0iRcsgb8FnGTtUoQLq4cjUvRGY5wqHPi%2BqgsafLW9b6wwhIZoPfRLcwRgRM5JDpIFT4Js5g%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2985e38e6f7095-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":75},{"description":"focused on
+        direct-to-consumer products","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":5,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:53.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
+        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
+        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:53.055Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:40:03 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"77d-5i9QvB1SNgqGsWjd5gjjtwVZxKg"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qtFLtsJ8FTKGvMqXbZySNh99%2BGV2xTLrEB%2FzE%2BsdUWyTsDihDdCZkjwpQP1GoxLOEp55k%2B4ZcY%2FsCtqZlB9zbdrUNOiBC8iTxGcXsbJpJoVWYT%2F28w%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2985f41f5b499b-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoicnVubmluZyIsInF1ZXJ5IjoiRS1jb21tZXJjZSBjb21wYW5pZXMgaW4gQ2FsaWZvcm5pYSB3aXRoIHJlY2VudCBmdW5kaW5nIiwiZW50aXR5Ijp7InR5cGUiOiJjb21wYW55In0sImNyaXRlcmlhIjpbeyJkZXNjcmlwdGlvbiI6InJhaXNlZCBmdW5kaW5nIGluIHRoZSBsYXN0IDEyIG1vbnRocyIsInN1Y2Nlc3NSYXRlIjo3NX0seyJkZXNjcmlwdGlvbiI6ImZvY3VzZWQgb24gZGlyZWN0LXRvLWNvbnN1bWVyIHByb2R1Y3RzIiwic3VjY2Vzc1JhdGUiOjI1fV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjo1LCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjkxNVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUzLjA1NVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W3siaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNXpqMDFzNGlvNWIwNjUiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGF0ZXN0IEZ1bmRpbmciLCJkZXNjcmlwdGlvbiI6IkV4dHJhY3QgdGhlIG1vc3QgcmVjZW50IGZ1bmRpbmcgYW1vdW50IiwiZm9ybWF0IjoidGV4dCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIG1vc3QgcmVjZW50IGZ1bmRpbmcgYW1vdW50IGFuZCBwcm92aWRlIGl0IGFzIGEgbm9ybWFsaXplZCBzdHJpbmcgd2l0aCBjdXJyZW5jeSBzeW1ib2wgYW5kIHVuaXQgKGUuZy4sICckNDBNJywgJ+KCrDEyLjVNJykuIiwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjc4OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjA0Ljg2OFoifSx7ImlkIjoid2VucmljaF9jbWlhZ2djcXQwMDYwajAxc2ttamR1aGV5Iiwib2JqZWN0Ijoid2Vic2V0X2VucmljaG1lbnQiLCJzdGF0dXMiOiJwZW5kaW5nIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxpbmtlZEluIFVSTCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIExpbmtlZEluIFVSTCIsImZvcm1hdCI6InVybCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBvZmZpY2lhbCBMaW5rZWRJbiBwcm9maWxlIFVSTC4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7InRlYW0iOiJncm93dGgiLCJwcm9qZWN0IjoiUTEtMjAyNC1yZXNlYXJjaCJ9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjM5OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjA0Ljg2OFoiLCJpdGVtcyI6W119
+  recorded_at: Sat, 22 Nov 2025 15:40:05 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"77d-5i9QvB1SNgqGsWjd5gjjtwVZxKg"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=QtsVXj4RjBVgV9HbYvt8%2BU4mtmRgGF0v5oJr1EJpn%2FnQBGbRQ5fQIkrjT8rHkI49NbiTZ%2BhT2hgyChMYRVBY3VvQnub9EodCK9xJId%2BC5nkzKfVk2Q%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298604abd74f4e-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoicnVubmluZyIsInF1ZXJ5IjoiRS1jb21tZXJjZSBjb21wYW5pZXMgaW4gQ2FsaWZvcm5pYSB3aXRoIHJlY2VudCBmdW5kaW5nIiwiZW50aXR5Ijp7InR5cGUiOiJjb21wYW55In0sImNyaXRlcmlhIjpbeyJkZXNjcmlwdGlvbiI6InJhaXNlZCBmdW5kaW5nIGluIHRoZSBsYXN0IDEyIG1vbnRocyIsInN1Y2Nlc3NSYXRlIjo3NX0seyJkZXNjcmlwdGlvbiI6ImZvY3VzZWQgb24gZGlyZWN0LXRvLWNvbnN1bWVyIHByb2R1Y3RzIiwic3VjY2Vzc1JhdGUiOjI1fV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjo1LCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjkxNVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUzLjA1NVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W3siaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNXpqMDFzNGlvNWIwNjUiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGF0ZXN0IEZ1bmRpbmciLCJkZXNjcmlwdGlvbiI6IkV4dHJhY3QgdGhlIG1vc3QgcmVjZW50IGZ1bmRpbmcgYW1vdW50IiwiZm9ybWF0IjoidGV4dCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIG1vc3QgcmVjZW50IGZ1bmRpbmcgYW1vdW50IGFuZCBwcm92aWRlIGl0IGFzIGEgbm9ybWFsaXplZCBzdHJpbmcgd2l0aCBjdXJyZW5jeSBzeW1ib2wgYW5kIHVuaXQgKGUuZy4sICckNDBNJywgJ+KCrDEyLjVNJykuIiwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjc4OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjA0Ljg2OFoifSx7ImlkIjoid2VucmljaF9jbWlhZ2djcXQwMDYwajAxc2ttamR1aGV5Iiwib2JqZWN0Ijoid2Vic2V0X2VucmljaG1lbnQiLCJzdGF0dXMiOiJwZW5kaW5nIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxpbmtlZEluIFVSTCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIExpbmtlZEluIFVSTCIsImZvcm1hdCI6InVybCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBvZmZpY2lhbCBMaW5rZWRJbiBwcm9maWxlIFVSTC4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7InRlYW0iOiJncm93dGgiLCJwcm9qZWN0IjoiUTEtMjAyNC1yZXNlYXJjaCJ9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjM5OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjA0Ljg2OFoiLCJpdGVtcyI6W119
+  recorded_at: Sat, 22 Nov 2025 15:40:08 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"77f-YR0N5AzVdXnHtyratLah/rnRYnQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=oyU%2F1CMoA9yn86AYPfjELq4ifu2uVBVfoCv%2F6vyV3QG0AYPr5Nx8%2F5nsnn613Nl9LkuQVlFUeTRY9zIPQqtcMjV15K7dCiZ8c0P4Zedi0z1Ao6ZNNg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2986158d6d52c0-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoicGVuZGluZyIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwidGl0bGUiOiJMYXRlc3QgRnVuZGluZyIsImRlc2NyaXB0aW9uIjoiRXh0cmFjdCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQiLCJmb3JtYXQiOiJ0ZXh0Iiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQgYW5kIHByb3ZpZGUgaXQgYXMgYSBub3JtYWxpemVkIHN0cmluZyB3aXRoIGN1cnJlbmN5IHN5bWJvbCBhbmQgdW5pdCAoZS5nLiwgJyQ0ME0nLCAn4oKsMTIuNU0nKS4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9LHsiaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNjBqMDFza21qZHVoZXkiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGlua2VkSW4gVVJMIiwiZGVzY3JpcHRpb24iOiJGaW5kIHRoZSBjb21wYW55J3MgTGlua2VkSW4gVVJMIiwiZm9ybWF0IjoidXJsIiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgY29tcGFueSdzIG9mZmljaWFsIExpbmtlZEluIHByb2ZpbGUgVVJMLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDowNC44NjhaIn1dLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsidGVhbSI6Imdyb3d0aCIsInByb2plY3QiOiJRMS0yMDI0LXJlc2VhcmNoIn0sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuMzk5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiIsIml0ZW1zIjpbXX0=
+  recorded_at: Sat, 22 Nov 2025 15:40:11 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"77f-YR0N5AzVdXnHtyratLah/rnRYnQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2BElbqAnRu2U23RSj3od2Mq4OCBuTrjxr0e%2F96R%2BIgz8h4skAi36pcaOu0ftRneI3DU3kcSDiRm8mZBdX0PwbWBWtag0b%2FL2rHyt6uJ5YNhWqTWQx4A%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2986260eaa72b7-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoicGVuZGluZyIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwidGl0bGUiOiJMYXRlc3QgRnVuZGluZyIsImRlc2NyaXB0aW9uIjoiRXh0cmFjdCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQiLCJmb3JtYXQiOiJ0ZXh0Iiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQgYW5kIHByb3ZpZGUgaXQgYXMgYSBub3JtYWxpemVkIHN0cmluZyB3aXRoIGN1cnJlbmN5IHN5bWJvbCBhbmQgdW5pdCAoZS5nLiwgJyQ0ME0nLCAn4oKsMTIuNU0nKS4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9LHsiaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNjBqMDFza21qZHVoZXkiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGlua2VkSW4gVVJMIiwiZGVzY3JpcHRpb24iOiJGaW5kIHRoZSBjb21wYW55J3MgTGlua2VkSW4gVVJMIiwiZm9ybWF0IjoidXJsIiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgY29tcGFueSdzIG9mZmljaWFsIExpbmtlZEluIHByb2ZpbGUgVVJMLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDowNC44NjhaIn1dLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsidGVhbSI6Imdyb3d0aCIsInByb2plY3QiOiJRMS0yMDI0LXJlc2VhcmNoIn0sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuMzk5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiIsIml0ZW1zIjpbXX0=
+  recorded_at: Sat, 22 Nov 2025 15:40:13 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"77f-YR0N5AzVdXnHtyratLah/rnRYnQ"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=4ZBPR80iFniHyaXxv3pLASlCKK7ezYVYLLJwvsOE3W82yhFyT14uW4Bv1JWktut4SFmZ3w2Ld7CJBvW8FqCHdZkhre6Fq1vjUgZCwoJACBfDQu6zvg%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2986373e0742c3-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoicGVuZGluZyIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwidGl0bGUiOiJMYXRlc3QgRnVuZGluZyIsImRlc2NyaXB0aW9uIjoiRXh0cmFjdCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQiLCJmb3JtYXQiOiJ0ZXh0Iiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQgYW5kIHByb3ZpZGUgaXQgYXMgYSBub3JtYWxpemVkIHN0cmluZyB3aXRoIGN1cnJlbmN5IHN5bWJvbCBhbmQgdW5pdCAoZS5nLiwgJyQ0ME0nLCAn4oKsMTIuNU0nKS4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9LHsiaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNjBqMDFza21qZHVoZXkiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGlua2VkSW4gVVJMIiwiZGVzY3JpcHRpb24iOiJGaW5kIHRoZSBjb21wYW55J3MgTGlua2VkSW4gVVJMIiwiZm9ybWF0IjoidXJsIiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgY29tcGFueSdzIG9mZmljaWFsIExpbmtlZEluIHByb2ZpbGUgVVJMLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDowNC44NjhaIn1dLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsidGVhbSI6Imdyb3d0aCIsInByb2plY3QiOiJRMS0yMDI0LXJlc2VhcmNoIn0sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuMzk5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiIsIml0ZW1zIjpbXX0=
+  recorded_at: Sat, 22 Nov 2025 15:40:16 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"77f-YR0N5AzVdXnHtyratLah/rnRYnQ"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=AjR9BnR1wLda6CtYxbR4Gq7DjYtFdrg8SV5XrQach5Wn0ME0bbmApkt3NkUPQJIMjgVlvGVvF7%2Bvaz7M8pMLrh1SVa9yT4J4mjruyjBDpmNyCIqJOw%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2986494f7bc413-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoicGVuZGluZyIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwidGl0bGUiOiJMYXRlc3QgRnVuZGluZyIsImRlc2NyaXB0aW9uIjoiRXh0cmFjdCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQiLCJmb3JtYXQiOiJ0ZXh0Iiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQgYW5kIHByb3ZpZGUgaXQgYXMgYSBub3JtYWxpemVkIHN0cmluZyB3aXRoIGN1cnJlbmN5IHN5bWJvbCBhbmQgdW5pdCAoZS5nLiwgJyQ0ME0nLCAn4oKsMTIuNU0nKS4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9LHsiaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNjBqMDFza21qZHVoZXkiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGlua2VkSW4gVVJMIiwiZGVzY3JpcHRpb24iOiJGaW5kIHRoZSBjb21wYW55J3MgTGlua2VkSW4gVVJMIiwiZm9ybWF0IjoidXJsIiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgY29tcGFueSdzIG9mZmljaWFsIExpbmtlZEluIHByb2ZpbGUgVVJMLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDowNC44NjhaIn1dLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsidGVhbSI6Imdyb3d0aCIsInByb2plY3QiOiJRMS0yMDI0LXJlc2VhcmNoIn0sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuMzk5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiIsIml0ZW1zIjpbXX0=
+  recorded_at: Sat, 22 Nov 2025 15:40:22 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"780-iiMG+LmxLNf0PnsPMafDaT7MmaA"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=so2Wdi5AiV7x80pLOJL5AoaSpiz%2FPCEZqrphxC5yyfmuw25FLGOVAEmzqg%2B535bCQikIRmKrqoABTatFPgIrMYmPznBGOddzmxvjcgvmaPPTn75Ibw%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2986703f88fef2-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxhdGVzdCBGdW5kaW5nIiwiZGVzY3JpcHRpb24iOiJFeHRyYWN0IHRoZSBtb3N0IHJlY2VudCBmdW5kaW5nIGFtb3VudCIsImZvcm1hdCI6InRleHQiLCJvcHRpb25zIjpudWxsLCJpbnN0cnVjdGlvbnMiOiJGaW5kIHRoZSBtb3N0IHJlY2VudCBmdW5kaW5nIGFtb3VudCBhbmQgcHJvdmlkZSBpdCBhcyBhIG5vcm1hbGl6ZWQgc3RyaW5nIHdpdGggY3VycmVuY3kgc3ltYm9sIGFuZCB1bml0IChlLmcuLCAnJDQwTScsICfigqwxMi41TScpLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDoyMS41ODJaIn0seyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA2MGowMXNrbWpkdWhleSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxpbmtlZEluIFVSTCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIExpbmtlZEluIFVSTCIsImZvcm1hdCI6InVybCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBvZmZpY2lhbCBMaW5rZWRJbiBwcm9maWxlIFVSTC4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MjEuNTgyWiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7InRlYW0iOiJncm93dGgiLCJwcm9qZWN0IjoiUTEtMjAyNC1yZXNlYXJjaCJ9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjM5OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjIxLjU4MloiLCJpdGVtcyI6W119
+  recorded_at: Sat, 22 Nov 2025 15:40:25 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets?limit=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:40:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2c99-1iC4oUfIpA+MEeqdmgkqssboFJs"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=U4BYKILXgpt1h1LnkrLFbxMtIls9IP%2BbArrTJMiK4RdD2igYGME6LVqWZc9smtBvva5btEklAybef3OO%2BKLRFoINjQAg2xucO4qUeGVVW9sxc7WC6A%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2986740b20e226-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjpbeyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxhdGVzdCBGdW5kaW5nIiwiZGVzY3JpcHRpb24iOiJFeHRyYWN0IHRoZSBtb3N0IHJlY2VudCBmdW5kaW5nIGFtb3VudCIsImZvcm1hdCI6InRleHQiLCJvcHRpb25zIjpudWxsLCJpbnN0cnVjdGlvbnMiOiJGaW5kIHRoZSBtb3N0IHJlY2VudCBmdW5kaW5nIGFtb3VudCBhbmQgcHJvdmlkZSBpdCBhcyBhIG5vcm1hbGl6ZWQgc3RyaW5nIHdpdGggY3VycmVuY3kgc3ltYm9sIGFuZCB1bml0IChlLmcuLCAnJDQwTScsICfigqwxMi41TScpLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDoyMS41ODJaIn0seyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA2MGowMXNrbWpkdWhleSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxpbmtlZEluIFVSTCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIExpbmtlZEluIFVSTCIsImZvcm1hdCI6InVybCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBvZmZpY2lhbCBMaW5rZWRJbiBwcm9maWxlIFVSTC4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MjEuNTgyWiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7InRlYW0iOiJncm93dGgiLCJwcm9qZWN0IjoiUTEtMjAyNC1yZXNlYXJjaCJ9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjM5OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjIxLjU4MloifSx7ImlkIjoid2Vic2V0XzAxa2FwM2dxM3I5NG4zZW1ocmt4bmFqOHNwIiwib2JqZWN0Ijoid2Vic2V0Iiwic3RhdHVzIjoiaWRsZSIsImV4dGVybmFsSWQiOm51bGwsInRpdGxlIjoiQ29tcGFuaWVzOiBUZWNoIGluIFBhY2lmaWMgTm9ydGh3ZXN0Iiwic2VhcmNoZXMiOlt7ImlkIjoid3NlYXJjaF8wMWthcDNncWdwNHR3YWNxYTg1NnBkajdldCIsIm9iamVjdCI6IndlYnNldF9zZWFyY2giLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNncTNyOTRuM2VtaHJreG5hajhzcCIsInN0YXR1cyI6ImNvbXBsZXRlZCIsInF1ZXJ5IjoiVGVjaCBjb21wYW5pZXMgaW4gUGFjaWZpYyBOb3J0aHdlc3QiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBvcGVyYXRlcyBpbiB0aGUgdGVjaG5vbG9neSBzZWN0b3IiLCJzdWNjZXNzUmF0ZSI6MTAwfSx7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBpcyBoZWFkcXVhcnRlcmVkIG9yIGhhcyBhIHNpZ25pZmljYW50IHByZXNlbmNlIGluIHRoZSBQYWNpZmljIE5vcnRod2VzdCAoV2FzaGluZ3RvbiwgT3JlZ29uLCBvciBJZGFobykiLCJzdWNjZXNzUmF0ZSI6MTAwfV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W3sic291cmNlIjoid2Vic2V0IiwiaWQiOiJ3ZWJzZXRfMDFrYXAzZnpuZ3M2YmVtcThrcTFhamZ3aHMifV0sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjoxLCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjI2LjYxNFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjQ0LjMyNVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W10sIm1vbml0b3JzIjpbXSwiZXhjbHVkZXMiOlt7InNvdXJjZSI6IndlYnNldCIsImlkIjoid2Vic2V0XzAxa2FwM2Z6bmdzNmJlbXE4a3ExYWpmd2hzIn1dLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6MjYuMjAwWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NDQuMzI1WiJ9LHsiaWQiOiJ3ZWJzZXRfMDFrYXAzZnpuZ3M2YmVtcThrcTFhamZ3aHMiLCJvYmplY3QiOiJ3ZWJzZXQiLCJzdGF0dXMiOiJpZGxlIiwiZXh0ZXJuYWxJZCI6bnVsbCwidGl0bGUiOiJDb21wYW5pZXM6IFRlY2ggaW4gU2VhdHRsZSIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYXAzZzBra2I0ODQ2MWdndDQ3azV4MjUiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzZnpuZ3M2YmVtcThrcTFhamZ3aHMiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6IlRlY2ggY29tcGFuaWVzIGluIFNlYXR0bGUiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBvcGVyYXRlcyBpbiB0aGUgdGVjaG5vbG9neSBzZWN0b3IgYW5kIGlzIGhlYWRxdWFydGVyZWQgaW4gU2VhdHRsZSwgV0EiLCJzdWNjZXNzUmF0ZSI6MzMuMzN9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjMsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6MDMuMTU1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6MjEuNjg4WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbXSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTowMi4xOTJaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOToyMS42ODhaIn0seyJpZCI6IndlYnNldF8wMWthcDNkenI0MjR0aHlhNjBxdHQweWs3ZiIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogVGVjaCBzdGFydHVwcyBpbiBOWUMiLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2UwM243ejY0MWF3ZDVxMGJ4Mnp0Iiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2R6cjQyNHRoeWE2MHF0dDB5azdmIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJUZWNoIHN0YXJ0dXBzIGluIE5ZQyIsImVudGl0eSI6eyJ0eXBlIjoiY29tcGFueSJ9LCJjcml0ZXJpYSI6W3siZGVzY3JpcHRpb24iOiJDb21wYW55IGlzIGEgdGVjaG5vbG9neS1mb2N1c2VkIHN0YXJ0dXAgaGVhZHF1YXJ0ZXJlZCBpbiBOZXcgWW9yayBDaXR5IChOWUMpIiwic3VjY2Vzc1JhdGUiOjEwMH1dLCJjb3VudCI6MSwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoxLCJhbmFseXplZCI6MSwiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzo1Ny4xMDlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozODoyNi42OTJaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOlt7ImlkIjoid2VucmljaF9jbWlhZ2R4MGUwMDEwZ2Uxc2ttcGNzbTN6Iiwib2JqZWN0Ijoid2Vic2V0X2VucmljaG1lbnQiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNkenI0MjR0aHlhNjBxdHQweWs3ZiIsInRpdGxlIjoiQ29udGFjdCBFbWFpbCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIHByaW1hcnkgY29udGFjdCBlbWFpbCBhZGRyZXNzIiwiZm9ybWF0IjoidGV4dCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBwcmltYXJ5IGNvbnRhY3QgZW1haWwgYWRkcmVzcyBpbiBsb3dlcmNhc2UgZm9ybWF0IChlLmcuLCAnaW5mb0Bjb21wYW55LmNvbScpLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzo1Ny4wODdaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOToyNi42NDJaIn0seyJpZCI6IndlbnJpY2hfY21pYWdkeDBlMDAxMWdlMXMwemk5NzJqZCIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzZHpyNDI0dGh5YTYwcXR0MHlrN2YiLCJ0aXRsZSI6IkNvbXBhbnkgU2l6ZSIsImRlc2NyaXB0aW9uIjoiRGV0ZXJtaW5lIHRoZSBjb21wYW55IHNpemUgY2F0ZWdvcnkiLCJmb3JtYXQiOiJvcHRpb25zIiwib3B0aW9ucyI6W3sibGFiZWwiOiIxLTEwIGVtcGxveWVlcyJ9LHsibGFiZWwiOiIxMS01MCBlbXBsb3llZXMifSx7ImxhYmVsIjoiNTEtMjAwIGVtcGxveWVlcyJ9LHsibGFiZWwiOiIyMDErIGVtcGxveWVlcyJ9XSwiaW5zdHJ1Y3Rpb25zIjoiRGV0ZXJtaW5lIHRoZSBjb21wYW55J3Mgc2l6ZSBjYXRlZ29yeSBiYXNlZCBvbiB0aGUgbnVtYmVyIG9mIGVtcGxveWVlcyB1c2luZyB0aGUgcHJvdmlkZWQgb3B0aW9ucy4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzc6NTcuMDg3WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6MjYuNjQyWiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzo1Ni43NDBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOToyNi42NDJaIn0seyJpZCI6IndlYnNldF8wMWthcDNkOHpwYnE1YmZqdGVlbWp3cmhycSIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogbWFya2V0aW5nIGFnZW5jaWVzIGluIHRoZSBVUyIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYXAzZDljd3ZjdjV3aGIyeHlncHZicjEiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzZDh6cGJxNWJmanRlZW1qd3JocnEiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6Ik1hcmtldGluZyBhZ2VuY2llcyBpbiB0aGUgVVMiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBjb25zdW1lciBwcm9kdWN0cyIsInN1Y2Nlc3NSYXRlIjoxMC43MX0seyJkZXNjcmlwdGlvbiI6ImF0IGxlYXN0IDUwIGVtcGxveWVlcyIsInN1Y2Nlc3NSYXRlIjozOS4yOX1dLCJjb3VudCI6MSwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoxLCJhbmFseXplZCI6MjksImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzc6MzMuODUyWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzc6NTMuNjUwWiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbXSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzozMy40MzBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzo1My42NTBaIn0seyJpZCI6IndlYnNldF8wMWthbjk0OXo5a3FoZ2ZybjM4NnZranFteiIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkxpbmtlZEluIFByb2ZpbGVzOiBDVE9zIGF0IEFJIENvbXBhbmllcyIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYW45NGFiMGRzOHk5bjcwMTByZjVnZzkiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYW45NDl6OWtxaGdmcm4zODZ2a2pxbXoiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6IkNUT3MgYXQgQUkgY29tcGFuaWVzIiwiZW50aXR5Ijp7InR5cGUiOiJwZXJzb24ifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ3VycmVudGx5IGhvbGRzIHRoZSBwb3NpdGlvbiBvZiBDVE8gKENoaWVmIFRlY2hub2xvZ3kgT2ZmaWNlcikgYXQgYSBjb21wYW55IGluIHRoZSBhcnRpZmljaWFsIGludGVsbGlnZW5jZSAoQUkpIGluZHVzdHJ5Iiwic3VjY2Vzc1JhdGUiOjUwfV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjoyLCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDA3OjU4OjE2LjkyOFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDA3OjU4OjM2Ljc2MVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W10sIm1vbml0b3JzIjpbXSwiZXhjbHVkZXMiOltdLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMDc6NTg6MTYuNTUzWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMDc6NTg6MzYuNzYxWiJ9LHsiaWQiOiJ3ZWJzZXRfMDFrYW45NDhjODM1Z2Y5YjJmZHNra3htNDkiLCJvYmplY3QiOiJ3ZWJzZXQiLCJzdGF0dXMiOiJpZGxlIiwiZXh0ZXJuYWxJZCI6InRlc3QtZXh0ZXJuYWwtMTc2Mzc5ODI5MyIsInRpdGxlIjoiQ29tcGFuaWVzOiBTYWFTLCBFdXJvcGUiLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FuOTQ4cnlhcmN5YWhlbjZyd21mMHF4Iiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FuOTQ4YzgzNWdmOWIyZmRza2t4bTQ5Iiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJTYWFTIGNvbXBhbmllcyBpbiBFdXJvcGUiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBwcm92aWRlcyBTb2Z0d2FyZSBhcyBhIFNlcnZpY2UgKFNhYVMpIHByb2R1Y3RzIG9yIHNlcnZpY2VzIiwic3VjY2Vzc1JhdGUiOjMzLjMzfSx7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBpcyBoZWFkcXVhcnRlcmVkIGluIGEgRXVyb3BlYW4gY291bnRyeSIsInN1Y2Nlc3NSYXRlIjo2Ni42N31dLCJjb3VudCI6MSwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoxLCJhbmFseXplZCI6MywiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoxNS4zMjZaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODozNC40NzNaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOltdLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDA3OjU4OjE0LjkyMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDA3OjU4OjM0LjQ3M1oifSx7ImlkIjoid2Vic2V0XzAxa2FuOTQ1Mmt2dHM3anJzNnZtd3FycjBrIiwib2JqZWN0Ijoid2Vic2V0Iiwic3RhdHVzIjoiaWRsZSIsImV4dGVybmFsSWQiOm51bGwsInRpdGxlIjoiQ29tcGFuaWVzOiBGaW50ZWNoLCBMb25kb24iLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FuOTQ1ZXRrd2pxZmYxa2tqcjh3N2oxIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FuOTQ1Mmt2dHM3anJzNnZtd3FycjBrIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJGaW50ZWNoIGNvbXBhbmllcyBpbiBMb25kb24iLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBvcGVyYXRlcyBpbiB0aGUgZmludGVjaCBpbmR1c3RyeSBhbmQgaXMgaGVhZHF1YXJ0ZXJlZCBpbiBMb25kb24sIFVLIiwic3VjY2Vzc1JhdGUiOjEwMH1dLCJjb3VudCI6MSwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoxLCJhbmFseXplZCI6MSwiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoxMS45MzBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoyOS42NzVaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOltdLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsicHVycG9zZSI6ImludGVncmF0aW9uX3Rlc3QifSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoxMS41MzlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoyOS42NzVaIn0seyJpZCI6IndlYnNldF8wMWthbXNydzE0NjM0a2ZoOWpkem5yNjc5YyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjoidGVzdF93ZWJzZXRfZ2V0XzE3NjM3ODIxOTIiLCJ0aXRsZSI6IkFydGljbGVzOiBQeXRob24gYmxvZyIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYW1zcndkcTFrcjF6OTB2cmJtdDJ3eGMiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYW1zcncxNDYzNGtmaDlqZHpucjY3OWMiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6InB5dGhvbiBibG9nIiwiZW50aXR5Ijp7InR5cGUiOiJhcnRpY2xlIn0sImNyaXRlcmlhIjpbeyJkZXNjcmlwdGlvbiI6IkJsb2cgcG9zdCBmb2N1c2VkIG9uIFB5dGhvbiBwcm9ncmFtbWluZyIsInN1Y2Nlc3NSYXRlIjo2LjI1fV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjoxNiwiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQwMzoyOTo1My41OTFaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQwMzozMDoxNi4zNDdaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOltdLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDAzOjI5OjUzLjE4OFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDAzOjMwOjE2LjM0N1oifSx7ImlkIjoid2Vic2V0XzAxa2Ftc2d2eXl4cmVma2QzN2E3N3ByMDFiIiwib2JqZWN0Ijoid2Vic2V0Iiwic3RhdHVzIjoiaWRsZSIsImV4dGVybmFsSWQiOiJ0ZXN0X3dlYnNldF9nZXRfMTc2Mzc4MTkzMCIsInRpdGxlIjoiQXJ0aWNsZXM6IFB5dGhvbiBibG9nIiwic2VhcmNoZXMiOlt7ImlkIjoid3NlYXJjaF8wMWthbXNnd2IybmM0djFhNDQyeWM1eDhuYyIsIm9iamVjdCI6IndlYnNldF9zZWFyY2giLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthbXNndnl5eHJlZmtkMzdhNzdwcjAxYiIsInN0YXR1cyI6ImNvbXBsZXRlZCIsInF1ZXJ5IjoicHl0aG9uIGJsb2ciLCJlbnRpdHkiOnsidHlwZSI6ImFydGljbGUifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQmxvZyBwb3N0IGZvY3VzZWQgb24gUHl0aG9uIHByb2dyYW1taW5nIiwic3VjY2Vzc1JhdGUiOjMzLjMzfV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjozLCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDAzOjI1OjMxLjM2MloiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDAzOjI1OjQ5LjEwN1oifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W10sIm1vbml0b3JzIjpbXSwiZXhjbHVkZXMiOltdLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMDM6MjU6MzAuOTc0WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMDM6MjU6NDkuMTA3WiJ9XSwiaGFzTW9yZSI6dHJ1ZSwibmV4dEN1cnNvciI6IjAxa2Ftc2d2eXl4cmVma2QzN2E3N3ByMDFiIn0=
+  recorded_at: Sat, 22 Nov 2025 15:40:26 GMT
+recorded_with: VCR 6.3.1

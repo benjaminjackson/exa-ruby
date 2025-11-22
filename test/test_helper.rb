@@ -20,7 +20,8 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.default_cassette_options = {
     record: :once,
-    match_requests_on: [:method, :uri, :body]
+    match_requests_on: [:method, :uri, :body],
+    allow_playback_repeats: true
   }
   # Filter sensitive data
   config.filter_sensitive_data("<EXA_API_KEY>") { ENV["EXA_API_KEY"] }
@@ -45,4 +46,25 @@ def with_api_key(api_key)
   yield
 ensure
   original ? (ENV["EXA_API_KEY"] = original) : ENV.delete("EXA_API_KEY")
+end
+
+# Poll a webset until it reaches idle status or times out
+# This prevents rate limiting issues when running multiple webset creation tests
+def wait_for_webset_completion(client, webset_id, timeout: 120, interval: 2)
+  start_time = Time.now
+
+  loop do
+    webset = client.get_webset(webset_id)
+
+    # Webset is complete when status is "idle"
+    return webset if webset.idle?
+
+    # Check if we've exceeded the timeout
+    if Time.now - start_time > timeout
+      raise "Webset #{webset_id} did not complete within #{timeout} seconds. Current status: #{webset.status}"
+    end
+
+    # Wait before polling again
+    sleep interval
+  end
 end
