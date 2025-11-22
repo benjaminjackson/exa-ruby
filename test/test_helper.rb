@@ -19,7 +19,7 @@ VCR.configure do |config|
   config.cassette_library_dir = "test/vcr_cassettes"
   config.hook_into :webmock
   config.default_cassette_options = {
-    record: :new_episodes,
+    record: :once,
     match_requests_on: [:method, :uri, :body],
     allow_playback_repeats: true
   }
