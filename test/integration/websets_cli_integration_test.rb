@@ -258,11 +258,12 @@ class WebsetsCLIIntegrationTest < Minitest::Test
     assert result1["data"].is_a?(Array)
     assert result1["data"].length <= 2
 
-    # Skip if no websets available for pagination test
-    skip "No websets available for pagination test" unless result1["data"] && result1["data"].length >= 1
+    # Skip if no next page available for pagination test
+    skip "No next page available for pagination test" unless result1["hasMore"] && result1["nextCursor"]
 
-    # Get next page with offset
-    command2 = "bundle exec exe/exa-ai webset-list --limit 2 --offset 1 --output-format json"
+    # Get next page with cursor
+    next_cursor = result1["nextCursor"]
+    command2 = "bundle exec exe/exa-ai webset-list --limit 2 --cursor '#{next_cursor}' --output-format json"
     stdout2, _stderr, status2 = run_command(command2)
 
     assert status2.success?
@@ -448,7 +449,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
     assert status.success?, "webset-list --help should succeed"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "--limit"
-    assert_includes stdout, "--offset"
+    assert_includes stdout, "--cursor"
   end
 
   def test_webset_update_help
