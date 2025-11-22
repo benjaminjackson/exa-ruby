@@ -1,0 +1,177 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+# Parse JSON string or load from file (supports @file.json syntax)
+def parse_json_or_file(value)
+  if value.start_with?("@")
+    file_path = value[1..]
+    JSON.parse(File.read(file_path))
+  else
+    JSON.parse(value)
+  end
+rescue JSON::ParserError => e
+  $stderr.puts "Error: Invalid JSON: #{e.message}"
+  exit 1
+rescue Errno::ENOENT => e
+  $stderr.puts "Error: File not found: #{e.message}"
+  exit 1
+end
+
+# Parse command-line arguments
+def parse_args(argv)
+  args = {
+    output_format: "json",
+    api_key: nil,
+    wait: false
+  }
+
+  i = 0
+  while i < argv.length
+    arg = argv[i]
+    case arg
+    when "--search"
+      args[:search] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--enrichments"
+      args[:enrichments] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--exclude"
+      args[:exclude] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--external-id"
+      args[:external_id] = argv[i + 1]
+      i += 2
+    when "--metadata"
+      args[:metadata] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--wait"
+      args[:wait] = true
+      i += 1
+    when "--api-key"
+      args[:api_key] = argv[i + 1]
+      i += 2
+    when "--output-format"
+      args[:output_format] = argv[i + 1]
+      i += 2
+    when "--help", "-h"
+      puts <<~HELP
+        Usage: exa-ai webset-create --search JSON [OPTIONS]
+
+        Create a new webset with search criteria
+
+        Required:
+          --search JSON              Search configuration (supports @file.json)
+
+        Options:
+          --enrichments JSON         Array of enrichment configs (supports @file.json)
+          --exclude JSON             Array of exclude configs (supports @file.json)
+          --external-id ID           External identifier for the webset
+          --metadata JSON            Custom metadata (supports @file.json)
+          --wait                     Wait for webset to reach idle status
+          --api-key KEY              Exa API key (or set EXA_API_KEY env var)
+          --output-format FMT        Output format: json, pretty, or text (default: json)
+          --help, -h                 Show this help message
+
+        Examples:
+          exa-ai webset-create --search '{"query":"AI startups","count":10}'
+          exa-ai webset-create --search @search.json --enrichments @enrichments.json
+          exa-ai webset-create --search @search.json --wait
+      HELP
+      exit 0
+    else
+      $stderr.puts "Unknown option: #{arg}"
+      exit 1
+    end
+  end
+
+  args
+end
+
+# Main execution
+begin
+  args = parse_args(ARGV)
+
+  # Validate required parameters
+  unless args[:search]
+    $stderr.puts "Error: --search is required"
+    $stderr.puts "Run 'exa-ai webset-create --help' for usage information"
+    exit 1
+  end
+
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
+
+  # Resolve output format
+  output_format = Exa::CLI::Base.resolve_output_format(args[:output_format])
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Prepare webset parameters
+  webset_params = { search: args[:search] }
+  webset_params[:enrichments] = args[:enrichments] if args[:enrichments]
+  webset_params[:exclude] = args[:exclude] if args[:exclude]
+  webset_params[:externalId] = args[:external_id] if args[:external_id]
+  webset_params[:metadata] = args[:metadata] if args[:metadata]
+
+  # Create webset
+  webset = client.create_webset(**webset_params)
+
+  # If --wait flag is set, poll until webset is idle
+  if args[:wait]
+    $stderr.print "Creating webset... "
+
+    begin
+      final_webset = Exa::CLI::Polling.poll(max_duration: 300, initial_delay: 2, max_delay: 10) do
+        current_webset = client.get_webset(webset.id)
+
+        # Show progress indicator
+        case current_webset.status
+        when "pending"
+          $stderr.print "⏳"
+        when "running"
+          $stderr.print "⚙️"
+        end
+
+        done = current_webset.idle?
+        { done: done, result: current_webset, status: current_webset.status }
+      end
+
+      $stderr.puts " #{final_webset.status.upcase}"
+      webset = final_webset
+
+    rescue Exa::CLI::Polling::TimeoutError
+      $stderr.puts "\nWarning: Webset creation did not complete within timeout"
+      $stderr.puts "Webset ID: #{webset.id}"
+      $stderr.puts "Check status with: exa-ai webset-get #{webset.id}"
+    end
+  end
+
+  # Format and output result
+  output = Exa::CLI::Formatters::WebsetFormatter.format(webset, output_format)
+  puts output
+
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

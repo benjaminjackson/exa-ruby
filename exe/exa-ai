@@ -13,7 +13,19 @@ module ExaCLI
     "get-contents" => "Retrieve page contents",
     "research-start" => "Start a research task",
     "research-get" => "Get research task status",
-    "research-list" => "List research tasks"
+    "research-list" => "List research tasks",
+    "webset-create" => "Create a new webset",
+    "webset-get" => "Get webset details",
+    "webset-list" => "List websets",
+    "webset-update" => "Update a webset",
+    "webset-delete" => "Delete a webset",
+    "webset-cancel" => "Cancel a webset",
+    "enrichment-create" => "Create an enrichment",
+    "enrichment-get" => "Get enrichment details",
+    "enrichment-list" => "List enrichments",
+    "enrichment-update" => "Update an enrichment",
+    "enrichment-delete" => "Delete an enrichment",
+    "enrichment-cancel" => "Cancel an enrichment"
   }.freeze
 
   def self.run
@@ -41,6 +53,30 @@ module ExaCLI
       exec File.expand_path("../exa-ai-research-get", __FILE__), *ARGV[1..]
     when "research-list"
       exec File.expand_path("../exa-ai-research-list", __FILE__), *ARGV[1..]
+    when "webset-create"
+      exec File.expand_path("../exa-ai-webset-create", __FILE__), *ARGV[1..]
+    when "webset-get"
+      exec File.expand_path("../exa-ai-webset-get", __FILE__), *ARGV[1..]
+    when "webset-list"
+      exec File.expand_path("../exa-ai-webset-list", __FILE__), *ARGV[1..]
+    when "webset-update"
+      exec File.expand_path("../exa-ai-webset-update", __FILE__), *ARGV[1..]
+    when "webset-delete"
+      exec File.expand_path("../exa-ai-webset-delete", __FILE__), *ARGV[1..]
+    when "webset-cancel"
+      exec File.expand_path("../exa-ai-webset-cancel", __FILE__), *ARGV[1..]
+    when "enrichment-create"
+      exec File.expand_path("../exa-ai-enrichment-create", __FILE__), *ARGV[1..]
+    when "enrichment-get"
+      exec File.expand_path("../exa-ai-enrichment-get", __FILE__), *ARGV[1..]
+    when "enrichment-list"
+      exec File.expand_path("../exa-ai-enrichment-list", __FILE__), *ARGV[1..]
+    when "enrichment-update"
+      exec File.expand_path("../exa-ai-enrichment-update", __FILE__), *ARGV[1..]
+    when "enrichment-delete"
+      exec File.expand_path("../exa-ai-enrichment-delete", __FILE__), *ARGV[1..]
+    when "enrichment-cancel"
+      exec File.expand_path("../exa-ai-enrichment-cancel", __FILE__), *ARGV[1..]
     else
       print_error_for_command(ARGV[0])
       exit 1

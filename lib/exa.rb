@@ -43,6 +43,7 @@ require_relative "exa/cli/formatters/context_formatter"
 require_relative "exa/cli/formatters/contents_formatter"
 require_relative "exa/cli/formatters/research_formatter"
 require_relative "exa/cli/formatters/answer_formatter"
+require_relative "exa/cli/formatters/webset_formatter"
 
 module Exa
   # Module-level configuration
