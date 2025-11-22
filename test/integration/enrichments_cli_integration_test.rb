@@ -18,28 +18,20 @@ require "open3"
 # Tests are skipped in CI unless RUN_CLI_INTEGRATION_TESTS=true is set.
 # Help and error handling tests run without API calls.
 class EnrichmentsCLIIntegrationTest < Minitest::Test
+  include WebsetsCleanupHelper
+
   def skip_if_no_api_key
     skip "Set EXA_API_KEY to run CLI integration tests" unless ENV["EXA_API_KEY"] && !ENV["EXA_API_KEY"].empty?
   end
+
   def setup
+    super
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
     ENV["EXA_API_KEY"] = @api_key
-    @created_websets = []
-    @created_enrichments = []
   end
 
   def teardown
-    # Clean up enrichments first (they depend on websets)
-    @created_enrichments.each do |enrichment_info|
-      webset_id, enrichment_id = enrichment_info
-      run_command("bundle exec exe/exa-ai enrichment-delete #{webset_id} #{enrichment_id} --force") rescue nil
-    end
-
-    # Then clean up websets
-    @created_websets.each do |webset_id|
-      run_command("bundle exec exe/exa-ai webset-delete #{webset_id} --force") rescue nil
-    end
-
+    super
     Exa.reset
   end
 
@@ -56,18 +48,6 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
   rescue JSON::ParserError => e
     puts "Failed to parse JSON: #{stdout.inspect}"
     raise
-  end
-
-  # Helper to track created websets for cleanup
-  def track_webset(webset_id)
-    @created_websets << webset_id
-    webset_id
-  end
-
-  # Helper to track created enrichments for cleanup
-  def track_enrichment(webset_id, enrichment_id)
-    @created_enrichments << [webset_id, enrichment_id]
-    enrichment_id
   end
 
   # Test enrichment-create command with basic text format

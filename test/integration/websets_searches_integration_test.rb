@@ -3,23 +3,15 @@
 require "test_helper"
 
 class WebsetsSearchesIntegrationTest < Minitest::Test
+  include WebsetsCleanupHelper
+
   def setup
+    super
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
-    @webset_ids = []
   end
 
   def teardown
-    # Cancel any websets created during the test to free up API resources
-    if @webset_ids.any?
-      client = Exa::Client.new(api_key: @api_key)
-      @webset_ids.each do |webset_id|
-        begin
-          client.cancel_webset(webset_id)
-        rescue => e
-          # Ignore errors if webset is already canceled or doesn't exist
-        end
-      end
-    end
+    super
     Exa.reset
   end
 
@@ -36,7 +28,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
       assert_instance_of Exa::Resources::Webset, webset
     end
 
@@ -49,6 +41,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         query: "Machine learning companies",
         count: 2
       )
+      track_search(webset.id, search.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, search
       assert_equal "webset_search", search.object
@@ -72,7 +65,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           entity: { type: "person" }
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -85,6 +78,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         count: 2,
         entity: { type: "person" }
       )
+      track_search(webset.id, search.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, search
       assert_equal "person", search.entity["type"]
@@ -103,7 +97,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -120,6 +114,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         count: 2,
         criteria: criteria
       )
+      track_search(webset.id, search.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, search
       assert_equal 2, search.criteria.length if search.criteria
@@ -139,7 +134,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -151,6 +146,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         count: 2,
         recall: true
       )
+      track_search(webset.id, search.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, search
       # Recall data may not be immediately available, so just verify the search exists
@@ -170,7 +166,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
 
       # Create a search with override behavior
       search = client.create_webset_search(
@@ -179,6 +175,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         count: 2,
         behavior: "override"
       )
+      track_search(webset.id, search.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, search
       assert_equal "override", search.behavior
@@ -199,7 +196,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -211,6 +208,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         count: 2,
         behavior: "append"
       )
+      track_search(webset.id, search.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, search
       assert_equal "append", search.behavior
@@ -233,7 +231,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -245,6 +243,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         query: "AI companies",
         count: 2
       )
+      track_search(webset.id, created_search.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, created_search
       search_id = created_search.id
@@ -275,7 +274,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -286,6 +285,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         query: "Digital health platforms with FDA approval",
         count: 2
       )
+      track_search(webset.id, search.id)
 
       # Initial status should be created or running
       assert_includes ["created", "running"], search.status
@@ -316,7 +316,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 2
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -327,6 +327,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         query: "Cloud infrastructure companies with enterprise customers",
         count: 2
       )
+      track_search(webset.id, search.id)
 
       # Cancel the search
       canceled = client.cancel_webset_search(
@@ -354,7 +355,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -369,6 +370,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           "project" => "integration_test"
         }
       )
+      track_search(webset.id, search.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, search
       # Metadata may not be echoed back by the API, so only assert if present
@@ -392,7 +394,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -404,6 +406,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         query: "E-commerce platforms with international shipping",
         count: 2
       )
+      track_search(webset.id, search1.id)
 
       # Create second search
       search2 = client.create_webset_search(
@@ -411,6 +414,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         query: "Direct-to-consumer brands in fashion",
         count: 2
       )
+      track_search(webset.id, search2.id)
 
       assert_instance_of Exa::Resources::WebsetSearch, search1
       assert_instance_of Exa::Resources::WebsetSearch, search2
@@ -432,7 +436,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           count: 1
         }
       )
-      @webset_ids << webset.id
+      track_webset(webset.id)
     end
 
     wait_for_webset_completion(client, webset.id)
@@ -444,6 +448,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         count: 2,
         behavior: "override"
       )
+      track_search(webset.id, search.id)
 
       # Test status helpers
       assert search.created? || search.running?

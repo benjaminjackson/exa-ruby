@@ -3,11 +3,15 @@
 require "test_helper"
 
 class WebsetsItemsIntegrationTest < Minitest::Test
+  include WebsetsCleanupHelper
+
   def setup
+    super
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
   end
 
   def teardown
+    super
     Exa.reset
   end
 
@@ -22,6 +26,7 @@ class WebsetsItemsIntegrationTest < Minitest::Test
           count: 1
         }
       )
+      track_webset(webset.id)
 
       # Wait for webset to complete and have items
       completed = wait_for_webset_completion(client, webset.id)
@@ -54,6 +59,7 @@ class WebsetsItemsIntegrationTest < Minitest::Test
           count: 1
         }
       )
+      track_webset(webset.id)
 
       # Wait for webset to complete and have items
       completed = wait_for_webset_completion(client, webset.id)
@@ -84,6 +90,7 @@ class WebsetsItemsIntegrationTest < Minitest::Test
           count: 2
         }
       )
+      track_webset(webset.id)
 
       # Wait for webset to complete and have items
       completed = wait_for_webset_completion(client, webset.id)

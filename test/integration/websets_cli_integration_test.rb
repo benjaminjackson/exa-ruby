@@ -18,15 +18,20 @@ require "open3"
 # Tests are skipped in CI unless RUN_CLI_INTEGRATION_TESTS=true is set.
 # Help and error handling tests run without API calls.
 class WebsetsCLIIntegrationTest < Minitest::Test
+  include WebsetsCleanupHelper
+
   def skip_if_no_api_key
     skip "Set EXA_API_KEY to run CLI integration tests" unless ENV["EXA_API_KEY"] && !ENV["EXA_API_KEY"].empty?
   end
+
   def setup
+    super
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
     ENV["EXA_API_KEY"] = @api_key
   end
 
   def teardown
+    super
     Exa.reset
   end
 
@@ -58,6 +63,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
     assert status.success?, "webset-create should succeed. stderr: #{stderr}"
     result = parse_json_output(stdout)
+    track_webset(result["id"])
 
     assert result["id"], "Should return an id"
     assert_equal "webset", result["object"]
@@ -87,6 +93,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
     assert status.success?, "webset-create with file should succeed. stderr: #{stderr}"
     result = parse_json_output(stdout)
+    track_webset(result["id"])
 
     assert result["id"], "Should return an id"
     assert_equal "webset", result["object"]
@@ -110,6 +117,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
       assert status.success?, "webset-create with metadata should succeed"
       result = parse_json_output(stdout)
+      track_webset(result["id"])
 
       assert result["id"], "Should return an id"
       assert_equal "Q4-research", result.dig("metadata", "project")
@@ -132,6 +140,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
       assert status.success?, "webset-create with external_id should succeed"
       result = parse_json_output(stdout)
+      track_webset(result["id"])
 
       assert_equal external_id, result["external_id"]
     end
@@ -166,6 +175,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
     assert status.success?, "webset-create with enrichments should succeed"
     result = parse_json_output(stdout)
+    track_webset(result["id"])
+
+    # Track enrichments if they have IDs
+    result["enrichments"].each { |e| track_enrichment(result["id"], e["id"]) if e["id"] }
 
     assert result["id"], "Should return an id"
     assert result["enrichments"].is_a?(Array)
@@ -186,7 +199,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
       create_stdout, _stderr, create_status = run_command(create_command)
       assert create_status.success?
       created = parse_json_output(create_stdout)
-      webset_id = created["id"]
+      webset_id = track_webset(created["id"])
 
       # Now get it
       get_command = "bundle exec exe/exa-ai webset-get #{webset_id} --output-format json"
@@ -212,7 +225,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
       create_stdout, _stderr, _create_status = run_command(create_command)
       created = parse_json_output(create_stdout)
-      webset_id = created["id"]
+      webset_id = track_webset(created["id"])
 
       # Get with pretty format
       get_command = "bundle exec exe/exa-ai webset-get #{webset_id} --output-format pretty"
@@ -282,7 +295,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
       create_stdout, _stderr, _create_status = run_command(create_command)
       created = parse_json_output(create_stdout)
-      webset_id = created["id"]
+      webset_id = track_webset(created["id"])
 
       # Update it
       update_command = "bundle exec exe/exa-ai webset-update #{webset_id} " \
@@ -314,7 +327,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
       create_stdout, _stderr, _create_status = run_command(create_command)
       created = parse_json_output(create_stdout)
-      webset_id = created["id"]
+      webset_id = track_webset(created["id"])
 
       # Delete it (using --force to skip confirmation)
       delete_command = "bundle exec exe/exa-ai webset-delete #{webset_id} --force --output-format json"
@@ -343,7 +356,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
       assert create_status.success?, "webset-create should succeed. stderr: #{create_stderr}"
 
       created = parse_json_output(create_stdout)
-      webset_id = created["id"]
+      webset_id = track_webset(created["id"])
       assert webset_id, "webset-create should return a webset with an id. Response: #{created.inspect}"
 
       # Cancel it
@@ -377,6 +390,11 @@ class WebsetsCLIIntegrationTest < Minitest::Test
     # Skip if text format is not implemented yet
     unless status.success?
       skip "webset-create with text format not working yet. stderr: #{stderr}"
+    end
+
+    # Extract and track webset ID from text output
+    if stdout =~ /(ws_[a-zA-Z0-9]+|webset_[a-zA-Z0-9]+)/
+      track_webset($1)
     end
 
     # Text format is a simple, compact text representation
