@@ -201,6 +201,60 @@ module Exa
       Services::Websets::Create.new(connection, **params).call
     end
 
+    # Create a new enrichment for a webset
+    #
+    # @param webset_id [String] Webset ID
+    # @param params [Hash] Enrichment parameters
+    # @option params [String] :description Description of data to extract
+    # @option params [String] :format Format type (text, email, etc.)
+    # @option params [Array<Hash>] :options Options for enrichment
+    # @option params [Hash] :metadata Custom metadata
+    # @return [Resources::WebsetEnrichment] The newly created enrichment
+    def create_enrichment(webset_id:, **params)
+      Services::Websets::CreateEnrichment.new(connection, webset_id: webset_id, **params).call
+    end
+
+    # Get a specific enrichment by ID
+    #
+    # @param webset_id [String] Webset ID
+    # @param id [String] Enrichment ID
+    # @return [Resources::WebsetEnrichment] The requested enrichment
+    def get_enrichment(webset_id:, id:)
+      Services::Websets::RetrieveEnrichment.new(connection, webset_id: webset_id, id: id).call
+    end
+
+    # Update an enrichment
+    #
+    # @param webset_id [String] Webset ID
+    # @param id [String] Enrichment ID
+    # @param params [Hash] Update parameters
+    # @option params [String] :description Updated description
+    # @option params [String] :format Updated format
+    # @option params [Array<Hash>] :options Updated options
+    # @option params [Hash] :metadata Updated metadata
+    # @return [Resources::WebsetEnrichment] The updated enrichment
+    def update_enrichment(webset_id:, id:, **params)
+      Services::Websets::UpdateEnrichment.new(connection, webset_id: webset_id, id: id, **params).call
+    end
+
+    # Delete an enrichment
+    #
+    # @param webset_id [String] Webset ID
+    # @param id [String] Enrichment ID
+    # @return [Resources::WebsetEnrichment] The deleted enrichment
+    def delete_enrichment(webset_id:, id:)
+      Services::Websets::DeleteEnrichment.new(connection, webset_id: webset_id, id: id).call
+    end
+
+    # Cancel a running enrichment
+    #
+    # @param webset_id [String] Webset ID
+    # @param id [String] Enrichment ID
+    # @return [Resources::WebsetEnrichment] The cancelled enrichment
+    def cancel_enrichment(webset_id:, id:)
+      Services::Websets::CancelEnrichment.new(connection, webset_id: webset_id, id: id).call
+    end
+
     private
 
     def connection

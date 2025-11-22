@@ -542,4 +542,125 @@ class ClientTest < Minitest::Test
     assert_instance_of Exa::Resources::Webset, result
     assert_equal "ws_new", result.id
   end
+
+  def test_create_enrichment_returns_enrichment
+    stub_request(:post, "https://api.exa.ai/websets/v0/websets/ws_123/enrichments")
+      .with(body: hash_including(description: "Extract emails", format: "email"))
+      .to_return(
+        status: 200,
+        body: {
+          id: "enrich_abc",
+          object: "webset_enrichment",
+          status: "pending",
+          websetId: "ws_123",
+          description: "Extract emails",
+          format: "email"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.create_enrichment(
+      webset_id: "ws_123",
+      description: "Extract emails",
+      format: "email"
+    )
+
+    assert_instance_of Exa::Resources::WebsetEnrichment, result
+    assert_equal "enrich_abc", result.id
+  end
+
+  def test_get_enrichment_returns_enrichment
+    stub_request(:get, "https://api.exa.ai/websets/v0/websets/ws_123/enrichments/enrich_abc")
+      .to_return(
+        status: 200,
+        body: {
+          id: "enrich_abc",
+          object: "webset_enrichment",
+          status: "completed",
+          websetId: "ws_123",
+          description: "Extract emails",
+          format: "email"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.get_enrichment(webset_id: "ws_123", id: "enrich_abc")
+
+    assert_instance_of Exa::Resources::WebsetEnrichment, result
+    assert_equal "enrich_abc", result.id
+    assert_equal "completed", result.status
+  end
+
+  def test_update_enrichment_returns_updated_enrichment
+    stub_request(:patch, "https://api.exa.ai/websets/v0/websets/ws_123/enrichments/enrich_abc")
+      .with(body: hash_including(description: "Updated description"))
+      .to_return(
+        status: 200,
+        body: {
+          id: "enrich_abc",
+          object: "webset_enrichment",
+          status: "pending",
+          websetId: "ws_123",
+          description: "Updated description",
+          format: "email"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.update_enrichment(
+      webset_id: "ws_123",
+      id: "enrich_abc",
+      description: "Updated description"
+    )
+
+    assert_instance_of Exa::Resources::WebsetEnrichment, result
+    assert_equal "Updated description", result.description
+  end
+
+  def test_delete_enrichment_returns_deleted_enrichment
+    stub_request(:delete, "https://api.exa.ai/websets/v0/websets/ws_123/enrichments/enrich_abc")
+      .to_return(
+        status: 200,
+        body: {
+          id: "enrich_abc",
+          object: "webset_enrichment",
+          status: "deleted",
+          websetId: "ws_123",
+          description: "Extract emails",
+          format: "email"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.delete_enrichment(webset_id: "ws_123", id: "enrich_abc")
+
+    assert_instance_of Exa::Resources::WebsetEnrichment, result
+    assert_equal "deleted", result.status
+  end
+
+  def test_cancel_enrichment_returns_cancelled_enrichment
+    stub_request(:post, "https://api.exa.ai/websets/v0/websets/ws_123/enrichments/enrich_abc/cancel")
+      .to_return(
+        status: 200,
+        body: {
+          id: "enrich_abc",
+          object: "webset_enrichment",
+          status: "cancelled",
+          websetId: "ws_123",
+          description: "Extract emails",
+          format: "email"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.cancel_enrichment(webset_id: "ws_123", id: "enrich_abc")
+
+    assert_instance_of Exa::Resources::WebsetEnrichment, result
+    assert_equal "cancelled", result.status
+  end
 end
