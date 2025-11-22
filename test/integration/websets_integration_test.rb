@@ -3,11 +3,15 @@
 require "test_helper"
 
 class WebsetsIntegrationTest < Minitest::Test
+  include WebsetsCleanupHelper
+
   def setup
+    super
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
   end
 
   def teardown
+    super
     Exa.reset
   end
 
@@ -25,6 +29,7 @@ class WebsetsIntegrationTest < Minitest::Test
           "created_by" => "exa-ruby"
         }
       )
+      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       assert result.id.start_with?("ws_") || result.id.start_with?("webset_")
@@ -50,6 +55,7 @@ class WebsetsIntegrationTest < Minitest::Test
         },
         externalId: external_id
       )
+      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       assert_equal external_id, result.external_id
@@ -71,6 +77,7 @@ class WebsetsIntegrationTest < Minitest::Test
           ]
         }
       )
+      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       refute_empty result.searches
@@ -107,6 +114,10 @@ class WebsetsIntegrationTest < Minitest::Test
           }
         ]
       )
+      track_webset(result.id)
+
+      # Track enrichments if they have IDs
+      result.enrichments.each { |e| track_enrichment(result.id, e["id"]) if e["id"] }
 
       assert_instance_of Exa::Resources::Webset, result
       refute_empty result.enrichments
@@ -129,6 +140,7 @@ class WebsetsIntegrationTest < Minitest::Test
           entity: { type: "person" }
         }
       )
+      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       assert_equal "webset", result.object
@@ -149,6 +161,7 @@ class WebsetsIntegrationTest < Minitest::Test
           "purpose" => "integration_test"
         }
       )
+      track_webset(created.id)
 
       assert_instance_of Exa::Resources::Webset, created
       webset_id = created.id
@@ -192,6 +205,10 @@ class WebsetsIntegrationTest < Minitest::Test
           "team" => "growth"
         }
       )
+      track_webset(webset.id)
+
+      # Track enrichments if they have IDs
+      webset.enrichments.each { |e| track_enrichment(webset.id, e["id"]) if e["id"] }
 
       # Verify creation
       assert_instance_of Exa::Resources::Webset, webset
@@ -223,6 +240,7 @@ class WebsetsIntegrationTest < Minitest::Test
           count: 1
         }
       )
+      track_webset(existing.id)
 
       # Wait for first webset to complete before using it in exclude
       wait_for_webset_completion(client, existing.id)
@@ -240,6 +258,7 @@ class WebsetsIntegrationTest < Minitest::Test
           }
         ]
       )
+      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       refute_empty result.excludes if result.excludes

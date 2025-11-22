@@ -98,3 +98,132 @@ def wait_for_webset_completion(client, webset_id, timeout: 120, interval: 2)
     attempts += 1
   end
 end
+
+# Module for automatic cleanup of Websets resources created during tests
+# Include this module in integration tests that create websets, searches, or enrichments
+# to ensure all created resources are properly cleaned up after each test.
+module WebsetsCleanupHelper
+  require "open3"
+
+  def setup
+    super
+    @created_websets = []
+    @created_searches = []
+    @created_enrichments = []
+  end
+
+  def teardown
+    cleanup_resources
+    super
+  end
+
+  # Track a created webset for cleanup
+  def track_webset(webset_id)
+    @created_websets << webset_id
+    webset_id
+  end
+
+  # Track a created search for cleanup
+  def track_search(webset_id, search_id)
+    @created_searches << [webset_id, search_id]
+    search_id
+  end
+
+  # Track a created enrichment for cleanup
+  def track_enrichment(webset_id, enrichment_id)
+    @created_enrichments << [webset_id, enrichment_id]
+    enrichment_id
+  end
+
+  private
+
+  # Clean up all tracked resources in the correct dependency order
+  def cleanup_resources
+    # Only cleanup if we have a real API key (not using VCR cassettes)
+    return unless should_cleanup?
+
+    # Clean up enrichments first (they depend on websets)
+    cleanup_enrichments
+
+    # Then clean up searches (they also depend on websets)
+    cleanup_searches
+
+    # Finally clean up websets
+    cleanup_websets
+  end
+
+  # Check if we should perform cleanup
+  # Only cleanup when using a real API key (not VCR placeholder)
+  def should_cleanup?
+    @api_key && @api_key != "test_key_for_vcr"
+  end
+
+  def cleanup_enrichments
+    @created_enrichments.each do |webset_id, enrichment_id|
+      delete_enrichment(webset_id, enrichment_id)
+    rescue => e
+      # Ignore errors during cleanup
+    end
+  end
+
+  def cleanup_searches
+    @created_searches.each do |webset_id, search_id|
+      delete_search(webset_id, search_id)
+    rescue => e
+      # Ignore errors during cleanup
+    end
+  end
+
+  def cleanup_websets
+    @created_websets.each do |webset_id|
+      delete_webset(webset_id)
+    rescue => e
+      # Ignore errors during cleanup
+    end
+  end
+
+  # Delete an enrichment - supports both client and CLI approaches
+  def delete_enrichment(webset_id, enrichment_id)
+    if use_cli_cleanup?
+      run_cli_command("bundle exec exe/exa-ai enrichment-delete #{webset_id} #{enrichment_id} --force")
+    else
+      get_client.delete_enrichment(webset_id: webset_id, id: enrichment_id)
+    end
+  end
+
+  # Delete a search - supports both client and CLI approaches
+  def delete_search(webset_id, search_id)
+    if use_cli_cleanup?
+      run_cli_command("bundle exec exe/exa-ai search-delete #{webset_id} #{search_id} --force")
+    else
+      # Client-based search deletion (cancel the search)
+      get_client.cancel_webset_search(webset_id: webset_id, id: search_id)
+    end
+  end
+
+  # Delete a webset - supports both client and CLI approaches
+  def delete_webset(webset_id)
+    if use_cli_cleanup?
+      run_cli_command("bundle exec exe/exa-ai webset-delete #{webset_id} --force")
+    else
+      get_client.delete_webset(webset_id)
+    end
+  end
+
+  # Check if we should use CLI-based cleanup
+  # CLI tests define a run_command method, so we use that as the indicator
+  def use_cli_cleanup?
+    respond_to?(:run_command, true)
+  end
+
+  # Get or create a client for cleanup
+  def get_client
+    @cleanup_client ||= Exa::Client.new(api_key: @api_key)
+  end
+
+  # Run a CLI command for cleanup
+  def run_cli_command(command)
+    stdout, stderr, status = Open3.capture3(command)
+    [stdout, stderr, status]
+  end
+end
