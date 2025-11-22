@@ -215,6 +215,13 @@ refute_empty collection
 - Don't return raw Faraday responses (wrap in resources)
 - Don't build middleware before you need it (start with service object logic, extract when duplication emerges)
 
+**Test Data**
+- Use realistic, domain-specific test queries with the Exa API
+- Don't use placeholder or generic queries like "test search" or "base search"
+- Exa's search engine needs proper, specific queries to understand context
+- Example good queries: "AI/ML infrastructure startups with Series A funding", "venture-backed SaaS companies"
+- Example bad queries: "Long running search", "Base search", "Test query"
+
 ## Debugging
 
 ```ruby
