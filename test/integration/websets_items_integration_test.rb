@@ -96,7 +96,9 @@ class WebsetsItemsIntegrationTest < Minitest::Test
       refute_empty items
       items.each do |item|
         assert item.key?("id")
-        assert item.key?("url")
+        # Items have a nested properties structure with the URL
+        assert item.key?("properties")
+        assert item["properties"].key?("url")
       end
     end
   end
