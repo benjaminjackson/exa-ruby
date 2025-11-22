@@ -35,6 +35,7 @@ module Exa
         when :end_crawl_date then :endCrawlDate
         when :include_text then :includeText
         when :exclude_text then :excludeText
+        when :external_id then :externalId
         else
           key
         end
