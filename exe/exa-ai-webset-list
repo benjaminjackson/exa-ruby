@@ -5,7 +5,7 @@ require "exa-ai"
 
 # Parse arguments
 limit = nil
-offset = nil
+cursor = nil
 api_key = nil
 output_format = "json"
 
@@ -15,8 +15,8 @@ while args.any?
   case arg
   when "--limit"
     limit = args.shift&.to_i
-  when "--offset"
-    offset = args.shift&.to_i
+  when "--cursor"
+    cursor = args.shift
   when "--api-key"
     api_key = args.shift
   when "--output-format"
@@ -28,8 +28,8 @@ while args.any?
       List all websets with optional pagination
 
       Options:
-        --limit N              Maximum number of websets to return
-        --offset N             Number of websets to skip
+        --limit N              Maximum number of websets to return (default: 25, max: 100)
+        --cursor CURSOR        Cursor for pagination (use nextCursor from previous response)
         --api-key KEY          Exa API key (or set EXA_API_KEY env var)
         --output-format FMT    Output format: json, pretty, or text (default: json)
         --help, -h             Show this help message
@@ -37,7 +37,7 @@ while args.any?
       Examples:
         exa-ai webset-list
         exa-ai webset-list --limit 10
-        exa-ai webset-list --limit 5 --offset 10
+        exa-ai webset-list --limit 5 --cursor "abc123"
         exa-ai webset-list --output-format pretty
     HELP
     exit 0
@@ -58,7 +58,7 @@ begin
   # List websets with optional pagination
   list_params = {}
   list_params[:limit] = limit if limit
-  list_params[:offset] = offset if offset
+  list_params[:cursor] = cursor if cursor
 
   collection = client.list_websets(**list_params)
 
