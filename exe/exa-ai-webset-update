@@ -1,0 +1,124 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+require "json"
+
+# Parse arguments
+webset_id = nil
+metadata = nil
+api_key = nil
+output_format = "json"
+
+# Helper to parse JSON string or load from file
+def parse_json_or_file(value)
+  if value.start_with?("@")
+    file_path = value[1..]
+    JSON.parse(File.read(file_path))
+  else
+    JSON.parse(value)
+  end
+rescue JSON::ParserError => e
+  $stderr.puts "Error: Invalid JSON: #{e.message}"
+  exit 1
+rescue Errno::ENOENT => e
+  $stderr.puts "Error: File not found: #{e.message}"
+  exit 1
+end
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--metadata"
+    metadata = parse_json_or_file(args.shift)
+  when "--api-key"
+    api_key = args.shift
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa-ai webset-update <webset_id> [OPTIONS]
+
+      Update a webset's metadata
+
+      Arguments:
+        webset_id              ID of the webset to update (required)
+
+      Options:
+        --metadata JSON        Custom metadata to update (supports @file.json)
+        --api-key KEY          Exa API key (or set EXA_API_KEY env var)
+        --output-format FMT    Output format: json, pretty, or text (default: json)
+        --help, -h             Show this help message
+
+      Examples:
+        exa-ai webset-update ws_abc123 --metadata '{"project":"Q1-2025"}'
+        exa-ai webset-update ws_abc123 --metadata @metadata.json
+        exa-ai webset-update ws_abc123 --metadata '{"tags":["important"]}' --output-format pretty
+    HELP
+    exit 0
+  else
+    # First positional argument is webset_id
+    if webset_id.nil?
+      webset_id = arg
+    else
+      $stderr.puts "Unknown option: #{arg}"
+      exit 1
+    end
+  end
+end
+
+# Validate required arguments
+if webset_id.nil?
+  $stderr.puts "Error: webset_id argument is required"
+  $stderr.puts "Usage: exa-ai webset-update <webset_id> [OPTIONS]"
+  $stderr.puts "Try 'exa-ai webset-update --help' for more information"
+  exit 1
+end
+
+if metadata.nil?
+  $stderr.puts "Error: --metadata is required"
+  $stderr.puts "Try 'exa-ai webset-update --help' for more information"
+  exit 1
+end
+
+begin
+  # Resolve API key and format
+  api_key = Exa::CLI::Base.resolve_api_key(api_key)
+  output_format = Exa::CLI::Base.resolve_output_format(output_format)
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Update webset
+  webset = client.update_webset(webset_id, metadata: metadata)
+
+  # Format and output
+  output = Exa::CLI::Formatters::WebsetFormatter.format(webset, output_format)
+  puts output
+
+rescue Exa::NotFound => e
+  $stderr.puts "Webset not found: #{e.message}"
+  exit 1
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end
