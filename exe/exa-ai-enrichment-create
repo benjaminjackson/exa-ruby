@@ -1,0 +1,220 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+VALID_FORMATS = %w[text email url options].freeze
+
+# Parse JSON string or load from file (supports @file.json syntax)
+def parse_json_or_file(value)
+  if value.start_with?("@")
+    file_path = value[1..]
+    JSON.parse(File.read(file_path))
+  else
+    JSON.parse(value)
+  end
+rescue JSON::ParserError => e
+  $stderr.puts "Error: Invalid JSON: #{e.message}"
+  exit 1
+rescue Errno::ENOENT => e
+  $stderr.puts "Error: File not found: #{e.message}"
+  exit 1
+end
+
+# Parse command-line arguments
+def parse_args(argv)
+  # Check for help first
+  if argv.include?("--help") || argv.include?("-h")
+    puts <<~HELP
+      Usage: exa-ai enrichment-create <webset_id> --description TEXT --format TYPE [OPTIONS]
+
+      Create a new enrichment for a webset
+
+      Required:
+        <webset_id>                Webset ID
+        --description TEXT         What to extract
+        --format TYPE              One of: #{VALID_FORMATS.join(', ')}
+
+      Options:
+        --title TEXT               Display title
+        --options JSON             Array of {label: "..."} (required if format=options, supports @file.json)
+        --instructions TEXT        Additional instructions
+        --metadata JSON            Custom metadata (supports @file.json)
+        --wait                     Wait for enrichment to complete
+        --api-key KEY              Exa API key (or set EXA_API_KEY env var)
+        --output-format FMT        Output format: json, pretty, or text (default: json)
+        --help, -h                 Show this help message
+
+      Examples:
+        exa-ai enrichment-create ws_123 --description "Company size" --format text
+        exa-ai enrichment-create ws_123 --description "Industry" --format options --options @options.json
+        exa-ai enrichment-create ws_123 --description "Email" --format email --wait
+    HELP
+    exit 0
+  end
+
+  args = {
+    output_format: "json",
+    api_key: nil,
+    wait: false
+  }
+
+  # First, check for positional argument (webset_id)
+  if argv.empty? || argv[0].start_with?("--")
+    return args
+  end
+
+  args[:webset_id] = argv[0]
+  i = 1
+
+  while i < argv.length
+    arg = argv[i]
+    case arg
+    when "--description"
+      args[:description] = argv[i + 1]
+      i += 2
+    when "--format"
+      args[:format] = argv[i + 1]
+      i += 2
+    when "--title"
+      args[:title] = argv[i + 1]
+      i += 2
+    when "--options"
+      args[:options] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--instructions"
+      args[:instructions] = argv[i + 1]
+      i += 2
+    when "--metadata"
+      args[:metadata] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--wait"
+      args[:wait] = true
+      i += 1
+    when "--api-key"
+      args[:api_key] = argv[i + 1]
+      i += 2
+    when "--output-format"
+      args[:output_format] = argv[i + 1]
+      i += 2
+    else
+      $stderr.puts "Unknown option: #{arg}"
+      exit 1
+    end
+  end
+
+  args
+end
+
+# Main execution
+begin
+  args = parse_args(ARGV)
+
+  # Validate required parameters
+  unless args[:webset_id]
+    $stderr.puts "Error: <webset_id> is required"
+    $stderr.puts "Run 'exa-ai enrichment-create --help' for usage information"
+    exit 1
+  end
+
+  unless args[:description]
+    $stderr.puts "Error: --description is required"
+    $stderr.puts "Run 'exa-ai enrichment-create --help' for usage information"
+    exit 1
+  end
+
+  unless args[:format]
+    $stderr.puts "Error: --format is required"
+    $stderr.puts "Run 'exa-ai enrichment-create --help' for usage information"
+    exit 1
+  end
+
+  # Validate format
+  unless VALID_FORMATS.include?(args[:format])
+    $stderr.puts "Error: format must be one of: #{VALID_FORMATS.join(', ')}"
+    exit 1
+  end
+
+  # Validate options requirement for 'options' format
+  if args[:format] == "options" && !args[:options]
+    $stderr.puts "Error: --options is required when format is 'options'"
+    exit 1
+  end
+
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
+
+  # Resolve output format
+  output_format = Exa::CLI::Base.resolve_output_format(args[:output_format])
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Prepare enrichment parameters
+  enrichment_params = {
+    description: args[:description],
+    format: args[:format]
+  }
+  enrichment_params[:title] = args[:title] if args[:title]
+  enrichment_params[:options] = args[:options] if args[:options]
+  enrichment_params[:instructions] = args[:instructions] if args[:instructions]
+  enrichment_params[:metadata] = args[:metadata] if args[:metadata]
+
+  # Create enrichment
+  enrichment = client.create_enrichment(webset_id: args[:webset_id], **enrichment_params)
+
+  # If --wait flag is set, poll until enrichment is complete
+  if args[:wait]
+    $stderr.print "Creating enrichment... "
+
+    begin
+      final_enrichment = Exa::CLI::Polling.poll(max_duration: 300, initial_delay: 2, max_delay: 10) do
+        current = client.get_enrichment(webset_id: args[:webset_id], id: enrichment.id)
+
+        case current.status
+        when "pending"
+          $stderr.print "⏳"
+        when "running"
+          $stderr.print "⚙️"
+        end
+
+        done = current.completed?
+        { done: done, result: current, status: current.status }
+      end
+
+      $stderr.puts " COMPLETED"
+      enrichment = final_enrichment
+
+    rescue Exa::CLI::Polling::TimeoutError
+      $stderr.puts "\nWarning: Enrichment did not complete within timeout"
+      $stderr.puts "Enrichment ID: #{enrichment.id}"
+      $stderr.puts "Check status with: exa-ai enrichment-get #{args[:webset_id]} #{enrichment.id}"
+    end
+  end
+
+  # Format and output result
+  output = Exa::CLI::Formatters::EnrichmentFormatter.format(enrichment, output_format)
+  puts output
+
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

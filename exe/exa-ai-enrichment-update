@@ -1,0 +1,155 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+require "json"
+
+# Helper to parse JSON string or load from file
+def parse_json_or_file(value)
+  if value.start_with?("@")
+    file_path = value[1..]
+    JSON.parse(File.read(file_path))
+  else
+    JSON.parse(value)
+  end
+rescue JSON::ParserError => e
+  $stderr.puts "Error: Invalid JSON: #{e.message}"
+  exit 1
+rescue Errno::ENOENT => e
+  $stderr.puts "Error: File not found: #{e.message}"
+  exit 1
+end
+
+# Parse arguments
+webset_id = nil
+enrichment_id = nil
+description = nil
+format = nil
+options = nil
+metadata = nil
+api_key = nil
+output_format = "json"
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--description"
+    description = args.shift
+  when "--format"
+    format = args.shift
+  when "--options"
+    options = parse_json_or_file(args.shift)
+  when "--metadata"
+    metadata = parse_json_or_file(args.shift)
+  when "--api-key"
+    api_key = args.shift
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa-ai enrichment-update <webset_id> <enrichment_id> [OPTIONS]
+
+      Update an enrichment's properties
+
+      Arguments:
+        webset_id              ID of the webset (required)
+        enrichment_id          ID of the enrichment to update (required)
+
+      Options:
+        --description TEXT     What to extract
+        --format TYPE          One of: text, email, url, options
+        --options JSON         Array of {label: "..."} (supports @file.json)
+        --metadata JSON        Custom metadata (supports @file.json)
+        --api-key KEY          Exa API key (or set EXA_API_KEY env var)
+        --output-format FMT    Output format: json, pretty, or text (default: json)
+        --help, -h             Show this help message
+
+      Examples:
+        exa-ai enrichment-update ws_123 enr_456 --description "New description"
+        exa-ai enrichment-update ws_123 enr_456 --metadata '{"priority":"high"}'
+        exa-ai enrichment-update ws_123 enr_456 --options @options.json --format options
+    HELP
+    exit 0
+  else
+    # First positional argument is webset_id, second is enrichment_id
+    if webset_id.nil?
+      webset_id = arg
+    elsif enrichment_id.nil?
+      enrichment_id = arg
+    else
+      $stderr.puts "Unknown option: #{arg}"
+      exit 1
+    end
+  end
+end
+
+# Validate required arguments
+if webset_id.nil?
+  $stderr.puts "Error: webset_id argument is required"
+  $stderr.puts "Usage: exa-ai enrichment-update <webset_id> <enrichment_id> [OPTIONS]"
+  $stderr.puts "Try 'exa-ai enrichment-update --help' for more information"
+  exit 1
+end
+
+if enrichment_id.nil?
+  $stderr.puts "Error: enrichment_id argument is required"
+  $stderr.puts "Usage: exa-ai enrichment-update <webset_id> <enrichment_id> [OPTIONS]"
+  $stderr.puts "Try 'exa-ai enrichment-update --help' for more information"
+  exit 1
+end
+
+# Check that at least one update field is provided
+if description.nil? && format.nil? && options.nil? && metadata.nil?
+  $stderr.puts "Error: at least one update field is required (--description, --format, --options, or --metadata)"
+  $stderr.puts "Try 'exa-ai enrichment-update --help' for more information"
+  exit 1
+end
+
+begin
+  # Resolve API key and format
+  api_key = Exa::CLI::Base.resolve_api_key(api_key)
+  output_format = Exa::CLI::Base.resolve_output_format(output_format)
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Build update params (only include provided fields)
+  update_params = {}
+  update_params[:description] = description if description
+  update_params[:format] = format if format
+  update_params[:options] = options if options
+  update_params[:metadata] = metadata if metadata
+
+  # Update enrichment
+  enrichment = client.update_enrichment(webset_id: webset_id, id: enrichment_id, **update_params)
+
+  # Format and output
+  output = Exa::CLI::Formatters::EnrichmentFormatter.format(enrichment, output_format)
+  puts output
+
+rescue Exa::NotFound => e
+  $stderr.puts "Enrichment not found: #{e.message}"
+  exit 1
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

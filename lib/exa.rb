@@ -14,6 +14,7 @@ require_relative "exa/resources/context_result"
 require_relative "exa/resources/webset_collection"
 require_relative "exa/resources/webset"
 require_relative "exa/resources/webset_enrichment"
+require_relative "exa/resources/webset_enrichment_collection"
 require_relative "exa/services/search"
 require_relative "exa/services/find_similar"
 require_relative "exa/services/get_contents"
@@ -44,6 +45,7 @@ require_relative "exa/cli/formatters/contents_formatter"
 require_relative "exa/cli/formatters/research_formatter"
 require_relative "exa/cli/formatters/answer_formatter"
 require_relative "exa/cli/formatters/webset_formatter"
+require_relative "exa/cli/formatters/enrichment_formatter"
 
 module Exa
   # Module-level configuration
