@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"CTOs at AI companies","count":1,"entity":{"type":"person"}}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 07:58:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '749'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2ed-bLRs8dFXj5URZfc6Iy7KPlde/oo"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=3xOrAapGZGbyzcT4voiDo7ygq5FXCnTdyrNkCKw9SPTGCwCLlpRfNb9BI5FgAc26EnXcN%2BWv7%2FV4vpCq7QnJBz69Xhmo69qlh1DjOm%2Bn8jUyxdLQ9A%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a26e177eefac3eb-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kan949z9kqhgfrn386vkjqmz","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kan94ab0ds8y9n7010rf5gg9","object":"webset_search","websetId":"webset_01kan949z9kqhgfrn386vkjqmz","status":"running","query":"CTOs
+        at AI companies","entity":{"type":"person"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T07:58:16.928Z","updatedAt":"2025-11-22T07:58:17.288Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T07:58:16.553Z","updatedAt":"2025-11-22T07:58:17.288Z"}'
+  recorded_at: Sat, 22 Nov 2025 07:58:17 GMT
+recorded_with: VCR 6.3.1

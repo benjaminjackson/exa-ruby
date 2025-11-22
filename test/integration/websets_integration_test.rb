@@ -74,6 +74,10 @@ class WebsetsIntegrationTest < Minitest::Test
 
       assert_instance_of Exa::Resources::Webset, result
       refute_empty result.searches
+
+      # Wait for webset to complete processing
+      completed = wait_for_webset_completion(client, result.id)
+      assert completed.idle?
     end
   end
 
@@ -107,6 +111,10 @@ class WebsetsIntegrationTest < Minitest::Test
       assert_instance_of Exa::Resources::Webset, result
       refute_empty result.enrichments
       assert_equal 2, result.enrichments.length
+
+      # Wait for webset to complete processing
+      completed = wait_for_webset_completion(client, result.id)
+      assert completed.idle?
     end
   end
 
@@ -192,6 +200,10 @@ class WebsetsIntegrationTest < Minitest::Test
       assert_equal 2, webset.enrichments.length
       assert_equal "Q1-2024-research", webset.metadata["project"]
 
+      # Wait for webset to complete processing before listing
+      completed = wait_for_webset_completion(client, webset.id)
+      assert completed.idle?
+
       # List websets and verify it appears
       list = client.list_websets(limit: 10)
       assert_instance_of Exa::Resources::WebsetCollection, list
@@ -212,6 +224,9 @@ class WebsetsIntegrationTest < Minitest::Test
         }
       )
 
+      # Wait for first webset to complete before using it in exclude
+      wait_for_webset_completion(client, existing.id)
+
       # Create new webset excluding the previous one
       result = client.create_webset(
         search: {
@@ -228,6 +243,10 @@ class WebsetsIntegrationTest < Minitest::Test
 
       assert_instance_of Exa::Resources::Webset, result
       refute_empty result.excludes if result.excludes
+
+      # Wait for second webset to complete
+      completed = wait_for_webset_completion(client, result.id)
+      assert completed.idle?
     end
   end
 end

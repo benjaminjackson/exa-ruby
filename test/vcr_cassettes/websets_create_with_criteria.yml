@@ -1,0 +1,604 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Marketing agencies in the US","count":1,"criteria":[{"description":"focused
+        on consumer products"},{"description":"at least 50 employees"}]}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:37:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '876'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"36c-HcaXsQalXP0iLsdjs+CYuKWZBjQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=XsdPWPpyGmi5dCfR98FTsFhAlOIgPKVjhRah8GdOyawl1kBV1OSkwyS8gAzq%2BoE0gHtVqEL0OIhHsBJQgpryrp%2FZFG0Sh2XCtXfWVTJBwdl8AoFVbw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29822688562ef5-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kap3d8zpbq5bfjteemjwrhrq","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3d9cwvcv5whb2xygpvbr1","object":"webset_search","websetId":"webset_01kap3d8zpbq5bfjteemjwrhrq","status":"running","query":"Marketing
+        agencies in the US","entity":{"type":"company"},"criteria":[{"description":"focused
+        on consumer products","successRate":0},{"description":"at least 50 employees","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:37:33.852Z","updatedAt":"2025-11-22T15:37:34.255Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:37:33.430Z","updatedAt":"2025-11-22T15:37:34.255Z"}'
+  recorded_at: Sat, 22 Nov 2025 15:37:34 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3d8zpbq5bfjteemjwrhrq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:37:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"377-75dEbI7QDHZgFyGIhoIpat2VYpo"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wuitqMS2gkzOprGjGHA9SvAJlDit3MqYw6DfWW%2FylyOOmmL3wE1K2Y9%2FBF%2F3xWWER6RuaANytld5SEcejF84ZoCXbEptRd6ytBb7aqMIvInkqJyxrQ%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a298248aefa729f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3d8zpbq5bfjteemjwrhrq","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3d9cwvcv5whb2xygpvbr1","object":"webset_search","websetId":"webset_01kap3d8zpbq5bfjteemjwrhrq","status":"running","query":"Marketing
+        agencies in the US","entity":{"type":"company"},"criteria":[{"description":"focused
+        on consumer products","successRate":0},{"description":"at least 50 employees","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:37:33.852Z","updatedAt":"2025-11-22T15:37:34.255Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:37:33.430Z","updatedAt":"2025-11-22T15:37:34.255Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:37:35 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3d8zpbq5bfjteemjwrhrq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:37:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"39c-VjCgb4Sle3xFKXS/5V6zOIEBnnA"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=1hIKuEEJACj7ehVT8XtbpFGzw6OwBUAZ8gzZvk%2FLYYY1frlXaXSmeksnjwYbL9fEdj9xbpz4A9jmZ5GLtAbn76lI4R8mlK92OrUrvePWhHfzhiD%2FRg%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29825a1da2f788-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3d8zpbq5bfjteemjwrhrq","object":"webset","status":"running","externalId":null,"title":"Companies:
+        marketing agencies in the US","searches":[{"id":"wsearch_01kap3d9cwvcv5whb2xygpvbr1","object":"webset_search","websetId":"webset_01kap3d8zpbq5bfjteemjwrhrq","status":"running","query":"Marketing
+        agencies in the US","entity":{"type":"company"},"criteria":[{"description":"focused
+        on consumer products","successRate":0},{"description":"at least 50 employees","successRate":20}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":6,"completion":15,"timeLeft":25},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:37:33.852Z","updatedAt":"2025-11-22T15:37:35.790Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:37:33.430Z","updatedAt":"2025-11-22T15:37:35.790Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:37:38 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3d8zpbq5bfjteemjwrhrq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:37:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3a1-HPowsmBxKNElkAeQPfggarwQr1s"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=78r0VZqHiYfqIXj2kpfpEldqKi6dmovyd1E8s2tbwxj93%2FCw1lXL3hcmYfITRiMZlBv%2FEUzxV%2BDYTKdOjhBBw43iVf7Jk%2BFbLowUA0H8YX9KYyetxg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29826b5e3a101e-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3d8zpbq5bfjteemjwrhrq","object":"webset","status":"running","externalId":null,"title":"Companies:
+        marketing agencies in the US","searches":[{"id":"wsearch_01kap3d9cwvcv5whb2xygpvbr1","object":"webset_search","websetId":"webset_01kap3d8zpbq5bfjteemjwrhrq","status":"running","query":"Marketing
+        agencies in the US","entity":{"type":"company"},"criteria":[{"description":"focused
+        on consumer products","successRate":0},{"description":"at least 50 employees","successRate":42.86}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":7,"completion":17.5,"timeLeft":33},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:37:33.852Z","updatedAt":"2025-11-22T15:37:35.790Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:37:33.430Z","updatedAt":"2025-11-22T15:37:35.790Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:37:40 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3d8zpbq5bfjteemjwrhrq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:37:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3a2-55uro4rtjwHVZNCRlcM5KVVzY6s"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=SK2vuFnobEZluOrvuFJT4MhAUCOBTgcZhDtqBI9EZoxcaOXilYP6TmlSMA%2BJBueUEd6e47fCbBVAGwaFZ84PK4kvMcEmKiydGJ126Wekl%2FDQmSBQ2w%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a29827bd82941ad-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3d8zpbq5bfjteemjwrhrq","object":"webset","status":"running","externalId":null,"title":"Companies:
+        marketing agencies in the US","searches":[{"id":"wsearch_01kap3d9cwvcv5whb2xygpvbr1","object":"webset_search","websetId":"webset_01kap3d8zpbq5bfjteemjwrhrq","status":"running","query":"Marketing
+        agencies in the US","entity":{"type":"company"},"criteria":[{"description":"focused
+        on consumer products","successRate":8.33},{"description":"at least 50 employees","successRate":37.5}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":25,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:37:33.852Z","updatedAt":"2025-11-22T15:37:35.790Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:37:33.430Z","updatedAt":"2025-11-22T15:37:35.790Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:37:46 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3d8zpbq5bfjteemjwrhrq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:37:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3a3-rLb/nIfusebh2X/3+kwnJc0NQig"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=d7FRkY1R6c3k8SmjuKP%2BNhzFDLNLWuy6CaU8aGyCfPb5%2FtCEfgpFSqWPydauVyMt5B%2BvwZOJ4aBTl0r%2BRJH2qjJTVfiv3NyiyU3%2BHJpCJYfksoPCrA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2982a2d87b7039-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3d8zpbq5bfjteemjwrhrq","object":"webset","status":"running","externalId":null,"title":"Companies:
+        marketing agencies in the US","searches":[{"id":"wsearch_01kap3d9cwvcv5whb2xygpvbr1","object":"webset_search","websetId":"webset_01kap3d8zpbq5bfjteemjwrhrq","status":"running","query":"Marketing
+        agencies in the US","entity":{"type":"company"},"criteria":[{"description":"focused
+        on consumer products","successRate":7.69},{"description":"at least 50 employees","successRate":38.46}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":27,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:37:33.852Z","updatedAt":"2025-11-22T15:37:35.790Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:37:33.430Z","updatedAt":"2025-11-22T15:37:35.790Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:37:49 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3d8zpbq5bfjteemjwrhrq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:37:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3a3-rLb/nIfusebh2X/3+kwnJc0NQig"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=3Fsew41CmgawuSe40a4x%2Fe2oCVeE%2Bjc%2Bc7HyLREwtBFV4CbSQjatWXtifIQHCBG9ag8VdW3q0bOdVALqOgHGS0ynnr3xMuiAfltvfPlfvmgo%2Fnjy%2Fg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2982b3791433a6-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3d8zpbq5bfjteemjwrhrq","object":"webset","status":"running","externalId":null,"title":"Companies:
+        marketing agencies in the US","searches":[{"id":"wsearch_01kap3d9cwvcv5whb2xygpvbr1","object":"webset_search","websetId":"webset_01kap3d8zpbq5bfjteemjwrhrq","status":"running","query":"Marketing
+        agencies in the US","entity":{"type":"company"},"criteria":[{"description":"focused
+        on consumer products","successRate":7.69},{"description":"at least 50 employees","successRate":38.46}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":27,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:37:33.852Z","updatedAt":"2025-11-22T15:37:35.790Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:37:33.430Z","updatedAt":"2025-11-22T15:37:35.790Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:37:52 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3d8zpbq5bfjteemjwrhrq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 15:37:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3a2-EkrZh/3R6khNZz/mvGEWKK3cgcg"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=pHTWDqL3z%2FWr%2FOvbVnEGcQYNWDHzVmZrV6J8JEZ2tzTgaJfY9HZytQDGSBpIXkkP6lBXJB605YIN0CQ46dsLUZTPq%2FYw6ZmFtCv0%2BQOKTiFYD6v%2BnA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2982c3fbf40f75-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kap3d8zpbq5bfjteemjwrhrq","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        marketing agencies in the US","searches":[{"id":"wsearch_01kap3d9cwvcv5whb2xygpvbr1","object":"webset_search","websetId":"webset_01kap3d8zpbq5bfjteemjwrhrq","status":"completed","query":"Marketing
+        agencies in the US","entity":{"type":"company"},"criteria":[{"description":"focused
+        on consumer products","successRate":7.69},{"description":"at least 50 employees","successRate":38.46}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":27,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:37:33.852Z","updatedAt":"2025-11-22T15:37:53.650Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T15:37:33.430Z","updatedAt":"2025-11-22T15:37:53.650Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 15:37:55 GMT
+recorded_with: VCR 6.3.1
