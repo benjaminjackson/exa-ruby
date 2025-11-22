@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Biotech companies","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:36:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '747'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2eb-il+RKZ06q3ReL+wKYYkHWTC7ogQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=g22pLdkYvPRwO9%2FDCK9ct8aU3LonA1N6JrKO9wrbwJV6%2Bk4vw26t6oB%2BON9JYSddLshIu9mFiRxrAotln0iBx3LrhLzEF8bLNV4pagJlWL6TzVE%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b386f29d9a5f1-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kapmh2a0hdxt5qvjb4mdxdsx","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapmh2nq4p2w7bgkz5szbh5a","object":"webset_search","websetId":"webset_01kapmh2a0hdxt5qvjb4mdxdsx","status":"running","query":"Biotech
+        companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:36:43.831Z","updatedAt":"2025-11-22T20:36:44.208Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:36:43.456Z","updatedAt":"2025-11-22T20:36:44.208Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:36:44 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmh2a0hdxt5qvjb4mdxdsx/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"Pharmaceutical startups","count":50,"recall":true}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:37:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '480'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1e0-4U74KKBcRP9GkBBpQ2xWFMRT8n8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=AKR5mNT5e%2B2M0eSRNmVSjSfYs2ga9cIANIJmMq74ILTJk%2Btab9eCUugo8pZFMmbdCMD9I34dw0mjvMJy%2B3%2BOkkSs9g7bTbscvu7EXzY7NDfadC6waQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b38e8ad8872bc-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapmhn62wwttn44ysy2svgn7","object":"webset_search","websetId":"webset_01kapmh2a0hdxt5qvjb4mdxdsx","status":"running","query":"Pharmaceutical
+        startups","entity":{"type":"company"},"criteria":[],"count":50,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:37:02.786Z","updatedAt":"2025-11-22T20:37:03.154Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:37:03 GMT
+recorded_with: VCR 6.3.1

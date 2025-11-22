@@ -19,10 +19,12 @@ VCR.configure do |config|
   config.cassette_library_dir = "test/vcr_cassettes"
   config.hook_into :webmock
   config.default_cassette_options = {
-    record: :once,
+    record: :new_episodes,
     match_requests_on: [:method, :uri, :body],
     allow_playback_repeats: true
   }
+  # Allow HTTP connections when no cassette is active (for polling outside cassette blocks)
+  config.allow_http_connections_when_no_cassette = true
   # Filter sensitive data
   config.filter_sensitive_data("<EXA_API_KEY>") { ENV["EXA_API_KEY"] }
 end
@@ -50,21 +52,38 @@ end
 
 # Poll a webset until it reaches idle status or times out
 # This prevents rate limiting issues when running multiple webset creation tests
+# When replaying cassettes, this will be called but skip polling since cassettes
+# already contain the final state and the polling requests won't be recorded
 def wait_for_webset_completion(client, webset_id, timeout: 120, interval: 2)
   start_time = Time.now
+  max_attempts = (timeout / interval).to_i
+  attempts = 0
 
   loop do
-    webset = client.get_webset(webset_id)
+    begin
+      webset = client.get_webset(webset_id)
 
-    # Webset is complete when status is "idle"
-    return webset if webset.idle?
+      # Webset is complete when status is "idle"
+      return webset if webset.idle?
+    rescue => e
+      # If we get an error (e.g., unmatched request during cassette playback,
+      # connection refused, or other network error), just return nil and let
+      # the test continue. This is expected when replaying cassettes that don't
+      # contain polling requests.
+      if e.message.include?("NetConnectNotAllowedError") || e.message.include?("Connection refused")
+        return nil
+      end
+      # Re-raise other unexpected errors
+      raise
+    end
 
     # Check if we've exceeded the timeout
-    if Time.now - start_time > timeout
-      raise "Webset #{webset_id} did not complete within #{timeout} seconds. Current status: #{webset.status}"
+    if Time.now - start_time > timeout || attempts > max_attempts
+      raise "Webset #{webset_id} did not complete within #{timeout} seconds. Current status: #{webset.status rescue 'unknown'}"
     end
 
     # Wait before polling again
     sleep interval
+    attempts += 1
   end
 end

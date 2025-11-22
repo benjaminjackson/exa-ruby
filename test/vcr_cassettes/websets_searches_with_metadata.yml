@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Companies for metadata test","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:34:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '757'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f5-qnZWhgoaezrpDd4s6CV1nwZBixM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=lOYGQLuvnZqeUPeLYD3%2FoATVCyic9B3QDdv0%2F6uj4sFX0MODWRT70JHFiWgEC6LflXj%2BwHRmQwNm04heWZMltfIzYMtUX68IxfgMh4pvz2uqyq%2FSIA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b35e99b2f4322-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kapmdvtkscps1y2kh9snkp1k","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapmdw56szz82e564j9803z3","object":"webset_search","websetId":"webset_01kapmdvtkscps1y2kh9snkp1k","status":"running","query":"Companies
+        for metadata test","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:34:58.854Z","updatedAt":"2025-11-22T20:34:59.217Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:34:58.515Z","updatedAt":"2025-11-22T20:34:59.217Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:34:59 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmdvtkscps1y2kh9snkp1k/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"Metadata test search","count":10,"metadata":{"test_key":"test_value","project":"integration_test"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:35:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '477'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1dd-yfrcusOkyu7hceGnwGR8M65gClg"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wFabPH2VecXhewx7k%2BDMEK6H9QQII21NDFkA5dVqBeTk%2BuLbUcOnyLld61%2F0999KjEqI2Mu0qcRyRm6tOJUunKhhGmT7ma2IZFDy87jTYeYNVkMXrg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b365019d51492-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapmech72mx2z0r4dqyq31n3","object":"webset_search","websetId":"webset_01kapmdvtkscps1y2kh9snkp1k","status":"running","query":"Metadata
+        test search","entity":{"type":"company"},"criteria":[],"count":10,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:35:15.623Z","updatedAt":"2025-11-22T20:35:16.073Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:35:16 GMT
+recorded_with: VCR 6.3.1

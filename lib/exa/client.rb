@@ -255,6 +255,42 @@ module Exa
       Services::Websets::CancelEnrichment.new(connection, webset_id: webset_id, id: id).call
     end
 
+    # Create a new search within a webset
+    #
+    # @param webset_id [String] Webset ID
+    # @param params [Hash] Search parameters
+    # @option params [String] :query The search query (required)
+    # @option params [Integer] :count Number of results to find
+    # @option params [Hash] :entity Entity type specification
+    # @option params [Array<Hash>] :criteria Search criteria
+    # @option params [Array<Hash>] :exclude Items to exclude from results
+    # @option params [Array<Hash>] :scope Limit search to specific sources
+    # @option params [Boolean] :recall Whether to estimate total available results
+    # @option params [String] :behavior "override" or "append" (default: "override")
+    # @option params [Hash] :metadata Custom metadata
+    # @return [Resources::WebsetSearch] The newly created search
+    def create_webset_search(webset_id:, **params)
+      Services::Websets::CreateSearch.new(connection, webset_id: webset_id, **params).call
+    end
+
+    # Get a webset search by ID
+    #
+    # @param webset_id [String] Webset ID
+    # @param id [String] Search ID
+    # @return [Resources::WebsetSearch] The requested search
+    def get_webset_search(webset_id:, id:)
+      Services::Websets::GetSearch.new(connection, webset_id: webset_id, id: id).call
+    end
+
+    # Cancel a webset search
+    #
+    # @param webset_id [String] Webset ID
+    # @param id [String] Search ID
+    # @return [Resources::WebsetSearch] The cancelled search
+    def cancel_webset_search(webset_id:, id:)
+      Services::Websets::CancelSearch.new(connection, webset_id: webset_id, id: id).call
+    end
+
     private
 
     def connection
