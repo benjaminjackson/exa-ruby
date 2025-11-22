@@ -10,14 +10,29 @@ metadata = nil
 api_key = nil
 output_format = "json"
 
+# Recursively convert hash keys from strings to symbols
+def deep_symbolize_keys(obj)
+  case obj
+  when Hash
+    obj.each_with_object({}) do |(key, value), result|
+      result[key.to_sym] = deep_symbolize_keys(value)
+    end
+  when Array
+    obj.map { |item| deep_symbolize_keys(item) }
+  else
+    obj
+  end
+end
+
 # Helper to parse JSON string or load from file
 def parse_json_or_file(value)
-  if value.start_with?("@")
-    file_path = value[1..]
-    JSON.parse(File.read(file_path))
-  else
-    JSON.parse(value)
-  end
+  json_data = if value.start_with?("@")
+                file_path = value[1..]
+                JSON.parse(File.read(file_path))
+              else
+                JSON.parse(value)
+              end
+  deep_symbolize_keys(json_data)
 rescue JSON::ParserError => e
   $stderr.puts "Error: Invalid JSON: #{e.message}"
   exit 1
