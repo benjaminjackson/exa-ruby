@@ -73,7 +73,7 @@ while args.any?
 
       Options:
         --description TEXT     What to extract
-        --format TYPE          One of: text, email, url, options
+        --format TYPE          One of: text, url, options
         --options JSON         Array of {label: "..."} (supports @file.json)
         --metadata JSON        Custom metadata (supports @file.json)
         --api-key KEY          Exa API key (or set EXA_API_KEY env var)
@@ -83,7 +83,7 @@ while args.any?
       Examples:
         exa-ai enrichment-update ws_123 enr_456 --description "New description"
         exa-ai enrichment-update ws_123 enr_456 --metadata '{"priority":"high"}'
-        exa-ai enrichment-update ws_123 enr_456 --options @options.json --format options
+        exa-ai enrichment-update ws_123 enr_456 --options options.json --format options
     HELP
     exit 0
   else

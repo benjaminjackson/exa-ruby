@@ -6,7 +6,7 @@ module Exa
       # Validates parameters for webset creation
       class CreateValidator
         VALID_ENTITY_TYPES = %w[company person article research_paper custom].freeze
-        VALID_ENRICHMENT_FORMATS = %w[text date number options email phone url].freeze
+        VALID_ENRICHMENT_FORMATS = %w[text date number options url].freeze
         VALID_SOURCE_TYPES = %w[import webset].freeze
 
         class << self

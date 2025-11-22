@@ -206,7 +206,7 @@ module Exa
     # @param webset_id [String] Webset ID
     # @param params [Hash] Enrichment parameters
     # @option params [String] :description Description of data to extract
-    # @option params [String] :format Format type (text, email, etc.)
+    # @option params [String] :format Format type (text, url, options, etc.)
     # @option params [Array<Hash>] :options Options for enrichment
     # @option params [Hash] :metadata Custom metadata
     # @return [Resources::WebsetEnrichment] The newly created enrichment
