@@ -3,19 +3,6 @@
 require "test_helper"
 
 class Exa::CLI::IntegrationTest < Minitest::Test
-  def setup
-    @original_api_key = ENV["EXA_API_KEY"]
-    ENV["EXA_API_KEY"] = "test_api_key"
-  end
-
-  def teardown
-    if @original_api_key
-      ENV["EXA_API_KEY"] = @original_api_key
-    else
-      ENV.delete("EXA_API_KEY")
-    end
-  end
-
   def test_search_client_initialization
     client = Exa::Client.new(api_key: "test_api_key")
     assert_instance_of Exa::Client, client
@@ -47,10 +34,12 @@ class Exa::CLI::IntegrationTest < Minitest::Test
   end
 
   def test_api_key_from_env_variable
-    assert_equal "test_api_key", ENV["EXA_API_KEY"]
+    with_api_key("test_api_key") do
+      assert_equal "test_api_key", ENV["EXA_API_KEY"]
 
-    api_key = Exa::CLI::Base.resolve_api_key(nil)
-    assert_equal "test_api_key", api_key
+      api_key = Exa::CLI::Base.resolve_api_key(nil)
+      assert_equal "test_api_key", api_key
+    end
   end
 
   def test_api_key_flag_overrides_env_variable
@@ -59,13 +48,13 @@ class Exa::CLI::IntegrationTest < Minitest::Test
   end
 
   def test_missing_api_key_raises_error
-    ENV.delete("EXA_API_KEY")
+    with_api_key(nil) do
+      error = assert_raises(Exa::ConfigurationError) do
+        Exa::CLI::Base.resolve_api_key(nil)
+      end
 
-    error = assert_raises(Exa::ConfigurationError) do
-      Exa::CLI::Base.resolve_api_key(nil)
+      assert_includes error.message.downcase, "api key"
     end
-
-    assert_includes error.message.downcase, "api key"
   end
 
   def test_output_format_defaults_to_json

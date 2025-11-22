@@ -4,7 +4,7 @@ class ResearchGetIntegrationTest < Minitest::Test
   # Note: Using research_id from research_start_ant_species cassette
   def test_research_get_returns_research_task
     VCR.use_cassette("research_get_pending_task") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       # Use a real research_id from the research_start cassette
       result = client.research_get("r_01k7ywj6r2er4h7ff1cdf7y8c7")
 
@@ -16,7 +16,7 @@ class ResearchGetIntegrationTest < Minitest::Test
 
   def test_research_get_with_events_parameter
     VCR.use_cassette("research_get_with_events") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.research_get("r_01k7ywj6r2er4h7ff1cdf7y8c7", events: true)
 
       assert_instance_of Exa::Resources::ResearchTask, result
@@ -25,7 +25,7 @@ class ResearchGetIntegrationTest < Minitest::Test
 
   def test_research_polling_workflow
     VCR.use_cassette("research_polling_workflow") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       # Simulate polling: start with pending, keep fetching until finished
       result = client.research_get("r_01k7ywj6r2er4h7ff1cdf7y8c7")

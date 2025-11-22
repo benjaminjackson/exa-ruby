@@ -3,16 +3,6 @@
 require "test_helper"
 
 class Exa::CLI::ResearchStartTest < Minitest::Test
-  def setup
-    # Clean environment for each test
-    @original_api_key = ENV["EXA_API_KEY"]
-    ENV["EXA_API_KEY"] = "test_api_key"
-  end
-
-  def teardown
-    ENV["EXA_API_KEY"] = @original_api_key
-  end
-
   def test_requires_instructions_flag
     # Test that command errors if no --instructions provided
     error = assert_raises(ArgumentError) do

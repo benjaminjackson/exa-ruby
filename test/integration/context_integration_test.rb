@@ -5,7 +5,7 @@ require "test_helper"
 class ContextIntegrationTest < Minitest::Test
   def test_context_returns_context_result_with_code_snippets
     VCR.use_cassette("context_react_hooks") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.context("how to use React hooks for state management", tokensNum: 5000)
 
@@ -19,7 +19,7 @@ class ContextIntegrationTest < Minitest::Test
 
   def test_context_result_has_expected_structure
     VCR.use_cassette("context_react_hooks") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.context("how to use React hooks for state management", tokensNum: 5000)
 
@@ -44,7 +44,7 @@ class ContextIntegrationTest < Minitest::Test
 
   def test_context_with_specific_token_limit
     VCR.use_cassette("context_with_token_limit") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.context("Express middleware", tokensNum: 3000)
 
@@ -57,7 +57,7 @@ class ContextIntegrationTest < Minitest::Test
 
   def test_context_with_dynamic_tokens
     VCR.use_cassette("context_dynamic_tokens") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.context("pandas dataframe filtering", tokensNum: "dynamic")
 

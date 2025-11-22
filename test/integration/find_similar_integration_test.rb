@@ -11,7 +11,7 @@ class FindSimilarIntegrationTest < Minitest::Test
   def test_find_similar_returns_result_with_results
     VCR.use_cassette("find_similar_llama_paper") do
       # Use environment variable for API key, will be filtered in cassette
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       # Make a real find_similar request using the Llama 2 paper
       result = client.find_similar("https://arxiv.org/abs/2307.06435")
@@ -27,7 +27,7 @@ class FindSimilarIntegrationTest < Minitest::Test
   # Test that FindSimilarResult has the expected structure
   def test_find_similar_result_has_expected_structure
     VCR.use_cassette("find_similar_llama_paper") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.find_similar("https://arxiv.org/abs/2307.06435")
 
       # Verify FindSimilarResult has all expected fields
@@ -51,7 +51,7 @@ class FindSimilarIntegrationTest < Minitest::Test
   # Test that individual results contain expected fields from the API
   def test_find_similar_results_contain_expected_fields
     VCR.use_cassette("find_similar_llama_paper") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.find_similar("https://arxiv.org/abs/2307.06435")
 
       # Get the first result

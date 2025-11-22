@@ -7,6 +7,12 @@ require "minitest/autorun"
 require "webmock/minitest"
 require "vcr"
 
+# Check for required environment variables
+unless ENV["EXA_API_KEY"]
+  warn "WARNING: EXA_API_KEY environment variable is not set. Integration tests will fail."
+  warn "Set it with: export EXA_API_KEY=your_api_key"
+end
+
 # Configure VCR for integration tests
 # VCR works with WebMock to record/replay HTTP interactions
 VCR.configure do |config|
@@ -30,4 +36,13 @@ def with_debug_logging
   yield
 ensure
   original_debug ? (ENV["EXA_DEBUG"] = original_debug) : ENV.delete("EXA_DEBUG")
+end
+
+# API key helper for tests that need to temporarily set ENV["EXA_API_KEY"]
+def with_api_key(api_key)
+  original = ENV["EXA_API_KEY"]
+  ENV["EXA_API_KEY"] = api_key
+  yield
+ensure
+  original ? (ENV["EXA_API_KEY"] = original) : ENV.delete("EXA_API_KEY")
 end

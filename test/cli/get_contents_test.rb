@@ -3,14 +3,6 @@
 require "test_helper"
 
 class Exa::CLI::GetContentsTest < Minitest::Test
-  def setup
-    ENV.delete("EXA_API_KEY")
-  end
-
-  def teardown
-    ENV.delete("EXA_API_KEY")
-  end
-
   def test_cli_help_shows_new_options
     # Test that the CLI help includes all new flags
     command = "bundle exec exe/exa-ai-get-contents --help"

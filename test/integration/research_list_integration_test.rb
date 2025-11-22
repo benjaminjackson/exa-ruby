@@ -3,7 +3,7 @@ require "test_helper"
 class ResearchListIntegrationTest < Minitest::Test
   def test_research_list_returns_list_object
     VCR.use_cassette("research_list_first_page") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.research_list(limit: 5)
 
       assert_instance_of Exa::Resources::ResearchList, result
@@ -13,7 +13,7 @@ class ResearchListIntegrationTest < Minitest::Test
 
   def test_research_list_maps_data_to_research_tasks
     VCR.use_cassette("research_list_first_page") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.research_list(limit: 5)
 
       unless result.data.empty?
@@ -27,7 +27,7 @@ class ResearchListIntegrationTest < Minitest::Test
 
   def test_research_list_pagination_has_more_flag
     VCR.use_cassette("research_list_first_page") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.research_list(limit: 5)
 
       assert [TrueClass, FalseClass].include?(result.has_more.class)
@@ -36,7 +36,7 @@ class ResearchListIntegrationTest < Minitest::Test
 
   def test_research_list_pagination_cursor
     VCR.use_cassette("research_list_first_page") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.research_list(limit: 5)
 
       if result.has_more

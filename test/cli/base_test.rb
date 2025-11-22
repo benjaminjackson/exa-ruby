@@ -9,19 +9,19 @@ class Exa::CLI::BaseTest < Minitest::Test
   end
 
   def test_resolves_api_key_from_env_var
-    ENV["EXA_API_KEY"] = "env_key"
-    api_key = Exa::CLI::Base.resolve_api_key(nil)
-    assert_equal "env_key", api_key
-  ensure
-    ENV.delete("EXA_API_KEY")
+    with_api_key("env_key") do
+      api_key = Exa::CLI::Base.resolve_api_key(nil)
+      assert_equal "env_key", api_key
+    end
   end
 
   def test_raises_error_when_no_api_key
-    ENV.delete("EXA_API_KEY")
-    error = assert_raises(Exa::ConfigurationError) do
-      Exa::CLI::Base.resolve_api_key(nil)
+    with_api_key(nil) do
+      error = assert_raises(Exa::ConfigurationError) do
+        Exa::CLI::Base.resolve_api_key(nil)
+      end
+      assert_includes error.message.downcase, "api key"
     end
-    assert_includes error.message.downcase, "api key"
   end
 
   def test_default_output_format_is_json

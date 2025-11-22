@@ -8,7 +8,7 @@ class GetContentsIntegrationTest < Minitest::Test
   # Test that we can retrieve contents for a URL
   def test_get_contents_returns_result_with_content
     VCR.use_cassette("get_contents_llama_paper") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       # Request contents for the LLaMA paper
       result = client.get_contents(["https://arxiv.org/abs/2307.06435"])
@@ -24,7 +24,7 @@ class GetContentsIntegrationTest < Minitest::Test
   # Test that ContentsResult has the expected structure
   def test_contents_result_has_expected_structure
     VCR.use_cassette("get_contents_llama_paper") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.get_contents(["https://arxiv.org/abs/2307.06435"])
 
       # Verify ContentsResult has all expected fields
@@ -49,7 +49,7 @@ class GetContentsIntegrationTest < Minitest::Test
   # Test that individual content results contain expected fields
   def test_contents_results_contain_text
     VCR.use_cassette("get_contents_llama_paper") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.get_contents(["https://arxiv.org/abs/2307.06435"])
 
       # Get the first result
@@ -72,7 +72,7 @@ class GetContentsIntegrationTest < Minitest::Test
   # Test that get_contents works with text options
   def test_get_contents_with_text_options
     VCR.use_cassette("get_contents_with_options") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       # Request contents with text options
       result = client.get_contents(
@@ -93,7 +93,7 @@ class GetContentsIntegrationTest < Minitest::Test
   # Test that ContentsResult includes statuses array
   def test_contents_result_includes_statuses
     VCR.use_cassette("get_contents_llama_paper") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.get_contents(["https://arxiv.org/abs/2307.06435"])
 
       # Verify statuses array exists

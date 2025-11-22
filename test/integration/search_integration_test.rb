@@ -7,7 +7,7 @@ class SearchIntegrationTest < Minitest::Test
   def test_search_returns_search_result_with_results
     VCR.use_cassette("search_ruby_programming") do
       # Use environment variable for API key, will be filtered in cassette
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       # Make a real search request
       result = client.search("Ruby programming language")
@@ -23,7 +23,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test that SearchResult has the expected structure
   def test_search_result_has_expected_structure
     VCR.use_cassette("search_ruby_programming") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.search("Ruby programming language")
 
       # Verify SearchResult has all expected fields
@@ -49,7 +49,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test that individual results contain expected fields from the API
   def test_search_results_contain_expected_fields
     VCR.use_cassette("search_ruby_programming") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.search("Ruby programming language")
 
       # Get the first result
@@ -82,7 +82,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test date range filtering
   def test_search_with_date_range_filters
     VCR.use_cassette("search_with_date_filters") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.search(
         "AI research",
@@ -98,7 +98,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test text inclusion/exclusion filtering
   def test_search_with_text_filters
     VCR.use_cassette("search_with_text_filters") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.search(
         "machine learning",
@@ -113,7 +113,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test full webpage text extraction
   def test_search_with_text_content_extraction
     VCR.use_cassette("search_with_text_extraction") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.search(
         "Ruby programming",
@@ -136,7 +136,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test AI summary generation
   def test_search_with_summary_generation
     VCR.use_cassette("search_with_summary") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.search(
         "climate change",
@@ -152,7 +152,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test context string for RAG
   def test_search_with_context_for_rag
     VCR.use_cassette("search_with_context") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.search(
         "quantum computing",
@@ -168,7 +168,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test subpage crawling
   def test_search_with_subpage_crawling
     VCR.use_cassette("search_with_subpages") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.search(
         "JavaScript framework",
@@ -183,7 +183,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test links extraction
   def test_search_with_links_extraction
     VCR.use_cassette("search_with_links") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.search(
         "web development",
@@ -200,7 +200,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test comprehensive multi-feature search
   def test_search_with_multiple_features_combined
     VCR.use_cassette("search_comprehensive") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       result = client.search(
         "artificial intelligence",
@@ -236,7 +236,7 @@ class SearchIntegrationTest < Minitest::Test
   # Test parameter conversion (snake_case to camelCase)
   def test_parameter_conversion_from_snake_case_to_camel_case
     VCR.use_cassette("search_with_crawl_dates") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
       # Search with snake_case parameters (Ruby convention)
       result = client.search(

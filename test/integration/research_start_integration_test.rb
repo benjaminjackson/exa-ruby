@@ -3,7 +3,7 @@ require "test_helper"
 class ResearchStartIntegrationTest < Minitest::Test
   def test_research_start_creates_task
     VCR.use_cassette("research_start_ant_species") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.research_start(
         instructions: "What species of ant are similar to honeypot ants?",
         model: "exa-research"
@@ -18,7 +18,7 @@ class ResearchStartIntegrationTest < Minitest::Test
 
   def test_research_task_has_expected_structure
     VCR.use_cassette("research_start_ant_species_minimal") do
-      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"] || "test_api_key")
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.research_start(
         instructions: "What species of ant are similar to honeypot ants?"
       )

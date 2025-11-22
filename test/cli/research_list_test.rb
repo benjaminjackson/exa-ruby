@@ -3,11 +3,6 @@ require "test_helper"
 class Exa::CLI::ResearchListTest < Minitest::Test
   def setup
     @api_key = "test_api_key"
-    ENV["EXA_API_KEY"] = @api_key
-  end
-
-  def teardown
-    ENV.delete("EXA_API_KEY")
   end
 
   def test_lists_research_tasks
