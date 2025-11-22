@@ -148,6 +148,59 @@ module Exa
       search(query, type: "keyword", includeDomains: ["linkedin.com/in"], **params)
     end
 
+    # List all websets
+    #
+    # @param params [Hash] Pagination parameters
+    # @option params [String] :cursor Cursor for pagination
+    # @option params [Integer] :limit Maximum number of websets to return
+    # @return [Resources::WebsetCollection] Paginated list of websets
+    def list_websets(**params)
+      Services::Websets::List.new(connection, **params).call
+    end
+
+    # Get a specific webset by ID
+    #
+    # @param id [String] Webset ID
+    # @return [Resources::Webset] The requested webset
+    def get_webset(id)
+      Services::Websets::Retrieve.new(connection, id: id).call
+    end
+
+    # Delete a webset
+    #
+    # @param id [String] Webset ID
+    # @return [Resources::Webset] The deleted webset
+    def delete_webset(id)
+      Services::Websets::Delete.new(connection, id: id).call
+    end
+
+    # Cancel in-progress operations on a webset
+    #
+    # @param id [String] Webset ID
+    # @return [Resources::Webset] The webset with cancelled operations
+    def cancel_webset(id)
+      Services::Websets::Cancel.new(connection, id: id).call
+    end
+
+    # Update a webset's metadata
+    #
+    # @param id [String] Webset ID
+    # @param params [Hash] Update parameters
+    # @option params [Hash] :metadata Metadata to update
+    # @return [Resources::Webset] The updated webset
+    def update_webset(id, **params)
+      Services::Websets::Update.new(connection, id: id, **params).call
+    end
+
+    # Create a new webset
+    #
+    # @param params [Hash] Creation parameters
+    # @option params [Hash] :search Search configuration
+    # @return [Resources::Webset] The newly created webset
+    def create_webset(**params)
+      Services::Websets::Create.new(connection, **params).call
+    end
+
     private
 
     def connection
