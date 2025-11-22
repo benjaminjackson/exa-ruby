@@ -23,15 +23,13 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:36:18 GMT
+      - Sat, 22 Nov 2025 21:29:47 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
       - '742'
       Connection:
       - keep-alive
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -61,93 +59,20 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2e6-/oVQReS0WgCuk6JqCuW+h5M3a3U"
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Z%2FHufSN26IdODjzOdXg%2B4Ak3Dsj65EBCgD%2Ffs1IEP%2Fof4Bwbrf7LqT7h5qOO9gh2hkqjVdqgKPLP7naIxw6Fyp5AtoWRXI9Aq9%2FZAncYX1nyYoM%3D"}]}'
+      - W/"2e6-wDzK32Jko+vmK+5gxOvnWZ1/uvs"
       Cf-Cache-Status:
       - DYNAMIC
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b37d6efa90fa0-EWR
-    body:
-      encoding: UTF-8
-      string: '{"id":"webset_01kapmg8s8vsc750snny3qf6s6","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapmg963csbcy2dq1k5dps1k","object":"webset_search","websetId":"webset_01kapmg8s8vsc750snny3qf6s6","status":"running","query":"Tech
-        founders","entity":{"type":"person"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:36:17.731Z","updatedAt":"2025-11-22T20:36:18.080Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:36:17.320Z","updatedAt":"2025-11-22T20:36:18.080Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:36:18 GMT
-- request:
-    method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmg8s8vsc750snny3qf6s6/searches
-    body:
-      encoding: UTF-8
-      string: '{"query":"AI researchers","count":10,"entity":{"type":"person"}}'
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 20:36:39 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '470'
-      Connection:
-      - keep-alive
       Nel:
       - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"1d6-ROUciHwkBsJbTJDHg2Y6AWkGf2c"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qj9RMYILB%2Fswis%2F4FVaEKvt5zQzSDFHkSXwybgtBa38%2F42PXddyoLiAISyDbLNDP3TrgN4VB3zRrq0SiL2KKHWq36RyutQj78NuJ5GbwCTC1sMI7yQ%3D%3D"}]}'
-      Cf-Cache-Status:
-      - DYNAMIC
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EivNaFcwmbA%2FYkzE2BpMmU1sK1kSQikciO9njU3C2eH88zP9J8Vruq1YB0qvl4EYbq9XelOfo6CBtRI1P1KwHYJifuI8n2KU7dG6QVPME6VJlGRRFQ%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b38564d278c73-EWR
+      - 9a2b862d9ab1acd7-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"wsearch_01kapmgxfeaextcqtx5w4msq7h","object":"webset_search","websetId":"webset_01kapmg8s8vsc750snny3qf6s6","status":"running","query":"AI
-        researchers","entity":{"type":"person"},"criteria":[],"count":10,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:36:38.510Z","updatedAt":"2025-11-22T20:36:38.897Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:36:39 GMT
+      string: '{"id":"webset_01kapqj6ax9y1haa06w26pyv9d","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqj6nf12tjjf6hfncypz2h","object":"webset_search","websetId":"webset_01kapqj6ax9y1haa06w26pyv9d","status":"running","query":"Tech
+        founders","entity":{"type":"person"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:29:46.415Z","updatedAt":"2025-11-22T21:29:46.765Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:29:46.077Z","updatedAt":"2025-11-22T21:29:46.765Z"}'
+  recorded_at: Sat, 22 Nov 2025 21:29:47 GMT
 recorded_with: VCR 6.3.1

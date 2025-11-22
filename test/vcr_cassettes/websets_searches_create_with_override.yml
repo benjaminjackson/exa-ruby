@@ -23,88 +23,13 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:34:27 GMT
+      - Sat, 22 Nov 2025 21:26:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
       - '747'
       Connection:
       - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"2eb-aLyaELpZPjdP4d5Tc0/KGBzShE4"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=v4WAultlaiTrqQGEvDg3AMhNLIcAZQ0Ht9%2F8pxUnGIgVgL8PvwBI3I2XGpZnkWxzECgbLRQN7p4pQ0Ay82pdfXlm5Ga23Oeuz9OMbLur%2B1JljKvwkg%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b351a5cacde93-EWR
-    body:
-      encoding: UTF-8
-      string: '{"id":"webset_01kapmcvxxv68s5nvzspw54q3h","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapmcw9n4g9nkdh17cfpyykn","object":"webset_search","websetId":"webset_01kapmcvxxv68s5nvzspw54q3h","status":"running","query":"Initial
-        companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:34:26.229Z","updatedAt":"2025-11-22T20:34:26.725Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:34:25.853Z","updatedAt":"2025-11-22T20:34:26.725Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:34:27 GMT
-- request:
-    method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmcvxxv68s5nvzspw54q3h/searches
-    body:
-      encoding: UTF-8
-      string: '{"query":"New search query","count":10,"behavior":"override"}'
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 20:34:55 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '473'
-      Connection:
-      - keep-alive
       Nel:
       - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
@@ -136,18 +61,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"1d9-kB2cz1aebw4HE2zfvUL0b2IVlHE"
+      - W/"2eb-z+x41zs2+74pqE+jffKqP/fALVM"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=b6M4EH61vCVjgSmn4rZVOI%2BpTOfwd7EMu3mM3n8CXlB93YzPTnH%2BbKTNyyTcH17vbFg0zQqn7yguKVDokaivYnStmu7vOdesvFkV%2Bq8H%2Bt7E3fCFVA%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zQ7G2E9QegtNYjaT0fUUZIP6yRouggM9Vcv8zCPKShFbU%2BvqY6YPoucNltLfnPUZICGEaiOIDgJEKkGbOF3lg%2F9mRzhfbh8VqljaRSqg02Ui4d3Ilw%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b35bf9a364344-EWR
+      - 9a2b80be2c10519b-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"wsearch_01kapmdrk4ak938xap46fewmr8","object":"webset_search","websetId":"webset_01kapmcvxxv68s5nvzspw54q3h","status":"running","query":"New
-        search query","entity":{"type":"company"},"criteria":[],"count":10,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:34:55.204Z","updatedAt":"2025-11-22T20:34:55.647Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:34:55 GMT
+      string: '{"id":"webset_01kapqbcx1c5d11hxttqyq2ny8","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqbd92cqq3gnkpssk1vvkj","object":"webset_search","websetId":"webset_01kapqbcx1c5d11hxttqyq2ny8","status":"running","query":"Initial
+        companies","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:26:03.810Z","updatedAt":"2025-11-22T21:26:04.229Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:26:03.425Z","updatedAt":"2025-11-22T21:26:04.229Z"}'
+  recorded_at: Sat, 22 Nov 2025 21:26:04 GMT
 recorded_with: VCR 6.3.1

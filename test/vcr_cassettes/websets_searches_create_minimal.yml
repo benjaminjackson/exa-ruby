@@ -23,88 +23,13 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:31:46 GMT
+      - Sat, 22 Nov 2025 21:26:26 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
       - '741'
       Connection:
       - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"2e5-h4y732eV9gNi7QpfSv1eLN11/eQ"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=PVno2xihTvBHe00tAGEpEi5%2FXPcXLd8CaSUHAZFXiM0tTL3icJwcByjnsV%2BbIjkSbbCcXsAbC4uf%2BYMBmguIkZT1Y7zvwehpwxD7vO%2Bv7GqCrPE4PA%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b310f7b17de95-EWR
-    body:
-      encoding: UTF-8
-      string: '{"id":"webset_01kapm7zb1c0cxth1pgevqc6ss","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapm7zreqqq8ndmmtp9xwekh","object":"webset_search","websetId":"webset_01kapm7zb1c0cxth1pgevqc6ss","status":"running","query":"AI
-        startups","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:31:45.934Z","updatedAt":"2025-11-22T20:31:46.314Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:31:45.505Z","updatedAt":"2025-11-22T20:31:46.314Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:31:46 GMT
-- request:
-    method: post
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapm7zb1c0cxth1pgevqc6ss/searches
-    body:
-      encoding: UTF-8
-      string: '{"query":"Machine learning companies","count":5}'
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 20:32:07 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '482'
-      Connection:
-      - keep-alive
       Nel:
       - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
@@ -136,18 +61,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"1e2-i/1QyFnbKyfOAFcked6bpwc24sk"
+      - W/"2e5-uk+v+KdqXZEjnwmC+ki6YUTJwsk"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tzBUUD5xXfnFboe6Jws30pgBnkQ9ANSmiTJYGFZbm6rkBXluAhn%2FqtPs8GFAk7YFa9zuwkLsmQisv7lz4ITQOKt%2BXlZkfbsXOO%2FmgF0o9C31%2BRs%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=yPhV9N0bGbRf9xA5e4s3seMtNn%2BV6GDSZxlrGdTmuSZDzAkNVjhXxZ1ELJ46jM5D%2FQFKTRul7y10L8pEm%2FLfHz6LxUq%2FeqPORsYMLVxGKVWihMNu%2Bw%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b31afec8dd474-EWR
+      - 9a2b81461ab01600-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"wsearch_01kapm8mp91papky66yarc5yr8","object":"webset_search","websetId":"webset_01kapm7zb1c0cxth1pgevqc6ss","status":"running","query":"Machine
-        learning companies","entity":{"type":"company"},"criteria":[],"count":5,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:32:07.369Z","updatedAt":"2025-11-22T20:32:07.804Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:32:07 GMT
+      string: '{"id":"webset_01kapqc253hqzh7ytf5hycmg63","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqc2h9bpyww6te0eyvb50a","object":"webset_search","websetId":"webset_01kapqc253hqzh7ytf5hycmg63","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:26:25.577Z","updatedAt":"2025-11-22T21:26:25.960Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:26:25.187Z","updatedAt":"2025-11-22T21:26:25.960Z"}'
+  recorded_at: Sat, 22 Nov 2025 21:26:26 GMT
 recorded_with: VCR 6.3.1

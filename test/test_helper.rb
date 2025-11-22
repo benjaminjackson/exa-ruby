@@ -27,6 +27,16 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
   # Filter sensitive data
   config.filter_sensitive_data("<EXA_API_KEY>") { ENV["EXA_API_KEY"] }
+
+  # Disable debug logging during VCR recording to prevent logger output
+  # from contaminating cassettes
+  config.before_record do |interaction|
+    @vcr_debug_state = ENV.delete("EXA_DEBUG")
+  end
+
+  config.after_http_request do |request, response|
+    ENV["EXA_DEBUG"] = @vcr_debug_state if @vcr_debug_state
+  end
 end
 
 # Disable external network connections in tests (VCR will manage allowed connections)

@@ -23,7 +23,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:59:14 GMT
+      - Sat, 22 Nov 2025 21:25:18 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -61,23 +61,23 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"307-fghTccADe5bB6nb5LKICBMLe008"
+      - W/"307-S7PVyR2gKdbXEFMr11EpI3l+CPc"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=F5wYgFNJ2r40PlXWxVdJBmtSxdzN3PLOjwVcGrq6gFIjne03rBmW%2FZ2IpbyTSgwEUiXzYMYHRIh4YHRFUPOHjUq2RJWsNxdogJLYVanSgvV5xvUgCg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ES1OXOlO%2Fp%2FT1GQUnJbjzYKewrDM6dSUHrR83n5bcUWSuqgWtsvIR4%2BnGyHgbGXELHnodIF%2FfnwDv7D%2BpF4O6EeDPb0HyxElJUX9raGANPPr7rM%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b59621dac5e6c-EWR
+      - 9a2b7fa0ab390f47-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"running","query":"B2B
-        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:14.018Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:14.018Z"}'
-  recorded_at: Sat, 22 Nov 2025 20:59:14 GMT
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
+        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:18.469Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:18.469Z"}'
+  recorded_at: Sat, 22 Nov 2025 21:25:18 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
     body:
       encoding: US-ASCII
       string: ''
@@ -96,7 +96,80 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:59:15 GMT
+      - Sat, 22 Nov 2025 21:25:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"312-htGxsUBvQ6aX9fjV+Wkg/oknxfg"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=441zmSPZ4Oei8TQQUkfUrrM1YbKM9wcP4iUSJVgmBQDwcAhMtb2c0ZPES8Yl330h9XiUxaNXIOXUy6j1lqFDV9Sjlv809Y3NsN79CFFre9z1FWlPZA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b7faa4a66de94-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
+        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:18.469Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:18.469Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 21:25:19 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 21:25:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -134,100 +207,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"312-2PfiuKSuunNHiW5r2eTMKdn58aI"
+      - W/"409-yQqGI264rtKfGL5yhocGeduSXHo"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wngPzxs5qDSq1zze4dKqe7VLORox932dJ3ltpjqTKIkjI6QgOVkCwdhVA%2BwUjvQQ96XNeHEFwGsEN2Bjk4bMIk2HcqMj5ayGJy46btRQ89C7fzOn7Q%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wfZZJJbCpKYJy74Xu92RPkawDboLBRBE2cdW0rKvSM75PpfrcQW31ZCXBSVqecoX8jzqxiYk%2BVzYVlcH9LvonGFfJMIp%2BO9F2AZMLm8YphDh5Kp7sg%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b597a4b687d0c-EWR
+      - 9a2b7fbc9a234399-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"running","query":"B2B
-        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:14.018Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:14.018Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:15 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 20:59:18 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"409-asEvidml6F97b556UIhEi7aUBCY"
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=dlb%2B9zH%2BNeNK22WKMx%2FOuH%2BS6k7pimWd%2FBRKjaF1d5fNXyIN4RHs0S%2FJgLtiz8yOW7uRveRdYq5zUOjWkjb%2BY%2BWuhllWhrTZ%2BE87UBAbno8B%2FG3jHQ%3D%3D"}]}'
-      Cf-Cache-Status:
-      - DYNAMIC
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b598afb2e4349-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"running","query":"B2B
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
         or services","successRate":0},{"description":"Company has completed a funding
-        round in 2025","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:17.092Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:17.092Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:18 GMT
+        round in 2025","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 21:25:22 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
     body:
       encoding: US-ASCII
       string: ''
@@ -246,13 +246,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:59:21 GMT
+      - Sat, 22 Nov 2025 21:25:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -282,29 +284,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"40a-4atSiKvbkK2M+VbqZJYUU/feA60"
+      - W/"40c-X0OlBnZJcf+RgsAioB9RqyBnrHM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=F16QGul8NBaCbUrdkO66xnprd31hH31cM8XCC49HI9n9FVqeStKBsCaFqQ9gGH81nzZnxa9oGohJ8bEj0Md%2Bw1Femo9atN%2BOXLVcjGdmJd4ieiA0rw%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jVEdzCDcrwgkiL5sBV5JonZ7KUkm3FyK%2BiGGP2%2Favw0i%2FzhiSP%2BAKPifZCn3aTDnIAOXlEQ5EgDV5yv57IkqTkGyNy9XBQoqYLjIzhuDZ7uObNZHaA%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b599e4cad7b0b-EWR
+      - 9a2b7fcd3b85f799-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"running","query":"B2B
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
-        or services","successRate":50},{"description":"Company has completed a funding
-        round in 2025","successRate":50}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:17.853Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:17.853Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:21 GMT
+        or services","successRate":100},{"description":"Company has completed a funding
+        round in 2025","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 21:25:25 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
     body:
       encoding: US-ASCII
       string: ''
@@ -323,84 +323,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:59:24 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"40a-6yRRw3LoYBga5RKe1+luaEDAW88"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=gM1G1Qw4bwI5vVObGAP2i2di03AEiJpyYyZ8t66PweWvYCxbcvgLB9n86RpSjQi8GBeo1KXb9I9fNziEJbKlGmMWCQTsHpVIb%2BIppfvFTmfuxOcR5w%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b59af498e7d0e-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"running","query":"B2B
-        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
-        provides B2B (business-to-business) SaaS (software-as-a-service) products
-        or services","successRate":50},{"description":"Company has completed a funding
-        round in 2025","successRate":50}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:17.853Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:17.853Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:24 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 20:59:26 GMT
+      - Sat, 22 Nov 2025 21:25:27 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -438,27 +361,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"410-CDvzLJuRPuQnkg9DVA+R23Rdkps"
+      - W/"410-ghnOvlF1hjqN3hn216UOcPRyjZo"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EK0hdTVee5Z724Vcih0Ot01kLAQdY%2B9RJndNdLjS0z%2FjHXzl1vlfY0SsaoQOus%2BRHQ1LTm%2FJagOZkXLMJAdqgTbmXyM9fuzLcrnKO%2B28yKxHN0eXLg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=d%2FK9GcZ00QNQ9I511dv64Ho2X1GQX8z7H1pGJ7vUNxPEoEpMQ6Zne4SYW5VnX%2Bh%2BSQ90SHnUIyl6pb7dWjJ5xrpGt8gS5KvWbcASpBjP0VWocgqodg%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b59c18afce150-EWR
+      - 9a2b7fddac7ac674-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"running","query":"B2B
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
         or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:17.853Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:17.853Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:26 GMT
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 21:25:27 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
     body:
       encoding: US-ASCII
       string: ''
@@ -477,7 +400,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:59:29 GMT
+      - Sat, 22 Nov 2025 21:25:30 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -515,27 +438,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"410-CDvzLJuRPuQnkg9DVA+R23Rdkps"
+      - W/"410-ghnOvlF1hjqN3hn216UOcPRyjZo"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=lQtlEEoN5PjQumQiNywBkQAmjVtbZqZw362aEKym9mQFe7IcYqivllpUTs%2FU1n15gYi8Qyy1xl5FsGUKCXVeYx%2FM39JGzzQm1Ydk%2BsfAxtxQyMBMzg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Sn%2BFoMFDKprZ2aDoWyOXA8mtOVOEpl9ZF5bqdPTZ5eTVBw1MPk2%2FHAJ%2FK%2BjuLmr2VTmBYhwt2r9TDzo006rcA5whp0gQMVf98%2FmtdTfTsKM1cS94XQ%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b59d2187ade95-EWR
+      - 9a2b7feea9274153-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"running","query":"B2B
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
         or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:17.853Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:17.853Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:29 GMT
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 21:25:30 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
     body:
       encoding: US-ASCII
       string: ''
@@ -554,7 +477,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:59:32 GMT
+      - Sat, 22 Nov 2025 21:25:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -592,27 +515,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"410-CDvzLJuRPuQnkg9DVA+R23Rdkps"
+      - W/"410-ghnOvlF1hjqN3hn216UOcPRyjZo"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wwckf5UjiTt9vGo3PlUePtcxasZOdOVVr%2B7OyBJuw8VSfndtZ0hbheToXZw36FZ5kZZRfY%2FOiT3IcKJOkd5iDehD8OiWTR2GVC0hFtRdjGb4PSXKnw%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=nQ6%2BdPz2hHOI9BHAqKh%2FdMvx8a%2B2Ao%2BzJi9HeuWKtu89Y05ofdQN4BWLBhcHmkI9sCP9Dfm0DHzFJUaOm4aEe%2FF9oKPCBPNktFtw%2Bcp4ojVSC9G0Ow%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b59e2eb6bae20-EWR
+      - 9a2b80001f1e42ab-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"running","query":"B2B
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
         or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:17.853Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:17.853Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:32 GMT
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 21:25:33 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
     body:
       encoding: US-ASCII
       string: ''
@@ -631,7 +554,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:59:35 GMT
+      - Sat, 22 Nov 2025 21:25:36 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -669,27 +592,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"40f-RTMZPdBfcDXw340F3mrrC/J2jDs"
+      - W/"40f-/PFYiKnANee98LWRgvQJoHuFp6E"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=P6Pc9ro2ifsc0j552dixhJ9h6d4%2BzsvR5RPD%2BjUQ1GaxX999%2Bij6svy3G5cjgXNg2KVlutigrFdagfayywVaR0tohHzzS80EK3iGKQot3uV05Be1EA%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=4nuWAxZiPgR5O5w5cBKaCaEEIDvGW6IrOqop2Ee5JLzBDkRD7btjy%2FFgQob%2FYZTq192OlL3RnhctprJ3ogWnGo1K6j2W6CYTZxaR4exGbRJVe8IOFg%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b59f5599d42a3-EWR
+      - 9a2b8010bcef5a33-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"idle","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"completed","query":"B2B
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"completed","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
         or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:31.703Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:31.703Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:35 GMT
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:34.898Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:34.898Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 21:25:35 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapnt8cywv30yfpsa3r7k1cz
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
     body:
       encoding: US-ASCII
       string: ''
@@ -708,7 +631,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:59:35 GMT
+      - Sat, 22 Nov 2025 21:25:36 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -746,22 +669,22 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"40f-RTMZPdBfcDXw340F3mrrC/J2jDs"
+      - W/"40f-/PFYiKnANee98LWRgvQJoHuFp6E"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=echWjdI%2BLe2Vc2am0dRKLBBLWmoczIECDjiUuYJqOfVxcAAYvzMDmrpsUZP6%2Fq%2B6oVbQNdTa6KVp%2F2KNlERy1rl7%2FLKIQhtt3B1%2FxCdEr%2FUIJMZB9Q%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EuohpQTKkFdc2NW%2BSF200dbQKU5jrO7%2Bio8RKKGMK6H2HiPyPS898Ffj%2F129RC1EMHZYzYnY3g4Ug%2F6Am%2FNIHtsGL%2By9WjmNBqU2EryOU3Nz80WKHA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b59f97d9ec54d-EWR
+      - 9a2b80147b4def9d-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapnt8cywv30yfpsa3r7k1cz","object":"webset","status":"idle","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapnt8ws3126k645c7vyxk4g","object":"webset_search","websetId":"webset_01kapnt8cywv30yfpsa3r7k1cz","status":"completed","query":"B2B
+      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"completed","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
         or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:59:13.689Z","updatedAt":"2025-11-22T20:59:31.703Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:59:13.182Z","updatedAt":"2025-11-22T20:59:31.703Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 20:59:35 GMT
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:34.898Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:34.898Z","items":[]}'
+  recorded_at: Sat, 22 Nov 2025 21:25:36 GMT
 recorded_with: VCR 6.3.1
