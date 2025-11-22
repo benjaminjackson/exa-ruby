@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
 
   # Development dependencies
   spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "minitest-fail-fast", "~> 0.1"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "webmock", "~> 3.0"
   spec.add_development_dependency "vcr", "~> 6.0"
