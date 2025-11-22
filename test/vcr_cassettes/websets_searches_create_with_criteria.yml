@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"B2B SaaS","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:33:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '738'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2e2-Pwf2bpkubcD2ITCtUdYo3r9sfcY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jWSeR%2Bkqe6PJsCmBg2YxyWWYDRQzr474eeqMkH5%2FKsXQKCcSj1nJA3Lg18X1svySXFo1O%2Beak8ff%2BsipWYtox3gS0iHGBbI82xfmBGnpZ6jn5xuJiQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b33458bcc939a-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kapmak87gnq9ykz1psfyevyh","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapmakm3h5425va8g2fspekw","object":"webset_search","websetId":"webset_01kapmak87gnq9ykz1psfyevyh","status":"running","query":"B2B
+        SaaS","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:33:11.811Z","updatedAt":"2025-11-22T20:33:12.192Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:33:11.431Z","updatedAt":"2025-11-22T20:33:12.192Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:33:12 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmak87gnq9ykz1psfyevyh/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"SaaS companies","count":20,"criteria":[{"description":"focused
+        on enterprise customers"},{"description":"raised Series A or later"}]}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:35:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '595'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"253-itQdNYmrGm3KO7ddr02eSVLI9qw"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zZUIKxHko9bLDC2dfme%2FQ6T1pvPAdRFIcDP4wpVC0azBIRRfjwQkm2ByGjF3dNCSWZdGBudHZfhFHgzp%2Bj51iibHcRSzuzZTdBaA1prTI7am4XH5DQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b367dee885a29-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapmekjgmpd19jw7neaj3fep","object":"webset_search","websetId":"webset_01kapmak87gnq9ykz1psfyevyh","status":"running","query":"SaaS
+        companies","entity":{"type":"company"},"criteria":[{"description":"focused
+        on enterprise customers","successRate":0},{"description":"raised Series A
+        or later","successRate":0}],"count":20,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:35:22.832Z","updatedAt":"2025-11-22T20:35:23.270Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:35:23 GMT
+recorded_with: VCR 6.3.1
