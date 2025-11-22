@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "create_validator"
+
 module Exa
   module Services
     module Websets
@@ -10,6 +12,9 @@ module Exa
         end
 
         def call
+          # Validate parameters before making the API call
+          CreateValidator.validate!(@params)
+
           response = @connection.post("/websets/v0/websets", @params)
           body = response.body
 
