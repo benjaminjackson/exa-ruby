@@ -5,7 +5,8 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Long running search","count":1}}'
+      string: '{"search":{"query":"enterprise AI/ML infrastructure startups with Series
+        A funding","count":2}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -19,15 +20,15 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 500
-      message: Internal Server Error
+      code: 201
+      message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 20:38:27 GMT
+      - Sat, 22 Nov 2025 20:43:32 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '162'
+      - '792'
       Connection:
       - keep-alive
       Nel:
@@ -61,18 +62,168 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"a2-CJG248gt68OYjSmNBCdzX9XZeLw"
+      - W/"318-yO677aMM3KyQX6o3dPnJ7OAC1c0"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vkF%2FMiX62NaMVvSJeykVhQlpIHaFacQQRLmEydEsUq%2FhBaRFHrRD8Poja8IG6V2xpKYUICZWquQhUkaNJXog35ccdm%2BalH6z5w5DwFS6jx%2FYuQh4lA%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jVkaFoMwUtZz7rnSG1ZTZ9ZZOvU69O3BvWFaHPMcgQDOO70T%2FEYEocEHq9f15lQYJOQElaFxmqJN8NgOqyExB%2BHISD43rZf2SVxq848dcH7R7fjlIA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b3b06cacbdb6d-EWR
+      - 9a2b42685b0d41cf-EWR
     body:
       encoding: UTF-8
-      string: '{"statusCode":500,"timestamp":"2025-11-22T20:38:27.900Z","message":"Something
-        went wrong. Please try again.","error":"Internal Server Error","path":"/v0/websets"}'
-  recorded_at: Sat, 22 Nov 2025 20:38:28 GMT
+      string: '{"id":"webset_01kapmxgvb5v36dsvatxe27xqc","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapmxh7dxw78skgmgkrmvmap","object":"webset_search","websetId":"webset_01kapmxgvb5v36dsvatxe27xqc","status":"running","query":"enterprise
+        AI/ML infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:43:31.949Z","updatedAt":"2025-11-22T20:43:32.292Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T20:43:31.563Z","updatedAt":"2025-11-22T20:43:32.292Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:43:32 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmxgvb5v36dsvatxe27xqc/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"Query to cancel","count":100}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:43:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '473'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1d9-ShbohnbQwbaqoRqPhhIFsibEokI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=klSVSsqvL5WynvH%2FHZtlbmYBttWaKmo4p6%2B7psSVTnVD7Rv1CXqKOWhks1Gps1tHx7rM4eWTWwymRdR%2FVv%2BHqkDKg36Inf%2FvT6Iu2khtzc%2FV99d5OQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b4310ad17f799-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kapmyahr2f6davngh8rt3zqs","object":"webset_search","websetId":"webset_01kapmxgvb5v36dsvatxe27xqc","status":"running","query":"Query
+        to cancel","entity":{"type":"company"},"criteria":[],"count":100,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T20:43:57.880Z","updatedAt":"2025-11-22T20:43:58.228Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:43:58 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kapmxgvb5v36dsvatxe27xqc/searches/wsearch_01kapmyahr2f6davngh8rt3zqs/cancel
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 22 Nov 2025 20:44:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1ef-/NDeAIG5tftnZNupaCoJV0xbyHs"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=sesR%2B536hLT9gXROSLvdAg%2FxmL%2FjSIW0lR%2BdfEaI0OEhrqDN3JSOwWqzp3MBcxVkHutmEoRTLq8P2pJw7IRM%2FwK5ZFuo6CID5Po6EL50xmTROa4%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2b431a0ba2558a-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"wsearch_01kapmyahr2f6davngh8rt3zqs","object":"webset_search","websetId":"webset_01kapmxgvb5v36dsvatxe27xqc","status":"canceled","query":"Query
+        to cancel","entity":{"type":"company"},"criteria":[],"count":100,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":"2025-11-22T20:43:59.180Z","canceledReason":null,"createdAt":"2025-11-22T20:43:57.880Z","updatedAt":"2025-11-22T20:43:59.458Z"}'
+  recorded_at: Sat, 22 Nov 2025 20:44:00 GMT
 recorded_with: VCR 6.3.1

@@ -91,20 +91,47 @@ test/
 # Run all tests
 bundle exec rake test
 
-# Run specific test file
+# Run specific test file (with bundle exec rake)
+bundle exec rake test TEST=test/services/search_test.rb
+
+# Run single test by name (with bundle exec rake)
+bundle exec rake test TEST=test/services/search_test.rb TESTOPTS="--name '/test_search_returns_results/'"
+
+# Run specific test file (direct ruby)
 bundle exec ruby test/services/search_test.rb
+
+# Run single test by name (direct ruby)
+bundle exec ruby test/services/search_test.rb -n test_search_returns_results
 
 # Run tests matching pattern
 bundle exec rake test TEST="test/services/*_test.rb"
-
-# Run single test by name
-bundle exec ruby test/services/search_test.rb -n test_search_returns_results
 
 # Run with verbose output
 bundle exec rake test TESTOPTS="-v"
 
 # Run with simplified backtrace (recommended during development)
 bundle exec rake test TESTOPTS="--pride"
+```
+
+### Spot Fix Development
+
+When making targeted fixes to a specific feature, avoid running the full test suite repeatedly. Use single test runs to verify fixes quickly:
+
+**During red-green-refactor cycles:**
+- Use `bundle exec rake test TEST=<file> TESTOPTS="--name '/<test_name>/'"`
+- This lets you iterate rapidly on a single test without waiting for the full suite
+- Switch back to `bundle exec rake test` only after the test passes to check for regressions
+
+**Example workflow:**
+```bash
+# Write failing test, then run just that test
+bundle exec rake test TEST=test/services/websets/create_search_test.rb TESTOPTS="--name '/test_creates_search_with_criteria/'"
+
+# Fix the code, re-run the single test
+bundle exec rake test TEST=test/services/websets/create_search_test.rb TESTOPTS="--name '/test_creates_search_with_criteria/'"
+
+# Once green, run full suite to ensure no regressions
+bundle exec rake test
 ```
 
 ## TDD Workflow
