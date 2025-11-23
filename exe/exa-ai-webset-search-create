@@ -55,7 +55,10 @@ def parse_args(argv)
       args[:count] = argv[i + 1].to_i
       i += 2
     when "--entity"
-      args[:entity] = parse_json_or_file(argv[i + 1])
+      args[:entity] = argv[i + 1]
+      i += 2
+    when "--entity-description"
+      args[:entity_description] = argv[i + 1]
       i += 2
     when "--criteria"
       args[:criteria] = parse_json_or_file(argv[i + 1])
@@ -93,12 +96,13 @@ def parse_args(argv)
         Create a new search within a webset
 
         Arguments:
-          webset_id              ID of the webset (required)
+          webset_id                ID of the webset (required)
 
         Options:
           --query QUERY            Search query (required)
           --count N                Number of results to find
-          --entity JSON            Entity type specification (supports @file.json)
+          --entity TYPE            Entity type: person, company, article, research_paper, custom
+          --entity-description TXT Description for custom entity type (required with --entity custom)
           --criteria JSON          Search criteria array (supports @file.json)
           --exclude JSON           Items to exclude from results (supports @file.json)
           --scope JSON             Limit search to specific sources (supports @file.json)
@@ -110,11 +114,20 @@ def parse_args(argv)
           --help, -h               Show this help message
 
         Examples:
+          # Basic search
           exa-ai webset-search-create ws_123 --query "AI startups"
+
+          # Search with entity type
+          exa-ai webset-search-create ws_123 --query "tech CEOs" --entity person
+          exa-ai webset-search-create ws_123 --query "Silicon Valley firms" --entity company
+
+          # Search with custom entity type
+          exa-ai webset-search-create ws_123 --query "Ford Mustang" \\
+            --entity custom --entity-description "vintage cars"
+
+          # Other options
           exa-ai webset-search-create ws_123 --query "machine learning" --count 50
-          exa-ai webset-search-create ws_123 --query "tech companies" --criteria @criteria.json
-          exa-ai webset-search-create ws_123 --query "research" --behavior append
-          exa-ai webset-search-create ws_123 --query "venture-backed SaaS companies" --recall
+          exa-ai webset-search-create ws_123 --query "research" --behavior append --recall
       HELP
       exit 0
     else
@@ -159,10 +172,26 @@ begin
   # Build client
   client = Exa::CLI::Base.build_client(api_key)
 
+  # Build entity parameter from --entity and --entity-description
+  entity = nil
+  if args[:entity]
+    # Build entity hash from string type
+    entity = { type: args[:entity] }
+    if args[:entity] == "custom"
+      unless args[:entity_description]
+        $stderr.puts "Error: --entity-description is required when --entity is 'custom'"
+        exit 1
+      end
+      entity[:description] = args[:entity_description]
+    elsif args[:entity_description]
+      $stderr.puts "Warning: --entity-description is only used with --entity custom (ignoring)"
+    end
+  end
+
   # Prepare search parameters
   search_params = { query: args[:query] }
   search_params[:count] = args[:count] if args[:count]
-  search_params[:entity] = args[:entity] if args[:entity]
+  search_params[:entity] = entity if entity
   search_params[:criteria] = args[:criteria] if args[:criteria]
   search_params[:exclude] = args[:exclude] if args[:exclude]
   search_params[:scope] = args[:scope] if args[:scope]

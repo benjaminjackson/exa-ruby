@@ -109,7 +109,9 @@ exa-ai webset-delete WEBSET_ID --force
 exa-ai webset-cancel WEBSET_ID
 
 # Webset Searches
-exa-ai webset-search-create WEBSET_ID --query "Machine learning companies" --count 2
+exa-ai webset-search-create WEBSET_ID --query "Ford Mustang" --entity custom --entity-description "vintage cars"
+exa-ai webset-search-create WEBSET_ID --query "tech CEOs" --entity person --count 20
+exa-ai webset-search-create WEBSET_ID --query "Y Combinator startups" --entity company
 exa-ai webset-search-get WEBSET_ID SEARCH_ID
 exa-ai webset-search-cancel WEBSET_ID SEARCH_ID
 
