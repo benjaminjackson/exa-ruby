@@ -2,6 +2,7 @@
 
 require_relative "exa/version"
 require_relative "exa/error"
+require_relative "exa/constants/websets"
 require_relative "exa/middleware/raise_error"
 require_relative "exa/connection"
 require_relative "exa/resources/search_result"

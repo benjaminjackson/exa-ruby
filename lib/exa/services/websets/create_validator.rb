@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
+require_relative "../../constants/websets"
+
 module Exa
   module Services
     module Websets
       # Validates parameters for webset creation
       class CreateValidator
-        VALID_ENTITY_TYPES = %w[company person article research_paper custom].freeze
-        VALID_ENRICHMENT_FORMATS = %w[text date number options url].freeze
-        VALID_SOURCE_TYPES = %w[import webset].freeze
+        VALID_ENTITY_TYPES = Constants::Websets::ENTITY_TYPES
+        VALID_ENRICHMENT_FORMATS = Constants::Websets::ENRICHMENT_FORMATS
+        VALID_SOURCE_TYPES = Constants::Websets::SOURCE_TYPES
 
         class << self
           def validate!(params)

@@ -3,8 +3,8 @@
 
 require "exa-ai"
 
-VALID_FORMATS = %w[csv].freeze
-VALID_ENTITY_TYPES = %w[company].freeze
+VALID_FORMATS = Exa::Constants::Websets::IMPORT_FORMATS
+VALID_ENTITY_TYPES = Exa::Constants::Websets::ENTITY_TYPES
 
 # Recursively convert hash keys from strings to symbols
 def deep_symbolize_keys(obj)
