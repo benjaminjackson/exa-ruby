@@ -395,11 +395,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_multiple", record: :new_episodes) do
       # Create first search
       search1 = client.create_webset_search(
         webset_id: webset.id,
