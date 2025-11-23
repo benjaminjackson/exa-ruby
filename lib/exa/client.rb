@@ -161,9 +161,11 @@ module Exa
     # Get a specific webset by ID
     #
     # @param id [String] Webset ID
+    # @param params [Hash] Optional parameters
+    # @option params [Array<String>] :expand Resources to expand in response (e.g., ['items'])
     # @return [Resources::Webset] The requested webset
-    def get_webset(id)
-      Services::Websets::Retrieve.new(connection, id: id).call
+    def get_webset(id, **params)
+      Services::Websets::Retrieve.new(connection, id: id, **params).call
     end
 
     # Delete a webset

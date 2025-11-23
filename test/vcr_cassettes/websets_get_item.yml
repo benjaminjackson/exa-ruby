@@ -23,7 +23,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:24:36 GMT
+      - Sun, 23 Nov 2025 00:17:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -61,23 +61,23 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"30d-A44bSAFYg5VzDP7FHv7BAgho+Ng"
+      - W/"30d-CP1uy+ZWSMOszGGnVc1KFoKSUrQ"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=25tomjKWyuhXXFIglKNnOsKZN17FdQIDqsioIpQQ%2BMGT4KiLPHWJkBFDAPbWzJk2o3ChowKkQ6MGGmYyJaD4tJrtGQLftrDbDna5MPoBh%2FIFd98%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tIG4KdalSxo9BNLngsU63aFVM9katLz1cxy6qm5Ohq3n%2FcdbxfeZwPOoii7im%2BKF5kLeaCAvVwZO9ptMzyEsoObig3bVH4o9wu%2F4XvgGcpnB4MknMA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7e9548afc323-EWR
+      - 9a2c7b643ad3426a-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"running","query":"AI/ML
-        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:35.797Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:35.797Z"}'
-  recorded_at: Sat, 22 Nov 2025 21:24:36 GMT
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:10.718Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:10.718Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:17:11 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapq8phv0v9zqt3gqh1j69w4
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r
     body:
       encoding: US-ASCII
       string: ''
@@ -96,7 +96,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:24:38 GMT
+      - Sun, 23 Nov 2025 00:17:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -134,26 +134,23 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"3e4-6okUsvHMJXJnYg3TdiV2a92AaMI"
+      - W/"318-SElhC7DybMnALJS6t1Wu14bZ3Do"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ZvwBe5PlpzmA0m0OkdLl8NylyXh67eWv4pt%2Ffju1ZNk3pnfZHibjy0G%2F6Ojzoi2T4eF4Eiodp2xBev1LZGwCae8%2BCEDbla3Y7KH%2BpfZKhEv%2FOxjrjg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DwTnVMrjG%2FgbW%2F1QtHLj%2BWbBhORjBBtZqDlgSRMawXP2Q%2FGiHBwCEb%2FpLMnIWbWS3LN0jcXg%2F0D8Y1m8XfgNl8QH%2FVcfkcHGAasyvHg8NHx6u0BGNQ%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7ea11b58f02b-EWR
+      - 9a2c7b6dcb0d4e4d-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"running","externalId":null,"title":"Companies:
-        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"running","query":"AI/ML
-        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
-        company (startup) providing AI/ML infrastructure products or services that
-        has raised Series A funding","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:36.792Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:37.015Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:24:38 GMT
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:10.718Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:10.718Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:11 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapq8phv0v9zqt3gqh1j69w4
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r
     body:
       encoding: US-ASCII
       string: ''
@@ -172,7 +169,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:24:40 GMT
+      - Sun, 23 Nov 2025 00:17:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -210,26 +207,26 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"3e4-RSylbhLa4u++NuM2jSLctyMaVI0"
+      - W/"3e4-nm5bgQyaFMUr/uJZzQ/v5voU/xQ"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EXWUlSZlYmFoET0sT%2FVHABa6%2Fc2FNAE3O4a6%2FqXNddkEaRSrQlHQTm%2Bni1qJFwwQkU3%2FT%2BvzCYB32rpoY1dh711e0RmRMXdO5Y6R6NBVUMvI3qjwUg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=i3FyExV1OAdeeSrTpU5A3NKUwPHvYFyds8w5tkDEjpGOAhybN6%2BDqHiModhzCmPBSuOvAK1Ax%2BbggBimfhqKImlPPuicrkaQ%2BSMe%2BPOj%2B08icfLqnw%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7eb83dc5dd37-EWR
+      - 9a2c7b7e5e6c72b1-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"running","externalId":null,"title":"Companies:
-        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"running","query":"AI/ML
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"running","query":"AI/ML
         infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
         company (startup) providing AI/ML infrastructure products or services that
-        has raised Series A funding","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:38.346Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:38.346Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:24:40 GMT
+        has raised Series A funding","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:11.997Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:12.055Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:14 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapq8phv0v9zqt3gqh1j69w4
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r
     body:
       encoding: US-ASCII
       string: ''
@@ -248,7 +245,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:24:43 GMT
+      - Sun, 23 Nov 2025 00:17:17 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -286,26 +283,26 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"3e4-tGHqzWVXWjBqzj9g6h6CEGLy+nU"
+      - W/"3e4-Mx5nk5cAbsEetawKOcfwFCV0Owg"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=gUpXHid5Hbrb9r8k%2F9DhSCv7%2BQ4fsgpBcAb6am9sylG5uSY4yRPW4%2F6LR7BeQpBKEMMDozUivsIdZatKgFRpA5JCH%2FAhatJvzOCmKO%2Fl3KY8ENqdyQ%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vuXig8z4sgcQkc9FruMUCYVIqnOSlskyO85VcEIv6ZnTuh1jHIWsr4MoH3iDMsIFT6jHDqlhEE4w9dkcR0%2Bqp0KSRgvSBIeaIvQ1dAp6zJrytjL0ww%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7ec8af8ffbfb-EWR
+      - 9a2c7b8f892b9f3b-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"running","externalId":null,"title":"Companies:
-        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"running","query":"AI/ML
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"running","query":"AI/ML
         infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
         company (startup) providing AI/ML infrastructure products or services that
-        has raised Series A funding","successRate":50}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:38.346Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:38.346Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:24:43 GMT
+        has raised Series A funding","successRate":50}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:14.501Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:14.501Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:17 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapq8phv0v9zqt3gqh1j69w4
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r
     body:
       encoding: US-ASCII
       string: ''
@@ -324,7 +321,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:24:46 GMT
+      - Sun, 23 Nov 2025 00:17:19 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -362,26 +359,26 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"3e4-RBx6iFYF2lGweeo1htO1l+tRfV8"
+      - W/"3e4-/mGJUDB4Ws04aWZo7h6T/ymjFXE"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qtL%2BOe3EKs%2BbUGio%2BNRqmmqoPhrJ81uiAzqZki%2BEdAD6Fbybm3p1Cc7ZFBEXf7GCj83FUb4YR7V%2FTds9DJBHaF7XN4KtnvxJ6G%2FtAfx9smzdj9taBw%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=gwxbyYtWIE19nffPYLuKB3t6ntQF8eeqVlFctVKhN8YmVMzLnMwiVWVae3ccM7woWoOjV3%2F7K5WLTwrLI3Z%2FQM0UgXUuNG04xrh0mFYfuLnj573l0A%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7ed9180eaa2a-EWR
+      - 9a2c7ba079364356-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"running","externalId":null,"title":"Companies:
-        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"running","query":"AI/ML
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"running","query":"AI/ML
         infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
         company (startup) providing AI/ML infrastructure products or services that
-        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:38.346Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:38.346Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:24:46 GMT
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:14.501Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:14.501Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:20 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapq8phv0v9zqt3gqh1j69w4
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r
     body:
       encoding: US-ASCII
       string: ''
@@ -400,7 +397,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:24:48 GMT
+      - Sun, 23 Nov 2025 00:17:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -436,28 +433,28 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"3e4-RBx6iFYF2lGweeo1htO1l+tRfV8"
+      - W/"3e4-/mGJUDB4Ws04aWZo7h6T/ymjFXE"
       Cf-Cache-Status:
       - DYNAMIC
       Nel:
       - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=2QSb1kQHxa4w%2Fu6kpOD%2FHrtHaKyex7rV8LNYL%2Bb4Fsn2KGP54t8qyA4YebGYSv0WMjmPa8B%2FjpK7ZTmZbO%2FkTZEFJ1xgpQatIP7XCeoOXKiGdvG80Q%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=gO1iQJJAHmtqjk0g7Ajw2ifIWJOJ%2BNH3WWN9VGuNpcjhKakAX3mQGHRvVVJBl7wH%2BREQTznb9jPNmXNLDJ1cp4zsWts5DKmmkAs93fjEAPsHZVfl0w%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7ee95b48610c-EWR
+      - 9a2c7bb19e86c47d-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"running","externalId":null,"title":"Companies:
-        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"running","query":"AI/ML
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"running","query":"AI/ML
         infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
         company (startup) providing AI/ML infrastructure products or services that
-        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:38.346Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:38.346Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:24:48 GMT
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:14.501Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:14.501Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:23 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapq8phv0v9zqt3gqh1j69w4
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r
     body:
       encoding: US-ASCII
       string: ''
@@ -476,159 +473,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:24:51 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"3e4-RBx6iFYF2lGweeo1htO1l+tRfV8"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=rS2x3BOrhG%2Bp7nZLjv%2BUPiN7iX%2BkpsDQnzCCx4lXd7eVY%2Faac5qJS0EMmOzChWpBE%2B7loUQXfCDvhuBIq5hit0k5OZH5XYoK1B60ep1uCLtk9XH2%2FA%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b7efb2efb4382-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"running","externalId":null,"title":"Companies:
-        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"running","query":"AI/ML
-        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
-        company (startup) providing AI/ML infrastructure products or services that
-        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:38.346Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:38.346Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:24:51 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapq8phv0v9zqt3gqh1j69w4
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 21:24:54 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"3e3-vKYVOTWkXStIRr69a4UYWO26IiE"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=mpyrvRbfTbphv2YbhGZg6UhgSi1NWHZnna2kSXkkaVhapRvgLsexmovXjvDE3EpQLKJ%2B5Ysycy2ixz8vpjNWqgBRuZLSqYuFQ48Blr3dgl6I2Om4pQ%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b7f0bedd14f4e-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"idle","externalId":null,"title":"Companies:
-        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"completed","query":"AI/ML
-        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
-        company (startup) providing AI/ML infrastructure products or services that
-        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:51.716Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:51.716Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:24:54 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapq8phv0v9zqt3gqh1j69w4
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 21:24:55 GMT
+      - Sun, 23 Nov 2025 00:17:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -666,21 +511,319 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"3e3-vKYVOTWkXStIRr69a4UYWO26IiE"
+      - W/"3e4-/mGJUDB4Ws04aWZo7h6T/ymjFXE"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=bMgK5xtPrN3YMGlJuGpWYbhWfsbOn%2BJ2Rpni1tEYiBZKo9Ar0tMVCJ6KQ4UBFQDP2hFKkaaH8QO9sXH3bw0XrZWYPNTCpkAfvlc6fJ7xcMV9%2F%2Bo%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=CbKkNxvM%2FrUkTYKPHCJrCQAmBnxmAo5j0QYD7FJxrEWtIpQfKuueBrxicAVk7h8ae296zDBF8kz1aEWx7VlD9Bm16cNyP1hdro6fqW8UOXtnxCXupQ%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7f112d176b90-EWR
+      - 9a2c7bc4cbfaa6cc-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapq8phv0v9zqt3gqh1j69w4","object":"webset","status":"idle","externalId":null,"title":"Companies:
-        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kapq8py516v5tyq88vqweegh","object":"webset_search","websetId":"webset_01kapq8phv0v9zqt3gqh1j69w4","status":"completed","query":"AI/ML
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"running","query":"AI/ML
         infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
         company (startup) providing AI/ML infrastructure products or services that
-        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:24:35.397Z","updatedAt":"2025-11-22T21:24:51.716Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:24:35.003Z","updatedAt":"2025-11-22T21:24:51.716Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:24:55 GMT
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:14.501Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:14.501Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:25 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:17:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e4-/mGJUDB4Ws04aWZo7h6T/ymjFXE"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=IyTMVkMvRnoRE96m72Cx9eBhkFU7PEymrzhbiSiLeTGLMasq5xbdxz9Yi7cp%2F%2Bv3tfCoCEY%2FcBXge%2BD0EsP%2BsSWWU7Ra8ZNPFDVJA5rb5emyU5csWg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c7bd5dd534414-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"running","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:14.501Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:14.501Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:28 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:17:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3e3-R3LsBsAjHA+qSR7s3hKnKOc611Y"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=lHGt%2Fw5g8DLV29EOscnj3kzs%2BpbdcygNvdtL5asJUkjDU1%2BJwVB8BTEOsOzkKv1rWsL3Q%2FOL7D8V7IfD6U3erOSwdPMVw2CrhIVY2fCnR6JF6etVpg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c7be64b98d9fb-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq14pva42n5zza3v2zgva7r","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kaq14q63vcmyar2zqeg5jk11","object":"webset_search","websetId":"webset_01kaq14pva42n5zza3v2zgva7r","status":"completed","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":4,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:17:10.339Z","updatedAt":"2025-11-23T00:17:27.689Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:17:09.994Z","updatedAt":"2025-11-23T00:17:27.689Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:34 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r?expand=items
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:17:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"5266-jXdowfD3PV+7QyoigG14v2nyqA8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=t3p5slHA%2Bf%2FCxPgUfo3O98CytqizwTKdt90618xJDYKiDgNfOw0F8odwRSlN905FvirlDqcwX4oVcA9oJviOn0%2FG84NWgxgDm3zdg24TVDhfbUE%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c7bfc2ce2f5f8-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcTE0cHZhNDJuNXp6YTN2MnpndmE3ciIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogQUkvTUwgaW5mcmFzdHJ1Y3R1cmUgc3RhcnR1cHMsIFNlcmllcyBBIGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FxMTRxNjN2Y215YXIyenFlZzVqazExIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FxMTRwdmE0Mm41enphM3Yyemd2YTdyIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJBSS9NTCBpbmZyYXN0cnVjdHVyZSBzdGFydHVwcyB3aXRoIFNlcmllcyBBIGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiRWFybHktc3RhZ2UgY29tcGFueSAoc3RhcnR1cCkgcHJvdmlkaW5nIEFJL01MIGluZnJhc3RydWN0dXJlIHByb2R1Y3RzIG9yIHNlcnZpY2VzIHRoYXQgaGFzIHJhaXNlZCBTZXJpZXMgQSBmdW5kaW5nIiwic3VjY2Vzc1JhdGUiOjI1fV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjo0LCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIzVDAwOjE3OjEwLjMzOVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIzVDAwOjE3OjI3LjY4OVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W10sIm1vbml0b3JzIjpbXSwiZXhjbHVkZXMiOltdLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjNUMDA6MTc6MDkuOTk0WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjNUMDA6MTc6MjcuNjg5WiIsIml0ZW1zIjpbeyJpZCI6IndpdGVtXzAxa2FxMTR4bjA1Nm1wMWV5NTU2bXAxZXk1Iiwib2JqZWN0Ijoid2Vic2V0X2l0ZW0iLCJzb3VyY2UiOiJzZWFyY2giLCJzb3VyY2VJZCI6IndzZWFyY2hfMDFrYXExNHE2M3ZjbXlhcjJ6cWVnNWprMTEiLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcTE0cHZhNDJuNXp6YTN2MnpndmE3ciIsInByb3BlcnRpZXMiOnsidHlwZSI6ImNvbXBhbnkiLCJ1cmwiOiJodHRwczovL2RlZXBpbmZyYS5jb20iLCJkZXNjcmlwdGlvbiI6IkVhcmx5LXN0YWdlIEFJL01MIGluZnJhc3RydWN0dXJlIHN0YXJ0dXAgZm91bmRlZCBpbiAyMDIyOyA4IGVtcGxveWVlcywgMzcuNSUgWW9ZIGdyb3d0aDsgJDMuOE0gYW5udWFsIHJldmVudWU7IHJhaXNlZCAkNDYuNk0gaW5jbHVkaW5nIGEgU2VyaWVzIEEgaW4gQXByaWwgMjAyNTsgYmFzZWQgaW4gUGFsbyBBbHRvLCBDQTsgb2ZmZXJzIHNjYWxhYmxlLCBjb3N0LWVmZmVjdGl2ZSwgcHJvZHVjdGlvbi1yZWFkeSBtYWNoaW5lLWxlYXJuaW5nIG1vZGVscyBhbmQgaW5mcmFzdHJ1Y3R1cmUgdmlhIEFQSSBvciBjdXN0b20gZGVwbG95bWVudC4iLCJjb250ZW50IjoiV2UgdXNlIGVzc2VudGlhbCBjb29raWVzIHRvIG1ha2Ugb3VyIHNpdGUgd29yay4gV2l0aCB5b3VyIGNvbnNlbnQsIHdlIG1heSBhbHNvIHVzZSBub24tZXNzZW50aWFsIGNvb2tpZXMgdG8gaW1wcm92ZSB1c2VyIGV4cGVyaWVuY2UgYW5kIGFuYWx5emUgd2Vic2l0ZSB0cmFmZmlj4oCmXG5cbkFjY2VwdFJlamVjdFxuXG7wn5qAIE5ldyBtb2RlbHMgYnkgQnJpYS5haSwgW2dlbmVyYXRlIGFuZCBlZGl0IGltYWdlcyBhdCBzY2FsZV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vZGVscz9xPWJyaWEpIPCfmoBcblxuW01vZGVsc10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vZGVscylcblxuW0F1dG9tYXRpYyBTcGVlY2ggUmVjb2duaXRpb25dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb2RlbHMvYXV0b21hdGljLXNwZWVjaC1yZWNvZ25pdGlvbikgW0VtYmVkZGluZ3NdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb2RlbHMvZW1iZWRkaW5ncykgW1JlcmFua2VyXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9kZWxzL3JlcmFua2VyKSBbVGV4dCBHZW5lcmF0aW9uXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9kZWxzL3RleHQtZ2VuZXJhdGlvbikgW1RleHQgVG8gSW1hZ2VdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb2RlbHMvdGV4dC10by1pbWFnZSkgW1RleHQgVG8gU3BlZWNoXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9kZWxzL3RleHQtdG8tc3BlZWNoKSBbVGV4dCBUbyBWaWRlb10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vZGVscy90ZXh0LXRvLXZpZGVvKSBbWmVybyBTaG90IEltYWdlIENsYXNzaWZpY2F0aW9uXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9kZWxzL3plcm8tc2hvdC1pbWFnZS1jbGFzc2lmaWNhdGlvbilcblxuW0RvY3NdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kb2NzKVxuXG5bUHJpY2luZ10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL3ByaWNpbmcpXG5cbltHUFVzXShodHRwczovL2RlZXBpbmZyYS5jb20vZ3B1LWluc3RhbmNlcylcblxuW0NoYXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9jaGF0KVxuXG5bRGVlcFN0YXJ0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHN0YXJ0KVxuXG5bQmxvZ10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2Jsb2cpXG5cbkZlZWRiYWNrXG5cbltDb250YWN0IFNhbGVzXShodHRwczovL2RlZXBpbmZyYS5jb20vY29udGFjdC1zYWxlcylcblxuW0xvZyBJbl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2xvZ2luKVxuXG5GQVNUXG5cblNJTVBMRVxuXG5SRUxJQUJMRVxuXG5MT1ctQ09TVFxuXG4jIyBBSSBJbmZlcmVuY2VcblxuQWNjZWxlcmF0ZSB5b3VyIEFJIHdpdGggZGV2ZWxvcGVyLWZyaWVuZGx5IEFQSXMgZGVzaWduZWQgZm9yIHBlcmZvcm1hbmNlIGFuZCBjb3N0LWVmZmljaWVuY3kuXG5cbltMZXQncyBHb10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2Rhc2gpIFtCb29rIGEgY29uc3VsdGF0aW9uXShodHRwczovL2RlZXBpbmZyYS5jb20vY29udGFjdC1zYWxlcylcblxuW01pbmlNYXhBSXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuTWluaU1heC1NMlxcXG5cXFxuJDAuMjcvTSBpbiDigKIgJDEuMTUvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9NaW5pTWF4QUkvTWluaU1heC1NMilcblxuW21vb25zaG90YWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbktpbWktSzItVGhpbmtpbmdcXFxuXFxcbiQwLjU1L00gaW4g4oCiICQyLjUwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vbW9vbnNob3RhaS9LaW1pLUsyLVRoaW5raW5nKVxuXG5bZGVlcHNlZWstYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbkRlZXBTZWVrLU9DUlxcXG5cXFxuJDAuMDMvTSBpbiDigKIgJDAuMTAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1PQ1IpXG5cbltOVklESUFncHUtcmVudGFsXFxcblxcXG5Pbi1EZW1hbmQgREdYIEIyMDAgR1BVc1xcXG5cXFxuJDIuNDkgLyBpbnN0YW5jZS1ob3VyXShodHRwczovL2RlZXBpbmZyYS5jb20vZ3B1LWluc3RhbmNlcylcblxuW2FsbGVuYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbm9sbU9DUi0yLTdCLTEwMjVcXFxuXFxcbiQwLjA5L00gaW4g4oCiICQwLjE5L00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vYWxsZW5haS9vbG1PQ1ItMi03Qi0xMDI1KVxuXG5bUGFkZGxlUGFkZGxldGV4dC1nZW5lcmF0aW9uXFxcblxcXG5QYWRkbGVPQ1ItVkwtMC45QlxcXG5cXFxuJDAuMTQvTSBpbiDigKIgJDAuODAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9QYWRkbGVQYWRkbGUvUGFkZGxlT0NSLVZMLTAuOUIpXG5cbltkZWVwc2Vlay1haXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuRGVlcFNlZWstVjMuMi1FeHBcXFxuXFxcbiQwLjI3L00gaW4g4oCiICQwLjQwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMi1FeHApXG5cbltkZWVwc2Vlay1haXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuRGVlcFNlZWstVjMuMS1UZXJtaW51c1xcXG5cXFxuJDAuMjcvTSBpbiDigKIgJDEuMDAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1WMy4xLVRlcm1pbnVzKVxuXG5bUXdlbnRleHQtZ2VuZXJhdGlvblxcXG5cXFxuUXdlbjMtTmV4dC04MEItQTNCLUluc3RydWN0XFxcblxcXG4kMC4xNC9NIGluIOKAoiAkMS4xMC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL1F3ZW4vUXdlbjMtTmV4dC04MEItQTNCLUluc3RydWN0KVxuXG5bbW9vbnNob3RhaXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuS2ltaS1LMi1JbnN0cnVjdC0wOTA1XFxcblxcXG4kMC41MC9NIGluIOKAoiAkMi4wMC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vb25zaG90YWkvS2ltaS1LMi1JbnN0cnVjdC0wOTA1KVxuXG5bZGVlcHNlZWstYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbkRlZXBTZWVrLVYzLjFcXFxuXFxcbiQwLjI3L00gaW4g4oCiICQxLjAwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMSlcblxuW29wZW5haXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuZ3B0LW9zcy0xMjBiXFxcblxcXG4kMC4wNS9NIGluIOKAoiAkMC4yNC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL29wZW5haS9ncHQtb3NzLTEyMGIpXG5cbltvcGVuYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmdwdC1vc3MtMjBiXFxcblxcXG4kMC4wMy9NIGluIOKAoiAkMC4xNC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL29wZW5haS9ncHQtb3NzLTIwYilcblxuW1F3ZW50ZXh0LWdlbmVyYXRpb25cXFxuXFxcblF3ZW4zLUNvZGVyLTQ4MEItQTM1Qi1JbnN0cnVjdC1UdXJib1xcXG5cXFxuJDAuMjkvTSBpbiDigKIgJDEuMjAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLUNvZGVyLTQ4MEItQTM1Qi1JbnN0cnVjdC1UdXJibylcblxuW1F3ZW50ZXh0LWdlbmVyYXRpb25cXFxuXFxcblF3ZW4zLTIzNUItQTIyQi1UaGlua2luZy0yNTA3XFxcblxcXG4kMC4zMC9NIGluIOKAoiAkMi45MC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL1F3ZW4vUXdlbjMtMjM1Qi1BMjJCLVRoaW5raW5nLTI1MDcpXG5cbltRd2VudGV4dC1nZW5lcmF0aW9uXFxcblxcXG5Rd2VuMy1Db2Rlci00ODBCLUEzNUItSW5zdHJ1Y3RcXFxuXFxcbiQwLjQwL00gaW4g4oCiICQxLjYwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vUXdlbi9Rd2VuMy1Db2Rlci00ODBCLUEzNUItSW5zdHJ1Y3QpXG5cbltNaW5pTWF4QUl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbk1pbmlNYXgtTTJcXFxuXFxcbiQwLjI3L00gaW4g4oCiICQxLjE1L00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vTWluaU1heEFJL01pbmlNYXgtTTIpXG5cblttb29uc2hvdGFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5LaW1pLUsyLVRoaW5raW5nXFxcblxcXG4kMC41NS9NIGluIOKAoiAkMi41MC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vb25zaG90YWkvS2ltaS1LMi1UaGlua2luZylcblxuW2RlZXBzZWVrLWFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5EZWVwU2Vlay1PQ1JcXFxuXFxcbiQwLjAzL00gaW4g4oCiICQwLjEwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstT0NSKVxuXG5bTlZJRElBZ3B1LXJlbnRhbFxcXG5cXFxuT24tRGVtYW5kIERHWCBCMjAwIEdQVXNcXFxuXFxcbiQyLjQ5IC8gaW5zdGFuY2UtaG91cl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2dwdS1pbnN0YW5jZXMpXG5cblthbGxlbmFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5vbG1PQ1ItMi03Qi0xMDI1XFxcblxcXG4kMC4wOS9NIGluIOKAoiAkMC4xOS9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2FsbGVuYWkvb2xtT0NSLTItN0ItMTAyNSlcblxuW1BhZGRsZVBhZGRsZXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuUGFkZGxlT0NSLVZMLTAuOUJcXFxuXFxcbiQwLjE0L00gaW4g4oCiICQwLjgwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vUGFkZGxlUGFkZGxlL1BhZGRsZU9DUi1WTC0wLjlCKVxuXG5bZGVlcHNlZWstYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbkRlZXBTZWVrLVYzLjItRXhwXFxcblxcXG4kMC4yNy9NIGluIOKAoiAkMC40MC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzZWVrLWFpL0RlZXBTZWVrLVYzLjItRXhwKVxuXG5bZGVlcHNlZWstYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbkRlZXBTZWVrLVYzLjEtVGVybWludXNcXFxuXFxcbiQwLjI3L00gaW4g4oCiICQxLjAwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMS1UZXJtaW51cylcblxuW1F3ZW50ZXh0LWdlbmVyYXRpb25cXFxuXFxcblF3ZW4zLU5leHQtODBCLUEzQi1JbnN0cnVjdFxcXG5cXFxuJDAuMTQvTSBpbiDigKIgJDEuMTAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLU5leHQtODBCLUEzQi1JbnN0cnVjdClcblxuW21vb25zaG90YWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbktpbWktSzItSW5zdHJ1Y3QtMDkwNVxcXG5cXFxuJDAuNTAvTSBpbiDigKIgJDIuMDAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb29uc2hvdGFpL0tpbWktSzItSW5zdHJ1Y3QtMDkwNSlcblxuW2RlZXBzZWVrLWFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5EZWVwU2Vlay1WMy4xXFxcblxcXG4kMC4yNy9NIGluIOKAoiAkMS4wMC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzZWVrLWFpL0RlZXBTZWVrLVYzLjEpXG5cbltvcGVuYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmdwdC1vc3MtMTIwYlxcXG5cXFxuJDAuMDUvTSBpbiDigKIgJDAuMjQvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9vcGVuYWkvZ3B0LW9zcy0xMjBiKVxuXG5bb3BlbmFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5ncHQtb3NzLTIwYlxcXG5cXFxuJDAuMDMvTSBpbiDigKIgJDAuMTQvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9vcGVuYWkvZ3B0LW9zcy0yMGIpXG5cbltRd2VudGV4dC1nZW5lcmF0aW9uXFxcblxcXG5Rd2VuMy1Db2Rlci00ODBCLUEzNUItSW5zdHJ1Y3QtVHVyYm9cXFxuXFxcbiQwLjI5L00gaW4g4oCiICQxLjIwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vUXdlbi9Rd2VuMy1Db2Rlci00ODBCLUEzNUItSW5zdHJ1Y3QtVHVyYm8pXG5cbltRd2VudGV4dC1nZW5lcmF0aW9uXFxcblxcXG5Rd2VuMy0yMzVCLUEyMkItVGhpbmtpbmctMjUwN1xcXG5cXFxuJDAuMzAvTSBpbiDigKIgJDIuOTAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLTIzNUItQTIyQi1UaGlua2luZy0yNTA3KVxuXG5bUXdlbnRleHQtZ2VuZXJhdGlvblxcXG5cXFxuUXdlbjMtQ29kZXItNDgwQi1BMzVCLUluc3RydWN0XFxcblxcXG4kMC40MC9NIGluIOKAoiAkMS42MC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL1F3ZW4vUXdlbjMtQ29kZXItNDgwQi1BMzVCLUluc3RydWN0KVxuXG5bTGV0J3MgR29dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kYXNoKSBbQm9vayBhIGNvbnN1bHRhdGlvbl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2NvbnRhY3Qtc2FsZXMpXG5cbiMjIFNjYWxlIHRvIHRyaWxsaW9ucyBvZiB0b2tlbnMgd2l0aG91dCBicmVha2luZyB0aGUgYmFua1xuXG5Mb3cgcGF5LWFzLXlvdS1nbyBwcmljaW5nIC0gbm8gbG9uZy10ZXJtIGNvbnRyYWN0cywgbm8gaGlkZGVuIGZlZXMsIG5vIHN1cnByaXNlcy4gU3RhcnR1cD8gRW50ZXJwcmlzZT8gV2UgY2FuIHNjYWxlLiBXZSBhcmUgdGhlcmUgZm9yIHlvdSB3aXRoIG91ciBzaW1wbGUgQVBJcyBhbmQgaGFuZHMtb24gdGVjaG5pY2FsIHN1cHBvcnQuXG5cbiMjIEluZmVyZW5jZSBUYWlsb3JlZCB0byBZb3VcblxuQW4gaW5mZXJlbmNlIHBhcnRuZXIgdGhhdCBtZWV0cyB5b3VyIG5lZWRzLiBXaGV0aGVyIHlvdSdyZSBvcHRpbWl6aW5nIGZvciBjb3N0LCBsYXRlbmN5LCB0aHJvdWdocHV0IG9yIHNjYWxlIC0gd2UgZGVzaWduIHRoZSBzb2x1dGlvbiBhcm91bmQgeW91ciBwcmlvcml0aWVzLiBEZWVwSW5mcmEgcHJvdmlkZXMgMTAwKyBtb2RlbHMgdG8gY292ZXIgYWxsIHlvdXIgbmVlZHMuXG5cbiMjIFplcm8gUmV0ZW50aW9uLiBDb21wbGlhbnQuIFNlY3VyZS5cblxuV2l0aCBvdXIgemVybyByZXRlbnRpb24gcG9saWN5IHlvdXIgaW5wdXRzLCB5b3VyIG91dHB1dHMsIGFuZCB5b3VyIHVzZXIgZGF0YSBzdGF5IHByaXZhdGUuIERlZXBJbmZyYSBpcyBTT0MgMiBhbmQgSVNPIDI3MDAxIGNlcnRpZmllZC4gV2UgZm9sbG93IHRoZSBiZXN0IHByYWN0aWNlcyBpbiBpbmZvcm1hdGlvbiBzZWN1cml0eSBhbmQgcHJpdmFjeS5cblxuIyMgT3VyIEhhcmR3YXJlLiBPdXIgRGF0YSBDZW50ZXJzLiBZb3VyIFBlcmZvcm1hbmNlIEVkZ2UuXG5cbkRlZXBJbmZyYSBydW5zIG9uIG91ciBvd24gY3V0dGluZy1lZGdlIGluZmVyZW5jZSBvcHRpbWlzZWQgaW5mcmFzdHJ1Y3R1cmUsIGluIHNlY3VyZSBVUy1iYXNlZCBkYXRhIGNlbnRlcnMuIEJldHRlciBwZXJmb3JtYW5jZSBhbmQgcmVsaWFiaWxpdHkgZm9yIHlvdS5cblxuIyMgTW9kZWxzXG5cbiMjIEV4cGxvcmUgb3VyIEZlYXR1cmVkIE1vZGVsc1xuXG5WaWV3IEFsbHRleHQtZ2VuZXJhdGlvbmF1dG9tYXRpYy1zcGVlY2gtcmVjb2duaXRpb250ZXh0LXRvLXNwZWVjaFxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5NaW5pTWF4QUkvXFxcblxcXG5NaW5pTWF4LU0yXFxcblxcXG5NaW5pTWF4LU0yIGlzIGEgTWluaSBtb2RlbCBidWlsdCBmb3IgTWF4IGNvZGluZyAmIGFnZW50aWMgd29ya2Zsb3dzIHdpdGgganVzdCAxMCBiaWxsaW9uIGFjdGl2YXRlZCBwYXJhbWV0ZXJzXFxcblxcXG5mcDhcXFxuXFxcbjI1NmtcXFxuXFxcbiQwLjI3IGluLCAkMS4xNSBvdXQgLyAxTV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL01pbmlNYXhBSS9NaW5pTWF4LU0yKVxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5tb29uc2hvdGFpL1xcXG5cXFxuS2ltaS1LMi1UaGlua2luZ1xcXG5cXFxuS2ltaSBLMiBUaGlua2luZyBpcyB0aGUgbGF0ZXN0LCBtb3N0IGNhcGFibGUgdmVyc2lvbiBvZiBvcGVuLXNvdXJjZSB0aGlua2luZyBtb2RlbCBkZXZlbG9wZWQgYnkgTW9vbnNob3RBSVxcXG5cXFxuZnA4XFxcblxcXG4yNTZrXFxcblxcXG4kMC41NSBpbiwgJDIuNTAgb3V0IC8gMU1dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb29uc2hvdGFpL0tpbWktSzItVGhpbmtpbmcpXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmRlZXBzZWVrLWFpL1xcXG5cXFxuRGVlcFNlZWstT0NSXFxcblxcXG5EZWVwU2Vlay1PQ1IgYXMgYW4gaW5pdGlhbCBpbnZlc3RpZ2F0aW9uIGludG8gdGhlIGZlYXNpYmlsaXR5IG9mIGNvbXByZXNzaW5nIGxvbmcgY29udGV4dHMgdmlhIG9wdGljYWwgMkQgbWFwcGluZy4gRGVlcFNlZWstT0NSIGNvbnNpc3RzIG9mIHR3byBjb21wb25lbnRzOiBEZWVwRW5jb2RlciBhbmQgRGVlcFNlZWszQi1Nb0UtQTU3ME0gYXMgdGhlIGRlY29kZXIuIFNwZWNpZmljYWxseSwgRGVlcEVuY29kZXIgc2VydmVzIGFzIHRoZSBjb3JlIGVuZ2luZSwgZGVzaWduZWQgdG8gbWFpbnRhaW4gbG93IGFjdGl2YXRpb25zIHVuZGVyIGhpZ2gtcmVzb2x1dGlvbiBpbnB1dCB3aGlsZSBhY2hpZXZpbmcgaGlnaCBjb21wcmVzc2lvbiByYXRpb3MgdG8gZW5zdXJlIGFuIG9wdGltYWwgYW5kIG1hbmFnZWFibGUgbnVtYmVyIG9mIHZpc2lvbiB0b2tlbnMuIEV4cGVyaW1lbnRzIHNob3cgdGhhdCB3aGVuIHRoZSBudW1iZXIgb2YgdGV4dCB0b2tlbnMgaXMgd2l0aGluIDEwIHRpbWVzIHRoYXQgb2YgdmlzaW9uIHRva2VucyAoaS5lLiwgYSBjb21wcmVzc2lvbiByYXRpbyA8IDEweCksIHRoZSBtb2RlbCBjYW4gYWNoaWV2ZSBkZWNvZGluZyAoT0NSKSBwcmVjaXNpb24gb2YgOTclLiBFdmVuIGF0IGEgY29tcHJlc3Npb24gcmF0aW8gb2YgMjB4LCB0aGUgT0NSIGFjY3VyYWN5IHN0aWxsIHJlbWFpbnMgYXQgYWJvdXQgNjAlLiBUaGlzIHNob3dzIGNvbnNpZGVyYWJsZSBwcm9taXNlIGZvciByZXNlYXJjaCBhcmVhcyBzdWNoIGFzIGhpc3RvcmljYWwgbG9uZy1jb250ZXh0IGNvbXByZXNzaW9uIGFuZCBtZW1vcnkgZm9yZ2V0dGluZyBtZWNoYW5pc21zIGluIExMTXMuXFxcblxcXG5iZmxvYXQxNlxcXG5cXFxuOGtcXFxuXFxcbiQwLjAzIGluLCAkMC4xMCBvdXQgLyAxTV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzZWVrLWFpL0RlZXBTZWVrLU9DUilcblxuW3RleHQtZ2VuZXJhdGlvblxcXG5cXFxuYWxsZW5haS9cXFxuXFxcbm9sbU9DUi0yLTdCLTEwMjVcXFxuXFxcbm9sbU9DUiBpcyBhIHNwZWNpYWxpemVkIEFJIHRvb2wgdGhhdCBjb252ZXJ0cyBQREYgZG9jdW1lbnRzIGludG8gY2xlYW4sIHN0cnVjdHVyZWQgdGV4dCB3aGlsZSBwcmVzZXJ2aW5nIGltcG9ydGFudCBmb3JtYXR0aW5nIGFuZCBsYXlvdXQgaW5mb3JtYXRpb24uIFdoYXQgbWFrZXMgb2xtT0NSIHBhcnRpY3VsYXJseSB2YWx1YWJsZSBmb3IgZGV2ZWxvcGVycyBpcyBpdHMgYWJpbGl0eSB0byBoYW5kbGUgY2hhbGxlbmdpbmcgUERGcyB0aGF0IHRyYWRpdGlvbmFsIE9DUiB0b29scyBzdHJ1Z2dsZSB3aXRo4oCUaW5jbHVkaW5nIGNvbXBsZXggbGF5b3V0cywgcG9vci1xdWFsaXR5IHNjYW5zLCBoYW5kd3JpdHRlbiB0ZXh0LCBhbmQgZG9jdW1lbnRzIHdpdGggbWl4ZWQgY29udGVudCB0eXBlcy4gQnVpbHQgb24gYSBmaW5lLXR1bmVkIDdCIHZpc2lvbi1sYW5ndWFnZSBtb2RlbCwgb2xtT0NSIHByb3ZpZGVzIGVudGVycHJpc2UtZ3JhZGUgUERGIHByb2Nlc3NpbmcgYXQgYSBmcmFjdGlvbiBvZiB0aGUgY29zdCBvZiBwcm9wcmlldGFyeSBzb2x1dGlvbnMuXFxcblxcXG5mcDhcXFxuXFxcbjE2a1xcXG5cXFxuJDAuMDkgaW4sICQwLjE5IG91dCAvIDFNXShodHRwczovL2RlZXBpbmZyYS5jb20vYWxsZW5haS9vbG1PQ1ItMi03Qi0xMDI1KVxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5QYWRkbGVQYWRkbGUvXFxcblxcXG5QYWRkbGVPQ1ItVkwtMC45QlxcXG5cXFxuUGFkZGxlT0NSLVZMIGlzIGEgU09UQSBhbmQgcmVzb3VyY2UtZWZmaWNpZW50IG1vZGVsIHRhaWxvcmVkIGZvciBkb2N1bWVudCBwYXJzaW5nLiBJdHMgY29yZSBjb21wb25lbnQgaXMgUGFkZGxlT0NSLVZMLTAuOUIsIGEgY29tcGFjdCB5ZXQgcG93ZXJmdWwgdmlzaW9uLWxhbmd1YWdlIG1vZGVsIChWTE0pIHRoYXQgaW50ZWdyYXRlcyBhIE5hVmlULXN0eWxlIGR5bmFtaWMgcmVzb2x1dGlvbiB2aXN1YWwgZW5jb2RlciB3aXRoIHRoZSBFUk5JRS00LjUtMC4zQiBsYW5ndWFnZSBtb2RlbCB0byBlbmFibGUgYWNjdXJhdGUgZWxlbWVudCByZWNvZ25pdGlvbi4gVGhpcyBpbm5vdmF0aXZlIG1vZGVsIGVmZmljaWVudGx5IHN1cHBvcnRzIDEwOSBsYW5ndWFnZXMgYW5kIGV4Y2VscyBpbiByZWNvZ25pemluZyBjb21wbGV4IGVsZW1lbnRzIChlLmcuLCB0ZXh0LCB0YWJsZXMsIGZvcm11bGFzLCBhbmQgY2hhcnRzKSwgd2hpbGUgbWFpbnRhaW5pbmcgbWluaW1hbCByZXNvdXJjZSBjb25zdW1wdGlvbi4gVGhyb3VnaCBjb21wcmVoZW5zaXZlIGV2YWx1YXRpb25zIG9uIHdpZGVseSB1c2VkIHB1YmxpYyBiZW5jaG1hcmtzIGFuZCBpbi1ob3VzZSBiZW5jaG1hcmtzLCBQYWRkbGVPQ1ItVkwgYWNoaWV2ZXMgU09UQSBwZXJmb3JtYW5jZSBpbiBib3RoIHBhZ2UtbGV2ZWwgZG9jdW1lbnQgcGFyc2luZyBhbmQgZWxlbWVudC1sZXZlbCByZWNvZ25pdGlvbi4gSXQgc2lnbmlmaWNhbnRseSBvdXRwZXJmb3JtcyBleGlzdGluZyBzb2x1dGlvbnMsIGV4aGliaXRzIHN0cm9uZyBjb21wZXRpdGl2ZW5lc3MgYWdhaW5zdCB0b3AtdGllciBWTE1zLCBhbmQgZGVsaXZlcnMgZmFzdCBpbmZlcmVuY2Ugc3BlZWRzLiBUaGVzZSBzdHJlbmd0aHMgbWFrZSBpdCBoaWdobHkgc3VpdGFibGUgZm9yIHByYWN0aWNhbCBkZXBsb3ltZW50IGluIHJlYWwtd29ybGQgc2NlbmFyaW9zLlxcXG5cXFxuYmZsb2F0MTZcXFxuXFxcbjE2a1xcXG5cXFxuJDAuMTQgaW4sICQwLjgwIG91dCAvIDFNXShodHRwczovL2RlZXBpbmZyYS5jb20vUGFkZGxlUGFkZGxlL1BhZGRsZU9DUi1WTC0wLjlCKVxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5kZWVwc2Vlay1haS9cXFxuXFxcbkRlZXBTZWVrLVYzLjItRXhwXFxcblxcXG5EZWVwU2Vlay1WMy4yLUV4cCBpcyBhbiBpbnRlcm1lZGlhdGUgc3RlcCB0b3dhcmQgdGhlIG5leHQtZ2VuZXJhdGlvbiBhcmNoaXRlY3R1cmUgb2YgdGhlIERlZXBTZWVrIG1vZGVscyBieSBpbnRyb2R1Y2luZyBEZWVwU2VlayBTcGFyc2UgQXR0ZW50aW9u4oCUYSBzcGFyc2UgYXR0ZW50aW9uIG1lY2hhbmlzbSBkZXNpZ25lZCB0byBleHBsb3JlIGFuZCB2YWxpZGF0ZSBvcHRpbWl6YXRpb25zIGZvciB0cmFpbmluZyBhbmQgaW5mZXJlbmNlIGVmZmljaWVuY3kgaW4gbG9uZy1jb250ZXh0IHNjZW5hcmlvcy5cXFxuXFxcbmZwNFxcXG5cXFxuMTYwa1xcXG5cXFxuJDAuMjcgaW4sICQwLjQwIG91dCAvIDFNXShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMi1FeHApXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmRlZXBzZWVrLWFpL1xcXG5cXFxuRGVlcFNlZWstVjMuMS1UZXJtaW51c1xcXG5cXFxuRGVlcFNlZWstVjMuMSBUZXJtaW51cyBpcyBhbiB1cGRhdGUgdG8gRGVlcFNlZWsgVjMuMSB0aGF0IG1haW50YWlucyB0aGUgbW9kZWwncyBvcmlnaW5hbCBjYXBhYmlsaXRpZXMgd2hpbGUgYWRkcmVzc2luZyBpc3N1ZXMgcmVwb3J0ZWQgYnkgdXNlcnMsIGluY2x1ZGluZyBsYW5ndWFnZSBjb25zaXN0ZW5jeSBhbmQgYWdlbnQgY2FwYWJpbGl0aWVzLCBmdXJ0aGVyIG9wdGltaXppbmcgdGhlIG1vZGVsJ3MgcGVyZm9ybWFuY2UgaW4gY29kaW5nIGFuZCBzZWFyY2ggYWdlbnRzLiBJdCBpcyBhIGxhcmdlIGh5YnJpZCByZWFzb25pbmcgbW9kZWwgKDY3MUIgcGFyYW1ldGVycywgMzdCIGFjdGl2ZSkgdGhhdCBzdXBwb3J0cyBib3RoIHRoaW5raW5nIGFuZCBub24tdGhpbmtpbmcgbW9kZXMuIEl0IGV4dGVuZHMgdGhlIERlZXBTZWVrLVYzIGJhc2Ugd2l0aCBhIHR3by1waGFzZSBsb25nLWNvbnRleHQgdHJhaW5pbmcgcHJvY2Vzcy4gVXNlcnMgY2FuIGNvbnRyb2wgdGhlIHJlYXNvbmluZyBiZWhhdmlvdXIgd2l0aCB0aGUgcmVhc29uaW5nIGVuYWJsZWQgYm9vbGVhbi4gTGVhcm4gbW9yZSBpbiBvdXIgZG9jcyBUaGUgbW9kZWwgaW1wcm92ZXMgdG9vbCB1c2UsIGNvZGUgZ2VuZXJhdGlvbiwgYW5kIHJlYXNvbmluZyBlZmZpY2llbmN5LCBhY2hpZXZpbmcgcGVyZm9ybWFuY2UgY29tcGFyYWJsZSB0byBEZWVwU2Vlay1SMSBvbiBkaWZmaWN1bHQgYmVuY2htYXJrcyB3aGlsZSByZXNwb25kaW5nIG1vcmUgcXVpY2tseS4gSXQgc3VwcG9ydHMgc3RydWN0dXJlZCB0b29sIGNhbGxpbmcsIGNvZGUgYWdlbnRzLCBhbmQgc2VhcmNoIGFnZW50cywgbWFraW5nIGl0IHN1aXRhYmxlIGZvciByZXNlYXJjaCwgY29kaW5nLCBhbmQgYWdlbnRpYyB3b3JrZmxvd3MuXFxcblxcXG5mcDRcXFxuXFxcbjE2MGtcXFxuXFxcbiQwLjIxNiBjYWNoZWQsICQwLjI3IGluLCAkMS4wMCBvdXQgLyAxTV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzZWVrLWFpL0RlZXBTZWVrLVYzLjEtVGVybWludXMpXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcblF3ZW4vXFxcblxcXG5Rd2VuMy1OZXh0LTgwQi1BM0ItSW5zdHJ1Y3RcXFxuXFxcbk92ZXIgdGhlIHBhc3QgZmV3IG1vbnRocywgd2UgaGF2ZSBvYnNlcnZlZCBpbmNyZWFzaW5nbHkgY2xlYXIgdHJlbmRzIHRvd2FyZCBzY2FsaW5nIGJvdGggdG90YWwgcGFyYW1ldGVycyBhbmQgY29udGV4dCBsZW5ndGhzIGluIHRoZSBwdXJzdWl0IG9mIG1vcmUgcG93ZXJmdWwgYW5kIGFnZW50aWMgYXJ0aWZpY2lhbCBpbnRlbGxpZ2VuY2UgKEFJKS4gV2UgYXJlIGV4Y2l0ZWQgdG8gc2hhcmUgb3VyIGxhdGVzdCBhZHZhbmNlbWVudHMgaW4gYWRkcmVzc2luZyB0aGVzZSBkZW1hbmRzLCBjZW50ZXJlZCBvbiBpbXByb3Zpbmcgc2NhbGluZyBlZmZpY2llbmN5IHRocm91Z2ggaW5ub3ZhdGl2ZSBtb2RlbCBhcmNoaXRlY3R1cmUuIFdlIGNhbGwgdGhpcyBuZXh0LWdlbmVyYXRpb24gZm91bmRhdGlvbiBtb2RlbHMgUXdlbjMtTmV4dC5cXFxuXFxcbmJmbG9hdDE2XFxcblxcXG4yNTZrXFxcblxcXG4kMC4xNCBpbiwgJDEuMTAgb3V0IC8gMU1dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLU5leHQtODBCLUEzQi1JbnN0cnVjdClcblxuW3RleHQtZ2VuZXJhdGlvblxcXG5cXFxubW9vbnNob3RhaS9cXFxuXFxcbktpbWktSzItSW5zdHJ1Y3QtMDkwNVxcXG5cXFxuS2ltaSBLMiAwOTA1IGlzIHRoZSBTZXB0ZW1iZXIgdXBkYXRlIG9mIEtpbWkgSzIgMDcxMS4gSXQgaXMgYSBsYXJnZS1zY2FsZSBNaXh0dXJlLW9mLUV4cGVydHMgKE1vRSkgbGFuZ3VhZ2UgbW9kZWwgZGV2ZWxvcGVkIGJ5IE1vb25zaG90IEFJLCBmZWF0dXJpbmcgMSB0cmlsbGlvbiB0b3RhbCBwYXJhbWV0ZXJzIHdpdGggMzIgYmlsbGlvbiBhY3RpdmUgcGVyIGZvcndhcmQgcGFzcy4gSXQgc3VwcG9ydHMgbG9uZy1jb250ZXh0IGluZmVyZW5jZSB1cCB0byAyNTZrIHRva2VucywgZXh0ZW5kZWQgZnJvbSB0aGUgcHJldmlvdXMgMTI4ay4gVGhpcyB1cGRhdGUgaW1wcm92ZXMgYWdlbnRpYyBjb2Rpbmcgd2l0aCBoaWdoZXIgYWNjdXJhY3kgYW5kIGJldHRlciBnZW5lcmFsaXphdGlvbiBhY3Jvc3Mgc2NhZmZvbGRzLCBhbmQgZW5oYW5jZXMgZnJvbnRlbmQgY29kaW5nIHdpdGggbW9yZSBhZXN0aGV0aWMgYW5kIGZ1bmN0aW9uYWwgb3V0cHV0cyBmb3Igd2ViLCAzRCwgYW5kIHJlbGF0ZWQgdGFza3MuIEtpbWkgSzIgaXMgb3B0aW1pemVkIGZvciBhZ2VudGljIGNhcGFiaWxpdGllcywgaW5jbHVkaW5nIGFkdmFuY2VkIHRvb2wgdXNlLCByZWFzb25pbmcsIGFuZCBjb2RlIHN5bnRoZXNpcy4gSXQgZXhjZWxzIGFjcm9zcyBjb2RpbmcgKExpdmVDb2RlQmVuY2gsIFNXRS1iZW5jaCksIHJlYXNvbmluZyAoWmVicmFMb2dpYywgR1BRQSksIGFuZCB0b29sLXVzZSAoVGF1MiwgQWNlQmVuY2gpIGJlbmNobWFya3MuIFRoZSBtb2RlbCBpcyB0cmFpbmVkIHdpdGggYSBub3ZlbCBzdGFjayBpbmNvcnBvcmF0aW5nIHRoZSBNdW9uQ2xpcCBvcHRpbWl6ZXIgZm9yIHN0YWJsZSBsYXJnZS1zY2FsZSBNb0UgdHJhaW5pbmcuXFxcblxcXG5mcDRcXFxuXFxcbjI1NmtcXFxuXFxcbiQwLjQwIGNhY2hlZCwgJDAuNTAgaW4sICQyLjAwIG91dCAvIDFNXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9vbnNob3RhaS9LaW1pLUsyLUluc3RydWN0LTA5MDUpXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmRlZXBzZWVrLWFpL1xcXG5cXFxuRGVlcFNlZWstVjMuMVxcXG5cXFxuRGVlcFNlZWstVjMuMSBpcyBwb3N0LXRyYWluZWQgb24gdGhlIHRvcCBvZiBEZWVwU2Vlay1WMy4xLUJhc2UsIHdoaWNoIGlzIGJ1aWx0IHVwb24gdGhlIG9yaWdpbmFsIFYzIGJhc2UgY2hlY2twb2ludCB0aHJvdWdoIGEgdHdvLXBoYXNlIGxvbmcgY29udGV4dCBleHRlbnNpb24gYXBwcm9hY2gsIGZvbGxvd2luZyB0aGUgbWV0aG9kb2xvZ3kgb3V0bGluZWQgaW4gdGhlIG9yaWdpbmFsIERlZXBTZWVrLVYzIHJlcG9ydC4gV2UgaGF2ZSBleHBhbmRlZCBvdXIgZGF0YXNldCBieSBjb2xsZWN0aW5nIGFkZGl0aW9uYWwgbG9uZyBkb2N1bWVudHMgYW5kIHN1YnN0YW50aWFsbHkgZXh0ZW5kaW5nIGJvdGggdHJhaW5pbmcgcGhhc2VzLiBUaGUgMzJLIGV4dGVuc2lvbiBwaGFzZSBoYXMgYmVlbiBpbmNyZWFzZWQgMTAtZm9sZCB0byA2MzBCIHRva2Vucywgd2hpbGUgdGhlIDEyOEsgZXh0ZW5zaW9uIHBoYXNlIGhhcyBiZWVuIGV4dGVuZGVkIGJ5IDMuM3ggdG8gMjA5QiB0b2tlbnMuIEFkZGl0aW9uYWxseSwgRGVlcFNlZWstVjMuMSBpcyB0cmFpbmVkIHVzaW5nIHRoZSBVRThNMCBGUDggc2NhbGUgZGF0YSBmb3JtYXQgdG8gZW5zdXJlIGNvbXBhdGliaWxpdHkgd2l0aCBtaWNyb3NjYWxpbmcgZGF0YSBmb3JtYXRzLlxcXG5cXFxuZnA0XFxcblxcXG4xNjBrXFxcblxcXG4kMC4yMTYgY2FjaGVkLCAkMC4yNyBpbiwgJDEuMDAgb3V0IC8gMU1dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1WMy4xKVxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5vcGVuYWkvXFxcblxcXG5ncHQtb3NzLTEyMGJcXFxuXFxcbmdwdC1vc3MtMTIwYiBpcyBhbiBvcGVuLXdlaWdodCwgMTE3Qi1wYXJhbWV0ZXIgTWl4dHVyZS1vZi1FeHBlcnRzIChNb0UpIGxhbmd1YWdlIG1vZGVsIGZyb20gT3BlbkFJIGRlc2lnbmVkIGZvciBoaWdoLXJlYXNvbmluZywgYWdlbnRpYywgYW5kIGdlbmVyYWwtcHVycG9zZSBwcm9kdWN0aW9uIHVzZSBjYXNlcy4gVGhlIG1vZGVsIHN1cHBvcnRzIGNvbmZpZ3VyYWJsZSByZWFzb25pbmcgZGVwdGgsIGZ1bGwgY2hhaW4tb2YtdGhvdWdodCBhY2Nlc3MsIGFuZCBuYXRpdmUgdG9vbCB1c2UsIGluY2x1ZGluZyBmdW5jdGlvbiBjYWxsaW5nLCBicm93c2luZywgYW5kIHN0cnVjdHVyZWQgb3V0cHV0IGdlbmVyYXRpb24uXFxcblxcXG5mcDRcXFxuXFxcbjEyOGtcXFxuXFxcbiQwLjA1IGluLCAkMC4yNCBvdXQgLyAxTV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL29wZW5haS9ncHQtb3NzLTEyMGIpXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbm9wZW5haS9cXFxuXFxcbmdwdC1vc3MtMjBiXFxcblxcXG5ncHQtb3NzLTIwYiBpcyBhbiBvcGVuLXdlaWdodCAyMUIgcGFyYW1ldGVyIG1vZGVsIHJlbGVhc2VkIGJ5IE9wZW5BSSB1bmRlciB0aGUgQXBhY2hlIDIuMCBsaWNlbnNlLiBJdCB1c2VzIGEgTWl4dHVyZS1vZi1FeHBlcnRzIChNb0UpIGFyY2hpdGVjdHVyZSB3aXRoIDMuNkIgYWN0aXZlIHBhcmFtZXRlcnMgcGVyIGZvcndhcmQgcGFzcywgb3B0aW1pemVkIGZvciBsb3dlci1sYXRlbmN5IGluZmVyZW5jZS4gVGhlIG1vZGVsIGlzIHRyYWluZWQgaW4gT3BlbkFJ4oCZcyBIYXJtb255IHJlc3BvbnNlIGZvcm1hdCBhbmQgc3VwcG9ydHMgcmVhc29uaW5nIGxldmVsIGNvbmZpZ3VyYXRpb24sIGZpbmUtdHVuaW5nLCBhbmQgYWdlbnRpYyBjYXBhYmlsaXRpZXMgaW5jbHVkaW5nIGZ1bmN0aW9uIGNhbGxpbmcsIHRvb2wgdXNlLCBhbmQgc3RydWN0dXJlZCBvdXRwdXRzLlxcXG5cXFxuZnA0XFxcblxcXG4xMjhrXFxcblxcXG4kMC4wMyBpbiwgJDAuMTQgb3V0IC8gMU1dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9vcGVuYWkvZ3B0LW9zcy0yMGIpXG5cbltWaWV3IGZ1bGwgY29sbGVjdGlvbiAoMTAwKyldKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb2RlbHMpXG5cbiMjIExpdmUgQUkgSW5mZXJlbmNlIE1ldHJpY3NcblxuRW5kLXRvLWVuZCBpbnNpZ2h0cyBpbnRvIHNwZWVkLCBzY2FsZSwgc3RhYmlsaXR5IGFuZCBzcGVuZFxuXG4wLjAwTVxuXG5Ub2tlbnMgcGVyIHNlY29uZFxuXG4wbXNcblxuVGltZSB0byBmaXJzdCB0b2tlblxuXG4wXG5cblJlcXVlc3RzIHBlciBzZWNvbmRcblxuMC4wMFxuXG5leGFGTE9QU1xuXG4jIyBIb3N0IHlvdXIgbW9kZWxzIG9uIG91ciBzZXJ2ZXJzXG5cbkxvdyBjb3N0LCBoaWdoIHByaXZhY3kgdG8gZW5zdXJlIHlvdSBydW4geW91ciBvcGVyYXRpb25zIHNtb290aGx5XG5cbltIb3cgaXQgd29ya3NdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kb2NzL2FkdmFuY2VkL2N1c3RvbV9sbG1zKVxuXG5IYXZlIHF1ZXN0aW9ucyBvciBuZWVkIGEgY3VzdG9tIHNvbHV0aW9uP1xuXG5bQ29udGFjdCBTYWxlc10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2NvbnRhY3Qtc2FsZXMpXG5cbkNvbXBhbnlcblxuW1ByaWNpbmddKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9wcmljaW5nKVxuXG5bRG9jc10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RvY3MpXG5cbltDb21wYXJlXShodHRwczovL2RlZXBpbmZyYS5jb20vY29tcGFyZSlcblxuW0RlZXBTdGFydF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzdGFydClcblxuW0Fib3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vYWJvdXRfdXMpXG5cbltDYXJlZXJzXShodHRwczovL2pvYnMuZ2VtLmNvbS9kZWVwLWluZnJhKVxuXG5bQ29udGFjdCB1c10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2NvbnRhY3Qtc2FsZXMpXG5cbltUcnVzdCBDZW50ZXJdKGh0dHBzOi8vdHJ1c3QuZGVlcGluZnJhLmNvbSlcblxuW0RlZXBHUFRdKGh0dHBzOi8vZGVlcGdwdC5jb20pXG5cbkxhdGVzdCBNb2RlbHNcblxuW2RlZXBzZWVrLWFpL0RlZXBTZWVrLVYzLjFdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1WMy4xKSBbZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMi1FeHBdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1WMy4yLUV4cCkgW2FudGhyb3BpYy9jbGF1ZGUtMy03LXNvbm5ldC1sYXRlc3RdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9hbnRocm9waWMvY2xhdWRlLTMtNy1zb25uZXQtbGF0ZXN0KSBbbW9vbnNob3RhaS9LaW1pLUsyLUluc3RydWN0LTA5MDVdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb29uc2hvdGFpL0tpbWktSzItSW5zdHJ1Y3QtMDkwNSkgW3phaS1vcmcvR0xNLTQuNl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL3phaS1vcmcvR0xNLTQuNilcblxuRmVhdHVyZWQgTW9kZWxzXG5cblttaXN0cmFsYWkvVm94dHJhbC1NaW5pLTNCLTI1MDddKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9taXN0cmFsYWkvVm94dHJhbC1NaW5pLTNCLTI1MDcpIFtRd2VuL1F3ZW4zLTMyQl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL1F3ZW4vUXdlbjMtMzJCKSBbZ29vZ2xlL2dlbW1hLTMtNGItaXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9nb29nbGUvZ2VtbWEtMy00Yi1pdCkgW1F3ZW4vUXdlbjMtMjM1Qi1BMjJCLVRoaW5raW5nLTI1MDddKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLTIzNUItQTIyQi1UaGlua2luZy0yNTA3KSBbUXdlbi9Rd2VuMy1OZXh0LTgwQi1BM0ItSW5zdHJ1Y3RdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLU5leHQtODBCLUEzQi1JbnN0cnVjdClcblxuwqkgMjAyNSBEZWVwIEluZnJhLiBBbGwgcmlnaHRzIHJlc2VydmVkLlxuXG5bUHJpdmFjeSBQb2xpY3ldKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9wcml2YWN5KSBbVGVybXMgb2YgU2VydmljZV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL3Rlcm1zKSIsImNvbXBhbnkiOnsibmFtZSI6IkRlZXAgSW5mcmEgSW5jLiIsImxvY2F0aW9uIjoiUGFsbyBBbHRvLCBVbml0ZWQgU3RhdGVzIiwiZW1wbG95ZWVzIjo4LCJpbmR1c3RyeSI6IlRlY2hub2xvZ3ksIEluZm9ybWF0aW9uIGFuZCBJbnRlcm5ldCIsImFib3V0IjoiTGV0IERlZXAgSW5mcmEgcnVuIHlvdXIgTUwgaW5mcmFzdHJ1Y3R1cmUuIEp1c3QgdXNlIG91ciB0b3AgQUkgbW9kZWxzIHVzaW5nIGEgc2ltcGxlIEFQSSBvciBkZXBsb3kgeW91ciBvd24gbW9kZWwgd2l0aCB1cy4iLCJsb2dvVXJsIjoiaHR0cHM6Ly9tZWRpYS5saWNkbi5jb20vZG1zL2ltYWdlL3YyL0M1NjBCQVFGcGpEYkRDUUdHU0EvY29tcGFueS1sb2dvXzIwMF8yMDAvY29tcGFueS1sb2dvXzIwMF8yMDAvMC8xNjc1ODEwMjg1NjM2P2U9MjE0NzQ4MzY0NyZ2PWJldGEmdD00NzVINlRGcnRDOFBERGxPb0NGM0wwUnJHTlNhZm9tRmhSMUlKdnRFNmdRIn19LCJldmFsdWF0aW9ucyI6W3siY3JpdGVyaW9uIjoiRWFybHktc3RhZ2UgY29tcGFueSAoc3RhcnR1cCkgcHJvdmlkaW5nIEFJL01MIGluZnJhc3RydWN0dXJlIHByb2R1Y3RzIG9yIHNlcnZpY2VzIHRoYXQgaGFzIHJhaXNlZCBTZXJpZXMgQSBmdW5kaW5nIiwicmVhc29uaW5nIjoiRGVlcCBJbmZyYSBJbmMuIHdhcyBmb3VuZGVkIGluIDIwMjIsIG1ha2luZyBpdCAz4oCveWVhcnMgb2xkIGFuZCB0aHVzIGFuIGVhcmx54oCRc3RhZ2Ugc3RhcnR1cC4gSXQgaGFzIDggZW1wbG95ZWVzLCBhIHNtYWxsIHRlYW0gdHlwaWNhbCBvZiBlYXJseeKAkXN0YWdlIGZpcm1zLiBUaGUgY29tcGFueeKAmXMgcHJvZHVjdCBkZXNjcmlwdGlvbiBzdGF0ZXMgaXQgcHJvdmlkZXMg4oCcY29zdOKAkWVmZmVjdGl2ZSwgc2NhbGFibGUsIGVhc3nigJF0b+KAkWRlcGxveSwgYW5kIHByb2R1Y3Rpb27igJFyZWFkeSBtYWNoaW5l4oCRbGVhcm5pbmcgbW9kZWxzIGFuZCBpbmZyYXN0cnVjdHVyZXMgZm9yIGRlZXDigJFsZWFybmluZyBtb2RlbHMs4oCdIHdoaWNoIGlzIEFJL01MIGluZnJhc3RydWN0dXJlLiBUaGUgaW50ZXJuYWwgcHJvZmlsZSBhbmQgbmV3cyBpdGVtcyBjb25maXJtIGl0IHJhaXNlZCBhIFNlcmllc+KAr0Egcm91bmQgb24gMjAyNeKAkTA04oCRMjIgKFNlcmllc+KAr0Eg4oCTIERlZXAgSW5mcmEpIGFuZCBhIHN1YnNlcXVlbnQgJDE44oCvTSBTZXJpZXPigK9BIGluIEFwcmls4oCvMjAyNS4gQWxsIGNyaXRlcmlhIGFyZSBtZXQuIiwic2F0aXNmaWVkIjoieWVzIiwicmVmZXJlbmNlcyI6W3sidGl0bGUiOiJEZWVwIEluZnJhIEluYy4iLCJzbmlwcGV0IjoiRGVlcCBJbmZyYSBJbmMuIGlzIGEgVGVjaG5vbG9neSwgSW5mb3JtYXRpb24gYW5kIEludGVybmV0IGNvbXBhbnkgKHByaXZhdGUpIHdpdGggOCBlbXBsb3llZXMgKCszNy41JSBZb1kgZ3Jvd3RoKSwgJDMuOE0gYW5udWFsIHJldmVudWUsIGZvdW5kZWQgaW4gMjAyMiwgaGVhZHF1YXJ0ZXJlZCBpbiBQYWxvIEFsdG8sIENhbGlmb3JuaWEsIFVuaXRlZCBTdGF0ZXMuIEhhcyAkNDYuNk0gaW4gdG90YWwgZnVuZGluZywgbGFzdCByb3VuZCB3YXMgYSBTZXJpZXMgQSAtIERlZXAgSW5mcmEgaW4gMjAyNS0wNC0yMi4gRGVlcCBJbmZyYSBvZmZlcnMgY29zdC1lZmZlY3RpdmUsIHNjYWxhYmxlLCBlYXN5LXRvLWRlcGxveSwgYW5kIHByb2R1Y3Rpb24tcmVhZHkgbWFjaGluZS1sZWFybmluZyBtb2RlbHMgYW5kIGluZnJhc3RydWN0dXJlcyBmb3IgZGVlcC1sZWFybmluZyBtb2RlbHMuLi4uIiwidXJsIjoiaHR0cHM6Ly9kZWVwaW5mcmEuY29tIn1dfV0sImVucmljaG1lbnRzIjpbXSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNzoxNi45NjBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNzoxNi45NjBaIn1dfQ==
+  recorded_at: Sun, 23 Nov 2025 00:17:34 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq14pva42n5zza3v2zgva7r/items/witem_01kaq14xn056mp1ey556mp1ey5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:17:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"4e83-5hCKvaaPiA0gGngyNqV8r1FXUJk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=1nDATBlnJaFErrnss%2Btn3S9g51JI8PjnM1BtvKBnK548MBoIm0aqjXU28cA9l0VT98ZPSD%2Bb6wc9BIfi9hWR9qKfAoBcwrzETanwEH3tdIChkKc%2BdA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c7c009f8b1dcc-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndpdGVtXzAxa2FxMTR4bjA1Nm1wMWV5NTU2bXAxZXk1Iiwib2JqZWN0Ijoid2Vic2V0X2l0ZW0iLCJzb3VyY2UiOiJzZWFyY2giLCJzb3VyY2VJZCI6IndzZWFyY2hfMDFrYXExNHE2M3ZjbXlhcjJ6cWVnNWprMTEiLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcTE0cHZhNDJuNXp6YTN2MnpndmE3ciIsInByb3BlcnRpZXMiOnsidHlwZSI6ImNvbXBhbnkiLCJ1cmwiOiJodHRwczovL2RlZXBpbmZyYS5jb20iLCJkZXNjcmlwdGlvbiI6IkVhcmx5LXN0YWdlIEFJL01MIGluZnJhc3RydWN0dXJlIHN0YXJ0dXAgZm91bmRlZCBpbiAyMDIyOyA4IGVtcGxveWVlcywgMzcuNSUgWW9ZIGdyb3d0aDsgJDMuOE0gYW5udWFsIHJldmVudWU7IHJhaXNlZCAkNDYuNk0gaW5jbHVkaW5nIGEgU2VyaWVzIEEgaW4gQXByaWwgMjAyNTsgYmFzZWQgaW4gUGFsbyBBbHRvLCBDQTsgb2ZmZXJzIHNjYWxhYmxlLCBjb3N0LWVmZmVjdGl2ZSwgcHJvZHVjdGlvbi1yZWFkeSBtYWNoaW5lLWxlYXJuaW5nIG1vZGVscyBhbmQgaW5mcmFzdHJ1Y3R1cmUgdmlhIEFQSSBvciBjdXN0b20gZGVwbG95bWVudC4iLCJjb250ZW50IjoiV2UgdXNlIGVzc2VudGlhbCBjb29raWVzIHRvIG1ha2Ugb3VyIHNpdGUgd29yay4gV2l0aCB5b3VyIGNvbnNlbnQsIHdlIG1heSBhbHNvIHVzZSBub24tZXNzZW50aWFsIGNvb2tpZXMgdG8gaW1wcm92ZSB1c2VyIGV4cGVyaWVuY2UgYW5kIGFuYWx5emUgd2Vic2l0ZSB0cmFmZmlj4oCmXG5cbkFjY2VwdFJlamVjdFxuXG7wn5qAIE5ldyBtb2RlbHMgYnkgQnJpYS5haSwgW2dlbmVyYXRlIGFuZCBlZGl0IGltYWdlcyBhdCBzY2FsZV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vZGVscz9xPWJyaWEpIPCfmoBcblxuW01vZGVsc10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vZGVscylcblxuW0F1dG9tYXRpYyBTcGVlY2ggUmVjb2duaXRpb25dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb2RlbHMvYXV0b21hdGljLXNwZWVjaC1yZWNvZ25pdGlvbikgW0VtYmVkZGluZ3NdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb2RlbHMvZW1iZWRkaW5ncykgW1JlcmFua2VyXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9kZWxzL3JlcmFua2VyKSBbVGV4dCBHZW5lcmF0aW9uXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9kZWxzL3RleHQtZ2VuZXJhdGlvbikgW1RleHQgVG8gSW1hZ2VdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb2RlbHMvdGV4dC10by1pbWFnZSkgW1RleHQgVG8gU3BlZWNoXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9kZWxzL3RleHQtdG8tc3BlZWNoKSBbVGV4dCBUbyBWaWRlb10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vZGVscy90ZXh0LXRvLXZpZGVvKSBbWmVybyBTaG90IEltYWdlIENsYXNzaWZpY2F0aW9uXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9kZWxzL3plcm8tc2hvdC1pbWFnZS1jbGFzc2lmaWNhdGlvbilcblxuW0RvY3NdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kb2NzKVxuXG5bUHJpY2luZ10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL3ByaWNpbmcpXG5cbltHUFVzXShodHRwczovL2RlZXBpbmZyYS5jb20vZ3B1LWluc3RhbmNlcylcblxuW0NoYXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9jaGF0KVxuXG5bRGVlcFN0YXJ0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHN0YXJ0KVxuXG5bQmxvZ10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2Jsb2cpXG5cbkZlZWRiYWNrXG5cbltDb250YWN0IFNhbGVzXShodHRwczovL2RlZXBpbmZyYS5jb20vY29udGFjdC1zYWxlcylcblxuW0xvZyBJbl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2xvZ2luKVxuXG5GQVNUXG5cblNJTVBMRVxuXG5SRUxJQUJMRVxuXG5MT1ctQ09TVFxuXG4jIyBBSSBJbmZlcmVuY2VcblxuQWNjZWxlcmF0ZSB5b3VyIEFJIHdpdGggZGV2ZWxvcGVyLWZyaWVuZGx5IEFQSXMgZGVzaWduZWQgZm9yIHBlcmZvcm1hbmNlIGFuZCBjb3N0LWVmZmljaWVuY3kuXG5cbltMZXQncyBHb10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2Rhc2gpIFtCb29rIGEgY29uc3VsdGF0aW9uXShodHRwczovL2RlZXBpbmZyYS5jb20vY29udGFjdC1zYWxlcylcblxuW01pbmlNYXhBSXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuTWluaU1heC1NMlxcXG5cXFxuJDAuMjcvTSBpbiDigKIgJDEuMTUvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9NaW5pTWF4QUkvTWluaU1heC1NMilcblxuW21vb25zaG90YWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbktpbWktSzItVGhpbmtpbmdcXFxuXFxcbiQwLjU1L00gaW4g4oCiICQyLjUwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vbW9vbnNob3RhaS9LaW1pLUsyLVRoaW5raW5nKVxuXG5bZGVlcHNlZWstYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbkRlZXBTZWVrLU9DUlxcXG5cXFxuJDAuMDMvTSBpbiDigKIgJDAuMTAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1PQ1IpXG5cbltOVklESUFncHUtcmVudGFsXFxcblxcXG5Pbi1EZW1hbmQgREdYIEIyMDAgR1BVc1xcXG5cXFxuJDIuNDkgLyBpbnN0YW5jZS1ob3VyXShodHRwczovL2RlZXBpbmZyYS5jb20vZ3B1LWluc3RhbmNlcylcblxuW2FsbGVuYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbm9sbU9DUi0yLTdCLTEwMjVcXFxuXFxcbiQwLjA5L00gaW4g4oCiICQwLjE5L00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vYWxsZW5haS9vbG1PQ1ItMi03Qi0xMDI1KVxuXG5bUGFkZGxlUGFkZGxldGV4dC1nZW5lcmF0aW9uXFxcblxcXG5QYWRkbGVPQ1ItVkwtMC45QlxcXG5cXFxuJDAuMTQvTSBpbiDigKIgJDAuODAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9QYWRkbGVQYWRkbGUvUGFkZGxlT0NSLVZMLTAuOUIpXG5cbltkZWVwc2Vlay1haXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuRGVlcFNlZWstVjMuMi1FeHBcXFxuXFxcbiQwLjI3L00gaW4g4oCiICQwLjQwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMi1FeHApXG5cbltkZWVwc2Vlay1haXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuRGVlcFNlZWstVjMuMS1UZXJtaW51c1xcXG5cXFxuJDAuMjcvTSBpbiDigKIgJDEuMDAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1WMy4xLVRlcm1pbnVzKVxuXG5bUXdlbnRleHQtZ2VuZXJhdGlvblxcXG5cXFxuUXdlbjMtTmV4dC04MEItQTNCLUluc3RydWN0XFxcblxcXG4kMC4xNC9NIGluIOKAoiAkMS4xMC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL1F3ZW4vUXdlbjMtTmV4dC04MEItQTNCLUluc3RydWN0KVxuXG5bbW9vbnNob3RhaXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuS2ltaS1LMi1JbnN0cnVjdC0wOTA1XFxcblxcXG4kMC41MC9NIGluIOKAoiAkMi4wMC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vb25zaG90YWkvS2ltaS1LMi1JbnN0cnVjdC0wOTA1KVxuXG5bZGVlcHNlZWstYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbkRlZXBTZWVrLVYzLjFcXFxuXFxcbiQwLjI3L00gaW4g4oCiICQxLjAwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMSlcblxuW29wZW5haXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuZ3B0LW9zcy0xMjBiXFxcblxcXG4kMC4wNS9NIGluIOKAoiAkMC4yNC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL29wZW5haS9ncHQtb3NzLTEyMGIpXG5cbltvcGVuYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmdwdC1vc3MtMjBiXFxcblxcXG4kMC4wMy9NIGluIOKAoiAkMC4xNC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL29wZW5haS9ncHQtb3NzLTIwYilcblxuW1F3ZW50ZXh0LWdlbmVyYXRpb25cXFxuXFxcblF3ZW4zLUNvZGVyLTQ4MEItQTM1Qi1JbnN0cnVjdC1UdXJib1xcXG5cXFxuJDAuMjkvTSBpbiDigKIgJDEuMjAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLUNvZGVyLTQ4MEItQTM1Qi1JbnN0cnVjdC1UdXJibylcblxuW1F3ZW50ZXh0LWdlbmVyYXRpb25cXFxuXFxcblF3ZW4zLTIzNUItQTIyQi1UaGlua2luZy0yNTA3XFxcblxcXG4kMC4zMC9NIGluIOKAoiAkMi45MC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL1F3ZW4vUXdlbjMtMjM1Qi1BMjJCLVRoaW5raW5nLTI1MDcpXG5cbltRd2VudGV4dC1nZW5lcmF0aW9uXFxcblxcXG5Rd2VuMy1Db2Rlci00ODBCLUEzNUItSW5zdHJ1Y3RcXFxuXFxcbiQwLjQwL00gaW4g4oCiICQxLjYwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vUXdlbi9Rd2VuMy1Db2Rlci00ODBCLUEzNUItSW5zdHJ1Y3QpXG5cbltNaW5pTWF4QUl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbk1pbmlNYXgtTTJcXFxuXFxcbiQwLjI3L00gaW4g4oCiICQxLjE1L00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vTWluaU1heEFJL01pbmlNYXgtTTIpXG5cblttb29uc2hvdGFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5LaW1pLUsyLVRoaW5raW5nXFxcblxcXG4kMC41NS9NIGluIOKAoiAkMi41MC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL21vb25zaG90YWkvS2ltaS1LMi1UaGlua2luZylcblxuW2RlZXBzZWVrLWFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5EZWVwU2Vlay1PQ1JcXFxuXFxcbiQwLjAzL00gaW4g4oCiICQwLjEwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstT0NSKVxuXG5bTlZJRElBZ3B1LXJlbnRhbFxcXG5cXFxuT24tRGVtYW5kIERHWCBCMjAwIEdQVXNcXFxuXFxcbiQyLjQ5IC8gaW5zdGFuY2UtaG91cl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2dwdS1pbnN0YW5jZXMpXG5cblthbGxlbmFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5vbG1PQ1ItMi03Qi0xMDI1XFxcblxcXG4kMC4wOS9NIGluIOKAoiAkMC4xOS9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2FsbGVuYWkvb2xtT0NSLTItN0ItMTAyNSlcblxuW1BhZGRsZVBhZGRsZXRleHQtZ2VuZXJhdGlvblxcXG5cXFxuUGFkZGxlT0NSLVZMLTAuOUJcXFxuXFxcbiQwLjE0L00gaW4g4oCiICQwLjgwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vUGFkZGxlUGFkZGxlL1BhZGRsZU9DUi1WTC0wLjlCKVxuXG5bZGVlcHNlZWstYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbkRlZXBTZWVrLVYzLjItRXhwXFxcblxcXG4kMC4yNy9NIGluIOKAoiAkMC40MC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzZWVrLWFpL0RlZXBTZWVrLVYzLjItRXhwKVxuXG5bZGVlcHNlZWstYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbkRlZXBTZWVrLVYzLjEtVGVybWludXNcXFxuXFxcbiQwLjI3L00gaW4g4oCiICQxLjAwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMS1UZXJtaW51cylcblxuW1F3ZW50ZXh0LWdlbmVyYXRpb25cXFxuXFxcblF3ZW4zLU5leHQtODBCLUEzQi1JbnN0cnVjdFxcXG5cXFxuJDAuMTQvTSBpbiDigKIgJDEuMTAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLU5leHQtODBCLUEzQi1JbnN0cnVjdClcblxuW21vb25zaG90YWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbktpbWktSzItSW5zdHJ1Y3QtMDkwNVxcXG5cXFxuJDAuNTAvTSBpbiDigKIgJDIuMDAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb29uc2hvdGFpL0tpbWktSzItSW5zdHJ1Y3QtMDkwNSlcblxuW2RlZXBzZWVrLWFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5EZWVwU2Vlay1WMy4xXFxcblxcXG4kMC4yNy9NIGluIOKAoiAkMS4wMC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzZWVrLWFpL0RlZXBTZWVrLVYzLjEpXG5cbltvcGVuYWl0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmdwdC1vc3MtMTIwYlxcXG5cXFxuJDAuMDUvTSBpbiDigKIgJDAuMjQvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9vcGVuYWkvZ3B0LW9zcy0xMjBiKVxuXG5bb3BlbmFpdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5ncHQtb3NzLTIwYlxcXG5cXFxuJDAuMDMvTSBpbiDigKIgJDAuMTQvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9vcGVuYWkvZ3B0LW9zcy0yMGIpXG5cbltRd2VudGV4dC1nZW5lcmF0aW9uXFxcblxcXG5Rd2VuMy1Db2Rlci00ODBCLUEzNUItSW5zdHJ1Y3QtVHVyYm9cXFxuXFxcbiQwLjI5L00gaW4g4oCiICQxLjIwL00gb3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vUXdlbi9Rd2VuMy1Db2Rlci00ODBCLUEzNUItSW5zdHJ1Y3QtVHVyYm8pXG5cbltRd2VudGV4dC1nZW5lcmF0aW9uXFxcblxcXG5Rd2VuMy0yMzVCLUEyMkItVGhpbmtpbmctMjUwN1xcXG5cXFxuJDAuMzAvTSBpbiDigKIgJDIuOTAvTSBvdXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLTIzNUItQTIyQi1UaGlua2luZy0yNTA3KVxuXG5bUXdlbnRleHQtZ2VuZXJhdGlvblxcXG5cXFxuUXdlbjMtQ29kZXItNDgwQi1BMzVCLUluc3RydWN0XFxcblxcXG4kMC40MC9NIGluIOKAoiAkMS42MC9NIG91dF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL1F3ZW4vUXdlbjMtQ29kZXItNDgwQi1BMzVCLUluc3RydWN0KVxuXG5bTGV0J3MgR29dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kYXNoKSBbQm9vayBhIGNvbnN1bHRhdGlvbl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2NvbnRhY3Qtc2FsZXMpXG5cbiMjIFNjYWxlIHRvIHRyaWxsaW9ucyBvZiB0b2tlbnMgd2l0aG91dCBicmVha2luZyB0aGUgYmFua1xuXG5Mb3cgcGF5LWFzLXlvdS1nbyBwcmljaW5nIC0gbm8gbG9uZy10ZXJtIGNvbnRyYWN0cywgbm8gaGlkZGVuIGZlZXMsIG5vIHN1cnByaXNlcy4gU3RhcnR1cD8gRW50ZXJwcmlzZT8gV2UgY2FuIHNjYWxlLiBXZSBhcmUgdGhlcmUgZm9yIHlvdSB3aXRoIG91ciBzaW1wbGUgQVBJcyBhbmQgaGFuZHMtb24gdGVjaG5pY2FsIHN1cHBvcnQuXG5cbiMjIEluZmVyZW5jZSBUYWlsb3JlZCB0byBZb3VcblxuQW4gaW5mZXJlbmNlIHBhcnRuZXIgdGhhdCBtZWV0cyB5b3VyIG5lZWRzLiBXaGV0aGVyIHlvdSdyZSBvcHRpbWl6aW5nIGZvciBjb3N0LCBsYXRlbmN5LCB0aHJvdWdocHV0IG9yIHNjYWxlIC0gd2UgZGVzaWduIHRoZSBzb2x1dGlvbiBhcm91bmQgeW91ciBwcmlvcml0aWVzLiBEZWVwSW5mcmEgcHJvdmlkZXMgMTAwKyBtb2RlbHMgdG8gY292ZXIgYWxsIHlvdXIgbmVlZHMuXG5cbiMjIFplcm8gUmV0ZW50aW9uLiBDb21wbGlhbnQuIFNlY3VyZS5cblxuV2l0aCBvdXIgemVybyByZXRlbnRpb24gcG9saWN5IHlvdXIgaW5wdXRzLCB5b3VyIG91dHB1dHMsIGFuZCB5b3VyIHVzZXIgZGF0YSBzdGF5IHByaXZhdGUuIERlZXBJbmZyYSBpcyBTT0MgMiBhbmQgSVNPIDI3MDAxIGNlcnRpZmllZC4gV2UgZm9sbG93IHRoZSBiZXN0IHByYWN0aWNlcyBpbiBpbmZvcm1hdGlvbiBzZWN1cml0eSBhbmQgcHJpdmFjeS5cblxuIyMgT3VyIEhhcmR3YXJlLiBPdXIgRGF0YSBDZW50ZXJzLiBZb3VyIFBlcmZvcm1hbmNlIEVkZ2UuXG5cbkRlZXBJbmZyYSBydW5zIG9uIG91ciBvd24gY3V0dGluZy1lZGdlIGluZmVyZW5jZSBvcHRpbWlzZWQgaW5mcmFzdHJ1Y3R1cmUsIGluIHNlY3VyZSBVUy1iYXNlZCBkYXRhIGNlbnRlcnMuIEJldHRlciBwZXJmb3JtYW5jZSBhbmQgcmVsaWFiaWxpdHkgZm9yIHlvdS5cblxuIyMgTW9kZWxzXG5cbiMjIEV4cGxvcmUgb3VyIEZlYXR1cmVkIE1vZGVsc1xuXG5WaWV3IEFsbHRleHQtZ2VuZXJhdGlvbmF1dG9tYXRpYy1zcGVlY2gtcmVjb2duaXRpb250ZXh0LXRvLXNwZWVjaFxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5NaW5pTWF4QUkvXFxcblxcXG5NaW5pTWF4LU0yXFxcblxcXG5NaW5pTWF4LU0yIGlzIGEgTWluaSBtb2RlbCBidWlsdCBmb3IgTWF4IGNvZGluZyAmIGFnZW50aWMgd29ya2Zsb3dzIHdpdGgganVzdCAxMCBiaWxsaW9uIGFjdGl2YXRlZCBwYXJhbWV0ZXJzXFxcblxcXG5mcDhcXFxuXFxcbjI1NmtcXFxuXFxcbiQwLjI3IGluLCAkMS4xNSBvdXQgLyAxTV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL01pbmlNYXhBSS9NaW5pTWF4LU0yKVxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5tb29uc2hvdGFpL1xcXG5cXFxuS2ltaS1LMi1UaGlua2luZ1xcXG5cXFxuS2ltaSBLMiBUaGlua2luZyBpcyB0aGUgbGF0ZXN0LCBtb3N0IGNhcGFibGUgdmVyc2lvbiBvZiBvcGVuLXNvdXJjZSB0aGlua2luZyBtb2RlbCBkZXZlbG9wZWQgYnkgTW9vbnNob3RBSVxcXG5cXFxuZnA4XFxcblxcXG4yNTZrXFxcblxcXG4kMC41NSBpbiwgJDIuNTAgb3V0IC8gMU1dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb29uc2hvdGFpL0tpbWktSzItVGhpbmtpbmcpXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmRlZXBzZWVrLWFpL1xcXG5cXFxuRGVlcFNlZWstT0NSXFxcblxcXG5EZWVwU2Vlay1PQ1IgYXMgYW4gaW5pdGlhbCBpbnZlc3RpZ2F0aW9uIGludG8gdGhlIGZlYXNpYmlsaXR5IG9mIGNvbXByZXNzaW5nIGxvbmcgY29udGV4dHMgdmlhIG9wdGljYWwgMkQgbWFwcGluZy4gRGVlcFNlZWstT0NSIGNvbnNpc3RzIG9mIHR3byBjb21wb25lbnRzOiBEZWVwRW5jb2RlciBhbmQgRGVlcFNlZWszQi1Nb0UtQTU3ME0gYXMgdGhlIGRlY29kZXIuIFNwZWNpZmljYWxseSwgRGVlcEVuY29kZXIgc2VydmVzIGFzIHRoZSBjb3JlIGVuZ2luZSwgZGVzaWduZWQgdG8gbWFpbnRhaW4gbG93IGFjdGl2YXRpb25zIHVuZGVyIGhpZ2gtcmVzb2x1dGlvbiBpbnB1dCB3aGlsZSBhY2hpZXZpbmcgaGlnaCBjb21wcmVzc2lvbiByYXRpb3MgdG8gZW5zdXJlIGFuIG9wdGltYWwgYW5kIG1hbmFnZWFibGUgbnVtYmVyIG9mIHZpc2lvbiB0b2tlbnMuIEV4cGVyaW1lbnRzIHNob3cgdGhhdCB3aGVuIHRoZSBudW1iZXIgb2YgdGV4dCB0b2tlbnMgaXMgd2l0aGluIDEwIHRpbWVzIHRoYXQgb2YgdmlzaW9uIHRva2VucyAoaS5lLiwgYSBjb21wcmVzc2lvbiByYXRpbyA8IDEweCksIHRoZSBtb2RlbCBjYW4gYWNoaWV2ZSBkZWNvZGluZyAoT0NSKSBwcmVjaXNpb24gb2YgOTclLiBFdmVuIGF0IGEgY29tcHJlc3Npb24gcmF0aW8gb2YgMjB4LCB0aGUgT0NSIGFjY3VyYWN5IHN0aWxsIHJlbWFpbnMgYXQgYWJvdXQgNjAlLiBUaGlzIHNob3dzIGNvbnNpZGVyYWJsZSBwcm9taXNlIGZvciByZXNlYXJjaCBhcmVhcyBzdWNoIGFzIGhpc3RvcmljYWwgbG9uZy1jb250ZXh0IGNvbXByZXNzaW9uIGFuZCBtZW1vcnkgZm9yZ2V0dGluZyBtZWNoYW5pc21zIGluIExMTXMuXFxcblxcXG5iZmxvYXQxNlxcXG5cXFxuOGtcXFxuXFxcbiQwLjAzIGluLCAkMC4xMCBvdXQgLyAxTV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzZWVrLWFpL0RlZXBTZWVrLU9DUilcblxuW3RleHQtZ2VuZXJhdGlvblxcXG5cXFxuYWxsZW5haS9cXFxuXFxcbm9sbU9DUi0yLTdCLTEwMjVcXFxuXFxcbm9sbU9DUiBpcyBhIHNwZWNpYWxpemVkIEFJIHRvb2wgdGhhdCBjb252ZXJ0cyBQREYgZG9jdW1lbnRzIGludG8gY2xlYW4sIHN0cnVjdHVyZWQgdGV4dCB3aGlsZSBwcmVzZXJ2aW5nIGltcG9ydGFudCBmb3JtYXR0aW5nIGFuZCBsYXlvdXQgaW5mb3JtYXRpb24uIFdoYXQgbWFrZXMgb2xtT0NSIHBhcnRpY3VsYXJseSB2YWx1YWJsZSBmb3IgZGV2ZWxvcGVycyBpcyBpdHMgYWJpbGl0eSB0byBoYW5kbGUgY2hhbGxlbmdpbmcgUERGcyB0aGF0IHRyYWRpdGlvbmFsIE9DUiB0b29scyBzdHJ1Z2dsZSB3aXRo4oCUaW5jbHVkaW5nIGNvbXBsZXggbGF5b3V0cywgcG9vci1xdWFsaXR5IHNjYW5zLCBoYW5kd3JpdHRlbiB0ZXh0LCBhbmQgZG9jdW1lbnRzIHdpdGggbWl4ZWQgY29udGVudCB0eXBlcy4gQnVpbHQgb24gYSBmaW5lLXR1bmVkIDdCIHZpc2lvbi1sYW5ndWFnZSBtb2RlbCwgb2xtT0NSIHByb3ZpZGVzIGVudGVycHJpc2UtZ3JhZGUgUERGIHByb2Nlc3NpbmcgYXQgYSBmcmFjdGlvbiBvZiB0aGUgY29zdCBvZiBwcm9wcmlldGFyeSBzb2x1dGlvbnMuXFxcblxcXG5mcDhcXFxuXFxcbjE2a1xcXG5cXFxuJDAuMDkgaW4sICQwLjE5IG91dCAvIDFNXShodHRwczovL2RlZXBpbmZyYS5jb20vYWxsZW5haS9vbG1PQ1ItMi03Qi0xMDI1KVxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5QYWRkbGVQYWRkbGUvXFxcblxcXG5QYWRkbGVPQ1ItVkwtMC45QlxcXG5cXFxuUGFkZGxlT0NSLVZMIGlzIGEgU09UQSBhbmQgcmVzb3VyY2UtZWZmaWNpZW50IG1vZGVsIHRhaWxvcmVkIGZvciBkb2N1bWVudCBwYXJzaW5nLiBJdHMgY29yZSBjb21wb25lbnQgaXMgUGFkZGxlT0NSLVZMLTAuOUIsIGEgY29tcGFjdCB5ZXQgcG93ZXJmdWwgdmlzaW9uLWxhbmd1YWdlIG1vZGVsIChWTE0pIHRoYXQgaW50ZWdyYXRlcyBhIE5hVmlULXN0eWxlIGR5bmFtaWMgcmVzb2x1dGlvbiB2aXN1YWwgZW5jb2RlciB3aXRoIHRoZSBFUk5JRS00LjUtMC4zQiBsYW5ndWFnZSBtb2RlbCB0byBlbmFibGUgYWNjdXJhdGUgZWxlbWVudCByZWNvZ25pdGlvbi4gVGhpcyBpbm5vdmF0aXZlIG1vZGVsIGVmZmljaWVudGx5IHN1cHBvcnRzIDEwOSBsYW5ndWFnZXMgYW5kIGV4Y2VscyBpbiByZWNvZ25pemluZyBjb21wbGV4IGVsZW1lbnRzIChlLmcuLCB0ZXh0LCB0YWJsZXMsIGZvcm11bGFzLCBhbmQgY2hhcnRzKSwgd2hpbGUgbWFpbnRhaW5pbmcgbWluaW1hbCByZXNvdXJjZSBjb25zdW1wdGlvbi4gVGhyb3VnaCBjb21wcmVoZW5zaXZlIGV2YWx1YXRpb25zIG9uIHdpZGVseSB1c2VkIHB1YmxpYyBiZW5jaG1hcmtzIGFuZCBpbi1ob3VzZSBiZW5jaG1hcmtzLCBQYWRkbGVPQ1ItVkwgYWNoaWV2ZXMgU09UQSBwZXJmb3JtYW5jZSBpbiBib3RoIHBhZ2UtbGV2ZWwgZG9jdW1lbnQgcGFyc2luZyBhbmQgZWxlbWVudC1sZXZlbCByZWNvZ25pdGlvbi4gSXQgc2lnbmlmaWNhbnRseSBvdXRwZXJmb3JtcyBleGlzdGluZyBzb2x1dGlvbnMsIGV4aGliaXRzIHN0cm9uZyBjb21wZXRpdGl2ZW5lc3MgYWdhaW5zdCB0b3AtdGllciBWTE1zLCBhbmQgZGVsaXZlcnMgZmFzdCBpbmZlcmVuY2Ugc3BlZWRzLiBUaGVzZSBzdHJlbmd0aHMgbWFrZSBpdCBoaWdobHkgc3VpdGFibGUgZm9yIHByYWN0aWNhbCBkZXBsb3ltZW50IGluIHJlYWwtd29ybGQgc2NlbmFyaW9zLlxcXG5cXFxuYmZsb2F0MTZcXFxuXFxcbjE2a1xcXG5cXFxuJDAuMTQgaW4sICQwLjgwIG91dCAvIDFNXShodHRwczovL2RlZXBpbmZyYS5jb20vUGFkZGxlUGFkZGxlL1BhZGRsZU9DUi1WTC0wLjlCKVxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5kZWVwc2Vlay1haS9cXFxuXFxcbkRlZXBTZWVrLVYzLjItRXhwXFxcblxcXG5EZWVwU2Vlay1WMy4yLUV4cCBpcyBhbiBpbnRlcm1lZGlhdGUgc3RlcCB0b3dhcmQgdGhlIG5leHQtZ2VuZXJhdGlvbiBhcmNoaXRlY3R1cmUgb2YgdGhlIERlZXBTZWVrIG1vZGVscyBieSBpbnRyb2R1Y2luZyBEZWVwU2VlayBTcGFyc2UgQXR0ZW50aW9u4oCUYSBzcGFyc2UgYXR0ZW50aW9uIG1lY2hhbmlzbSBkZXNpZ25lZCB0byBleHBsb3JlIGFuZCB2YWxpZGF0ZSBvcHRpbWl6YXRpb25zIGZvciB0cmFpbmluZyBhbmQgaW5mZXJlbmNlIGVmZmljaWVuY3kgaW4gbG9uZy1jb250ZXh0IHNjZW5hcmlvcy5cXFxuXFxcbmZwNFxcXG5cXFxuMTYwa1xcXG5cXFxuJDAuMjcgaW4sICQwLjQwIG91dCAvIDFNXShodHRwczovL2RlZXBpbmZyYS5jb20vZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMi1FeHApXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmRlZXBzZWVrLWFpL1xcXG5cXFxuRGVlcFNlZWstVjMuMS1UZXJtaW51c1xcXG5cXFxuRGVlcFNlZWstVjMuMSBUZXJtaW51cyBpcyBhbiB1cGRhdGUgdG8gRGVlcFNlZWsgVjMuMSB0aGF0IG1haW50YWlucyB0aGUgbW9kZWwncyBvcmlnaW5hbCBjYXBhYmlsaXRpZXMgd2hpbGUgYWRkcmVzc2luZyBpc3N1ZXMgcmVwb3J0ZWQgYnkgdXNlcnMsIGluY2x1ZGluZyBsYW5ndWFnZSBjb25zaXN0ZW5jeSBhbmQgYWdlbnQgY2FwYWJpbGl0aWVzLCBmdXJ0aGVyIG9wdGltaXppbmcgdGhlIG1vZGVsJ3MgcGVyZm9ybWFuY2UgaW4gY29kaW5nIGFuZCBzZWFyY2ggYWdlbnRzLiBJdCBpcyBhIGxhcmdlIGh5YnJpZCByZWFzb25pbmcgbW9kZWwgKDY3MUIgcGFyYW1ldGVycywgMzdCIGFjdGl2ZSkgdGhhdCBzdXBwb3J0cyBib3RoIHRoaW5raW5nIGFuZCBub24tdGhpbmtpbmcgbW9kZXMuIEl0IGV4dGVuZHMgdGhlIERlZXBTZWVrLVYzIGJhc2Ugd2l0aCBhIHR3by1waGFzZSBsb25nLWNvbnRleHQgdHJhaW5pbmcgcHJvY2Vzcy4gVXNlcnMgY2FuIGNvbnRyb2wgdGhlIHJlYXNvbmluZyBiZWhhdmlvdXIgd2l0aCB0aGUgcmVhc29uaW5nIGVuYWJsZWQgYm9vbGVhbi4gTGVhcm4gbW9yZSBpbiBvdXIgZG9jcyBUaGUgbW9kZWwgaW1wcm92ZXMgdG9vbCB1c2UsIGNvZGUgZ2VuZXJhdGlvbiwgYW5kIHJlYXNvbmluZyBlZmZpY2llbmN5LCBhY2hpZXZpbmcgcGVyZm9ybWFuY2UgY29tcGFyYWJsZSB0byBEZWVwU2Vlay1SMSBvbiBkaWZmaWN1bHQgYmVuY2htYXJrcyB3aGlsZSByZXNwb25kaW5nIG1vcmUgcXVpY2tseS4gSXQgc3VwcG9ydHMgc3RydWN0dXJlZCB0b29sIGNhbGxpbmcsIGNvZGUgYWdlbnRzLCBhbmQgc2VhcmNoIGFnZW50cywgbWFraW5nIGl0IHN1aXRhYmxlIGZvciByZXNlYXJjaCwgY29kaW5nLCBhbmQgYWdlbnRpYyB3b3JrZmxvd3MuXFxcblxcXG5mcDRcXFxuXFxcbjE2MGtcXFxuXFxcbiQwLjIxNiBjYWNoZWQsICQwLjI3IGluLCAkMS4wMCBvdXQgLyAxTV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzZWVrLWFpL0RlZXBTZWVrLVYzLjEtVGVybWludXMpXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcblF3ZW4vXFxcblxcXG5Rd2VuMy1OZXh0LTgwQi1BM0ItSW5zdHJ1Y3RcXFxuXFxcbk92ZXIgdGhlIHBhc3QgZmV3IG1vbnRocywgd2UgaGF2ZSBvYnNlcnZlZCBpbmNyZWFzaW5nbHkgY2xlYXIgdHJlbmRzIHRvd2FyZCBzY2FsaW5nIGJvdGggdG90YWwgcGFyYW1ldGVycyBhbmQgY29udGV4dCBsZW5ndGhzIGluIHRoZSBwdXJzdWl0IG9mIG1vcmUgcG93ZXJmdWwgYW5kIGFnZW50aWMgYXJ0aWZpY2lhbCBpbnRlbGxpZ2VuY2UgKEFJKS4gV2UgYXJlIGV4Y2l0ZWQgdG8gc2hhcmUgb3VyIGxhdGVzdCBhZHZhbmNlbWVudHMgaW4gYWRkcmVzc2luZyB0aGVzZSBkZW1hbmRzLCBjZW50ZXJlZCBvbiBpbXByb3Zpbmcgc2NhbGluZyBlZmZpY2llbmN5IHRocm91Z2ggaW5ub3ZhdGl2ZSBtb2RlbCBhcmNoaXRlY3R1cmUuIFdlIGNhbGwgdGhpcyBuZXh0LWdlbmVyYXRpb24gZm91bmRhdGlvbiBtb2RlbHMgUXdlbjMtTmV4dC5cXFxuXFxcbmJmbG9hdDE2XFxcblxcXG4yNTZrXFxcblxcXG4kMC4xNCBpbiwgJDEuMTAgb3V0IC8gMU1dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLU5leHQtODBCLUEzQi1JbnN0cnVjdClcblxuW3RleHQtZ2VuZXJhdGlvblxcXG5cXFxubW9vbnNob3RhaS9cXFxuXFxcbktpbWktSzItSW5zdHJ1Y3QtMDkwNVxcXG5cXFxuS2ltaSBLMiAwOTA1IGlzIHRoZSBTZXB0ZW1iZXIgdXBkYXRlIG9mIEtpbWkgSzIgMDcxMS4gSXQgaXMgYSBsYXJnZS1zY2FsZSBNaXh0dXJlLW9mLUV4cGVydHMgKE1vRSkgbGFuZ3VhZ2UgbW9kZWwgZGV2ZWxvcGVkIGJ5IE1vb25zaG90IEFJLCBmZWF0dXJpbmcgMSB0cmlsbGlvbiB0b3RhbCBwYXJhbWV0ZXJzIHdpdGggMzIgYmlsbGlvbiBhY3RpdmUgcGVyIGZvcndhcmQgcGFzcy4gSXQgc3VwcG9ydHMgbG9uZy1jb250ZXh0IGluZmVyZW5jZSB1cCB0byAyNTZrIHRva2VucywgZXh0ZW5kZWQgZnJvbSB0aGUgcHJldmlvdXMgMTI4ay4gVGhpcyB1cGRhdGUgaW1wcm92ZXMgYWdlbnRpYyBjb2Rpbmcgd2l0aCBoaWdoZXIgYWNjdXJhY3kgYW5kIGJldHRlciBnZW5lcmFsaXphdGlvbiBhY3Jvc3Mgc2NhZmZvbGRzLCBhbmQgZW5oYW5jZXMgZnJvbnRlbmQgY29kaW5nIHdpdGggbW9yZSBhZXN0aGV0aWMgYW5kIGZ1bmN0aW9uYWwgb3V0cHV0cyBmb3Igd2ViLCAzRCwgYW5kIHJlbGF0ZWQgdGFza3MuIEtpbWkgSzIgaXMgb3B0aW1pemVkIGZvciBhZ2VudGljIGNhcGFiaWxpdGllcywgaW5jbHVkaW5nIGFkdmFuY2VkIHRvb2wgdXNlLCByZWFzb25pbmcsIGFuZCBjb2RlIHN5bnRoZXNpcy4gSXQgZXhjZWxzIGFjcm9zcyBjb2RpbmcgKExpdmVDb2RlQmVuY2gsIFNXRS1iZW5jaCksIHJlYXNvbmluZyAoWmVicmFMb2dpYywgR1BRQSksIGFuZCB0b29sLXVzZSAoVGF1MiwgQWNlQmVuY2gpIGJlbmNobWFya3MuIFRoZSBtb2RlbCBpcyB0cmFpbmVkIHdpdGggYSBub3ZlbCBzdGFjayBpbmNvcnBvcmF0aW5nIHRoZSBNdW9uQ2xpcCBvcHRpbWl6ZXIgZm9yIHN0YWJsZSBsYXJnZS1zY2FsZSBNb0UgdHJhaW5pbmcuXFxcblxcXG5mcDRcXFxuXFxcbjI1NmtcXFxuXFxcbiQwLjQwIGNhY2hlZCwgJDAuNTAgaW4sICQyLjAwIG91dCAvIDFNXShodHRwczovL2RlZXBpbmZyYS5jb20vbW9vbnNob3RhaS9LaW1pLUsyLUluc3RydWN0LTA5MDUpXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbmRlZXBzZWVrLWFpL1xcXG5cXFxuRGVlcFNlZWstVjMuMVxcXG5cXFxuRGVlcFNlZWstVjMuMSBpcyBwb3N0LXRyYWluZWQgb24gdGhlIHRvcCBvZiBEZWVwU2Vlay1WMy4xLUJhc2UsIHdoaWNoIGlzIGJ1aWx0IHVwb24gdGhlIG9yaWdpbmFsIFYzIGJhc2UgY2hlY2twb2ludCB0aHJvdWdoIGEgdHdvLXBoYXNlIGxvbmcgY29udGV4dCBleHRlbnNpb24gYXBwcm9hY2gsIGZvbGxvd2luZyB0aGUgbWV0aG9kb2xvZ3kgb3V0bGluZWQgaW4gdGhlIG9yaWdpbmFsIERlZXBTZWVrLVYzIHJlcG9ydC4gV2UgaGF2ZSBleHBhbmRlZCBvdXIgZGF0YXNldCBieSBjb2xsZWN0aW5nIGFkZGl0aW9uYWwgbG9uZyBkb2N1bWVudHMgYW5kIHN1YnN0YW50aWFsbHkgZXh0ZW5kaW5nIGJvdGggdHJhaW5pbmcgcGhhc2VzLiBUaGUgMzJLIGV4dGVuc2lvbiBwaGFzZSBoYXMgYmVlbiBpbmNyZWFzZWQgMTAtZm9sZCB0byA2MzBCIHRva2Vucywgd2hpbGUgdGhlIDEyOEsgZXh0ZW5zaW9uIHBoYXNlIGhhcyBiZWVuIGV4dGVuZGVkIGJ5IDMuM3ggdG8gMjA5QiB0b2tlbnMuIEFkZGl0aW9uYWxseSwgRGVlcFNlZWstVjMuMSBpcyB0cmFpbmVkIHVzaW5nIHRoZSBVRThNMCBGUDggc2NhbGUgZGF0YSBmb3JtYXQgdG8gZW5zdXJlIGNvbXBhdGliaWxpdHkgd2l0aCBtaWNyb3NjYWxpbmcgZGF0YSBmb3JtYXRzLlxcXG5cXFxuZnA0XFxcblxcXG4xNjBrXFxcblxcXG4kMC4yMTYgY2FjaGVkLCAkMC4yNyBpbiwgJDEuMDAgb3V0IC8gMU1dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1WMy4xKVxuXG5bdGV4dC1nZW5lcmF0aW9uXFxcblxcXG5vcGVuYWkvXFxcblxcXG5ncHQtb3NzLTEyMGJcXFxuXFxcbmdwdC1vc3MtMTIwYiBpcyBhbiBvcGVuLXdlaWdodCwgMTE3Qi1wYXJhbWV0ZXIgTWl4dHVyZS1vZi1FeHBlcnRzIChNb0UpIGxhbmd1YWdlIG1vZGVsIGZyb20gT3BlbkFJIGRlc2lnbmVkIGZvciBoaWdoLXJlYXNvbmluZywgYWdlbnRpYywgYW5kIGdlbmVyYWwtcHVycG9zZSBwcm9kdWN0aW9uIHVzZSBjYXNlcy4gVGhlIG1vZGVsIHN1cHBvcnRzIGNvbmZpZ3VyYWJsZSByZWFzb25pbmcgZGVwdGgsIGZ1bGwgY2hhaW4tb2YtdGhvdWdodCBhY2Nlc3MsIGFuZCBuYXRpdmUgdG9vbCB1c2UsIGluY2x1ZGluZyBmdW5jdGlvbiBjYWxsaW5nLCBicm93c2luZywgYW5kIHN0cnVjdHVyZWQgb3V0cHV0IGdlbmVyYXRpb24uXFxcblxcXG5mcDRcXFxuXFxcbjEyOGtcXFxuXFxcbiQwLjA1IGluLCAkMC4yNCBvdXQgLyAxTV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL29wZW5haS9ncHQtb3NzLTEyMGIpXG5cblt0ZXh0LWdlbmVyYXRpb25cXFxuXFxcbm9wZW5haS9cXFxuXFxcbmdwdC1vc3MtMjBiXFxcblxcXG5ncHQtb3NzLTIwYiBpcyBhbiBvcGVuLXdlaWdodCAyMUIgcGFyYW1ldGVyIG1vZGVsIHJlbGVhc2VkIGJ5IE9wZW5BSSB1bmRlciB0aGUgQXBhY2hlIDIuMCBsaWNlbnNlLiBJdCB1c2VzIGEgTWl4dHVyZS1vZi1FeHBlcnRzIChNb0UpIGFyY2hpdGVjdHVyZSB3aXRoIDMuNkIgYWN0aXZlIHBhcmFtZXRlcnMgcGVyIGZvcndhcmQgcGFzcywgb3B0aW1pemVkIGZvciBsb3dlci1sYXRlbmN5IGluZmVyZW5jZS4gVGhlIG1vZGVsIGlzIHRyYWluZWQgaW4gT3BlbkFJ4oCZcyBIYXJtb255IHJlc3BvbnNlIGZvcm1hdCBhbmQgc3VwcG9ydHMgcmVhc29uaW5nIGxldmVsIGNvbmZpZ3VyYXRpb24sIGZpbmUtdHVuaW5nLCBhbmQgYWdlbnRpYyBjYXBhYmlsaXRpZXMgaW5jbHVkaW5nIGZ1bmN0aW9uIGNhbGxpbmcsIHRvb2wgdXNlLCBhbmQgc3RydWN0dXJlZCBvdXRwdXRzLlxcXG5cXFxuZnA0XFxcblxcXG4xMjhrXFxcblxcXG4kMC4wMyBpbiwgJDAuMTQgb3V0IC8gMU1dKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9vcGVuYWkvZ3B0LW9zcy0yMGIpXG5cbltWaWV3IGZ1bGwgY29sbGVjdGlvbiAoMTAwKyldKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb2RlbHMpXG5cbiMjIExpdmUgQUkgSW5mZXJlbmNlIE1ldHJpY3NcblxuRW5kLXRvLWVuZCBpbnNpZ2h0cyBpbnRvIHNwZWVkLCBzY2FsZSwgc3RhYmlsaXR5IGFuZCBzcGVuZFxuXG4wLjAwTVxuXG5Ub2tlbnMgcGVyIHNlY29uZFxuXG4wbXNcblxuVGltZSB0byBmaXJzdCB0b2tlblxuXG4wXG5cblJlcXVlc3RzIHBlciBzZWNvbmRcblxuMC4wMFxuXG5leGFGTE9QU1xuXG4jIyBIb3N0IHlvdXIgbW9kZWxzIG9uIG91ciBzZXJ2ZXJzXG5cbkxvdyBjb3N0LCBoaWdoIHByaXZhY3kgdG8gZW5zdXJlIHlvdSBydW4geW91ciBvcGVyYXRpb25zIHNtb290aGx5XG5cbltIb3cgaXQgd29ya3NdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kb2NzL2FkdmFuY2VkL2N1c3RvbV9sbG1zKVxuXG5IYXZlIHF1ZXN0aW9ucyBvciBuZWVkIGEgY3VzdG9tIHNvbHV0aW9uP1xuXG5bQ29udGFjdCBTYWxlc10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2NvbnRhY3Qtc2FsZXMpXG5cbkNvbXBhbnlcblxuW1ByaWNpbmddKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9wcmljaW5nKVxuXG5bRG9jc10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RvY3MpXG5cbltDb21wYXJlXShodHRwczovL2RlZXBpbmZyYS5jb20vY29tcGFyZSlcblxuW0RlZXBTdGFydF0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2RlZXBzdGFydClcblxuW0Fib3V0XShodHRwczovL2RlZXBpbmZyYS5jb20vYWJvdXRfdXMpXG5cbltDYXJlZXJzXShodHRwczovL2pvYnMuZ2VtLmNvbS9kZWVwLWluZnJhKVxuXG5bQ29udGFjdCB1c10oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL2NvbnRhY3Qtc2FsZXMpXG5cbltUcnVzdCBDZW50ZXJdKGh0dHBzOi8vdHJ1c3QuZGVlcGluZnJhLmNvbSlcblxuW0RlZXBHUFRdKGh0dHBzOi8vZGVlcGdwdC5jb20pXG5cbkxhdGVzdCBNb2RlbHNcblxuW2RlZXBzZWVrLWFpL0RlZXBTZWVrLVYzLjFdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1WMy4xKSBbZGVlcHNlZWstYWkvRGVlcFNlZWstVjMuMi1FeHBdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9kZWVwc2Vlay1haS9EZWVwU2Vlay1WMy4yLUV4cCkgW2FudGhyb3BpYy9jbGF1ZGUtMy03LXNvbm5ldC1sYXRlc3RdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9hbnRocm9waWMvY2xhdWRlLTMtNy1zb25uZXQtbGF0ZXN0KSBbbW9vbnNob3RhaS9LaW1pLUsyLUluc3RydWN0LTA5MDVdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9tb29uc2hvdGFpL0tpbWktSzItSW5zdHJ1Y3QtMDkwNSkgW3phaS1vcmcvR0xNLTQuNl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL3phaS1vcmcvR0xNLTQuNilcblxuRmVhdHVyZWQgTW9kZWxzXG5cblttaXN0cmFsYWkvVm94dHJhbC1NaW5pLTNCLTI1MDddKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9taXN0cmFsYWkvVm94dHJhbC1NaW5pLTNCLTI1MDcpIFtRd2VuL1F3ZW4zLTMyQl0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL1F3ZW4vUXdlbjMtMzJCKSBbZ29vZ2xlL2dlbW1hLTMtNGItaXRdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9nb29nbGUvZ2VtbWEtMy00Yi1pdCkgW1F3ZW4vUXdlbjMtMjM1Qi1BMjJCLVRoaW5raW5nLTI1MDddKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLTIzNUItQTIyQi1UaGlua2luZy0yNTA3KSBbUXdlbi9Rd2VuMy1OZXh0LTgwQi1BM0ItSW5zdHJ1Y3RdKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9Rd2VuL1F3ZW4zLU5leHQtODBCLUEzQi1JbnN0cnVjdClcblxuwqkgMjAyNSBEZWVwIEluZnJhLiBBbGwgcmlnaHRzIHJlc2VydmVkLlxuXG5bUHJpdmFjeSBQb2xpY3ldKGh0dHBzOi8vZGVlcGluZnJhLmNvbS9wcml2YWN5KSBbVGVybXMgb2YgU2VydmljZV0oaHR0cHM6Ly9kZWVwaW5mcmEuY29tL3Rlcm1zKSIsImNvbXBhbnkiOnsibmFtZSI6IkRlZXAgSW5mcmEgSW5jLiIsImxvY2F0aW9uIjoiUGFsbyBBbHRvLCBVbml0ZWQgU3RhdGVzIiwiZW1wbG95ZWVzIjo4LCJpbmR1c3RyeSI6IlRlY2hub2xvZ3ksIEluZm9ybWF0aW9uIGFuZCBJbnRlcm5ldCIsImFib3V0IjoiTGV0IERlZXAgSW5mcmEgcnVuIHlvdXIgTUwgaW5mcmFzdHJ1Y3R1cmUuIEp1c3QgdXNlIG91ciB0b3AgQUkgbW9kZWxzIHVzaW5nIGEgc2ltcGxlIEFQSSBvciBkZXBsb3kgeW91ciBvd24gbW9kZWwgd2l0aCB1cy4iLCJsb2dvVXJsIjoiaHR0cHM6Ly9tZWRpYS5saWNkbi5jb20vZG1zL2ltYWdlL3YyL0M1NjBCQVFGcGpEYkRDUUdHU0EvY29tcGFueS1sb2dvXzIwMF8yMDAvY29tcGFueS1sb2dvXzIwMF8yMDAvMC8xNjc1ODEwMjg1NjM2P2U9MjE0NzQ4MzY0NyZ2PWJldGEmdD00NzVINlRGcnRDOFBERGxPb0NGM0wwUnJHTlNhZm9tRmhSMUlKdnRFNmdRIn19LCJldmFsdWF0aW9ucyI6W3siY3JpdGVyaW9uIjoiRWFybHktc3RhZ2UgY29tcGFueSAoc3RhcnR1cCkgcHJvdmlkaW5nIEFJL01MIGluZnJhc3RydWN0dXJlIHByb2R1Y3RzIG9yIHNlcnZpY2VzIHRoYXQgaGFzIHJhaXNlZCBTZXJpZXMgQSBmdW5kaW5nIiwicmVhc29uaW5nIjoiRGVlcCBJbmZyYSBJbmMuIHdhcyBmb3VuZGVkIGluIDIwMjIsIG1ha2luZyBpdCAz4oCveWVhcnMgb2xkIGFuZCB0aHVzIGFuIGVhcmx54oCRc3RhZ2Ugc3RhcnR1cC4gSXQgaGFzIDggZW1wbG95ZWVzLCBhIHNtYWxsIHRlYW0gdHlwaWNhbCBvZiBlYXJseeKAkXN0YWdlIGZpcm1zLiBUaGUgY29tcGFueeKAmXMgcHJvZHVjdCBkZXNjcmlwdGlvbiBzdGF0ZXMgaXQgcHJvdmlkZXMg4oCcY29zdOKAkWVmZmVjdGl2ZSwgc2NhbGFibGUsIGVhc3nigJF0b+KAkWRlcGxveSwgYW5kIHByb2R1Y3Rpb27igJFyZWFkeSBtYWNoaW5l4oCRbGVhcm5pbmcgbW9kZWxzIGFuZCBpbmZyYXN0cnVjdHVyZXMgZm9yIGRlZXDigJFsZWFybmluZyBtb2RlbHMs4oCdIHdoaWNoIGlzIEFJL01MIGluZnJhc3RydWN0dXJlLiBUaGUgaW50ZXJuYWwgcHJvZmlsZSBhbmQgbmV3cyBpdGVtcyBjb25maXJtIGl0IHJhaXNlZCBhIFNlcmllc+KAr0Egcm91bmQgb24gMjAyNeKAkTA04oCRMjIgKFNlcmllc+KAr0Eg4oCTIERlZXAgSW5mcmEpIGFuZCBhIHN1YnNlcXVlbnQgJDE44oCvTSBTZXJpZXPigK9BIGluIEFwcmls4oCvMjAyNS4gQWxsIGNyaXRlcmlhIGFyZSBtZXQuIiwic2F0aXNmaWVkIjoieWVzIiwicmVmZXJlbmNlcyI6W3sidGl0bGUiOiJEZWVwIEluZnJhIEluYy4iLCJzbmlwcGV0IjoiRGVlcCBJbmZyYSBJbmMuIGlzIGEgVGVjaG5vbG9neSwgSW5mb3JtYXRpb24gYW5kIEludGVybmV0IGNvbXBhbnkgKHByaXZhdGUpIHdpdGggOCBlbXBsb3llZXMgKCszNy41JSBZb1kgZ3Jvd3RoKSwgJDMuOE0gYW5udWFsIHJldmVudWUsIGZvdW5kZWQgaW4gMjAyMiwgaGVhZHF1YXJ0ZXJlZCBpbiBQYWxvIEFsdG8sIENhbGlmb3JuaWEsIFVuaXRlZCBTdGF0ZXMuIEhhcyAkNDYuNk0gaW4gdG90YWwgZnVuZGluZywgbGFzdCByb3VuZCB3YXMgYSBTZXJpZXMgQSAtIERlZXAgSW5mcmEgaW4gMjAyNS0wNC0yMi4gRGVlcCBJbmZyYSBvZmZlcnMgY29zdC1lZmZlY3RpdmUsIHNjYWxhYmxlLCBlYXN5LXRvLWRlcGxveSwgYW5kIHByb2R1Y3Rpb24tcmVhZHkgbWFjaGluZS1sZWFybmluZyBtb2RlbHMgYW5kIGluZnJhc3RydWN0dXJlcyBmb3IgZGVlcC1sZWFybmluZyBtb2RlbHMuLi4uIiwidXJsIjoiaHR0cHM6Ly9kZWVwaW5mcmEuY29tIn1dfV0sImVucmljaG1lbnRzIjpbXSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNzoxNi45NjBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNzoxNi45NjBaIn0=
+  recorded_at: Sun, 23 Nov 2025 00:17:35 GMT
 recorded_with: VCR 6.3.1

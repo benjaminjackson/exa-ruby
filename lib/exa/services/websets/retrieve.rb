@@ -4,13 +4,14 @@ module Exa
   module Services
     module Websets
       class Retrieve
-        def initialize(connection, id:)
+        def initialize(connection, id:, **params)
           @connection = connection
           @id = id
+          @params = normalize_params(params)
         end
 
         def call
-          response = @connection.get("/websets/v0/websets/#{@id}")
+          response = @connection.get("/websets/v0/websets/#{@id}", @params)
           body = response.body
 
           Resources::Webset.new(
@@ -29,6 +30,16 @@ module Exa
             updated_at: body["updatedAt"],
             items: body["items"]
           )
+        end
+
+        private
+
+        def normalize_params(params)
+          # Convert expand array to comma-separated string for API compatibility
+          if params[:expand].is_a?(Array)
+            params[:expand] = params[:expand].join(",")
+          end
+          params
         end
       end
     end

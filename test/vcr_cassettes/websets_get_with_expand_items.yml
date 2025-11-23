@@ -1,0 +1,756 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Enterprise SaaS companies with AI features","count":2}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:15:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '772'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"304-hR+hyrGsMziFSA/21knmRzemi8U"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ADDvrJfqiZfsT2tLErKzS%2BwElhbMycJCyZVLBvoHMGoshE5J7Lhq2XO8xLpZ46lMpV2gwmCfOVYP5VAsDuAM8xWKormXpO6zlOBYeQvGcFy0795kqg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c79599dbb8c73-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"running","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:15:47.292Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:15:47.292Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:15:47 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:15:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"30f-majgHVBBrxy52wgyGfjgA0Ykq3k"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zO4OGglMXFrXSGCyTIKocIXCEMeLu%2Fi5%2FCtrBlTdQHReGKLbaOAePgINb3y%2BbWkbr56k6WatDsWTnyevLFYpiSijZD7dJuCuiE175Ier2%2F6bI6uyLA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c79650abf7295-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"running","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:15:47.292Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:15:47.292Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:15:48 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:15:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"430-S1eQxWmJcLQs7VJuQEp4/lIj5AU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=2tNzgpI9GrJ4XKk1KNJrvDmMS1jN2mqGyAe3jyPE9tn%2FlFhRADMXnRJOm9w%2BJPB%2B%2FrPuj7d8XpVjG3I1yHeuSUwkpV8miz0bx3x1F%2Bh1NWfwogXROQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c7976290997b2-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Enterprise SaaS with AI features","searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"running","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides enterprise-focused SaaS (Software as a Service) products or platforms","successRate":0},{"description":"Company''s
+        products or platforms include AI (Artificial Intelligence) features or capabilities","successRate":0}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:15:49.886Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:15:49.886Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:15:51 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:15:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"432-iKqkTvOy8D64tnLneMJwBUXleME"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=TAyV387Z1X8xDEddKGTTc2UWUso7Pxr26cOLrJlEzpg42OjsCodYL0t16GbuuPRwlv%2FXiG5M%2FpGseq6CH%2FmrO4ekPBuYTIgxBvJUPx45%2Bn1XW%2B1oUQ%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c7986ef2fe5e2-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Enterprise SaaS with AI features","searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"running","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides enterprise-focused SaaS (Software as a Service) products or platforms","successRate":100},{"description":"Company''s
+        products or platforms include AI (Artificial Intelligence) features or capabilities","successRate":100}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":50,"timeLeft":7},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:15:49.886Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:15:49.886Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:15:54 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:15:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"433-GCxLZRhyNxmdcmmaAyEDV71mRUI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Y7Wf%2Fv%2BnofQWH%2FeBQSuRRm2PW3Fb%2F1MKa73bNA0zLV%2Fk%2B8xqW6aHjL3pVtF%2Fc2MRAytB4oKOpKYyqwXpefKljLIXbKkDjR6sQo4LJODGipjMBsQ6bQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c79983b08431b-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Enterprise SaaS with AI features","searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"running","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides enterprise-focused SaaS (Software as a Service) products or platforms","successRate":100},{"description":"Company''s
+        products or platforms include AI (Artificial Intelligence) features or capabilities","successRate":100}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":2,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:15:49.886Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:15:49.886Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:15:56 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:15:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"433-GCxLZRhyNxmdcmmaAyEDV71mRUI"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vm5eh43b%2FGAKYggO0Yk8JQQWVQRv9xl3XcNv8lpgNs%2B4tCEi7sW%2BwTVmNqLtsGJPnInO6NfwDSXy3VI4pRJSmaSwc0CJeE6k7E870M7WheN7ss4bbQ%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c79a8aa686dc6-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Enterprise SaaS with AI features","searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"running","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides enterprise-focused SaaS (Software as a Service) products or platforms","successRate":100},{"description":"Company''s
+        products or platforms include AI (Artificial Intelligence) features or capabilities","successRate":100}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":2,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:15:49.886Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:15:49.886Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:15:59 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:16:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"433-GCxLZRhyNxmdcmmaAyEDV71mRUI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=BA8IrO1zuM4mXqF9KGMxQL2%2Bwy2NZkNFLUep1KK0%2BXk4pWnnrgKFjgCyTt%2FuAhuUQPp2sMTCwHUTz%2BccumuT7%2FZuYSfH9X4h%2B9zj48Jy5i5aqc4%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c79b90d5fdf3f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Enterprise SaaS with AI features","searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"running","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides enterprise-focused SaaS (Software as a Service) products or platforms","successRate":100},{"description":"Company''s
+        products or platforms include AI (Artificial Intelligence) features or capabilities","successRate":100}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":2,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:15:49.886Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:15:49.886Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:16:02 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:16:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"433-GCxLZRhyNxmdcmmaAyEDV71mRUI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=kwctAKljufgGokXvm8t5sAWzpRhySZ0uc9K320eMSsrQZgykFChztbk4De7Q7RXSQcukOfukIfvwJwZhh31cJIubbb4Dj24rsf3SazjjmESEuD1rTA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c79cb0ce57a9c-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Enterprise SaaS with AI features","searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"running","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides enterprise-focused SaaS (Software as a Service) products or platforms","successRate":100},{"description":"Company''s
+        products or platforms include AI (Artificial Intelligence) features or capabilities","successRate":100}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":2,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:15:49.886Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:15:49.886Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:16:05 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:16:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"432-cqHqXomAd23dtl51LkJG92+G2oM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=6ZQA%2BkpLL3EuddXBySfylRmp3acjgKbHOn%2FSjZ034pp%2BzNpAk%2B5jDkPyQIzr9K0vmcql3mcShOhb6wMtzZ%2FFFOZaBMwGPzL0972pGhLqXlUCbu8AUA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c79dd0c0f1aea-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq1256mjzv3ynw24gej16qx","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        Enterprise SaaS with AI features","searches":[{"id":"wsearch_01kaq125ps65ce75cmzq4s8ekm","object":"webset_search","websetId":"webset_01kaq1256mjzv3ynw24gej16qx","status":"completed","query":"Enterprise
+        SaaS companies with AI features","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides enterprise-focused SaaS (Software as a Service) products or platforms","successRate":100},{"description":"Company''s
+        products or platforms include AI (Artificial Intelligence) features or capabilities","successRate":100}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":2,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:15:46.905Z","updatedAt":"2025-11-23T00:16:05.026Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:15:46.388Z","updatedAt":"2025-11-23T00:16:05.026Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:16:10 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq1256mjzv3ynw24gej16qx?expand=items
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:16:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"7b7d-h0ZVWjbkWbyYe+L6cUierUWjO1U"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=XboOMwh%2BwuavPnfCRG4xl5KZKVJA5zbsPltHMFIW%2F2nggGm9XQGsrE3X85vpVTqB%2FkpvKUkjXumc56Kp%2B%2BG%2FjGwJZakQXxhzfcm2rMI%2FG1LKhnJcEQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c79f50c078815-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcTEyNTZtanp2M3ludzI0Z2VqMTZxeCIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRW50ZXJwcmlzZSBTYWFTIHdpdGggQUkgZmVhdHVyZXMiLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FxMTI1cHM2NWNlNzVjbXpxNHM4ZWttIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FxMTI1Nm1qenYzeW53MjRnZWoxNnF4Iiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFbnRlcnByaXNlIFNhYVMgY29tcGFuaWVzIHdpdGggQUkgZmVhdHVyZXMiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBwcm92aWRlcyBlbnRlcnByaXNlLWZvY3VzZWQgU2FhUyAoU29mdHdhcmUgYXMgYSBTZXJ2aWNlKSBwcm9kdWN0cyBvciBwbGF0Zm9ybXMiLCJzdWNjZXNzUmF0ZSI6MTAwfSx7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSdzIHByb2R1Y3RzIG9yIHBsYXRmb3JtcyBpbmNsdWRlIEFJIChBcnRpZmljaWFsIEludGVsbGlnZW5jZSkgZmVhdHVyZXMgb3IgY2FwYWJpbGl0aWVzIiwic3VjY2Vzc1JhdGUiOjEwMH1dLCJjb3VudCI6MiwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoyLCJhbmFseXplZCI6MiwiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNTo0Ni45MDVaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNjowNS4wMjZaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOltdLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIzVDAwOjE1OjQ2LjM4OFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIzVDAwOjE2OjA1LjAyNloiLCJpdGVtcyI6W3siaWQiOiJ3aXRlbV8wMWthcTEyYjZxOWZ5MGJmZTk5ZnkwYmZlOSIsIm9iamVjdCI6IndlYnNldF9pdGVtIiwic291cmNlIjoic2VhcmNoIiwic291cmNlSWQiOiJ3c2VhcmNoXzAxa2FxMTI1cHM2NWNlNzVjbXpxNHM4ZWttIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXExMjU2bWp6djN5bncyNGdlajE2cXgiLCJwcm9wZXJ0aWVzIjp7InR5cGUiOiJjb21wYW55IiwidXJsIjoiaHR0cHM6Ly9zeW1waG9ueWFpLmNvbSIsImRlc2NyaXB0aW9uIjoiU3ltcGhvbnlBSSBpcyBhIHByaXZhdGUgZW50ZXJwcmlzZSBTYWFTIHByb3ZpZGVyIHNwZWNpYWxpemluZyBpbiBpbmR1c3RyeS1zcGVjaWZpYyBBSSBzb2x1dGlvbnM7IDEsMjM1IGVtcGxveWVlcyAoKzQzLjYlIFlvWSBncm93dGgpLCAkNDYyLjVNIHJldmVudWUsIGZvdW5kZWQgMjAxNyBpbiBQYWxvIEFsdG87IG9mZmVycyBBSS1iYXNlZCBwcmVkaWN0aXZlIGFuZCBnZW5lcmF0aXZlIHBsYXRmb3JtcyBmb3IgcmV0YWlsLCBmaW5hbmNlLCBhbmQgbWFudWZhY3R1cmluZyBzZWN0b3JzLCBmb2N1c2luZyBvbiBWZXJ0aWNhbCBBSSBhbmQgZW50ZXJwcmlzZS1ncmFkZSBzb2Z0d2FyZS4iLCJjb250ZW50IjoiTmV3IHN0dWR5IHNob3dzICQzNDQgYmlsbGlvbiBpbiBwb3RlbnRpYWwgZWNvbm9taWMgaW1wYWN0IG9mIHZlcnRpY2FsIEFJIGFjcm9zcyA0IG1ham9yIGluZHVzdHJpZXMuXG5cbltSZWFkIHRoZSBSZXBvcnQg4oC6XShodHRwczovL3Jlc291cmNlLnN5bXBob255YWkuY29tL2Vjb25vbWljLWltcGFjdC0yMDI1LylcblxuWW91ciBicm93c2VyIGRvZXMgbm90IHN1cHBvcnQgdGhlIHZpZGVvIHRhZy5cblxuIyMjIEFJIHRoYXQga25vd3MgeW91ciBidXNpbmVzc1xuXG5FeHBsb3JlIG1vcmVcblxuIyMgTm90IGp1c3QgQUkuIFZlcnRpY2FsIEFJIGJ1aWx0IGZvciByZWFsIHdvcmvigJQgYW5kIHRoZSByZWFsIHdvcmxkLlxuXG5bR2V0IHN0YXJ0ZWRdKGh0dHBzOi8vd3d3LnN5bXBob255YWkuY29tL2dldC1zdGFydGVkLylcblxuUmVwb3J0XG5cbiMjIyMgRmluQ3JpbWUgRnJvbnRpZXIgMjAyNeKAkzI2IFJlcG9ydFxuXG5bUmVhZCBNb3JlID5dKGh0dHBzOi8vd3d3LnN5bXBob255YWkuY29tL3Jlc291cmNlcy9hbmFseXN0LXJlcG9ydC9maW5hbmNpYWwtc2VydmljZXMvZmluY3JpbWUtZnJvbnRpZXItMjAyNS0yNi1yZXBvcnQvKVxuXG5SZXBvcnRcblxuIyMjIyBUaGUgZWNvbm9taWMgcG90ZW50aWFsIG9mIHZlcnRpY2FsIEFJXG5cbltSZWFkIE1vcmUgPl0oaHR0cHM6Ly9yZXNvdXJjZS5zeW1waG9ueWFpLmNvbS9lY29ub21pYy1pbXBhY3QtMjAyNS8/X2dsPTEqMWtsaHRicSpfZ2NsX2F1Kk9ETTFOemMwTnpFMExqRTNOakk1TnpNeE9ETS4qX2dhKk1qRXlOVEl3TmpneE5TNHhOell5T1Rjek1UZ3oqX2dhX1ZINUVYTEtMTkcqY3pFM05qSTVOek14T0RNa2J6RWtaekFrZERFM05qSTVOek14T0RNa2FqWXdKR3d3SkdndylcblxuRGF0YSBTaGVldFxuXG4jIyMjIElSSVMgRm9yZ2U6IEJ1aWxkIGFuZCBpZGVhdGUgYXBwbGljYXRpb25zIGZhc3RlclxuXG5bUmVhZCBNb3JlID5dKGh0dHBzOi8vd3d3LnN5bXBob255YWkuY29tL3Jlc291cmNlcy9kYXRhLXNoZWV0L2luZHVzdHJpYWwvaXJpcy1mb3JnZS1idWlsZC1hbmQtaWRlYXRlLWFwcGxpY2F0aW9ucy1mYXN0ZXIvKVxuXG5bQWxiZXJ0c29ucyBHVlAgb2YgTWVyY2hhbmRpc2luZyBUZXJlc2EgV2hpdG5leSBvbiBVc2luZyBBSSB0byBNYWtlIEV2ZXJ5IFNoZWxmIFNtYXJ0ZXJcXFxuXFxcbldhdGNoIGhlcmU+XShodHRwczovL3d3dy5zeW1waG9ueWFpLmNvbS9yZXNvdXJjZXMvY2FzZS1zdHVkeS9yZXRhaWwtY3BnL2hvdy1hbGJlcnRzb25zLXVzZXMtc3ltcGhvbnlhaS1yZXRhaWwtY3BnLXNvbHV0aW9ucy10by11bmNvdmVyLWluc2lnaHRzLW9wdGltaXplLWFzc29ydG1lbnRzLWFuZC1zYXRpc2Z5LXNob3BwZXJzLykgWyQ4MEIgR1JPQ0VSWSBTVE9SRVxcXG5cXFxuKiokMjAwTSoqXFxcblxcXG5Bbm51YWwgUHJvZml0IEdhaW5zIHdpdGggQUktcG93ZXJlZCBNZXJjaGFuZGlzaW5nXFxcblxcXG5MZWFybiBNb3JlPlxcXG5cXFxuJDgwQiBHUk9DRVJZIFNUT1JFXFxcblxcXG5SZWFkIE1vcmU+XShodHRwczovL3d3dy5zeW1waG9ueWFpLmNvbS9yZXNvdXJjZXMvY2FzZS1zdHVkeS9yZXRhaWwtY3BnL25hdGlvbmFsLXN1cGVybWFya2V0LWNoYWluLWRyaXZlcy0yMDBtLXByb2ZpdC12ZXJ0aWNhbC1haS8pIFsqKjc3JSoqICAqKkZld2VyIGZhbHNlIGFsZXJ0cyoqXFxcblxcXG5BYnNhIHVzZXMgQUkgdG8gb3V0c21hcnQgZmluYW5jaWFsIGNyaW1lXFxcblxcXG5SZWFkIE1vcmU+XShodHRwczovL3d3dy5zeW1waG9ueWFpLmNvbS9yZXNvdXJjZXMvY2FzZS1zdHVkeS9maW5hbmNpYWwtc2VydmljZXMvYWJzYS1zeW1waG9ueWFpLWFtbC1jYXNlLXN0dWR5LykgWyoqRm9ycmVzdGVyIFdhdmUgTGVhZGVyIDIwMjUqKlxcXG5cXFxuQW50aS1Nb25leSBMYXVuZGVyaW5nIFNvbHV0aW9uc1xcXG5cXFxuUmVhZCBNb3JlPl0oaHR0cHM6Ly93d3cuc3ltcGhvbnlhaS5jb20vY2FzZS1zdHVkeS9maW5hbmNpYWwtc2VydmljZXMvc3ltcGhvbnlhaS1uYW1lZC1sZWFkZXItZm9ycmVzdGVyLXdhdmUtYW1sLXNvbHV0aW9ucy8pIFsqKjM1JSBGYXN0ZXIgSW5zcGVjdGlvbnMsIDUwJSBGYXN0ZXIgVHJhaW5pbmcqKlxcXG5cXFxuTGVhcm4gTW9yZT5dKGh0dHBzOi8vd3d3LnN5bXBob255YWkuY29tL3Jlc291cmNlcy9jYXNlLXN0dWR5L2luZHVzdHJpYWwvaW1wcm92ZWQtZXhlY3V0aW9uLWVmZmljaWVuY3ktYnktMjUvKSBbKioxLDAwMCsgc3RvcmVzIHRyYW5zZm9ybWVkKipcXFxuXFxcbuKAnFdlIGdyb3VwZWQgc3RvcmVzIGludG8gc2hvcHBlci1sZWQgY2x1c3RlcnPigKYgYW5kIG9wdGltaXplZCBlYWNoIHNoZWxmIHRvIG1hdGNoLuKAnVxcXG5cXFxuSmFuIEhhbHV6YVxcXG5cXFxuTWFuYWdlciBvZiBEYXRhIFNjaWVuY2UgYW5kIEFuYWx5dGljcywgUGVwc2lDb10oaHR0cHM6Ly93d3cuc3ltcGhvbnlhaS5jb20vcmVzb3VyY2VzL2Nhc2Utc3R1ZHkvcmV0YWlsLWNwZy9wZXBzaWNvLW5vcnRoZXJuLWV1cm9wZS1lbWJyYWNlcy1zeW1waG9ueWFpLXJldGFpbC1zaG9wcGVyLWluc2lnaHRzLXRvLWJ1aWxkLWJ1c2luZXNzLWFjcm9zcy1tdWx0aXBsZS1jYXRlZ29yaWVzLTIvKSBb4oCcV2l0aCB0aGUgc2hvcHBlciBhdCB0aGUgY2VudGVyIG9mIGV2ZXJ5IGRlY2lzaW9uLCB0aGUgaW5zaWdodHMgZnJvbSBTeW1waG9ueUFJIGVuYWJsZWQgdXMgdG8gd29yayB3aXRoIHRoZSByZXRhaWxlciB0byBhY2hpZXZlIG1vcmUgbWVhbmluZ2Z1bCBhbmQgZm9jdXNlZCBjb2xsYWJvcmF0aW9uLuKAnVxcXG5cXFxuSmVzc2ljYSBLZWVuYW5cXFxuXFxcbkRpcmVjdG9yIG9mIENhdGVnb3J5IExlYWRlcnNoaXAsIEtyYWZ0IEhlaW56XShodHRwczovL3d3dy5zeW1waG9ueWFpLmNvbS9yZXNvdXJjZXMvY2FzZS1zdHVkeS9yZXRhaWwtY3BnL2tyYWZ0LWhlaW56LXN0cmVuZ3RoZW5zLXJldGFpbGVyLWNvbGxhYm9yYXRpb24tYW5kLXNob3BwZXItZm9jdXMvKSBbKiokMU0qKiAgKipQcm9maXQgVXBsaWZ0IHBlciBQcm9tb3Rpb24qKlxcXG5cXFxuTGVhcm4gSGVyZT5dKGh0dHBzOi8vd3d3LnN5bXBob255YWkuY29tL3Jlc291cmNlcy9jYXNlLXN0dWR5L3JldGFpbC1jcGcvc2F2ZS1hLWxvdC1vcGVyYXRpb25zLXN1cHBseS1jaGFpbi1tZXJjaGFuZGlzaW5nLykgWyoqUmVhbC1UaW1lIEluc3BlY3Rpb25zIGF0IEdTSyoqXFxcblxcXG4xMDAlIGNvbXBsaWFuY2UsIHplcm8gbWFudWFsIHJlcG9ydHNcXFxuXFxcblJlYWQgTW9yZT5dKGh0dHBzOi8vd3d3LnN5bXBob255YWkuY29tL3Jlc291cmNlcy9jYXNlLXN0dWR5L2luZHVzdHJpYWwvZ3NrLWNvbm5lY3RlZC13b3JrZXItcGxhdGZvcm0vKVxuXG4jIyBQdXJwb3NlLWJ1aWx0IEFJLiBJbmR1c3RyeS1wcm92ZW4gcmVzdWx0cy5cblxuIyMjIyBBSSBhcHBsaWNhdGlvbnMgd2l0aCBkb21haW4gSVFcblxuIyMjIFJldGFpbFxuXG4jIyMjIEJ1aWx0IGZvciByZXRhaWzigJlzIGZ1bGwgZGVtYW5kIGNoYWluLiBQb3dlcmVkIGJ5IHJlYWwgQUkuXG5cbkZyb20gc2Vhc29uYWwgc3VyZ2VzIHRvIGV2ZXJ5ZGF5IHN0YXBsZXMsIFN5bXBob255QUkgaGVscHMgaGlnaC12ZWxvY2l0eSByZXRhaWxlcnMgb3B0aW1pemUgcHJpY2luZywgYXZhaWxhYmlsaXR5LCBhbmQgc2hlbGYgZXhlY3V0aW9uIGluIHJlYWwgdGltZS4gT3VyIHZlcnRpY2FsIEFJIHJlYWRzIHNob3BwZXIgc2lnbmFscywgZm9yZWNhc3RzIGRlbWFuZCwgYW5kIGZpbmUtdHVuZXMgaW52ZW50b3J5IGFuZCBwcm9tb3Rpb25z4oCUYm9vc3Rpbmcgc2FsZXMsIGxveWFsdHksIGFuZCBleHBlcmllbmNlLCBzdG9yZSBieSBzdG9yZS5cblxuKiozLjUlKiogU2FsZXNsaWZ0U2FsZXNsaWZ0XG5cbioqOTglKiogRm9yZWNhc3QgYWNjdXJhY3lGb3JlY2FzdCBhY2N1cmFjeVxuXG4qKjIwJSoqIEluY3JlYXNlIGluIGN1c3RvbWVyIGxveWFsdHlJbmNyZWFzZSBpbiBjdXN0b21lciBsb3lhbHR5XG5cbltFeHBsb3JlIFJldGFpbF0oaHR0cHM6Ly93d3cuc3ltcGhvbnlhaS5jb20vcmV0YWlsLWNwZy8pXG5cbiMjIyBGaW5hbmNpYWwgU2VydmljZXNcblxuIyMjIyBBSSB0aGF04oCZcyBidWlsdCBmb3Igc2NydXRpbnkuXG5cblN5bXBob255QUkgaXMgbWFkZSBmb3IgdGhlIG1lc3N5IHJlYWxpdHkgb2YgbW9kZXJuIGNvbXBsaWFuY2Ugd2hlcmUgdGhlIGNvc3Qgb2YgbWlzc2VkIHJpc2sgaXNu4oCZdCBqdXN0IGZpbmVzLCBpdOKAmXMgdHJ1c3QgYW5kIHJlcHV0YXRpb24uIE91ciBBSSBmbGFncyByZWFsIHJpc2ssIG5vdCBub2lzZS4gSXQgc2xhc2hlcyBhbGVydCB2b2x1bWVzIHdoaWxlIGNhcHR1cmluZyBuZXcgaGlkZGVuIHJpc2sgYW5kIHNob3dzIHlvdXIgdGVhbSBleGFjdGx5IHdoeSBlYWNoIGRlY2lzaW9uIHdhcyBtYWRlLCBzbyB5b3XigJlyZSByZWFkeSB3aGVuIHJlZ3VsYXRvcnMgYXNrLlxuXG5ObyBibGFjayBib3hlcy4gTm8gaGlkaW5nIGJlaGluZCBjb21wbGV4aXR5LiBKdXN0IHRyYW5zcGFyZW5jeSwgY29udHJvbCwgYW5kIHNwZWVkIGF0IHRoZSBzY2FsZSB5b3VyIGluc3RpdHV0aW9uIGRlbWFuZHMuXG5cbioqODUlKiogRmV3ZXIgZmFsc2UgcG9zaXRpdmVzRmV3ZXIgZmFsc2UgcG9zaXRpdmVzXG5cbioqNzAlKiogRmFzdGVyIGludmVzdGlnYXRpb25zRmFzdGVyIGludmVzdGlnYXRpb25zXG5cbioqPDUwbXMqKiBGcmF1ZCBkZXRlY3Rpb24gYW5kIHNjb3JpbmcgbGF0ZW5jeUZyYXVkIGRldGVjdGlvbiBhbmQgc2NvcmluZyBsYXRlbmN5XG5cbltFeHBsb3JlIEZpbmFuY2lhbCBTZXJ2aWNlc10oaHR0cHM6Ly93d3cuc3ltcGhvbnlhaS5jb20vZmluYW5jaWFsLXNlcnZpY2VzLylcblxuIyMjIEluZHVzdHJpYWxcblxuIyMjIyBXaGVuIG91dHB1dCBkcm9wcywgb3VyIEFJIGtub3dzIHdoeS5cblxuRXZlcnkgbWludXRlIG9mIGRvd250aW1lIGhpdHMgbWFyZ2luLCBmbG93LCBhbmQgZGVsaXZlcnkuIFN5bXBob255QUkgemVyb2VzIGluIG9uIHdoYXTigJlzIGdvaW5nIHdyb25n4oCUYWNyb3NzIGFzc2V0cywgbGluZXMsIG9yIHNpdGVz4oCUYW5kIGd1aWRlcyB5b3VyIHRlYW0gdG8gYWN0IGZhc3QuIE5vIGd1ZXNzd29yay4gTm8gZGVsYXlzLiBKdXN0IHJlYWwtdGltZSByb290IGNhdXNlIGFuYWx5c2lzLCBzbWFydGVyIGRlY2lzaW9ucywgYW5kIGNvbnRpbnVvdXMgb3B0aW1pemF0aW9uIGZyb20gY29udHJvbCByb29tIHRvIGNvbm5lY3RlZCB3b3JrZXIuXG5cbkJ1aWx0IGZvciBzcGVlZC4gUHJvdmVuIGF0IHNjYWxlLiBBbmQgYWx3YXlzIGxlYXJuaW5nLlxuXG4qKjUwJSoqIFJlZHVjdGlvbiBpbiBkb3dudGltZVJlZHVjdGlvbiBpbiBkb3dudGltZVxuXG4qKjQlKiogSW5jcmVhc2UgaW4gdGhyb3VnaHB1dEluY3JlYXNlIGluIHRocm91Z2hwdXRcblxuKioyMDAlKiogRGVjcmVhc2UgaW4gdHJhaW5pbmcgdGltZURlY3JlYXNlIGluIHRyYWluaW5nIHRpbWVcblxuW0V4cGxvcmUgSW5kdXN0cmlhbF0oaHR0cHM6Ly93d3cuc3ltcGhvbnlhaS5jb20vaW5kdXN0cmlhbC8pXG5cbiMjIEV4cGxvcmUgYWxsIG91ciBpbmR1c3RyeSBhcHBsaWNhdGlvbnNcblxuW0FsbCBpbmR1c3RyaWVzXShodHRwczovL3d3dy5zeW1waG9ueWFpLmNvbS9pbmR1c3RyaWVzLylcblxuWW91ciBicm93c2VyIGRvZXMgbm90IHN1cHBvcnQgdGhlIHZpZGVvIHRhZy5cblxuIyMgVmVydGljYWwgQUkgYWdlbnRzIHRoYXQgZXhlY3V0ZSwgbm90IGp1c3QgYXNzaXN0XG5cblRyYWluZWQgZm9yIHRoZSBqb2IuIFRydXN0ZWQgaW4gdGhlIGZpZWxkLlxuXG5Gcm9tIGRyYWZ0aW5nIFNBUnMgdG8gcmVyb3V0aW5nIGludmVudG9yeSwgdGhleSBnZXQgd29yayBkb25lIHdpdGggcHJlY2lzaW9uLCBjb250ZXh0LCBhbmQgY29udHJvbC5cblxuRXhwbGFpbmFibGUuIEF1ZGl0YWJsZS4gQnVpbHQgZm9yIHlvdXIgYnVzaW5lc3MuXG5cbltFeHBsb3JlIEFnZW50aWMgQUldKGh0dHBzOi8vd3d3LnN5bXBob255YWkuY29tL2FnZW50aWMtYWkvKVxuXG4jIFRoZSBBSSBNaWNyb3NvZnQgdHJ1c3RzIHRvIGdldCByZWFsIHdvcmsgZG9uZVxuXG5OYW1lZCBNaWNyb3NvZnTigJlzIEFJIFBhcnRuZXIgb2YgdGhlIFllYXIsIFN5bXBob255QUkgZGVsaXZlcnMgcHJvZHVjdGlvbi1yZWFkeSwgZG9tYWluLXNwZWNpZmljIEFJIG9uIEF6dXJlLlxuXG5Gcm9tIHJldGFpbCB0byBtYW51ZmFjdHVyaW5nLCBvdXIgYWdlbnRpYyBzb2x1dGlvbnMgYXJlIGFscmVhZHkgaW4gbWFya2V04oCUZGlhZ25vc2luZywgZGVjaWRpbmcsIGFuZCBhY3Rpbmcgd2hlcmUgdGhlIHdvcmsgZ2V0cyBkb25lLlxuXG5XaXRoIFN5bXBob255QUkgYW5kIE1pY3Jvc29mdCwgaXTigJlzIG5vdCBhIHByb3RvdHlwZS4gSXTigJlzIEFJIGluIHByb2R1Y3Rpb24uXG5cbltCcm93c2UgQXp1cmUgTWFya2V0cGxhY2VdKGh0dHBzOi8vYXp1cmVtYXJrZXRwbGFjZS5taWNyb3NvZnQuY29tL2VuLXVzL21hcmtldHBsYWNlL2FwcHM/c2VhcmNoPXN5bXBob255YWkmcGFnZT0xKSIsImNvbXBhbnkiOnsibmFtZSI6IlN5bXBob255QUkiLCJsb2NhdGlvbiI6IlBhbG8gQWx0bywgVW5pdGVkIFN0YXRlcyIsImVtcGxveWVlcyI6MTIzNSwiaW5kdXN0cnkiOiJTb2Z0d2FyZSBEZXZlbG9wbWVudCIsImFib3V0IjoiU3ltcGhvbnlBSSBpcyB0aGUgbGVhZGVyIGluIFZlcnRpY2FsIEFJ4oCUaW5kdXN0cnktdHJhaW5lZCwgYXVkaXQtcmVhZHkgU2FhUyB0aGF0IGlzIHB1cnBvc2UgYnVpbHQgdG8gc29sdmUgdGhlIGJpZ2dlc3QgcHJvYmxlbXMgZm9yIHJldGFpbCwgZmluYW5jaWFsIHNlcnZpY2VzLCBpbmR1c3RyaWFsIG1hbnVmYWN0dXJpbmcsIGFuZCBvdGhlciBjcml0aWNhbCBpbmR1c3RyaWVzLiBPdXIgYWdlbnRpYyBBSSBhcHBsaWNhdGlvbnMgc3BvdCBmaW5hbmNpYWwgY3JpbWUsIGVuYWJsZSBkeW5hbWljIG1lcmNoYW5kaXNpbmcsIGVuc3VyZSBtYW51ZmFjdHVyaW5nIHJlc2lsaWVuY2UsIGFuZCBtdWNoIG1vcmUsIGF1dG9tYXRpbmcgZGVjaXNpb25zIGFuZCB3b3JrZmxvd3MgdGhhdCBkaXJlY3RseSBpbXBhY3QgUCZMLlxuXG5Nb3JlIHRoYW4gMSwxMTAgZW50ZXJwcmlzZSBjdXN0b21lcnMgYWNyb3NzIDI2IGNvdW50cmllcyB0cnVzdCBTeW1waG9ueUFJ4oCZcyBhcHBsaWNhdGlvbnMsIGJ1aWx0IG9uIHRoZSBFdXJla2EgQUkgcGxhdGZvcm0sIHdpdGggZG9tYWluLXNwZWNpZmljIG9udG9sb2dpZXMgYW5kIGJ1aWx0LWluIGd1YXJkcmFpbHMgdGhhdCBkZWxpdmVyIFJPSSBpbiB3ZWVrcy4gQmFja2VkIGJ5IHRoZSBTQUlHcm91cCBhbmQgcG93ZXJlZCBieSAyLDIwMCBlbXBsb3llZXMgd2hvIGJsZW5kIGRlZXAgQUkgZXhwZXJ0aXNlIHdpdGggcmVhbC13b3JsZCBpbmR1c3RyeSBleHBlcmllbmNlLCBTeW1waG9ueUFJIGlzIHJlZGVmaW5pbmcgaG93IGNvbXBhbmllcyB3b3JrLiBMZWFybiBtb3JlIGF0IHN5bXBob255YWkuY29tLlxuXG5MZWFybiBtb3JlIGFib3V0IHVzOiBodHRwczovL3d3dy5zeW1waG9ueWFpLmNvbS9hYm91dC8iLCJsb2dvVXJsIjoiaHR0cHM6Ly9tZWRpYS5saWNkbi5jb20vZG1zL2ltYWdlL3YyL0Q1NjBCQVFIUkRmWl9lUThlVGcvY29tcGFueS1sb2dvXzIwMF8yMDAvY29tcGFueS1sb2dvXzIwMF8yMDAvMC8xNjg4OTk5ODYyMDE0L3N5bXBob255YWlfbG9nbz9lPTIxNDc0ODM2NDcmdj1iZXRhJnQ9Mjl5Nm95TFVGRHlMY1YyZFRhdTVEMmtUX2pkb3FUcTBaaXRBRjNnbnlZYyJ9fSwiZXZhbHVhdGlvbnMiOlt7ImNyaXRlcmlvbiI6IkNvbXBhbnkgcHJvdmlkZXMgZW50ZXJwcmlzZS1mb2N1c2VkIFNhYVMgKFNvZnR3YXJlIGFzIGEgU2VydmljZSkgcHJvZHVjdHMgb3IgcGxhdGZvcm1zIiwicmVhc29uaW5nIjoiU3ltcGhvbnlBSeKAmXMgaW50ZXJuYWwgcHJvZmlsZSBzdGF0ZXMgaXQgZGVsaXZlcnMg4oCcVmVydGljYWwgQUnigJRpbmR1c3RyeeKAkXRyYWluZWQsIGF1ZGl04oCRcmVhZHkgU2FhU+KAnSBhbmQgb2ZmZXJzIEFJ4oCRYmFzZWQgcHJlZGljdGl2ZSBhbmQgZ2VuZXJhdGl2ZSBzb2x1dGlvbnMgZm9yIGdsb2JhbCBicmFuZHMsIGluZGljYXRpbmcgYW4gZW50ZXJwcmlzZeKAkWZvY3VzZWQgU2FhUyBwcm9kdWN0IHBvcnRmb2xpby4gVGhlIGNhdGVnb3JpZXMgbGlzdCBpbmNsdWRlcyBlbnRlcnByaXNl4oCRZ3JhZGUgc29mdHdhcmUgc3VjaCBhcyByZXRhaWwgYW5hbHl0aWNzLCBzdXBwbHnigJFjaGFpbiBwbGFubmluZywgYW5kIG1hc3RlciBkYXRhIG1hbmFnZW1lbnQsIGZ1cnRoZXIgc3VwcG9ydGluZyB0aGUgU2FhUyBmb2N1cy4gTm8gY29udHJhZGljdG9yeSBldmlkZW5jZSBpcyBwcmVzZW50LiIsInNhdGlzZmllZCI6InllcyIsInJlZmVyZW5jZXMiOlt7InRpdGxlIjoiU3ltcGhvbnlBSSIsInNuaXBwZXQiOiJTeW1waG9ueUFJIGlzIGEgU29mdHdhcmUgRGV2ZWxvcG1lbnQgY29tcGFueSAocHJpdmF0ZSkgd2l0aCAxLDIzNSBlbXBsb3llZXMgKCs0My42JSBZb1kgZ3Jvd3RoKSwgJDQ2Mi41TSBhbm51YWwgcmV2ZW51ZSwgZm91bmRlZCBpbiAyMDE3LCBoZWFkcXVhcnRlcmVkIGluIFBhbG8gQWx0bywgQ2FsaWZvcm5pYSwgVW5pdGVkIFN0YXRlcy4gTGFzdCByb3VuZCB3YXMgYSBTZWVkIFJvdW5kIGluIDIwMTktMDEtMDEuIFN5bXBob255QUkgZGVsaXZlcnMgQUktYmFzZWQgcHJlZGljdGl2ZSBhbmQgZ2VuZXJhdGl2ZSBzb2x1dGlvbnMgdGhhdCBzb2x2ZSBjaGFsbGVuZ2VzIGFuZCBkcml2ZSByZXN1bHRzIGZvciBnbG9iYWwgYnJhbmRzIGFjcm9zcyBpbmR1c3RyaWVzLiBTeW1waG9ueS4uLiIsInVybCI6Imh0dHBzOi8vc3ltcGhvbnlhaS5jb20ifV19LHsiY3JpdGVyaW9uIjoiQ29tcGFueSdzIHByb2R1Y3RzIG9yIHBsYXRmb3JtcyBpbmNsdWRlIEFJIChBcnRpZmljaWFsIEludGVsbGlnZW5jZSkgZmVhdHVyZXMgb3IgY2FwYWJpbGl0aWVzIiwicmVhc29uaW5nIjoiU3ltcGhvbnlBSeKAmXMgaW50ZXJuYWwgcHJvZmlsZSBzdGF0ZXMgdGhhdCBpdCBkZWxpdmVycyBcIkFJ4oCRYmFzZWQgcHJlZGljdGl2ZSBhbmQgZ2VuZXJhdGl2ZSBzb2x1dGlvbnNcIiBhbmQgbGlzdHMgXCJhaeKAkWJhc2VkIHNvbHV0aW9uc1wiIGFtb25nIGl0cyBjYXRlZ29yaWVzLCBpbmRpY2F0aW5nIHRoYXQgaXRzIHByb2R1Y3RzIG9yIHBsYXRmb3JtcyBpbmNsdWRlIEFJIGZlYXR1cmVzIG9yIGNhcGFiaWxpdGllcy4iLCJzYXRpc2ZpZWQiOiJ5ZXMiLCJyZWZlcmVuY2VzIjpbeyJ0aXRsZSI6IlN5bXBob255QUkiLCJzbmlwcGV0IjoiU3ltcGhvbnlBSSBpcyBhIFNvZnR3YXJlIERldmVsb3BtZW50IGNvbXBhbnkgKHByaXZhdGUpIHdpdGggMSwyMzUgZW1wbG95ZWVzICgrNDMuNiUgWW9ZIGdyb3d0aCksICQ0NjIuNU0gYW5udWFsIHJldmVudWUsIGZvdW5kZWQgaW4gMjAxNywgaGVhZHF1YXJ0ZXJlZCBpbiBQYWxvIEFsdG8sIENhbGlmb3JuaWEsIFVuaXRlZCBTdGF0ZXMuIExhc3Qgcm91bmQgd2FzIGEgU2VlZCBSb3VuZCBpbiAyMDE5LTAxLTAxLiBTeW1waG9ueUFJIGRlbGl2ZXJzIEFJLWJhc2VkIHByZWRpY3RpdmUgYW5kIGdlbmVyYXRpdmUgc29sdXRpb25zIHRoYXQgc29sdmUgY2hhbGxlbmdlcyBhbmQgZHJpdmUgcmVzdWx0cyBmb3IgZ2xvYmFsIGJyYW5kcyBhY3Jvc3MgaW5kdXN0cmllcy4gU3ltcGhvbnkuLi4iLCJ1cmwiOiJodHRwczovL3N5bXBob255YWkuY29tIn1dfV0sImVucmljaG1lbnRzIjpbXSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNTo1Mi41MzVaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNTo1Mi41MzVaIn0seyJpZCI6IndpdGVtXzAxa2FxMTJjc3AxeWs4OXFzMTF5azg5cXMxIiwib2JqZWN0Ijoid2Vic2V0X2l0ZW0iLCJzb3VyY2UiOiJzZWFyY2giLCJzb3VyY2VJZCI6IndzZWFyY2hfMDFrYXExMjVwczY1Y2U3NWNtenE0czhla20iLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcTEyNTZtanp2M3ludzI0Z2VqMTZxeCIsInByb3BlcnRpZXMiOnsidHlwZSI6ImNvbXBhbnkiLCJ1cmwiOiJodHRwczovL2RhdGFpa3UuY29tIiwiZGVzY3JpcHRpb24iOiJEYXRhaWt1IGlzIGEgcHJpdmF0ZSBlbnRlcnByaXNlIHNvZnR3YXJlIGNvbXBhbnkgcHJvdmlkaW5nIEFJIGFuZCBkYXRhIGFuYWx5dGljcyBwbGF0Zm9ybXM7IGl0IG9mZmVycyBhIGZ1bGx5LW1hbmFnZWQgU2FhUyBwbGF0Zm9ybSwgRGF0YWlrdSBDbG91ZCwgYWltZWQgYXQgZW50ZXJwcmlzZSBjdXN0b21lcnMsIHdpdGggQUkgZmVhdHVyZXMsIGdlbmVyYXRpdmUgQUksIGFuZCBBSSBvcmNoZXN0cmF0aW9uIGNhcGFiaWxpdGllcy4gVGhlIGNvbXBhbnkgaGFzIDEsMTY4IGVtcGxveWVlcyAoKzEwLjUlIFlvWSksICQxNTBNIGFubnVhbCByZXZlbnVlLCBhbmQgJDg0Ni44TSBpbiB0b3RhbCBmdW5kaW5nLCByYW5raW5nICMxMDgsOTUwIGdsb2JhbGx5LiIsImNvbnRlbnQiOiItIFByb2R1Y3RcbiAgLSBbRGlzY292ZXIgRGF0YWlrdVxcXG4gICAgICAgIFxcXG4gICAgICAgIFdoZXJlIGV2ZXJ5b25lIGNhbiBjcmVhdGUgYW5kIGNvbnN1bWUgQUldKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3QvKVxuXG4gIC0gW0RhdGFpa3UgS2V5IENhcGFiaWxpdGllc10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9rZXktY2FwYWJpbGl0aWVzLylcbiAgLSBbUGx1Z2lucyBhbmQgQ29ubmVjdG9yc10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9wbHVnaW5zLylcbiAgLSBbUGxhbnMgYW5kIEVkaXRpb25zXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0L3BsYW5zLWFuZC1mZWF0dXJlcy8pXG4gIC0gQnVpbGQgV2l0aCBEYXRhaWt1XG5cbiAgLSBbR2VuQUkgJiBBZ2VudHNdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9nZW5haS1hbmQtYWdlbnRzLylcbiAgLSBbTWFjaGluZSBMZWFybmluZ10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9rZXktY2FwYWJpbGl0aWVzL21hY2hpbmUtbGVhcm5pbmcvKVxuICAtIFtBbmFseXRpY3MgJiBJbnNpZ2h0c10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9rZXktY2FwYWJpbGl0aWVzL2FuYWx5dGljcy1hbmQtaW5zaWdodHMvKVxuICAtIFtEYXRhIFByZXAgZm9yIEFJXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0L2tleS1jYXBhYmlsaXRpZXMvZGF0YS1wcmVwLWZvci1haS8pXG4gIC0gRGVwbG95ICYgTW9uaXRvciBXaXRoIERhdGFpa3VcblxuICAtIFtBSSBHb3Zlcm5hbmNlXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0L2tleS1jYXBhYmlsaXRpZXMvYWktZ292ZXJuYW5jZS8pXG4gIC0gW0FJIEVuZ2luZWVyaW5nIE9wZXJhdGlvbnNdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9haS1lbmdpbmVlcmluZy1vcGVyYXRpb25zLylcbiAgLSBbQUkgRWNvc3lzdGVtXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0L2tleS1jYXBhYmlsaXRpZXMvYWktZWNvc3lzdGVtLylcbiAgLSBbR2V0IEFuIEVuZC10by1FbmQgRGVtbyBvZiBEYXRhaWt1IGluIDMgTWludXRlc1xcXG4gICAgICAgIFxcXG4gICAgICAgIEFDQ0VTUyBERU1PIE5PV10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9kYXRhaWt1LWRlbW8vKVxuLSBTb2x1dGlvbnNcbiAgLSBEYXRhaWt1IEZvciBZb3VyIEluZHVzdHJ5XG5cbiAgLSBbQmFua2luZ10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vc29sdXRpb25zL2JhbmtpbmcvKVxuICAtIFtMaWZlIFNjaWVuY2VzXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvbGlmZS1zY2llbmNlcy8pXG4gIC0gW01hbnVmYWN0dXJpbmddKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3NvbHV0aW9ucy9tYW51ZmFjdHVyaW5nLylcbiAgLSBbVGVsZWNvbW11bmljYXRpb25zXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvdGVsZWNvbW11bmljYXRpb25zLylcbiAgLSBbSW5zdXJhbmNlXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvaW5zdXJhbmNlLylcbiAgLSBbUmV0YWlsICYgQ1BHXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvcmV0YWlsLWNwZy8pXG4gIC0gW1B1YmxpYyBTZWN0b3JdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3NvbHV0aW9ucy9wdWJsaWMtc2VjdG9yLylcbiAgLSBbVXRpbGl0aWVzICYgRW5lcmd5XShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvdXRpbGl0aWVzLWVuZXJneS8pXG4gIC0gW0hlYWx0aGNhcmVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3NvbHV0aW9ucy9oZWFsdGhjYXJlLylcbiAgLSBEYXRhaWt1IEZvciBZb3VyIERlcGFydG1lbnRcblxuICAtIFtNYXJrZXRpbmddKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3NvbHV0aW9ucy9tYXJrZXRpbmcvKVxuICAtIFtMb2dpc3RpY3MgJiBTdXBwbHkgQ2hhaW5dKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3NvbHV0aW9ucy9zdXBwbHktY2hhaW4tbG9naXN0aWNzLylcbiAgLSBbRmluYW5jZSAmIEF1ZGl0XShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvZmluYW5jZS1hdWRpdC8pXG4gIC0gRGF0YWlrdSBPZmZlcnMgZm9yIEV2ZXJ5IFRlYW1cblxuICAtIFtEYXRhaWt1IGZvciBEYXRhIEFuYWx5dGljc10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9kYXRhaWt1LWZvci1hbmFseXRpY3MvKVxuICAtIFtEYXRhaWt1IGZvciBBSSAmIE1hY2hpbmUgTGVhcm5pbmddKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3QvZGF0YWlrdS1mb3ItYWktbWwvKVxuICAtIFtEYXRhaWt1IGZvciBFbnRlcnByaXNlIEFJXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0LylcbiAgLSBbRGF0YWlrdSBTb2x1dGlvbnMgQ2F0YWxvZ10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vc29sdXRpb25zL2NhdGFsb2cvKVxuICAtIFtFYXNpbHkgdGFpbG9yIG1hcmtldGluZyBzdHJhdGVnaWVzIGZvciBtYXhpbXVtIFJPSSB3aXRoIHRoaXMgcGx1Zy1hbmQtcGxheSB0ZW1wbGF0ZS5cXFxuICAgICAgICBcXFxuICAgICAgICBDSEVDSyBPVVQgVEhFIERBVEFJS1UgU09MVVRJT05dKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3NvbHV0aW9ucy9jYXRhbG9nL25leHQtYmVzdC1vZmZlci1mb3ItYmFua2luZy8pXG4tIFN0b3JpZXNcbiAgLSBbRGF0YWlrdSBDdXN0b21lciBTdG9yaWVzXFxcbiAgICAgICAgXFxcbiAgICAgICAgU2VlIEV2ZXJ5ZGF5IEFJIGluIEFjdGlvbl0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vc3Rvcmllcy8pXG4gIC0gV2F0Y2ggYSBXZWIgU2VyaWVzXG5cbiAgLSBbVGhlIERhdGFpa3UgQ29uZmVyZW5jZSBMaXZlXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zdG9yaWVzL2RhdGFpa3UtY29uZmVyZW5jZS1saXZlLylcbiAgLSBbR2VuZXJhdGl2ZSBBSSBCb290Y2FtcCBMaXZlXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zdG9yaWVzL2dlbmVyYXRpdmUtYWktYm9vdGNhbXAtYS13ZWItc2VyaWVzLWJ5LWRhdGFpa3UvKVxuICAtIFtBSSBhbmQgVXNdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3N0b3JpZXMvYWktYW5kLXVzLylcbiAgLSBbQ2VudGVyIG9mIEV4Y2VsbGVuY2VdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3N0b3JpZXMvY2VudGVyLW9mLWV4Y2VsbGVuY2Utd2ViLXNlcmllcy8pXG4gIC0gW0FJIEdvdmVybmFuY2UgTGl2ZV0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vc3Rvcmllcy9haS1nb3Zlcm5hbmNlLylcbiAgLSBbUHJvbG9naXMgUHJvZHVjdGlvbmFsaXplZCAxMnggTW9yZSBBSSAmIE1MIFByb2plY3RzXFxcbiAgICAgICAgXFxcbiAgICAgICAgU0VFIEhPVyBUSEVZIERJRCBJVCBXSVRIIERBVEFJS1VdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3N0b3JpZXMvZGV0YWlsL3Byb2xvZ2lzLylcbi0gQ29tcGFueVxuICAtIFtKb2luIERhdGFpa3VcXFxuICAgICAgICBcXFxuICAgICAgICBXZSdyZSBoaXJpbmcsIGpvaW4gdGhlIGFkdmVudHVyZV0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vY2FyZWVycy8pXG5cbiAgLSBbRW5naW5lZXJpbmcgYXQgRGF0YWlrdV0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vY29tcGFueS9lbmdpbmVlcmluZy8pXG4gIC0gW0Fib3V0IERhdGFpa3VdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL2NvbXBhbnkvKVxuICAtIFtDdXN0b21lcnNdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL2NvbXBhbnkvY3VzdG9tZXJzLylcbiAgLSBbQW5hbHlzdCBSZWNvZ25pdGlvbl0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vc3Rvcmllcy9kZXRhaWwvaW5kdXN0cnktYW5hbHlzdC1yZWNvZ25pdGlvbi8pXG4gIC0gW0RhdGFpa3UgZm9yIHRoZSBGdXR1cmVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL2NvbXBhbnkvZGF0YWlrdS1mb3ItdGhlLWZ1dHVyZS8pXG4gIC0gW1ByZXNzIFJlbGVhc2VzXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9jb21wYW55L2FsbC1wcmVzcy1yZWxlYXNlcy8pXG4gIC0gW01lZGlhIEtpdF0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vY29tcGFueS9tZWRpYS1raXQvKVxuICAtIE1lZXQgRGF0YWlrdSBhdCBhbiBFdmVudFxuXG4gIC0gW0xpdmUgRGF0YWlrdSBEZW1vc10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vY29tcGFueS9ldmVudHMvam9pbi1hLWxpdmUtZGVtby1vZi1kYXRhaWt1LylcbiAgLSBbRGF0YWlrdSBTdW1taXRdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL2NvbXBhbnkvZXZlbnRzL3RoZS1kYXRhaWt1LXN1bW1pdC1ldmVudHMvKVxuICAtIFtFdmVudHMgQ2FsZW5kYXJdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL2NvbXBhbnkvZXZlbnRzLylcbiAgLSBbVGhlIDIwMjUgR2FydG5lciBNYWdpYyBRdWFkcmFudCBmb3IgRGF0YSBTY2llbmNlIGFuZCBNTCBQbGF0Zm9ybXNcXFxuICAgICAgICBcXFxuICAgICAgICBHRVQgQSBDT01QTElNRU5UQVJZIENPUFldKGh0dHBzOi8vcGFnZXMuZGF0YWlrdS5jb20vMjAyNS1nYXJ0bmVyLW1xLWRzbWwpXG4tIFBhcnRuZXJzXG4gIC0gW0ZpbmQgYSBEYXRhaWt1IFBhcnRuZXJcXFxuICAgICAgICBcXFxuICAgICAgICBXb3JrIHdpdGggb3VyIGV4cGVydCBQYXJ0bmVyc10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcGFydG5lcnMvKVxuXG4gIC0gW1NlcnZpY2UgUGFydG5lcnNdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3BhcnRuZXJzLz9maWx0ZXIlNUJwYXJ0bmVycy10eXBlJTVEPXNlcnZpY2UtcGFydG5lcnMsYW5hbHl0aWNzLWNvbnN1bHRhbnRzLHZhbHVlLWFkZGVkLXJlc2VsbGVycylcbiAgLSBbVGVjaG5vbG9neSBBbGxpYW5jZXNdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3BhcnRuZXJzLz9maWx0ZXIlNUJwYXJ0bmVycy10eXBlJTVEPXRlY2hub2xvZ3ktYWxsaWFuY2UpXG4gIC0gW1BhcnRuZXIgV2l0aCBEYXRhaWt1XShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wYXJ0bmVyLXdpdGgtZGF0YWlrdS8pXG4gIC0gRmVhdHVyZWQgUGFydG5lcnNcblxuICAtIFtBV1NdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3BhcnRuZXJzL2F3cy8pXG4gIC0gW0RhdGFicmlja3NdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3BhcnRuZXJzL2RhdGFicmlja3MvKVxuICAtIFtEZWxvaXR0ZV0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcGFydG5lcnMvZGVsb2l0dGUvKVxuICAtIFtTbm93Zmxha2VdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3BhcnRuZXJzL3Nub3dmbGFrZS8pXG4gIC0gW0RhdGFpa3UgKyBEZWxvaXR0ZSBCb29zdCBSb2xscy1Sb3ljZeKAmXMgRWZmaWNpZW5jeVxcXG4gICAgICAgIFxcXG4gICAgICAgIERJU0NPVkVSIFRIRSBGVUxMIFNUT1JZXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zdG9yaWVzL2RldGFpbC9yb2xscy1yb3ljZS8pXG4tIFtCbG9nXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zdG9yaWVzL2Jsb2cvKVxuLSBbU1RBUlQgRlJFRSBUUklBTF0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9nZXQtc3RhcnRlZC8pXG4tIFtDT05UQUNUIFVTXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9ob21lL2NvbnRhY3QtdXMvKVxuLSBbQ29udGFjdCBVc10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vaG9tZS9jb250YWN0LXVzLykgW1NUQVJUIEZSRUUgVFJJQUxdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3QvZ2V0LXN0YXJ0ZWQvKVxuXG5cbiMgVGhlIFVuaXZlcnNhbCBBSSBQbGF0Zm9ybeKEolxuXG5Vbml0ZSBodW1hbiBleHBlcnRpc2UgYW5kIEFJIHJlYXNvbmluZyB0byBwb3dlciB0cnVzdGVkIGludGVsbGlnZW5jZSBhdCBzY2FsZS5cblxuW1N0YXJ0IHlvdXIgZnJlZSB0cmlhbF0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9nZXQtc3RhcnRlZC8pIFtTZWUgaXQgaW4gYWN0aW9uXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS93d3cuZGF0YWlrdS5jb20jLylcblxuVHJ1c3RlZCBieSBbQ3VzdG9tZXJzXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS93d3cuZGF0YWlrdS5jb20jLyksIFtQYXJ0bmVyc10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vd3d3LmRhdGFpa3UuY29tIy8pICYgdGhlIFtBSSBFY29zeXN0ZW1dKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3d3dy5kYXRhaWt1LmNvbSMvKVxuXG5bRGF0YWlrdSBJcyBhIExlYWRlciBmb3IgdGhlIEZvdXJ0aCBUaW1lXFxcbkdldCB0aGUgR2FydG5lciBSZXBvcnRdKGh0dHBzOi8vcGFnZXMuZGF0YWlrdS5jb20vMjAyNS1nYXJ0bmVyLW1xLWRzbWwpXG5cbltUcmFuc2Zvcm1pbmcgUm9sbHMtUm95Y2UgT3BlcmF0aW9uc1xcXG5TRUUgSE9XOiBEQVRBSUtVICsgREVMT0lUVEVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3N0b3JpZXMvZGV0YWlsL3JvbGxzLXJveWNlLylcblxuW0J1aWxkaW5nIEFnZW50aWMgQXBwbGljYXRpb25zIGF0IFNjYWxlXFxcblJFQUQgVEhFIE/igJlSRUlMTFkgVEVDSCBHVUlERV0oaHR0cHM6Ly9wYWdlcy5kYXRhaWt1LmNvbS9vcmVpbGx5LXRlY2gtZ3VpZGUtbGxtLW1lc2gpXG5cbiMjIyBCdWlsZCBBbmFseXRpY3MsIE1vZGVscywgJiBBZ2VudHMgaW4gT25lIFBsYWNlXG5cbkdlbkFJICYgQWdlbnRzXG5cbiMjIyMgR2VuQUkgJiBBZ2VudHNcblxuTW92ZSBiZXlvbmQgUE9Dcy4gQnVpbGQgZW50ZXJwcmlzZS1ncmFkZSBBSSBhZ2VudHMgYW5kIEdlbkFJIHVzZSBjYXNlcyBhdCBzY2FsZS4gRGF0YWlrdSBwcm92aWRlcyBldmVyeXRoaW5nLCBmcm9tIGEgc2VjdXJlIExMTSBnYXRld2F5IHRvIGRldmVsb3BtZW50LCBldmFsdWF0aW9uLCBhbmQgZ292ZXJuYW5jZSB0b29scy5cblxuW0VYUExPUkVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9nZW5haS1hbmQtYWdlbnRzLylcblxuTWFjaGluZSBMZWFybmluZ1xuXG4jIyMjIE1hY2hpbmUgTGVhcm5pbmdcblxuRnJvbSBhIGd1aWRlZCBhcHByb2FjaCB3aXRoIEF1dG9NTCB0byBjdXR0aW5nLWVkZ2UgdGVjaG5pcXVlcyBhbmQgZnVsbCBjb2RlLCB1c2UgRGF0YWlrdSB0byBidWlsZCBhbmQgZXZhbHVhdGUgbWFjaGluZSBsZWFybmluZyAoTUwpIG1vZGVscyBmYXN0ZXIg4oCUIGFsbCB3aXRoIHRoZSBoaWdoZXN0IHN0YW5kYXJkcyBvZiBleHBsYWluYWJpbGl0eS5cblxuW0VYUExPUkVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9tYWNoaW5lLWxlYXJuaW5nLylcblxuQW5hbHl0aWNzICYgSW5zaWdodHNcblxuIyMjIyBBbmFseXRpY3MgJiBJbnNpZ2h0c1xuXG5VcGdyYWRlIHlvdXIgQkkgYW5kIHNlbGYtc2VydmljZSBhbmFseXRpY3MgZWZmb3J0cyB3aXRoIERhdGFpa3UuIEV2ZXJ5b25lIG1ha2VzIGJldHRlciwgZmFzdGVyIGV2ZXJ5ZGF5IGRlY2lzaW9ucyBidWlsdCBvbiB0cnVzdGVkIGRhdGEgdmlhIHZpc3VhbGl6YXRpb24sIGRhc2hib2FyZHMsIEdlbkFJLXBvd2VyZWQgc3Rvcnl0ZWxsaW5nLCBhbmQgbW9yZS5cblxuW0VYUExPUkVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9hbmFseXRpY3MtYW5kLWluc2lnaHRzLylcblxuRGF0YSBQcmVwIGZvciBBSVxuXG4jIyMjIERhdGEgUHJlcCBmb3IgQUlcblxuQ29ubmVjdCwgY2xlYW5zZSwgYW5kIHByZXBhcmUgZGF0YSAxMHggZmFzdGVyIHdpdGggRGF0YWlrdS4gRnJvbSBkYXRhIHByZXBhcmF0aW9uLCBlZmZvcnRsZXNzbHkgdHJhbnNpdGlvbiB0byBhbnl0aGluZyBmcm9tIGJhc2ljIGFuYWx5c2lzLCB0byBtb2RlbGluZywgYW5kIGV2ZW4gZGVwbG95bWVudCDigJQgYWxsIHdpdGhpbiBhIHNpbmdsZSBlbnZpcm9ubWVudC5cblxuW0VYUExPUkVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9kYXRhLXByZXAtZm9yLWFpLylcblxuIyMjIyBHZW5BSSAmIEFnZW50c1xuXG5Nb3ZlIGJleW9uZCBQT0NzLiBCdWlsZCBlbnRlcnByaXNlLWdyYWRlIEFJIGFnZW50cyBhbmQgR2VuQUkgdXNlIGNhc2VzIGF0IHNjYWxlLiBEYXRhaWt1IHByb3ZpZGVzIGV2ZXJ5dGhpbmcsIGZyb20gYSBzZWN1cmUgTExNIGdhdGV3YXkgdG8gZGV2ZWxvcG1lbnQsIGV2YWx1YXRpb24sIGFuZCBnb3Zlcm5hbmNlIHRvb2xzLlxuXG5bRVhQTE9SRV0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9rZXktY2FwYWJpbGl0aWVzL2dlbmFpLWFuZC1hZ2VudHMvKVxuXG4jIyMjIE1hY2hpbmUgTGVhcm5pbmdcblxuRnJvbSBhIGd1aWRlZCBhcHByb2FjaCB3aXRoIEF1dG9NTCB0byBjdXR0aW5nLWVkZ2UgdGVjaG5pcXVlcyBhbmQgZnVsbCBjb2RlLCB1c2UgRGF0YWlrdSB0byBidWlsZCBhbmQgZXZhbHVhdGUgbWFjaGluZSBsZWFybmluZyAoTUwpIG1vZGVscyBmYXN0ZXIg4oCUIGFsbCB3aXRoIHRoZSBoaWdoZXN0IHN0YW5kYXJkcyBvZiBleHBsYWluYWJpbGl0eS5cblxuW0VYUExPUkVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9tYWNoaW5lLWxlYXJuaW5nLylcblxuIyMjIyBBbmFseXRpY3MgJiBJbnNpZ2h0c1xuXG5VcGdyYWRlIHlvdXIgQkkgYW5kIHNlbGYtc2VydmljZSBhbmFseXRpY3MgZWZmb3J0cyB3aXRoIERhdGFpa3UuIEV2ZXJ5b25lIG1ha2VzIGJldHRlciwgZmFzdGVyIGV2ZXJ5ZGF5IGRlY2lzaW9ucyBidWlsdCBvbiB0cnVzdGVkIGRhdGEgdmlhIHZpc3VhbGl6YXRpb24sIGRhc2hib2FyZHMsIEdlbkFJLXBvd2VyZWQgc3Rvcnl0ZWxsaW5nLCBhbmQgbW9yZS5cblxuW0VYUExPUkVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9hbmFseXRpY3MtYW5kLWluc2lnaHRzLylcblxuIyMjIyBEYXRhIFByZXAgZm9yIEFJXG5cbkNvbm5lY3QsIGNsZWFuc2UsIGFuZCBwcmVwYXJlIGRhdGEgMTB4IGZhc3RlciB3aXRoIERhdGFpa3UuIEZyb20gZGF0YSBwcmVwYXJhdGlvbiwgZWZmb3J0bGVzc2x5IHRyYW5zaXRpb24gdG8gYW55dGhpbmcgZnJvbSBiYXNpYyBhbmFseXNpcywgdG8gbW9kZWxpbmcsIGFuZCBldmVuIGRlcGxveW1lbnQg4oCUIGFsbCB3aXRoaW4gYSBzaW5nbGUgZW52aXJvbm1lbnQuXG5cbltFWFBMT1JFXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0L2tleS1jYXBhYmlsaXRpZXMvZGF0YS1wcmVwLWZvci1haS8pXG5cbiMjIyMgUmVhZHktdG8tVXNlIEluZHVzdHJ5IFVzZSBDYXNlcyBUaGF0IERyaXZlIEJ1c2luZXNzIFJlc3VsdHNcblxuW01hbnVmYWN0dXJpbmdcXFxuXFxcbk1hbnVmYWN0dXJlcnMgdXNlIERhdGFpa3UgdG8gcmVkdWNlIGRvd250aW1lLCBpbXByb3ZlIHF1YWxpdHksIGFuZCBzY2FsZSBpbnNpZ2h0cy5dKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3NvbHV0aW9ucy9tYW51ZmFjdHVyaW5nLykgW0JhbmtpbmcgJiBGU0lcXFxuXFxcblRvcCBmaW5hbmNpYWwgaW5zdGl0dXRpb25zIHJlbHkgb24gRGF0YWlrdSB0byBtYW5hZ2UgcmlzayBmb3Igc21hcnRlciBkZWNpc2lvbnMuXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvYmFua2luZy8pIFtMaWZlIFNjaWVuY2VzXFxcblxcXG5QaGFybWEgdGVhbXMgdXNlIERhdGFpa3UgdG8gc3BlZWQgdXAgUiZELCBlbnN1cmUgY29tcGxpYW5jZSwgYW5kIHNjYWxlIGlubm92YXRpb24uXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvbGlmZS1zY2llbmNlcy8pIFtSZXRhaWwgJiBDUEdcXFxuXFxcblJldGFpbGVycyBhbmQgQ1BHIGxlYWRlcnMgdHJ1c3QgRGF0YWlrdSB0byBmb3JlY2FzdCBkZW1hbmQgYW5kIGtub3cgdGhlaXIgY3VzdG9tZXJzLl0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vc29sdXRpb25zL3JldGFpbC1jcGcvKVxuXG4jIyMgTWFuYWdlIEFJIGF0IFNjYWxlIFdpdGggQ29uZmlkZW5jZVxuXG5BSSBHb3Zlcm5hbmNlXG5cbiMjIyMgQUkgR292ZXJuYW5jZVxuXG5FbmZvcmNlIEFJIGdvdmVybmFuY2Ugc3RhbmRhcmRzIGFjcm9zcyBhbGwgZGF0YSB3b3JrLCBhbGwgaW4gb25lIHBsYWNlLiBGcm9tIGFuYWx5dGljcyB0byBtb2RlbHMgYW5kIGFnZW50cywgbWFpbnRhaW4gdmlzaWJpbGl0eSBhbmQgcmVkdWNlIHJpc2sgYXMgeW91ciBBSSBwb3J0Zm9saW8gc2NhbGVzIHdpdGggRGF0YWlrdS5cblxuW0VYUExPUkVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9haS1nb3Zlcm5hbmNlLylcblxuQUkgRW5naW5lZXJpbmcgT3BzXG5cbiMjIyMgQUkgRW5naW5lZXJpbmcgT3BzXG5cbldoZXRoZXIgeW914oCZcmUgYXV0b21hdGluZyBkYXRhIHBpcGVsaW5lcyB0byBlbnN1cmUgY2xlYW4sIHJlbGlhYmxlLCBhbmQgdGltZWx5IGRhdGEgb3IgZGVwbG95aW5nIGFuZCBtYW5hZ2luZyBtb2RlbHMgb3IgYWdlbnRzIGluIHByb2R1Y3Rpb24sIERhdGFpa3UgYnJpbmdzIGFsbCB5b3VyIHByb2plY3Qgb3BlcmF0aW9ucyB0b2dldGhlciBzZWFtbGVzc2x5LlxuXG5bRVhQTE9SRV0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9rZXktY2FwYWJpbGl0aWVzL2FpLWVuZ2luZWVyaW5nLW9wZXJhdGlvbnMvKVxuXG5BSSBFY29zeXN0ZW1cblxuIyMjIyBBSSBFY29zeXN0ZW1cblxuV2l0aCBEYXRhaWt1LCB5b3UgaGF2ZSBvcHRpb25zLiBXaGV0aGVyIHlvdSdyZSBsZXZlcmFnaW5nIGV4aXN0aW5nIGluZnJhc3RydWN0dXJlIG9yIGFkb3B0aW5nIG5ldyB0b29scywgc2VhbWxlc3NseSBpbnRlZ3JhdGUgd2l0aCB5b3VyIGVjb3N5c3RlbSB3aGlsZSBtYWludGFpbmluZyB0aGUgZmxleGliaWxpdHkgdG8gZXZvbHZlIHlvdXIgc3RhY2suXG5cbltFWFBMT1JFXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0L2tleS1jYXBhYmlsaXRpZXMvYWktZWNvc3lzdGVtLylcblxuIyMjIyBBSSBHb3Zlcm5hbmNlXG5cbkVuZm9yY2UgQUkgZ292ZXJuYW5jZSBzdGFuZGFyZHMgYWNyb3NzIGFsbCBkYXRhIHdvcmssIGFsbCBpbiBvbmUgcGxhY2UuIEZyb20gYW5hbHl0aWNzIHRvIG1vZGVscyBhbmQgYWdlbnRzLCBtYWludGFpbiB2aXNpYmlsaXR5IGFuZCByZWR1Y2UgcmlzayBhcyB5b3VyIEFJIHBvcnRmb2xpbyBzY2FsZXMgd2l0aCBEYXRhaWt1LlxuXG5bRVhQTE9SRV0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9rZXktY2FwYWJpbGl0aWVzL2FpLWdvdmVybmFuY2UvKVxuXG4jIyMjIEFJIEVuZ2luZWVyaW5nIE9wc1xuXG5XaGV0aGVyIHlvdeKAmXJlIGF1dG9tYXRpbmcgZGF0YSBwaXBlbGluZXMgdG8gZW5zdXJlIGNsZWFuLCByZWxpYWJsZSwgYW5kIHRpbWVseSBkYXRhIG9yIGRlcGxveWluZyBhbmQgbWFuYWdpbmcgbW9kZWxzIG9yIGFnZW50cyBpbiBwcm9kdWN0aW9uLCBEYXRhaWt1IGJyaW5ncyBhbGwgeW91ciBwcm9qZWN0IG9wZXJhdGlvbnMgdG9nZXRoZXIgc2VhbWxlc3NseS5cblxuW0VYUExPUkVdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9haS1lbmdpbmVlcmluZy1vcGVyYXRpb25zLylcblxuIyMjIyBBSSBFY29zeXN0ZW1cblxuV2l0aCBEYXRhaWt1LCB5b3UgaGF2ZSBvcHRpb25zLiBXaGV0aGVyIHlvdSdyZSBsZXZlcmFnaW5nIGV4aXN0aW5nIGluZnJhc3RydWN0dXJlIG9yIGFkb3B0aW5nIG5ldyB0b29scywgc2VhbWxlc3NseSBpbnRlZ3JhdGUgd2l0aCB5b3VyIGVjb3N5c3RlbSB3aGlsZSBtYWludGFpbmluZyB0aGUgZmxleGliaWxpdHkgdG8gZXZvbHZlIHlvdXIgc3RhY2suXG5cbltFWFBMT1JFXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0L2tleS1jYXBhYmlsaXRpZXMvYWktZWNvc3lzdGVtLylcblxuIyMgQSBMZWFkZXIgZm9yIHRoZSBGb3VydGggWWVhclxuXG5EYXRhaWt1IFdhcyBSZWNvZ25pemVkIGFzIGEgTGVhZGVyIGZvciB0aGUgRm91cnRoIFRpbWUgaW4gdGhlIDIwMjUgR2FydG5lcsKuIE1hZ2ljIFF1YWRyYW504oSiIGZvciBEYXRhIFNjaWVuY2UgJiBNYWNoaW5lIExlYXJuaW5nIFBsYXRmb3Jtc1xuXG5bUmVhZCB0aGUgUmVwb3J0XShodHRwczovL3BhZ2VzLmRhdGFpa3UuY29tLzIwMjUtZ2FydG5lci1tcS1kc21sKVxuXG4jIyBUcnVzdGVkIGJ5IEdsb2JhbCBFbnRlcnByaXNlc1xuXG5bUkVBRCBNT1JFIFNUT1JJRVNdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3N0b3JpZXMvKVxuXG4jIyMjIEZhc3RlciBHZW5BSSBJbnNpZ2h0cyBXaXRoIHRoZSBEYXRhaWt1IExMTSBNZXNoXG5cbk5vdmFydGlzIGRyb3ZlIGEgMTB4IGltcHJvdmVtZW50IGluIHRpbWUgdG8gaW5zaWdodHMgYnkgcmVkdWNpbmcgdGhlIGNvbXBsZXhpdHkgb2YgQUkgYXBwbGljYXRpb24gZGV2ZWxvcG1lbnQgd2l0aCB0aGUgRGF0YWlrdSBMTE0gTWVzaCwgdHJhbnNmb3JtaW5nIGhlYWx0aGNhcmUgbWFya2V0IHJlc2VhcmNoLlxuXG5bRVZFUllUSElORyBPTiBOT1ZBUlRJUyAmIEdFTkFJXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zdG9yaWVzL2RldGFpbC9ub3ZhcnRpcy8pXG5cbiMjIyMgQWNjZWxlcmF0aW5nIENhc2UgTGF3IEFuYWx5c2lzIFdpdGggR2VuQUlcblxuUm9jaGUgdXNlcyBHZW5BSSBhbmQgdGhlIERhdGFpa3UgTExNIE1lc2ggdG8gYXV0b21hdGUgbGVnYWwgcmVzZWFyY2gsIGFjY2VsZXJhdGUgY2FzZSBwcmVwYXJhdGlvbiwgYW5kIHJlZHVjZSBhdHRvcm5leSB3b3JrbG9hZHMuXG5cbltTRUUgUk9DSEUnUyBHRU5BSSBSRVNVTFRTXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zdG9yaWVzL2RldGFpbC9yb2NoZS1ib29zdGluZy1jYXNlLWxhdy1hbmFseXNpcy8pXG5cbiMjIyMgSWduaXRpbmcgR2VuQUkgSW5ub3ZhdGlvbiBmb3IgVmlzaW9uIENhcmVcblxuSm9obnNvbiAmIEpvaG5zb27igJlzIFZpc2lvbiB0ZWFtIHBhcnRuZXJlZCB3aXRoIERhdGFpa3UgZm9yIGEgR2VuQUkgaGFja2F0aG9uLCB3aGVyZSBub24tZGF0YSBzY2llbnRpc3RzIGZyb20gY29tbWVyY2lhbCB0ZWFtcywgc3VwcGx5IGNoYWluLCAmIG1vcmUgYnVpbHQgd29ya2luZyBwcm90b3R5cGVzLCBmYXN0LlxuXG5bUkVBRCBUSEUgSiZKIFZJU0lPTiBTVE9SWV0oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vc3Rvcmllcy9kZXRhaWwvam9obnNvbi1hbmQtam9obnNvbi12aXNpb24vKVxuXG4jIyMjIFBvd2VyaW5nIEN1c3RvbWVyLUZpcnN0IEluc3VyYW5jZSBXaXRoIEFuYWx5dGljcyAmIEFJXG5cbkF2aXZhIHN0YW5kYXJkaXplZCwgY2VudHJhbGl6ZWQsIGFuZCBtb2Rlcm5pemVkIGFuYWx5dGljcyB3aXRoIERhdGFpa3UsIGRyaXZpbmcgb3Zlcm5pZ2h0IGRlcGxveW1lbnRzLCBmYXN0ZXIgYXVkaXRzLCBhbmQgc2hhcnBlciBpbnNpZ2h0cyBmb3IgbWlsbGlvbnMgb2YgY3VzdG9tZXJzLlxuXG5bRElTQ09WRVIgQVZJVkHigJlTIFNUT1JZXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zdG9yaWVzL2RldGFpbC9hdml2YS8pXG5cbiMjIyMgQWNjZWxlcmF0aW5nIEZvb2QgU2FmZXR5IERlY2lzaW9ucyBXaXRoIEF1dG9tYXRlZCBVU0RBIFJlcG9ydGluZ1xuXG5QZXJkdWUgRmFybXMgc3RyZWFtbGluZWQgVVNEQSByZXBvcnRpbmcgd2l0aCBEYXRhaWt1LCBjdXR0aW5nIGFuYWx5c2lzIGZyb20gZGF5cyB0byBob3VycyBhbmQgZ2l2aW5nIHRlYW1zIGZhc3RlciwgbW9yZSBhY2N1cmF0ZSBpbnNpZ2h0cyB0byBzdHJlbmd0aGVuIGZvb2Qgc2FmZXR5IGFuZCBvcGVyYXRpb25zLlxuXG5bU0VFIEhPVyBQRVJEVUUgRkFSTVMgRElEIElUXShodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zdG9yaWVzL2RldGFpbC9wZXJkdWUtZmFybXMvKVxuXG5UaGUgcGxhdGZvcm0gaXMgaW50dWl0aXZlLCBjb2xsYWJvcmF0aXZlLCBhbmQgc3RyZWFtbGluZXMgd29ya2Zsb3dzIGZyb20gZGF0YSBwcmVwIHRvIG1vZGVsIGRlcGxveW1lbnQuIERhdGFpa3UgaGFzIHRydWx5IHRyYW5zZm9ybWVkIGhvdyB3ZSBoYW5kbGUgZGF0YSFcblxuRGF0YSBTY2llbnRpc3RcblxuW1JldGFpbF0oaHR0cHM6Ly93d3cuZ2FydG5lci5jb20vcmV2aWV3cy9tYXJrZXQvZGF0YS1zY2llbmNlLWFuZC1tYWNoaW5lLWxlYXJuaW5nLXBsYXRmb3Jtcy92ZW5kb3IvZGF0YWlrdS9wcm9kdWN0L2RhdGFpa3UvcmV2aWV3L3ZpZXcvNjAxMDYzNilcblxuQSBjb21wcmVoZW5zaXZlIHBsYXRmb3JtIHByb3ZpZGluZyBHZW5BSSBpbm5vdmF0aW9uLlxuXG5Qcm9ncmFtIE1hbmFnZXJcblxuW0hlYWx0aGNhcmUgYW5kIEJpb3RlY2hdKGh0dHBzOi8vd3d3LmdhcnRuZXIuY29tL3Jldmlld3MvbWFya2V0L2RhdGEtc2NpZW5jZS1hbmQtbWFjaGluZS1sZWFybmluZy1wbGF0Zm9ybXMvdmVuZG9yL2RhdGFpa3UvcHJvZHVjdC9kYXRhaWt1L3Jldmlldy92aWV3LzU5NDM0MzgpXG5cbkRhdGFpa3UgZW5hYmxlcyBidXNpbmVzcyBhbmQgSVQgdG8gYmUgb25lIHRlYW0uXG5cbkhlYWQgRGF0YSAmIEFuYWx5dGljcyBDRE9cblxuW0NvbnN1bWVyIEdvb2RzXShodHRwczovL3d3dy5nYXJ0bmVyLmNvbS9yZXZpZXdzL21hcmtldC9kYXRhLXNjaWVuY2UtYW5kLW1hY2hpbmUtbGVhcm5pbmctcGxhdGZvcm1zL3ZlbmRvci9kYXRhaWt1L3Byb2R1Y3QvZGF0YWlrdS9yZXZpZXcvdmlldy81OTM3MTAyKVxuXG5EYXRhaWt1J3MgaW50ZXJmYWNlIG1ha2VzIGl0IGVhc3kgZm9yIGJvdGggdGVjaG5pY2FsIGFuZCBub24tdGVjaG5pY2FsIHVzZXJzIHRvIGJ1aWxkIHBvd2VyZnVsIGRhdGEgbW9kZWxzLlxuXG5EYXRhIFN0ZXdhcmRcblxuW0hlYWx0aGNhcmUgYW5kIEJpb3RlY2hdKGh0dHBzOi8vd3d3LmdhcnRuZXIuY29tL3Jldmlld3MvbWFya2V0L2RhdGEtc2NpZW5jZS1hbmQtbWFjaGluZS1sZWFybmluZy1wbGF0Zm9ybXMvdmVuZG9yL2RhdGFpa3UvcHJvZHVjdC9kYXRhaWt1L3Jldmlldy92aWV3LzYwMzY3ODgpXG5cbiMjIFJlYWR5IHRvIFN0YXJ0IEJ1aWxkaW5nPyBHZXQgWW91ciBGcmVlIFRyaWFsIFRvZGF5XG5cbltTdGFydCBidWlsZGluZ10oaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9nZXQtc3RhcnRlZC8pIFtHZXQgaW4gdG91Y2hdKGh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL2hvbWUvY29udGFjdC11cy8pIiwiY29tcGFueSI6eyJuYW1lIjoiRGF0YWlrdSIsImxvY2F0aW9uIjoiTmV3IFlvcmssIFVuaXRlZCBTdGF0ZXMiLCJlbXBsb3llZXMiOjExNjgsImluZHVzdHJ5IjoiU29mdHdhcmUgRGV2ZWxvcG1lbnQiLCJhYm91dCI6IkRhdGFpa3UgaXMgVGhlIFVuaXZlcnNhbCBBSSBQbGF0Zm9ybeKEoiwgZ2l2aW5nIG9yZ2FuaXphdGlvbnMgY29udHJvbCBvdmVyIHRoZWlyIEFJIHRhbGVudCwgcHJvY2Vzc2VzLCBhbmQgdGVjaG5vbG9naWVzIHRvIHVubGVhc2ggdGhlIGNyZWF0aW9uIG9mIGFuYWx5dGljcywgbW9kZWxzLCBhbmQgYWdlbnRzLiBBZ2dyZXNzaXZlbHkgYWdub3N0aWMsIGl0IGludGVncmF0ZXMgd2l0aCBhbGwgY2xvdWRzLCBkYXRhIHBsYXRmb3JtcywgQUkgc2VydmljZXMsIGFuZCBsZWdhY3kgc3lzdGVtcyB0byBlbnN1cmUgZnVsbCB0ZWNobm9sb2d5IG9wdGlvbmFsaXR5IOKAlCBlbXBvd2VyaW5nIGN1c3RvbWVycyB0byBmdXR1cmUtcHJvb2YgdGhlaXIgQUkgaW5pdGlhdGl2ZXMuIFxuXG5Qcm92aWRpbmcgbm8tLCBsb3ctLCBhbmQgZnVsbC1jb2RlIGNhcGFiaWxpdGllcywgRGF0YWlrdSBtZWV0cyB0ZWFtcyB3aGVyZSB0aGV5IGFyZSB0b2RheSwgYWxsb3dpbmcgdGhlbSB0byBidWlsZCB3aXRoIEFJIHVzaW5nIHRoZWlyIGV4aXN0aW5nIHNraWxscyBhbmQga25vd2xlZGdlLiBEZXNpZ25lZCBmb3IgdGhlIG1vc3QgZGVtYW5kaW5nIGVudGVycHJpc2UgZW52aXJvbm1lbnRzLCBEYXRhaWt1IGJ1aWxkcyBnb3Zlcm5hbmNlIGludG8gZXZlcnkgcGFydCBvZiB0aGUgcGxhdGZvcm0sIGVuc3VyaW5nIHJlZ3VsYXRvcnkgY29tcGxpYW5jZSBhbmQgY29tcGxldGUgYnVzaW5lc3MgYWxpZ25tZW50LlxuXG5Nb3JlIHRoYW4gNzAwIGNvbXBhbmllcyB3b3JsZHdpZGUgdXNlIERhdGFpa3UsIGluY2x1ZGluZyBsZWFkZXJzIGFjcm9zcyBpbmR1c3RyaWVzIGluY2x1ZGluZyBsaWZlIHNjaWVuY2VzLCBsb2dpc3RpY3MsIHJldGFpbCwgbWFudWZhY3R1cmluZywgZW5lcmd5LCBmaW5hbmNpYWwgc2VydmljZXMsIHNvZnR3YXJlLCBhbmQgdGVjaG5vbG9neS4gV2l0aCBhIHN0cm9uZyBmb2N1cyBvbiB0aGUgRm9yYmVzIEdsb2JhbCAyMDAwLCBEYXRhaWt1IGFsc28gc3VwcG9ydHMgbm9uLXByb2ZpdHMgYW5kIGFjYWRlbWljIGluc3RpdHV0aW9ucyB0aHJvdWdoIGl0cyBBSS1mb3ItR29vZCBpbml0aWF0aXZlcy4iLCJsb2dvVXJsIjoiaHR0cHM6Ly9tZWRpYS5saWNkbi5jb20vZG1zL2ltYWdlL3YyL0Q0RTBCQVFGNzlKMnplMERyX1EvY29tcGFueS1sb2dvXzIwMF8yMDAvQjRFWmVpZlRGSEhjQVEtLzAvMTc1MDc3NzgwMzU4MC9kYXRhaWt1X2xvZ28/ZT0yMTQ3NDgzNjQ3JnY9YmV0YSZ0PTNMbWdiS0s4LW8yYVVmY0ZRZTB5R1kzVzZVOFVCVndxN0FuRWw0MlhpelUifX0sImV2YWx1YXRpb25zIjpbeyJjcml0ZXJpb24iOiJDb21wYW55IHByb3ZpZGVzIGVudGVycHJpc2UtZm9jdXNlZCBTYWFTIChTb2Z0d2FyZSBhcyBhIFNlcnZpY2UpIHByb2R1Y3RzIG9yIHBsYXRmb3JtcyIsInJlYXNvbmluZyI6IkRhdGFpa3XigJlzIHByb2R1Y3QgcGFnZSBzdGF0ZXMgdGhhdCBpdCBvZmZlcnMgYSBmdWxseeKAkW1hbmFnZWQgU2FhUyBwbGF0Zm9ybSDigJMgRGF0YWlrdSBDbG91ZCDigJMgYW5kIHRoYXQgdGhlIHBsYXRmb3JtIGlzIGF2YWlsYWJsZSBvbmxpbmUgYXMgYSBTYWFTIG9mZmVyaW5nLiBUaGUgcGFnZSBhbHNvIGhpZ2hsaWdodHMgZW50ZXJwcmlzZeKAkWZvY3VzZWQgc29sdXRpb25zIHN1Y2ggYXMgXCJEYXRhaWt1IGZvciBFbnRlcnByaXNlIEFJXCIgYW5kIFwiRGF0YWlrdSBmb3IgRGF0YSBBbmFseXRpY3NcIiwgaW5kaWNhdGluZyB0aGUgU2FhUyBpcyBhaW1lZCBhdCBlbnRlcnByaXNlIGN1c3RvbWVycy4gVGhlc2UgZmFjdHMgY29uZmlybSB0aGF0IERhdGFpa3UgcHJvdmlkZXMgZW50ZXJwcmlzZeKAkWZvY3VzZWQgU2FhUyBwcm9kdWN0cyBvciBwbGF0Zm9ybXMuIiwic2F0aXNmaWVkIjoieWVzIiwicmVmZXJlbmNlcyI6W3sidGl0bGUiOiJEYXRhaWt1IFByb2R1Y3QgfCBFdmVyeWRheSBBSSwgRXh0cmFvcmRpbmFyeSBQZW9wbGUiLCJzbmlwcGV0IjoiTW9kZXJuaXplIGVudGVycHJpc2UgYW5hbHl0aWNzIGFuZCBhY2NlbGVyYXRlIHRpbWUgdG8gaW5zaWdodHMgd2l0aCB2aXN1YWwsIGNsb3VkLWJhc2VkIHRvb2xpbmcgZm9yIGRhdGEgcHJlcGFyYXRpb24sIHZpc3VhbGl6YXRpb24sIHdvcmtmbG93IGF1dG9tYXRpb24sIGFuZCAuLi4iLCJ1cmwiOiJodHRwczovL3d3dy5kYXRhaWt1LmNvbS9wcm9kdWN0In0seyJ0aXRsZSI6IkRhdGFpa3UgfCBUaGUgVW5pdmVyc2FsIEFJIFBsYXRmb3Jt4oSiIiwic25pcHBldCI6IkJ1aWxkLCBkZXBsb3ksIGFuZCBtYW5hZ2UgZGF0YSwgYW5hbHl0aWNzLCBhbmQgQUkgcHJvamVjdHMsIHJlYWxpemluZyB5b3VyIEV2ZXJ5ZGF5IEFJIHZpc2lvbiB3aXRoIFRoZSBVbml2ZXJzYWwgQUkgUGxhdGZvcm3ihKIiLCJ1cmwiOiJodHRwczovL3d3dy5kYXRhaWt1LmNvbSJ9LHsidGl0bGUiOiJBSSBFY29zeXN0ZW0gV2l0aCBEYXRhaWt1Iiwic25pcHBldCI6IklzIERhdGFpa3UgU2FhUyBvciBwYWFzP1xuRXhwZXJpZW5jZSBpbW1lZGlhdGUgdmFsdWUgd2l0aCBEYXRhaWt1IENsb3VkLCBvdXIgZnVsbHktbWFuYWdlZCBTYWFTIHBsYXRmb3JtLiBEYXRhaWt1IENsb3VkIGVsaW1pbmF0ZXMgaW5mcmFzdHJ1Y3R1cmUgY29tcGxleGl0eSB3aGlsZSBtYWludGFpbmluZyBlbnRlcnByaXNlLWdyYWRlIHNlY3VyaXR5LiIsInVybCI6Imh0dHBzOi8vd3d3LmRhdGFpa3UuY29tL3Byb2R1Y3Qva2V5LWNhcGFiaWxpdGllcy9haS1lY29zeXN0ZW0ifSx7InRpdGxlIjoiRXhwbG9yZSBEYXRhaWt1IFBsYW5zIGFuZCBGZWF0dXJlcyB8IE9ubGluZSBvciBJbnN0YWxsZWQiLCJzbmlwcGV0IjoiRGF0YWlrdSBpcyBpbnN0YWxsZWQgb24tcHJlbWlzZXMgb3Igb24geW91ciBwcmVmZXJyZWQgY2xvdWQgc3RhY2ssIG9yIGlzIGF2YWlsYWJsZSBvbmxpbmUgYXMgYSBmdWxseSBtYW5hZ2VkIFNhYVMgb2ZmZXJpbmcuIiwidXJsIjoiaHR0cHM6Ly93d3cuZGF0YWlrdS5jb20vcHJvZHVjdC9wbGFucy1hbmQtZmVhdHVyZXMifSx7InRpdGxlIjoiRGF0YWlrdSBmb3IgRW50ZXJwcmlzZSBMZWFkZXJzIiwic25pcHBldCI6IkRhdGFpa3UncyBwb3dlcmZ1bCwgZmxleGlibGUsIGFuZCBtb2R1bGFyIGFyY2hpdGVjdHVyZSBhbGxvd3MgaXQgdG8gcnVuIG9uLXByZW1pc2VzIG9yIGluIHlvdXIgY2xvdWQgb2YgY2hvaWNlLCBpbnRlZ3JhdGluZyB3aXRoIG5hdGl2ZSBzdG9yYWdlIGFuZCAuLi4iLCJ1cmwiOiJodHRwczovL3d3dy5kYXRhaWt1LmNvbS9zb2x1dGlvbnMvZGF0YWlrdS1mb3ItZW50ZXJwcmlzZS1sZWFkZXJzIn1dfSx7ImNyaXRlcmlvbiI6IkNvbXBhbnkncyBwcm9kdWN0cyBvciBwbGF0Zm9ybXMgaW5jbHVkZSBBSSAoQXJ0aWZpY2lhbCBJbnRlbGxpZ2VuY2UpIGZlYXR1cmVzIG9yIGNhcGFiaWxpdGllcyIsInJlYXNvbmluZyI6IkRhdGFpa3XigJlzIG93biBkZXNjcmlwdGlvbiBzdGF0ZXMgaXQgaXMg4oCcdGhlIHdvcmxk4oCZcyBsZWFkaW5nIHBsYXRmb3JtIGZvciBFdmVyeWRheSBBSeKAnSBhbmQgY2FsbHMgaXRzZWxmIGEg4oCcVW5pdmVyc2FsIEFJIFBsYXRmb3Jt4oSi4oCdIHRoYXQgZ2l2ZXMgb3JnYW5pemF0aW9ucyBjb250cm9sIG92ZXIgQUkgdGFsZW50LCBwcm9jZXNzZXMsIGFuZCB0ZWNobm9sb2dpZXMgdG8gY3JlYXRlIGFuYWx5dGljcywgbW9kZWxzLCBhbmQgYWdlbnRzLiBUaGUgY29tcGFueeKAmXMgY2F0ZWdvcmllcyBhbHNvIGxpc3QgZ2VuZXJhdGl2ZSBBSSBzb2Z0d2FyZSBhbmQgQUkgb3JjaGVzdHJhdGlvbiwgaW5kaWNhdGluZyBBSSBjYXBhYmlsaXRpZXMgaW4gaXRzIHByb2R1Y3RzLiBUaGVzZSBzdGF0ZW1lbnRzIGNvbmZpcm0gdGhhdCBEYXRhaWt14oCZcyBwcm9kdWN0cyBvciBwbGF0Zm9ybXMgaW5jbHVkZSBBSSBmZWF0dXJlcyBvciBjYXBhYmlsaXRpZXMuIiwic2F0aXNmaWVkIjoieWVzIiwicmVmZXJlbmNlcyI6W3sidGl0bGUiOiJEYXRhaWt1Iiwic25pcHBldCI6IkRhdGFpa3UgaXMgYSBTb2Z0d2FyZSBEZXZlbG9wbWVudCBjb21wYW55IChwcml2YXRlKSB3aXRoIDEsMTY4IGVtcGxveWVlcyAoKzEwLjUlIFlvWSBncm93dGgpLCAkMTUwLjBNIGFubnVhbCByZXZlbnVlLCBmb3VuZGVkIGluIDIwMTMsIGhlYWRxdWFydGVyZWQgaW4gTmV3IFlvcmssIE5ldyBZb3JrLCBVbml0ZWQgU3RhdGVzLiBIYXMgJDg0Ni44TSBpbiB0b3RhbCBmdW5kaW5nLCBsYXN0IHJvdW5kIHdhcyBhIFNlcmllcyBGIGluIDIwMjItMTItMTIuIERhdGFpa3UgaXMgdGhlIHdvcmxk4oCZcyBsZWFkaW5nIHBsYXRmb3JtIGZvciBFdmVyeWRheSBBSSwgc3lzdGVtaXppbmcgdGhlIHVzZSBvZiBkYXRhIGZvciBleGNlcHRpb25hbCBidXNpbmVzcyByZXN1bHRzLiBEYXRhaWt1IGlzIFRoZSBVbml2ZXJzYWwgQUkgUGxhLi4uIiwidXJsIjoiaHR0cHM6Ly9kYXRhaWt1LmNvbSJ9XX1dLCJlbnJpY2htZW50cyI6W10sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjNUMDA6MTU6NTQuMTY2WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjNUMDA6MTU6NTQuMTY2WiJ9XX0=
+  recorded_at: Sun, 23 Nov 2025 00:16:11 GMT
+recorded_with: VCR 6.3.1
