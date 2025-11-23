@@ -109,11 +109,51 @@ module ExaCLI
     puts ""
     puts "Usage: exa-ai <command> [options]"
     puts ""
-    puts "Commands:"
-    AVAILABLE_COMMANDS.each do |cmd, desc|
-      puts "  #{cmd.ljust(20)} #{desc}"
-    end
-    puts ""
+
+    print_command_section("Core Search", [
+      ["search", "Search the web"],
+      ["find-similar", "Find content similar to a URL"],
+      ["answer", "Generate an answer to a question"],
+      ["context", "Get code context from repositories"],
+      ["get-contents", "Retrieve page contents"]
+    ])
+
+    print_command_section("Research", [
+      ["research-start", "Start a research task"],
+      ["research-get", "Get research task status"],
+      ["research-list", "List research tasks"]
+    ])
+
+    print_command_section("Websets", [
+      ["webset-create", "Create a new webset"],
+      ["webset-get", "Get webset details"],
+      ["webset-list", "List websets"],
+      ["webset-update", "Update a webset"],
+      ["webset-delete", "Delete a webset"],
+      ["webset-cancel", "Cancel a webset"]
+    ])
+
+    print_command_section("Webset Searches", [
+      ["webset-search-create", "Create a search in a webset"],
+      ["webset-search-get", "Get webset search details"],
+      ["webset-search-cancel", "Cancel a webset search"]
+    ])
+
+    print_command_section("Webset Items", [
+      ["webset-item-list", "List items in a webset"],
+      ["webset-item-get", "Get webset item details"],
+      ["webset-item-delete", "Delete a webset item"]
+    ])
+
+    print_command_section("Webset Enrichments", [
+      ["enrichment-create", "Create an enrichment"],
+      ["enrichment-get", "Get enrichment details"],
+      ["enrichment-list", "List enrichments"],
+      ["enrichment-update", "Update an enrichment"],
+      ["enrichment-delete", "Delete an enrichment"],
+      ["enrichment-cancel", "Cancel an enrichment"]
+    ])
+
     puts "Global Options:"
     puts "  --help, -h         Show this help message"
     puts "  --version          Show version number"
@@ -122,6 +162,14 @@ module ExaCLI
     puts "  exa-ai search 'ruby programming'"
     puts "  exa-ai context 'React hooks' --tokens-num 5000"
     puts "  exa-ai research-start --instructions 'Find AI papers'"
+  end
+
+  def self.print_command_section(title, commands)
+    puts "#{title}:"
+    commands.each do |cmd, desc|
+      puts "  #{cmd.ljust(24)} #{desc}"
+    end
+    puts ""
   end
 
   def self.print_error_for_command(cmd)
