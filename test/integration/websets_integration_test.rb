@@ -99,11 +99,11 @@ class WebsetsIntegrationTest < Minitest::Test
         },
         enrichments: [
           {
-            description: "Find the company's primary contact email address",
+            description: "Primary contact email",
             format: "text"
           },
           {
-            description: "Determine the company size category",
+            description: "Company size",
             format: "options",
             options: [
               { label: "1-10 employees" },
@@ -192,11 +192,11 @@ class WebsetsIntegrationTest < Minitest::Test
         },
         enrichments: [
           {
-            description: "Extract the most recent funding amount",
+            description: "Recent funding amount",
             format: "text"
           },
           {
-            description: "Find the company's LinkedIn URL",
+            description: "LinkedIn URL",
             format: "url"
           }
         ],

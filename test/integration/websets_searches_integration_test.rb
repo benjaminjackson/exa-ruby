@@ -30,11 +30,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
       )
       track_webset(webset.id)
       assert_instance_of Exa::Resources::Webset, webset
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_create_minimal", record: :new_episodes) do
       # Create a search within the webset
       search = client.create_webset_search(
         webset_id: webset.id,
@@ -66,11 +62,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_create_with_entity", record: :new_episodes) do
       # Create a search for people
       search = client.create_webset_search(
         webset_id: webset.id,
@@ -98,11 +90,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_create_with_criteria", record: :new_episodes) do
       criteria = [
         { description: "focused on enterprise customers" },
         { description: "raised Series A or later" }
@@ -135,11 +123,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_create_with_recall", record: :new_episodes) do
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "Pharmaceutical startups",
@@ -197,11 +181,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_create_with_append", record: :new_episodes) do
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "Paris Fintechs",
@@ -232,11 +212,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_create_and_retrieve", record: :new_episodes) do
       # Create a search
       created_search = client.create_webset_search(
         webset_id: webset.id,
@@ -275,11 +251,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_status_progression", record: :new_episodes) do
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "Digital health platforms with FDA approval",
@@ -317,11 +289,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_cancel", record: :new_episodes) do
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "Cloud infrastructure companies with enterprise customers",
@@ -356,11 +324,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_with_metadata", record: :new_episodes) do
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "Carbon capture and renewable energy startups",
@@ -433,11 +397,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
         }
       )
       track_webset(webset.id)
-    end
 
-    wait_for_webset_completion(client, webset.id)
-
-    VCR.use_cassette("websets_searches_helper_methods", record: :new_episodes) do
       search = client.create_webset_search(
         webset_id: webset.id,
         query: "Online learning platforms for corporate training",

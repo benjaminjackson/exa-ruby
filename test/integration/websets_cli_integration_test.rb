@@ -152,11 +152,11 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
     enrichments = [
       {
-        description: "Extract company description",
+        description: "Company description",
         format: "text"
       },
       {
-        description: "Determine company size",
+        description: "Company size",
         format: "options",
         options: [
           { label: "Small" },

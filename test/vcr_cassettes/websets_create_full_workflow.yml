@@ -8,8 +8,8 @@ http_interactions:
       string: '{"search":{"query":"E-commerce companies in California with recent
         funding","count":1,"entity":{"type":"company"},"criteria":[{"description":"raised
         funding in the last 12 months"},{"description":"focused on direct-to-consumer
-        products"}]},"enrichments":[{"description":"Extract the most recent funding
-        amount","format":"text"},{"description":"Find the company''s LinkedIn URL","format":"url"}],"metadata":{"project":"Q1-2024-research","team":"growth"}}'
+        products"}]},"enrichments":[{"description":"Recent funding amount","format":"text"},{"description":"LinkedIn
+        URL","format":"url"}],"metadata":{"project":"Q1-2024-research","team":"growth"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -27,11 +27,11 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:39:51 GMT
+      - Sun, 23 Nov 2025 00:35:30 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '1660'
+      - '1624'
       Connection:
       - keep-alive
       Nel:
@@ -65,27 +65,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"67c-6qfoSu3604B1303VT1Dgbp3aE4g"
+      - W/"658-zW3QyalsPqx/8O2lSCmeA5NBD38"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=YZ7Keu6n9%2B7UDwm8qfOVS4ro69BNhTyoBcCljqItZAHpo9bptVuJoR8Hf%2FIOxgPmiQV6eSsUXjQQ5sZXdpucoDy%2BDUAAFH60rZ3%2BMNwbuMPfujaxgA%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ghREQf7xF44lEQksaKESD4mEAXpTvjCHNRnsDJ3Npt%2Bpw32KTkUchP%2BZ%2FTOkMAZYucP0sWYtpSJedtlpQNxMqSoUL3gN5bM90M1hFcHbMiy%2F1dM%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2985875aee33a6-EWR
+      - 9a2c961c893d8456-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"running","query":"E-commerce
         companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
         funding in the last 12 months","successRate":0},{"description":"focused on
-        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:51.276Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
-        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
-        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:51.276Z"}'
-  recorded_at: Sat, 22 Nov 2025 15:39:51 GMT
+        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:29.099Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"Recent
+        funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"LinkedIn
+        URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:29.099Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:35:30 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
     body:
       encoding: US-ASCII
       string: ''
@@ -104,84 +104,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:39:52 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"687-w6T9A7aDCZdpfByjzQzBVjTgLQo"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DKooULSI4l63kBKz%2BxUJ7ypgksFyr6YRoshJfg0HWUCeu%2B65Y9S5AlrbassrU4VqDiUG9lqJ45RsT3akBCf7pX3FvrR8DridVEliqU3vsbrnKXsR0Q%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2985a14ce7f981-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
-        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
-        funding in the last 12 months","successRate":0},{"description":"focused on
-        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:51.276Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
-        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
-        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:51.276Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 15:39:52 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 15:39:55 GMT
+      - Sun, 23 Nov 2025 00:35:30 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -219,28 +142,261 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"6b7-E0184B9Zhx7hiZV07Z2/EphTarM"
+      - W/"663-hTs+QhQLn5yHUqs9RtLN0XVojaw"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ReAvOhwsKhnut7wTkSLB5kOUo2O%2FRIb33E3XJh7Ym1f%2BqZYlaKDFx1l4JYvYX9nLaYPOlA1Hi2zCJc%2FdEEYRx06hCFpFB7%2F37AWBwl0Wd1wrWFsnVQ%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=SrIBK0X0smaK2ovjkg%2Bp3JnTbL486Ygn4ZVsliQzjXQ%2BYEGiXaRpbArSxRBjmghmEaST8VH9H%2F4xE9ziS4yHq%2FimSj8fUeLcPLFlwiZYfG1A3R1sVA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2985b19a60d218-EWR
+      - 9a2c9641598e269c-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":"Companies:
-        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":0},{"description":"focused on
+        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:29.099Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"Recent
+        funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"LinkedIn
+        URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:29.099Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:30 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:35:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"692-IcOzehgweyID0dBwJNM5Hq7OHRI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=j4oKuVn8i8fMUbsKf32cu%2B3XDHs49IYvvXKq9w9VnD65uzdtrXISdwEF5ItYj88REOXlv5nuVrZH7KfVxoG%2BbHm9f9p0%2BP1ouXOhDbJwTaMo9N9H5A%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9652c8154601-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":25},{"description":"focused on
+        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":4,"completion":10,"timeLeft":42},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:30.760Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"Recent
+        funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"LinkedIn
+        URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:30.760Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:33 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:35:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"693-HT24tziVEtl1uQz0sx7otuAiIEc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=YpeGqxy9h8FSyYrXjbCC%2BpK0tHQEUPbnayHbsRm5HIfBIZCZQwmMV4qfX49X6wZAx7UXPNAHAaw5TC%2B9SqC3jgj%2F6vSjTxFl%2B9C0pImygo69Z%2FKEaQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c96635fe428c9-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"running","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":40},{"description":"focused on
+        direct-to-consumer products","successRate":20}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":5,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:30.760Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"Recent
+        funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"LinkedIn
+        URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:30.760Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:36 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:35:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"696-5yknr+dnoJtthfTXa0fwXuuC4UQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=pEkwNrwSlX6bpZWLMHuEtOCfWsUzcKNHGvg0yM1DOPbGrQp%2BJ3PDDW9SAqOqm4BcMJuLH9W%2Bj86rCE9XVu%2Fsnn2upsazWjaRQabqB8WifI%2FH4UBscQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9673ecf7f3e6-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"running","query":"E-commerce
         companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
         funding in the last 12 months","successRate":50},{"description":"focused on
-        direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":3,"completion":7.5,"timeLeft":51},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:53.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
-        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
-        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:53.055Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 15:39:55 GMT
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:30.760Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"Recent
+        funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"LinkedIn
+        URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:30.760Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:38 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
     body:
       encoding: US-ASCII
       string: ''
@@ -259,7 +415,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:39:57 GMT
+      - Sun, 23 Nov 2025 00:35:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -297,28 +453,28 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"6b9-Lcz366ee6JYVZFGgaHrtE0eIKJY"
+      - W/"696-5yknr+dnoJtthfTXa0fwXuuC4UQ"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=evjEwzPFsXBzBh%2FH0Nd23VJgg23h4P7G61lYEHOLGhQasaBmE02yYGSwD656JH4DVgw3ov6j5O%2BTyLIjVx2DLrdAkDI5doH2zACOO6mOAQnHpTogSA%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=dnDj%2BQwnUmSuMe7%2FPGREn1x7hOMPV%2Bff3EPi0aOqG4mCUyMMiBttNuMgBpdH%2FCoEa7zBNfUMaEnC3FJ3Isd6%2BHqw0aHJiGt0I7DmEIxFPm0CKOQojA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2985c228928df5-EWR
+      - 9a2c9684ba299aa4-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":"Companies:
-        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"running","query":"E-commerce
         companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
-        funding in the last 12 months","successRate":66.67},{"description":"focused
-        on direct-to-consumer products","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":4,"completion":10,"timeLeft":61},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:53.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
-        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
-        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:53.055Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 15:39:57 GMT
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:30.760Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"Recent
+        funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":null,"description":"LinkedIn
+        URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:28.660Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:30.760Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:41 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
     body:
       encoding: US-ASCII
       string: ''
@@ -337,7 +493,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:40:00 GMT
+      - Sun, 23 Nov 2025 00:35:44 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -375,28 +531,32 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"6b7-okB2/v9/4usN148vf/9V9FsO33o"
+      - W/"767-TVoYm5/BQQX+CaUhgSv7wWAtWqY"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qZwOLxeHpih1PQDRcvZ%2F0FbOnlbQXtzy4KNN6iIrr%2BYEudGUztnY7f4esBGbtWDvVhosWMS82z6MQnJcryWi144yIP60MG0nX25YxdxW7hfApsoGLQ%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Qe6fzx6wFaChH3GaLEHmIT%2F4odXu%2BJsgIVLqNtGO4GApqE78aKEzQP47Ad0dfCYKqzsSZ2pACDQYbqs627eFqLq3GomxMoxdiqg%2BGyBEc8ELeks%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2985d27d3a4fa8-EWR
+      - 9a2c9695ef89d953-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":"Companies:
-        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"running","query":"E-commerce
         companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
-        funding in the last 12 months","successRate":75},{"description":"focused on
-        direct-to-consumer products","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":5,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:53.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
-        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
-        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:53.055Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 15:40:00 GMT
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:30.760Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"Recent
+        Funding Amt","description":"Recent funding amount","format":"text","options":null,"instructions":"Find
+        the company''s most recent funding amount in USD using dollar sign and commas
+        (e.g., ''$45,200,000'').","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"LinkedIn
+        URL","description":"LinkedIn URL","format":"url","options":null,"instructions":"Find
+        the company''s official LinkedIn profile URL and output it as a normalized
+        URL.","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:43.041Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:44 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
     body:
       encoding: US-ASCII
       string: ''
@@ -415,13 +575,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:40:03 GMT
+      - Sun, 23 Nov 2025 00:35:48 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -451,30 +613,32 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"6b7-okB2/v9/4usN148vf/9V9FsO33o"
+      - W/"769-2q94vyLnssojlPog2NqicgHa2ug"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=aLaV2efygT%2B%2B8HGTbS8H92VxSFl0aXuo8SpzWiqfr6U65aIY1MMvL%2F5HnY3Z73XV%2FiE5eNWbvsTkEPdR9Zs%2FSVEoEskGabmh4ph%2BAJ6GXhh%2Busp0dw%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Jw05NXBZ8a%2BGPZedOnGhdmHS%2BsjxPihphu403%2FbIiTS0iRcsgb8FnGTtUoQLq4cjUvRGY5wqHPi%2BqgsafLW9b6wwhIZoPfRLcwRgRM5JDpIFT4Js5g%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2985e38e6f7095-EWR
+      - 9a2c96a6d81fe8a3-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kap3heqz4wy1m6gq0nzt4tb3","object":"webset","status":"running","externalId":null,"title":"Companies:
-        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kap3hf8314k6jt0bqtnmj5ak","object":"webset_search","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","status":"running","query":"E-commerce
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"completed","query":"E-commerce
         companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
-        funding in the last 12 months","successRate":75},{"description":"focused on
-        direct-to-consumer products","successRate":25}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":5,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T15:39:50.915Z","updatedAt":"2025-11-22T15:39:53.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiaggcqt005zj01s4io5b065","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Extract
-        the most recent funding amount","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"},{"id":"wenrich_cmiaggcqt0060j01skmjduhey","object":"webset_enrichment","status":"pending","websetId":"webset_01kap3heqz4wy1m6gq0nzt4tb3","title":null,"description":"Find
-        the company''s LinkedIn URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-22T15:39:50.789Z","updatedAt":"2025-11-22T15:39:50.789Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-22T15:39:50.399Z","updatedAt":"2025-11-22T15:39:53.055Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 15:40:03 GMT
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:46.639Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"Recent
+        Funding Amt","description":"Recent funding amount","format":"text","options":null,"instructions":"Find
+        the company''s most recent funding amount in USD using dollar sign and commas
+        (e.g., ''$45,200,000'').","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"LinkedIn
+        URL","description":"LinkedIn URL","format":"url","options":null,"instructions":"Find
+        the company''s official LinkedIn profile URL and output it as a normalized
+        URL.","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:46.639Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:48 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
     body:
       encoding: US-ASCII
       string: ''
@@ -493,7 +657,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:40:05 GMT
+      - Sun, 23 Nov 2025 00:35:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -531,23 +695,32 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"77d-5i9QvB1SNgqGsWjd5gjjtwVZxKg"
+      - W/"769-2q94vyLnssojlPog2NqicgHa2ug"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qtFLtsJ8FTKGvMqXbZySNh99%2BGV2xTLrEB%2FzE%2BsdUWyTsDihDdCZkjwpQP1GoxLOEp55k%2B4ZcY%2FsCtqZlB9zbdrUNOiBC8iTxGcXsbJpJoVWYT%2F28w%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=F%2BlxN40TSOtEkXDH2V8LQxvOJIP7A80vDdXnTMvropUxeSkG%2FTr8k7H7uKOWHwxUl2l%2BhXkginNlwiRrNWAhSTqPWuJVLAEeldilUBZEfsWsh17Zhw%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2985f41f5b499b-EWR
+      - 9a2c96bf2c7632b1-EWR
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoicnVubmluZyIsInF1ZXJ5IjoiRS1jb21tZXJjZSBjb21wYW5pZXMgaW4gQ2FsaWZvcm5pYSB3aXRoIHJlY2VudCBmdW5kaW5nIiwiZW50aXR5Ijp7InR5cGUiOiJjb21wYW55In0sImNyaXRlcmlhIjpbeyJkZXNjcmlwdGlvbiI6InJhaXNlZCBmdW5kaW5nIGluIHRoZSBsYXN0IDEyIG1vbnRocyIsInN1Y2Nlc3NSYXRlIjo3NX0seyJkZXNjcmlwdGlvbiI6ImZvY3VzZWQgb24gZGlyZWN0LXRvLWNvbnN1bWVyIHByb2R1Y3RzIiwic3VjY2Vzc1JhdGUiOjI1fV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjo1LCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjkxNVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUzLjA1NVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W3siaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNXpqMDFzNGlvNWIwNjUiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGF0ZXN0IEZ1bmRpbmciLCJkZXNjcmlwdGlvbiI6IkV4dHJhY3QgdGhlIG1vc3QgcmVjZW50IGZ1bmRpbmcgYW1vdW50IiwiZm9ybWF0IjoidGV4dCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIG1vc3QgcmVjZW50IGZ1bmRpbmcgYW1vdW50IGFuZCBwcm92aWRlIGl0IGFzIGEgbm9ybWFsaXplZCBzdHJpbmcgd2l0aCBjdXJyZW5jeSBzeW1ib2wgYW5kIHVuaXQgKGUuZy4sICckNDBNJywgJ+KCrDEyLjVNJykuIiwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjc4OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjA0Ljg2OFoifSx7ImlkIjoid2VucmljaF9jbWlhZ2djcXQwMDYwajAxc2ttamR1aGV5Iiwib2JqZWN0Ijoid2Vic2V0X2VucmljaG1lbnQiLCJzdGF0dXMiOiJwZW5kaW5nIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxpbmtlZEluIFVSTCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIExpbmtlZEluIFVSTCIsImZvcm1hdCI6InVybCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBvZmZpY2lhbCBMaW5rZWRJbiBwcm9maWxlIFVSTC4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7InRlYW0iOiJncm93dGgiLCJwcm9qZWN0IjoiUTEtMjAyNC1yZXNlYXJjaCJ9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjM5OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjA0Ljg2OFoiLCJpdGVtcyI6W119
-  recorded_at: Sat, 22 Nov 2025 15:40:05 GMT
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"completed","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:46.639Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"Recent
+        Funding Amt","description":"Recent funding amount","format":"text","options":null,"instructions":"Find
+        the company''s most recent funding amount in USD using dollar sign and commas
+        (e.g., ''$45,200,000'').","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"LinkedIn
+        URL","description":"LinkedIn URL","format":"url","options":null,"instructions":"Find
+        the company''s official LinkedIn profile URL and output it as a normalized
+        URL.","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:46.639Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:50 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
     body:
       encoding: US-ASCII
       string: ''
@@ -566,7 +739,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:40:08 GMT
+      - Sun, 23 Nov 2025 00:35:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -602,25 +775,34 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"77d-5i9QvB1SNgqGsWjd5gjjtwVZxKg"
+      - W/"769-2q94vyLnssojlPog2NqicgHa2ug"
       Cf-Cache-Status:
       - DYNAMIC
       Nel:
       - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=QtsVXj4RjBVgV9HbYvt8%2BU4mtmRgGF0v5oJr1EJpn%2FnQBGbRQ5fQIkrjT8rHkI49NbiTZ%2BhT2hgyChMYRVBY3VvQnub9EodCK9xJId%2BC5nkzKfVk2Q%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=01IsCiBIP%2BRY6ccuzbkhen5FA11dieIwnS9mDabteW4dGxF5X0vonOmwV07YtzXJmumEUUZkv4jApOYpF2hcflpZ0VOqjH86KaxghNOq9binOnRHIg%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a298604abd74f4e-EWR
+      - 9a2c96cffe03cdf0-EWR
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoicnVubmluZyIsInF1ZXJ5IjoiRS1jb21tZXJjZSBjb21wYW5pZXMgaW4gQ2FsaWZvcm5pYSB3aXRoIHJlY2VudCBmdW5kaW5nIiwiZW50aXR5Ijp7InR5cGUiOiJjb21wYW55In0sImNyaXRlcmlhIjpbeyJkZXNjcmlwdGlvbiI6InJhaXNlZCBmdW5kaW5nIGluIHRoZSBsYXN0IDEyIG1vbnRocyIsInN1Y2Nlc3NSYXRlIjo3NX0seyJkZXNjcmlwdGlvbiI6ImZvY3VzZWQgb24gZGlyZWN0LXRvLWNvbnN1bWVyIHByb2R1Y3RzIiwic3VjY2Vzc1JhdGUiOjI1fV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjo1LCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjkxNVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUzLjA1NVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W3siaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNXpqMDFzNGlvNWIwNjUiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGF0ZXN0IEZ1bmRpbmciLCJkZXNjcmlwdGlvbiI6IkV4dHJhY3QgdGhlIG1vc3QgcmVjZW50IGZ1bmRpbmcgYW1vdW50IiwiZm9ybWF0IjoidGV4dCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIG1vc3QgcmVjZW50IGZ1bmRpbmcgYW1vdW50IGFuZCBwcm92aWRlIGl0IGFzIGEgbm9ybWFsaXplZCBzdHJpbmcgd2l0aCBjdXJyZW5jeSBzeW1ib2wgYW5kIHVuaXQgKGUuZy4sICckNDBNJywgJ+KCrDEyLjVNJykuIiwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjc4OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjA0Ljg2OFoifSx7ImlkIjoid2VucmljaF9jbWlhZ2djcXQwMDYwajAxc2ttamR1aGV5Iiwib2JqZWN0Ijoid2Vic2V0X2VucmljaG1lbnQiLCJzdGF0dXMiOiJwZW5kaW5nIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxpbmtlZEluIFVSTCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIExpbmtlZEluIFVSTCIsImZvcm1hdCI6InVybCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBvZmZpY2lhbCBMaW5rZWRJbiBwcm9maWxlIFVSTC4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7InRlYW0iOiJncm93dGgiLCJwcm9qZWN0IjoiUTEtMjAyNC1yZXNlYXJjaCJ9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjM5OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjA0Ljg2OFoiLCJpdGVtcyI6W119
-  recorded_at: Sat, 22 Nov 2025 15:40:08 GMT
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"completed","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:46.639Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"Recent
+        Funding Amt","description":"Recent funding amount","format":"text","options":null,"instructions":"Find
+        the company''s most recent funding amount in USD using dollar sign and commas
+        (e.g., ''$45,200,000'').","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"LinkedIn
+        URL","description":"LinkedIn URL","format":"url","options":null,"instructions":"Find
+        the company''s official LinkedIn profile URL and output it as a normalized
+        URL.","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:46.639Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:55 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
     body:
       encoding: US-ASCII
       string: ''
@@ -639,80 +821,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:40:11 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"77f-YR0N5AzVdXnHtyratLah/rnRYnQ"
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=oyU%2F1CMoA9yn86AYPfjELq4ifu2uVBVfoCv%2F6vyV3QG0AYPr5Nx8%2F5nsnn613Nl9LkuQVlFUeTRY9zIPQqtcMjV15K7dCiZ8c0P4Zedi0z1Ao6ZNNg%3D%3D"}]}'
-      Cf-Cache-Status:
-      - DYNAMIC
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2986158d6d52c0-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoicGVuZGluZyIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwidGl0bGUiOiJMYXRlc3QgRnVuZGluZyIsImRlc2NyaXB0aW9uIjoiRXh0cmFjdCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQiLCJmb3JtYXQiOiJ0ZXh0Iiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQgYW5kIHByb3ZpZGUgaXQgYXMgYSBub3JtYWxpemVkIHN0cmluZyB3aXRoIGN1cnJlbmN5IHN5bWJvbCBhbmQgdW5pdCAoZS5nLiwgJyQ0ME0nLCAn4oKsMTIuNU0nKS4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9LHsiaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNjBqMDFza21qZHVoZXkiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGlua2VkSW4gVVJMIiwiZGVzY3JpcHRpb24iOiJGaW5kIHRoZSBjb21wYW55J3MgTGlua2VkSW4gVVJMIiwiZm9ybWF0IjoidXJsIiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgY29tcGFueSdzIG9mZmljaWFsIExpbmtlZEluIHByb2ZpbGUgVVJMLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDowNC44NjhaIn1dLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsidGVhbSI6Imdyb3d0aCIsInByb2plY3QiOiJRMS0yMDI0LXJlc2VhcmNoIn0sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuMzk5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiIsIml0ZW1zIjpbXX0=
-  recorded_at: Sat, 22 Nov 2025 15:40:11 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 15:40:13 GMT
+      - Sun, 23 Nov 2025 00:35:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -750,23 +859,32 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"77f-YR0N5AzVdXnHtyratLah/rnRYnQ"
+      - W/"769-2q94vyLnssojlPog2NqicgHa2ug"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2BElbqAnRu2U23RSj3od2Mq4OCBuTrjxr0e%2F96R%2BIgz8h4skAi36pcaOu0ftRneI3DU3kcSDiRm8mZBdX0PwbWBWtag0b%2FL2rHyt6uJ5YNhWqTWQx4A%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LoOowgcRmopbBrzinYZywx%2F%2BdlgsSVwlGMihujzqY4HhjdxQtlpQ6HcgmZtunmTXD%2FjlHZnyGoimzG95P2Kelpu7tBVq58enP6AegZoQFI9Po0E%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2986260eaa72b7-EWR
+      - 9a2c96ef69c3d474-EWR
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoicGVuZGluZyIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwidGl0bGUiOiJMYXRlc3QgRnVuZGluZyIsImRlc2NyaXB0aW9uIjoiRXh0cmFjdCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQiLCJmb3JtYXQiOiJ0ZXh0Iiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQgYW5kIHByb3ZpZGUgaXQgYXMgYSBub3JtYWxpemVkIHN0cmluZyB3aXRoIGN1cnJlbmN5IHN5bWJvbCBhbmQgdW5pdCAoZS5nLiwgJyQ0ME0nLCAn4oKsMTIuNU0nKS4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9LHsiaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNjBqMDFza21qZHVoZXkiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGlua2VkSW4gVVJMIiwiZGVzY3JpcHRpb24iOiJGaW5kIHRoZSBjb21wYW55J3MgTGlua2VkSW4gVVJMIiwiZm9ybWF0IjoidXJsIiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgY29tcGFueSdzIG9mZmljaWFsIExpbmtlZEluIHByb2ZpbGUgVVJMLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDowNC44NjhaIn1dLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsidGVhbSI6Imdyb3d0aCIsInByb2plY3QiOiJRMS0yMDI0LXJlc2VhcmNoIn0sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuMzk5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiIsIml0ZW1zIjpbXX0=
-  recorded_at: Sat, 22 Nov 2025 15:40:13 GMT
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"running","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"completed","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:46.639Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"Recent
+        Funding Amt","description":"Recent funding amount","format":"text","options":null,"instructions":"Find
+        the company''s most recent funding amount in USD using dollar sign and commas
+        (e.g., ''$45,200,000'').","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"LinkedIn
+        URL","description":"LinkedIn URL","format":"url","options":null,"instructions":"Find
+        the company''s official LinkedIn profile URL and output it as a normalized
+        URL.","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:43.041Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:46.639Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:35:58 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq264xhj1h28r5x0xnvdt3r
     body:
       encoding: US-ASCII
       string: ''
@@ -785,13 +903,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:40:16 GMT
+      - Sun, 23 Nov 2025 00:36:01 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
       Content-Security-Policy:
       - frame-ancestors 'self'
       Cross-Origin-Opener-Policy:
@@ -821,168 +941,29 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"77f-YR0N5AzVdXnHtyratLah/rnRYnQ"
+      - W/"76a-+ZV4dLoJOoPVEUlngSwBj2P+apI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=iC7jSSt0kf3fFjw7s5ARFLL7AkoWHMmrTEWZwsARYnSVmxHQ2Q5ogNlCo8B4Ixl2iIQTRDcvyHKIXmcrvlY3eBbgNWbLEw7epSV3QEpmHLCsCgnfWA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=4ZBPR80iFniHyaXxv3pLASlCKK7ezYVYLLJwvsOE3W82yhFyT14uW4Bv1JWktut4SFmZ3w2Ld7CJBvW8FqCHdZkhre6Fq1vjUgZCwoJACBfDQu6zvg%3D%3D"}]}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2986373e0742c3-EWR
+      - 9a2c970068ba7206-EWR
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoicGVuZGluZyIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwidGl0bGUiOiJMYXRlc3QgRnVuZGluZyIsImRlc2NyaXB0aW9uIjoiRXh0cmFjdCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQiLCJmb3JtYXQiOiJ0ZXh0Iiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQgYW5kIHByb3ZpZGUgaXQgYXMgYSBub3JtYWxpemVkIHN0cmluZyB3aXRoIGN1cnJlbmN5IHN5bWJvbCBhbmQgdW5pdCAoZS5nLiwgJyQ0ME0nLCAn4oKsMTIuNU0nKS4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9LHsiaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNjBqMDFza21qZHVoZXkiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGlua2VkSW4gVVJMIiwiZGVzY3JpcHRpb24iOiJGaW5kIHRoZSBjb21wYW55J3MgTGlua2VkSW4gVVJMIiwiZm9ybWF0IjoidXJsIiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgY29tcGFueSdzIG9mZmljaWFsIExpbmtlZEluIHByb2ZpbGUgVVJMLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDowNC44NjhaIn1dLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsidGVhbSI6Imdyb3d0aCIsInByb2plY3QiOiJRMS0yMDI0LXJlc2VhcmNoIn0sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuMzk5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiIsIml0ZW1zIjpbXX0=
-  recorded_at: Sat, 22 Nov 2025 15:40:16 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 15:40:22 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"77f-YR0N5AzVdXnHtyratLah/rnRYnQ"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=AjR9BnR1wLda6CtYxbR4Gq7DjYtFdrg8SV5XrQach5Wn0ME0bbmApkt3NkUPQJIMjgVlvGVvF7%2Bvaz7M8pMLrh1SVa9yT4J4mjruyjBDpmNyCIqJOw%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2986494f7bc413-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6InJ1bm5pbmciLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoicGVuZGluZyIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwidGl0bGUiOiJMYXRlc3QgRnVuZGluZyIsImRlc2NyaXB0aW9uIjoiRXh0cmFjdCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQiLCJmb3JtYXQiOiJ0ZXh0Iiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgbW9zdCByZWNlbnQgZnVuZGluZyBhbW91bnQgYW5kIHByb3ZpZGUgaXQgYXMgYSBub3JtYWxpemVkIHN0cmluZyB3aXRoIGN1cnJlbmN5IHN5bWJvbCBhbmQgdW5pdCAoZS5nLiwgJyQ0ME0nLCAn4oKsMTIuNU0nKS4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDQuODY4WiJ9LHsiaWQiOiJ3ZW5yaWNoX2NtaWFnZ2NxdDAwNjBqMDFza21qZHVoZXkiLCJvYmplY3QiOiJ3ZWJzZXRfZW5yaWNobWVudCIsInN0YXR1cyI6InBlbmRpbmciLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsInRpdGxlIjoiTGlua2VkSW4gVVJMIiwiZGVzY3JpcHRpb24iOiJGaW5kIHRoZSBjb21wYW55J3MgTGlua2VkSW4gVVJMIiwiZm9ybWF0IjoidXJsIiwib3B0aW9ucyI6bnVsbCwiaW5zdHJ1Y3Rpb25zIjoiRmluZCB0aGUgY29tcGFueSdzIG9mZmljaWFsIExpbmtlZEluIHByb2ZpbGUgVVJMLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDowNC44NjhaIn1dLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsidGVhbSI6Imdyb3d0aCIsInByb2plY3QiOiJRMS0yMDI0LXJlc2VhcmNoIn0sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuMzk5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiIsIml0ZW1zIjpbXX0=
-  recorded_at: Sat, 22 Nov 2025 15:40:22 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kap3heqz4wy1m6gq0nzt4tb3
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 15:40:25 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"780-iiMG+LmxLNf0PnsPMafDaT7MmaA"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=so2Wdi5AiV7x80pLOJL5AoaSpiz%2FPCEZqrphxC5yyfmuw25FLGOVAEmzqg%2B535bCQikIRmKrqoABTatFPgIrMYmPznBGOddzmxvjcgvmaPPTn75Ibw%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2986703f88fef2-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxhdGVzdCBGdW5kaW5nIiwiZGVzY3JpcHRpb24iOiJFeHRyYWN0IHRoZSBtb3N0IHJlY2VudCBmdW5kaW5nIGFtb3VudCIsImZvcm1hdCI6InRleHQiLCJvcHRpb25zIjpudWxsLCJpbnN0cnVjdGlvbnMiOiJGaW5kIHRoZSBtb3N0IHJlY2VudCBmdW5kaW5nIGFtb3VudCBhbmQgcHJvdmlkZSBpdCBhcyBhIG5vcm1hbGl6ZWQgc3RyaW5nIHdpdGggY3VycmVuY3kgc3ltYm9sIGFuZCB1bml0IChlLmcuLCAnJDQwTScsICfigqwxMi41TScpLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDoyMS41ODJaIn0seyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA2MGowMXNrbWpkdWhleSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxpbmtlZEluIFVSTCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIExpbmtlZEluIFVSTCIsImZvcm1hdCI6InVybCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBvZmZpY2lhbCBMaW5rZWRJbiBwcm9maWxlIFVSTC4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MjEuNTgyWiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7InRlYW0iOiJncm93dGgiLCJwcm9qZWN0IjoiUTEtMjAyNC1yZXNlYXJjaCJ9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjM5OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjIxLjU4MloiLCJpdGVtcyI6W119
-  recorded_at: Sat, 22 Nov 2025 15:40:25 GMT
+      string: '{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"completed","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:46.639Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"completed","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"Recent
+        Funding Amt","description":"Recent funding amount","format":"text","options":null,"instructions":"Find
+        the company''s most recent funding amount in USD using dollar sign and commas
+        (e.g., ''$45,200,000'').","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:58.950Z"},{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"completed","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"LinkedIn
+        URL","description":"LinkedIn URL","format":"url","options":null,"instructions":"Find
+        the company''s official LinkedIn profile URL and output it as a normalized
+        URL.","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:58.950Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:58.950Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:36:01 GMT
 - request:
     method: get
     uri: https://api.exa.ai/websets/v0/websets?limit=10
@@ -1004,7 +985,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 15:40:26 GMT
+      - Sun, 23 Nov 2025 00:36:02 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1042,18 +1023,75 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"2c99-1iC4oUfIpA+MEeqdmgkqssboFJs"
+      - W/"3255-Jqpc8CA9/NVYIX42IjoFIUMLbgE"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=U4BYKILXgpt1h1LnkrLFbxMtIls9IP%2BbArrTJMiK4RdD2igYGME6LVqWZc9smtBvva5btEklAybef3OO%2BKLRFoINjQAg2xucO4qUeGVVW9sxc7WC6A%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DttkvRk3GTIng1z2gwE0rWn%2BA4%2FkAa2tEwVXp5tw7EqjB13S%2FExMgsrFJAxiaQMSNXQ3Gdd%2FhBd76Yw%2B3YoNOh2GUs9xwH1%2BWFnydOj0P6JQHrdP9A%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2986740b20e226-EWR
+      - 9a2c9704fdb5b1bc-EWR
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJkYXRhIjpbeyJpZCI6IndlYnNldF8wMWthcDNoZXF6NHd5MW02Z3Ewbnp0NHRiMyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogRS1jb21tZXJjZSwgQ2FsaWZvcm5pYSwgcmVjZW50IGZ1bmRpbmciLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2hmODMxNGs2anQwYnF0bm1qNWFrIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2hlcXo0d3kxbTZncTBuenQ0dGIzIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJFLWNvbW1lcmNlIGNvbXBhbmllcyBpbiBDYWxpZm9ybmlhIHdpdGggcmVjZW50IGZ1bmRpbmciLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoicmFpc2VkIGZ1bmRpbmcgaW4gdGhlIGxhc3QgMTIgbW9udGhzIiwic3VjY2Vzc1JhdGUiOjc1fSx7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBkaXJlY3QtdG8tY29uc3VtZXIgcHJvZHVjdHMiLCJzdWNjZXNzUmF0ZSI6MjV9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjUsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuOTE1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MDkuMDc0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbeyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA1emowMXM0aW81YjA2NSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxhdGVzdCBGdW5kaW5nIiwiZGVzY3JpcHRpb24iOiJFeHRyYWN0IHRoZSBtb3N0IHJlY2VudCBmdW5kaW5nIGFtb3VudCIsImZvcm1hdCI6InRleHQiLCJvcHRpb25zIjpudWxsLCJpbnN0cnVjdGlvbnMiOiJGaW5kIHRoZSBtb3N0IHJlY2VudCBmdW5kaW5nIGFtb3VudCBhbmQgcHJvdmlkZSBpdCBhcyBhIG5vcm1hbGl6ZWQgc3RyaW5nIHdpdGggY3VycmVuY3kgc3ltYm9sIGFuZCB1bml0IChlLmcuLCAnJDQwTScsICfigqwxMi41TScpLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTo1MC43ODlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTo0MDoyMS41ODJaIn0seyJpZCI6IndlbnJpY2hfY21pYWdnY3F0MDA2MGowMXNrbWpkdWhleSIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzaGVxejR3eTFtNmdxMG56dDR0YjMiLCJ0aXRsZSI6IkxpbmtlZEluIFVSTCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIExpbmtlZEluIFVSTCIsImZvcm1hdCI6InVybCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBvZmZpY2lhbCBMaW5rZWRJbiBwcm9maWxlIFVSTC4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NTAuNzg5WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6NDA6MjEuNTgyWiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7InRlYW0iOiJncm93dGgiLCJwcm9qZWN0IjoiUTEtMjAyNC1yZXNlYXJjaCJ9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjUwLjM5OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjQwOjIxLjU4MloifSx7ImlkIjoid2Vic2V0XzAxa2FwM2dxM3I5NG4zZW1ocmt4bmFqOHNwIiwib2JqZWN0Ijoid2Vic2V0Iiwic3RhdHVzIjoiaWRsZSIsImV4dGVybmFsSWQiOm51bGwsInRpdGxlIjoiQ29tcGFuaWVzOiBUZWNoIGluIFBhY2lmaWMgTm9ydGh3ZXN0Iiwic2VhcmNoZXMiOlt7ImlkIjoid3NlYXJjaF8wMWthcDNncWdwNHR3YWNxYTg1NnBkajdldCIsIm9iamVjdCI6IndlYnNldF9zZWFyY2giLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNncTNyOTRuM2VtaHJreG5hajhzcCIsInN0YXR1cyI6ImNvbXBsZXRlZCIsInF1ZXJ5IjoiVGVjaCBjb21wYW5pZXMgaW4gUGFjaWZpYyBOb3J0aHdlc3QiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBvcGVyYXRlcyBpbiB0aGUgdGVjaG5vbG9neSBzZWN0b3IiLCJzdWNjZXNzUmF0ZSI6MTAwfSx7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBpcyBoZWFkcXVhcnRlcmVkIG9yIGhhcyBhIHNpZ25pZmljYW50IHByZXNlbmNlIGluIHRoZSBQYWNpZmljIE5vcnRod2VzdCAoV2FzaGluZ3RvbiwgT3JlZ29uLCBvciBJZGFobykiLCJzdWNjZXNzUmF0ZSI6MTAwfV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W3sic291cmNlIjoid2Vic2V0IiwiaWQiOiJ3ZWJzZXRfMDFrYXAzZnpuZ3M2YmVtcThrcTFhamZ3aHMifV0sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjoxLCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjI2LjYxNFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDE1OjM5OjQ0LjMyNVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W10sIm1vbml0b3JzIjpbXSwiZXhjbHVkZXMiOlt7InNvdXJjZSI6IndlYnNldCIsImlkIjoid2Vic2V0XzAxa2FwM2Z6bmdzNmJlbXE4a3ExYWpmd2hzIn1dLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6MjYuMjAwWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6NDQuMzI1WiJ9LHsiaWQiOiJ3ZWJzZXRfMDFrYXAzZnpuZ3M2YmVtcThrcTFhamZ3aHMiLCJvYmplY3QiOiJ3ZWJzZXQiLCJzdGF0dXMiOiJpZGxlIiwiZXh0ZXJuYWxJZCI6bnVsbCwidGl0bGUiOiJDb21wYW5pZXM6IFRlY2ggaW4gU2VhdHRsZSIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYXAzZzBra2I0ODQ2MWdndDQ3azV4MjUiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzZnpuZ3M2YmVtcThrcTFhamZ3aHMiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6IlRlY2ggY29tcGFuaWVzIGluIFNlYXR0bGUiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBvcGVyYXRlcyBpbiB0aGUgdGVjaG5vbG9neSBzZWN0b3IgYW5kIGlzIGhlYWRxdWFydGVyZWQgaW4gU2VhdHRsZSwgV0EiLCJzdWNjZXNzUmF0ZSI6MzMuMzN9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjMsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6MDMuMTU1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6MjEuNjg4WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbXSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOTowMi4xOTJaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOToyMS42ODhaIn0seyJpZCI6IndlYnNldF8wMWthcDNkenI0MjR0aHlhNjBxdHQweWs3ZiIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogVGVjaCBzdGFydHVwcyBpbiBOWUMiLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FwM2UwM243ejY0MWF3ZDVxMGJ4Mnp0Iiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FwM2R6cjQyNHRoeWE2MHF0dDB5azdmIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJUZWNoIHN0YXJ0dXBzIGluIE5ZQyIsImVudGl0eSI6eyJ0eXBlIjoiY29tcGFueSJ9LCJjcml0ZXJpYSI6W3siZGVzY3JpcHRpb24iOiJDb21wYW55IGlzIGEgdGVjaG5vbG9neS1mb2N1c2VkIHN0YXJ0dXAgaGVhZHF1YXJ0ZXJlZCBpbiBOZXcgWW9yayBDaXR5IChOWUMpIiwic3VjY2Vzc1JhdGUiOjEwMH1dLCJjb3VudCI6MSwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoxLCJhbmFseXplZCI6MSwiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzo1Ny4xMDlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozODoyNi42OTJaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOlt7ImlkIjoid2VucmljaF9jbWlhZ2R4MGUwMDEwZ2Uxc2ttcGNzbTN6Iiwib2JqZWN0Ijoid2Vic2V0X2VucmljaG1lbnQiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcDNkenI0MjR0aHlhNjBxdHQweWs3ZiIsInRpdGxlIjoiQ29udGFjdCBFbWFpbCIsImRlc2NyaXB0aW9uIjoiRmluZCB0aGUgY29tcGFueSdzIHByaW1hcnkgY29udGFjdCBlbWFpbCBhZGRyZXNzIiwiZm9ybWF0IjoidGV4dCIsIm9wdGlvbnMiOm51bGwsImluc3RydWN0aW9ucyI6IkZpbmQgdGhlIGNvbXBhbnkncyBwcmltYXJ5IGNvbnRhY3QgZW1haWwgYWRkcmVzcyBpbiBsb3dlcmNhc2UgZm9ybWF0IChlLmcuLCAnaW5mb0Bjb21wYW55LmNvbScpLiIsIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzo1Ny4wODdaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOToyNi42NDJaIn0seyJpZCI6IndlbnJpY2hfY21pYWdkeDBlMDAxMWdlMXMwemk5NzJqZCIsIm9iamVjdCI6IndlYnNldF9lbnJpY2htZW50Iiwic3RhdHVzIjoiY29tcGxldGVkIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzZHpyNDI0dGh5YTYwcXR0MHlrN2YiLCJ0aXRsZSI6IkNvbXBhbnkgU2l6ZSIsImRlc2NyaXB0aW9uIjoiRGV0ZXJtaW5lIHRoZSBjb21wYW55IHNpemUgY2F0ZWdvcnkiLCJmb3JtYXQiOiJvcHRpb25zIiwib3B0aW9ucyI6W3sibGFiZWwiOiIxLTEwIGVtcGxveWVlcyJ9LHsibGFiZWwiOiIxMS01MCBlbXBsb3llZXMifSx7ImxhYmVsIjoiNTEtMjAwIGVtcGxveWVlcyJ9LHsibGFiZWwiOiIyMDErIGVtcGxveWVlcyJ9XSwiaW5zdHJ1Y3Rpb25zIjoiRGV0ZXJtaW5lIHRoZSBjb21wYW55J3Mgc2l6ZSBjYXRlZ29yeSBiYXNlZCBvbiB0aGUgbnVtYmVyIG9mIGVtcGxveWVlcyB1c2luZyB0aGUgcHJvdmlkZWQgb3B0aW9ucy4iLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzc6NTcuMDg3WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzk6MjYuNjQyWiJ9XSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzo1Ni43NDBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozOToyNi42NDJaIn0seyJpZCI6IndlYnNldF8wMWthcDNkOHpwYnE1YmZqdGVlbWp3cmhycSIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogbWFya2V0aW5nIGFnZW5jaWVzIGluIHRoZSBVUyIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYXAzZDljd3ZjdjV3aGIyeHlncHZicjEiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXAzZDh6cGJxNWJmanRlZW1qd3JocnEiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6Ik1hcmtldGluZyBhZ2VuY2llcyBpbiB0aGUgVVMiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiZm9jdXNlZCBvbiBjb25zdW1lciBwcm9kdWN0cyIsInN1Y2Nlc3NSYXRlIjoxMC43MX0seyJkZXNjcmlwdGlvbiI6ImF0IGxlYXN0IDUwIGVtcGxveWVlcyIsInN1Y2Nlc3NSYXRlIjozOS4yOX1dLCJjb3VudCI6MSwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoxLCJhbmFseXplZCI6MjksImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzc6MzMuODUyWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMTU6Mzc6NTMuNjUwWiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbXSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzozMy40MzBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQxNTozNzo1My42NTBaIn0seyJpZCI6IndlYnNldF8wMWthbjk0OXo5a3FoZ2ZybjM4NnZranFteiIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkxpbmtlZEluIFByb2ZpbGVzOiBDVE9zIGF0IEFJIENvbXBhbmllcyIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYW45NGFiMGRzOHk5bjcwMTByZjVnZzkiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYW45NDl6OWtxaGdmcm4zODZ2a2pxbXoiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6IkNUT3MgYXQgQUkgY29tcGFuaWVzIiwiZW50aXR5Ijp7InR5cGUiOiJwZXJzb24ifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ3VycmVudGx5IGhvbGRzIHRoZSBwb3NpdGlvbiBvZiBDVE8gKENoaWVmIFRlY2hub2xvZ3kgT2ZmaWNlcikgYXQgYSBjb21wYW55IGluIHRoZSBhcnRpZmljaWFsIGludGVsbGlnZW5jZSAoQUkpIGluZHVzdHJ5Iiwic3VjY2Vzc1JhdGUiOjUwfV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjoyLCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDA3OjU4OjE2LjkyOFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDA3OjU4OjM2Ljc2MVoifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W10sIm1vbml0b3JzIjpbXSwiZXhjbHVkZXMiOltdLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMDc6NTg6MTYuNTUzWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMDc6NTg6MzYuNzYxWiJ9LHsiaWQiOiJ3ZWJzZXRfMDFrYW45NDhjODM1Z2Y5YjJmZHNra3htNDkiLCJvYmplY3QiOiJ3ZWJzZXQiLCJzdGF0dXMiOiJpZGxlIiwiZXh0ZXJuYWxJZCI6InRlc3QtZXh0ZXJuYWwtMTc2Mzc5ODI5MyIsInRpdGxlIjoiQ29tcGFuaWVzOiBTYWFTLCBFdXJvcGUiLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FuOTQ4cnlhcmN5YWhlbjZyd21mMHF4Iiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FuOTQ4YzgzNWdmOWIyZmRza2t4bTQ5Iiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJTYWFTIGNvbXBhbmllcyBpbiBFdXJvcGUiLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBwcm92aWRlcyBTb2Z0d2FyZSBhcyBhIFNlcnZpY2UgKFNhYVMpIHByb2R1Y3RzIG9yIHNlcnZpY2VzIiwic3VjY2Vzc1JhdGUiOjMzLjMzfSx7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBpcyBoZWFkcXVhcnRlcmVkIGluIGEgRXVyb3BlYW4gY291bnRyeSIsInN1Y2Nlc3NSYXRlIjo2Ni42N31dLCJjb3VudCI6MSwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoxLCJhbmFseXplZCI6MywiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoxNS4zMjZaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODozNC40NzNaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOltdLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDA3OjU4OjE0LjkyMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDA3OjU4OjM0LjQ3M1oifSx7ImlkIjoid2Vic2V0XzAxa2FuOTQ1Mmt2dHM3anJzNnZtd3FycjBrIiwib2JqZWN0Ijoid2Vic2V0Iiwic3RhdHVzIjoiaWRsZSIsImV4dGVybmFsSWQiOm51bGwsInRpdGxlIjoiQ29tcGFuaWVzOiBGaW50ZWNoLCBMb25kb24iLCJzZWFyY2hlcyI6W3siaWQiOiJ3c2VhcmNoXzAxa2FuOTQ1ZXRrd2pxZmYxa2tqcjh3N2oxIiwib2JqZWN0Ijoid2Vic2V0X3NlYXJjaCIsIndlYnNldElkIjoid2Vic2V0XzAxa2FuOTQ1Mmt2dHM3anJzNnZtd3FycjBrIiwic3RhdHVzIjoiY29tcGxldGVkIiwicXVlcnkiOiJGaW50ZWNoIGNvbXBhbmllcyBpbiBMb25kb24iLCJlbnRpdHkiOnsidHlwZSI6ImNvbXBhbnkifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQ29tcGFueSBvcGVyYXRlcyBpbiB0aGUgZmludGVjaCBpbmR1c3RyeSBhbmQgaXMgaGVhZHF1YXJ0ZXJlZCBpbiBMb25kb24sIFVLIiwic3VjY2Vzc1JhdGUiOjEwMH1dLCJjb3VudCI6MSwiYmVoYXZpb3IiOiJvdmVycmlkZSIsImV4Y2x1ZGUiOltdLCJzY29wZSI6W10sInByb2dyZXNzIjp7ImZvdW5kIjoxLCJhbmFseXplZCI6MSwiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoxMS45MzBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoyOS42NzVaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOltdLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnsicHVycG9zZSI6ImludGVncmF0aW9uX3Rlc3QifSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoxMS41MzlaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQwNzo1ODoyOS42NzVaIn0seyJpZCI6IndlYnNldF8wMWthbXNydzE0NjM0a2ZoOWpkem5yNjc5YyIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjoidGVzdF93ZWJzZXRfZ2V0XzE3NjM3ODIxOTIiLCJ0aXRsZSI6IkFydGljbGVzOiBQeXRob24gYmxvZyIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYW1zcndkcTFrcjF6OTB2cmJtdDJ3eGMiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYW1zcncxNDYzNGtmaDlqZHpucjY3OWMiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6InB5dGhvbiBibG9nIiwiZW50aXR5Ijp7InR5cGUiOiJhcnRpY2xlIn0sImNyaXRlcmlhIjpbeyJkZXNjcmlwdGlvbiI6IkJsb2cgcG9zdCBmb2N1c2VkIG9uIFB5dGhvbiBwcm9ncmFtbWluZyIsInN1Y2Nlc3NSYXRlIjo2LjI1fV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjoxNiwiY29tcGxldGlvbiI6MTAwLCJ0aW1lTGVmdCI6MH0sInJlY2FsbCI6bnVsbCwibWV0YWRhdGEiOnt9LCJjYW5jZWxlZEF0IjpudWxsLCJjYW5jZWxlZFJlYXNvbiI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yMlQwMzoyOTo1My41OTFaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yMlQwMzozMDoxNi4zNDdaIn1dLCJpbXBvcnRzIjpbXSwiZW5yaWNobWVudHMiOltdLCJtb25pdG9ycyI6W10sImV4Y2x1ZGVzIjpbXSwibWV0YWRhdGEiOnt9LCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDAzOjI5OjUzLjE4OFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDAzOjMwOjE2LjM0N1oifSx7ImlkIjoid2Vic2V0XzAxa2Ftc2d2eXl4cmVma2QzN2E3N3ByMDFiIiwib2JqZWN0Ijoid2Vic2V0Iiwic3RhdHVzIjoiaWRsZSIsImV4dGVybmFsSWQiOiJ0ZXN0X3dlYnNldF9nZXRfMTc2Mzc4MTkzMCIsInRpdGxlIjoiQXJ0aWNsZXM6IFB5dGhvbiBibG9nIiwic2VhcmNoZXMiOlt7ImlkIjoid3NlYXJjaF8wMWthbXNnd2IybmM0djFhNDQyeWM1eDhuYyIsIm9iamVjdCI6IndlYnNldF9zZWFyY2giLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthbXNndnl5eHJlZmtkMzdhNzdwcjAxYiIsInN0YXR1cyI6ImNvbXBsZXRlZCIsInF1ZXJ5IjoicHl0aG9uIGJsb2ciLCJlbnRpdHkiOnsidHlwZSI6ImFydGljbGUifSwiY3JpdGVyaWEiOlt7ImRlc2NyaXB0aW9uIjoiQmxvZyBwb3N0IGZvY3VzZWQgb24gUHl0aG9uIHByb2dyYW1taW5nIiwic3VjY2Vzc1JhdGUiOjMzLjMzfV0sImNvdW50IjoxLCJiZWhhdmlvciI6Im92ZXJyaWRlIiwiZXhjbHVkZSI6W10sInNjb3BlIjpbXSwicHJvZ3Jlc3MiOnsiZm91bmQiOjEsImFuYWx5emVkIjozLCJjb21wbGV0aW9uIjoxMDAsInRpbWVMZWZ0IjowfSwicmVjYWxsIjpudWxsLCJtZXRhZGF0YSI6e30sImNhbmNlbGVkQXQiOm51bGwsImNhbmNlbGVkUmVhc29uIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIyVDAzOjI1OjMxLjM2MloiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIyVDAzOjI1OjQ5LjEwN1oifV0sImltcG9ydHMiOltdLCJlbnJpY2htZW50cyI6W10sIm1vbml0b3JzIjpbXSwiZXhjbHVkZXMiOltdLCJtZXRhZGF0YSI6e30sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjJUMDM6MjU6MzAuOTc0WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjJUMDM6MjU6NDkuMTA3WiJ9XSwiaGFzTW9yZSI6dHJ1ZSwibmV4dEN1cnNvciI6IjAxa2Ftc2d2eXl4cmVma2QzN2E3N3ByMDFiIn0=
-  recorded_at: Sat, 22 Nov 2025 15:40:26 GMT
+      string: '{"data":[{"id":"webset_01kaq264xhj1h28r5x0xnvdt3r","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        E-commerce, California, recent funding","searches":[{"id":"wsearch_01kaq267v95bhgva289ytxzpnv","object":"webset_search","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","status":"completed","query":"E-commerce
+        companies in California with recent funding","entity":{"type":"company"},"criteria":[{"description":"raised
+        funding in the last 12 months","successRate":50},{"description":"focused on
+        direct-to-consumer products","successRate":16.67}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":6,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:35:28.745Z","updatedAt":"2025-11-23T00:35:46.639Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazl6hg000hj01sc68j39cd","object":"webset_enrichment","status":"completed","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"LinkedIn
+        URL","description":"LinkedIn URL","format":"url","options":null,"instructions":"Find
+        the company''s official LinkedIn profile URL and output it as a normalized
+        URL.","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:58.950Z"},{"id":"wenrich_cmiazl6hg000gj01sdk5vkw46","object":"webset_enrichment","status":"completed","websetId":"webset_01kaq264xhj1h28r5x0xnvdt3r","title":"Recent
+        Funding Amt","description":"Recent funding amount","format":"text","options":null,"instructions":"Find
+        the company''s most recent funding amount in USD using dollar sign and commas
+        (e.g., ''$45,200,000'').","metadata":{},"createdAt":"2025-11-23T00:35:28.660Z","updatedAt":"2025-11-23T00:35:58.950Z"}],"monitors":[],"excludes":[],"metadata":{"team":"growth","project":"Q1-2024-research"},"createdAt":"2025-11-23T00:35:25.745Z","updatedAt":"2025-11-23T00:35:58.950Z"},{"id":"webset_01kaq0fbpkbrhz8q8332b5j2zx","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI/ML infrastructure startups, Series A funding","searches":[{"id":"wsearch_01kaq0fc2r0hfk1x0er6gwf4zn","object":"webset_search","websetId":"webset_01kaq0fbpkbrhz8q8332b5j2zx","status":"completed","query":"AI/ML
+        infrastructure startups with Series A funding","entity":{"type":"company"},"criteria":[{"description":"Early-stage
+        company (startup) providing AI/ML infrastructure products or services that
+        has raised Series A funding","successRate":9.09}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":11,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:05:30.840Z","updatedAt":"2025-11-23T00:05:53.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:05:30.451Z","updatedAt":"2025-11-23T00:05:53.050Z"},{"id":"webset_01kapx32vp5jp2a5qct4hktmhc","object":"webset","status":"idle","externalId":null,"title":"Fintech
+        Companies","searches":[{"id":"wsearch_01kapx337jkd0bcbh78nnq7q7e","object":"webset_search","websetId":"webset_01kapx32vp5jp2a5qct4hktmhc","status":"completed","query":"Fintech
+        companies","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the financial technology (fintech) sector","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T23:06:22.834Z","updatedAt":"2025-11-22T23:06:37.513Z"}],"imports":[],"enrichments":[{"id":"wenrich_01kapx35gbss5f9ax5d0s6st7h","object":"webset_enrichment","status":"completed","websetId":"webset_01kapx32vp5jp2a5qct4hktmhc","title":"HQ
+        Location","description":"Find headquarters location","format":"text","options":null,"instructions":"Find
+        the company''s headquarters location in format ''city | state/province | country''
+        (e.g., ''San Francisco | CA | United States'').","metadata":{},"createdAt":"2025-11-22T23:06:25.163Z","updatedAt":"2025-11-22T23:06:49.895Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T23:06:22.454Z","updatedAt":"2025-11-22T23:06:49.895Z"},{"id":"webset_01kapx2e4b852ct43ey6nk67vm","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI-focused","searches":[{"id":"wsearch_01kapx2efr7e151jep3t6gzsg3","object":"webset_search","websetId":"webset_01kapx2e4b852ct43ey6nk67vm","status":"completed","query":"AI
+        companies","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) industry or develops AI-related
+        products or services","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T23:06:01.592Z","updatedAt":"2025-11-22T23:06:33.428Z"}],"imports":[],"enrichments":[{"id":"wenrich_01kapx2gxh0871pzbd3s0ts997","object":"webset_enrichment","status":"completed","websetId":"webset_01kapx2e4b852ct43ey6nk67vm","title":"Website","description":"Find
+        website URL","format":"url","options":null,"instructions":"Find the company''s
+        official website URL.","metadata":{},"createdAt":"2025-11-22T23:06:04.081Z","updatedAt":"2025-11-22T23:06:45.733Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T23:06:01.227Z","updatedAt":"2025-11-22T23:06:45.733Z"},{"id":"webset_01kapx286k0f1a5myzb0hsfgv5","object":"webset","status":"idle","externalId":null,"title":"Manufacturing
+        Companies","searches":[{"id":"wsearch_01kapx28k8rfen72dbcp56htc2","object":"webset_search","websetId":"webset_01kapx286k0f1a5myzb0hsfgv5","status":"completed","query":"Manufacturing
+        companies","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the manufacturing industry","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T23:05:55.560Z","updatedAt":"2025-11-22T23:06:13.136Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T23:05:55.155Z","updatedAt":"2025-11-22T23:06:13.136Z"},{"id":"webset_01kapx2444jxdhq96qv58h6w51","object":"webset","status":"idle","externalId":null,"title":"E-commerce
+        Companies","searches":[{"id":"wsearch_01kapx24gdgjyrszqnran63149","object":"webset_search","websetId":"webset_01kapx2444jxdhq96qv58h6w51","status":"completed","query":"E-commerce
+        companies","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates primarily in the e-commerce industry","successRate":50}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":2,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T23:05:51.373Z","updatedAt":"2025-11-22T23:06:10.337Z"}],"imports":[],"enrichments":[{"id":"wenrich_01kapx272td2trv64n7e188pm5","object":"webset_enrichment","status":"completed","websetId":"webset_01kapx2444jxdhq96qv58h6w51","title":"Mobile
+        App","description":"Has mobile app?","format":"options","options":[{"label":"Yes"},{"label":"No"},{"label":"Unknown"}],"instructions":"Determine
+        if the company has a mobile app and select one option: ''Yes'', ''No'', or
+        ''Unknown''.","metadata":{},"createdAt":"2025-11-22T23:05:54.010Z","updatedAt":"2025-11-22T23:06:23.002Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T23:05:50.980Z","updatedAt":"2025-11-22T23:06:23.002Z"},{"id":"webset_01kapx1wq70p5674srsjz1edyv","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        Education sector","searches":[{"id":"wsearch_01kapx1x2wefpm5nnxyn33gmkz","object":"webset_search","websetId":"webset_01kapx1wq70p5674srsjz1edyv","status":"completed","query":"Education
+        companies","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the education industry","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T23:05:43.772Z","updatedAt":"2025-11-22T23:05:57.763Z"}],"imports":[],"enrichments":[{"id":"wenrich_01kapx1zbh33dwvchg150k3cw0","object":"webset_enrichment","status":"canceled","websetId":"webset_01kapx1wq70p5674srsjz1edyv","title":"[Deprecated]","description":"To
+        be cancelled","format":"text","options":null,"instructions":"This column is
+        deprecated and should be ignored; do not provide any data.","metadata":{},"createdAt":"2025-11-22T23:05:46.097Z","updatedAt":"2025-11-22T23:05:53.883Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T23:05:43.399Z","updatedAt":"2025-11-22T23:05:57.763Z"},{"id":"webset_01kapx1mn39qhs359a9rt70txw","object":"webset","status":"idle","externalId":null,"title":"Healthcare
+        Companies","searches":[{"id":"wsearch_01kapx1n1s9z6rmz4ky84r5kaq","object":"webset_search","websetId":"webset_01kapx1mn39qhs359a9rt70txw","status":"completed","query":"Healthcare
+        companies","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the healthcare industry","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T23:05:35.545Z","updatedAt":"2025-11-22T23:05:50.334Z"}],"imports":[],"enrichments":[{"id":"wenrich_01kapx1td59nw1gk33eaa14ava","object":"webset_enrichment","status":"completed","websetId":"webset_01kapx1mn39qhs359a9rt70txw","title":"Phone
+        Number","description":"Find phone number","format":"text","options":null,"instructions":"Find
+        the company''s official phone number using the country''s standard format
+        (e.g., ''+1 (XXX) XXX-XXXX'' for US numbers).","metadata":{},"createdAt":"2025-11-22T23:05:41.029Z","updatedAt":"2025-11-22T23:06:02.820Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T23:05:35.139Z","updatedAt":"2025-11-22T23:06:02.820Z"},{"id":"webset_01kapx18ebpvzfcweqnxmd6z2y","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI-focused","searches":[{"id":"wsearch_01kapx18tntjqd53q3agarrpfk","object":"webset_search","websetId":"webset_01kapx18ebpvzfcweqnxmd6z2y","status":"completed","query":"AI
+        companies","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) industry or develops AI-related
+        products or services","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T23:05:23.029Z","updatedAt":"2025-11-22T23:05:38.055Z"}],"imports":[],"enrichments":[{"id":"wenrich_01kapx1b48rkp18vrr8nw7mdcr","object":"webset_enrichment","status":"completed","websetId":"webset_01kapx18ebpvzfcweqnxmd6z2y","title":"Website","description":"Find
+        website URL","format":"url","options":null,"instructions":"Find the company''s
+        official website URL.","metadata":{},"createdAt":"2025-11-22T23:05:25.384Z","updatedAt":"2025-11-22T23:05:50.371Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T23:05:22.635Z","updatedAt":"2025-11-22T23:05:50.371Z"},{"id":"webset_01kapwy29nh2w2dv91nj52fbyr","object":"webset","status":"idle","externalId":null,"title":"Healthcare
+        Companies","searches":[{"id":"wsearch_01kapwy2p1kpw6ea0g755q5n6z","object":"webset_search","websetId":"webset_01kapwy29nh2w2dv91nj52fbyr","status":"completed","query":"Healthcare
+        companies","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the healthcare industry","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T23:03:38.433Z","updatedAt":"2025-11-22T23:03:53.869Z"}],"imports":[],"enrichments":[{"id":"wenrich_01kapwy503k816hdnm2rhzf59s","object":"webset_enrichment","status":"completed","websetId":"webset_01kapwy29nh2w2dv91nj52fbyr","title":"Phone
+        Number","description":"Find phone number","format":"text","options":null,"instructions":"Find
+        the company''s main phone number in international format ''+[country code]
+        [number]'' (e.g., ''+1 (555) 123-4567'' for US numbers).","metadata":{},"createdAt":"2025-11-22T23:03:40.803Z","updatedAt":"2025-11-22T23:04:06.162Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T23:03:38.037Z","updatedAt":"2025-11-22T23:04:06.162Z"}],"hasMore":true,"nextCursor":"01kapwy29nh2w2dv91nj52fbyr"}'
+  recorded_at: Sun, 23 Nov 2025 00:36:02 GMT
 recorded_with: VCR 6.3.1
