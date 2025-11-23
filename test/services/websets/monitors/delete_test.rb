@@ -21,16 +21,37 @@ module Exa
           def test_call_deletes_monitor_by_id
             stub_request(:delete, "https://api.exa.ai/websets/v0/monitors/#{@monitor_id}")
               .to_return(
-                status: 204,
-                body: "",
-                headers: {}
+                status: 200,
+                body: {
+                  id: @monitor_id,
+                  object: "monitor",
+                  status: "enabled",
+                  websetId: "ws_123",
+                  cadence: {
+                    cron: "0 9 * * MON",
+                    timezone: "America/New_York"
+                  },
+                  behavior: {
+                    type: "search",
+                    config: {
+                      query: "AI infrastructure startups",
+                      criteria: [{ description: "Series A funding" }],
+                      count: 10,
+                      behavior: "append"
+                    }
+                  },
+                  createdAt: "2024-01-15T10:30:00Z",
+                  updatedAt: "2024-01-15T10:30:00Z"
+                }.to_json,
+                headers: { "Content-Type" => "application/json" }
               )
 
             service = Delete.new(@connection, id: @monitor_id)
             result = service.call
 
             assert_requested :delete, "https://api.exa.ai/websets/v0/monitors/#{@monitor_id}"
-            assert_equal true, result
+            assert_instance_of Exa::Resources::Monitor, result
+            assert_equal @monitor_id, result.id
           end
 
           def test_call_raises_unauthorized_on_401

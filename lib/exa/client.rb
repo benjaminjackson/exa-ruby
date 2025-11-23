@@ -319,6 +319,76 @@ module Exa
       Services::Websets::ListItems.new(connection, webset_id: webset_id).call
     end
 
+    # Create a new monitor for a webset
+    #
+    # @param webset_id [String] Webset ID
+    # @param cadence [Hash] Schedule configuration with :cron and :timezone
+    # @param behavior [Hash] Behavior configuration (type, query, etc.)
+    # @param params [Hash] Additional monitor parameters
+    # @option params [Hash] :metadata Custom metadata
+    # @return [Resources::Monitor] The newly created monitor
+    def create_monitor(webset_id:, cadence:, behavior:, **params)
+      Services::Websets::Monitors::Create.new(connection, webset_id: webset_id, cadence: cadence, behavior: behavior, **params).call
+    end
+
+    # List all monitors
+    #
+    # @param params [Hash] Pagination parameters
+    # @option params [String] :cursor Cursor for pagination
+    # @option params [Integer] :limit Maximum number of monitors to return
+    # @return [Resources::MonitorCollection] Paginated list of monitors
+    def list_monitors(**params)
+      Services::Websets::Monitors::List.new(connection, **params).call
+    end
+
+    # Get a specific monitor by ID
+    #
+    # @param id [String] Monitor ID
+    # @return [Resources::Monitor] The requested monitor
+    def get_monitor(id:)
+      Services::Websets::Monitors::Get.new(connection, id: id).call
+    end
+
+    # Update a monitor
+    #
+    # @param id [String] Monitor ID
+    # @param params [Hash] Update parameters
+    # @option params [Hash] :cadence Updated schedule configuration
+    # @option params [Hash] :behavior Updated behavior configuration
+    # @option params [Hash] :metadata Updated metadata
+    # @return [Resources::Monitor] The updated monitor
+    def update_monitor(id:, **params)
+      Services::Websets::Monitors::Update.new(connection, id: id, **params).call
+    end
+
+    # Delete a monitor
+    #
+    # @param id [String] Monitor ID
+    # @return [Resources::Monitor] The deleted monitor
+    def delete_monitor(id:)
+      Services::Websets::Monitors::Delete.new(connection, id: id).call
+    end
+
+    # List all runs for a specific monitor
+    #
+    # @param monitor_id [String] Monitor ID
+    # @param params [Hash] Pagination parameters
+    # @option params [String] :cursor Cursor for pagination
+    # @option params [Integer] :limit Maximum number of runs to return
+    # @return [Resources::MonitorRunCollection] Paginated list of monitor runs
+    def list_monitor_runs(monitor_id:, **params)
+      Services::Websets::Monitors::Runs::List.new(connection, monitor_id: monitor_id, **params).call
+    end
+
+    # Get a specific monitor run by ID
+    #
+    # @param monitor_id [String] Monitor ID
+    # @param id [String] Run ID
+    # @return [Resources::MonitorRun] The requested monitor run
+    def get_monitor_run(monitor_id:, id:)
+      Services::Websets::Monitors::Runs::Get.new(connection, monitor_id: monitor_id, id: id).call
+    end
+
     private
 
     def connection

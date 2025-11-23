@@ -11,8 +11,19 @@ module Exa
           end
 
           def call
-            @connection.delete("/websets/v0/monitors/#{@id}")
-            true
+            response = @connection.delete("/websets/v0/monitors/#{@id}")
+            body = response.body
+
+            Resources::Monitor.new(
+              id: body["id"],
+              object: body["object"],
+              status: body["status"],
+              webset_id: body["websetId"],
+              cadence: body["cadence"],
+              behavior: body["behavior"],
+              created_at: body["createdAt"],
+              updated_at: body["updatedAt"]
+            )
           end
         end
       end
