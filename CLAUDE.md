@@ -74,6 +74,23 @@ test/
     └── search_integration_test.rb
 ```
 
+## Codebase Documentation
+
+**When implementing new features**, refer to `docs/CODEBASE_PATTERNS.md` for detailed examples and patterns.
+
+**When to read it:**
+- Starting a new feature implementation (services, resources, CLI commands)
+- Need specific examples of service/resource/test patterns
+- Unclear about client integration or CLI structure
+- Want to understand collection/pagination patterns
+
+**When NOT to read it:**
+- Simple bug fixes or small changes to existing code
+- Just reading existing code
+- General questions (those are answered in this CLAUDE.md file)
+
+The patterns doc contains concrete code examples from the codebase showing exactly how services, resources, tests, and CLI commands are structured. Use it as a reference when you need specific implementation details.
+
 ## Development Workflow
 
 ### Starting New Feature
