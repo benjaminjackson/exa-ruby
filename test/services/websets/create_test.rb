@@ -254,7 +254,7 @@ class WebsetsCreateTest < Minitest::Test
       "enrichments" => [{
         "id" => "enrich_001",
         "description" => "Extract email addresses",
-        "format" => "email",
+        "format" => "text",
         "status" => "pending"
       }],
       "monitors" => [],
@@ -273,7 +273,7 @@ class WebsetsCreateTest < Minitest::Test
         search: { query: "companies", count: 10 },
         enrichments: [{
           description: "Extract email addresses",
-          format: "email"
+          format: "text"
         }]
       }
     ]
@@ -282,7 +282,7 @@ class WebsetsCreateTest < Minitest::Test
       search: { query: "companies", count: 10 },
       enrichments: [{
         description: "Extract email addresses",
-        format: "email"
+        format: "text"
       }]
     )
     result = service.call

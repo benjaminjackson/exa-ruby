@@ -209,7 +209,7 @@ class WebsetsCreateValidatorTest < Minitest::Test
       enrichments: [
         {
           description: "Find email addresses",
-          format: "email"
+          format: "text"
         }
       ]
     }
@@ -241,7 +241,7 @@ class WebsetsCreateValidatorTest < Minitest::Test
   def test_raises_when_enrichment_missing_description
     params = {
       search: { query: "test", count: 10 },
-      enrichments: [{ format: "email" }]
+      enrichments: [{ format: "text" }]
     }
 
     error = assert_raises(ArgumentError) do

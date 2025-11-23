@@ -11,7 +11,7 @@ class WebsetEnrichmentTest < Minitest::Test
       webset_id: "ws_abc",
       title: "Email Extraction",
       description: "Extract email addresses",
-      format: "email",
+      format: "text",
       options: [{ "label" => "Personal" }, { "label" => "Work" }],
       instructions: "Find all contact emails",
       metadata: { "priority" => "high" },
@@ -25,7 +25,7 @@ class WebsetEnrichmentTest < Minitest::Test
     assert_equal "ws_abc", enrichment.webset_id
     assert_equal "Email Extraction", enrichment.title
     assert_equal "Extract email addresses", enrichment.description
-    assert_equal "email", enrichment.format
+    assert_equal "text", enrichment.format
     assert_equal [{ "label" => "Personal" }, { "label" => "Work" }], enrichment.options
     assert_equal "Find all contact emails", enrichment.instructions
     assert_equal({ "priority" => "high" }, enrichment.metadata)
