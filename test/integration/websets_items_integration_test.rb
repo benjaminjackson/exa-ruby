@@ -32,8 +32,8 @@ class WebsetsItemsIntegrationTest < Minitest::Test
       completed = wait_for_webset_completion(client, webset.id)
       assert completed.idle?
 
-      # Get the webset to see items
-      retrieved_webset = client.get_webset(webset.id)
+      # Get the webset with items expanded
+      retrieved_webset = client.get_webset(webset.id, expand: ["items"])
 
       skip "No items in webset" if retrieved_webset.items.nil? || retrieved_webset.items.empty?
 
@@ -44,7 +44,8 @@ class WebsetsItemsIntegrationTest < Minitest::Test
 
       assert_instance_of Hash, item
       assert_equal item_id, item["id"]
-      refute_nil item["url"]
+      assert item.key?("properties")
+      refute_nil item["properties"]["url"]
     end
   end
 
@@ -65,8 +66,8 @@ class WebsetsItemsIntegrationTest < Minitest::Test
       completed = wait_for_webset_completion(client, webset.id)
       assert completed.idle?
 
-      # Get the webset to see items
-      retrieved_webset = client.get_webset(webset.id)
+      # Get the webset with items expanded
+      retrieved_webset = client.get_webset(webset.id, expand: ["items"])
 
       skip "No items in webset" if retrieved_webset.items.nil? || retrieved_webset.items.empty?
 
@@ -107,6 +108,33 @@ class WebsetsItemsIntegrationTest < Minitest::Test
         assert item.key?("properties")
         assert item["properties"].key?("url")
       end
+    end
+  end
+
+  def test_get_webset_with_expand_items
+    VCR.use_cassette("websets_get_with_expand_items") do
+      client = Exa::Client.new(api_key: @api_key)
+
+      # Create a webset with items
+      webset = client.create_webset(
+        search: {
+          query: "Enterprise SaaS companies with AI features",
+          count: 2
+        }
+      )
+      track_webset(webset.id)
+
+      # Wait for webset to complete and have items
+      completed = wait_for_webset_completion(client, webset.id)
+      assert completed.idle?
+
+      # Get webset with expand items parameter
+      retrieved = client.get_webset(webset.id, expand: ["items"])
+
+      assert_instance_of Exa::Resources::Webset, retrieved
+      assert_equal webset.id, retrieved.id
+      refute_nil retrieved.items, "Items should be included when expand parameter is used"
+      assert_instance_of Array, retrieved.items
     end
   end
 end

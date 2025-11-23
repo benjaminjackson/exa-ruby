@@ -23,7 +23,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:25:18 GMT
+      - Sun, 23 Nov 2025 00:16:47 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -61,23 +61,23 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"307-S7PVyR2gKdbXEFMr11EpI3l+CPc"
+      - W/"307-oUu0Ia+6p6RD8iKqwwBJwAovoXY"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ES1OXOlO%2Fp%2FT1GQUnJbjzYKewrDM6dSUHrR83n5bcUWSuqgWtsvIR4%2BnGyHgbGXELHnodIF%2FfnwDv7D%2BpF4O6EeDPb0HyxElJUX9raGANPPr7rM%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=lZcF9Y48yT1vxWOB2jFultY2pt56qzb7j6V5nJuOtkbiVPeHfgUk8GkUHNJAsYHbcQyIdwLT6xEOys8eC%2B9ln%2Fk0zgTnrF1yzvjIwRbYOGV3u0k22g%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7fa0ab390f47-EWR
+      - 9a2c7acc7e4e0f75-EWR
     body:
       encoding: UTF-8
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
-        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:18.469Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:18.469Z"}'
-  recorded_at: Sat, 22 Nov 2025 21:25:18 GMT
+      string: '{"id":"webset_01kaq13z8t8zg72bvnfn8ntv85","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq13zn4e4vehwqa0c1r00p6","object":"webset_search","websetId":"webset_01kaq13z8t8zg72bvnfn8ntv85","status":"running","query":"B2B
+        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:16:46.244Z","updatedAt":"2025-11-23T00:16:46.619Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:16:45.850Z","updatedAt":"2025-11-23T00:16:46.619Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:16:47 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85
     body:
       encoding: US-ASCII
       string: ''
@@ -96,80 +96,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:25:19 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Content-Security-Policy:
-      - frame-ancestors 'self'
-      Cross-Origin-Opener-Policy:
-      - same-origin
-      Cross-Origin-Resource-Policy:
-      - same-origin
-      Origin-Agent-Cluster:
-      - "?1"
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Dns-Prefetch-Control:
-      - 'off'
-      X-Download-Options:
-      - noopen
-      X-Frame-Options:
-      - DENY
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Xss-Protection:
-      - '0'
-      Vary:
-      - Origin
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Etag:
-      - W/"312-htGxsUBvQ6aX9fjV+Wkg/oknxfg"
-      Cf-Cache-Status:
-      - DYNAMIC
-      Nel:
-      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=441zmSPZ4Oei8TQQUkfUrrM1YbKM9wcP4iUSJVgmBQDwcAhMtb2c0ZPES8Yl330h9XiUxaNXIOXUy6j1lqFDV9Sjlv809Y3NsN79CFFre9z1FWlPZA%3D%3D"}]}'
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a2b7faa4a66de94-EWR
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
-        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:18.469Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:18.469Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:25:19 GMT
-- request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      X-Api-Key:
-      - "<EXA_API_KEY>"
-      User-Agent:
-      - Faraday v2.14.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 22 Nov 2025 21:25:22 GMT
+      - Sun, 23 Nov 2025 00:16:48 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -207,27 +134,100 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"409-yQqGI264rtKfGL5yhocGeduSXHo"
+      - W/"312-Z1mcjsEe/gRObVhdF6DfhwvtTQ0"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wfZZJJbCpKYJy74Xu92RPkawDboLBRBE2cdW0rKvSM75PpfrcQW31ZCXBSVqecoX8jzqxiYk%2BVzYVlcH9LvonGFfJMIp%2BO9F2AZMLm8YphDh5Kp7sg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=E4MwHOZ2tvW9eGdtod3rmZJXTZfb7MWRrvxFT8s364NB%2BXHh17rOsTGFNb5y0xKSrgA7e9JsI%2Fuu7nZbglFyFdzOQN3p0BUyPoNY1Q%2FXjohdBiyq3A%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7fbc9a234399-EWR
+      - 9a2c7ada2b2caf27-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
+      string: '{"id":"webset_01kaq13z8t8zg72bvnfn8ntv85","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq13zn4e4vehwqa0c1r00p6","object":"webset_search","websetId":"webset_01kaq13z8t8zg72bvnfn8ntv85","status":"running","query":"B2B
+        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:16:46.244Z","updatedAt":"2025-11-23T00:16:46.619Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:16:45.850Z","updatedAt":"2025-11-23T00:16:46.619Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:16:48 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:16:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"409-e2cvVZ4ifZJ90o7X77vEX+L2HGY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jKM2WEv6o6eM5OEt%2BH3LTVWy0aw%2FVTcR5iqBztJz66DNbpsfWg4fIbDHNENHTyJYh3Crijb7n%2BLUd6K9xCrzY%2Fn2k7Vdu8NKxXUeEoPCOYE4FWa4lw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c7aebba8e4299-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq13z8t8zg72bvnfn8ntv85","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kaq13zn4e4vehwqa0c1r00p6","object":"webset_search","websetId":"webset_01kaq13z8t8zg72bvnfn8ntv85","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
         or services","successRate":0},{"description":"Company has completed a funding
-        round in 2025","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:25:22 GMT
+        round in 2025","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:16:46.244Z","updatedAt":"2025-11-23T00:16:48.415Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:16:45.850Z","updatedAt":"2025-11-23T00:16:48.415Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:16:51 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85
     body:
       encoding: US-ASCII
       string: ''
@@ -246,7 +246,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:25:25 GMT
+      - Sun, 23 Nov 2025 00:16:53 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -284,27 +284,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"40c-X0OlBnZJcf+RgsAioB9RqyBnrHM"
+      - W/"40b-6UVw9PPS0liqhAIvoKwBpbIsjfc"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=F16QGul8NBaCbUrdkO66xnprd31hH31cM8XCC49HI9n9FVqeStKBsCaFqQ9gGH81nzZnxa9oGohJ8bEj0Md%2Bw1Femo9atN%2BOXLVcjGdmJd4ieiA0rw%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=oftD0nvq1Spu6meSf8x7L10sj6mAdSjyDk3CJuYqBdTDlHTB7tVwOt%2FhoBGjF%2FsU9vGXH978DCfK28sse0AyZBYrOZSVIzzywjBCXnVEGo5kAriA9A%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7fcd3b85f799-EWR
+      - 9a2c7afc48054392-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
+      string: '{"id":"webset_01kaq13z8t8zg72bvnfn8ntv85","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kaq13zn4e4vehwqa0c1r00p6","object":"webset_search","websetId":"webset_01kaq13z8t8zg72bvnfn8ntv85","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
         or services","successRate":100},{"description":"Company has completed a funding
-        round in 2025","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:25:25 GMT
+        round in 2025","successRate":50}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:16:46.244Z","updatedAt":"2025-11-23T00:16:48.415Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:16:45.850Z","updatedAt":"2025-11-23T00:16:48.415Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:16:53 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85
     body:
       encoding: US-ASCII
       string: ''
@@ -323,7 +323,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:25:27 GMT
+      - Sun, 23 Nov 2025 00:16:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -361,27 +361,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"410-ghnOvlF1hjqN3hn216UOcPRyjZo"
+      - W/"410-MISCQ1aggfmGKP+40rmMqw99W+I"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=d%2FK9GcZ00QNQ9I511dv64Ho2X1GQX8z7H1pGJ7vUNxPEoEpMQ6Zne4SYW5VnX%2Bh%2BSQ90SHnUIyl6pb7dWjJ5xrpGt8gS5KvWbcASpBjP0VWocgqodg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=fqEGCzcW5z%2Fn%2FztDtPS7X%2BEEL2KAlsu6oC3YFbZ3UH0Kgyj%2BSyfyE%2FdLyPET8JJTa7nHAsFiO6vMeVOzlfm0fgYo4M4eEuvszCO5eNaLbP3qfm2Peg%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7fddac7ac674-EWR
+      - 9a2c7b0cb96d8186-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
+      string: '{"id":"webset_01kaq13z8t8zg72bvnfn8ntv85","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kaq13zn4e4vehwqa0c1r00p6","object":"webset_search","websetId":"webset_01kaq13z8t8zg72bvnfn8ntv85","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
-        or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:25:27 GMT
+        or services","successRate":66.67},{"description":"Company has completed a
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:16:46.244Z","updatedAt":"2025-11-23T00:16:48.415Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:16:45.850Z","updatedAt":"2025-11-23T00:16:48.415Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:16:56 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85
     body:
       encoding: US-ASCII
       string: ''
@@ -400,7 +400,84 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:25:30 GMT
+      - Sun, 23 Nov 2025 00:16:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"410-MISCQ1aggfmGKP+40rmMqw99W+I"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=h7Y%2BAsVs3RYCwjYlVcTjJAfqlFBgFGnQGIaNP8Csc2hEdZZJU9tci9AwH0kDYF4WDzrl5EAkoyo7ETTCaESHdNBFORXrT3bM%2BrRkhChqpYLdTvNkCA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c7b1d6fc94f2e-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq13z8t8zg72bvnfn8ntv85","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kaq13zn4e4vehwqa0c1r00p6","object":"webset_search","websetId":"webset_01kaq13z8t8zg72bvnfn8ntv85","status":"running","query":"B2B
+        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides B2B (business-to-business) SaaS (software-as-a-service) products
+        or services","successRate":66.67},{"description":"Company has completed a
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:16:46.244Z","updatedAt":"2025-11-23T00:16:48.415Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:16:45.850Z","updatedAt":"2025-11-23T00:16:48.415Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:16:59 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:17:01 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -438,27 +515,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"410-ghnOvlF1hjqN3hn216UOcPRyjZo"
+      - W/"410-MISCQ1aggfmGKP+40rmMqw99W+I"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Sn%2BFoMFDKprZ2aDoWyOXA8mtOVOEpl9ZF5bqdPTZ5eTVBw1MPk2%2FHAJ%2FK%2BjuLmr2VTmBYhwt2r9TDzo006rcA5whp0gQMVf98%2FmtdTfTsKM1cS94XQ%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=uS6hDxNjovokE0rjZ4qAR2WqaXGrdFycIVnGVl2ivCbFSS2n3g3fo27O8MwknxNktugR8VFf1obyuL6LFFjxLazY%2FYZJnLnVOGoT5wBq8POEOlldsA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b7feea9274153-EWR
+      - 9a2c7b2ebfe98c95-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
+      string: '{"id":"webset_01kaq13z8t8zg72bvnfn8ntv85","object":"webset","status":"running","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kaq13zn4e4vehwqa0c1r00p6","object":"webset_search","websetId":"webset_01kaq13z8t8zg72bvnfn8ntv85","status":"running","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
-        or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:25:30 GMT
+        or services","successRate":66.67},{"description":"Company has completed a
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:16:46.244Z","updatedAt":"2025-11-23T00:16:48.415Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:16:45.850Z","updatedAt":"2025-11-23T00:16:48.415Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:01 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85
     body:
       encoding: US-ASCII
       string: ''
@@ -477,7 +554,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:25:33 GMT
+      - Sun, 23 Nov 2025 00:17:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -515,27 +592,27 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"410-ghnOvlF1hjqN3hn216UOcPRyjZo"
+      - W/"40f-4qg3p4Via09ouVShNIQT4JEktCw"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=nQ6%2BdPz2hHOI9BHAqKh%2FdMvx8a%2B2Ao%2BzJi9HeuWKtu89Y05ofdQN4BWLBhcHmkI9sCP9Dfm0DHzFJUaOm4aEe%2FF9oKPCBPNktFtw%2Bcp4ojVSC9G0Ow%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=N6ufj6foRiKHv1hNy3QCbSOLVBHhYmluuXFzR%2BKitZAVQ60HPuh5r2gfI3hR63ofqUHsV%2F3BJ%2FDdgZ0jVxSRgOSMz5vsWr%2B7I2on9RWSLfCFoq3zwQ%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b80001f1e42ab-EWR
+      - 9a2c7b3f6f511768-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"running","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"running","query":"B2B
+      string: '{"id":"webset_01kaq13z8t8zg72bvnfn8ntv85","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kaq13zn4e4vehwqa0c1r00p6","object":"webset_search","websetId":"webset_01kaq13z8t8zg72bvnfn8ntv85","status":"completed","query":"B2B
         SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
         provides B2B (business-to-business) SaaS (software-as-a-service) products
-        or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:21.050Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:21.050Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:25:33 GMT
+        or services","successRate":66.67},{"description":"Company has completed a
+        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:16:46.244Z","updatedAt":"2025-11-23T00:17:02.554Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:16:45.850Z","updatedAt":"2025-11-23T00:17:02.554Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:17:04 GMT
 - request:
     method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85?expand=items
     body:
       encoding: US-ASCII
       string: ''
@@ -554,7 +631,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:25:36 GMT
+      - Sun, 23 Nov 2025 00:17:05 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -592,27 +669,23 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"40f-/PFYiKnANee98LWRgvQJoHuFp6E"
+      - W/"2f56-t9PR0mpi2cxf4QdTTRTJiFzSBBE"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=4nuWAxZiPgR5O5w5cBKaCaEEIDvGW6IrOqop2Ee5JLzBDkRD7btjy%2FFgQob%2FYZTq192OlL3RnhctprJ3ogWnGo1K6j2W6CYTZxaR4exGbRJVe8IOFg%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=hKC9WqiEk40YSe%2F8mHX63MBT8oEUBWsE0vNYDaUHEZ1z38V%2FX02%2BvSbqen0Qw8wLxCidFizBnpMKfmCqfriFWbc3oUxQmrRctBFrpAFfrZ8Jo1F8UQ%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b8010bcef5a33-EWR
+      - 9a2c7b44ba662f06-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"idle","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"completed","query":"B2B
-        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
-        provides B2B (business-to-business) SaaS (software-as-a-service) products
-        or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:34.898Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:34.898Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:25:35 GMT
+      string: !binary |-
+        eyJpZCI6IndlYnNldF8wMWthcTEzejh0OHpnNzJidm5mbjhudHY4NSIsIm9iamVjdCI6IndlYnNldCIsInN0YXR1cyI6ImlkbGUiLCJleHRlcm5hbElkIjpudWxsLCJ0aXRsZSI6IkNvbXBhbmllczogQjJCIFNhYVMsIHJlY2VudCBmdW5kaW5nIHJvdW5kcyIsInNlYXJjaGVzIjpbeyJpZCI6IndzZWFyY2hfMDFrYXExM3puNGU0dmVod3FhMGMxcjAwcDYiLCJvYmplY3QiOiJ3ZWJzZXRfc2VhcmNoIiwid2Vic2V0SWQiOiJ3ZWJzZXRfMDFrYXExM3o4dDh6ZzcyYnZuZm44bnR2ODUiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJxdWVyeSI6IkIyQiBTYWFTIGNvbXBhbmllcyB3aXRoIHJlY2VudCBmdW5kaW5nIHJvdW5kcyIsImVudGl0eSI6eyJ0eXBlIjoiY29tcGFueSJ9LCJjcml0ZXJpYSI6W3siZGVzY3JpcHRpb24iOiJDb21wYW55IHByb3ZpZGVzIEIyQiAoYnVzaW5lc3MtdG8tYnVzaW5lc3MpIFNhYVMgKHNvZnR3YXJlLWFzLWEtc2VydmljZSkgcHJvZHVjdHMgb3Igc2VydmljZXMiLCJzdWNjZXNzUmF0ZSI6NjYuNjd9LHsiZGVzY3JpcHRpb24iOiJDb21wYW55IGhhcyBjb21wbGV0ZWQgYSBmdW5kaW5nIHJvdW5kIGluIDIwMjUiLCJzdWNjZXNzUmF0ZSI6MzMuMzN9XSwiY291bnQiOjEsImJlaGF2aW9yIjoib3ZlcnJpZGUiLCJleGNsdWRlIjpbXSwic2NvcGUiOltdLCJwcm9ncmVzcyI6eyJmb3VuZCI6MSwiYW5hbHl6ZWQiOjMsImNvbXBsZXRpb24iOjEwMCwidGltZUxlZnQiOjB9LCJyZWNhbGwiOm51bGwsIm1ldGFkYXRhIjp7fSwiY2FuY2VsZWRBdCI6bnVsbCwiY2FuY2VsZWRSZWFzb24iOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjNUMDA6MTY6NDYuMjQ0WiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjNUMDA6MTc6MDIuNTU0WiJ9XSwiaW1wb3J0cyI6W10sImVucmljaG1lbnRzIjpbXSwibW9uaXRvcnMiOltdLCJleGNsdWRlcyI6W10sIm1ldGFkYXRhIjp7fSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNjo0NS44NTBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNzowMi41NTRaIiwiaXRlbXMiOlt7ImlkIjoid2l0ZW1fMDFrYXExNDUwbjdhOWQ4ZHI3N2E5ZDhkcjciLCJvYmplY3QiOiJ3ZWJzZXRfaXRlbSIsInNvdXJjZSI6InNlYXJjaCIsInNvdXJjZUlkIjoid3NlYXJjaF8wMWthcTEzem40ZTR2ZWh3cWEwYzFyMDBwNiIsIndlYnNldElkIjoid2Vic2V0XzAxa2FxMTN6OHQ4emc3MmJ2bmZuOG50djg1IiwicHJvcGVydGllcyI6eyJ0eXBlIjoiY29tcGFueSIsInVybCI6Imh0dHBzOi8vZ2V0dmVudGEuYWkiLCJkZXNjcmlwdGlvbiI6IlZlbnRhIEFJIChZQyBTMjMpIGlzIGEgcHJpdmF0ZSBCMkIgU2FhUyBjb21wYW55IHNwZWNpYWxpemluZyBpbiBBSS1wb3dlcmVkIHNhbGVzIG91dHJlYWNoIHRvb2xzIGZvciBzYWxlcyB0ZWFtcywgcHJpbWFyaWx5IGluIEdlcm1hbnk7IGZvdW5kZWQgaW4gMjAyMiwgd2l0aCA1IGVtcGxveWVlcyAoKzI1JSBZb1kgZ3Jvd3RoKSwgYW5kICQ0LjVNIGluIHRvdGFsIGZ1bmRpbmcsIGxhc3QgcmFpc2VkIGluIEp1bHkgMjAyNS4gVGhlIGNvbXBhbnkgcHJvdmlkZXMgR0RQUi1jb21wbGlhbnQsIHRhcmdldGVkIGNvbXBhbnkgYW5kIGNvbnRhY3QgZGF0YSBhdXRvbWF0aW9uIHRvIGhlbHAgb3V0Ym91bmQgc2FsZXMgdGVhbXMgc2NhbGUgdGhlaXIgb3V0cmVhY2ggZWZmb3J0cy4iLCJjb250ZW50IjoiW1RhbGsgdG8gU2FsZXNdKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL2NvbnRhY3QpIFtSZXF1ZXN0IERlbW9dKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL3RyaWFsKVxuXG5WZW50YSBBSSByZWxlYXNlcyBmb3VyIG5ldyBBSSBzYWxlcyBlbXBsb3llZXMgLSBbTGVhcm4gbW9yZV0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvYmxvZy92ZW50YS1haS1sYXVuY2hlcy1mb3VyLW5ldy1haS1zYWxlcy1lbXBsb3llZXMpXG5cbiMgVGhlIGNvbXBsaWFudCBBScKgY29sbGVhZ3VlIGZvciBzYWxlcyB0ZWFtcyBpbiBFdXJvcGVcblxuVmVudGEgQUkgZmluZHMgeW91ciBuZXh0IGJlc3QgY3VzdG9tZXIgLSB5b3VyIHRlYW0gYnVpbGRzIHRoZSBjb25uZWN0aW9uLlxuXG5bU3RhcnQgeW91ciA3LWRheSBmcmVlIHRyaWFsXShodHRwczovL3d3dy5nZXR2ZW50YS5haS90cmlhbClcblxuR0RQUi1jb21wbGlhbnRcblxuTWFkZSBmb3IgRXVyb3BlXG5cbkJhY2tlZCBieVxuXG5ZLUNvbWJpbmF0b3JcblxuTWFkZSBpbiBHZXJtYW55XG5cbkhlYWRxdWFydGVyZWQgaW4gTXVuaWNoXG5cbkxlYWQgUmVzZWFyY2hcblxuRmluZCBvbmx5IHF1YWxpZmllZCBMZWFkc1xuXG5Db2xkIE91dHJlYWNoXG5cbkVVLWNvbXBsaWFudFxuXG5TYWxlcyBUcmlnZ2VyXG5cbk9wZW4gSm9ic1xuXG5Db21wbGlhbmNlXG5cbkdEUFIgJsKgTG9jYWwgTGF3c1xuXG5bV2F0Y2ggVmlkZW8gNiBNaW5dKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL3d3dy5nZXR2ZW50YS5haSkgW1dhdGNoIFZpZGVvIDYgTWluXShodHRwczovL3d3dy5nZXR2ZW50YS5haS93d3cuZ2V0dmVudGEuYWkpIFtXYXRjaCBWaWRlbyAyIE1pbl0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvd3d3LmdldHZlbnRhLmFpKSBbV2F0Y2ggVmlkZW8gNSBNaW5dKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL3d3dy5nZXR2ZW50YS5haSlcblxuTGVhZGluZyBFdXJvcGVhbiBzYWxlcyB0ZWFtcyBmaW5kIHRoZWlyIGN1c3RvbWVycyB3aXRoIFZlbnRhIEFJXG5cbldoeSBWZW50YSBBSVxuXG4jIyBXaHkgc2FsZXMgdGVhbXMgaW4gRXVyb3BlIHJlbHkgb24gVmVudGEgQUlcblxuVmVudGEgQUkgaXMgeW91ciBuZXcgQUkgY29sbGVhZ3VlLCBmaW5kaW5nIHlvdXIgbmV4dCBiZXN0IGN1c3RvbWVyIGF0IHRoZSBpZGVhbCB0aW1lIHRvIGNvbm5lY3QuXG5cblRoZSBiZXN0IGNvbXBhbnkgZGF0YSBpbiBFdXJvcGVcblxuVmVudGEgQUkgY29sbGVjdHMgZGF0YSBmcm9tIG92ZXIgMTIgcHJvdmlkZXJzIGFuZCBzZWFyY2hlcyB0aGUgSW50ZXJuZXQgdG8gZmluZCBzdWl0YWJsZSBjb21wYW5pZXMgYW5kIGNvbnRhY3RzXG5cbkNvbXBsaWFudCBjb2xkIG91dHJlYWNoXG5cblJlYWNoIG91dCB0byBjdXN0b21lcnMgdmlhIHZhcmlvdXMgbGVnYWxseSBjb21wbGlhbnQgY2hhbm5lbHMsIHN1Y2ggYXMgTGlua2VkSW4sIHRlbGVwaG9uZSBvciBieSBsZXR0ZXJcblxuRmluZCBjb21wYW5pZXMgYmFzZWQgb24geW91ciBjcml0ZXJpYVxuXG5Zb3UgZGVjaWRlIHdobyB5b3Ugd2FudCB0byBjb250YWN0IC0gbm90IGEgZGF0YWJhc2UgZmlsdGVyXG5cbltTdGFydCB5b3VyIDctZGF5IGZyZWUgdHJpYWxdKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL3RyaWFsKVxuXG5HRFBSLWNvbXBsaWFudFxuXG5NYWRlIGZvciBFdXJvcGVcblxuQmFja2VkIGJ5XG5cblktQ29tYmluYXRvclxuXG5NYWRlIGluIEdlcm1hbnlcblxuSGVhZHF1YXJ0ZXJlZCBpbiBNdW5pY2hcblxuSG93IFZlbnRhIEFJIHdvcmtzXG5cbiMjIEJvb2sgbW9yZSBtZWV0aW5ncyBpbiBsZXNzIHRpbWVcblxuVmVudGEgQUkgYXV0b21hdGVzIHRlZGlvdXMgbWFudWFsIHRhc2tzIC0gZnJvbSByZXNlYXJjaGluZyBjb21wYW5pZXMgYW5kIGNvbnRhY3RzIHRvIHdyaXRpbmcgcGVyc29uYWxpemVkIG1lc3NhZ2VzXG5cbjFcblxuRmluZCBjb21wYW5pZXNcblxuIyMjIEZpbmQgcmVsZXZhbnQgY29tcGFuaWVzXG5cbldpdGggdGhlIGhlbHAgb2Ygb3VyIEFJLWJhc2VkIHdlYiBzZWFyY2gsIFZlbnRhIEFJIGNhbiBmaW5kIGV4YWN0bHkgdGhlIGNvbXBhbmllcyB0aGF0IGFyZSByZWFsbHkgaW1wb3J0YW50IHRvIHlvdSBmcm9tIG1vcmUgdGhhbiA3MCBtaWxsaW9uIGNvbXBhbmllcy5cblxuQ29tcGFueSBzZWFyY2ggYmFzZWQgb24gaW5kaXZpZHVhbCBjcml0ZXJpYVxuXG5Nb3N0IGNvbXByZWhlbnNpdmUgY29tcGFueSBkYXRhIGluIEV1cm9wZVxuXG5BSS1iYXNlZCBxdWFsaWZpY2F0aW9uXG5cbltMZWFybiBNb3JlXShodHRwczovL3d3dy5nZXR2ZW50YS5haS9maW5kLXF1YWxpZnktY29tcGFuaWVzKVxuXG4yXG5cbkZpbmQgY29udGFjdHNcblxuIyMjIFBlcmZlY3QtZml0IGNvbnRhY3RzXG5cbkpvYiB0aXRsZSBmaWx0ZXJzIGFyZSBhIHRoaW5nIG9mIHRoZSBwYXN0LiBBbHdheXMgZmluZCB0aGUgcGVyZmVjdCBjb250YWN0IHBlcnNvbiBiYXNlZCBvbiB0aGVpciBqb2IgZGVzY3JpcHRpb25zIGFuZCBvdGhlciBkYXRhIHBvaW50cy5cblxuQUktYmFzZWQgY29udGFjdCBwaWNrZXJcblxuUGhvbmUgbnVtYmVycyBhbmQgZW1haWwgYWRkcmVzc2VzIGRpcmVjdGx5IGZyb20gdGhlIGNvbXBhbmllcyB3ZWJzaXRlXG5cbkFjY2VzcyB0byBvdmVyIDEyIEdEUFItY29tcGxpYW50IGRhdGEgdmVuZG9yc1xuXG5bTGVhcm4gTW9yZV0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvcmVsZXZhbnQtY29udGFjdHMpXG5cbjNcblxuUmVhY2ggb3V0XG5cbiMjIyBQZXJzb25hbGl6ZWQgbWVzc2FnZXMgb24gYWxsIGNoYW5uZWxzXG5cblJlYWNoIGxlYWRzIGZhc3RlciB3aXRoIHBlcnNvbmFsaXNlZCBtZXNzYWdlcywgb3B0aW1pc2VkIGVtYWlsIGRlbGl2ZXJ5LCBMaW5rZWRJbiBhdXRvbWF0aW9uIGFuZCBoYW5kd3JpdHRlbiBsZXR0ZXJzLlxuXG5NdWx0aS1jaGFubmVsIG91dHJlYWNoIHdpdGggQUktcGVyc29uYWxpemF0aW9uXG5cbk9wdGltaXplZCBmb3IgRXVyb3BlYW4gbGFuZ3VhZ2VzXG5cbkUtTWFpbCBpbmZyYXN0cnVjdHVyZSB3aXRoIG11bHRpcGxlIGRvbWFpbnNcblxuW0xlYXJuIE1vcmVdKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL2FpLW1lc3NhZ2VzKVxuXG5bU3RhcnQgeW91ciA3LWRheSBmcmVlIHRyaWFsXShodHRwczovL3d3dy5nZXR2ZW50YS5haS90cmlhbClcblxuR0RQUi1jb21wbGlhbnRcblxuTWFkZSBmb3IgRXVyb3BlXG5cbkJhY2tlZCBieVxuXG5ZLUNvbWJpbmF0b3JcblxuTWFkZSBpbiBHZXJtYW55XG5cbkhlYWRxdWFydGVyZWQgaW4gTXVuaWNoXG5cblN1Y2Nlc3NmdWwgQ3VzdG9tZXJzXG5cbiMjIFdoYXQgY3VzdG9tZXJzIGFjaGlldmUgd2l0aCBWZW50YSBBSVxuXG4yNC83IHJlc2VhcmNoaW5nIG5ldyBsZWFkcyBmb3IgeW91XG5cbjMwJSBtb3JlIG1lZXRpbmdzIHRoYW5rcyB0byBlbmQtdG8tZW5kIGF1dG9tYXRpb25cblxubW9yZSB0aGFuIDEuMDAwIHBvdGVudGlhbCBsZWFkcyByZWFjaGVkIHBlciBtb250aFxuXG5bRXJrbMOkcnZpZGVvIGFuc2VoZW4gMTIgTWluXShodHRwczovL3d3dy5nZXR2ZW50YS5haS93d3cuZ2V0dmVudGEuYWkpXG5cblwiV2l0aCBWZW50YSBBSSwgd2UgaGF2ZSBlbmFibGVkIG91ciB0ZWFtIHRvIGNhcnJ5IG91dCB0aHJlZSB0aW1lcyBhcyBtYW55IG91dHJlYWNoIGFjdGl2aXRpZXMgYXMgYmVmb3JlIHdpdGggdGhlIHNhbWUgbWFucG93ZXIuIEFib3ZlIGFsbCwgb3VyIHRlYW0gc2F2ZWQgYSB0b24gb2YgdGltZSBieSB0aGUgYXV0b21hdGVkIHJlc2VhcmNoIGFuZCBjb250YWN0IGFuZCBoYWQgYWxsIHRoZSBuZWNlc3NhcnkgaW5mb3JtYXRpb24gYXQgaGFuZCBmb3IgdGhlIHN1YnNlcXVlbnQgY29sZCBjYWxsc1wiXG5cblVycyBNZXJrZWxcblxuTWFuYWdpbmcgRGlyZWN0b3Igc29mdC5mYWN0XG5cbltNZWhyIGVyZmFocmVuXShodHRwczovL3d3dy5nZXR2ZW50YS5haS9jYXNlLXN0dWRpZXMvc29mdC1mYWN0KVxuXG5bRXJrbMOkcnZpZGVvIGFuc2VoZW4gMTIgTWluXShodHRwczovL3d3dy5nZXR2ZW50YS5haS93d3cuZ2V0dmVudGEuYWkpXG5cblwiVmVudGEgQUkncyBhdXRvbWF0ZWQgbGVhZCBxdWFsaWZpY2F0aW9uIGlzIGEgY29tcGxldGUgZ2FtZSBjaGFuZ2VyLiBJdCB3YXMgdGhlIG9ubHkgd2F5IHdlIHdlcmUgYWJsZSB0byBjaGVjayB0aGUgcmV0YWlsIHByZXNlbmNlIG9mIHRob3VzYW5kcyBvZiBjb21wYW5pZXMgYXQgdGhlIHNhbWUgdGltZS4gVGhpcyBpcyB0aGUgZnV0dXJlIG9mIGEgc3VjY2Vzc2Z1bCBuZXcgYnVzaW5lc3Mgc3RyYXRlZ3kuXCJcblxuU29waGllIEtlaW1cblxuU2FsZXMgRGlyZWN0b3IsIEFSTk9cblxuW01laHIgZXJmYWhyZW5dKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL2Nhc2Utc3R1ZGllcy9hcm5vKVxuXG5bRXJrbMOkcnZpZGVvIGFuc2VoZW4gMTIgTWluXShodHRwczovL3d3dy5nZXR2ZW50YS5haS93d3cuZ2V0dmVudGEuYWkpXG5cblwiV2UgaGF2ZSB0ZXN0ZWQgbnVtZXJvdXMgZGF0YSBwcm92aWRlcnMgYW5kIHRvb2xzLCBidXQgbm9uZSB3ZXJlIGFzIGNvbXByZWhlbnNpdmUgYXMgVmVudGEgQUkuIEZpbmFsbHksIHdlIG5vIGxvbmdlciBoYXZlIHRvIHN3aXRjaCBiZXR3ZWVuIGRpZmZlcmVudCBzeXN0ZW1zLiBPdXIgc2FsZXMgdGVhbSBub3cgYWx3YXlzIGhhcyBlbm91Z2ggbGVhZHMgd2l0aCB0aGUgcmlnaHQgY29udGFjdCBkZXRhaWxzIGFuZCBjYW4gY29uY2VudHJhdGUgZnVsbHkgb24gYWNxdWlzaXRpb24uXCJcblxuQWtlZWQgQXptaVxuXG5DRU8sIGNlcmNsaVxuXG5bTWVociBlcmZhaHJlbl0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvY2FzZS1zdHVkaWVzL2NlcmNsaSlcblxuRmVhdHVyZXNcblxuIyMgRXZlcnl0aGluZyB5b3UgbmVlZCB0byBydW4gc3VjY2Vzc2Z1bCBvdXRyZWFjaFxuXG5CdXlpbmcgU2lnbmFsc1xuXG5EaXNjb3ZlciBuZXcgY29tcGFuaWVzIHRoYXQgcHVibGlzaCBqb2IgcG9zdHMgb3IgdGFrZSBwYXJ0IGluIHRyYWRlIGZhaXJzLlxuXG5TZWFtbGVzcyBpbnRlZ3JhdGlvbiB3aXRoIHlvdXIgQ1JNXG5cbkJpZGlyZWN0aW9uYWwgc3luY2hyb25pc2F0aW9uIHdpdGggSHVic3BvdCwgU2FsZXNmb3JjZSwgUGlwZWRyaXZlIGFuZCBvdGhlciBzeXN0ZW1zXG5cbkUtTWFpbCBpbmZyYXN0cnVjdHVyZSB0byBzY2FsZSB5b3VyIG91dHJlYWNoXG5cbldlIHNldCB1cCBhbiBvcHRpbWlzZWQgZS1tYWlsIGluZnJhc3RydWN0dXJlIHdpdGggc2V2ZXJhbCBkb21haW5zIGFuZCBlLW1haWwgYWNjb3VudHMgZm9yIHlvdS5cblxuQW5hbHlzZSBhbmQgb3B0aW1pemUgeW91ciBjYW1wYWlnbnNcblxuVmVudGEgQUkgYW5hbHlzZXMgYWxsIHJlc3BvbnNlcyBhbmQgZ2l2ZXMgeW91IGFuIGluc2lnaHQgaW50byB3aGF0IHJlYWxseSBtYWtlcyB5b3VyIGNhbXBhaWducyBzdWNjZXNzZnVsLlxuXG5QaHlzaWNhbCBNYWlsaW5nc1xuXG5EbyB5b3UgcmVhbGx5IHdhbnQgdG8gc3RhbmQgb3V0PyBUaGVuIHRyeSBvdXIgcGVyc29uYWxpemVkIGxldHRlciBjYW1wYWlnbnMhXG5cbkZBUVxuXG4jIyBGcmVxdWVudGx5IGFza2VkIHF1ZXN0aW9uc1xuXG5WZW50YSBBSSBmaW5kcyB0aG91c2FuZHMgb2YgcmVsZXZhbnQgY29tcGFueSBjb250YWN0cyBldmVyeSBkYXkgYW5kIGhlbHBzIHlvdSByZWFjaCB0aGVtIHF1aWNrbHkgLSBzbyB5b3UgY2FuIGZvY3VzIG9uIHdoYXQgcmVhbGx5IG1hdHRlcnM6IHRoZSBodW1hbiBjb250YWN0LlxuXG5bU3RhcnQgeW91ciA3LWRheSBmcmVlIHRyaWFsXShodHRwczovL3d3dy5nZXR2ZW50YS5haS90cmlhbClcblxuR0RQUi1jb21wbGlhbnRcblxuTWFkZSBmb3IgRXVyb3BlXG5cbkJhY2tlZCBieVxuXG5ZLUNvbWJpbmF0b3JcblxuTWFkZSBpbiBHZXJtYW55XG5cbkhlYWRxdWFydGVyZWQgaW4gTXVuaWNoXG5cbioqSXMgVmVudGEgQUkgR0RQUi1jb21wbGlhbnQ/KipcblxuWWVzLCBWZW50YSBBSSBpcyBHRFBSIGNvbXBsaWFudC4gT3VyIHNvZnR3YXJlIGlzIGRldmVsb3BlZCBpbiB0aGUgRVUgYW5kIGhvc3RlZCBpbiBHZXJtYW55IGluIGNvbXBsaWFuY2Ugd2l0aCB0aGUgR0RQUi4gT3VyIEFJIGVtcGxveWVlcyBjYW4gYWxzbyBhY2Nlc3MgZGF0YWJhc2VzIG91dHNpZGUgdGhlIEVVLCB3aGljaCBhcmUgY2hlY2tlZCBieSB1cyBmb3IgdGhlaXIgR0RQUiBjb21wbGlhbmNlLiBGdXJ0aGVyIGRldGFpbHMgY2FuIGJlIGZvdW5kIGluIG91ciBnZW5lcmFsIHRlcm1zIGFuZCBjb25kaXRpb25zLlxuXG4qKkNhbiBJIGFsc28gcmVhY2ggY29tcGFuaWVzIG91dHNpZGUgdGhlIEVVIHdpdGggVmVudGEgQUk/KipcblxuWWVzLCB0aGF0IGlzIHBvc3NpYmxlLiBPdXIgQUkgZW1wbG95ZWVzIGhhdmUgYWNjZXNzIHRvIGdsb2JhbCBkYXRhYmFzZXMgYW5kIGNhbiBjb25kdWN0IHJlc2VhcmNoIGluIHZhcmlvdXMgbGFuZ3VhZ2VzLiBBcyBvdXIgQUkgZW1wbG95ZWVzIGFyZSB0cmFpbmVkIGluIEdlcm1hbiBhbmQgRW5nbGlzaCwgdGhleSBhcmUgYmVzdCBzdWl0ZWQgZm9yIG91dHJlYWNoIGluIHRoZXNlIGxhbmd1YWdlcy5cblxuKipXaGljaCBsYW5ndWFnZXMgZG9lcyBWZW50YSBBSSBzdXBwb3J0PyoqXG5cblRoZSBWZW50YSBBSSB1c2VyIGludGVyZmFjZSBjdXJyZW50bHkgc3VwcG9ydHMgR2VybWFuIGFuZCBFbmdsaXNoLCBidXQgb3VyIEFJIFNEUiBjYW4gYWxzbyBpbnRlcnByZXQgaW5mb3JtYXRpb24gYW5kIGdlbmVyYXRlIG1lc3NhZ2VzIGluIDgwIG90aGVyIGxhbmd1YWdlcy5cblxuKipXZSBoYXZlIHNwZWNpYWwgc2VjdXJpdHkgcmVxdWlyZW1lbnRzLCBjYW4geW91IGZ1bGZpbCB0aGVtPyoqXG5cbldlIGFsd2F5cyBlbmRlYXZvdXIgdG8gZnVsZmlsIHNwZWNpYWwgcmVxdWlyZW1lbnRzLiBQbGVhc2UgZ2V0IGluIHRvdWNoIHdpdGggdXMgdG8gZGlzY3VzcyBkZXRhaWxzLlxuXG4qKldoYXQgZGlzdGluZ3Vpc2hlcyB5b3UgZnJvbSBhIHRyYWRpdGlvbmFsIGxlYWQgYWdlbmN5PyoqXG5cblZlbnRhIEFJIGlzIGFuIEFJIGVtcGxveWVlIGZvciB5b3VyIHRlYW0sIHdoaWNoIHRoZXkgY29uZmlndXJlIGFuZCBjb250cm9sIDEwMCUgdGhlbXNlbHZlcy5cblxuKipXaGF0IGRvZXMgbXVsdGktY2hhbm5lbCBvdXRyZWFjaCBtZWFuPyoqXG5cbk11bHRpLWNoYW5uZWwgb3V0cmVhY2ggbWVhbnMgY29udGFjdGluZyBwZW9wbGUgb24gc2V2ZXJhbCBjaGFubmVscywgc3VjaCBhcyBMaW5rZWRJbiwgZW1haWwsIHRlbGVwaG9uZSBvciBieSBsZXR0ZXIgaW4gYSBzcGVjaWZpYyBzZXF1ZW5jZS4gV2l0aCBWZW50YSBBSSwgaXQgaXMgcG9zc2libGUgdG8gc2VuZCBtZXNzYWdlcyBkaXJlY3RseSBieSBlbWFpbCwgTGlua2VkSW4gYW5kIGxldHRlciBhbmQgdG8gZmluZCB0ZWxlcGhvbmUgbnVtYmVycyBmb3IgY29udGFjdCBieSBwaG9uZS4iLCJjb21wYW55Ijp7Im5hbWUiOiJWZW50YSBBSSAoWUMgUzIzKSIsImxvY2F0aW9uIjoidW5kZWZpbmVkLCBHZXJtYW55IiwiZW1wbG95ZWVzIjo1LCJpbmR1c3RyeSI6IlNvZnR3YXJlIERldmVsb3BtZW50IiwiYWJvdXQiOiJWZW50YSBpcyBhbiBBSSB3b3JrZXIgdGhhdCBoZWxwcyBvdXRib3VuZCBkcml2ZW4gc2FsZXMgdGVhbXMgaW4gR2VybWFueSB0byBzY2FsZSB0aGVpciBvdXRyZWFjaC4gSXQgY2FuIGF1dG9tYXRlIHRhc2tzIGxpa2UgcmVzZWFyY2hpbmcgY29tcGFuaWVzIGJhc2VkIG9uIHlvdXIgY3JpdGVyaWEsIGZpbmRpbmcgcHJvc3BlY3RzIGFuZCB0aGVpciBjb250YWN0IGRhdGEgYW5kIHJ1bm5pbmcgbXVsdGktY2hhbm5lbCBvdXRyZWFjaC5cblxuVGhpcyBpcyB3aGF0IG1ha2VzIG91ciBBSSB3b3JrZXJzIG91dHN0YW5kaW5nOlxuLSBNdWx0aS1DaGFubmVsIE91dHJlYWNoIHdpdGhvdXQgbGVnYWwgcmlzazogUmVhY2ggb3V0IG9uIG11bHRpcGxlIGNoYW5uZWxzIGxpa2UgTGlua2VkSW4sIFBob25lIG9yIHZpYSBwZXJzb25hbGl6ZWQgbGV0dGVycyB3aGlsZSBzdGF5aW5nIGNvbXBsaWFudCB3aXRoIGxvY2FsIHJlZ3VsYXRpb25zXG4tIEV1cm9wZSdzIGJlc3QgY29udGFjdCBkYXRhOiBPdXIgQUkgd29ya2VycyBhY2Nlc3MgbW9yZSB0aGFuIDEwIGRhdGFiYXNlcyBhbmQgc2NyYXBlIHRoZSB3ZWIgdG8gZmluZCB0aGUgY29tcGFuaWVzIGFuZCBjb250YWN0cyB0aGF0IG1hdHRlciBmb3IgeW91XG4tIFF1YWxpZnkgYWdhaW5zdCBhbnkgY3JpdGVyaWE6IFlvdSBkZWNpZGUgd2hvIHlvdSB3YW50IHRvIHRhcmdldCAtIG5vdCBhIGRhdGFiYXNlIGZpbHRlciIsImxvZ29VcmwiOiJodHRwczovL21lZGlhLmxpY2RuLmNvbS9kbXMvaW1hZ2UvdjIvRDRFMEJBUUVsWGw3eHlqeVZfZy9jb21wYW55LWxvZ29fMjAwXzIwMC9jb21wYW55LWxvZ29fMjAwXzIwMC8wLzE3MDg2OTM3Mjc2NDkvdmVudGFhaV9sb2dvP2U9MjE0NzQ4MzY0NyZ2PWJldGEmdD1UMmRpM2MtUVdPMUNHaUFpUExBY29IbG9BeUo1RC1kdC1ZclFTZ0dEdE9rIn19LCJldmFsdWF0aW9ucyI6W3siY3JpdGVyaW9uIjoiQ29tcGFueSBoYXMgY29tcGxldGVkIGEgZnVuZGluZyByb3VuZCBpbiAyMDI1IiwicmVhc29uaW5nIjoiVGhlIGludGVybmFsIGNvbXBhbnkgcHJvZmlsZSBmb3IgVmVudGEgQUkgc3RhdGVzIHRoYXQgdGhlIGxhc3QgZnVuZGluZyByb3VuZCB3YXMgYSBQcmXigJFTZWVkIHJvdW5kIHRpdGxlZCBcIlZlbnRhXCIgY29tcGxldGVkIG9uIDIwMjXigJEwN+KAkTAyLCB3aGljaCBpcyBhIGZ1bmRpbmcgcm91bmQgdGhhdCB0b29rIHBsYWNlIGluIDIwMjUuIFRoaXMgZGlyZWN0bHkgc2F0aXNmaWVzIHRoZSBjcml0ZXJpb24gdGhhdCB0aGUgY29tcGFueSBoYXMgY29tcGxldGVkIGEgZnVuZGluZyByb3VuZCBpbiAyMDI1LiIsInNhdGlzZmllZCI6InllcyIsInJlZmVyZW5jZXMiOlt7InRpdGxlIjoiVmVudGEgQUkgKFlDIFMyMykiLCJzbmlwcGV0IjoiVmVudGEgQUkgKFlDIFMyMykgaXMgYSBTb2Z0d2FyZSBEZXZlbG9wbWVudCBjb21wYW55IChwcml2YXRlKSB3aXRoIDUgZW1wbG95ZWVzICgrMjUuMCUgWW9ZIGdyb3d0aCksIGZvdW5kZWQgaW4gMjAyMiwgaGVhZHF1YXJ0ZXJlZCBpbiBHZXJtYW55LiBIYXMgJDQuNU0gaW4gdG90YWwgZnVuZGluZywgbGFzdCByb3VuZCB3YXMgYSBQcmUgU2VlZCBSb3VuZCAtIFZlbnRhIGluIDIwMjUtMDctMDIuIFZlbnRhIEFJIGhlbHBzIHNhbGVzIHRlYW1zIGluIEdlcm1hbnkgcGVyZm9ybSBoaWdobHkgdGFyZ2V0ZWQgY29sZCBvdXRyZWFjaCB3aXRoIGZpcnN0LWNsYXNzIGNvbXBhbnkgYW5kIGNvbnRhY3QgZGF0YS4gT3VyIEFJIGVtcGxveWVlIGZpbmRzIGNvbXBhbmllcy4uLiIsInVybCI6Imh0dHBzOi8vZ2V0dmVudGEuYWkifV19LHsiY3JpdGVyaW9uIjoiQ29tcGFueSBwcm92aWRlcyBCMkIgKGJ1c2luZXNzLXRvLWJ1c2luZXNzKSBTYWFTIChzb2Z0d2FyZS1hcy1hLXNlcnZpY2UpIHByb2R1Y3RzIG9yIHNlcnZpY2VzIiwicmVhc29uaW5nIjoiVmVudGEgQUkgaXMgYSBzb2Z0d2FyZSBkZXZlbG9wbWVudCBjb21wYW55IHRoYXQgb2ZmZXJzIGFuIEFJIGVtcGxveWVlIGZvciBzYWxlcyB0ZWFtcywgZW5hYmxpbmcgaGlnaGx5IHRhcmdldGVkIGNvbGQgb3V0cmVhY2ggYW5kIEdEUFLigJFjb21wbGlhbnQgb3V0cmVhY2guIFRoZSBwcm9kdWN0IGlzIGRlbGl2ZXJlZCBhcyBhIGNsb3Vk4oCRYmFzZWQgc2VydmljZSAoU2FhUykgdG8gYnVzaW5lc3MgY3VzdG9tZXJzIChzYWxlcyB0ZWFtcyBpbiBHZXJtYW55KSwgbWFraW5nIGl0IGEgQjJCIFNhYVMgb2ZmZXJpbmcuIFRoZSBpbnRlcm5hbCBwcm9maWxlIGxpc3RzIHRoZSBjb21wYW55IGFzIGEgc29mdHdhcmUgZGV2ZWxvcG1lbnQgZmlybSBhbmQgZGVzY3JpYmVzIGl0cyBzZXJ2aWNlIGFzIGFuIEFJ4oCRcG93ZXJlZCBzYWxlcyB0b29sIGZvciBvdGhlciBidXNpbmVzc2VzLCB3aGljaCBzYXRpc2ZpZXMgdGhlIGNyaXRlcmlvbi4iLCJzYXRpc2ZpZWQiOiJ5ZXMiLCJyZWZlcmVuY2VzIjpbeyJ0aXRsZSI6IlZlbnRhIEFJIChZQyBTMjMpIiwic25pcHBldCI6IlZlbnRhIEFJIChZQyBTMjMpIGlzIGEgU29mdHdhcmUgRGV2ZWxvcG1lbnQgY29tcGFueSAocHJpdmF0ZSkgd2l0aCA1IGVtcGxveWVlcyAoKzI1LjAlIFlvWSBncm93dGgpLCBmb3VuZGVkIGluIDIwMjIsIGhlYWRxdWFydGVyZWQgaW4gR2VybWFueS4gSGFzICQ0LjVNIGluIHRvdGFsIGZ1bmRpbmcsIGxhc3Qgcm91bmQgd2FzIGEgUHJlIFNlZWQgUm91bmQgLSBWZW50YSBpbiAyMDI1LTA3LTAyLiBWZW50YSBBSSBoZWxwcyBzYWxlcyB0ZWFtcyBpbiBHZXJtYW55IHBlcmZvcm0gaGlnaGx5IHRhcmdldGVkIGNvbGQgb3V0cmVhY2ggd2l0aCBmaXJzdC1jbGFzcyBjb21wYW55IGFuZCBjb250YWN0IGRhdGEuIE91ciBBSSBlbXBsb3llZSBmaW5kcyBjb21wYW5pZXMuLi4iLCJ1cmwiOiJodHRwczovL2dldHZlbnRhLmFpIn1dfV0sImVucmljaG1lbnRzIjpbXSwiY3JlYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNjo1MS43MzNaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0yM1QwMDoxNjo1MS43MzNaIn1dfQ==
+  recorded_at: Sun, 23 Nov 2025 00:17:05 GMT
 - request:
-    method: get
-    uri: https://api.exa.ai/websets/v0/websets/webset_01kapqa0978d4y9egrwraddyts
+    method: delete
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq13z8t8zg72bvnfn8ntv85/items/witem_01kaq1450n7a9d8dr77a9d8dr7
     body:
       encoding: US-ASCII
       string: ''
@@ -631,7 +704,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 22 Nov 2025 21:25:36 GMT
+      - Sun, 23 Nov 2025 00:17:07 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -669,22 +742,18 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Etag:
-      - W/"40f-/PFYiKnANee98LWRgvQJoHuFp6E"
+      - W/"2b47-gLqaLQPWHg56Y6HtIObZ46USZ+M"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EuohpQTKkFdc2NW%2BSF200dbQKU5jrO7%2Bio8RKKGMK6H2HiPyPS898Ffj%2F129RC1EMHZYzYnY3g4Ug%2F6Am%2FNIHtsGL%2By9WjmNBqU2EryOU3Nz80WKHA%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=M%2Fg7ydQr4OFrBhoQqJf5RfIrdOsIZHxjuKL8VKZ8SAizzUZvmwEDbMd8JymdiDEOdDVCgW%2BzHIhuS8qAlmVWJNB3KjsUiB9AbrTyO%2FBPy1BxVaik5g%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a2b80147b4def9d-EWR
+      - 9a2c7b48cc7341cd-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"webset_01kapqa0978d4y9egrwraddyts","object":"webset","status":"idle","externalId":null,"title":"Companies:
-        B2B SaaS, recent funding rounds","searches":[{"id":"wsearch_01kapqa0krhnz2akrbsqabj3ve","object":"webset_search","websetId":"webset_01kapqa0978d4y9egrwraddyts","status":"completed","query":"B2B
-        SaaS companies with recent funding rounds","entity":{"type":"company"},"criteria":[{"description":"Company
-        provides B2B (business-to-business) SaaS (software-as-a-service) products
-        or services","successRate":33.33},{"description":"Company has completed a
-        funding round in 2025","successRate":33.33}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":3,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-22T21:25:18.072Z","updatedAt":"2025-11-22T21:25:34.898Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-22T21:25:17.735Z","updatedAt":"2025-11-22T21:25:34.898Z","items":[]}'
-  recorded_at: Sat, 22 Nov 2025 21:25:36 GMT
+      string: !binary |-
+        eyJpZCI6IndpdGVtXzAxa2FxMTQ1MG43YTlkOGRyNzdhOWQ4ZHI3Iiwib2JqZWN0Ijoid2Vic2V0X2l0ZW0iLCJzb3VyY2UiOiJzZWFyY2giLCJzb3VyY2VJZCI6IndzZWFyY2hfMDFrYXExM3puNGU0dmVod3FhMGMxcjAwcDYiLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcTEzejh0OHpnNzJidm5mbjhudHY4NSIsInByb3BlcnRpZXMiOnsidHlwZSI6ImNvbXBhbnkiLCJ1cmwiOiJodHRwczovL2dldHZlbnRhLmFpIiwiZGVzY3JpcHRpb24iOiJWZW50YSBBSSAoWUMgUzIzKSBpcyBhIHByaXZhdGUgQjJCIFNhYVMgY29tcGFueSBzcGVjaWFsaXppbmcgaW4gQUktcG93ZXJlZCBzYWxlcyBvdXRyZWFjaCB0b29scyBmb3Igc2FsZXMgdGVhbXMsIHByaW1hcmlseSBpbiBHZXJtYW55OyBmb3VuZGVkIGluIDIwMjIsIHdpdGggNSBlbXBsb3llZXMgKCsyNSUgWW9ZIGdyb3d0aCksIGFuZCAkNC41TSBpbiB0b3RhbCBmdW5kaW5nLCBsYXN0IHJhaXNlZCBpbiBKdWx5IDIwMjUuIFRoZSBjb21wYW55IHByb3ZpZGVzIEdEUFItY29tcGxpYW50LCB0YXJnZXRlZCBjb21wYW55IGFuZCBjb250YWN0IGRhdGEgYXV0b21hdGlvbiB0byBoZWxwIG91dGJvdW5kIHNhbGVzIHRlYW1zIHNjYWxlIHRoZWlyIG91dHJlYWNoIGVmZm9ydHMuIiwiY29udGVudCI6IltUYWxrIHRvIFNhbGVzXShodHRwczovL3d3dy5nZXR2ZW50YS5haS9jb250YWN0KSBbUmVxdWVzdCBEZW1vXShodHRwczovL3d3dy5nZXR2ZW50YS5haS90cmlhbClcblxuVmVudGEgQUkgcmVsZWFzZXMgZm91ciBuZXcgQUkgc2FsZXMgZW1wbG95ZWVzIC0gW0xlYXJuIG1vcmVdKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL2Jsb2cvdmVudGEtYWktbGF1bmNoZXMtZm91ci1uZXctYWktc2FsZXMtZW1wbG95ZWVzKVxuXG4jIFRoZSBjb21wbGlhbnQgQUnCoGNvbGxlYWd1ZSBmb3Igc2FsZXMgdGVhbXMgaW4gRXVyb3BlXG5cblZlbnRhIEFJIGZpbmRzIHlvdXIgbmV4dCBiZXN0IGN1c3RvbWVyIC0geW91ciB0ZWFtIGJ1aWxkcyB0aGUgY29ubmVjdGlvbi5cblxuW1N0YXJ0IHlvdXIgNy1kYXkgZnJlZSB0cmlhbF0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvdHJpYWwpXG5cbkdEUFItY29tcGxpYW50XG5cbk1hZGUgZm9yIEV1cm9wZVxuXG5CYWNrZWQgYnlcblxuWS1Db21iaW5hdG9yXG5cbk1hZGUgaW4gR2VybWFueVxuXG5IZWFkcXVhcnRlcmVkIGluIE11bmljaFxuXG5MZWFkIFJlc2VhcmNoXG5cbkZpbmQgb25seSBxdWFsaWZpZWQgTGVhZHNcblxuQ29sZCBPdXRyZWFjaFxuXG5FVS1jb21wbGlhbnRcblxuU2FsZXMgVHJpZ2dlclxuXG5PcGVuIEpvYnNcblxuQ29tcGxpYW5jZVxuXG5HRFBSICbCoExvY2FsIExhd3NcblxuW1dhdGNoIFZpZGVvIDYgTWluXShodHRwczovL3d3dy5nZXR2ZW50YS5haS93d3cuZ2V0dmVudGEuYWkpIFtXYXRjaCBWaWRlbyA2IE1pbl0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvd3d3LmdldHZlbnRhLmFpKSBbV2F0Y2ggVmlkZW8gMiBNaW5dKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL3d3dy5nZXR2ZW50YS5haSkgW1dhdGNoIFZpZGVvIDUgTWluXShodHRwczovL3d3dy5nZXR2ZW50YS5haS93d3cuZ2V0dmVudGEuYWkpXG5cbkxlYWRpbmcgRXVyb3BlYW4gc2FsZXMgdGVhbXMgZmluZCB0aGVpciBjdXN0b21lcnMgd2l0aCBWZW50YSBBSVxuXG5XaHkgVmVudGEgQUlcblxuIyMgV2h5IHNhbGVzIHRlYW1zIGluIEV1cm9wZSByZWx5IG9uIFZlbnRhIEFJXG5cblZlbnRhIEFJIGlzIHlvdXIgbmV3IEFJIGNvbGxlYWd1ZSwgZmluZGluZyB5b3VyIG5leHQgYmVzdCBjdXN0b21lciBhdCB0aGUgaWRlYWwgdGltZSB0byBjb25uZWN0LlxuXG5UaGUgYmVzdCBjb21wYW55IGRhdGEgaW4gRXVyb3BlXG5cblZlbnRhIEFJIGNvbGxlY3RzIGRhdGEgZnJvbSBvdmVyIDEyIHByb3ZpZGVycyBhbmQgc2VhcmNoZXMgdGhlIEludGVybmV0IHRvIGZpbmQgc3VpdGFibGUgY29tcGFuaWVzIGFuZCBjb250YWN0c1xuXG5Db21wbGlhbnQgY29sZCBvdXRyZWFjaFxuXG5SZWFjaCBvdXQgdG8gY3VzdG9tZXJzIHZpYSB2YXJpb3VzIGxlZ2FsbHkgY29tcGxpYW50IGNoYW5uZWxzLCBzdWNoIGFzIExpbmtlZEluLCB0ZWxlcGhvbmUgb3IgYnkgbGV0dGVyXG5cbkZpbmQgY29tcGFuaWVzIGJhc2VkIG9uIHlvdXIgY3JpdGVyaWFcblxuWW91IGRlY2lkZSB3aG8geW91IHdhbnQgdG8gY29udGFjdCAtIG5vdCBhIGRhdGFiYXNlIGZpbHRlclxuXG5bU3RhcnQgeW91ciA3LWRheSBmcmVlIHRyaWFsXShodHRwczovL3d3dy5nZXR2ZW50YS5haS90cmlhbClcblxuR0RQUi1jb21wbGlhbnRcblxuTWFkZSBmb3IgRXVyb3BlXG5cbkJhY2tlZCBieVxuXG5ZLUNvbWJpbmF0b3JcblxuTWFkZSBpbiBHZXJtYW55XG5cbkhlYWRxdWFydGVyZWQgaW4gTXVuaWNoXG5cbkhvdyBWZW50YSBBSSB3b3Jrc1xuXG4jIyBCb29rIG1vcmUgbWVldGluZ3MgaW4gbGVzcyB0aW1lXG5cblZlbnRhIEFJIGF1dG9tYXRlcyB0ZWRpb3VzIG1hbnVhbCB0YXNrcyAtIGZyb20gcmVzZWFyY2hpbmcgY29tcGFuaWVzIGFuZCBjb250YWN0cyB0byB3cml0aW5nIHBlcnNvbmFsaXplZCBtZXNzYWdlc1xuXG4xXG5cbkZpbmQgY29tcGFuaWVzXG5cbiMjIyBGaW5kIHJlbGV2YW50IGNvbXBhbmllc1xuXG5XaXRoIHRoZSBoZWxwIG9mIG91ciBBSS1iYXNlZCB3ZWIgc2VhcmNoLCBWZW50YSBBSSBjYW4gZmluZCBleGFjdGx5IHRoZSBjb21wYW5pZXMgdGhhdCBhcmUgcmVhbGx5IGltcG9ydGFudCB0byB5b3UgZnJvbSBtb3JlIHRoYW4gNzAgbWlsbGlvbiBjb21wYW5pZXMuXG5cbkNvbXBhbnkgc2VhcmNoIGJhc2VkIG9uIGluZGl2aWR1YWwgY3JpdGVyaWFcblxuTW9zdCBjb21wcmVoZW5zaXZlIGNvbXBhbnkgZGF0YSBpbiBFdXJvcGVcblxuQUktYmFzZWQgcXVhbGlmaWNhdGlvblxuXG5bTGVhcm4gTW9yZV0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvZmluZC1xdWFsaWZ5LWNvbXBhbmllcylcblxuMlxuXG5GaW5kIGNvbnRhY3RzXG5cbiMjIyBQZXJmZWN0LWZpdCBjb250YWN0c1xuXG5Kb2IgdGl0bGUgZmlsdGVycyBhcmUgYSB0aGluZyBvZiB0aGUgcGFzdC4gQWx3YXlzIGZpbmQgdGhlIHBlcmZlY3QgY29udGFjdCBwZXJzb24gYmFzZWQgb24gdGhlaXIgam9iIGRlc2NyaXB0aW9ucyBhbmQgb3RoZXIgZGF0YSBwb2ludHMuXG5cbkFJLWJhc2VkIGNvbnRhY3QgcGlja2VyXG5cblBob25lIG51bWJlcnMgYW5kIGVtYWlsIGFkZHJlc3NlcyBkaXJlY3RseSBmcm9tIHRoZSBjb21wYW5pZXMgd2Vic2l0ZVxuXG5BY2Nlc3MgdG8gb3ZlciAxMiBHRFBSLWNvbXBsaWFudCBkYXRhIHZlbmRvcnNcblxuW0xlYXJuIE1vcmVdKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL3JlbGV2YW50LWNvbnRhY3RzKVxuXG4zXG5cblJlYWNoIG91dFxuXG4jIyMgUGVyc29uYWxpemVkIG1lc3NhZ2VzIG9uIGFsbCBjaGFubmVsc1xuXG5SZWFjaCBsZWFkcyBmYXN0ZXIgd2l0aCBwZXJzb25hbGlzZWQgbWVzc2FnZXMsIG9wdGltaXNlZCBlbWFpbCBkZWxpdmVyeSwgTGlua2VkSW4gYXV0b21hdGlvbiBhbmQgaGFuZHdyaXR0ZW4gbGV0dGVycy5cblxuTXVsdGktY2hhbm5lbCBvdXRyZWFjaCB3aXRoIEFJLXBlcnNvbmFsaXphdGlvblxuXG5PcHRpbWl6ZWQgZm9yIEV1cm9wZWFuIGxhbmd1YWdlc1xuXG5FLU1haWwgaW5mcmFzdHJ1Y3R1cmUgd2l0aCBtdWx0aXBsZSBkb21haW5zXG5cbltMZWFybiBNb3JlXShodHRwczovL3d3dy5nZXR2ZW50YS5haS9haS1tZXNzYWdlcylcblxuW1N0YXJ0IHlvdXIgNy1kYXkgZnJlZSB0cmlhbF0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvdHJpYWwpXG5cbkdEUFItY29tcGxpYW50XG5cbk1hZGUgZm9yIEV1cm9wZVxuXG5CYWNrZWQgYnlcblxuWS1Db21iaW5hdG9yXG5cbk1hZGUgaW4gR2VybWFueVxuXG5IZWFkcXVhcnRlcmVkIGluIE11bmljaFxuXG5TdWNjZXNzZnVsIEN1c3RvbWVyc1xuXG4jIyBXaGF0IGN1c3RvbWVycyBhY2hpZXZlIHdpdGggVmVudGEgQUlcblxuMjQvNyByZXNlYXJjaGluZyBuZXcgbGVhZHMgZm9yIHlvdVxuXG4zMCUgbW9yZSBtZWV0aW5ncyB0aGFua3MgdG8gZW5kLXRvLWVuZCBhdXRvbWF0aW9uXG5cbm1vcmUgdGhhbiAxLjAwMCBwb3RlbnRpYWwgbGVhZHMgcmVhY2hlZCBwZXIgbW9udGhcblxuW0Vya2zDpHJ2aWRlbyBhbnNlaGVuIDEyIE1pbl0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvd3d3LmdldHZlbnRhLmFpKVxuXG5cIldpdGggVmVudGEgQUksIHdlIGhhdmUgZW5hYmxlZCBvdXIgdGVhbSB0byBjYXJyeSBvdXQgdGhyZWUgdGltZXMgYXMgbWFueSBvdXRyZWFjaCBhY3Rpdml0aWVzIGFzIGJlZm9yZSB3aXRoIHRoZSBzYW1lIG1hbnBvd2VyLiBBYm92ZSBhbGwsIG91ciB0ZWFtIHNhdmVkIGEgdG9uIG9mIHRpbWUgYnkgdGhlIGF1dG9tYXRlZCByZXNlYXJjaCBhbmQgY29udGFjdCBhbmQgaGFkIGFsbCB0aGUgbmVjZXNzYXJ5IGluZm9ybWF0aW9uIGF0IGhhbmQgZm9yIHRoZSBzdWJzZXF1ZW50IGNvbGQgY2FsbHNcIlxuXG5VcnMgTWVya2VsXG5cbk1hbmFnaW5nIERpcmVjdG9yIHNvZnQuZmFjdFxuXG5bTWVociBlcmZhaHJlbl0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvY2FzZS1zdHVkaWVzL3NvZnQtZmFjdClcblxuW0Vya2zDpHJ2aWRlbyBhbnNlaGVuIDEyIE1pbl0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvd3d3LmdldHZlbnRhLmFpKVxuXG5cIlZlbnRhIEFJJ3MgYXV0b21hdGVkIGxlYWQgcXVhbGlmaWNhdGlvbiBpcyBhIGNvbXBsZXRlIGdhbWUgY2hhbmdlci4gSXQgd2FzIHRoZSBvbmx5IHdheSB3ZSB3ZXJlIGFibGUgdG8gY2hlY2sgdGhlIHJldGFpbCBwcmVzZW5jZSBvZiB0aG91c2FuZHMgb2YgY29tcGFuaWVzIGF0IHRoZSBzYW1lIHRpbWUuIFRoaXMgaXMgdGhlIGZ1dHVyZSBvZiBhIHN1Y2Nlc3NmdWwgbmV3IGJ1c2luZXNzIHN0cmF0ZWd5LlwiXG5cblNvcGhpZSBLZWltXG5cblNhbGVzIERpcmVjdG9yLCBBUk5PXG5cbltNZWhyIGVyZmFocmVuXShodHRwczovL3d3dy5nZXR2ZW50YS5haS9jYXNlLXN0dWRpZXMvYXJubylcblxuW0Vya2zDpHJ2aWRlbyBhbnNlaGVuIDEyIE1pbl0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvd3d3LmdldHZlbnRhLmFpKVxuXG5cIldlIGhhdmUgdGVzdGVkIG51bWVyb3VzIGRhdGEgcHJvdmlkZXJzIGFuZCB0b29scywgYnV0IG5vbmUgd2VyZSBhcyBjb21wcmVoZW5zaXZlIGFzIFZlbnRhIEFJLiBGaW5hbGx5LCB3ZSBubyBsb25nZXIgaGF2ZSB0byBzd2l0Y2ggYmV0d2VlbiBkaWZmZXJlbnQgc3lzdGVtcy4gT3VyIHNhbGVzIHRlYW0gbm93IGFsd2F5cyBoYXMgZW5vdWdoIGxlYWRzIHdpdGggdGhlIHJpZ2h0IGNvbnRhY3QgZGV0YWlscyBhbmQgY2FuIGNvbmNlbnRyYXRlIGZ1bGx5IG9uIGFjcXVpc2l0aW9uLlwiXG5cbkFrZWVkIEF6bWlcblxuQ0VPLCBjZXJjbGlcblxuW01laHIgZXJmYWhyZW5dKGh0dHBzOi8vd3d3LmdldHZlbnRhLmFpL2Nhc2Utc3R1ZGllcy9jZXJjbGkpXG5cbkZlYXR1cmVzXG5cbiMjIEV2ZXJ5dGhpbmcgeW91IG5lZWQgdG8gcnVuIHN1Y2Nlc3NmdWwgb3V0cmVhY2hcblxuQnV5aW5nIFNpZ25hbHNcblxuRGlzY292ZXIgbmV3IGNvbXBhbmllcyB0aGF0IHB1Ymxpc2ggam9iIHBvc3RzIG9yIHRha2UgcGFydCBpbiB0cmFkZSBmYWlycy5cblxuU2VhbWxlc3MgaW50ZWdyYXRpb24gd2l0aCB5b3VyIENSTVxuXG5CaWRpcmVjdGlvbmFsIHN5bmNocm9uaXNhdGlvbiB3aXRoIEh1YnNwb3QsIFNhbGVzZm9yY2UsIFBpcGVkcml2ZSBhbmQgb3RoZXIgc3lzdGVtc1xuXG5FLU1haWwgaW5mcmFzdHJ1Y3R1cmUgdG8gc2NhbGUgeW91ciBvdXRyZWFjaFxuXG5XZSBzZXQgdXAgYW4gb3B0aW1pc2VkIGUtbWFpbCBpbmZyYXN0cnVjdHVyZSB3aXRoIHNldmVyYWwgZG9tYWlucyBhbmQgZS1tYWlsIGFjY291bnRzIGZvciB5b3UuXG5cbkFuYWx5c2UgYW5kIG9wdGltaXplIHlvdXIgY2FtcGFpZ25zXG5cblZlbnRhIEFJIGFuYWx5c2VzIGFsbCByZXNwb25zZXMgYW5kIGdpdmVzIHlvdSBhbiBpbnNpZ2h0IGludG8gd2hhdCByZWFsbHkgbWFrZXMgeW91ciBjYW1wYWlnbnMgc3VjY2Vzc2Z1bC5cblxuUGh5c2ljYWwgTWFpbGluZ3NcblxuRG8geW91IHJlYWxseSB3YW50IHRvIHN0YW5kIG91dD8gVGhlbiB0cnkgb3VyIHBlcnNvbmFsaXplZCBsZXR0ZXIgY2FtcGFpZ25zIVxuXG5GQVFcblxuIyMgRnJlcXVlbnRseSBhc2tlZCBxdWVzdGlvbnNcblxuVmVudGEgQUkgZmluZHMgdGhvdXNhbmRzIG9mIHJlbGV2YW50IGNvbXBhbnkgY29udGFjdHMgZXZlcnkgZGF5IGFuZCBoZWxwcyB5b3UgcmVhY2ggdGhlbSBxdWlja2x5IC0gc28geW91IGNhbiBmb2N1cyBvbiB3aGF0IHJlYWxseSBtYXR0ZXJzOiB0aGUgaHVtYW4gY29udGFjdC5cblxuW1N0YXJ0IHlvdXIgNy1kYXkgZnJlZSB0cmlhbF0oaHR0cHM6Ly93d3cuZ2V0dmVudGEuYWkvdHJpYWwpXG5cbkdEUFItY29tcGxpYW50XG5cbk1hZGUgZm9yIEV1cm9wZVxuXG5CYWNrZWQgYnlcblxuWS1Db21iaW5hdG9yXG5cbk1hZGUgaW4gR2VybWFueVxuXG5IZWFkcXVhcnRlcmVkIGluIE11bmljaFxuXG4qKklzIFZlbnRhIEFJIEdEUFItY29tcGxpYW50PyoqXG5cblllcywgVmVudGEgQUkgaXMgR0RQUiBjb21wbGlhbnQuIE91ciBzb2Z0d2FyZSBpcyBkZXZlbG9wZWQgaW4gdGhlIEVVIGFuZCBob3N0ZWQgaW4gR2VybWFueSBpbiBjb21wbGlhbmNlIHdpdGggdGhlIEdEUFIuIE91ciBBSSBlbXBsb3llZXMgY2FuIGFsc28gYWNjZXNzIGRhdGFiYXNlcyBvdXRzaWRlIHRoZSBFVSwgd2hpY2ggYXJlIGNoZWNrZWQgYnkgdXMgZm9yIHRoZWlyIEdEUFIgY29tcGxpYW5jZS4gRnVydGhlciBkZXRhaWxzIGNhbiBiZSBmb3VuZCBpbiBvdXIgZ2VuZXJhbCB0ZXJtcyBhbmQgY29uZGl0aW9ucy5cblxuKipDYW4gSSBhbHNvIHJlYWNoIGNvbXBhbmllcyBvdXRzaWRlIHRoZSBFVSB3aXRoIFZlbnRhIEFJPyoqXG5cblllcywgdGhhdCBpcyBwb3NzaWJsZS4gT3VyIEFJIGVtcGxveWVlcyBoYXZlIGFjY2VzcyB0byBnbG9iYWwgZGF0YWJhc2VzIGFuZCBjYW4gY29uZHVjdCByZXNlYXJjaCBpbiB2YXJpb3VzIGxhbmd1YWdlcy4gQXMgb3VyIEFJIGVtcGxveWVlcyBhcmUgdHJhaW5lZCBpbiBHZXJtYW4gYW5kIEVuZ2xpc2gsIHRoZXkgYXJlIGJlc3Qgc3VpdGVkIGZvciBvdXRyZWFjaCBpbiB0aGVzZSBsYW5ndWFnZXMuXG5cbioqV2hpY2ggbGFuZ3VhZ2VzIGRvZXMgVmVudGEgQUkgc3VwcG9ydD8qKlxuXG5UaGUgVmVudGEgQUkgdXNlciBpbnRlcmZhY2UgY3VycmVudGx5IHN1cHBvcnRzIEdlcm1hbiBhbmQgRW5nbGlzaCwgYnV0IG91ciBBSSBTRFIgY2FuIGFsc28gaW50ZXJwcmV0IGluZm9ybWF0aW9uIGFuZCBnZW5lcmF0ZSBtZXNzYWdlcyBpbiA4MCBvdGhlciBsYW5ndWFnZXMuXG5cbioqV2UgaGF2ZSBzcGVjaWFsIHNlY3VyaXR5IHJlcXVpcmVtZW50cywgY2FuIHlvdSBmdWxmaWwgdGhlbT8qKlxuXG5XZSBhbHdheXMgZW5kZWF2b3VyIHRvIGZ1bGZpbCBzcGVjaWFsIHJlcXVpcmVtZW50cy4gUGxlYXNlIGdldCBpbiB0b3VjaCB3aXRoIHVzIHRvIGRpc2N1c3MgZGV0YWlscy5cblxuKipXaGF0IGRpc3Rpbmd1aXNoZXMgeW91IGZyb20gYSB0cmFkaXRpb25hbCBsZWFkIGFnZW5jeT8qKlxuXG5WZW50YSBBSSBpcyBhbiBBSSBlbXBsb3llZSBmb3IgeW91ciB0ZWFtLCB3aGljaCB0aGV5IGNvbmZpZ3VyZSBhbmQgY29udHJvbCAxMDAlIHRoZW1zZWx2ZXMuXG5cbioqV2hhdCBkb2VzIG11bHRpLWNoYW5uZWwgb3V0cmVhY2ggbWVhbj8qKlxuXG5NdWx0aS1jaGFubmVsIG91dHJlYWNoIG1lYW5zIGNvbnRhY3RpbmcgcGVvcGxlIG9uIHNldmVyYWwgY2hhbm5lbHMsIHN1Y2ggYXMgTGlua2VkSW4sIGVtYWlsLCB0ZWxlcGhvbmUgb3IgYnkgbGV0dGVyIGluIGEgc3BlY2lmaWMgc2VxdWVuY2UuIFdpdGggVmVudGEgQUksIGl0IGlzIHBvc3NpYmxlIHRvIHNlbmQgbWVzc2FnZXMgZGlyZWN0bHkgYnkgZW1haWwsIExpbmtlZEluIGFuZCBsZXR0ZXIgYW5kIHRvIGZpbmQgdGVsZXBob25lIG51bWJlcnMgZm9yIGNvbnRhY3QgYnkgcGhvbmUuIiwiY29tcGFueSI6eyJuYW1lIjoiVmVudGEgQUkgKFlDIFMyMykiLCJsb2NhdGlvbiI6InVuZGVmaW5lZCwgR2VybWFueSIsImVtcGxveWVlcyI6NSwiaW5kdXN0cnkiOiJTb2Z0d2FyZSBEZXZlbG9wbWVudCIsImFib3V0IjoiVmVudGEgaXMgYW4gQUkgd29ya2VyIHRoYXQgaGVscHMgb3V0Ym91bmQgZHJpdmVuIHNhbGVzIHRlYW1zIGluIEdlcm1hbnkgdG8gc2NhbGUgdGhlaXIgb3V0cmVhY2guIEl0IGNhbiBhdXRvbWF0ZSB0YXNrcyBsaWtlIHJlc2VhcmNoaW5nIGNvbXBhbmllcyBiYXNlZCBvbiB5b3VyIGNyaXRlcmlhLCBmaW5kaW5nIHByb3NwZWN0cyBhbmQgdGhlaXIgY29udGFjdCBkYXRhIGFuZCBydW5uaW5nIG11bHRpLWNoYW5uZWwgb3V0cmVhY2guXG5cblRoaXMgaXMgd2hhdCBtYWtlcyBvdXIgQUkgd29ya2VycyBvdXRzdGFuZGluZzpcbi0gTXVsdGktQ2hhbm5lbCBPdXRyZWFjaCB3aXRob3V0IGxlZ2FsIHJpc2s6IFJlYWNoIG91dCBvbiBtdWx0aXBsZSBjaGFubmVscyBsaWtlIExpbmtlZEluLCBQaG9uZSBvciB2aWEgcGVyc29uYWxpemVkIGxldHRlcnMgd2hpbGUgc3RheWluZyBjb21wbGlhbnQgd2l0aCBsb2NhbCByZWd1bGF0aW9uc1xuLSBFdXJvcGUncyBiZXN0IGNvbnRhY3QgZGF0YTogT3VyIEFJIHdvcmtlcnMgYWNjZXNzIG1vcmUgdGhhbiAxMCBkYXRhYmFzZXMgYW5kIHNjcmFwZSB0aGUgd2ViIHRvIGZpbmQgdGhlIGNvbXBhbmllcyBhbmQgY29udGFjdHMgdGhhdCBtYXR0ZXIgZm9yIHlvdVxuLSBRdWFsaWZ5IGFnYWluc3QgYW55IGNyaXRlcmlhOiBZb3UgZGVjaWRlIHdobyB5b3Ugd2FudCB0byB0YXJnZXQgLSBub3QgYSBkYXRhYmFzZSBmaWx0ZXIiLCJsb2dvVXJsIjoiaHR0cHM6Ly9tZWRpYS5saWNkbi5jb20vZG1zL2ltYWdlL3YyL0Q0RTBCQVFFbFhsN3h5anlWX2cvY29tcGFueS1sb2dvXzIwMF8yMDAvY29tcGFueS1sb2dvXzIwMF8yMDAvMC8xNzA4NjkzNzI3NjQ5L3ZlbnRhYWlfbG9nbz9lPTIxNDc0ODM2NDcmdj1iZXRhJnQ9VDJkaTNjLVFXTzFDR2lBaVBMQWNvSGxvQXlKNUQtZHQtWXJRU2dHRHRPayJ9fSwiZXZhbHVhdGlvbnMiOlt7ImNyaXRlcmlvbiI6IkNvbXBhbnkgaGFzIGNvbXBsZXRlZCBhIGZ1bmRpbmcgcm91bmQgaW4gMjAyNSIsInJlYXNvbmluZyI6IlRoZSBpbnRlcm5hbCBjb21wYW55IHByb2ZpbGUgZm9yIFZlbnRhIEFJIHN0YXRlcyB0aGF0IHRoZSBsYXN0IGZ1bmRpbmcgcm91bmQgd2FzIGEgUHJl4oCRU2VlZCByb3VuZCB0aXRsZWQgXCJWZW50YVwiIGNvbXBsZXRlZCBvbiAyMDI14oCRMDfigJEwMiwgd2hpY2ggaXMgYSBmdW5kaW5nIHJvdW5kIHRoYXQgdG9vayBwbGFjZSBpbiAyMDI1LiBUaGlzIGRpcmVjdGx5IHNhdGlzZmllcyB0aGUgY3JpdGVyaW9uIHRoYXQgdGhlIGNvbXBhbnkgaGFzIGNvbXBsZXRlZCBhIGZ1bmRpbmcgcm91bmQgaW4gMjAyNS4iLCJzYXRpc2ZpZWQiOiJ5ZXMiLCJyZWZlcmVuY2VzIjpbeyJ0aXRsZSI6IlZlbnRhIEFJIChZQyBTMjMpIiwic25pcHBldCI6IlZlbnRhIEFJIChZQyBTMjMpIGlzIGEgU29mdHdhcmUgRGV2ZWxvcG1lbnQgY29tcGFueSAocHJpdmF0ZSkgd2l0aCA1IGVtcGxveWVlcyAoKzI1LjAlIFlvWSBncm93dGgpLCBmb3VuZGVkIGluIDIwMjIsIGhlYWRxdWFydGVyZWQgaW4gR2VybWFueS4gSGFzICQ0LjVNIGluIHRvdGFsIGZ1bmRpbmcsIGxhc3Qgcm91bmQgd2FzIGEgUHJlIFNlZWQgUm91bmQgLSBWZW50YSBpbiAyMDI1LTA3LTAyLiBWZW50YSBBSSBoZWxwcyBzYWxlcyB0ZWFtcyBpbiBHZXJtYW55IHBlcmZvcm0gaGlnaGx5IHRhcmdldGVkIGNvbGQgb3V0cmVhY2ggd2l0aCBmaXJzdC1jbGFzcyBjb21wYW55IGFuZCBjb250YWN0IGRhdGEuIE91ciBBSSBlbXBsb3llZSBmaW5kcyBjb21wYW5pZXMuLi4iLCJ1cmwiOiJodHRwczovL2dldHZlbnRhLmFpIn1dfSx7ImNyaXRlcmlvbiI6IkNvbXBhbnkgcHJvdmlkZXMgQjJCIChidXNpbmVzcy10by1idXNpbmVzcykgU2FhUyAoc29mdHdhcmUtYXMtYS1zZXJ2aWNlKSBwcm9kdWN0cyBvciBzZXJ2aWNlcyIsInJlYXNvbmluZyI6IlZlbnRhIEFJIGlzIGEgc29mdHdhcmUgZGV2ZWxvcG1lbnQgY29tcGFueSB0aGF0IG9mZmVycyBhbiBBSSBlbXBsb3llZSBmb3Igc2FsZXMgdGVhbXMsIGVuYWJsaW5nIGhpZ2hseSB0YXJnZXRlZCBjb2xkIG91dHJlYWNoIGFuZCBHRFBS4oCRY29tcGxpYW50IG91dHJlYWNoLiBUaGUgcHJvZHVjdCBpcyBkZWxpdmVyZWQgYXMgYSBjbG91ZOKAkWJhc2VkIHNlcnZpY2UgKFNhYVMpIHRvIGJ1c2luZXNzIGN1c3RvbWVycyAoc2FsZXMgdGVhbXMgaW4gR2VybWFueSksIG1ha2luZyBpdCBhIEIyQiBTYWFTIG9mZmVyaW5nLiBUaGUgaW50ZXJuYWwgcHJvZmlsZSBsaXN0cyB0aGUgY29tcGFueSBhcyBhIHNvZnR3YXJlIGRldmVsb3BtZW50IGZpcm0gYW5kIGRlc2NyaWJlcyBpdHMgc2VydmljZSBhcyBhbiBBSeKAkXBvd2VyZWQgc2FsZXMgdG9vbCBmb3Igb3RoZXIgYnVzaW5lc3Nlcywgd2hpY2ggc2F0aXNmaWVzIHRoZSBjcml0ZXJpb24uIiwic2F0aXNmaWVkIjoieWVzIiwicmVmZXJlbmNlcyI6W3sidGl0bGUiOiJWZW50YSBBSSAoWUMgUzIzKSIsInNuaXBwZXQiOiJWZW50YSBBSSAoWUMgUzIzKSBpcyBhIFNvZnR3YXJlIERldmVsb3BtZW50IGNvbXBhbnkgKHByaXZhdGUpIHdpdGggNSBlbXBsb3llZXMgKCsyNS4wJSBZb1kgZ3Jvd3RoKSwgZm91bmRlZCBpbiAyMDIyLCBoZWFkcXVhcnRlcmVkIGluIEdlcm1hbnkuIEhhcyAkNC41TSBpbiB0b3RhbCBmdW5kaW5nLCBsYXN0IHJvdW5kIHdhcyBhIFByZSBTZWVkIFJvdW5kIC0gVmVudGEgaW4gMjAyNS0wNy0wMi4gVmVudGEgQUkgaGVscHMgc2FsZXMgdGVhbXMgaW4gR2VybWFueSBwZXJmb3JtIGhpZ2hseSB0YXJnZXRlZCBjb2xkIG91dHJlYWNoIHdpdGggZmlyc3QtY2xhc3MgY29tcGFueSBhbmQgY29udGFjdCBkYXRhLiBPdXIgQUkgZW1wbG95ZWUgZmluZHMgY29tcGFuaWVzLi4uIiwidXJsIjoiaHR0cHM6Ly9nZXR2ZW50YS5haSJ9XX1dLCJlbnJpY2htZW50cyI6W10sImNyZWF0ZWRBdCI6IjIwMjUtMTEtMjNUMDA6MTY6NTEuNzMzWiIsInVwZGF0ZWRBdCI6IjIwMjUtMTEtMjNUMDA6MTY6NTEuNzMzWiJ9
+  recorded_at: Sun, 23 Nov 2025 00:17:07 GMT
 recorded_with: VCR 6.3.1
