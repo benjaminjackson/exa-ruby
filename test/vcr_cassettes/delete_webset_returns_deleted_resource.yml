@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Healthcare tech startups","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '754'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f2-olYAo9a5c+/6f9/T3JsE5xiLapc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=cjyVMa8cS%2Bgcl3rlY0lFZ%2BfNlQsh8qDRxGviTrcDM8x59dIGR%2BfSgjR8OF%2FKfnPSdOueRpJURZd7lKazcLRh%2FyqPDnuskBJMuOshJLkytwo3FsIR9Q%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cac80bdc1785b-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq324ar1dnxzbrndyrpgs67","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq324q88jjvhe0zgwcgp981","object":"webset_search","websetId":"webset_01kaq324ar1dnxzbrndyrpgs67","status":"running","query":"Healthcare
+        tech startups","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:50:43.048Z","updatedAt":"2025-11-23T00:50:43.416Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:50:42.648Z","updatedAt":"2025-11-23T00:50:43.416Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:44 GMT
+- request:
+    method: delete
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq324ar1dnxzbrndyrpgs67
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3a3-N4ZxfjDmKTJEE+hY1sxF6xUvuwg"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vlYnjqivOJIr5x8l5h%2FluYoY8dbjeOIQjqqNSaEIcZpR3zBO0BK42CiPcwBXNEyTBwBYkD%2FbyiF0bopHYX9%2FL21Bs8Y6C5NaXMyV%2Bbbx9pa73oRtMA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cac924d814f2e-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq324ar1dnxzbrndyrpgs67","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        healthcare tech startups","searches":[{"id":"wsearch_01kaq324q88jjvhe0zgwcgp981","object":"webset_search","websetId":"webset_01kaq324ar1dnxzbrndyrpgs67","status":"canceled","query":"Healthcare
+        tech startups","entity":{"type":"company"},"criteria":[{"description":"Company
+        is an early-stage startup operating in the healthcare technology sector","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":"2025-11-23T00:50:46.074Z","canceledReason":"webset_deleted","createdAt":"2025-11-23T00:50:43.048Z","updatedAt":"2025-11-23T00:50:46.338Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:50:42.648Z","updatedAt":"2025-11-23T00:50:46.338Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:47 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"SaaS companies in Europe","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:47:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '754'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f2-rlE0Hfr0bHr/1IzGF7b/vX1nDsQ"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=gyrTp0xt%2BQBJEWJBLjqdWF9bbuIGKliuBMvgtqFAXzi%2Bh8cOVmULjjT9wtdbkjht6Xr8WYOR9A5l3WHr6xr3p1rOUhNJ4IFZb5K31TZileERvbs%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca8715bca0cbe-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2x1x0dszn0gc8pg2jmv65","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2x29b24gxaxjv7ew9z5b9","object":"webset_search","websetId":"webset_01kaq2x1x0dszn0gc8pg2jmv65","status":"running","query":"SaaS
+        companies in Europe","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:47:56.715Z","updatedAt":"2025-11-23T00:47:57.088Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:47:56.320Z","updatedAt":"2025-11-23T00:47:57.088Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:47:57 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2x1x0dszn0gc8pg2jmv65
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"updated":"true"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:47:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3cc-+j5fz+5tz5+75Vn8klNOwH+yUiI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=M9TLoll%2B5vDUIvakQzhfBSZDQuTPCnEwwWf6BzmxePGDprRehhbWggdtUGyb6b7jbe0b2bVoN413GtP4PghaIwvaKs6uvt%2FUW6P67SnLs3SFua4AKQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca881eccada48-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2x1x0dszn0gc8pg2jmv65","object":"webset","status":"running","externalId":null,"title":"Companies:
+        SaaS, Europe","searches":[{"id":"wsearch_01kaq2x29b24gxaxjv7ew9z5b9","object":"webset_search","websetId":"webset_01kaq2x1x0dszn0gc8pg2jmv65","status":"running","query":"SaaS
+        companies in Europe","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides Software as a Service (SaaS) products or services","successRate":0},{"description":"Company
+        is headquartered in a European country","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:47:56.715Z","updatedAt":"2025-11-23T00:47:57.798Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{"updated":"true"},"createdAt":"2025-11-23T00:47:56.320Z","updatedAt":"2025-11-23T00:47:58.288Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:47:58 GMT
+recorded_with: VCR 6.3.1

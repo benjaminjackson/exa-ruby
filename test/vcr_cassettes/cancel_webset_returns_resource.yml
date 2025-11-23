@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"E-commerce companies in California","count":2}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:48:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '764'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2fc-ypMmUZVWzXL6HsLI0sPbFdmooA4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zbZYOlSkGytZhdF7vRfhJWPFs5Ti1%2F%2F1EtEG6Su7Of%2FyTavMqaUih6zq6RejpRwbu1vCHeLbBsT7yglXRiTVcMmg%2BY%2Bb8SbJWz9ykcrF4RMJeqk%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca9a03c300f91-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2yg7ch2g1fjt4vxf3wqag","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2ygjb0q9nnz1200xv8fsq","object":"webset_search","websetId":"webset_01kaq2yg7ch2g1fjt4vxf3wqag","status":"running","query":"E-commerce
+        companies in California","entity":{"type":"company"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:44.107Z","updatedAt":"2025-11-23T00:48:44.457Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:43.756Z","updatedAt":"2025-11-23T00:48:44.457Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:48:45 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yg7ch2g1fjt4vxf3wqag/cancel
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:48:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3be-XSPoyckO85wNIZUhErJ/siqSPmU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=pG5Zcl2cx%2FuntoXN6BbZ60GOfc0zogalNvrNitH1HhJ%2FtOMxjG0ctb%2BOmMSzGpYbu0t%2FQF1CggtyiKHcGVQi63frPCYnSPKYw6Pv7lgRK8OXCt8%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca9aa4e955d8f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yg7ch2g1fjt4vxf3wqag","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        E-commerce, California","searches":[{"id":"wsearch_01kaq2ygjb0q9nnz1200xv8fsq","object":"webset_search","websetId":"webset_01kaq2yg7ch2g1fjt4vxf3wqag","status":"canceled","query":"E-commerce
+        companies in California","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the e-commerce sector and is headquartered or primarily located
+        in California","successRate":0}],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":"2025-11-23T00:48:45.998Z","canceledReason":"webset_canceled","createdAt":"2025-11-23T00:48:44.107Z","updatedAt":"2025-11-23T00:48:46.269Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:43.756Z","updatedAt":"2025-11-23T00:48:46.269Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:48:47 GMT
+recorded_with: VCR 6.3.1

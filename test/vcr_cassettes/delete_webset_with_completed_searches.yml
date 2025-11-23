@@ -1,0 +1,684 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"SaaS companies in Seattle","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '755'
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f3-Xh6qzoKKP/f0+LExzVdz/YVZAYk"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=2o8Ng0zGyRMnKjg6Q6ed%2Buie8ZHkdRh64xgfRHTsZssvwJx83WeY5wiya6kWIrcAbyZTQ6fuImBRryVyINnGzUGeASQVEcOSC2xcXQyyVp6XHceuNw%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cab68cf863ea9-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"running","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:00.556Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:00.556Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:01 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq30rxzpgf7w9sdff9axg55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"314-UzCCFZ8mUYvWzkHpQyORSZw86sw"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=8Byzt1PDmAGXcorW45L%2FIkPxwe3bZj0N%2BfM1UCTqkJHXWRpfa97qVcKQlZ09KrVXQjh51CL%2BgsOXZMqOg%2F2yz2%2Bbs8th1CYClypJf0ftwA3alxY%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cab894e2bd8d4-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"running","externalId":null,"title":"Companies:
+        SaaS, Seattle","searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"running","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:00.556Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:01.036Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:50:02 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq30rxzpgf7w9sdff9axg55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3c1-Yh2wc5mAGOk8YsihxSDOpo9pYhc"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=lEBWFkIo9NI0VPnkZv6p6ZZ5ji4y84rWwgm5Bob2TcAsYNlR8vf9lUzBmQFiYi8B2jMFml5EWZTcSrlykZbPvvUEvLP47d98kryAp%2Fnz7eRuvtA%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cab9c09a30f93-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"running","externalId":null,"title":"Companies:
+        SaaS, Seattle","searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"running","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides Software as a Service (SaaS) products or services and is headquartered
+        or has a significant office presence in Seattle, WA","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:03.946Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:03.946Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:50:05 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq30rxzpgf7w9sdff9axg55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3c2-ZLevqUpPDp/3FcxYXOPb/iAhz20"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jmYwZYY%2FfiWCs8HEAw5adtLuS1B3nvFBURTK6jP3SfE1Zc7caPkEOGbx45UU8wJOsd0UaICF4hoakDlW38y8okUz7nzSC9leUz9s5YvE0bhfjmhmdQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cabad9d2f7c7b-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"running","externalId":null,"title":"Companies:
+        SaaS, Seattle","searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"running","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides Software as a Service (SaaS) products or services and is headquartered
+        or has a significant office presence in Seattle, WA","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:03.946Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:03.946Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:50:09 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq30rxzpgf7w9sdff9axg55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3c2-ZLevqUpPDp/3FcxYXOPb/iAhz20"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=nS98ets7fmdtviJo8viAvMlYvm7fySw1fRNAjwHm3bVYpLkiMXblZQGCORwvD3kgyvkWtKR3CNOKqZlnU0btaKK%2FJYQZx3IzxRWxi2eannbQ08uKyg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cabc81c45f8a7-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"running","externalId":null,"title":"Companies:
+        SaaS, Seattle","searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"running","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides Software as a Service (SaaS) products or services and is headquartered
+        or has a significant office presence in Seattle, WA","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:03.946Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:03.946Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:50:12 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq30rxzpgf7w9sdff9axg55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3c2-ZLevqUpPDp/3FcxYXOPb/iAhz20"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=HISbVcn%2Bz8v3KRz9VImJEvpq6%2BtbSQitHShAhjHORxh5YbYmpGfzRoTiUdS%2FahR%2Fup48UeWnCoTmxqCqesfoQy%2B%2BFvLGWkfCRgZKuLub355vfRP1Lg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cabd88a0c0c99-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"running","externalId":null,"title":"Companies:
+        SaaS, Seattle","searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"running","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides Software as a Service (SaaS) products or services and is headquartered
+        or has a significant office presence in Seattle, WA","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:03.946Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:03.946Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:50:15 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq30rxzpgf7w9sdff9axg55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3c2-ZLevqUpPDp/3FcxYXOPb/iAhz20"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=6oief8e3Ypkz6qE7Puyxc7DpgR8XQvGviA7%2BoiTeBKBWOnrQ5jMWImPevkHUzGEDHQ2MpSbVFJpblLFst%2BXAvTe7UdgnaXdyBNIHOKrjitKly5q1Mw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cabe9afc6b544-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"running","externalId":null,"title":"Companies:
+        SaaS, Seattle","searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"running","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides Software as a Service (SaaS) products or services and is headquartered
+        or has a significant office presence in Seattle, WA","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:03.946Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:03.946Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:50:17 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq30rxzpgf7w9sdff9axg55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3c1-59jigg+5GgvTgsP1NTNvi5cC0uo"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=MeyFYNvrDfwxrgKo9dfZ%2BLXnEQNGn6Vls5K%2FLUfX2HaATfWa4Cugv0P%2BMsjQ6cWMeLV7Y5AzsUqe1dTjArAFY94RrxP4jy07FfRCC7Ek5TiCfng78A%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cabfa9afea4a0-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        SaaS, Seattle","searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"completed","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides Software as a Service (SaaS) products or services and is headquartered
+        or has a significant office presence in Seattle, WA","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:19.292Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:19.292Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:50:20 GMT
+- request:
+    method: delete
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq30rxzpgf7w9sdff9axg55
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3b6-nd05iN4Kl5DgUSeMROCCDbc8bNA"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=IqxcF3VAvjvLLEpauSjkwv9FPhNbhN6Cb2tGAKDKb%2FR2kfL6q3AacobzSAOC5Dsv6esf3BHhDM0Y0D2nRI3asC5VYIIgAqUy%2Fr4M0T1tIcVQa2Dkjg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cabfedb5d811f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq30rxzpgf7w9sdff9axg55","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        SaaS, Seattle","searches":[{"id":"wsearch_01kaq30sca4wksbvnk7k13amz5","object":"webset_search","websetId":"webset_01kaq30rxzpgf7w9sdff9axg55","status":"completed","query":"SaaS
+        companies in Seattle","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides Software as a Service (SaaS) products or services and is headquartered
+        or has a significant office presence in Seattle, WA","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:49:58.666Z","updatedAt":"2025-11-23T00:50:19.292Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:49:58.207Z","updatedAt":"2025-11-23T00:50:21.171Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:22 GMT
+recorded_with: VCR 6.3.1

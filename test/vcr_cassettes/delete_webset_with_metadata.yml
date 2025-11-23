@@ -1,0 +1,152 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Fintech startups in New York","count":1},"metadata":{"test":"delete_test","purpose":"integration_testing"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '810'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"32a-b2w6+QYCjIkhKmMV92FoJR+M2mI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=TDaK9P3gJvM%2Big3iu9SSAYA3%2Bbi7N1vwh%2B2yU1g4olKzVkMpZgnyNSfYahsBzuj%2B836LqXHapixEc3vcy%2FS6%2FHAVa7ol7MRrVgjQNL1LZLEBMV6JyQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cac0b39e2726b-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq31ht0c48g0v81djkxw4ck","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq31j6q68x32ncf3b2wqak9","object":"webset_search","websetId":"webset_01kaq31ht0c48g0v81djkxw4ck","status":"running","query":"Fintech
+        startups in New York","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:50:24.087Z","updatedAt":"2025-11-23T00:50:24.458Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{"test":"delete_test","purpose":"integration_testing"},"createdAt":"2025-11-23T00:50:23.680Z","updatedAt":"2025-11-23T00:50:24.458Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:25 GMT
+- request:
+    method: delete
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq31ht0c48g0v81djkxw4ck
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"36e-BKzgIGI/eNBxbbuPYwBfFZDQ5Pc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2Foy4N1YHAxHcZwKTdgZaK53Jpqy0u1FxsXuzB%2BWFH%2FV6KkNzMEVCnc6d7i%2B2nj3ouMnMqeiDXlMSqomFqAGiEFi6i671nmNu5IkVIRIRsr2fkAosRA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cac1afe4841ba-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq31ht0c48g0v81djkxw4ck","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        Fintech startups in New York","searches":[{"id":"wsearch_01kaq31j6q68x32ncf3b2wqak9","object":"webset_search","websetId":"webset_01kaq31ht0c48g0v81djkxw4ck","status":"canceled","query":"Fintech
+        startups in New York","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":"2025-11-23T00:50:26.400Z","canceledReason":"webset_deleted","createdAt":"2025-11-23T00:50:24.087Z","updatedAt":"2025-11-23T00:50:26.669Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{"test":"delete_test","purpose":"integration_testing"},"createdAt":"2025-11-23T00:50:23.680Z","updatedAt":"2025-11-23T00:50:26.669Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:27 GMT
+recorded_with: VCR 6.3.1

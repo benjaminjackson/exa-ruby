@@ -1,0 +1,157 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"E-commerce companies in Europe","count":1},"enrichments":[{"description":"Find
+        company website","format":"url"}]}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1089'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"441-9bY/4sBTqYrLX1GYGTQ7VphMogM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=1VXHulZspV8xXjy9G84yOJAy%2B56iDTU%2FC6cC7V3pSFWL3DNbsOPppGo4bBbJFGSoXNWusXhdjmEGfLxOlcJ0VQ66dS%2FMU3BoBkZ1cpJ%2BTJY4ves%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cac59ac600c76-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq31y6nbntrj0v2x1c86grj","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq31yjz6vr20vz993q6ma2y","object":"webset_search","websetId":"webset_01kaq31y6nbntrj0v2x1c86grj","status":"running","query":"E-commerce
+        companies in Europe","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:50:36.767Z","updatedAt":"2025-11-23T00:50:37.160Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmib04n5i000kj01swplq9a0b","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq31y6nbntrj0v2x1c86grj","title":null,"description":"Find
+        company website","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:50:36.726Z","updatedAt":"2025-11-23T00:50:36.726Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:50:36.373Z","updatedAt":"2025-11-23T00:50:37.160Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:37 GMT
+- request:
+    method: delete
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq31y6nbntrj0v2x1c86grj
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"4fe-r3bOD9lLHbSDL1h+E/T3aZjV6qs"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=MslhTvYhC7zaiiZ3aY44blHY0BTri6YfE3tF%2BN9hv0OKiHqX60RGJ%2BG389oMJz949eiav4NDcoD%2FLv3tFTTh3BgbOlcczbsKUy3HYeDiEWd1YjUdMw%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cac6a4d73de96-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq31y6nbntrj0v2x1c86grj","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        E-commerce in Europe","searches":[{"id":"wsearch_01kaq31yjz6vr20vz993q6ma2y","object":"webset_search","websetId":"webset_01kaq31y6nbntrj0v2x1c86grj","status":"canceled","query":"E-commerce
+        companies in Europe","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates primarily in the e-commerce sector and is headquartered in a European
+        country","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":"2025-11-23T00:50:39.225Z","canceledReason":"webset_deleted","createdAt":"2025-11-23T00:50:36.767Z","updatedAt":"2025-11-23T00:50:39.490Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmib04n5i000kj01swplq9a0b","object":"webset_enrichment","status":"canceled","websetId":"webset_01kaq31y6nbntrj0v2x1c86grj","title":null,"description":"Find
+        company website","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:50:36.726Z","updatedAt":"2025-11-23T00:50:39.034Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:50:36.373Z","updatedAt":"2025-11-23T00:50:39.490Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:40 GMT
+recorded_with: VCR 6.3.1
