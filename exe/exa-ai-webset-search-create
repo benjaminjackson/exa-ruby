@@ -1,0 +1,204 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+# Recursively convert hash keys from strings to symbols
+def deep_symbolize_keys(obj)
+  case obj
+  when Hash
+    obj.each_with_object({}) do |(key, value), result|
+      result[key.to_sym] = deep_symbolize_keys(value)
+    end
+  when Array
+    obj.map { |item| deep_symbolize_keys(item) }
+  else
+    obj
+  end
+end
+
+# Parse JSON string or load from file (supports @file.json syntax)
+def parse_json_or_file(value)
+  json_data = if value.start_with?("@")
+                file_path = value[1..]
+                JSON.parse(File.read(file_path))
+              else
+                JSON.parse(value)
+              end
+  deep_symbolize_keys(json_data)
+rescue JSON::ParserError => e
+  $stderr.puts "Error: Invalid JSON: #{e.message}"
+  exit 1
+rescue Errno::ENOENT => e
+  $stderr.puts "Error: File not found: #{e.message}"
+  exit 1
+end
+
+# Parse command-line arguments
+def parse_args(argv)
+  args = {
+    output_format: "json",
+    api_key: nil
+  }
+
+  # First positional argument is webset_id
+  webset_id_found = false
+
+  i = 0
+  while i < argv.length
+    arg = argv[i]
+    case arg
+    when "--query"
+      args[:query] = argv[i + 1]
+      i += 2
+    when "--count"
+      args[:count] = argv[i + 1].to_i
+      i += 2
+    when "--entity"
+      args[:entity] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--criteria"
+      args[:criteria] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--exclude"
+      args[:exclude] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--scope"
+      args[:scope] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--recall"
+      args[:recall] = true
+      i += 1
+    when "--behavior"
+      behavior = argv[i + 1]
+      unless ["override", "append"].include?(behavior)
+        $stderr.puts "Error: Behavior must be 'override' or 'append'"
+        exit 1
+      end
+      args[:behavior] = behavior
+      i += 2
+    when "--metadata"
+      args[:metadata] = parse_json_or_file(argv[i + 1])
+      i += 2
+    when "--api-key"
+      args[:api_key] = argv[i + 1]
+      i += 2
+    when "--output-format"
+      args[:output_format] = argv[i + 1]
+      i += 2
+    when "--help", "-h"
+      puts <<~HELP
+        Usage: exa-ai webset-search-create <webset_id> [OPTIONS]
+
+        Create a new search within a webset
+
+        Arguments:
+          webset_id              ID of the webset (required)
+
+        Options:
+          --query QUERY            Search query (required)
+          --count N                Number of results to find
+          --entity JSON            Entity type specification (supports @file.json)
+          --criteria JSON          Search criteria array (supports @file.json)
+          --exclude JSON           Items to exclude from results (supports @file.json)
+          --scope JSON             Limit search to specific sources (supports @file.json)
+          --recall                 Estimate total available results
+          --behavior TYPE          "override" or "append" (default: override)
+          --metadata JSON          Custom metadata (supports @file.json)
+          --api-key KEY            Exa API key (or set EXA_API_KEY env var)
+          --output-format FMT      Output format: json, pretty, or text (default: json)
+          --help, -h               Show this help message
+
+        Examples:
+          exa-ai webset-search-create ws_123 --query "AI startups"
+          exa-ai webset-search-create ws_123 --query "machine learning" --count 50
+          exa-ai webset-search-create ws_123 --query "tech companies" --criteria @criteria.json
+          exa-ai webset-search-create ws_123 --query "research" --behavior append
+          exa-ai webset-search-create ws_123 --query "venture-backed SaaS companies" --recall
+      HELP
+      exit 0
+    else
+      # First positional argument is webset_id
+      unless webset_id_found
+        args[:webset_id] = arg
+        webset_id_found = true
+      else
+        $stderr.puts "Unknown option: #{arg}"
+        exit 1
+      end
+      i += 1
+    end
+  end
+
+  args
+end
+
+# Main execution
+begin
+  args = parse_args(ARGV)
+
+  # Validate required parameters
+  unless args[:webset_id]
+    $stderr.puts "Error: webset_id argument is required"
+    $stderr.puts "Run 'exa-ai webset-search-create --help' for usage information"
+    exit 1
+  end
+
+  unless args[:query]
+    $stderr.puts "Error: --query is required"
+    $stderr.puts "Run 'exa-ai webset-search-create --help' for usage information"
+    exit 1
+  end
+
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
+
+  # Resolve output format
+  output_format = Exa::CLI::Base.resolve_output_format(args[:output_format])
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Prepare search parameters
+  search_params = { query: args[:query] }
+  search_params[:count] = args[:count] if args[:count]
+  search_params[:entity] = args[:entity] if args[:entity]
+  search_params[:criteria] = args[:criteria] if args[:criteria]
+  search_params[:exclude] = args[:exclude] if args[:exclude]
+  search_params[:scope] = args[:scope] if args[:scope]
+  search_params[:recall] = args[:recall] if args[:recall]
+  search_params[:behavior] = args[:behavior] if args[:behavior]
+  search_params[:metadata] = args[:metadata] if args[:metadata]
+
+  # Create search
+  search = client.create_webset_search(webset_id: args[:webset_id], **search_params)
+
+  # Format and output result
+  output = Exa::CLI::Formatters::WebsetSearchFormatter.format(search, output_format)
+  puts output
+
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::NotFound => e
+  $stderr.puts "Webset not found: #{e.message}"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

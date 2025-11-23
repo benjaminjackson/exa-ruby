@@ -8,6 +8,7 @@ require "exa-ai"
 module ExaCLI
   AVAILABLE_COMMANDS = {
     "search" => "Search the web",
+    "find-similar" => "Find content similar to a URL",
     "answer" => "Generate an answer to a question",
     "context" => "Get code context from repositories",
     "get-contents" => "Retrieve page contents",
@@ -20,6 +21,12 @@ module ExaCLI
     "webset-update" => "Update a webset",
     "webset-delete" => "Delete a webset",
     "webset-cancel" => "Cancel a webset",
+    "webset-search-create" => "Create a search in a webset",
+    "webset-search-get" => "Get webset search details",
+    "webset-search-cancel" => "Cancel a webset search",
+    "webset-item-list" => "List items in a webset",
+    "webset-item-get" => "Get webset item details",
+    "webset-item-delete" => "Delete a webset item",
     "enrichment-create" => "Create an enrichment",
     "enrichment-get" => "Get enrichment details",
     "enrichment-list" => "List enrichments",
@@ -41,6 +48,8 @@ module ExaCLI
       exit 1
     when "search"
       exec File.expand_path("../exa-ai-search", __FILE__), *ARGV[1..]
+    when "find-similar"
+      exec File.expand_path("../exa-ai-find-similar", __FILE__), *ARGV[1..]
     when "answer"
       exec File.expand_path("../exa-ai-answer", __FILE__), *ARGV[1..]
     when "context"
@@ -65,6 +74,18 @@ module ExaCLI
       exec File.expand_path("../exa-ai-webset-delete", __FILE__), *ARGV[1..]
     when "webset-cancel"
       exec File.expand_path("../exa-ai-webset-cancel", __FILE__), *ARGV[1..]
+    when "webset-search-create"
+      exec File.expand_path("../exa-ai-webset-search-create", __FILE__), *ARGV[1..]
+    when "webset-search-get"
+      exec File.expand_path("../exa-ai-webset-search-get", __FILE__), *ARGV[1..]
+    when "webset-search-cancel"
+      exec File.expand_path("../exa-ai-webset-search-cancel", __FILE__), *ARGV[1..]
+    when "webset-item-list"
+      exec File.expand_path("../exa-ai-webset-item-list", __FILE__), *ARGV[1..]
+    when "webset-item-get"
+      exec File.expand_path("../exa-ai-webset-item-get", __FILE__), *ARGV[1..]
+    when "webset-item-delete"
+      exec File.expand_path("../exa-ai-webset-item-delete", __FILE__), *ARGV[1..]
     when "enrichment-create"
       exec File.expand_path("../exa-ai-enrichment-create", __FILE__), *ARGV[1..]
     when "enrichment-get"
