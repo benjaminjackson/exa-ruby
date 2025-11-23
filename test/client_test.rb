@@ -663,4 +663,144 @@ class ClientTest < Minitest::Test
     assert_instance_of Exa::Resources::WebsetEnrichment, result
     assert_equal "cancelled", result.status
   end
+
+  def test_list_imports_returns_import_collection
+    stub_request(:get, "https://api.exa.ai/websets/v0/imports")
+      .to_return(
+        status: 200,
+        body: {
+          data: [
+            { id: "imp_123", status: "pending", format: "csv" }
+          ],
+          hasMore: false,
+          nextCursor: nil
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.list_imports
+
+    assert_instance_of Exa::Resources::ImportCollection, result
+    assert_equal 1, result.data.length
+  end
+
+  def test_list_imports_delegates_to_list_service
+    stub_request(:get, "https://api.exa.ai/websets/v0/imports")
+      .to_return(
+        status: 200,
+        body: { data: [], hasMore: false, nextCursor: nil }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    client.list_imports
+
+    assert_requested :get, "https://api.exa.ai/websets/v0/imports", times: 1
+  end
+
+  def test_create_import_returns_import
+    stub_request(:post, "https://api.exa.ai/websets/v0/imports")
+      .with(body: hash_including(title: "Test Import", format: "csv", size: 100, count: 50))
+      .to_return(
+        status: 200,
+        body: {
+          id: "imp_new",
+          object: "import",
+          status: "pending",
+          title: "Test Import",
+          format: "csv",
+          size: 100,
+          count: 50,
+          entity: { type: "company" },
+          uploadUrl: "https://upload.example.com",
+          uploadValidUntil: "2025-11-24T00:00:00Z"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.create_import(
+      title: "Test Import",
+      format: "csv",
+      size: 100,
+      count: 50,
+      entity: { type: "company" }
+    )
+
+    assert_instance_of Exa::Resources::Import, result
+    assert_equal "imp_new", result.id
+    assert_equal "pending", result.status
+  end
+
+  def test_get_import_returns_import
+    stub_request(:get, "https://api.exa.ai/websets/v0/imports/imp_123")
+      .to_return(
+        status: 200,
+        body: {
+          id: "imp_123",
+          object: "import",
+          status: "completed",
+          title: "My Import",
+          format: "csv",
+          count: 100,
+          entity: { type: "company" }
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.get_import("imp_123")
+
+    assert_instance_of Exa::Resources::Import, result
+    assert_equal "imp_123", result.id
+    assert_equal "completed", result.status
+  end
+
+  def test_update_import_returns_updated_import
+    stub_request(:patch, "https://api.exa.ai/websets/v0/imports/imp_123")
+      .with(body: hash_including(title: "Updated Title"))
+      .to_return(
+        status: 200,
+        body: {
+          id: "imp_123",
+          object: "import",
+          status: "pending",
+          title: "Updated Title",
+          format: "csv",
+          count: 100,
+          entity: { type: "company" }
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.update_import("imp_123", title: "Updated Title")
+
+    assert_instance_of Exa::Resources::Import, result
+    assert_equal "Updated Title", result.title
+  end
+
+  def test_delete_import_returns_deleted_import
+    stub_request(:delete, "https://api.exa.ai/websets/v0/imports/imp_123")
+      .to_return(
+        status: 200,
+        body: {
+          id: "imp_123",
+          object: "import",
+          status: "deleted",
+          title: "Deleted Import",
+          format: "csv",
+          count: 100,
+          entity: { type: "company" }
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.delete_import("imp_123")
+
+    assert_instance_of Exa::Resources::Import, result
+    assert_equal "imp_123", result.id
+  end
 end

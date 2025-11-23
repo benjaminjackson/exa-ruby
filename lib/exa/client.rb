@@ -319,6 +319,58 @@ module Exa
       Services::Websets::ListItems.new(connection, webset_id: webset_id).call
     end
 
+    # List all imports
+    #
+    # @param params [Hash] Pagination parameters
+    # @option params [String] :cursor Cursor for pagination
+    # @option params [Integer] :limit Maximum number of imports to return
+    # @return [Resources::ImportCollection] Paginated list of imports
+    def list_imports(**params)
+      Services::Websets::Imports::List.new(connection, **params).call
+    end
+
+    # Create a new import
+    #
+    # @param params [Hash] Import parameters
+    # @option params [Integer] :size Size of the import file
+    # @option params [Integer] :count Number of items to import
+    # @option params [String] :title Import title
+    # @option params [String] :format Import format (e.g., "csv")
+    # @option params [Hash] :entity Entity type specification
+    # @option params [Hash] :metadata Custom metadata
+    # @option params [Hash] :csv CSV-specific configuration
+    # @return [Resources::Import] The newly created import
+    def create_import(**params)
+      Services::Websets::Imports::Create.new(connection, **params).call
+    end
+
+    # Get a specific import by ID
+    #
+    # @param id [String] Import ID
+    # @return [Resources::Import] The requested import
+    def get_import(id)
+      Services::Websets::Imports::Get.new(connection, id: id).call
+    end
+
+    # Update an import
+    #
+    # @param id [String] Import ID
+    # @param params [Hash] Update parameters
+    # @option params [String] :title Updated title
+    # @option params [Hash] :metadata Updated metadata
+    # @return [Resources::Import] The updated import
+    def update_import(id, **params)
+      Services::Websets::Imports::Update.new(connection, id: id, **params).call
+    end
+
+    # Delete an import
+    #
+    # @param id [String] Import ID
+    # @return [Resources::Import] The deleted import
+    def delete_import(id)
+      Services::Websets::Imports::Delete.new(connection, id: id).call
+    end
+
     private
 
     def connection
