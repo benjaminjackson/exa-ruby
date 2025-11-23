@@ -344,6 +344,21 @@ module Exa
       Services::Websets::Imports::Create.new(connection, **params).call
     end
 
+    # Upload a file for import (creates import and uploads file)
+    #
+    # @param file_path [String] Path to the file to upload
+    # @param params [Hash] Import parameters
+    # @option params [Integer] :count Number of items to import
+    # @option params [String] :title Import title
+    # @option params [String] :format Import format (e.g., "csv")
+    # @option params [Hash] :entity Entity type specification
+    # @option params [Hash] :metadata Custom metadata
+    # @option params [Hash] :csv CSV-specific configuration
+    # @return [Resources::Import] The created import (file size is inferred automatically)
+    def upload_import(file_path:, **params)
+      Services::Websets::Imports::Upload.new(connection, file_path: file_path, **params).call
+    end
+
     # Get a specific import by ID
     #
     # @param id [String] Import ID
