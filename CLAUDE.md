@@ -120,7 +120,8 @@ When making targeted fixes to a specific feature, avoid running the full test su
 **During red-green-refactor cycles:**
 - Use `bundle exec rake test TEST=<file> TESTOPTS="--name=<test_name>"`
 - This lets you iterate rapidly on a single test without waiting for the full suite
-- Switch back to `bundle exec rake test` only after the test passes to check for regressions
+- When modifying existing production code, run the full suite after tests pass to check for regressions
+- When only adding new tests (no production code changes), the full suite is unnecessary
 
 **Example workflow:**
 ```bash
@@ -130,9 +131,19 @@ bundle exec rake test TEST=test/services/websets/create_search_test.rb TESTOPTS=
 # Fix the code, re-run the single test
 bundle exec rake test TEST=test/services/websets/create_search_test.rb TESTOPTS="--name=test_creates_search_with_criteria"
 
-# Once green, run full suite to ensure no regressions
+# Once green, run full suite ONLY if production code was modified
 bundle exec rake test
 ```
+
+**When to run the full test suite:**
+- After modifying production code (lib/**/*.rb files)
+- After changing test helpers or shared test infrastructure
+- Before creating a commit or pull request
+
+**When NOT to run the full test suite:**
+- After only adding new test files
+- After only updating test data or VCR cassettes
+- During rapid iteration on a single test
 
 ## TDD Workflow
 
@@ -261,4 +272,4 @@ When implementing a new API endpoint:
 - [ ] Write integration test with VCR cassette
 - [ ] Verify error handling (401, 404, 500, etc.)
 - [ ] Update README with usage example
-- [ ] Run full test suite to ensure no regressions
+- [ ] Run full test suite to ensure no regressions (only if production code was modified)
