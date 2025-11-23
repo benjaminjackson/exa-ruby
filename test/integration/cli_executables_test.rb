@@ -18,7 +18,7 @@ class CLIExecutablesTest < Minitest::Test
 
     assert status.success?, "exa-ai --help should exit successfully"
     assert_includes stdout, "Exa CLI"
-    assert_includes stdout, "Commands:"
+    assert_includes stdout, "Core Search:"
     assert_includes stdout, "search"
     assert_includes stdout, "answer"
     assert_includes stdout, "context"

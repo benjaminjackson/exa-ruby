@@ -7,6 +7,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2025-11-23
+
+### Added
+
+#### Websets API Support
+- **Complete Websets CRUD operations** - Full implementation of Websets API with create, retrieve, list, update, delete, and cancel operations
+- **Webset Searches** - Create, retrieve, and cancel searches within websets with entity type support, custom criteria, and recall modes
+- **Webset Items** - List, retrieve, and delete items in websets with expand parameter support
+- **Webset Enrichments** - Full CRUD operations for enrichments with support for text, URL, and options formats
+- **Parameter validation** - Client-side validation for webset creation and search operations with custom entity type support
+- **Resource expansion** - Optional expand parameter to include nested resources (e.g., items) in webset responses
+
+#### CLI Enhancements
+- **Webset commands** - Complete CLI interface for websets (create, get, list, update, delete, cancel)
+- **Webset search commands** - CLI for search operations (create, get, cancel) with wait flag for polling
+- **Webset item commands** - CLI for item operations (list, get, delete)
+- **Enrichment commands** - Full CLI suite for enrichments (create, get, list, update, delete, cancel)
+- **Find similar command** - New CLI command for finding content similar to a URL
+- **Improved help output** - Organized command categories with examples for better discoverability
+- **File loading support** - Support for @file.json syntax in CLI for loading JSON parameters from files
+
+#### Testing Infrastructure
+- **WebsetsCleanupHelper** - Automatic resource cleanup for integration tests to prevent test interference
+- **Minitest fail-fast** - Added minitest-fail-fast gem for faster test development workflow
+- **Comprehensive integration tests** - Full test coverage for websets, searches, items, and enrichments (536+ tests)
+- **Improved test queries** - Updated to use realistic, domain-specific queries instead of generic placeholders
+- **VCR improvements** - Better cassette management with :once record mode to prevent unnecessary API calls
+
+#### Infrastructure
+- **WebsetsParameterConverter** - Snake_case to camelCase conversion for webset parameters
+- **WebsetFormatter** - Output formatting for websets in json/pretty/text formats
+- **EnrichmentFormatter** - Output formatting for enrichments with status helper methods
+- **WebsetItemFormatter** - Formatting for individual webset items
+- **Cursor-based pagination** - Support for cursor-based pagination in webset listing
+
+### Changed
+- **Test development workflow** - Updated guidelines for when to run full test suite vs. single tests
+- **VCR configuration** - Changed from :new_episodes to :once mode to prevent accidental API token usage
+- **Authentication** - Uses x-api-key header (carried forward from 0.3.1)
+
+### Fixed
+- **Test isolation** - Improved EXA_API_KEY handling with proper preservation and restoration
+- **Test data realism** - Fixed API errors by using realistic queries instead of generic test data
+- **CLI integration tests** - Converted to smoke tests with proper API key handling
+- **VCR cassette recording** - Fixed debug logging contamination in VCR cassettes
+- **Enrichment format support** - Updated to use supported formats (text, url, options) and removed unsupported email/phone formats
+
 ## [0.3.1] - 2025-10-28
 
 ### Added
