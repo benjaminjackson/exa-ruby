@@ -1,0 +1,228 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Manufacturing companies in Detroit","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:39:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '764'
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2fc-zB2VtsHmqrAxe6z3Lns+t+vBqUE"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ddWyTZbFI2gjTeOg1e6FB4hdTEey3leK%2BqufqAMveKLa%2FWAyf3IRaSkoVwTvTleOTQxzOXjLo3efxR%2BJ9362DDx3HdC9TXrO3rbqt1KvkhjWFwNeGQ%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9bbbbff5439d-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2d5d78z10vqqampnd41ny","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2d5t7wpb1d4sc777v7h68","object":"webset_search","websetId":"webset_01kaq2d5d78z10vqqampnd41ny","status":"running","query":"Manufacturing
+        companies in Detroit","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:16.039Z","updatedAt":"2025-11-23T00:39:16.435Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:15.623Z","updatedAt":"2025-11-23T00:39:16.435Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:39:17 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2d5d78z10vqqampnd41ny/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"To be cancelled","format":"text"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:39:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '326'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"146-L60uwqCqX/M9+aL/Bthp9vKmF+U"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=YmBCPFzVskwKFgjXra%2F6%2F%2BKBlpqFmOLwQm0xDrTLeUc7S3AZfJpol%2BQssfWHJpQt%2Fbu90Pzgte7ig3KzP51OIcLfexHhbhNNut60gFxiq8GaeA9IYg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9bcc4b2df965-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq2dabrgkes10mt8wpyyfps","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2d5d78z10vqqampnd41ny","title":null,"description":"To
+        be cancelled","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:20.696Z","updatedAt":"2025-11-23T00:39:21.135Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:39:21 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2d5d78z10vqqampnd41ny/enrichments/wenrich_01kaq2dabrgkes10mt8wpyyfps/cancel
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:39:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"146-L60uwqCqX/M9+aL/Bthp9vKmF+U"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=hGVIz1URkyXEYkfCnzKf9eJiC7ctufyn6%2BimKfA9JtUkIj8GUSnHjoUF9qJSUM%2FVSeXMq8q5qcEO74DwTLHMDuO%2B2dp1ZqZvKuMW3b2K60Ww6qfx%2FQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9be6799e0edf-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"wenrich_01kaq2dabrgkes10mt8wpyyfps","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2d5d78z10vqqampnd41ny","title":null,"description":"To
+        be cancelled","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:20.696Z","updatedAt":"2025-11-23T00:39:21.135Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:39:22 GMT
+recorded_with: VCR 6.3.1

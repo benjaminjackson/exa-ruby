@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"E-commerce companies in California","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '764'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2fc-7awmVzqOe1aQXX/OCHkOts39pzk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=yZtArYIwp9p87onGpokKx9%2F2bPvRqwc53%2FMc26hMc8oikLt2e3Z5ht%2BgN5CJ%2FUGvszu3hTqtGvHpI3Z%2FntTIOI3wzdaHGpF5KoFK4ejq%2FzxS3Wh6ow%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c99349d7d4291-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2a04ksp5cy7pg06pr8esc","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2a0gy9yb0ej2a8mg7n7vw","object":"webset_search","websetId":"webset_01kaq2a04ksp5cy7pg06pr8esc","status":"running","query":"E-commerce
+        companies in California","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:37:32.318Z","updatedAt":"2025-11-23T00:37:32.817Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:37:31.923Z","updatedAt":"2025-11-23T00:37:32.817Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:33 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2a04ksp5cy7pg06pr8esc/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"Determine the company size category","format":"options","options":[{"label":"1-10
+        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
+        employees"}]}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '457'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"1c9-goHJkIWWKob4d6mH7WCedZt3w4I"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=MQRhUMTzFQyOiYxHjU7OcJHlI3zqS%2BfUKgnoZP9K7GfxUt7wXazeli7ZkApBt7TfpjNZaRsnMq3EpG1GGf%2BC6dkdV4r7EpRqVjygqe1Z23gH9Rs%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9943dde2c327-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq2a4zat7d7m5nm1fatkhqy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2a04ksp5cy7pg06pr8esc","title":null,"description":"Determine
+        the company size category","format":"options","options":[{"label":"1-10 employees"},{"label":"11-50
+        employees"},{"label":"51-200 employees"},{"label":"201+ employees"}],"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:37:36.874Z","updatedAt":"2025-11-23T00:37:37.082Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:37 GMT
+recorded_with: VCR 6.3.1

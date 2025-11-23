@@ -1,0 +1,226 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Retail companies in Chicago","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '757'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f5-3ofAnNQTfyDnE73K5RV1Kyh3eIo"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=JI4olxhvJyqstcwlpnlUAiPsqG0W6fd%2BF7FWZdWXNoiO2RMQ8rF5u8xaYnuhwnUrbbTv7vnciZj1cLGU2z6OXqVO9cHUYxbSRMzhgS6BvldM2AZRrw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9b45edff4255-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2cjttpx9wz9qe778pzgvv","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2ck6m34mz6p7x4y1ngjj2","object":"webset_search","websetId":"webset_01kaq2cjttpx9wz9qe778pzgvv","status":"running","query":"Retail
+        companies in Chicago","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:38:56.980Z","updatedAt":"2025-11-23T00:38:57.435Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:38:56.602Z","updatedAt":"2025-11-23T00:38:57.435Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:38:57 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2cjttpx9wz9qe778pzgvv/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"To be deleted","format":"text"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '324'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"144-p4bKzCx05QJb9oJzPXASsSPXfD8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=yluwqJTmWOmCk%2Fv1bbumsuWsM6nAvvns6zXTImEGJ9u%2F1mJBE9mDSmFnnDsUw4ytfUwa%2BWaR9SrVcIoAgKOtn5mnlV8tw2mOmZiiuHQ20M6bpWV7pA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9b553f071a5c-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq2cn7v1s7ta27haqdfpb4s","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2cjttpx9wz9qe778pzgvv","title":null,"description":"To
+        be deleted","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:38:59.067Z","updatedAt":"2025-11-23T00:38:59.256Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:38:59 GMT
+- request:
+    method: delete
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2cjttpx9wz9qe778pzgvv/enrichments/wenrich_01kaq2cn7v1s7ta27haqdfpb4s
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:39:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"145-dWkat/Sw1jrYbo0t7v9kAIcdGyw"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=baUH0%2FBo9XLk5csVQCJJv9KgOc%2BF1cVb5cQeRPP0EpIYKEC%2BV9tJI7pJPhDSVAHJhYNU6H%2BtkqVNr5s%2F0Gzi4qBar9%2FEPlENI1NiIiEHJ6zSsfTfmA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9b5e28b11dc7-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"wenrich_01kaq2cn7v1s7ta27haqdfpb4s","object":"webset_enrichment","status":"canceled","websetId":"webset_01kaq2cjttpx9wz9qe778pzgvv","title":null,"description":"To
+        be deleted","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:38:59.067Z","updatedAt":"2025-11-23T00:39:00.305Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:39:00 GMT
+recorded_with: VCR 6.3.1

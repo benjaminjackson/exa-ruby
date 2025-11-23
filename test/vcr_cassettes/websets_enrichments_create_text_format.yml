@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"SaaS companies in San Francisco","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '761'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f9-it6jj5x9n6sGzGi4grTsHp3loc8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=OKZE0%2FyzD6wwTK9zuLQloIVu8OSeyNB%2FHqdF3WjT%2Fd%2BUc1G%2BprvfSvjdu5IyLOJka%2BIg0gzD3TpP1GiZvPLKJ3o8kr9pePIuI5yenPeP2bRZ89CLBg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c98672d234294-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq290dhswnp27dy706xmp0d","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq290t2jpvx16cac9a4bad8","object":"webset_search","websetId":"webset_01kaq290dhswnp27dy706xmp0d","status":"running","query":"SaaS
+        companies in San Francisco","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:36:59.842Z","updatedAt":"2025-11-23T00:37:00.233Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:36:59.441Z","updatedAt":"2025-11-23T00:37:00.233Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:00 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq290dhswnp27dy706xmp0d/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"Find the company''s primary contact email address","format":"text"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '359'
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"167-GT5+hFTcOAsR1TXoEogk+BSC6nk"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=SCR0m6zaPxtKi8eGcPkVLLrvxlngu0Mw9LxPAC%2FGQdSHfbkxzmH3TeZZfMymBHQ%2FLi%2BrWuvYFqWDR185aC4jHPU75c3aHsIhGesgr9mH9fGEPGanvw%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c987a6c056e2f-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq295jbk9btna3j8hq1cqec","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq290dhswnp27dy706xmp0d","title":null,"description":"Find
+        the company''s primary contact email address","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:37:04.715Z","updatedAt":"2025-11-23T00:37:04.954Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:05 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,307 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Marketing agencies in Boston","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '758'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f6-eJmkCp8H+qEp8IaFwUPxEAU6AZE"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=4WAvIF%2FzF%2FS3DmPEMq%2BVMBOvSP29cVzemX5s%2B%2BPaQ3gBxru4fksMOuljBgHjXX5s1itBOgg3BNPOilq8pbcH5yGpb8WAua3Cy15zlA4xiTM7DDs%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9a252ca3f5f7-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2b5rh09xw806kev22nw3g","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2b634j77dxyhaz41f8vs2","object":"webset_search","websetId":"webset_01kaq2b5rh09xw806kev22nw3g","status":"running","query":"Marketing
+        agencies in Boston","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:38:10.788Z","updatedAt":"2025-11-23T00:38:11.181Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:38:10.449Z","updatedAt":"2025-11-23T00:38:11.181Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:38:11 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2b5rh09xw806kev22nw3g/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"Find company email","format":"text"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '329'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"149-OUw9NFga8Q5fXNaWUOczazjWhn4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=TNjUbNHU4WzhEywjMg6k7RPnmT%2FT5CdFJK8qWoWjC7ZbXAhr4TmYN39D8KTKAi8Y5S37iX5E77%2BZM%2FFMCLaCYWN74W2ctSj4tjYHUWxR4C1e8kygIg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9a355e5261a4-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq2b8812dkd78cdj34ryv49","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2b5rh09xw806kev22nw3g","title":null,"description":"Find
+        company email","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:38:12.993Z","updatedAt":"2025-11-23T00:38:13.183Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:38:13 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2b5rh09xw806kev22nw3g/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"Find company website","format":"url"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '330'
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"14a-n5WtXmwwXOKB0TdOSdCtmscjNPI"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=oL0WbeKH%2B%2FBKdYKH4RLfEMeN9M%2BDqpJA%2FzsBhNHsp4RJyY6%2FzqiTkI2HIh8bUc4t0CQWcRv73%2BTEF%2B20xmkNzlsMxOROz2EeIZiAYqGa8bhdrGGJWA%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9a3e48904b9f-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq2b9vr1rjzevczwjst6f99","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2b5rh09xw806kev22nw3g","title":null,"description":"Find
+        company website","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:38:14.648Z","updatedAt":"2025-11-23T00:38:14.875Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:38:15 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2b5rh09xw806kev22nw3g
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6ad-bKq5lwNrPhMl+RL+iQNzm8BtRvA"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=5%2Bmd69O%2FF3yxkFnVNsfQAcNIOMM3P0%2FcIaUoROum09fHRb3K5JCjCSBfQZE9YB4NwsJJw4vyxLPUi90fmDDHEiMDoO5PE0BOb2SdTzZ8BXf9Z9awnQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9a4e1821f788-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2b5rh09xw806kev22nw3g","object":"webset","status":"running","externalId":null,"title":"Companies:
+        marketing agencies in Boston","searches":[{"id":"wsearch_01kaq2b634j77dxyhaz41f8vs2","object":"webset_search","websetId":"webset_01kaq2b5rh09xw806kev22nw3g","status":"running","query":"Marketing
+        agencies in Boston","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides marketing agency services and is headquartered or has a significant
+        office presence in Boston, MA","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:38:10.788Z","updatedAt":"2025-11-23T00:38:14.887Z"}],"imports":[],"enrichments":[{"id":"wenrich_01kaq2b8812dkd78cdj34ryv49","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2b5rh09xw806kev22nw3g","title":"Company
+        Email","description":"Find company email","format":"text","options":null,"instructions":"Find
+        the company''s main email address in lowercase format (e.g., ''info@company.com'').","metadata":{},"createdAt":"2025-11-23T00:38:12.993Z","updatedAt":"2025-11-23T00:38:18.052Z"},{"id":"wenrich_01kaq2b9vr1rjzevczwjst6f99","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2b5rh09xw806kev22nw3g","title":null,"description":"Find
+        company website","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:38:14.648Z","updatedAt":"2025-11-23T00:38:14.875Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:38:10.449Z","updatedAt":"2025-11-23T00:38:14.887Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:38:19 GMT
+recorded_with: VCR 6.3.1
