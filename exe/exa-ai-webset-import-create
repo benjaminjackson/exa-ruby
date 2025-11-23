@@ -42,12 +42,14 @@ def parse_args(argv)
   # Check for help first
   if argv.include?("--help") || argv.include?("-h")
     puts <<~HELP
-      Usage: exa-ai webset-import-create [OPTIONS]
+      Usage: exa-ai webset-import-create FILE [OPTIONS]
 
-      Create a new import for uploading external data
+      Create a new import and upload external data file
+
+      Arguments:
+        FILE                      Path to the CSV file to upload
 
       Required:
-        --size N                  File size in bytes
         --count N                 Number of entities in the import
         --title TEXT              Display title
         --format TYPE             Format type (default: csv, options: #{VALID_FORMATS.join(', ')})
@@ -56,31 +58,38 @@ def parse_args(argv)
       Options:
         --csv-identifier N        CSV column identifier (0-indexed)
         --metadata JSON           Custom metadata (supports @file.json)
+        --quiet                   Suppress normal output (only show errors)
         --api-key KEY             Exa API key (or set EXA_API_KEY env var)
         --output-format FMT       Output format: json, pretty, or text (default: json)
         --help, -h                Show this help message
 
       Examples:
-        exa-ai webset-import-create --size 1024 --count 100 --title "My Companies" --format csv --entity-type company
-        exa-ai webset-import-create --size 2048 --count 50 --title "Tech Startups" --format csv --entity-type company --csv-identifier 0
-        exa-ai webset-import-create --size 1024 --count 100 --title "Import" --format csv --entity-type company --metadata '{"source":"crm"}'
+        exa-ai webset-import-create data.csv --count 100 --title "My Companies" --format csv --entity-type company
+        exa-ai webset-import-create companies.csv --count 50 --title "Tech Startups" --format csv --entity-type company --csv-identifier 0
+        exa-ai webset-import-create import.csv --count 100 --title "Import" --format csv --entity-type company --metadata '{"source":"crm"}' --quiet
     HELP
     exit 0
   end
 
+  # First argument should be the file path
+  if argv.empty? || argv[0].start_with?("--")
+    $stderr.puts "Error: FILE argument is required"
+    $stderr.puts "Run 'exa-ai webset-import-create --help' for usage information"
+    exit 1
+  end
+
   args = {
+    file_path: argv[0],
     output_format: "json",
     api_key: nil,
-    format: "csv"
+    format: "csv",
+    quiet: false
   }
 
-  i = 0
+  i = 1  # Start after the file path
   while i < argv.length
     arg = argv[i]
     case arg
-    when "--size"
-      args[:size] = argv[i + 1].to_i
-      i += 2
     when "--count"
       args[:count] = argv[i + 1].to_i
       i += 2
@@ -99,6 +108,9 @@ def parse_args(argv)
     when "--metadata"
       args[:metadata] = parse_json_or_file(argv[i + 1])
       i += 2
+    when "--quiet"
+      args[:quiet] = true
+      i += 1
     when "--api-key"
       args[:api_key] = argv[i + 1]
       i += 2
@@ -119,12 +131,6 @@ begin
   args = parse_args(ARGV)
 
   # Validate required parameters
-  unless args[:size]
-    $stderr.puts "Error: --size is required"
-    $stderr.puts "Run 'exa-ai webset-import-create --help' for usage information"
-    exit 1
-  end
-
   unless args[:count]
     $stderr.puts "Error: --count is required"
     $stderr.puts "Run 'exa-ai webset-import-create --help' for usage information"
@@ -155,6 +161,12 @@ begin
     exit 1
   end
 
+  # Validate file exists
+  unless File.exist?(args[:file_path])
+    $stderr.puts "Error: File not found: #{args[:file_path]}"
+    exit 1
+  end
+
   # Resolve API key
   api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
 
@@ -166,7 +178,7 @@ begin
 
   # Prepare import parameters
   import_params = {
-    size: args[:size],
+    file_path: args[:file_path],
     count: args[:count],
     title: args[:title],
     format: args[:format],
@@ -179,12 +191,25 @@ begin
     import_params[:csv] = { identifier: args[:csv_identifier] }
   end
 
-  # Create import
-  import = client.create_import(**import_params)
+  # Show upload message unless quiet
+  unless args[:quiet]
+    file_size = File.size(args[:file_path])
+    $stderr.puts "Uploading #{args[:file_path]} (#{file_size} bytes)..."
+  end
 
-  # Format and output result
-  output = Exa::CLI::Formatters::ImportFormatter.format(import, output_format)
-  puts output
+  # Upload import
+  import = client.upload_import(**import_params)
+
+  # Show success message unless quiet
+  unless args[:quiet]
+    $stderr.puts "Upload complete. Import ID: #{import.id}"
+  end
+
+  # Format and output result (unless quiet)
+  unless args[:quiet]
+    output = Exa::CLI::Formatters::ImportFormatter.format(import, output_format)
+    puts output
+  end
 
 rescue Exa::ConfigurationError => e
   $stderr.puts "Configuration error: #{e.message}"
