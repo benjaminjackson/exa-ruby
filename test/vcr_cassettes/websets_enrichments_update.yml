@@ -1,0 +1,228 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Healthcare companies in Seattle","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '761'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f9-PD6K4+YwM2thUP1lSDwrKwzecWY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=pKB1iJH7TPhJN95e5FZNInLFbAvuIxCZx8WcqiQbbvpHmU9yszA6V8U5CD7qlQ5SGBLr4JrUsD2j%2FyZlem8ypp2ckYmgRbjlSqLP73eujLNxXFzikg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9abd493a42da-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2c171ttfh7qa2w1fg54x1","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2c1m2q4wamgkb2b539q6w","object":"webset_search","websetId":"webset_01kaq2c171ttfh7qa2w1fg54x1","status":"running","query":"Healthcare
+        companies in Seattle","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:38:38.978Z","updatedAt":"2025-11-23T00:38:39.365Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:38:38.561Z","updatedAt":"2025-11-23T00:38:39.365Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:38:39 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2c171ttfh7qa2w1fg54x1/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"Original description","format":"text"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '331'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"14b-hVc8TNoyPC3glyTQ2e4XQu2pc9k"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=DybAO9X87L8NUzNbKm7B5Au736JsCCUy%2FgxGQUrIHO8geUA22kT1VHJNvGXBZCZW6zWkFl2kQf7nEuSb%2BasLlaDb3qKp691VM%2FHOF%2BZAUQEV2x%2Fnbg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9ae48c8af9a9-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq2c3q4mh4v4e28wph2tp4p","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2c171ttfh7qa2w1fg54x1","title":null,"description":"Original
+        description","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:38:41.124Z","updatedAt":"2025-11-23T00:38:41.273Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:38:41 GMT
+- request:
+    method: patch
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2c171ttfh7qa2w1fg54x1/enrichments/wenrich_01kaq2c3q4mh4v4e28wph2tp4p
+    body:
+      encoding: UTF-8
+      string: '{"description":"Updated description for company contact"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:38:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"15e-9pjup/E4WcZyvwQWJlS01APUuLk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=w2a9Q8pMP%2FQYEMIDJ8v%2F0YlZQO5X1iq70ljNvDkXl%2F7OzDFW8bgtmWTJel9FcifBiOqfshqTSaUjkOjxY4RHjV7qON3fbirfZ2atdlhivslN6yCmsg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9aeedd6daded-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"wenrich_01kaq2c3q4mh4v4e28wph2tp4p","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2c171ttfh7qa2w1fg54x1","title":null,"description":"Updated
+        description for company contact","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:38:41.124Z","updatedAt":"2025-11-23T00:38:42.374Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:38:42 GMT
+recorded_with: VCR 6.3.1

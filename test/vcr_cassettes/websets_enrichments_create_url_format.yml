@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Tech startups in NYC","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '750'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2ee-aRctRzCU48tOBkLrDm9hN/am5OI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ucZ4BxUTMXWj6zRb8ebdwODpLkvjRaWwWyWZ7Wr%2BJN1Ukc1Qxvlq2FVytP4zDT%2B8leUYAZV7jfkiTrops8N3u16ePmH477ohtDY3Mg6ynCYwlyktlg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c98d298a575b1-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq29g99w4wgdvrarpezg61x","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq29gn0w5h3ddd20n4yr46w","object":"webset_search","websetId":"webset_01kaq29g99w4wgdvrarpezg61x","status":"running","query":"Tech
+        startups in NYC","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:37:16.064Z","updatedAt":"2025-11-23T00:37:16.438Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:37:15.689Z","updatedAt":"2025-11-23T00:37:16.438Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:16 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq29g99w4wgdvrarpezg61x/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"Find the company''s LinkedIn profile URL","format":"url"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '349'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"15d-tfHoUhsdQnReE7bILsslwHFH2Zk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=M9DeG1raVUJFncjbMWnm9lwGBzC1SDbZW3SzN32b2MORkg9wLJYz1wvsmzhc4qRQd69CoBltroearXzA%2B4h7PZJidwYnSAPIVLXOSnMA9aho0ceByw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c98dd989641ac-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq29jmbdazpk90k431hmmmb","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq29g99w4wgdvrarpezg61x","title":null,"description":"Find
+        the company''s LinkedIn profile URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:37:18.091Z","updatedAt":"2025-11-23T00:37:18.313Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:18 GMT
+recorded_with: VCR 6.3.1

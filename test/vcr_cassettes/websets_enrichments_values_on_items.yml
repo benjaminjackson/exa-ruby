@@ -1,0 +1,1045 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"AI/ML infrastructure companies with venture funding","count":1},"enrichments":[{"description":"Find
+        the company''s headquarters location","format":"text"},{"description":"Find
+        the company''s website URL","format":"url"}]}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:39:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1471'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"5bf-uKiO8cbelAFzrEPebfOzCYwMnOo"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=HDO54xby5XMVefS8lzk2l0lwFfrNZS03v5lDoz7ezv88IeeXroTsvCtjD5%2FYLcj3zYrBoQhpNyfEWavTbbwuQu7c2dgdw5X9mWBCUKBqW%2FHpG56ILA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9cbfbec9424f-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"running","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:39:57.929Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s headquarters location","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:39:57.929Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:39:58 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:39:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"5ca-ItgaWKHUW3osnJ/EHZF8LNQFZwE"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=fb6JmcCzLHYBh14WYQyaH%2B4A6o8A%2BiMwdo0bjowCnDfs%2F6gaAm4d66ytol9gGMIPN7H2gQOwyLJroKp56WxtFGDW%2BU2HckWcbXzkUccADKr4ejOAMQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9cd0185d431f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"running","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:39:57.929Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s headquarters location","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:39:57.929Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:39:59 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"5f7-rGeJtU9c6b+02HowaKY/ElNmzLU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LLXJfY4qhpwhITWmcBFjgB%2FvtwhjyXw%2F9DH2mfD0Hmbl1ILnou8SMfv29oVNYBA3iPq37pFstvt%2BHkpyGHVOejG0%2BrQryp1BQ7pSp34IXqXpy0LYRg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9ce1ca65f4d7-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"running","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:39:57.929Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s headquarters location","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:39:59.365Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:02 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6db-WYN+reXqMKcgr4x5VGvvKydmUxk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=F0iQpdYjbng6JZw6cDcOF2K9vhBWiMMB0npZtmaIBKXkxQmq03vg946g6bQLA56wWJtl1dZSiFY6fF7%2F75CGNBGB8JQfkGWYR23W5vdcbTa2TNT8fw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9cf219648cc6-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"running","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":0},{"description":"Company
+        has received venture funding","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:02.074Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s headquarters location","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:02.074Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:04 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"6de-ndiOWjRl7YkSfj1Q/w9tKUNDFHk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=XBbjMo1%2Bmhm5jKrIrDaSUxWUMrXeZcB6UOK9UrcoA92UnwJT4M50bCgnzBBHSE5xqNXmu%2BquwXUBq8vnSA%2Bl107mdL8HWmxuFcgQxB8A9dRYrGApdw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d030ccc2f65-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"running","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":100},{"description":"Company
+        has received venture funding","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:02.074Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s headquarters location","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":null,"description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:39:57.506Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:02.074Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:09 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"7e4-sV7QzOj2dgYrnNZWSVGEcRfx+RY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=w7fKpPj%2Fb8r0rnTJw8dC7aY0EFXIhKJpMBCrO07B%2BydtqwTckIVw%2BTAa5MSC0YAbLn01PoQXmxz1GK0Dl6jFmYApZULhZ4NfHVR%2BSX75QGkxvig%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d235f658068-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"running","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":100},{"description":"Company
+        has received venture funding","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:02.074Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"HQ
+        Location","description":"Find the company''s headquarters location","format":"text","options":null,"instructions":"Find
+        the company''s headquarters location in format ''city | state | country''
+        (e.g., ''San Francisco | CA | United States''). If state is not applicable,
+        use ''city | country'' format (e.g., ''London | United Kingdom'').","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"Website","description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":"Find
+        the company''s official website URL.","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:12.225Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:12 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"7e4-sV7QzOj2dgYrnNZWSVGEcRfx+RY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=fOgf8e8bULjIB%2B%2F6pFgiVmnWrbzJn9nP7vRM6j7OcBCuEsgcWa%2BWlQnrOnBYibyAHSt92OfqFQVJ9TEd8O78sxXifPx%2BmTi10cWDIGgWbt6jJL2a9Q%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d349913a62e-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"running","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":100},{"description":"Company
+        has received venture funding","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:02.074Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"HQ
+        Location","description":"Find the company''s headquarters location","format":"text","options":null,"instructions":"Find
+        the company''s headquarters location in format ''city | state | country''
+        (e.g., ''San Francisco | CA | United States''). If state is not applicable,
+        use ''city | country'' format (e.g., ''London | United Kingdom'').","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"Website","description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":"Find
+        the company''s official website URL.","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:12.225Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:15 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"7e6-WfZybMLh6UCHYNY/GFDTyJg4rvk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=B27BSWqAY5jHVQ6o0J2PI%2BSunHjm%2FQUHzNTPz2t18IrIV8ztw52q3OzmM2i1O1ZKNx6pcduMO69C2pcdd%2BhiUdJt6rF7Z6c3iZPgGpuvlECIop%2FneQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d451a9390c2-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"completed","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":100},{"description":"Company
+        has received venture funding","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:15.961Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"HQ
+        Location","description":"Find the company''s headquarters location","format":"text","options":null,"instructions":"Find
+        the company''s headquarters location in format ''city | state | country''
+        (e.g., ''San Francisco | CA | United States''). If state is not applicable,
+        use ''city | country'' format (e.g., ''London | United Kingdom'').","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"Website","description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":"Find
+        the company''s official website URL.","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:15.961Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:17 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"7e6-WfZybMLh6UCHYNY/GFDTyJg4rvk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=W8WB7iiBnDjR2WpHYPD7IYSHFaz%2BcuQmEz1WzM3MSkKTv0exXrDhWcEatMSaeqEG33q5i3BcGlXJUyK%2FtvgrWETGOWYWQzsrJ2b%2BedutAERlhUPCQg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d55bb2acc62-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"completed","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":100},{"description":"Company
+        has received venture funding","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:15.961Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"HQ
+        Location","description":"Find the company''s headquarters location","format":"text","options":null,"instructions":"Find
+        the company''s headquarters location in format ''city | state | country''
+        (e.g., ''San Francisco | CA | United States''). If state is not applicable,
+        use ''city | country'' format (e.g., ''London | United Kingdom'').","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"Website","description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":"Find
+        the company''s official website URL.","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:15.961Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:20 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"7e6-WfZybMLh6UCHYNY/GFDTyJg4rvk"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wnBfNzrUw4vYTJE12AkLgRb1t89%2BK3RF0TeYryVE%2Bw9kHtIS6FyYG6kyDPkVoYmtMR44jeJmwaxMPN9XmySHa2O2DuICNiV%2BbynowqB7Pplgja2mvw%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d66ced0ac6e-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"completed","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":100},{"description":"Company
+        has received venture funding","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:15.961Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"HQ
+        Location","description":"Find the company''s headquarters location","format":"text","options":null,"instructions":"Find
+        the company''s headquarters location in format ''city | state | country''
+        (e.g., ''San Francisco | CA | United States''). If state is not applicable,
+        use ''city | country'' format (e.g., ''London | United Kingdom'').","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"Website","description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":"Find
+        the company''s official website URL.","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:15.961Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:23 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"7e6-WfZybMLh6UCHYNY/GFDTyJg4rvk"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Zq317%2FVLMQ2sDtxI9ZIejoLJI%2F2eDSht9lRUQ0J9fQ0TxnS0cZWQSZuX49jY4UszPoaNIoYaAGiyQb0uOCKHdP0whvQY3ztLqW0r6T1SktGTaA4%2BDw%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d7838ede0ee-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"completed","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":100},{"description":"Company
+        has received venture funding","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:15.961Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"HQ
+        Location","description":"Find the company''s headquarters location","format":"text","options":null,"instructions":"Find
+        the company''s headquarters location in format ''city | state | country''
+        (e.g., ''San Francisco | CA | United States''). If state is not applicable,
+        use ''city | country'' format (e.g., ''London | United Kingdom'').","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"Website","description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":"Find
+        the company''s official website URL.","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:12.225Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:15.961Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:26 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"7e7-bwZTR4Y0jzkysBfLfeztWbw0Tgs"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=nbKckT61hUQRXt5bZ4BGJDCQW66fJrn4AwwJn%2Fo0%2FiFJxF5pRwUux%2FJNyAwgngdtUMLO4qrslG3qkIFI3gNBjB8%2BDZxOrxeGIsnRfiiBq2BWffS%2FUg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d8a0a2b8c6b-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI/ML infrastructure, venture funded","searches":[{"id":"wsearch_01kaq2eebbcq7hf3x657m9xhhs","object":"webset_search","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","status":"completed","query":"AI/ML
+        infrastructure companies with venture funding","entity":{"type":"company"},"criteria":[{"description":"Company
+        provides infrastructure products or services for artificial intelligence (AI)
+        or machine learning (ML) applications","successRate":100},{"description":"Company
+        has received venture funding","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:39:57.547Z","updatedAt":"2025-11-23T00:40:15.961Z"}],"imports":[],"enrichments":[{"id":"wenrich_cmiazqxxe000ij01so07dgbxy","object":"webset_enrichment","status":"completed","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"HQ
+        Location","description":"Find the company''s headquarters location","format":"text","options":null,"instructions":"Find
+        the company''s headquarters location in format ''city | state | country''
+        (e.g., ''San Francisco | CA | United States''). If state is not applicable,
+        use ''city | country'' format (e.g., ''London | United Kingdom'').","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:28.329Z"},{"id":"wenrich_cmiazqxxe000jj01s2y2a10pp","object":"webset_enrichment","status":"completed","websetId":"webset_01kaq2edz1vx5qrrk0y0pdfn6w","title":"Website","description":"Find
+        the company''s website URL","format":"url","options":null,"instructions":"Find
+        the company''s official website URL.","metadata":{},"createdAt":"2025-11-23T00:39:57.506Z","updatedAt":"2025-11-23T00:40:28.329Z"}],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:39:57.153Z","updatedAt":"2025-11-23T00:40:28.329Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:40:28 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2edz1vx5qrrk0y0pdfn6w/items
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:40:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"308b-0uJrz0SphLEEywD+BZMwr15yaA0"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=8XBWrPuxnJInCSQyvmUQagoTZzi2wOlzen32KaVnE8ZHhgaz1WU1892Kq8cD2mYSQ1cpVEiDNjAR%2BjMfT%2Fer1Ekonnud77cGszdxEOGd2%2BVgHTOQcw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c9d8dd894f4d7-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjpbeyJpZCI6IndpdGVtXzAxa2FxMmVudGM5N256ZzQyOTk3bnpnNDI5Iiwib2JqZWN0Ijoid2Vic2V0X2l0ZW0iLCJzb3VyY2UiOiJzZWFyY2giLCJzb3VyY2VJZCI6IndzZWFyY2hfMDFrYXEyZWViYmNxN2hmM3g2NTdtOXhoaHMiLCJ3ZWJzZXRJZCI6IndlYnNldF8wMWthcTJlZHoxdng1cXJyazB5MHBkZm42dyIsInByb3BlcnRpZXMiOnsidHlwZSI6ImNvbXBhbnkiLCJ1cmwiOiJodHRwczovL2FueXNjYWxlLmNvbSIsImRlc2NyaXB0aW9uIjoiQW55c2NhbGUgaXMgYSBwcml2YXRlIEFJIGluZnJhc3RydWN0dXJlIGFuZCBzb2Z0d2FyZSBkZXZlbG9wbWVudCBjb21wYW55IGJhc2VkIGluIFNhbiBGcmFuY2lzY28sIGZvdW5kZWQgaW4gMjAxOSwgd2l0aCAxODkgZW1wbG95ZWVzIGFuZCAkMTIuNk0gYW5udWFsIHJldmVudWUuIEl0IGhhcyByYWlzZWQgJDI3OS42TSBpbiB0b3RhbCBmdW5kaW5nLCBpbmNsdWRpbmcgYSBTZXJpZXMgQyBpbiBBdWd1c3QgMjAyMi4gVGhlIGNvbXBhbnkgc3BlY2lhbGl6ZXMgaW4gc2NhbGFibGUgQUkgYW5kIFB5dGhvbiBhcHBsaWNhdGlvbiBwbGF0Zm9ybXMsIG9mZmVyaW5nIE1MT3BzIGFuZCBBSSBvcmNoZXN0cmF0aW9uIHNvbHV0aW9ucyB0aGF0IGVuYWJsZSBkZXZlbG9wZXJzIHRvIGJ1aWxkLCBydW4sIGFuZCBzY2FsZSBBSSBhcHBsaWNhdGlvbnMgaW5zdGFudGx5LiIsImNvbnRlbnQiOiIjIFRoZSBCZXN0IFBsYWNlIHRvIEJ1aWxkIGFuZCBSdW4gQUkgd2l0aCBSYXlcblxuRnJvbSB0aGUgY3JlYXRvcnMgb2YgUmF5IOKAkyBBbnlzY2FsZSBnaXZlcyB5b3UgYSBwbGF0Zm9ybSB0byBydW4gYW5kIHNjYWxlIGFsbCB5b3VyIE1MIGFuZCBBSSB3b3JrbG9hZHMsIGZyb20gZGF0YSBwcm9jZXNzaW5nIHRvIHRyYWluaW5nIGFuZCBpbmZlcmVuY2UuXG5cbltHZXQgU3RhcnRlZCB3aXRoICQxMDAgQ3JlZGl0XShodHRwczovL2NvbnNvbGUuYW55c2NhbGUuY29tL3JlZ2lzdGVyL3YyP3V0bV9zb3VyY2U9YW55c2NhbGUmdXRtX2NvbnRlbnQ9aHBoZXJvJnV0bV9tZWRpdW09d2Vic2l0ZSZ1dG1fY2FtcGFpZ249Y3RhKSBbQm9vayBEZW1vXShodHRwczovL3d3dy5hbnlzY2FsZS5jb20vYm9vay9kZW1vP3V0bV9zb3VyY2U9YW55c2NhbGUmdXRtX2NvbnRlbnQ9aHBoZXJvJnV0bV9tZWRpdW09d2Vic2l0ZSZ1dG1fY2FtcGFpZ249Y3RhKVxuXG4jIyMgQW5ub3VuY2luZyBGaXJzdC1QYXJ0eSBTZXJ2aWNlIG9uIEF6dXJlIENsb3VkXG5cbldl4oCZcmUgZXhjaXRlZCB0byBhbm5vdW5jZSBhIG5ldyBBSS1uYXRpdmUgY29tcHV0ZSBzZXJ2aWNlIGNvLWVuZ2luZWVyZWQgd2l0aCBNaWNyb3NvZnQgZGVsaXZlcmVkIGFzIGEgZnVsbHkgbWFuYWdlZCwgZmlyc3QtcGFydHkgb2ZmZXJpbmcgb24gQXp1cmUuIE5vdyBpbiBwcml2YXRlIHByZXZpZXcuXG5cbltSZWFkIHRoZSBCbG9nXShodHRwczovL3d3dy5hbnlzY2FsZS5jb20vYmxvZy9hbm5vdW5jaW5nLWFueXNjYWxlLW9uLWF6dXJlLWJ1aWxkLXJ1bi1zY2FsZS1haS1uYXRpdmUtcmF5LXdvcmtsb2Fkcz91dG1fc291cmNlPWFueXNjYWxlY29tJnV0bV9tZWRpdW09Y3RhJnV0bV9jYW1wYWlnbj1ob21lcGFnZSlcblxuIyBSYXkgaXMgdGhlIFVuaWZpZWQgQ29tcHV0ZSBFbmdpbmUgZm9yIHRoZSBBSSBFcmFcblxuUmF5IGlzIGFuIG9wZW4tc291cmNlIGZyYW1ld29yayB0aGF0IGhlbHBzIGRldmVsb3BlcnMgc2NhbGUgZGF0YSBwcm9jZXNzaW5nLCB0cmFpbmluZywgYW5kIGluZmVyZW5jZSB3b3JrbG9hZHMgZnJvbSBsYXB0b3BzIHRvIHRlbnMgb3IgdGhvdXNhbmRzIG9mIG5vZGVzLlxuXG4tICoqUHl0aG9uLW5hdGl2ZSoqLiBEaXN0cmlidXRlIFB5dGhvbiBmdW5jdGlvbnMgdXNpbmcgZmFtaWxpYXIgZnJhbWV3b3JrcyBhbmQgZGF0YSBzdHJ1Y3R1cmVzLlxuLSAqKk11bHRpbW9kYWwqKi4gUHJvY2VzcyBhbGwgZGF0YSBtb2RhbGl0aWVzLCBpbmNsdWRpbmcgaW1hZ2VzLCB2aWRlbywgdGV4dCwgYXVkaW8sIHRhYnVsYXIgZGF0YXNldHMsIGFuZCBtb3JlLlxuLSAqKkhldGVyb2dlbmVvdXMqKi4gQ29vcmRpbmF0ZSB0YXNrIGV4ZWN1dGlvbiBhY3Jvc3MgQ1BVcywgR1BVcywgb3Igb3RoZXIgYWNjZWxlcmF0b3JzIGluIGEgc2luZ2xlIGNsdXN0ZXIuXG5cbltMZWFybiBSYXldKGh0dHBzOi8vY291cnNlcy5hbnlzY2FsZS5jb20vYnVuZGxlcy9pbnRyb2R1Y3Rpb24tdG8tcmF5P3V0bV9zb3VyY2U9YW55c2NhbGVjb20mdXRtX21lZGl1bT1jdGEmdXRtX2NhbXBhaWduPWhvbWVwYWdlKVxuXG4jIyBBbnlzY2FsZSBpcyB0aGUgQmVzdCBQbGF0Zm9ybSBmb3IgUmF5XG5cblJlYWR5IGZyb20gZGF5IG9uZSB0byBoZWxwIHlvdSBidWlsZCBmYXN0ZXIsIHNjYWxlIGVhc2llciwgYW5kIG9wZXJhdGUgd2l0aCBjb25maWRlbmNlLlxuXG4jIyMjIERFVkVMT1BFUiBBR0lMSVRZXG5cbiMjIEJ1aWxkLiBEZWJ1Zy4gRGVwbG95LiBSZXBlYXQuXG5cbkludGVyYWN0aXZlIGRldiBjb25zb2xlIHdpdGggYWR2YW5jZWQgd29ya2xvYWQgb2JzZXJ2YWJpbGl0eSB0byBoZWxwIHlvdSBkZWJ1ZyBxdWlja2x5LCBhbmQgc2VhbWxlc3NseSB0cmFuc2l0aW9uIGZyb20gZGV2IHRvIHByb2QuXG5cbi0gQnVpbHQtaW4gSURFLiBDbG91ZC1iYXNlZCwgc2NhbGFibGUgZGV2IGVudmlyb25tZW50cyB3aXRoIGlkbGUgdGVybWluYXRpb24gdG8gcmVkdWNlIGNvc3RzIGFjY2Vzc2libGUgdmlhIFZTQ29kZSwgSnVweXRlciwgYW5kIEN1cnNvci5cblxuLSBXb3JrbG9hZCBPYnNlcnZhYmlsaXR5LiBEZWJ1ZyBmYXN0ZXIgd2l0aCBwcm9maWxpbmcgdG9vbHMgYnVpbHQgZm9yIGRpc3RyaWJ1dGVkIHdvcmtsb2Fkcy5cblxuLSBEZXBlbmRlbmN5IE1hbmFnZW1lbnQuIEF1dG8gcHJvcGFnYXRlIGNvbnRhaW5lciBhbmQgdXYgZGVwZW5kZW5jaWVzIGFjcm9zcyBSYXkgbm9kZXMuXG5cblxuW1dhdGNoIERlbW9dKGh0dHBzOi8veW91dHUuYmUvLV9CcHpXSHUwLTg/ZmVhdHVyZT1zaGFyZWQmdD0xMDM2KVxuXG4jIyMjIFBST0RVQ1RJT04gUkVTSUxJRU5DRVxuXG4jIyBEZXBsb3kgQW55d2hlcmUuIFNjYWxlIFJlbGlhYmx5LlxuXG5EZXBsb3kgZmF1bHQtdG9sZXJhbnQgUmF5IGNsdXN0ZXJzIGluIHlvdXIgY2xvdWQgb2YgY2hvaWNlIHdpdGggYnVpbHQtaW4gcmVzaWxpZW5jZSwgYXV0by1zY2FsaW5nLCBhbmQgbm8gbWFudWFsIG9wcy5cblxuLSBGYXVsdCBUb2xlcmFudC4gSGV0ZXJvZ2VuZW91cyAoQ1BVL0dQVSkgVk0gb3IgSzhzIGNsdXN0ZXIgZGVwbG95bWVudHMgd2l0aCBwcm9hY3RpdmUgdW5oZWFsdGh5IG5vZGUgZHJhaW5pbmcgYW5kIHJlcGxhY2VtZW50XG5cbi0gWmVyby1kb3dudGltZSB1cGdyYWRlcy4gVXBncmFkZSB3aXRoIGNvbmZpZGVuY2UgdXNpbmcgYnVpbHQtaW4gcm9sbGJhY2sgYW5kIHNlYW1sZXNzIHRyYW5zaXRpb25zLlxuXG4tIE1vbml0b3JpbmcgJiBBbGVydGluZy4gTWFuYWdlZCBQcm9tZXRoZXVzIGFuZCBHcmFmYW5hIGRhc2hib2FyZHMsIGJhY2tlZCBieSBwZXJzaXN0ZW50IGxvZ3MuXG5cblxuW0V4cGxvcmUgdGhlIFBsYXRmb3JtXShodHRwczovL3d3dy5hbnlzY2FsZS5jb20vcHJvZHVjdC9wbGF0Zm9ybT91dG1fc291cmNlPWFueXNjYWxlY29tJnV0bV9tZWRpdW09Y3RhJnV0bV9jYW1wYWlnbj1iZXN0X3BsYXRmb3JtX3NlY3Rpb24mdXRtX2NvbnRlbnQ9aG9tZXBhZ2UpXG5cbiMjIyMgQ09TVCBFRkZJQ0lFTkNZXG5cbiMjIEtlZXAgR1BVcyBCdXN5IOKAk8KgYW5kIEJ1ZGdldHMgTGVhblxuXG5Cb29zdCBwZXJmb3JtYW5jZSB3aXRoIEFueXNjYWxlIG9wdGltaXphdGlvbnMuIEVmZmljaWVudGx5IG1hbmFnZSBqb2JzIG9yIHVzZXJzIHdpdGggYnVpbHQtaW4gZ292ZXJuYW5jZSBhbmQgY29zdCBjb250cm9scy5cblxuLSBBbnlzY2FsZSBSdW50aW1lLiBQcm9wcmlldGFyeSBvcHRpbWl6YXRpb25zIGZvciBldmVyeSBzdGFnZSBvZiB0aGUgQUkgcGlwZWxpbmUsIGZyb20gZGF0YSBwcmVwYXJhdGlvbiB0byB0cmFpbmluZyBhbmQgaW5mZXJlbmNlLlxuXG4tIFNwb3QgSW5zdGFuY2VzLiBSZWR1Y2UgY29zdHMgd2l0aCByZWxpYWJsZSBzcG90IGluc3RhbmNlIG1hbmFnZW1lbnQsIG9yY2hlc3RyYXRpb24sIGFuZCBmYWxsIGJhY2sgdG8gb24tZGVtYW5kLlxuXG4tIENvc3QgR292ZXJuYW5jZS4gTW9uaXRvciB1c2FnZSBhY3Jvc3MgdGVhbXMgYW5kIGtlZXAgY29zdHMgaW4gY2hlY2sgd2l0aCBidWRnZXRzIGFuZCBxdW90YXMuXG5cblxuW0Jvb2sgYSBEZW1vXShodHRwczovL3d3dy5hbnlzY2FsZS5jb20vYm9vay9kZW1vP3V0bV9zb3VyY2U9YW55c2NhbGVjb20mdXRtX21lZGl1bT1jdGEmdXRtX2NhbXBhaWduPWJlc3RfcGxhdGZvcm1fc2VjdGlvbiZ1dG1fY29udGVudD1ob21lcGFnZSlcblxuIyMgT25lIFBsYXRmb3JtLiBFdmVyeSBBSSBXb3JrbG9hZC5cblxuRnJvbSBkYXRhIHByZXAgdG8gaW5mZXJlbmNlIOKAlCBpZiBpdOKAmXMgUHl0aG9uLCBpdCBydW5zIGJldHRlciB3aXRoIFJheSBvbiBBbnlzY2FsZS5cblxuUkFHU3RhYmxlIERpZmZ1c2lvbkJhdGNoIEluZmVyZW5jZUZpbmUtdHVuaW5nTExNc1hHQm9vc3REaXN0cmlidXRlZCBUcmFpbmluZ1ZpZGVvIFByb2Nlc3NpbmdHZW5lcmF0aXZlIEFJRGF0YSBQcm9jZXNzaW5nUGFyYWxsZWwgUHJvY2Vzc2luZ1xuXG5b8J+klvCfk5rwn5KqXFxcblxcXG4qKlN0YXJ0aW5nIHdpdGggUmF5IGZvciBkaXN0cmlidXRlZCBBSS9NTCoqIFxcXG5cXFxuRXhwbG9yZSBSYXkgY29yZSBBSSBsaWJyYXJpZXMsIHN1Y2ggYXMgUmF5IERhdGEgYW5kIFJheSBUcmFpbiwgYW5kIGxlYXJuIGhvdyB0byB1c2UgdGhlbSBmb3IgbGFyZ2Utc2NhbGUgdHJhaW5pbmcgYW5kIGJhdGNoIGluZmVyZW5jZSB3aXRoIEdlbkFJIGFuZCBMTE1zLlxcXG5cXFxuMzAgbWlucyBcXHwgQmVnaW5uZXJcXFxuXFxcbk9wZW5dKGh0dHBzOi8vY29uc29sZS5hbnlzY2FsZS5jb20vdGVtcGxhdGUtcHJldmlldy9zdW1taXQyNS1pbnRyby1yYXlhaWxpYj91dG1fc291cmNlPWFueXNjYWxlY29tJnV0bV9tZWRpdW09dGVtcGxhdGUmdXRtX2NhbXBhaWduPW9uZV9wbGF0Zm9ybV9zZWN0aW9uKSBb8J+TnVxcXG5cXFxuKipMTE0gdHJhaW5pbmcgYW5kIGluZmVyZW5jZSoqIFxcXG5cXFxuRmluZS10dW5lIGFuIExMTSB0byBwZXJmb3JtIGJhdGNoIGluZmVyZW5jZSBhbmQgb25saW5lIHNlcnZpbmcgZm9yIGVudGl0eSByZWNvZ25pdGlvbi5cXFxuXFxcbjMwIG1pbnMgXFx8IEJlZ2lubmVyXFxcblxcXG5PcGVuXShodHRwczovL2NvbnNvbGUuYW55c2NhbGUuY29tL3RlbXBsYXRlLXByZXZpZXcvZW50aXR5LXJlY29nbml0aW9uLXdpdGgtbGxtcz91dG1fc291cmNlPWFueXNjYWxlY29tJnV0bV9tZWRpdW09dGVtcGxhdGUmdXRtX2NhbXBhaWduPW9uZV9wbGF0Zm9ybV9zZWN0aW9uKSBb8J+Op1xcXG5cXFxuKipBdWRpbyBiYXRjaCBpbmZlcmVuY2UqKiBcXFxuXFxcblVzZSBMTE1zIGFzIGp1ZGdlcyB0byBjdXJhdGUgYW5kIGZpbHRlciBhdWRpbyBkYXRhc2V0cyBmb3IgcXVhbGl0eSBhbmQgcmVsZXZhbmNlLlxcXG5cXFxuMzAgbWlucyBcXHwgQWR2YW5jZWRcXFxuXFxcbk9wZW5dKGh0dHBzOi8vY29uc29sZS5hbnlzY2FsZS5jb20vdGVtcGxhdGUtcHJldmlldy9hdWRpby1kYXRhc2V0LWN1cmF0aW9uLWxsbS1qdWRnZT91dG1fc291cmNlPWFueXNjYWxlY29tJnV0bV9tZWRpdW09dGVtcGxhdGUmdXRtX2NhbXBhaWduPW9uZV9wbGF0Zm9ybV9zZWN0aW9uKSBb8J+Mg/CfmoBcXFxuXFxcbioqUmVpbmZvcmNlbWVudCBMZWFybmluZyBmb3IgTExNcyB3aXRoIFNreVJMKiogXFxcblxcXG5SZWluZm9yY2VtZW50IExlYXJuaW5nIGZvciBMTE1zIHVzaW5nIFNreVJMIGFuZCBSYXkuXFxcblxcXG40MCBtaW5zIFxcfCBJbnRlcm1lZGlhdGVcXFxuXFxcbk9wZW5dKGh0dHBzOi8vY29uc29sZS5hbnlzY2FsZS5jb20vdGVtcGxhdGUtcHJldmlldy9za3lybD91dG1fc291cmNlPWFueXNjYWxlY29tJnV0bV9tZWRpdW09dGVtcGxhdGUmdXRtX2NhbXBhaWduPW9uZV9wbGF0Zm9ybV9zZWN0aW9uKVxuXG4jIEJ1aWx0IHdpdGggUmF5LiBEZXBsb3llZCBvbiBBbnlzY2FsZS5cblxuU2VlIGhvdyBsZWFkaW5nIG9yZ2FuaXphdGlvbnMgdGFrZSBBSSB0byBwcm9kdWN0aW9uXG5cblsqKjEyeCoqIFxcXG5cXFxuZmFzdGVyIGl0ZXJhdGlvbiB0byBkZWxpdmVyIG92ZXIgMTAwKyBwcm9kdWN0aW9uIG1vZGVsc10oaHR0cHM6Ly93d3cuYW55c2NhbGUuY29tL3Jlc291cmNlcy9jYXNlLXN0dWR5L2hvdy1jYW52YS1idWlsdC1hLW1vZGVybi1haS1wbGF0Zm9ybS11c2luZy1hbnlzY2FsZSkgWyoqNXgqKiBcXFxuXFxcbmZhc3RlciBpdGVyYXRpb24gZm9yIEFJIHdvcmtsb2Fkc10oaHR0cHM6Ly93d3cuYW55c2NhbGUuY29tL3Jlc291cmNlcy9jYXNlLXN0dWR5L2hvdy1oYW5kc2hha2Utc2F2ZXMtNTAtb24tbGxtLWdwdS1jb3N0cy13aXRoLWFueXNjYWxlKSBbV2VueXVlIExpdVxcXG5cXFxuU2VuaW9yIE1MIFBsYXRmb3JtIEVuZ2luZWVyXFxcblxcXG7igJxSYXkgYW5kIEFueXNjYWxlIGFsaWduZWQgd2l0aCBvdXIgdmlzaW9uOiB0byBpdGVyYXRlIGZhc3Rlciwgc2NhbGUgc21hcnRlciwgYW5kIG9wZXJhdGUgbW9yZSBlZmZpY2llbnRseS7igJ1dKGh0dHBzOi8vd3d3LmFueXNjYWxlLmNvbS9yZXNvdXJjZXMvY2FzZS1zdHVkeS9jb2luYmFzZS1tbC1pbmZyYXN0cnVjdHVyZSkgW1NhcmFoIFNhY2hzXFxcblxcXG5FbmdpbmVlcmluZyBMZWFkZXIsIEFJIE1vZGVsaW5nXFxcblxcXG5cIldlIGNob3NlIEFueXNjYWxlIG5vdCBqdXN0IGZvciB3aGF0IHdlIG5lZWRlZCB0b2RheSwgYnV0IGZvciB3aGVyZSB3ZSBrbm93IHdl4oCZcmUgaGVhZGluZy4gQXMgb3VyIEFJIHdvcmtsb2FkcyBncm93IG1vcmUgY29tcGxleCwgQW55c2NhbGUgZ2l2ZXMgdXMgdGhlIGluZnJhc3RydWN0dXJlIHRvIHNjYWxlIHdpdGhvdXQgbGltaXRzLlwiXShodHRwczovL3d3dy5hbnlzY2FsZS5jb20vcmVzb3VyY2VzL2Nhc2Utc3R1ZHkvbm90aW9uKSBbKio5OSUqKiBcXFxuXFxcbnJlZHVjdGlvbiBpbiBjb3N0XShodHRwczovL3d3dy5hbnlzY2FsZS5jb20vcmVzb3VyY2VzL2Nhc2Utc3R1ZHkvYXR0ZW50aXZlKSBbKioxM3gqKiBcXFxuXFxcbmZhc3RlciBtb2RlbCBsb2FkaW5nXShodHRwczovL3d3dy5hbnlzY2FsZS5jb20vcmVzb3VyY2VzL2Nhc2Utc3R1ZHkvcnVud2F5KVxuXG4jIFRoZSBUZWFtIEJlaGluZCBSYXkg4oCTIE9uIFlvdXIgVGVhbVxuXG4jIyMjIEJ1aWx0IGJ5IHRoZSBjcmVhdG9ycyBvZiBSYXkuIFN1cHBvcnRlZCBieSB0aGUgcGVvcGxlIHdobyBrbm93IGl0IGJlc3QuXG5cbldpdGggQW55c2NhbGUsIHlvdSBkb27igJl0IGp1c3QgZ2V0IGEgcGxhdGZvcm0g4oCUIHlvdSBnZXQgYSBwYXJ0bmVyLiBPdXIgdGVhbSB3b3JrcyBoYW5kcy1vbiB3aXRoIHlvdXJzIHRvIHRyb3VibGVzaG9vdCwgdHVuZSwgYW5kIHNjYWxlIGV2ZXJ5IHBhcnQgUmF5LWJhc2VkIHBsYXRmb3JtLCB3aGV0aGVyIHlvdSdyZSBsYXVuY2hpbmcgeW91ciBmaXJzdCBjbHVzdGVyIG9yIG9wZXJhdGluZyBhIGxhcmdlLXNjYWxlIGRlcGxveW1lbnQuXG5cbltTZWUgU3VwcG9ydCBQbGFuc10oaHR0cHM6Ly93d3cuYW55c2NhbGUuY29tL3N1cHBvcnQ/dXRtX3NvdXJjZT1hbnlzY2FsZWNvbSZ1dG1fbWVkaXVtPWN0YSZ1dG1fY2FtcGFpZ249dGVhbV9iZWhpbmRfcmF5JnV0bV9jb250ZW50PWhvbWVwYWdlKVxuXG4jIyMjIFRyeSBBbnlzY2FsZSBUb2RheVxuXG5VbmxvY2sgeW91ciBwb3RlbnRpYWwg4oCTIHJ1biBBSSBhbmQgb3RoZXIgUHl0aG9uIGFwcGxpY2F0aW9ucyBvbiB5b3VyIGNsb3VkIG9yIG9uIG91ciBmdWxseS1tYW5hZ2VkIGNvbXB1dGUgcGxhdGZvcm0uXG5cbltHZXQgU3RhcnRlZCB3aXRoICQxMDAgQ3JlZGl0XShodHRwczovL2NvbnNvbGUuYW55c2NhbGUuY29tL3JlZ2lzdGVyL3YyP3V0bV9zb3VyY2U9YW55c2NhbGUmdXRtX2NvbnRlbnQ9Y3RhX2xhbmRpbmcmdXRtX21lZGl1bT13ZWJzaXRlJnV0bV9jYW1wYWlnbj1jdGEpIiwiY29tcGFueSI6eyJuYW1lIjoiQW55c2NhbGUiLCJsb2NhdGlvbiI6IlNhbiBGcmFuY2lzY28sIFVuaXRlZCBTdGF0ZXMiLCJlbXBsb3llZXMiOjE4OSwiaW5kdXN0cnkiOiJTb2Z0d2FyZSBEZXZlbG9wbWVudCIsImFib3V0IjoiU2NhbGFibGUgY29tcHV0ZSBmb3IgQUkgYW5kIFB5dGhvblxuXG5BbnlzY2FsZSBlbmFibGVzIGRldmVsb3BlcnMgb2YgYWxsIHNraWxsIGxldmVscyB0byBlYXNpbHkgYnVpbGQgYXBwbGljYXRpb25zIHRoYXQgcnVuIGF0IGFueSBzY2FsZSwgZnJvbSBhIGxhcHRvcCB0byBhIGRhdGEgY2VudGVyLiIsImxvZ29VcmwiOiJodHRwczovL21lZGlhLmxpY2RuLmNvbS9kbXMvaW1hZ2UvdjIvRDU2MEJBUUdsMUhmLVFQc0IyZy9jb21wYW55LWxvZ29fMjAwXzIwMC9jb21wYW55LWxvZ29fMjAwXzIwMC8wLzE3Mjk4NzY1MzY3MDgvam9pbmFueXNjYWxlX2xvZ28/ZT0yMTQ3NDgzNjQ3JnY9YmV0YSZ0PTg5NGprdWZBMVNlTThaWnlPMTBPVTMxWEJvejV4MklLZ3k2SE9kWS12VjgifX0sImV2YWx1YXRpb25zIjpbeyJjcml0ZXJpb24iOiJDb21wYW55IGhhcyByZWNlaXZlZCB2ZW50dXJlIGZ1bmRpbmciLCJyZWFzb25pbmciOiJUaGUgaW50ZXJuYWwgY29tcGFueSBwcm9maWxlIGZvciBBbnlzY2FsZSBsaXN0cyAkMjc5LjbigK9taWxsaW9uIGluIHRvdGFsIGZ1bmRpbmcsIHdpdGggYSBTZXJpZXPigK9DIHJvdW5kIGNvbXBsZXRlZCBvbiAyMDIy4oCRMDjigJEyMyBhbmQgYSBoaXN0b3J5IG9mIGVpZ2h0IGZ1bmRpbmcgcm91bmRzLiBUaGlzIGNsZWFybHkgaW5kaWNhdGVzIHRoYXQgdGhlIGNvbXBhbnkgaGFzIHJlY2VpdmVkIHZlbnR1cmUgZnVuZGluZy4iLCJzYXRpc2ZpZWQiOiJ5ZXMiLCJyZWZlcmVuY2VzIjpbeyJ0aXRsZSI6IkFueXNjYWxlIiwic25pcHBldCI6IkFueXNjYWxlIGlzIGEgU29mdHdhcmUgRGV2ZWxvcG1lbnQgY29tcGFueSAocHJpdmF0ZSkgd2l0aCAxODkgZW1wbG95ZWVzICgrMzIuNyUgWW9ZIGdyb3d0aCksICQxMi42TSBhbm51YWwgcmV2ZW51ZSwgZm91bmRlZCBpbiAyMDE5LCBoZWFkcXVhcnRlcmVkIGluIFNhbiBGcmFuY2lzY28sIENhbGlmb3JuaWEsIFVuaXRlZCBTdGF0ZXMuIEhhcyAkMjc5LjZNIGluIHRvdGFsIGZ1bmRpbmcsIGxhc3Qgcm91bmQgd2FzIGEgU2VyaWVzIEMgaW4gMjAyMi0wOC0yMy4gQW55c2NhbGUgaXMgYSBsZWFkaW5nIEFJIGFwcGxpY2F0aW9uIHBsYXRmb3JtIHRoYXQgYWxsb3dzIGRldmVsb3BlcnMgdG8gYnVpbGQsIHJ1biwgYW5kIHNjYWxlIEFJIGFwcGxpY2F0aW9ucyBpbnN0YW50bHkuIFNjYWxhYmxlIGNvbXB1dGUgZm9yIEFJIGFuZCBQLi4uIiwidXJsIjoiaHR0cHM6Ly9hbnlzY2FsZS5jb20ifV19LHsiY3JpdGVyaW9uIjoiQ29tcGFueSBwcm92aWRlcyBpbmZyYXN0cnVjdHVyZSBwcm9kdWN0cyBvciBzZXJ2aWNlcyBmb3IgYXJ0aWZpY2lhbCBpbnRlbGxpZ2VuY2UgKEFJKSBvciBtYWNoaW5lIGxlYXJuaW5nIChNTCkgYXBwbGljYXRpb25zIiwicmVhc29uaW5nIjoiQW55c2NhbGXigJlzIHByb2ZpbGUgZGVzY3JpYmVzIGl0IGFzIGEgbGVhZGluZyBBSSBhcHBsaWNhdGlvbiBwbGF0Zm9ybSB0aGF0IGVuYWJsZXMgZGV2ZWxvcGVycyB0byBidWlsZCwgcnVuLCBhbmQgc2NhbGUgQUkgYXBwbGljYXRpb25zIGluc3RhbnRseSwgcHJvdmlkaW5nIHNjYWxhYmxlIGNvbXB1dGUgZm9yIEFJIGFuZCBQeXRob24uIFRoZSBjb21wYW554oCZcyBjYXRlZ29yaWVzIGluY2x1ZGUgXCJtbG9wcyBwbGF0Zm9ybXNcIiBhbmQgXCJhaSBvcmNoZXN0cmF0aW9uLFwiIHdoaWNoIGFyZSBpbmZyYXN0cnVjdHVyZSBzZXJ2aWNlcyBmb3IgQUkvTUwuIFRoZXNlIGRldGFpbHMgY29uZmlybSB0aGF0IEFueXNjYWxlIG9mZmVycyBpbmZyYXN0cnVjdHVyZSBwcm9kdWN0cyBvciBzZXJ2aWNlcyBmb3IgQUkvTUwgYXBwbGljYXRpb25zLiIsInNhdGlzZmllZCI6InllcyIsInJlZmVyZW5jZXMiOlt7InRpdGxlIjoiQW55c2NhbGUiLCJzbmlwcGV0IjoiQW55c2NhbGUgaXMgYSBTb2Z0d2FyZSBEZXZlbG9wbWVudCBjb21wYW55IChwcml2YXRlKSB3aXRoIDE4OSBlbXBsb3llZXMgKCszMi43JSBZb1kgZ3Jvd3RoKSwgJDEyLjZNIGFubnVhbCByZXZlbnVlLCBmb3VuZGVkIGluIDIwMTksIGhlYWRxdWFydGVyZWQgaW4gU2FuIEZyYW5jaXNjbywgQ2FsaWZvcm5pYSwgVW5pdGVkIFN0YXRlcy4gSGFzICQyNzkuNk0gaW4gdG90YWwgZnVuZGluZywgbGFzdCByb3VuZCB3YXMgYSBTZXJpZXMgQyBpbiAyMDIyLTA4LTIzLiBBbnlzY2FsZSBpcyBhIGxlYWRpbmcgQUkgYXBwbGljYXRpb24gcGxhdGZvcm0gdGhhdCBhbGxvd3MgZGV2ZWxvcGVycyB0byBidWlsZCwgcnVuLCBhbmQgc2NhbGUgQUkgYXBwbGljYXRpb25zIGluc3RhbnRseS4gU2NhbGFibGUgY29tcHV0ZSBmb3IgQUkgYW5kIFAuLi4iLCJ1cmwiOiJodHRwczovL2FueXNjYWxlLmNvbSJ9XX1dLCJlbnJpY2htZW50cyI6W3sib2JqZWN0IjoiZW5yaWNobWVudF9yZXN1bHQiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJmb3JtYXQiOiJ0ZXh0IiwicmVzdWx0IjpbIlNhbiBGcmFuY2lzY28gfCBDQSB8IFVuaXRlZCBTdGF0ZXMiXSwicmVhc29uaW5nIjoiVGhlIHByb3ZpZGVkIGNvbXBhbnkgcHJvZmlsZSBjbGVhcmx5IHN0YXRlcyB0aGF0IEFueXNjYWxlJ3MgaGVhZHF1YXJ0ZXJzIGlzIGluIFNhbiBGcmFuY2lzY28sIFVuaXRlZCBTdGF0ZXMuIFNpbmNlIFNhbiBGcmFuY2lzY28gaXMgYSBjaXR5IGluIENhbGlmb3JuaWEgKENBKSwgdGhlIGFwcHJvcHJpYXRlIGZvcm1hdCBmb3IgdGhlIGhlYWRxdWFydGVycyBsb2NhdGlvbiBpcyAnU2FuIEZyYW5jaXNjbyB8IENBIHwgVW5pdGVkIFN0YXRlcycuIiwicmVmZXJlbmNlcyI6W3sidGl0bGUiOiJBbnlzY2FsZSIsInNuaXBwZXQiOiJBbnlzY2FsZSBpcyBhIHByaXZhdGUgQUkgaW5mcmFzdHJ1Y3R1cmUgYW5kIHNvZnR3YXJlIGRldmVsb3BtZW50IGNvbXBhbnkgYmFzZWQgaW4gU2FuIEZyYW5jaXNjbywgZm91bmRlZCBpbiAyMDE5LCB3aXRoIDE4OSBlbXBsb3llZXMgYW5kICQxMi42TSBhbm51YWwgcmV2ZW51ZS4gSXQgaGFzIHJhaXNlZCAkMjc5LjZNIGluIHRvdGFsIGZ1bmRpbmcsIGluY2x1ZGluZyBhIFNlcmllcyBDIGluIEF1Z3VzdCAyMDIyLiBUaGUgY29tcGFueSBzcGVjaWFsaXplcyBpbiBzY2FsYWJsZSBBSSBhbmQgUHl0aG9uIGFwcGxpY2F0aW9uIHBsYXRmb3Jtcywgb2ZmZXJpbmcgTUxPcHMgYW5kIEFJIG9yY2hlc3RyYXRpb24gc29sdXRpb25zIHRoYXQgZW5hYmxlIGRldmVsb3BlcnMgdG8gYnVpbGQsIHJ1biwgYW5kIHNjYWxlIEFJIGFwcGxpY2F0aW9ucyBpbnN0YW50bHkuIiwidXJsIjoiaHR0cHM6Ly9hbnlzY2FsZS5jb20ifV0sImVucmljaG1lbnRJZCI6IndlbnJpY2hfY21pYXpxeHhlMDAwaWowMXNvMDdkZ2J4eSJ9LHsib2JqZWN0IjoiZW5yaWNobWVudF9yZXN1bHQiLCJzdGF0dXMiOiJjb21wbGV0ZWQiLCJmb3JtYXQiOiJ1cmwiLCJyZXN1bHQiOlsiaHR0cHM6Ly93d3cuYW55c2NhbGUuY29tIl0sInJlYXNvbmluZyI6IlRoZSBvZmZpY2lhbCB3ZWJzaXRlIFVSTCBmb3IgQW55c2NhbGUgaXMgY2xlYXJseSBzdGF0ZWQgbXVsdGlwbGUgdGltZXMgaW4gdGhlIHByb3ZpZGVkIGNvbXBhbnkgcHJvZmlsZSBhbmQgaG9tZXBhZ2UgY29udGVudCBhcyBodHRwczovL3d3dy5hbnlzY2FsZS5jb20uIFRoaXMgaXMgdGhlIGNhbm9uaWNhbCBhbmQgbm9ybWFsaXplZCBVUkwgd2l0aG91dCBhbnkgdHJhY2tpbmcgcGFyYW1ldGVycy4iLCJyZWZlcmVuY2VzIjpbeyJ0aXRsZSI6IkFueXNjYWxlIiwic25pcHBldCI6IkFueXNjYWxlIGlzIGEgcHJpdmF0ZSBBSSBpbmZyYXN0cnVjdHVyZSBhbmQgc29mdHdhcmUgZGV2ZWxvcG1lbnQgY29tcGFueSBiYXNlZCBpbiBTYW4gRnJhbmNpc2NvLCBmb3VuZGVkIGluIDIwMTksIHdpdGggMTg5IGVtcGxveWVlcyBhbmQgJDEyLjZNIGFubnVhbCByZXZlbnVlLiBJdCBoYXMgcmFpc2VkICQyNzkuNk0gaW4gdG90YWwgZnVuZGluZywgaW5jbHVkaW5nIGEgU2VyaWVzIEMgaW4gQXVndXN0IDIwMjIuIFRoZSBjb21wYW55IHNwZWNpYWxpemVzIGluIHNjYWxhYmxlIEFJIGFuZCBQeXRob24gYXBwbGljYXRpb24gcGxhdGZvcm1zLCBvZmZlcmluZyBNTE9wcyBhbmQgQUkgb3JjaGVzdHJhdGlvbiBzb2x1dGlvbnMgdGhhdCBlbmFibGUgZGV2ZWxvcGVycyB0byBidWlsZCwgcnVuLCBhbmQgc2NhbGUgQUkgYXBwbGljYXRpb25zIGluc3RhbnRseS4iLCJ1cmwiOiJodHRwczovL2FueXNjYWxlLmNvbSJ9XSwiZW5yaWNobWVudElkIjoid2VucmljaF9jbWlhenF4eGUwMDBqajAxczJ5MmExMHBwIn1dLCJjcmVhdGVkQXQiOiIyMDI1LTExLTIzVDAwOjQwOjA1LjE5NloiLCJ1cGRhdGVkQXQiOiIyMDI1LTExLTIzVDAwOjQwOjE2LjcwNFoifV0sIm5leHRDdXJzb3IiOm51bGwsImhhc01vcmUiOmZhbHNlfQ==
+  recorded_at: Sun, 23 Nov 2025 00:40:29 GMT
+recorded_with: VCR 6.3.1

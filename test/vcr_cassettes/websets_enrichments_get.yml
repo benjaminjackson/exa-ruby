@@ -1,0 +1,226 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Fintech companies in London","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '757'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f5-UqtiHosC1wNhdq23icKCG79DyZY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ETodpOwjMSvhfQDopiqYJ2n8Fi%2BEwACCjMgc1O9%2F5TAx8ntVDwfMZlxRBfBLP9oL8%2F4w5WfM3pky9J6%2B%2BkIuwjsTH8ypJNg0vJ4xaBvIVJnZR3aJcA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c99b7fab142f2-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2am3vy2ec7pbp2qq9jg1q","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2amgmj2tt7r4sm13v6eg0","object":"webset_search","websetId":"webset_01kaq2am3vy2ec7pbp2qq9jg1q","status":"running","query":"Fintech
+        companies in London","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:37:52.788Z","updatedAt":"2025-11-23T00:37:53.151Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:37:52.379Z","updatedAt":"2025-11-23T00:37:53.151Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:53 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2am3vy2ec7pbp2qq9jg1q/enrichments
+    body:
+      encoding: UTF-8
+      string: '{"description":"Find the CEO''s name","format":"text"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '330'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"14a-MMaqxCIzBQ7fPymhfBgmrcSGme8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LatFwNkD39utNl80kYuE5JsJbpZDX093pmDmw2v7prlceH7a6JIVdCDel7wUM%2Fb5Z7e3n1M72xFS4h6rNMhlVQDGAMtppXttTq%2BRyogo0BHcKus%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c99c38bf80f91-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wenrich_01kaq2apr3pjm2yqp4veswayxj","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2am3vy2ec7pbp2qq9jg1q","title":null,"description":"Find
+        the CEO''s name","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:37:55.075Z","updatedAt":"2025-11-23T00:37:55.460Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:55 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2am3vy2ec7pbp2qq9jg1q/enrichments/wenrich_01kaq2apr3pjm2yqp4veswayxj
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:37:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"14a-MMaqxCIzBQ7fPymhfBgmrcSGme8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2F%2Bq749S7BZdpMgznodvuZhr7arDAJQS95O5VW8WtGnrRPhStqsZB5OqXPSwUyH0os9nhC0cBK%2F1osfXEkUW1WSMrW6uTu9IiKaymMqAkQlWEQ0Y%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2c99cf79465d8f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"wenrich_01kaq2apr3pjm2yqp4veswayxj","object":"webset_enrichment","status":"pending","websetId":"webset_01kaq2am3vy2ec7pbp2qq9jg1q","title":null,"description":"Find
+        the CEO''s name","format":"text","options":null,"instructions":null,"metadata":{},"createdAt":"2025-11-23T00:37:55.075Z","updatedAt":"2025-11-23T00:37:55.460Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:37:56 GMT
+recorded_with: VCR 6.3.1
