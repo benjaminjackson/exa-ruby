@@ -36,7 +36,7 @@ module Exa
                 }.to_json
               )
               .to_return(
-                status: 200,
+                status: 201,
                 body: {
                   id: "import_123",
                   object: "import",
@@ -45,6 +45,10 @@ module Exa
                   entity: { type: "company" },
                   title: "Test Company Import",
                   count: 50,
+                  metadata: {},
+                  failedReason: nil,
+                  failedAt: nil,
+                  failedMessage: nil,
                   createdAt: "2023-11-07T05:31:56Z",
                   updatedAt: "2023-11-07T05:31:56Z",
                   uploadUrl: "https://upload.example.com/abc123",
@@ -88,7 +92,7 @@ module Exa
                 }.to_json
               )
               .to_return(
-                status: 200,
+                status: 201,
                 body: {
                   id: "import_456",
                   object: "import",
@@ -98,6 +102,9 @@ module Exa
                   title: "Import with metadata",
                   count: 100,
                   metadata: { source: "customer_list", region: "us-west" },
+                  failedReason: nil,
+                  failedAt: nil,
+                  failedMessage: nil,
                   createdAt: "2023-11-07T05:31:56Z",
                   updatedAt: "2023-11-07T05:31:56Z",
                   uploadUrl: "https://upload.example.com/xyz789",
@@ -134,7 +141,7 @@ module Exa
                 }.to_json
               )
               .to_return(
-                status: 200,
+                status: 201,
                 body: {
                   id: "import_789",
                   object: "import",
@@ -143,6 +150,10 @@ module Exa
                   entity: { type: "company" },
                   title: "CSV Import with identifier column",
                   count: 75,
+                  metadata: {},
+                  failedReason: nil,
+                  failedAt: nil,
+                  failedMessage: nil,
                   createdAt: "2023-11-07T05:31:56Z",
                   updatedAt: "2023-11-07T05:31:56Z",
                   uploadUrl: "https://upload.example.com/def456",
@@ -164,6 +175,202 @@ module Exa
 
             assert_equal "import_789", result.id
             assert_equal "CSV Import with identifier column", result.title
+          end
+
+          def test_call_creates_import_with_person_entity
+            stub_request(:post, "https://api.exa.ai/websets/v0/imports")
+              .with(
+                body: {
+                  size: 1200,
+                  count: 60,
+                  title: "People Import",
+                  format: "csv",
+                  entity: { type: "person" }
+                }.to_json
+              )
+              .to_return(
+                status: 201,
+                body: {
+                  id: "import_person_1",
+                  object: "import",
+                  status: "pending",
+                  format: "csv",
+                  entity: { type: "person" },
+                  title: "People Import",
+                  count: 60,
+                  metadata: {},
+                  failedReason: nil,
+                  failedAt: nil,
+                  failedMessage: nil,
+                  createdAt: "2023-11-07T05:31:56Z",
+                  updatedAt: "2023-11-07T05:31:56Z",
+                  uploadUrl: "https://upload.example.com/person123",
+                  uploadValidUntil: "2023-11-07T06:31:56Z"
+                }.to_json,
+                headers: { "Content-Type" => "application/json" }
+              )
+
+            service = Create.new(
+              @connection,
+              size: 1200,
+              count: 60,
+              title: "People Import",
+              format: "csv",
+              entity: { type: "person" }
+            )
+            result = service.call
+
+            assert_instance_of Exa::Resources::Import, result
+            assert_equal "import_person_1", result.id
+            assert_equal({ "type" => "person" }, result.entity)
+            assert_equal "People Import", result.title
+          end
+
+          def test_call_creates_import_with_article_entity
+            stub_request(:post, "https://api.exa.ai/websets/v0/imports")
+              .with(
+                body: {
+                  size: 1300,
+                  count: 70,
+                  title: "Articles Import",
+                  format: "csv",
+                  entity: { type: "article" }
+                }.to_json
+              )
+              .to_return(
+                status: 201,
+                body: {
+                  id: "import_article_1",
+                  object: "import",
+                  status: "pending",
+                  format: "csv",
+                  entity: { type: "article" },
+                  title: "Articles Import",
+                  count: 70,
+                  metadata: {},
+                  failedReason: nil,
+                  failedAt: nil,
+                  failedMessage: nil,
+                  createdAt: "2023-11-07T05:31:56Z",
+                  updatedAt: "2023-11-07T05:31:56Z",
+                  uploadUrl: "https://upload.example.com/article123",
+                  uploadValidUntil: "2023-11-07T06:31:56Z"
+                }.to_json,
+                headers: { "Content-Type" => "application/json" }
+              )
+
+            service = Create.new(
+              @connection,
+              size: 1300,
+              count: 70,
+              title: "Articles Import",
+              format: "csv",
+              entity: { type: "article" }
+            )
+            result = service.call
+
+            assert_instance_of Exa::Resources::Import, result
+            assert_equal "import_article_1", result.id
+            assert_equal({ "type" => "article" }, result.entity)
+            assert_equal "Articles Import", result.title
+          end
+
+          def test_call_creates_import_with_research_paper_entity
+            stub_request(:post, "https://api.exa.ai/websets/v0/imports")
+              .with(
+                body: {
+                  size: 1400,
+                  count: 80,
+                  title: "Research Papers Import",
+                  format: "csv",
+                  entity: { type: "research_paper" }
+                }.to_json
+              )
+              .to_return(
+                status: 201,
+                body: {
+                  id: "import_paper_1",
+                  object: "import",
+                  status: "pending",
+                  format: "csv",
+                  entity: { type: "research_paper" },
+                  title: "Research Papers Import",
+                  count: 80,
+                  metadata: {},
+                  failedReason: nil,
+                  failedAt: nil,
+                  failedMessage: nil,
+                  createdAt: "2023-11-07T05:31:56Z",
+                  updatedAt: "2023-11-07T05:31:56Z",
+                  uploadUrl: "https://upload.example.com/paper123",
+                  uploadValidUntil: "2023-11-07T06:31:56Z"
+                }.to_json,
+                headers: { "Content-Type" => "application/json" }
+              )
+
+            service = Create.new(
+              @connection,
+              size: 1400,
+              count: 80,
+              title: "Research Papers Import",
+              format: "csv",
+              entity: { type: "research_paper" }
+            )
+            result = service.call
+
+            assert_instance_of Exa::Resources::Import, result
+            assert_equal "import_paper_1", result.id
+            assert_equal({ "type" => "research_paper" }, result.entity)
+            assert_equal "Research Papers Import", result.title
+          end
+
+          def test_call_creates_import_with_custom_entity
+            stub_request(:post, "https://api.exa.ai/websets/v0/imports")
+              .with(
+                body: {
+                  size: 1500,
+                  count: 90,
+                  title: "Custom Entities Import",
+                  format: "csv",
+                  entity: { type: "custom", description: "Healthcare providers in California" }
+                }.to_json
+              )
+              .to_return(
+                status: 201,
+                body: {
+                  id: "import_custom_1",
+                  object: "import",
+                  status: "pending",
+                  format: "csv",
+                  entity: { type: "custom", description: "Healthcare providers in California" },
+                  title: "Custom Entities Import",
+                  count: 90,
+                  metadata: {},
+                  failedReason: nil,
+                  failedAt: nil,
+                  failedMessage: nil,
+                  createdAt: "2023-11-07T05:31:56Z",
+                  updatedAt: "2023-11-07T05:31:56Z",
+                  uploadUrl: "https://upload.example.com/custom123",
+                  uploadValidUntil: "2023-11-07T06:31:56Z"
+                }.to_json,
+                headers: { "Content-Type" => "application/json" }
+              )
+
+            service = Create.new(
+              @connection,
+              size: 1500,
+              count: 90,
+              title: "Custom Entities Import",
+              format: "csv",
+              entity: { type: "custom", description: "Healthcare providers in California" }
+            )
+            result = service.call
+
+            assert_instance_of Exa::Resources::Import, result
+            assert_equal "import_custom_1", result.id
+            assert_equal({ "type" => "custom", "description" => "Healthcare providers in California" }, result.entity)
+            assert_equal "Custom Entities Import", result.title
           end
 
           def test_call_raises_unauthorized_on_401
