@@ -1,0 +1,155 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Fintech companies in London","count":1},"metadata":{"team":"research","quarter":"Q1"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:48:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '789'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"315-DUiXB+okLCJIbXJHtxb1UhQUUJo"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vGYLjqLdJwBOGZpcrXjmketRjmb7mwR6B893%2Fsp11HEfHFUfKNvqsMjFodX80QrY%2FZ%2BQiwXuoTduSYoMfnetMYzkuEdlwPFcnpbU3JWvtSRQEmPIxw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca89c2e9414ed-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2x7n1jzbzt8b1ewgjs38b","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2x80j8g8g8s2t583dqtnw","object":"webset_search","websetId":"webset_01kaq2x7n1jzbzt8b1ewgjs38b","status":"running","query":"Fintech
+        companies in London","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:02.578Z","updatedAt":"2025-11-23T00:48:03.012Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{"team":"research","quarter":"Q1"},"createdAt":"2025-11-23T00:48:02.209Z","updatedAt":"2025-11-23T00:48:03.012Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:48:03 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2x7n1jzbzt8b1ewgjs38b
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"team":"research","quarter":"Q2","year":"2025"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:48:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3a8-YoReTzbAw6EkljMfEhd0hu6VxCM"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=JdFelnWZhqNjS2ymDoJRDw%2BzJ%2FLSmOg62AKHp7%2BpRbMCaQCYXy15ixZhbjD8lLTCF5o4EuU9TYxie1BGpq57z7OEDmw0HlukpHVRNE1xm4EaKuUDmA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca8a64bcb7ce7-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2x7n1jzbzt8b1ewgjs38b","object":"webset","status":"running","externalId":null,"title":"Companies:
+        Fintech, London","searches":[{"id":"wsearch_01kaq2x80j8g8g8s2t583dqtnw","object":"webset_search","websetId":"webset_01kaq2x7n1jzbzt8b1ewgjs38b","status":"running","query":"Fintech
+        companies in London","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the fintech industry and is headquartered in London, UK","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:02.578Z","updatedAt":"2025-11-23T00:48:03.721Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{"team":"research","year":"2025","quarter":"Q2"},"createdAt":"2025-11-23T00:48:02.209Z","updatedAt":"2025-11-23T00:48:04.080Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:48:04 GMT
+recorded_with: VCR 6.3.1

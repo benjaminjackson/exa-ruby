@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"AI startups in Silicon Valley","count":1},"metadata":{"original_key":"original_value","project":"initial_project"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:48:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '818'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"332-ZHPjW1xUaTOZu7rPXPSH9gfx4yc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=WXseVeEzDJW07cL74LHXh6R39dJ0dRmF1jtT%2BDlrWaaQHE%2F1mAxY%2Fd0NGBDnCEblabwNINLIHjvTY311mqS3nZfjPynh04ruYUBY4xmKdbZFSDnnCA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca8c128c0b96b-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2xeczg1mgecgdr3774pf1","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2xer2526n2sx7p83ta488","object":"webset_search","websetId":"webset_01kaq2xeczg1mgecgdr3774pf1","status":"running","query":"AI
+        startups in Silicon Valley","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:09.474Z","updatedAt":"2025-11-23T00:48:09.856Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{"project":"initial_project","original_key":"original_value"},"createdAt":"2025-11-23T00:48:09.119Z","updatedAt":"2025-11-23T00:48:09.856Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:48:10 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2xeczg1mgecgdr3774pf1
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"original_key":"updated_value","project":"updated_project","new_key":"new_value"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:48:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"347-LNMqOemNkCDnWOpUP4jlGbquNqo"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qavHAvacLbl%2B2AUj937GDICOuNoWpwV9q3TlwDWsQpS4rHHsexNcFamzJKHDYk%2F6yDaur8kYLVCNuiUeVbCkoUDzSRy9keoz1VcHbA0SPnWx4%2B4%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca8d21988f5f8-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2xeczg1mgecgdr3774pf1","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2xer2526n2sx7p83ta488","object":"webset_search","websetId":"webset_01kaq2xeczg1mgecgdr3774pf1","status":"running","query":"AI
+        startups in Silicon Valley","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:09.474Z","updatedAt":"2025-11-23T00:48:09.856Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{"new_key":"new_value","project":"updated_project","original_key":"updated_value"},"createdAt":"2025-11-23T00:48:09.119Z","updatedAt":"2025-11-23T00:48:11.072Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:48:11 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,94 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/answer
+    body:
+      encoding: UTF-8
+      string: '{"query":"What is the latest valuation of SpaceX?","output_schema":{"type":"object","properties":{"company":{"type":"string"},"valuation":{"type":"string"}}},"stream":true}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:46:42 GMT
+      Content-Type:
+      - text/event-stream
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '450'
+      X-Ratelimit-Remaining:
+      - '449'
+      X-Ratelimit-Reset:
+      - '1763858801'
+      Cache-Control:
+      - no-cache
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=fgxB02NL%2B6vktrkI5tt6riZG199H%2F8Ny1kM%2BITy6B1z6hApkw1SJPntrUPIg9AsecLBKTq6rCIclLND%2FG%2FJMmL8oqyde8wTmpKVkS4vG9jQtSJs%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca699584a729c-EWR
+    body:
+      encoding: UTF-8
+      string: |+
+        data: {"provider":"vertex-ai","choices":[{"delta":{"role":"assistant","content":"{"},"index":0}]}
+
+        data: {"provider":"vertex-ai","choices":[{"delta":{"role":"assistant","content":"\n  \""},"index":0}]}
+
+        data: {"provider":"vertex-ai","choices":[{"delta":{"role":"assistant","content":"company\": \"SpaceX\",\n  \"valuation\": \"$400 billion\"\n}"},"index":0,"finish_reason":"STOP"}]}
+
+        data: {"citations":[{"id":"https://finance.yahoo.com/quote/SPAX.PVT","url":"https://finance.yahoo.com/quote/SPAX.PVT","image":"https://pinhole.finance.yahoo.com/chart/SPAX.PVT/__screenshot","favicon":"https://s.yimg.com/cv/apiv2/finance/YF_Favicon_16.png","snippet":"Find the latest SpaceX (SPAX.PVT) valuation, funding, history, news and other vital information to help you keep tabs on many of the top private companies ...","title":"SpaceX (SPAX.PVT) Valuation, History & News - Yahoo Finance"},{"id":"https://pminsights.com/companies/spacex","url":"https://www.pminsights.com/companies/spacex","image":"https://cdn.prod.website-files.com/66ed8de3fb7eae5914200358/67fce9295c6d72d667944de4_Open%20Graph.jpg","favicon":"https://cdn.prod.website-files.com/66ed8de3fb7eae5914200358/66f13e14d91856c92d4de421_PM_Insights32px.png","snippet":"SpaceX initiated a tender offering on July 15, 2025, with a per share implying a valuation of $400.0B, according to PM Insights' market data.","title":"SpaceX Valuation - PM Insights"},{"id":"https://forgeglobal.com/spacex_stock","url":"https://forgeglobal.com/spacex_stock","image":"https://forgeglobal.com/site/assets/files/2743/spacex_stock.png","favicon":"https://forgeglobal.com/favicon.ico","snippet":"SpaceX is a private company, meaning it does't have a publicly traded stock price. However, as of 11/21/2025 the SpaceX Forge Price is $238.71 per share. The ...","title":"Invest and Sell SpaceX Stock - Forge Global"},{"id":"https://facebook.com/SpaceXFP/posts/elon-musks-spacex-company-is-now-valued-at-480-billion-it-is-37-up-from-its-prev/742954194919306","url":"https://www.facebook.com/SpaceXFP/posts/elon-musks-spacex-company-is-now-valued-at-480-billion-it-is-37-up-from-its-prev/742954194919306","publishedDate":"2025-06-03T00:00:00.000Z","favicon":"https://static.xx.fbcdn.net/rsrc.php/yx/r/e9sqr8WnkCf.ico","snippet":"Elon Musk's SpaceX company is now valued at $480 billion. It is 37% up from its previous valuation of $350 billion. SpaceX remains the world's most valuable ...","title":"Elon Musk's SpaceX company is now valued at $480 billion. It is 37 ..."},{"id":"https://augustuswealth.com/blog/what-know-about-space-x-valuation","url":"https://augustuswealth.com/blog/what-know-about-space-x-valuation","publishedDate":"2025-09-09T00:00:00.000Z","image":"https://augustuswealth.com/wp-content/uploads/2025/09/Understanding-SpaceXs-Private-Market-Valuation.avif","favicon":"https://augustuswealth.com/wp-content/uploads/2021/12/favicon-2-150x150.png","snippet":"June 2024: SpaceX held a tender at approximately $210 billion valuation (~$112/share).","title":"Understanding SpaceX's Private Market Valuation - Augustus Wealth"},{"id":"https://en.wikipedia.org/wiki/SpaceX","url":"https://en.wikipedia.org/wiki/SpaceX","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Starbase.jpg/1200px-Starbase.jpg","favicon":"https://en.wikipedia.org/static/apple-touch/wikipedia.png","snippet":"As of 2025, SpaceX is the world's dominant space launch ... SpaceX's valuation increased to $46 billion. In February 2021 ...","title":"SpaceX - Wikipedia"},{"id":"https://tipranks.com/news/spacex-hits-record-400b-valuation-but-musk-hints-his-next-launch-may-be-into-politics","url":"https://www.tipranks.com/news/spacex-hits-record-400b-valuation-but-musk-hints-his-next-launch-may-be-into-politics","publishedDate":"2025-07-23T00:00:00.000Z","image":"https://blog.tipranks.com/wp-content/uploads/2025/07/shutterstock_2650834197-750x406.jpg","favicon":"https://tr-cdn.tipranks.com/static/v2/static/images/logo/tipranks/favicon.ico","snippet":"SpaceX just hit a stunning $400 billion valuation, according to new reports. That cements its place as the most valuable private company in ...","title":"SpaceX Hits Record $400B Valuation, But Musk Hints His Next ..."},{"id":"https://sacra.com/c/spacex/valuation","url":"https://sacra.com/c/spacex/valuation","publishedDate":"2025-08-15T00:00:00.000Z","score":0.510307252407074,"favicon":"https://sacra.com/static/img/favicon.ico","title":"SpaceX: $350.00B valuation [2024| Sacra"}]}
+
+        data: {"costDollars":{"total":0.005},"requestId":"dffa2acd13c4553b84ffa691933f7408"}
+
+  recorded_at: Sun, 23 Nov 2025 00:46:42 GMT
+recorded_with: VCR 6.3.1
+...

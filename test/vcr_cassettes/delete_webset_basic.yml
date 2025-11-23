@@ -1,0 +1,154 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"AI companies in San Francisco","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '759'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f7-lbTZhICksKP57kuxAji8M0zUE2Y"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Tm2sfuX3avDN7eaGUbZSMNU99TyptfEGQmdZkTpW%2F40bXkwLwxebd%2FNorENIlZihIQambvpwx9LZij%2BDUb09BKQbC7%2B9J0mzJ5QHtG1N5%2Ffnw4XDaQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cac2e7cf06c9b-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq31pjkk99qn280fy4zr26y","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq31pymf5fk238rd193tb8m","object":"webset_search","websetId":"webset_01kaq31pjkk99qn280fy4zr26y","status":"running","query":"AI
+        companies in San Francisco","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:50:28.948Z","updatedAt":"2025-11-23T00:50:29.321Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:50:28.563Z","updatedAt":"2025-11-23T00:50:29.321Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:29 GMT
+- request:
+    method: delete
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq31pjkk99qn280fy4zr26y
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:50:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3ed-D21cHSV2EDrrOggJXy7GP2CyrQo"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=sbQzsw5kc7m182feKu2imi0IVRI%2B%2F3QrjAbNa%2BQFyVO0yvh3vrOrfR0lgNhDSMyvoiokF1%2FfMjU7C72pvpQo7iJZk%2BimEHzNVizXEBkoCOfTZKfgcA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2cac39a8a442f8-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq31pjkk99qn280fy4zr26y","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI companies in San Francisco","searches":[{"id":"wsearch_01kaq31pymf5fk238rd193tb8m","object":"webset_search","websetId":"webset_01kaq31pjkk99qn280fy4zr26y","status":"canceled","query":"AI
+        companies in San Francisco","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) sector","successRate":100},{"description":"Company
+        is headquartered in San Francisco, CA","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":"2025-11-23T00:50:33.558Z","canceledReason":"webset_deleted","createdAt":"2025-11-23T00:50:28.948Z","updatedAt":"2025-11-23T00:50:33.821Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:50:28.563Z","updatedAt":"2025-11-23T00:50:33.821Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:50:34 GMT
+recorded_with: VCR 6.3.1

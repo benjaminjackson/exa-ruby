@@ -1,0 +1,685 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"AI startups","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:48:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '741'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2e5-iDTgFktR4Ur2vo3e7aCg6w1uuZI"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=5Bc0WbV0d6AC4HFunK1MkUeB%2FKVJF0HC61MU0kq7xdj%2FJ%2Fm%2FRlp9uBSGX4b1hnz23kCJ%2FaZbPNy58MJ%2BWmMGluj%2BvF0VWUTrmjaUe0umnl0sVqzkOQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca9e9880f8acc-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:48:56.614Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:48:56.614Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:48:57 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yvrhsxwmkeb3n4fkm5ew
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:48:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2f0-6e1W35I7ojzdyvZfI0wlPz8PWu4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=CFk5t34rjjrNkLByrvNP%2FrR4N4FmNmuXeODRO9OFuNeeU%2BhOL%2BF1RHCoeUnvseTk9l1SQf8EWnALLPr5GOBaHhOBd8nzt2yBNxsZa7%2FmgBZcVam6Mg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2ca9f69db842e9-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:48:56.614Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:48:56.614Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:48:57 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yvrhsxwmkeb3n4fkm5ew
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:49:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3d0-k09oPjzuVBlV9aNvjgovQzTWP/w"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=aonW18bCI32S8jjf9f5Cy7yBmcznMk14iGenU1iBlpTPO4cXhBilwc8kOHbDD5DGNsYCK2hfceOSEioU6QvLRms91FniQphumLSx64t39Pfrr0sBGQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2caa073d87435e-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI startups","searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) sector","successRate":0},{"description":"Company
+        is an early-stage startup (not yet mature or established) as of 2025","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:48:58.114Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:48:58.114Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:49:00 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yvrhsxwmkeb3n4fkm5ew
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:49:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3d0-k09oPjzuVBlV9aNvjgovQzTWP/w"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qDt73OVAgNDFPU1yn%2F6IQvupNce9P8PponibPtLIH2tGz3mpe3Y1nnGA0%2FxfA2Uf%2FFjX5LYAt7s%2FpLm1u%2F9wz6uY8LaXZBL%2FuJOR5w9Ys66hMxDw7A%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2caa1abd8af9a9-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI startups","searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) sector","successRate":0},{"description":"Company
+        is an early-stage startup (not yet mature or established) as of 2025","successRate":0}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:48:58.114Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:48:58.114Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:49:03 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yvrhsxwmkeb3n4fkm5ew
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:49:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3d3-gg4fZINzLuwocJdk1dHE2yJVNeA"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=h9FIwQ8AbTPXaklwiIad2bWUo5y7LwBTlTTLB73eieqIWZf0mTizJqQjEr4Y%2B1xb7MDC%2BlZQwNkm4qDbhLaMunDCVRD9jb2La4V3rzllLlttEllyBw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2caa2b7cea14ed-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI startups","searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) sector","successRate":100},{"description":"Company
+        is an early-stage startup (not yet mature or established) as of 2025","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:48:58.114Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:48:58.114Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:49:08 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yvrhsxwmkeb3n4fkm5ew
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:49:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3d3-gg4fZINzLuwocJdk1dHE2yJVNeA"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=e8lO1TPy2az8jrD6LjeFStR69tbCkJcsHIzHSl1fl9IcodwPIR0Fe0JoA9FJx90%2B1%2FAHuTeiiF8%2BqGzBAIUuxz1PKEYLxIzuwDc6g6J61AWtQMR2LQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2caa48fd47aa2a-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI startups","searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) sector","successRate":100},{"description":"Company
+        is an early-stage startup (not yet mature or established) as of 2025","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:48:58.114Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:48:58.114Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:49:11 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yvrhsxwmkeb3n4fkm5ew
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:49:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3d3-gg4fZINzLuwocJdk1dHE2yJVNeA"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=CJG2sirY7P5B%2B201dsgNCiz%2F%2B0uBtSpiYecEL1ZFOPJrjUU6dNeSPuTlp1oj3FslAlVyhzvZ5ymHxkoviQeUuu5jSDZSWpHYFod%2Bax6xvXy7Quk%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2caa5a0989c60f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"running","externalId":null,"title":"Companies:
+        AI startups","searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"running","query":"AI
+        startups","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) sector","successRate":100},{"description":"Company
+        is an early-stage startup (not yet mature or established) as of 2025","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:48:58.114Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:48:58.114Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:49:13 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yvrhsxwmkeb3n4fkm5ew
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:49:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3d2-17VjOZyAHrKXzJS2SifvnSwXb5M"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zmDY0LUIHBJ4%2Fp%2FKrPAtu7QHIHvt8TqUBD9EOd%2BjCH9QcvTCF9FppdQnuO7ZM0OMdLZ4HZzerJMZQxJ9iZOqtk%2F0KIUa1AxrkHgH9nhF8VJ04xNHdA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2caa6abc05c094-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI startups","searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"completed","query":"AI
+        startups","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) sector","successRate":100},{"description":"Company
+        is an early-stage startup (not yet mature or established) as of 2025","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:49:15.471Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:49:15.471Z","items":[]}'
+  recorded_at: Sun, 23 Nov 2025 00:49:16 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaq2yvrhsxwmkeb3n4fkm5ew/cancel
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 00:49:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"3c7-t551q+oN8hcBpZqc37Hv1ArMvGg"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Nx77Pyzw7pTKVi%2B5SEdewpcsBWUVH7sf%2Bm5PRCA5ZIU2J6gdsbDH7dv%2BVCcfDLk0wD1Ko0PcMf8TMMIX7dkK1mXjXB47dZ3j%2Be%2FAL3NYjEwoH7g%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2caa6eedb5204a-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","object":"webset","status":"idle","externalId":null,"title":"Companies:
+        AI startups","searches":[{"id":"wsearch_01kaq2ywejfg69sjkh39ge7bya","object":"webset_search","websetId":"webset_01kaq2yvrhsxwmkeb3n4fkm5ew","status":"completed","query":"AI
+        startups","entity":{"type":"company"},"criteria":[{"description":"Company
+        operates in the artificial intelligence (AI) sector","successRate":100},{"description":"Company
+        is an early-stage startup (not yet mature or established) as of 2025","successRate":100}],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":1,"analyzed":1,"completion":100,"timeLeft":0},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T00:48:56.274Z","updatedAt":"2025-11-23T00:49:15.471Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T00:48:55.569Z","updatedAt":"2025-11-23T00:49:15.471Z"}'
+  recorded_at: Sun, 23 Nov 2025 00:49:17 GMT
+recorded_with: VCR 6.3.1
