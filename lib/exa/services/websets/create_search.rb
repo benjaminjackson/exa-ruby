@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "create_search_validator"
+
 module Exa
   module Services
     module Websets
@@ -11,6 +13,8 @@ module Exa
         end
 
         def call
+          CreateSearchValidator.validate!(@params)
+
           response = @connection.post(
             "/websets/v0/websets/#{@webset_id}/searches",
             @params

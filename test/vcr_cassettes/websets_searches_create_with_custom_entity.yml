@@ -1,0 +1,157 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"Open source sustainability projects","count":1,"entity":{"type":"custom","description":"environmental
+        conservation initiatives"}}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 06:42:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '819'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"333-4LuahusNcY2ZZwKyrXNicvEfKd4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=RbneP04uBBOUvKeDL7c8lv6ABrOYgG28h2d6BoGEtDU96Qz9nUZcccIChDLKRTuFsQeSVIxhyZqyMJOVfItlQyD%2BgO4oEYrXiBewPGuozHL%2FWroEZA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2eb060580ff78f-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kaqq70g3wgfsk1wnfngrm2e4","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kaqq70wgthafn6tf8xgdssen","object":"webset_search","websetId":"webset_01kaqq70g3wgfsk1wnfngrm2e4","status":"running","query":"Open
+        source sustainability projects","entity":{"type":"custom","description":"environmental
+        conservation initiatives"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T06:42:54.480Z","updatedAt":"2025-11-23T06:42:54.854Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2025-11-23T06:42:54.083Z","updatedAt":"2025-11-23T06:42:54.854Z"}'
+  recorded_at: Sun, 23 Nov 2025 06:42:55 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kaqq70g3wgfsk1wnfngrm2e4/searches
+    body:
+      encoding: UTF-8
+      string: '{"query":"Community-led climate action programs","count":2,"entity":{"type":"custom","description":"grassroots
+        environmental organizations"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 06:42:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '547'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"223-dCo9orxTevBX5BboeqY9/BDl2e4"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=X8LrnUMUYdrROPC3hgjxvuv5BVQvn0sorXmfeCC1OV7bApEzOXzX9IX%2FzAgwbn%2BjGsCz1Si%2Fd2oUK79xOCenseSRb2r2uZoekUcDKzcwLvwDeUi5rQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a2eb078bdeab35a-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"wsearch_01kaqq72vc5m70g7dvqm7n4nwm","object":"webset_search","websetId":"webset_01kaqq70g3wgfsk1wnfngrm2e4","status":"running","query":"Community-led
+        climate action programs","entity":{"type":"custom","description":"grassroots
+        environmental organizations"},"criteria":[],"count":2,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2025-11-23T06:42:56.492Z","updatedAt":"2025-11-23T06:42:56.871Z"}'
+  recorded_at: Sun, 23 Nov 2025 06:42:57 GMT
+recorded_with: VCR 6.3.1

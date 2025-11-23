@@ -77,6 +77,43 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     end
   end
 
+  def test_create_search_with_custom_entity_type
+    client = Exa::Client.new(api_key: @api_key)
+    webset = nil
+    search = nil
+
+    VCR.use_cassette("websets_searches_create_with_custom_entity") do
+      # Create a webset with custom entity type
+      webset = client.create_webset(
+        search: {
+          query: "Open source sustainability projects",
+          count: 1,
+          entity: {
+            type: "custom",
+            description: "environmental conservation initiatives"
+          }
+        }
+      )
+      track_webset(webset.id)
+
+      # Create a search with custom entity type
+      search = client.create_webset_search(
+        webset_id: webset.id,
+        query: "Community-led climate action programs",
+        count: 2,
+        entity: {
+          type: "custom",
+          description: "grassroots environmental organizations"
+        }
+      )
+      track_search(webset.id, search.id)
+
+      assert_instance_of Exa::Resources::WebsetSearch, search
+      assert_equal "custom", search.entity["type"]
+      assert_equal "grassroots environmental organizations", search.entity["description"]
+    end
+  end
+
   def test_create_search_with_criteria
     client = Exa::Client.new(api_key: @api_key)
     webset = nil
