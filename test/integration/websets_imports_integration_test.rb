@@ -323,4 +323,38 @@ class WebsetsImportsIntegrationTest < Minitest::Test
              "Expected import to be pending or processing, got: #{import.status}")
     end
   end
+
+  def test_upload_import_with_file
+    VCR.use_cassette("imports/upload_import") do
+      client = Exa::Client.new(api_key: @api_key)
+
+      # Create a temporary test file
+      test_file = "/tmp/integration_test_upload.csv"
+      File.write(test_file, "company_name,website\nTest Company,https://example.com\n")
+
+      begin
+        import = client.upload_import(
+          file_path: test_file,
+          count: 1,
+          title: "Integration Test Upload",
+          format: "csv",
+          entity: { type: "company" }
+        )
+        track_import(import.id)
+
+        assert_instance_of Exa::Resources::Import, import
+        assert import.id.start_with?("import_") || import.id.start_with?("wimport_")
+        assert_equal "import", import.object
+        assert_equal "Integration Test Upload", import.title
+        assert_equal "csv", import.format
+        assert_equal({ "type" => "company" }, import.entity)
+        assert_equal 1, import.count
+        assert_includes ["pending", "processing", "completed"], import.status
+        refute_nil import.created_at
+        refute_nil import.updated_at
+      ensure
+        File.delete(test_file) if File.exist?(test_file)
+      end
+    end
+  end
 end
