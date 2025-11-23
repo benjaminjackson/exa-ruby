@@ -65,11 +65,15 @@ end
 client = Exa::Client.new
 
 # Search the web
-results = client.search("ruby programming")
+results = client.search("Ruby programming language")
 results.results.each { |item| puts "#{item['title']}: #{item['url']}" }
 
+# Find similar content
+similar = client.find_similar("https://arxiv.org/abs/2307.06435")
+similar.results.each { |item| puts item['url'] }
+
 # Get an answer to a question
-answer = client.answer("What are the latest trends in AI?")
+answer = client.answer("What is machine learning?")
 puts answer.answer
 
 # Find code examples
@@ -77,38 +81,73 @@ code = client.context("React hooks")
 puts code.response
 
 # Get page contents
-contents = client.get_contents(["https://example.com"])
+contents = client.get_contents(["https://ruby-lang.org"])
 puts contents.results.first["text"]
 ```
 
 ### Command Line
 
 ```bash
-# Search the web
-exa-ai search "ruby programming"
-
-# Answer a question
+# Core Search Commands
+exa-ai search "Ruby programming language"
+exa-ai find-similar "https://arxiv.org/abs/2307.06435"
 exa-ai answer "What is machine learning?"
+exa-ai context "React hooks" --tokens-num 5000
+exa-ai get-contents "https://ruby-lang.org"
 
-# Find code examples
-exa-ai context "async/await error handling"
+# Research Commands
+exa-ai research-start --instructions "What species of ant are similar to honeypot ants?"
+exa-ai research-get RESEARCH_ID
+exa-ai research-list
 
-# Get page contents
-exa-ai get-contents "https://example.com"
+# Webset Management
+exa-ai webset-create --search '{"query":"technology companies","count":1}'
+exa-ai webset-list --limit 5
+exa-ai webset-get WEBSET_ID
+exa-ai webset-update WEBSET_ID --metadata '{"updated":"true","version":"2"}'
+exa-ai webset-delete WEBSET_ID --force
+exa-ai webset-cancel WEBSET_ID
 
-# Start a research task
-exa-ai research-start --instructions "Analyze recent ML papers" --wait
+# Webset Searches
+exa-ai webset-search-create WEBSET_ID --query "Machine learning companies" --count 2
+exa-ai webset-search-get WEBSET_ID SEARCH_ID
+exa-ai webset-search-cancel WEBSET_ID SEARCH_ID
+
+# Webset Items
+exa-ai webset-item-list WEBSET_ID
+exa-ai webset-item-get WEBSET_ID ITEM_ID
+exa-ai webset-item-delete WEBSET_ID ITEM_ID --force
+
+# Enrichments
+exa-ai enrichment-create WEBSET_ID --description "Find company email" --format text
+exa-ai enrichment-create WEBSET_ID --description "Company size category" --format options --options '[{"label":"Small (1-10)"},{"label":"Medium (11-50)"},{"label":"Large (51+)"}]'
+exa-ai enrichment-list WEBSET_ID
+exa-ai enrichment-get WEBSET_ID ENRICHMENT_ID
+exa-ai enrichment-update WEBSET_ID ENRICHMENT_ID --description "Updated description"
+exa-ai enrichment-delete WEBSET_ID ENRICHMENT_ID --force
+exa-ai enrichment-cancel WEBSET_ID ENRICHMENT_ID
 ```
 
 ## Features
 
 The gem provides complete access to Exa's API endpoints:
 
+### Core Search
 - **Search** — Neural and keyword search across billions of web pages
+- **Find Similar** — Discover content similar to a given URL
 - **Answer** — Generate comprehensive answers with source citations
 - **Context** — Find relevant code and documentation snippets
 - **Get Contents** — Extract full text content from web pages
-- **Research** — Start and manage long-running research tasks with AI
+
+### Research
+- **Research Tasks** — Start and manage long-running research tasks with AI
+- **Task Management** — Get status updates and list all research tasks
+
+### Websets
+- **Webset Management** — Create, update, delete, and list datasets of web pages
+- **Webset Searches** — Run searches within websets and manage search tasks
+- **Webset Items** — List, retrieve, and manage individual items in websets
+- **Enrichments** — Create and manage AI-powered data enrichment tasks on websets
 
 ## Error Handling
 
