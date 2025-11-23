@@ -15,7 +15,7 @@ class WebsetsRetrieveEnrichmentTest < Minitest::Test
       "websetId" => "ws_test",
       "title" => "Email Extraction",
       "description" => "Extract all email addresses",
-      "format" => "email",
+      "format" => "text",
       "options" => [
         { "label" => "Personal" },
         { "label" => "Work" }
@@ -45,7 +45,7 @@ class WebsetsRetrieveEnrichmentTest < Minitest::Test
     assert_equal "ws_test", result.webset_id
     assert_equal "Email Extraction", result.title
     assert_equal "Extract all email addresses", result.description
-    assert_equal "email", result.format
+    assert_equal "text", result.format
 
     @connection.verify
   end

@@ -545,7 +545,7 @@ class ClientTest < Minitest::Test
 
   def test_create_enrichment_returns_enrichment
     stub_request(:post, "https://api.exa.ai/websets/v0/websets/ws_123/enrichments")
-      .with(body: hash_including(description: "Extract emails", format: "email"))
+      .with(body: hash_including(description: "Extract emails", format: "text"))
       .to_return(
         status: 200,
         body: {
@@ -554,7 +554,7 @@ class ClientTest < Minitest::Test
           status: "pending",
           websetId: "ws_123",
           description: "Extract emails",
-          format: "email"
+          format: "text"
         }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
@@ -563,7 +563,7 @@ class ClientTest < Minitest::Test
     result = client.create_enrichment(
       webset_id: "ws_123",
       description: "Extract emails",
-      format: "email"
+      format: "text"
     )
 
     assert_instance_of Exa::Resources::WebsetEnrichment, result
@@ -580,7 +580,7 @@ class ClientTest < Minitest::Test
           status: "completed",
           websetId: "ws_123",
           description: "Extract emails",
-          format: "email"
+          format: "text"
         }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
@@ -604,7 +604,7 @@ class ClientTest < Minitest::Test
           status: "pending",
           websetId: "ws_123",
           description: "Updated description",
-          format: "email"
+          format: "text"
         }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
@@ -630,7 +630,7 @@ class ClientTest < Minitest::Test
           status: "deleted",
           websetId: "ws_123",
           description: "Extract emails",
-          format: "email"
+          format: "text"
         }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
@@ -652,7 +652,7 @@ class ClientTest < Minitest::Test
           status: "cancelled",
           websetId: "ws_123",
           description: "Extract emails",
-          format: "email"
+          format: "text"
         }.to_json,
         headers: { "Content-Type" => "application/json" }
       )

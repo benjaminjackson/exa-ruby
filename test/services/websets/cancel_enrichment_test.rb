@@ -14,7 +14,7 @@ class WebsetsCancelEnrichmentTest < Minitest::Test
       "status" => "cancelled",
       "websetId" => "ws_test",
       "description" => "Extract emails",
-      "format" => "email",
+      "format" => "text",
       "createdAt" => "2024-01-15T10:00:00Z",
       "updatedAt" => "2024-01-15T12:00:00Z"
     }
