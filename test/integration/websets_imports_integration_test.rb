@@ -29,7 +29,7 @@ class WebsetsImportsIntegrationTest < Minitest::Test
       track_import(import.id)
 
       assert_instance_of Exa::Resources::Import, import
-      assert import.id.start_with?("import_") || import.id.start_with?("wimport_")
+      assert import.id.start_with?("import_")
       assert_equal "import", import.object
       assert_equal "Test Company Import", import.title
       assert_equal "csv", import.format
@@ -343,7 +343,7 @@ class WebsetsImportsIntegrationTest < Minitest::Test
         track_import(import.id)
 
         assert_instance_of Exa::Resources::Import, import
-        assert import.id.start_with?("import_") || import.id.start_with?("wimport_")
+        assert import.id.start_with?("import_")
         assert_equal "import", import.object
         assert_equal "Integration Test Upload", import.title
         assert_equal "csv", import.format
