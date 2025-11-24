@@ -65,6 +65,8 @@ require_relative "exa/cli/formatters/answer_formatter"
 require_relative "exa/cli/formatters/webset_formatter"
 require_relative "exa/cli/formatters/webset_item_formatter"
 require_relative "exa/cli/formatters/enrichment_formatter"
+require_relative "exa/cli/formatters/monitor_formatter"
+require_relative "exa/cli/formatters/monitor_run_formatter"
 
 module Exa
   # Module-level configuration
