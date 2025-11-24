@@ -39,7 +39,7 @@ def parse_args(argv)
   # Check for help first
   if argv.include?("--help") || argv.include?("-h")
     puts <<~HELP
-      Usage: exa-ai webset-import-update <import_id> [OPTIONS]
+      Usage: exa-ai import-update <import_id> [OPTIONS]
 
       Update an existing import
 
@@ -54,9 +54,9 @@ def parse_args(argv)
         --help, -h             Show this help message
 
       Examples:
-        exa-ai webset-import-update imp_123 --title "Updated Title"
-        exa-ai webset-import-update imp_123 --metadata '{"status":"reviewed"}'
-        exa-ai webset-import-update imp_123 --title "New Title" --metadata @metadata.json
+        exa-ai import-update imp_123 --title "Updated Title"
+        exa-ai import-update imp_123 --metadata '{"status":"reviewed"}'
+        exa-ai import-update imp_123 --title "New Title" --metadata @metadata.json
     HELP
     exit 0
   end
@@ -105,14 +105,14 @@ begin
   # Validate required parameters
   unless args[:import_id]
     $stderr.puts "Error: <import_id> is required"
-    $stderr.puts "Run 'exa-ai webset-import-update --help' for usage information"
+    $stderr.puts "Run 'exa-ai import-update --help' for usage information"
     exit 1
   end
 
   # Validate at least one update parameter provided
   unless args[:title] || args[:metadata]
     $stderr.puts "Error: At least one of --title or --metadata must be provided"
-    $stderr.puts "Run 'exa-ai webset-import-update --help' for usage information"
+    $stderr.puts "Run 'exa-ai import-update --help' for usage information"
     exit 1
   end
 

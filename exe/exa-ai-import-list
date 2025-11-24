@@ -4,7 +4,6 @@
 require "exa-ai"
 
 # Parse arguments
-import_id = nil
 api_key = nil
 output_format = "json"
 
@@ -18,12 +17,9 @@ while args.any?
     output_format = args.shift
   when "--help", "-h"
     puts <<~HELP
-      Usage: exa-ai webset-import-get <import_id> [OPTIONS]
+      Usage: exa-ai import-list [OPTIONS]
 
-      Get details of a specific import
-
-      Arguments:
-        import_id              ID of the import (required)
+      List all imports
 
       Options:
         --api-key KEY          Exa API key (or set EXA_API_KEY env var)
@@ -31,27 +27,14 @@ while args.any?
         --help, -h             Show this help message
 
       Examples:
-        exa-ai webset-import-get imp_123
-        exa-ai webset-import-get imp_123 --output-format text
+        exa-ai import-list
+        exa-ai import-list --output-format text
     HELP
     exit 0
   else
-    # First positional argument is import_id
-    if import_id.nil?
-      import_id = arg
-    else
-      $stderr.puts "Unknown option: #{arg}"
-      exit 1
-    end
+    $stderr.puts "Unknown option: #{arg}"
+    exit 1
   end
-end
-
-# Validate
-if import_id.nil?
-  $stderr.puts "Error: import_id argument is required"
-  $stderr.puts "Usage: exa-ai webset-import-get <import_id> [OPTIONS]"
-  $stderr.puts "Try 'exa-ai webset-import-get --help' for more information"
-  exit 1
 end
 
 begin
@@ -62,16 +45,13 @@ begin
   # Build client
   client = Exa::CLI::Base.build_client(api_key)
 
-  # Get import
-  import = client.get_import(import_id)
+  # List imports
+  collection = client.list_imports
 
   # Format and output
-  output = Exa::CLI::Formatters::ImportFormatter.format(import, output_format)
+  output = Exa::CLI::Formatters::ImportFormatter.format_collection(collection, output_format)
   puts output
 
-rescue Exa::NotFound => e
-  $stderr.puts "Import not found: #{e.message}"
-  exit 1
 rescue Exa::Unauthorized => e
   $stderr.puts "Authentication error: #{e.message}"
   $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"

@@ -18,12 +18,12 @@ while args.any?
     output_format = args.shift
   when "--help", "-h"
     puts <<~HELP
-      Usage: exa-ai webset-import-delete <import_id> [OPTIONS]
+      Usage: exa-ai import-get <import_id> [OPTIONS]
 
-      Delete an import
+      Get details of a specific import
 
       Arguments:
-        import_id              ID of the import to delete (required)
+        import_id              ID of the import (required)
 
       Options:
         --api-key KEY          Exa API key (or set EXA_API_KEY env var)
@@ -31,8 +31,8 @@ while args.any?
         --help, -h             Show this help message
 
       Examples:
-        exa-ai webset-import-delete imp_123
-        exa-ai webset-import-delete imp_123 --output-format text
+        exa-ai import-get imp_123
+        exa-ai import-get imp_123 --output-format text
     HELP
     exit 0
   else
@@ -49,8 +49,8 @@ end
 # Validate
 if import_id.nil?
   $stderr.puts "Error: import_id argument is required"
-  $stderr.puts "Usage: exa-ai webset-import-delete <import_id> [OPTIONS]"
-  $stderr.puts "Try 'exa-ai webset-import-delete --help' for more information"
+  $stderr.puts "Usage: exa-ai import-get <import_id> [OPTIONS]"
+  $stderr.puts "Try 'exa-ai import-get --help' for more information"
   exit 1
 end
 
@@ -62,8 +62,8 @@ begin
   # Build client
   client = Exa::CLI::Base.build_client(api_key)
 
-  # Delete import
-  import = client.delete_import(import_id)
+  # Get import
+  import = client.get_import(import_id)
 
   # Format and output
   output = Exa::CLI::Formatters::ImportFormatter.format(import, output_format)

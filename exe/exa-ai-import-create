@@ -42,7 +42,7 @@ def parse_args(argv)
   # Check for help first
   if argv.include?("--help") || argv.include?("-h")
     puts <<~HELP
-      Usage: exa-ai webset-import-create FILE [OPTIONS]
+      Usage: exa-ai import-create FILE [OPTIONS]
 
       Create a new import and upload external data file
 
@@ -64,9 +64,9 @@ def parse_args(argv)
         --help, -h                Show this help message
 
       Examples:
-        exa-ai webset-import-create data.csv --count 100 --title "My Companies" --format csv --entity-type company
-        exa-ai webset-import-create companies.csv --count 50 --title "Tech Startups" --format csv --entity-type company --csv-identifier 0
-        exa-ai webset-import-create import.csv --count 100 --title "Import" --format csv --entity-type company --metadata '{"source":"crm"}' --quiet
+        exa-ai import-create data.csv --count 100 --title "My Companies" --format csv --entity-type company
+        exa-ai import-create companies.csv --count 50 --title "Tech Startups" --format csv --entity-type company --csv-identifier 0
+        exa-ai import-create import.csv --count 100 --title "Import" --format csv --entity-type company --metadata '{"source":"crm"}' --quiet
     HELP
     exit 0
   end
@@ -74,7 +74,7 @@ def parse_args(argv)
   # First argument should be the file path
   if argv.empty? || argv[0].start_with?("--")
     $stderr.puts "Error: FILE argument is required"
-    $stderr.puts "Run 'exa-ai webset-import-create --help' for usage information"
+    $stderr.puts "Run 'exa-ai import-create --help' for usage information"
     exit 1
   end
 
@@ -133,19 +133,19 @@ begin
   # Validate required parameters
   unless args[:count]
     $stderr.puts "Error: --count is required"
-    $stderr.puts "Run 'exa-ai webset-import-create --help' for usage information"
+    $stderr.puts "Run 'exa-ai import-create --help' for usage information"
     exit 1
   end
 
   unless args[:title]
     $stderr.puts "Error: --title is required"
-    $stderr.puts "Run 'exa-ai webset-import-create --help' for usage information"
+    $stderr.puts "Run 'exa-ai import-create --help' for usage information"
     exit 1
   end
 
   unless args[:entity_type]
     $stderr.puts "Error: --entity-type is required"
-    $stderr.puts "Run 'exa-ai webset-import-create --help' for usage information"
+    $stderr.puts "Run 'exa-ai import-create --help' for usage information"
     exit 1
   end
 

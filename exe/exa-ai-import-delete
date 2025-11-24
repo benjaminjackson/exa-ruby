@@ -4,6 +4,7 @@
 require "exa-ai"
 
 # Parse arguments
+import_id = nil
 api_key = nil
 output_format = "json"
 
@@ -17,9 +18,12 @@ while args.any?
     output_format = args.shift
   when "--help", "-h"
     puts <<~HELP
-      Usage: exa-ai webset-import-list [OPTIONS]
+      Usage: exa-ai import-delete <import_id> [OPTIONS]
 
-      List all imports
+      Delete an import
+
+      Arguments:
+        import_id              ID of the import to delete (required)
 
       Options:
         --api-key KEY          Exa API key (or set EXA_API_KEY env var)
@@ -27,14 +31,27 @@ while args.any?
         --help, -h             Show this help message
 
       Examples:
-        exa-ai webset-import-list
-        exa-ai webset-import-list --output-format text
+        exa-ai import-delete imp_123
+        exa-ai import-delete imp_123 --output-format text
     HELP
     exit 0
   else
-    $stderr.puts "Unknown option: #{arg}"
-    exit 1
+    # First positional argument is import_id
+    if import_id.nil?
+      import_id = arg
+    else
+      $stderr.puts "Unknown option: #{arg}"
+      exit 1
+    end
   end
+end
+
+# Validate
+if import_id.nil?
+  $stderr.puts "Error: import_id argument is required"
+  $stderr.puts "Usage: exa-ai import-delete <import_id> [OPTIONS]"
+  $stderr.puts "Try 'exa-ai import-delete --help' for more information"
+  exit 1
 end
 
 begin
@@ -45,13 +62,16 @@ begin
   # Build client
   client = Exa::CLI::Base.build_client(api_key)
 
-  # List imports
-  collection = client.list_imports
+  # Delete import
+  import = client.delete_import(import_id)
 
   # Format and output
-  output = Exa::CLI::Formatters::ImportFormatter.format_collection(collection, output_format)
+  output = Exa::CLI::Formatters::ImportFormatter.format(import, output_format)
   puts output
 
+rescue Exa::NotFound => e
+  $stderr.puts "Import not found: #{e.message}"
+  exit 1
 rescue Exa::Unauthorized => e
   $stderr.puts "Authentication error: #{e.message}"
   $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"

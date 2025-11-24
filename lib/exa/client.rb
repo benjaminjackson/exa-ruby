@@ -326,7 +326,7 @@ module Exa
     # @option params [Integer] :limit Maximum number of imports to return
     # @return [Resources::ImportCollection] Paginated list of imports
     def list_imports(**params)
-      Services::Websets::Imports::List.new(connection, **params).call
+      Services::Websets::ListImports.new(connection, **params).call
     end
 
     # Create a new import
@@ -341,7 +341,7 @@ module Exa
     # @option params [Hash] :csv CSV-specific configuration
     # @return [Resources::Import] The newly created import
     def create_import(**params)
-      Services::Websets::Imports::Create.new(connection, **params).call
+      Services::Websets::CreateImport.new(connection, **params).call
     end
 
     # Upload a file for import (creates import and uploads file)
@@ -356,7 +356,7 @@ module Exa
     # @option params [Hash] :csv CSV-specific configuration
     # @return [Resources::Import] The created import (file size is inferred automatically)
     def upload_import(file_path:, **params)
-      Services::Websets::Imports::Upload.new(connection, file_path: file_path, **params).call
+      Services::Websets::UploadImport.new(connection, file_path: file_path, **params).call
     end
 
     # Get a specific import by ID
@@ -364,7 +364,7 @@ module Exa
     # @param id [String] Import ID
     # @return [Resources::Import] The requested import
     def get_import(id)
-      Services::Websets::Imports::Get.new(connection, id: id).call
+      Services::Websets::GetImport.new(connection, id: id).call
     end
 
     # Update an import
@@ -375,7 +375,7 @@ module Exa
     # @option params [Hash] :metadata Updated metadata
     # @return [Resources::Import] The updated import
     def update_import(id, **params)
-      Services::Websets::Imports::Update.new(connection, id: id, **params).call
+      Services::Websets::UpdateImport.new(connection, id: id, **params).call
     end
 
     # Delete an import
@@ -383,7 +383,7 @@ module Exa
     # @param id [String] Import ID
     # @return [Resources::Import] The deleted import
     def delete_import(id)
-      Services::Websets::Imports::Delete.new(connection, id: id).call
+      Services::Websets::DeleteImport.new(connection, id: id).call
     end
 
     private
