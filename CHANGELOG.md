@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2025-11-26
+
+### Changed
+- Added comprehensive codebase patterns documentation for service objects, resources, and CLI commands
+- Improved test coverage for webset-search CLI commands
+
 ## [0.4.0] - 2025-11-23
 
 ### Added
