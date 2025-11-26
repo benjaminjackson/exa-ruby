@@ -116,7 +116,7 @@ def parse_args(argv)
       i += 2
     when "--help", "-h"
       puts <<~HELP
-        Usage: exa-api search QUERY [OPTIONS]
+        Usage: exa-ai search QUERY [OPTIONS]
 
         Search the web using Exa AI
 
@@ -160,15 +160,15 @@ def parse_args(argv)
           --help, -h                   Show this help message
 
         Examples:
-          exa-api search "ruby programming"
-          exa-api search "machine learning" --num-results 5 --type keyword
-          exa-api search "Latest LLM research" --category "research paper"
-          exa-api search "AI startups" --category company
-          exa-api search "Anthropic" --linkedin company
-          exa-api search "Dario Amodei" --linkedin person
-          exa-api search "AI" --linkedin all
-          exa-api search "AI research" --include-domains arxiv.org,scholar.google.com
-          exa-api search "tutorials" --output-format pretty
+          exa-ai search "ruby programming"
+          exa-ai search "machine learning" --num-results 5 --type keyword
+          exa-ai search "Latest LLM research" --category "research paper"
+          exa-ai search "AI startups" --category company
+          exa-ai search "Anthropic" --linkedin company
+          exa-ai search "Dario Amodei" --linkedin person
+          exa-ai search "AI" --linkedin all
+          exa-ai search "AI research" --include-domains arxiv.org,scholar.google.com
+          exa-ai search "tutorials" --output-format pretty
       HELP
       exit 0
     else
@@ -237,7 +237,7 @@ begin
   # Validate query
   if args[:query].nil? || args[:query].empty?
     $stderr.puts "Error: Query is required"
-    $stderr.puts "Run 'exa-api search --help' for usage information"
+    $stderr.puts "Run 'exa-ai search --help' for usage information"
     exit 1
   end
 

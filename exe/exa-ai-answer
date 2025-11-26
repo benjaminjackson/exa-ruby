@@ -38,7 +38,7 @@ def parse_args(argv)
       i += 2
     when "--help", "-h"
       puts <<~HELP
-        Usage: exa-api answer QUERY [OPTIONS]
+        Usage: exa-ai answer QUERY [OPTIONS]
 
         Generate an answer to a question using Exa AI
 
@@ -55,12 +55,12 @@ def parse_args(argv)
           --help, -h            Show this help message
 
         Examples:
-          exa-api answer "What is the capital of France?"
-          exa-api answer "Latest AI breakthroughs" --stream
-          exa-api answer "Latest AI breakthroughs" --text
-          exa-api answer "Ruby best practices" --output-format pretty
-          exa-api answer "What is the capital of France?" --output-schema '{"type":"object","properties":{"city":{"type":"string"},"state":{"type":"string"}}}'
-          exa-api answer "What is Paris?" --system-prompt "Respond in the voice of a pirate"
+          exa-ai answer "What is the capital of France?"
+          exa-ai answer "Latest AI breakthroughs" --stream
+          exa-ai answer "Latest AI breakthroughs" --text
+          exa-ai answer "Ruby best practices" --output-format pretty
+          exa-ai answer "What is the capital of France?" --output-schema '{"type":"object","properties":{"city":{"type":"string"},"state":{"type":"string"}}}'
+          exa-ai answer "What is Paris?" --system-prompt "Respond in the voice of a pirate"
       HELP
       exit 0
     else
@@ -80,7 +80,7 @@ begin
   # Validate query
   if args[:query].nil? || args[:query].empty?
     $stderr.puts "Error: Query is required"
-    $stderr.puts "Run 'exa-api answer --help' for usage information"
+    $stderr.puts "Run 'exa-ai answer --help' for usage information"
     exit 1
   end
 
