@@ -80,6 +80,7 @@ begin
   # Format and output
   output = Exa::CLI::Formatters::SearchFormatter.format(search, output_format)
   puts output
+  $stdout.flush
 
 rescue Exa::NotFound => e
   $stderr.puts "Search not found: #{e.message}"

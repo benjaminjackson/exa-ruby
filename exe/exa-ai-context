@@ -91,6 +91,7 @@ begin
   # Format and output
   output = Exa::CLI::Formatters::ContextFormatter.format(result, output_format)
   puts output
+  $stdout.flush
 rescue Exa::Error => e
   puts "Error: #{e.message}"
   exit 1

@@ -205,6 +205,7 @@ begin
   # Format and output result
   output = Exa::CLI::Formatters::SearchFormatter.format(search, output_format)
   puts output
+  $stdout.flush
 
 rescue Exa::ConfigurationError => e
   $stderr.puts "Configuration error: #{e.message}"

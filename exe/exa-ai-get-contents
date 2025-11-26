@@ -243,6 +243,7 @@ begin
   # Format and output
   output = Exa::CLI::Formatters::ContentsFormatter.format(result, output_format)
   puts output
+  $stdout.flush
 rescue Exa::ConfigurationError => e
   $stderr.puts "Configuration error: #{e.message}"
   exit 1

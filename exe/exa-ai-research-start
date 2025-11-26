@@ -133,6 +133,7 @@ begin
       # Format and output final result
       output = Exa::CLI::Formatters::ResearchFormatter.format_task(final_task, output_format, show_events: args[:events])
       puts output
+      $stdout.flush
 
       # Exit with error code if task failed
       exit 1 if final_task.failed?

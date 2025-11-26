@@ -74,6 +74,7 @@ begin
   # Format and output
   output = Exa::CLI::Formatters::EnrichmentFormatter.format_collection(collection, output_format)
   puts output
+  $stdout.flush
 
 rescue Exa::NotFound => e
   $stderr.puts "Webset not found: #{e.message}"

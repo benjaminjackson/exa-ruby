@@ -125,6 +125,7 @@ begin
     result = client.answer(args[:query], **answer_params)
     output = Exa::CLI::Formatters::AnswerFormatter.format(result, output_format)
     puts output
+    $stdout.flush
   end
 
 rescue Exa::ConfigurationError => e
