@@ -77,7 +77,7 @@ begin
   search = client.cancel_webset_search(webset_id: webset_id, id: search_id)
 
   # Format and output
-  output = Exa::CLI::Formatters::WebsetSearchFormatter.format(search, output_format)
+  output = Exa::CLI::Formatters::SearchFormatter.format(search, output_format)
   puts output
 
 rescue Exa::NotFound => e

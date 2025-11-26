@@ -203,7 +203,7 @@ begin
   search = client.create_webset_search(webset_id: args[:webset_id], **search_params)
 
   # Format and output result
-  output = Exa::CLI::Formatters::WebsetSearchFormatter.format(search, output_format)
+  output = Exa::CLI::Formatters::SearchFormatter.format(search, output_format)
   puts output
 
 rescue Exa::ConfigurationError => e
