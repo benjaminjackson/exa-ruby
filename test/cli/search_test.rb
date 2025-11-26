@@ -22,14 +22,29 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_type_flag
+    args = parse_search_args(["test query", "--type", "fast"])
+    assert_equal "fast", args[:type]
+
+    args = parse_search_args(["test query", "--type", "deep"])
+    assert_equal "deep", args[:type]
+
     args = parse_search_args(["test query", "--type", "keyword"])
     assert_equal "keyword", args[:type]
 
-    args = parse_search_args(["test query", "--type", "neural"])
-    assert_equal "neural", args[:type]
-
     args = parse_search_args(["test query", "--type", "auto"])
     assert_equal "auto", args[:type]
+  end
+
+  def test_rejects_invalid_search_type
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["test query", "--type", "neural"])
+    end
+    assert_includes error.message.downcase, "search type"
+
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["test query", "--type", "invalid"])
+    end
+    assert_includes error.message.downcase, "search type"
   end
 
   def test_parses_include_domains_flag
@@ -105,7 +120,10 @@ class Exa::CLI::SearchTest < Minitest::Test
         args[:num_results] = argv[i + 1].to_i
         i += 2
       when "--type"
-        args[:type] = argv[i + 1]
+        search_type = argv[i + 1]
+        valid_types = ["fast", "deep", "keyword", "auto"]
+        raise ArgumentError, "Search type must be one of: #{valid_types.join(', ')}" unless valid_types.include?(search_type)
+        args[:type] = search_type
         i += 2
       when "--include-domains"
         args[:include_domains] = argv[i + 1].split(",").map(&:strip)

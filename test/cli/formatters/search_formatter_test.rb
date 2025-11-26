@@ -72,8 +72,8 @@ class Exa::CLI::Formatters::SearchFormatterTest < Minitest::Test
         }
       ],
       request_id: "test-request-id",
-      resolved_search_type: "neural",
-      search_type: "auto",
+      resolved_search_type: "fast",
+      search_type: "fast",
       context: nil,
       cost_dollars: 0.001
     )

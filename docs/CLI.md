@@ -26,14 +26,14 @@ All commands support these options:
 
 ## search
 
-Search the web using neural or keyword search.
+Search the web using fast or deep search.
 
 ### Basic Usage
 
 ```bash
 exa-ai search "ruby programming"
 exa-ai search "machine learning" --num-results 10
-exa-ai search "AI" --type keyword
+exa-ai search "AI" --type deep
 ```
 
 ### Filtering Options
@@ -128,7 +128,7 @@ exa-ai search "ruby" --output-format json
 
 - `QUERY` - Search query (required)
 - `--num-results N` - Number of results (default: 10)
-- `--type TYPE` - Search type: keyword, neural, or auto (default: auto)
+- `--type TYPE` - Search type: fast, deep, keyword, or auto (default: fast)
 - `--include-domains DOMAINS` - Comma-separated domains
 - `--exclude-domains DOMAINS` - Comma-separated domains
 - `--start-published-date DATE` - ISO 8601 date string

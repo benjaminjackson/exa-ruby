@@ -5,9 +5,13 @@ require_relative "parameter_converter"
 module Exa
   module Services
     class Search
+      VALID_SEARCH_TYPES = ["fast", "deep", "keyword", "auto"].freeze
+      DEFAULT_SEARCH_TYPE = "fast"
+
       def initialize(connection, **params)
         @connection = connection
-        @params = params
+        @params = normalize_params(params)
+        validate_search_type!
       end
 
       def call
@@ -22,6 +26,22 @@ module Exa
           context: body["context"],
           cost_dollars: body["costDollars"]
         )
+      end
+
+      private
+
+      def normalize_params(params)
+        normalized = params.dup
+        # Set default search type if not provided
+        normalized[:type] = DEFAULT_SEARCH_TYPE unless normalized.key?(:type)
+        normalized
+      end
+
+      def validate_search_type!
+        search_type = @params[:type]
+        return if VALID_SEARCH_TYPES.include?(search_type)
+
+        raise ArgumentError, "Invalid search type: '#{search_type}'. Must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
       end
     end
   end

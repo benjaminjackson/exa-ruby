@@ -71,7 +71,7 @@ class ClientTest < Minitest::Test
 
   def test_search_delegates_to_search_service
     stub_request(:post, "https://api.exa.ai/search")
-      .with(body: { query: "test" })
+      .with(body: hash_including(query: "test", type: "fast"))
       .to_return(
         status: 200,
         body: { results: [], requestId: "abc123" }.to_json,
@@ -89,7 +89,7 @@ class ClientTest < Minitest::Test
       .with(
         body: hash_including(
           query: "AI research",
-          type: "neural",
+          type: "deep",
           numResults: 20,
           category: "research paper"
         )
@@ -103,7 +103,7 @@ class ClientTest < Minitest::Test
     client = Exa::Client.new(api_key: "test_key")
     result = client.search(
       "AI research",
-      type: "neural",
+      type: "deep",
       numResults: 20,
       category: "research paper"
     )

@@ -20,7 +20,13 @@ def parse_args(argv)
       args[:num_results] = argv[i + 1].to_i
       i += 2
     when "--type"
-      args[:type] = argv[i + 1]
+      search_type = argv[i + 1]
+      valid_types = ["fast", "deep", "keyword", "auto"]
+      unless valid_types.include?(search_type)
+        $stderr.puts "Error: Search type must be one of: #{valid_types.join(', ')}"
+        exit 1
+      end
+      args[:type] = search_type
       i += 2
     when "--category"
       category = argv[i + 1]
@@ -125,7 +131,7 @@ def parse_args(argv)
 
         Options:
           --num-results N              Number of results to return (default: 10)
-          --type TYPE                  Search type: keyword, neural, fast, or auto (default: auto)
+          --type TYPE                  Search type: fast, deep, keyword, or auto (default: fast)
           --category CAT               Focus on specific data category
                                        Options: "company", "research paper", "news", "pdf",
                                        "github", "tweet", "personal site", "linkedin profile",
@@ -161,7 +167,7 @@ def parse_args(argv)
 
         Examples:
           exa-ai search "ruby programming"
-          exa-ai search "machine learning" --num-results 5 --type keyword
+          exa-ai search "machine learning" --num-results 5 --type deep
           exa-ai search "Latest LLM research" --category "research paper"
           exa-ai search "AI startups" --category company
           exa-ai search "Anthropic" --linkedin company
