@@ -44,7 +44,7 @@ module ExaCLI
       print_help
       exit 0
     when "--api-key"
-      puts "Use --api-key flag with specific commands"
+      $stderr.puts "Error: Use --api-key flag with specific commands"
       exit 1
     when "search"
       exec File.expand_path("../exa-ai-search", __FILE__), *ARGV[1..]
@@ -175,15 +175,15 @@ module ExaCLI
   def self.print_error_for_command(cmd)
     return print_help if cmd.nil?
 
-    puts "Error: Unknown command '#{cmd}'"
-    puts ""
+    $stderr.puts "Error: Unknown command '#{cmd}'"
+    $stderr.puts ""
 
     # Try to suggest similar commands
     suggestion = suggest_command(cmd)
-    puts "Did you mean: #{suggestion}?" if suggestion
+    $stderr.puts "Did you mean: #{suggestion}?" if suggestion
 
-    puts ""
-    puts "Run 'exa-ai --help' for usage information."
+    $stderr.puts ""
+    $stderr.puts "Run 'exa-ai --help' for usage information."
   end
 
   def self.suggest_command(input)
