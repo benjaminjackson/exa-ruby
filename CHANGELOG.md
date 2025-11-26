@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2025-11-26
+
+### Added
+- Updated search types to use `fast` and `deep` instead of deprecated types
+
+### Changed
+- Prioritized detailed error messages from API responses for better debugging
+- CLI error messages now use $stderr instead of $stdout
+- CLI output now flushes stdout to ensure piped output reaches destination immediately
+
+### Fixed
+- Corrected CLI help messages to reference `exa-ai` instead of `exa-api`
+- Improved webset-create CLI test error handling
+
 ## [0.4.1] - 2025-11-26
 
 ### Changed
