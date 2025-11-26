@@ -170,4 +170,21 @@ class RaiseErrorTest < Minitest::Test
 
     assert_equal "Gateway timeout", error.message
   end
+
+  def test_extracts_detailed_message_when_available
+    connection = Exa::Connection.build(api_key: "test_key")
+
+    stub_request(:get, "https://api.exa.ai/test")
+      .to_return(
+        status: 403,
+        body: '{"statusCode":403,"timestamp":"2025-11-26T14:20:13.344Z","message":"Your team has reached the maximum number of concurrent requests","error":"Forbidden","path":"/v0/websets"}',
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    error = assert_raises(Exa::Forbidden) do
+      connection.get("/test")
+    end
+
+    assert_equal "Your team has reached the maximum number of concurrent requests", error.message
+  end
 end
