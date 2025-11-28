@@ -46,6 +46,9 @@ def parse_args(argv)
   while i < argv.length
     arg = argv[i]
     case arg
+    when "--import"
+      args[:import] = argv[i + 1]
+      i += 2
     when "--search"
       args[:search] = parse_json_or_file(argv[i + 1])
       i += 2
@@ -72,12 +75,14 @@ def parse_args(argv)
       i += 2
     when "--help", "-h"
       puts <<~HELP
-        Usage: exa-ai webset-create --search JSON [OPTIONS]
+        Usage: exa-ai webset-create (--search JSON | --import ID) [OPTIONS]
 
-        Create a new webset with search criteria
+        Create a new webset from search criteria or an import
 
-        Required:
+        Required (choose one):
           --search JSON              Search configuration (supports @file.json)
+          --import ID                Import or webset ID to create webset from
+                                     (accepts import_* or webset_* IDs)
 
         Options:
           --enrichments JSON         Array of enrichment configs (supports @file.json)
@@ -90,9 +95,17 @@ def parse_args(argv)
           --help, -h                 Show this help message
 
         Examples:
+          # Create webset from search
           exa-ai webset-create --search '{"query":"AI startups","count":10}'
           exa-ai webset-create --search @search.json --enrichments @enrichments.json
           exa-ai webset-create --search @search.json --wait
+
+          # Create webset from import
+          exa-ai webset-create --import import_abc123
+          exa-ai webset-create --import import_def456 --enrichments @enrichments.json
+
+          # Create webset from existing webset
+          exa-ai webset-create --import webset_xyz789
       HELP
       exit 0
     else
@@ -109,8 +122,14 @@ begin
   args = parse_args(ARGV)
 
   # Validate required parameters
-  unless args[:search]
-    $stderr.puts "Error: --search is required"
+  if args[:search] && args[:import]
+    $stderr.puts "Error: Cannot specify both --search and --import"
+    $stderr.puts "Run 'exa-ai webset-create --help' for usage information"
+    exit 1
+  end
+
+  unless args[:search] || args[:import]
+    $stderr.puts "Error: Either --search or --import is required"
     $stderr.puts "Run 'exa-ai webset-create --help' for usage information"
     exit 1
   end
@@ -125,7 +144,25 @@ begin
   client = Exa::CLI::Base.build_client(api_key)
 
   # Prepare webset parameters
-  webset_params = { search: args[:search] }
+  webset_params = {}
+
+  if args[:search]
+    webset_params[:search] = args[:search]
+  elsif args[:import]
+    # Detect source type from ID prefix and convert to API format
+    import_id = args[:import]
+    source = if import_id.start_with?("import_")
+               "import"
+             elsif import_id.start_with?("webset_")
+               "webset"
+             else
+               $stderr.puts "Error: Import ID must start with 'import_' or 'webset_'"
+               exit 1
+             end
+
+    webset_params[:import] = [{ source: source, id: import_id }]
+  end
+
   webset_params[:enrichments] = args[:enrichments] if args[:enrichments]
   webset_params[:exclude] = args[:exclude] if args[:exclude]
   webset_params[:externalId] = args[:external_id] if args[:external_id]

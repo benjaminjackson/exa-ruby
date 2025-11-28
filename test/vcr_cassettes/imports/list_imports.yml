@@ -1,0 +1,227 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/imports
+    body:
+      encoding: UTF-8
+      string: '{"size":1024,"count":10,"title":"First Import","format":"csv","entity":{"type":"company"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:17:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '879'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"36f-C5jqa/crDB05X3yPTn8HC0gmpxc"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=dm6tML%2BNieb5owuI%2F%2BFig7f%2Ftw1HDifrK3B1mXMaOGt570ZUMJvlVD52G9y3%2Fzjpz1qlL%2Fm8nc5vMw5%2FYdkJ4F%2BdjSn%2FBJVDZJHZw4HG9tm%2Fcb4%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a3251ef7a5ac33a-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"import_01karvgwk9277bt43bx456k94k","object":"import","status":"pending","format":"csv","entity":{"type":"company"},"title":"First
+        Import","count":10,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:17:26.505Z","updatedAt":"2025-11-23T17:17:26.505Z","uploadUrl":"https://websets-imports.s3.us-west-2.amazonaws.com/cmeh7vs4k0001ffpf6f5hh6eg/01karvgwk9277bt43bx456k94k.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW37DUQDZE5LUHW4L%2F20251123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251123T171726Z&X-Amz-Expires=3600&X-Amz-Signature=4b4e498015afcf1215fc8c1b9385d8285910d4f27a73de40629af3726c4d74e4&X-Amz-SignedHeaders=content-length%3Bhost&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject","uploadValidUntil":"2025-11-23T18:17:26.551Z"}'
+  recorded_at: Sun, 23 Nov 2025 17:17:26 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/imports
+    body:
+      encoding: UTF-8
+      string: '{"size":2048,"count":20,"title":"Second Import","format":"csv","entity":{"type":"company"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:17:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '880'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"370-gaf4mr2YNW1QxkhNHIKa286rpxY"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=G68%2FMfjE0lBit5b51uD29SMYSwNiioLHZvpScRjcjg1UANe06dVJZ5d7GSxGcKWO5QfN90xp2JSRm5vKC4S3ijVgtK5GxochB%2FtzlBSgTHaMRp1Fwg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a3251f1db5041af-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"import_01karvgwx8wrew0j15d0c5c0zq","object":"import","status":"pending","format":"csv","entity":{"type":"company"},"title":"Second
+        Import","count":20,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:17:26.824Z","updatedAt":"2025-11-23T17:17:26.824Z","uploadUrl":"https://websets-imports.s3.us-west-2.amazonaws.com/cmeh7vs4k0001ffpf6f5hh6eg/01karvgwx8wrew0j15d0c5c0zq.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW37DUQDZE5LUHW4L%2F20251123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251123T171726Z&X-Amz-Expires=3600&X-Amz-Signature=770bc0f7e687c0a16a634af5439e4d23cbee375f0149f8a507f863eb7e0f06ee&X-Amz-SignedHeaders=content-length%3Bhost&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject","uploadValidUntil":"2025-11-23T18:17:26.848Z"}'
+  recorded_at: Sun, 23 Nov 2025 17:17:26 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/websets/v0/imports
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:17:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"ad0-KeD6CVnoRNq5xbuiCI0rBlVBXXg"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=JYpGbC4UxERmRZXbizMcY9bFuqM3vvWo8QrT1kuTFcVriZyTGMKdPrVNBx8%2BqA1A%2Fhxv8%2FuLUOzYMdPYpE49Fmrqjilc8QbVKqS7ILNHld2efQU%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a3251f3bd32c356-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"import_01karvgwx8wrew0j15d0c5c0zq","object":"import","status":"processing","format":"csv","entity":{"type":"company"},"title":"Second
+        Import","count":20,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:17:26.824Z","updatedAt":"2025-11-23T17:17:26.965Z"},{"id":"import_01karvgwk9277bt43bx456k94k","object":"import","status":"processing","format":"csv","entity":{"type":"company"},"title":"First
+        Import","count":10,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:17:26.505Z","updatedAt":"2025-11-23T17:17:26.798Z"},{"id":"import_01kahha4kw05vmvh3egk35qb4k","object":"import","status":"completed","format":"csv","entity":{"type":"company"},"title":"clay-second-act-founders.csv","count":91,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-20T21:04:18.556Z","updatedAt":"2025-11-20T21:04:30.495Z"},{"id":"import_01kahgsdv2qd156ns4xhrt0s58","object":"import","status":"completed","format":"csv","entity":{"type":"company"},"title":"clay-ai-infra-for-creative-work.csv","count":72,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-20T20:55:10.946Z","updatedAt":"2025-11-20T20:55:24.037Z"},{"id":"import_01k9szm2pdkpc73x9kpr3dcrep","object":"import","status":"completed","format":"csv","entity":{"type":"company"},"title":"webset-companies_tech_startups_scientific_engineering_innovations_seed_series_c_notable_investors_founders_with_exits_notable_early_employees_early_corporate_traction_nyc_or_remote.csv","count":5,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-11T17:32:37.965Z","updatedAt":"2025-11-11T17:32:45.796Z"},{"id":"import_01k9rj564gt7pckvbd8xcbfwhg","object":"import","status":"completed","format":"csv","entity":{"type":"person"},"title":"linkedin-visitors.csv","count":95,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-11T04:18:04.048Z","updatedAt":"2025-11-11T04:18:09.561Z"},{"id":"import_01k8bf2n4wxnm1fq9zjyzt3b3n","object":"import","status":"completed","format":"csv","entity":{"type":"person"},"title":"webset-green_2_0_pay_equity_pledge.csv","count":44,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-10-24T15:58:25.948Z","updatedAt":"2025-10-24T15:58:46.297Z"},{"id":"import_01k8bd6p0wfedeqpjhnqv10v3p","object":"import","status":"completed","format":"csv","entity":{"type":"company"},"title":"nonprofit_linkedin_urls.csv","count":49,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-10-24T15:25:40.764Z","updatedAt":"2025-10-24T15:25:52.775Z"}],"hasMore":true,"nextCursor":null}'
+  recorded_at: Sun, 23 Nov 2025 17:17:27 GMT
+recorded_with: VCR 6.3.1

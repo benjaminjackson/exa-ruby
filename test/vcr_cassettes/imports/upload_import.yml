@@ -1,0 +1,122 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/imports
+    body:
+      encoding: UTF-8
+      string: '{"size":54,"count":1,"title":"Integration Test Upload","format":"csv","entity":{"type":"company"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 18:32:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '889'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"379-PkrOc4Q1LvSvO7FPIww7N/YvnB8"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=8%2F%2FZWI0Cl0f3ETcI0MtOX4hGWq8SDq7gzh9hEEQeU%2FyoPqo4Zdr6Ip3MZv70zmsViXnHx%2F1mtm7o65t6h7VmcRgpmFanmmUfN1fRo0uB1okqmEOwig%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a32bf4a0d800f6d-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"import_01karzsjnyg2n6hq7p8nr752d9","object":"import","status":"pending","format":"csv","entity":{"type":"company"},"title":"Integration
+        Test Upload","count":1,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T18:32:05.566Z","updatedAt":"2025-11-23T18:32:05.566Z","uploadUrl":"https://websets-imports.s3.us-west-2.amazonaws.com/cmeh7vs4k0001ffpf6f5hh6eg/01karzsjnyg2n6hq7p8nr752d9.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW37DUQDZE5LUHW4L%2F20251123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251123T183205Z&X-Amz-Expires=3600&X-Amz-Signature=c7bf039f1f9dbd12a6ade46d1ccd26a0f980a3131b3cee06365daf8b0e012f2c&X-Amz-SignedHeaders=content-length%3Bhost&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject","uploadValidUntil":"2025-11-23T19:32:05.592Z"}'
+  recorded_at: Sun, 23 Nov 2025 18:32:05 GMT
+- request:
+    method: put
+    uri: https://websets-imports.s3.us-west-2.amazonaws.com/cmeh7vs4k0001ffpf6f5hh6eg/01karzsjnyg2n6hq7p8nr752d9.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW37DUQDZE5LUHW4L/20251123/us-west-2/s3/aws4_request&X-Amz-Date=20251123T183205Z&X-Amz-Expires=3600&X-Amz-Signature=c7bf039f1f9dbd12a6ade46d1ccd26a0f980a3131b3cee06365daf8b0e012f2c&X-Amz-SignedHeaders=content-length%3Bhost&x-amz-checksum-crc32=AAAAAA==&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject
+    body:
+      encoding: UTF-8
+      string: |
+        company_name,website
+        Test Company,https://example.com
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - text/csv
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - bywGJhpN1+QLcQ9i+FqfXxb/IqQeOKcjbhIjV7qwPB3ysnCKvGIedZwE3ysJgdeEUy+wXWois4k=
+      X-Amz-Request-Id:
+      - GYH3YT82A20KH0FY
+      Date:
+      - Sun, 23 Nov 2025 18:32:07 GMT
+      X-Amz-Server-Side-Encryption:
+      - AES256
+      Etag:
+      - '"779c3a63746a641032badaa9bac1aa0a"'
+      X-Amz-Checksum-Crc64nvme:
+      - Tij3FMCtKbo=
+      X-Amz-Checksum-Type:
+      - FULL_OBJECT
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Sun, 23 Nov 2025 18:32:06 GMT
+recorded_with: VCR 6.3.1

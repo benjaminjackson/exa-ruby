@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/imports
+    body:
+      encoding: UTF-8
+      string: '{"size":2048,"count":25,"title":"Companies with CSV Identifier","format":"csv","entity":{"type":"company"},"csv":{"identifier":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:15:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '896'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"380-5ZCc3t+BQD7EHJ1n7K9qjEvYQDw"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=1c0VOBkeJsPncBHhxhVZX8U649bFtjVMj%2FAM1R095BYLNyDObkN0ivC0xjr76u88FI1u%2Bgc8r%2BbLqVslWeuX%2F2Y5WvPrsHO%2BXtdRsgICXX%2Flkh6e%2Bg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a324f3829214fb2-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"import_01karvdfwdd26rs0s0eyrstkv8","object":"import","status":"pending","format":"csv","entity":{"type":"company"},"title":"Companies
+        with CSV Identifier","count":25,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:15:35.181Z","updatedAt":"2025-11-23T17:15:35.181Z","uploadUrl":"https://websets-imports.s3.us-west-2.amazonaws.com/cmeh7vs4k0001ffpf6f5hh6eg/01karvdfwdd26rs0s0eyrstkv8.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW37DUQDZE5LUHW4L%2F20251123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251123T171535Z&X-Amz-Expires=3600&X-Amz-Signature=d47c8ec2589fe1f5f2514907391bd99d5b44f90ee0f1199db1ff8facbc95f52d&X-Amz-SignedHeaders=content-length%3Bhost&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject","uploadValidUntil":"2025-11-23T18:15:35.228Z"}'
+  recorded_at: Sun, 23 Nov 2025 17:15:35 GMT
+recorded_with: VCR 6.3.1
