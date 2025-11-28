@@ -12,6 +12,8 @@ module Exa
             JSON.pretty_generate(item)
           when "text"
             format_as_text(item)
+          when "toon"
+            Exa::CLI::Base.encode_as_toon(item)
           else
             raise ArgumentError, "Unknown output format: #{output_format}"
           end
@@ -25,6 +27,8 @@ module Exa
             JSON.pretty_generate(items)
           when "text"
             format_collection_as_text(items)
+          when "toon"
+            Exa::CLI::Base.encode_as_toon(items)
           else
             raise ArgumentError, "Unknown output format: #{output_format}"
           end

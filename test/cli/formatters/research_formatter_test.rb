@@ -250,4 +250,32 @@ class ResearchFormatterTest < Minitest::Test
     assert_includes result, "research_789"
     assert_includes result, "COMPLETED"
   end
+
+  def test_format_task_with_toon
+    output = Exa::CLI::Formatters::ResearchFormatter.format_task(@completed_task, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "research_789"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::ResearchFormatter.format_task(@completed_task, "json")
+    assert output.length < json_output.length
+  end
+
+  def test_format_list_with_toon
+    list = Exa::Resources::ResearchList.new(
+      data: [@pending_task, @running_task, @completed_task],
+      has_more: false,
+      next_cursor: nil
+    )
+
+    output = Exa::CLI::Formatters::ResearchFormatter.format_list(list, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "research_123"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::ResearchFormatter.format_list(list, "json")
+    assert output.length < json_output.length
+  end
 end

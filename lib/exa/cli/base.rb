@@ -16,11 +16,11 @@ module Exa
       end
 
       # Resolve and validate output format
-      # Valid formats: json, pretty, text
+      # Valid formats: json, pretty, text, toon
       # Defaults to json
       def self.resolve_output_format(flag_value)
         format = (flag_value || "json").downcase
-        valid_formats = %w[json pretty text]
+        valid_formats = %w[json pretty text toon]
 
         return format if valid_formats.include?(format)
 
@@ -45,6 +45,12 @@ module Exa
         else
           data.to_s
         end
+      end
+
+      # Encode data as TOON format
+      def self.encode_as_toon(data)
+        require "toon" unless defined?(Toon)
+        Toon.encode(data)
       end
     end
   end

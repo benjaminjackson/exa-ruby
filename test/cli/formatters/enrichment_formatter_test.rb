@@ -74,4 +74,33 @@ class EnrichmentFormatterTest < Minitest::Test
     assert_includes output, "completed"
     assert_includes output, "running"
   end
+
+  def test_toon_format_returns_toon_string
+    output = Exa::CLI::Formatters::EnrichmentFormatter.format(@enrichment, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "enr_123"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::EnrichmentFormatter.format(@enrichment, "json")
+    assert output.length < json_output.length
+  end
+
+  def test_format_collection_toon_format_returns_toon_string
+    collection = Exa::Resources::WebsetEnrichmentCollection.new(
+      data: [
+        {"id" => "enr_1", "status" => "completed", "title" => "Size"},
+        {"id" => "enr_2", "status" => "running", "title" => "Industry"}
+      ]
+    )
+
+    output = Exa::CLI::Formatters::EnrichmentFormatter.format_collection(collection, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "enr_1"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::EnrichmentFormatter.format_collection(collection, "json")
+    assert output.length < json_output.length
+  end
 end

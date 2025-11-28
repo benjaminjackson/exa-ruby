@@ -14,6 +14,8 @@ module Exa
             format_pretty(result)
           when "text"
             format_text(result)
+          when "toon"
+            Exa::CLI::Base.encode_as_toon(result.to_h)
           else
             JSON.pretty_generate(result.to_h)
           end

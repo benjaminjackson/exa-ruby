@@ -10,6 +10,8 @@ module Exa
             format_task_pretty(task, show_events: show_events)
           when "text"
             format_task_text(task, show_events: show_events)
+          when "toon"
+            Exa::CLI::Base.encode_as_toon(task.to_h)
           else
             JSON.pretty_generate(task.to_h)
           end
@@ -23,6 +25,8 @@ module Exa
             format_list_pretty(list)
           when "text"
             format_list_text(list)
+          when "toon"
+            Exa::CLI::Base.encode_as_toon(list.to_h)
           else
             JSON.pretty_generate(list.to_h)
           end
