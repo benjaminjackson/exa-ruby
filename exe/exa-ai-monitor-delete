@@ -1,0 +1,101 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+# Parse arguments
+monitor_id = nil
+api_key = nil
+output_format = "json"
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--api-key"
+    api_key = args.shift
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa-ai monitor-delete <monitor_id> [OPTIONS]
+
+      Delete a monitor
+
+      Arguments:
+        monitor_id             ID of the monitor to delete (required)
+
+      Options:
+        --api-key KEY          Exa API key (or set EXA_API_KEY env var)
+        --output-format FMT    Output format: json, pretty, or text (default: json)
+        --help, -h             Show this help message
+
+      Examples:
+        exa-ai monitor-delete mon_abc123
+        exa-ai monitor-delete mon_abc123 --output-format pretty
+    HELP
+    exit 0
+  else
+    # First positional argument is monitor_id
+    if monitor_id.nil?
+      monitor_id = arg
+    else
+      $stderr.puts "Unknown option: #{arg}"
+      exit 1
+    end
+  end
+end
+
+# Validate
+if monitor_id.nil?
+  $stderr.puts "Error: monitor_id argument is required"
+  $stderr.puts "Usage: exa-ai monitor-delete <monitor_id> [OPTIONS]"
+  $stderr.puts "Try 'exa-ai monitor-delete --help' for more information"
+  exit 1
+end
+
+begin
+  # Resolve API key and format
+  api_key = Exa::CLI::Base.resolve_api_key(api_key)
+  output_format = Exa::CLI::Base.resolve_output_format(output_format)
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Delete monitor
+  result = client.delete_monitor(monitor_id)
+
+  # Format and output
+  output = case output_format
+           when "json"
+             JSON.generate(result)
+           when "pretty"
+             JSON.pretty_generate(result)
+           when "text"
+             "Monitor #{monitor_id} deleted successfully"
+           else
+             raise ArgumentError, "Unknown output format: #{output_format}"
+           end
+  puts output
+
+rescue Exa::NotFound => e
+  $stderr.puts "Monitor not found: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

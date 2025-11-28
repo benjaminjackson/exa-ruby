@@ -1,0 +1,223 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+VALID_BEHAVIOR_TYPES = %w[search refresh].freeze
+
+# Recursively convert hash keys from strings to symbols
+def deep_symbolize_keys(obj)
+  case obj
+  when Hash
+    obj.each_with_object({}) do |(key, value), result|
+      result[key.to_sym] = deep_symbolize_keys(value)
+    end
+  when Array
+    obj.map { |item| deep_symbolize_keys(item) }
+  else
+    obj
+  end
+end
+
+# Parse JSON string or load from file (supports @file.json syntax)
+def parse_json_or_file(value)
+  json_data = if value.start_with?("@")
+                file_path = value[1..]
+                JSON.parse(File.read(file_path))
+              else
+                JSON.parse(value)
+              end
+  deep_symbolize_keys(json_data)
+rescue JSON::ParserError => e
+  $stderr.puts "Error: Invalid JSON: #{e.message}"
+  exit 1
+rescue Errno::ENOENT => e
+  $stderr.puts "Error: File not found: #{e.message}"
+  exit 1
+end
+
+# Parse command-line arguments
+def parse_args(argv)
+  # Check for help first
+  if argv.include?("--help") || argv.include?("-h")
+    puts <<~HELP
+      Usage: exa-ai monitor-create <webset_id> --cron EXPR --timezone TZ --behavior-type TYPE [OPTIONS]
+
+      Create a new monitor to automate webset updates on a schedule
+
+      Required:
+        <webset_id>                Webset ID
+        --cron EXPR                Cron expression (e.g., "0 0 * * *" for daily at midnight)
+        --timezone TZ              Timezone (e.g., "America/New_York")
+        --behavior-type TYPE       One of: #{VALID_BEHAVIOR_TYPES.join(', ')}
+
+      For search behavior:
+        --query TEXT               Search query (required for search behavior)
+        --count N                  Number of results (optional)
+        --behavior-mode MODE       Mode: override or append (optional, default: append)
+
+      Other options:
+        --api-key KEY              Exa API key (or set EXA_API_KEY env var)
+        --output-format FMT        Output format: json, pretty, or text (default: json)
+        --help, -h                 Show this help message
+
+      Examples:
+        # Create a search monitor
+        exa-ai monitor-create ws_123 --cron "0 0 * * *" --timezone "America/New_York" \\
+          --behavior-type search --query "AI startups in San Francisco" --count 50
+
+        # Create a refresh monitor
+        exa-ai monitor-create ws_123 --cron "0 */6 * * *" --timezone "UTC" \\
+          --behavior-type refresh
+    HELP
+    exit 0
+  end
+
+  args = {
+    output_format: "json",
+    api_key: nil
+  }
+
+  # First, check for positional argument (webset_id)
+  if argv.empty? || argv[0].start_with?("--")
+    return args
+  end
+
+  args[:webset_id] = argv[0]
+  i = 1
+
+  while i < argv.length
+    arg = argv[i]
+    case arg
+    when "--cron"
+      args[:cron] = argv[i + 1]
+      i += 2
+    when "--timezone"
+      args[:timezone] = argv[i + 1]
+      i += 2
+    when "--behavior-type"
+      args[:behavior_type] = argv[i + 1]
+      i += 2
+    when "--query"
+      args[:query] = argv[i + 1]
+      i += 2
+    when "--count"
+      args[:count] = argv[i + 1]&.to_i
+      i += 2
+    when "--behavior-mode"
+      args[:behavior_mode] = argv[i + 1]
+      i += 2
+    when "--api-key"
+      args[:api_key] = argv[i + 1]
+      i += 2
+    when "--output-format"
+      args[:output_format] = argv[i + 1]
+      i += 2
+    else
+      $stderr.puts "Unknown option: #{arg}"
+      exit 1
+    end
+  end
+
+  args
+end
+
+# Validate required arguments
+def validate_args(args)
+  unless args[:webset_id]
+    $stderr.puts "Error: webset_id argument is required"
+    $stderr.puts "Usage: exa-ai monitor-create <webset_id> --cron EXPR --timezone TZ --behavior-type TYPE [OPTIONS]"
+    $stderr.puts "Try 'exa-ai monitor-create --help' for more information"
+    exit 1
+  end
+
+  unless args[:cron]
+    $stderr.puts "Error: --cron is required"
+    $stderr.puts "Try 'exa-ai monitor-create --help' for more information"
+    exit 1
+  end
+
+  unless args[:timezone]
+    $stderr.puts "Error: --timezone is required"
+    $stderr.puts "Try 'exa-ai monitor-create --help' for more information"
+    exit 1
+  end
+
+  unless args[:behavior_type]
+    $stderr.puts "Error: --behavior-type is required"
+    $stderr.puts "Try 'exa-ai monitor-create --help' for more information"
+    exit 1
+  end
+
+  unless VALID_BEHAVIOR_TYPES.include?(args[:behavior_type])
+    $stderr.puts "Error: --behavior-type must be one of: #{VALID_BEHAVIOR_TYPES.join(', ')}"
+    exit 1
+  end
+
+  # Validate search behavior requirements
+  if args[:behavior_type] == "search" && !args[:query]
+    $stderr.puts "Error: --query is required for search behavior"
+    $stderr.puts "Try 'exa-ai monitor-create --help' for more information"
+    exit 1
+  end
+end
+
+# Main execution
+args = parse_args(ARGV)
+validate_args(args)
+
+begin
+  # Resolve API key and format
+  api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
+  output_format = Exa::CLI::Base.resolve_output_format(args[:output_format])
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Build cadence object
+  cadence = {
+    cron: args[:cron],
+    timezone: args[:timezone]
+  }
+
+  # Build behavior object
+  behavior = {type: args[:behavior_type]}
+  if args[:behavior_type] == "search"
+    behavior[:query] = args[:query]
+    behavior[:count] = args[:count] if args[:count]
+    behavior[:mode] = args[:behavior_mode] || "append"
+  end
+
+  # Create monitor
+  monitor = client.create_monitor(
+    webset_id: args[:webset_id],
+    cadence: cadence,
+    behavior: behavior
+  )
+
+  # Format and output
+  output = Exa::CLI::Formatters::MonitorFormatter.format(monitor, output_format)
+  puts output
+
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

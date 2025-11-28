@@ -1,0 +1,90 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+# Parse arguments
+limit = nil
+cursor = nil
+api_key = nil
+output_format = "json"
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--limit"
+    limit = args.shift&.to_i
+  when "--cursor"
+    cursor = args.shift
+  when "--api-key"
+    api_key = args.shift
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa-ai monitor-list [OPTIONS]
+
+      List all monitors with optional pagination
+
+      Options:
+        --limit N              Maximum number of monitors to return (default: 25, max: 100)
+        --cursor CURSOR        Cursor for pagination (use nextCursor from previous response)
+        --api-key KEY          Exa API key (or set EXA_API_KEY env var)
+        --output-format FMT    Output format: json, pretty, or text (default: json)
+        --help, -h             Show this help message
+
+      Examples:
+        exa-ai monitor-list
+        exa-ai monitor-list --limit 10
+        exa-ai monitor-list --limit 5 --cursor "abc123"
+        exa-ai monitor-list --output-format pretty
+    HELP
+    exit 0
+  else
+    $stderr.puts "Unknown option: #{arg}"
+    exit 1
+  end
+end
+
+begin
+  # Resolve API key and format
+  api_key = Exa::CLI::Base.resolve_api_key(api_key)
+  output_format = Exa::CLI::Base.resolve_output_format(output_format)
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # List monitors with optional pagination
+  list_params = {}
+  list_params[:limit] = limit if limit
+  list_params[:cursor] = cursor if cursor
+
+  collection = client.list_monitors(**list_params)
+
+  # Format and output
+  output = Exa::CLI::Formatters::MonitorFormatter.format_collection(collection, output_format)
+  puts output
+
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

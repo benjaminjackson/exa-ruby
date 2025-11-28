@@ -37,7 +37,14 @@ module ExaCLI
     "import-list" => "List imports",
     "import-get" => "Get import details",
     "import-update" => "Update an import",
-    "import-delete" => "Delete an import"
+    "import-delete" => "Delete an import",
+    "monitor-create" => "Create a webset monitor",
+    "monitor-get" => "Get monitor details",
+    "monitor-list" => "List monitors",
+    "monitor-update" => "Update a monitor",
+    "monitor-delete" => "Delete a monitor",
+    "monitor-runs-list" => "List monitor runs",
+    "monitor-runs-get" => "Get monitor run details"
   }.freeze
 
   def self.run
@@ -113,6 +120,20 @@ module ExaCLI
       exec File.expand_path("../exa-ai-import-update", __FILE__), *ARGV[1..]
     when "import-delete"
       exec File.expand_path("../exa-ai-import-delete", __FILE__), *ARGV[1..]
+    when "monitor-create"
+      exec File.expand_path("../exa-ai-monitor-create", __FILE__), *ARGV[1..]
+    when "monitor-get"
+      exec File.expand_path("../exa-ai-monitor-get", __FILE__), *ARGV[1..]
+    when "monitor-list"
+      exec File.expand_path("../exa-ai-monitor-list", __FILE__), *ARGV[1..]
+    when "monitor-update"
+      exec File.expand_path("../exa-ai-monitor-update", __FILE__), *ARGV[1..]
+    when "monitor-delete"
+      exec File.expand_path("../exa-ai-monitor-delete", __FILE__), *ARGV[1..]
+    when "monitor-runs-list"
+      exec File.expand_path("../exa-ai-monitor-runs-list", __FILE__), *ARGV[1..]
+    when "monitor-runs-get"
+      exec File.expand_path("../exa-ai-monitor-runs-get", __FILE__), *ARGV[1..]
     else
       print_error_for_command(ARGV[0])
       exit 1
@@ -175,6 +196,16 @@ module ExaCLI
       ["import-get", "Get import details"],
       ["import-update", "Update an import"],
       ["import-delete", "Delete an import"]
+    ])
+
+    print_command_section("Webset Monitors", [
+      ["monitor-create", "Create a webset monitor"],
+      ["monitor-get", "Get monitor details"],
+      ["monitor-list", "List monitors"],
+      ["monitor-update", "Update a monitor"],
+      ["monitor-delete", "Delete a monitor"],
+      ["monitor-runs-list", "List monitor runs"],
+      ["monitor-runs-get", "Get monitor run details"]
     ])
 
     puts "Global Options:"

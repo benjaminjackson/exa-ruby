@@ -803,4 +803,208 @@ class ClientTest < Minitest::Test
     assert_instance_of Exa::Resources::Import, result
     assert_equal "imp_123", result.id
   end
+
+  def test_create_monitor_returns_monitor
+    stub_request(:post, "https://api.exa.ai/websets/v0/monitors")
+      .with(body: hash_including(
+        websetId: "ws_123",
+        cadence: hash_including(cron: "0 9 * * *", timezone: "America/Los_Angeles"),
+        behavior: hash_including(type: "search", query: "AI startups")
+      ))
+      .to_return(
+        status: 201,
+        body: {
+          id: "mon_abc",
+          object: "monitor",
+          status: "active",
+          websetId: "ws_123",
+          cadence: {
+            cron: "0 9 * * *",
+            timezone: "America/Los_Angeles"
+          },
+          behavior: {
+            type: "search",
+            query: "AI startups",
+            count: 10,
+            mode: "append"
+          },
+          createdAt: "2023-11-07T05:31:56Z",
+          updatedAt: "2023-11-07T05:31:56Z"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.create_monitor(
+      webset_id: "ws_123",
+      cadence: { cron: "0 9 * * *", timezone: "America/Los_Angeles" },
+      behavior: { type: "search", query: "AI startups" }
+    )
+
+    assert_instance_of Exa::Resources::Monitor, result
+    assert_equal "mon_abc", result.id
+    assert_equal "active", result.status
+  end
+
+  def test_list_monitors_returns_monitor_collection
+    stub_request(:get, "https://api.exa.ai/websets/v0/monitors")
+      .to_return(
+        status: 200,
+        body: {
+          data: [
+            { id: "mon_123", object: "monitor", status: "active" }
+          ],
+          hasMore: false,
+          nextCursor: nil
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.list_monitors
+
+    assert_instance_of Exa::Resources::MonitorCollection, result
+    assert_equal 1, result.data.length
+    assert_equal false, result.has_more
+  end
+
+  def test_get_monitor_returns_monitor
+    stub_request(:get, "https://api.exa.ai/websets/v0/monitors/mon_abc")
+      .to_return(
+        status: 200,
+        body: {
+          id: "mon_abc",
+          object: "monitor",
+          status: "active",
+          websetId: "ws_123",
+          cadence: {
+            cron: "0 9 * * *",
+            timezone: "America/Los_Angeles"
+          },
+          behavior: {
+            type: "search",
+            query: "AI startups"
+          },
+          createdAt: "2023-11-07T05:31:56Z",
+          updatedAt: "2023-11-07T05:31:56Z"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.get_monitor(id: "mon_abc")
+
+    assert_instance_of Exa::Resources::Monitor, result
+    assert_equal "mon_abc", result.id
+    assert_equal "active", result.status
+  end
+
+  def test_update_monitor_returns_updated_monitor
+    stub_request(:patch, "https://api.exa.ai/websets/v0/monitors/mon_abc")
+      .with(body: hash_including(
+        cadence: hash_including(cron: "0 10 * * *")
+      ))
+      .to_return(
+        status: 200,
+        body: {
+          id: "mon_abc",
+          object: "monitor",
+          status: "active",
+          websetId: "ws_123",
+          cadence: {
+            cron: "0 10 * * *",
+            timezone: "America/Los_Angeles"
+          },
+          behavior: {
+            type: "search",
+            query: "AI startups"
+          },
+          createdAt: "2023-11-07T05:31:56Z",
+          updatedAt: "2023-11-07T06:00:00Z"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.update_monitor(
+      id: "mon_abc",
+      cadence: { cron: "0 10 * * *" }
+    )
+
+    assert_instance_of Exa::Resources::Monitor, result
+    assert_equal "mon_abc", result.id
+  end
+
+  def test_delete_monitor_returns_monitor
+    stub_request(:delete, "https://api.exa.ai/websets/v0/monitors/mon_abc")
+      .to_return(
+        status: 200,
+        body: {
+          id: "mon_abc",
+          object: "monitor",
+          status: "enabled",
+          websetId: "ws_123",
+          cadence: { cron: "0 9 * * MON", timezone: "America/New_York" },
+          behavior: {
+            type: "search",
+            config: { query: "test", count: 10, behavior: "append" }
+          },
+          createdAt: "2024-01-15T10:30:00Z",
+          updatedAt: "2024-01-15T10:30:00Z"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.delete_monitor(id: "mon_abc")
+
+    assert_instance_of Exa::Resources::Monitor, result
+    assert_equal "mon_abc", result.id
+  end
+
+  def test_list_monitor_runs_returns_monitor_run_collection
+    stub_request(:get, "https://api.exa.ai/websets/v0/monitors/mon_abc/runs")
+      .to_return(
+        status: 200,
+        body: {
+          data: [
+            { id: "run_123", object: "monitor_run", status: "completed" }
+          ],
+          hasMore: false,
+          nextCursor: nil
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.list_monitor_runs(monitor_id: "mon_abc")
+
+    assert_instance_of Exa::Resources::MonitorRunCollection, result
+    assert_equal 1, result.data.length
+    assert_equal false, result.has_more
+  end
+
+  def test_get_monitor_run_returns_monitor_run
+    stub_request(:get, "https://api.exa.ai/websets/v0/monitors/mon_abc/runs/run_123")
+      .to_return(
+        status: 200,
+        body: {
+          id: "run_123",
+          object: "monitor_run",
+          status: "completed",
+          monitorId: "mon_abc",
+          createdAt: "2023-11-07T05:31:56Z",
+          updatedAt: "2023-11-07T05:32:00Z",
+          completedAt: "2023-11-07T05:32:00Z"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.get_monitor_run(monitor_id: "mon_abc", id: "run_123")
+
+    assert_instance_of Exa::Resources::MonitorRun, result
+    assert_equal "run_123", result.id
+    assert_equal "completed", result.status
+  end
 end
