@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2025-11-28
+
+### Added
+
+#### Webset Imports
+- **Import API operations** - Full support for creating and managing webset imports from CSV files
+- **File upload service** - Service for uploading CSV files to create websets from external data
+- **Import resource objects** - Resource objects for handling import responses and status
+- **Import CLI commands** - Complete CLI interface for import operations (create, list, get)
+- **Create websets from imports** - Direct webset creation from import results
+
+#### Webset Monitors
+- **Monitor API operations** - Comprehensive support for creating, retrieving, listing, updating, and deleting webset monitors
+- **Monitor resource objects** - Resources for handling monitor configurations and schedules
+- **Monitor CLI commands** - Full CLI suite for monitor operations (create, get, list, update, delete)
+- **Automated webset updates** - Schedule periodic searches to keep websets up-to-date
+
+#### CLI Enhancements
+- **TOON output format** - New output format option for CLI commands supporting TOON serialization
+
+### Changed
+- **Entity type validation** - Refactored and consolidated entity type validation logic across webset operations
+
 ## [0.5.0] - 2025-11-26
 
 ### Added
