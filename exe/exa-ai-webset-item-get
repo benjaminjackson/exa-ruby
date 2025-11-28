@@ -80,6 +80,7 @@ begin
   # Format and output
   output = Exa::CLI::Formatters::WebsetItemFormatter.format(item, output_format)
   puts output
+  $stdout.flush
 
 rescue Exa::NotFound => e
   $stderr.puts "Item not found: #{e.message}"

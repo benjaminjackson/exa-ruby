@@ -24,7 +24,7 @@ while args.any?
     output_format = args.shift
   when "--help", "-h"
     puts <<~HELP
-      Usage: exa-api research-get <research_id> [options]
+      Usage: exa-ai research-get <research_id> [options]
 
       Get the status and results of a research task.
 
@@ -39,10 +39,10 @@ while args.any?
         --help, -h              Show this help message
 
       Examples:
-        exa-api research-get research_123
-        exa-api research-get research_123 --events
-        exa-api research-get research_123 --stream
-        exa-api research-get research_123 --output-format pretty
+        exa-ai research-get research_123
+        exa-ai research-get research_123 --events
+        exa-ai research-get research_123 --stream
+        exa-ai research-get research_123 --output-format pretty
     HELP
     exit 0
   else
@@ -59,8 +59,8 @@ end
 # Validate required arguments
 if research_id.nil?
   warn "Error: Research ID argument required"
-  warn "Usage: exa-api research-get <research_id> [options]"
-  warn "Try 'exa-api research-get --help' for more information"
+  warn "Usage: exa-ai research-get <research_id> [options]"
+  warn "Try 'exa-ai research-get --help' for more information"
   exit 1
 end
 

@@ -1,0 +1,151 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/imports
+    body:
+      encoding: UTF-8
+      string: '{"size":1024,"count":10,"title":"Import to Delete","format":"csv","entity":{"type":"company"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:15:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '883'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"373-ncAc/3OCZATpzufzb9umDU4Pi0s"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EgkYbYBFQNboU1xPwn8oyBTU305D9B%2F%2FBP%2FMP%2Bf32S6vDVBqYWGEdnY5w4U7M76YPNeKOUrPy3IKiUDr%2BOIjbfVKLWcISQkmTbeJZVGv6vcr7r7TXw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a324f1abeaa6e2f-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"import_01karvdbc4pepaj1kxfxcdkxr1","object":"import","status":"pending","format":"csv","entity":{"type":"company"},"title":"Import
+        to Delete","count":10,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:15:30.564Z","updatedAt":"2025-11-23T17:15:30.564Z","uploadUrl":"https://websets-imports.s3.us-west-2.amazonaws.com/cmeh7vs4k0001ffpf6f5hh6eg/01karvdbc4pepaj1kxfxcdkxr1.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW37DUQDZE5LUHW4L%2F20251123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251123T171530Z&X-Amz-Expires=3600&X-Amz-Signature=268e04f91ec8130d7cfb12725209e7b4e8c3068aa5d2542130f6f2d7025a7697&X-Amz-SignedHeaders=content-length%3Bhost&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject","uploadValidUntil":"2025-11-23T18:15:30.611Z"}'
+  recorded_at: Sun, 23 Nov 2025 17:15:30 GMT
+- request:
+    method: delete
+    uri: https://api.exa.ai/websets/v0/imports/import_01karvdbc4pepaj1kxfxcdkxr1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:15:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"138-NfSCMVyW4cAorSytCnz/U3w5EVk"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2FKFiO%2Bw%2BUY2wQcZbEb31zv48c4xVwAtAiYSMlzJ4xKyFSsZOOjaavP8BcS2zuFds8JimckRloax467Y5rJOOM5PNYiiP6dhonskJWDoRmcpg1baU3Q%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a324f1d7fe0c459-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"import_01karvdbc4pepaj1kxfxcdkxr1","object":"import","status":"processing","format":"csv","entity":{"type":"company"},"title":"Import
+        to Delete","count":10,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:15:30.564Z","updatedAt":"2025-11-23T17:15:30.848Z"}'
+  recorded_at: Sun, 23 Nov 2025 17:15:30 GMT
+recorded_with: VCR 6.3.1

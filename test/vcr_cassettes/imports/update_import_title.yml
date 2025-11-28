@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/imports
+    body:
+      encoding: UTF-8
+      string: '{"size":1024,"count":10,"title":"Original Title","format":"csv","entity":{"type":"company"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:15:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '881'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"371-n8VivwKbkjN5gG5yUsn6oPxs708"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=E5jdVEmLQRiSStzZGG64V%2FXT%2BpMCjKGec%2BXb%2BWdtzMdviMC0IPpscVnYRimmMxU1Kmmz3dy%2FyMMnP%2Bay685N%2Fy0GgE7wgzcYKY0y2756UNe6LKF7tQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a324f141d3eb547-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"import_01karvda9m13vsxqvs3kdfvdfa","object":"import","status":"pending","format":"csv","entity":{"type":"company"},"title":"Original
+        Title","count":10,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:15:29.460Z","updatedAt":"2025-11-23T17:15:29.460Z","uploadUrl":"https://websets-imports.s3.us-west-2.amazonaws.com/cmeh7vs4k0001ffpf6f5hh6eg/01karvda9m13vsxqvs3kdfvdfa.csv?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW37DUQDZE5LUHW4L%2F20251123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251123T171529Z&X-Amz-Expires=3600&X-Amz-Signature=194b3fefe3c8e500ce70e38d2b21f670947009fa0b1fbd29253adc7f446b8f17&X-Amz-SignedHeaders=content-length%3Bhost&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject","uploadValidUntil":"2025-11-23T18:15:29.507Z"}'
+  recorded_at: Sun, 23 Nov 2025 17:15:29 GMT
+- request:
+    method: patch
+    uri: https://api.exa.ai/websets/v0/imports/import_01karvda9m13vsxqvs3kdfvdfa
+    body:
+      encoding: UTF-8
+      string: '{"title":"Updated Title"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:15:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"135-2014y49tjocFV01oL8iEiwnRNHU"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=SoxJeXNmhmPtnUNEKVYaz3v08cdw4V2de7nd6CNuK3qOHQGXto4deLNU3vZbMrjfWI6UWTbllkwOWQYG04xYC50g1%2FsIb4dLCxaAWZ8XZnWZ1yRl1w%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a324f16b9b79bb4-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"import_01karvda9m13vsxqvs3kdfvdfa","object":"import","status":"processing","format":"csv","entity":{"type":"company"},"title":"Updated
+        Title","count":10,"metadata":{},"failedReason":null,"failedMessage":null,"failedAt":null,"createdAt":"2025-11-23T17:15:29.460Z","updatedAt":"2025-11-23T17:15:29.821Z"}'
+  recorded_at: Sun, 23 Nov 2025 17:15:29 GMT
+recorded_with: VCR 6.3.1

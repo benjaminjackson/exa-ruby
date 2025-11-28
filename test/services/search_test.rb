@@ -11,6 +11,36 @@ class SearchTest < Minitest::Test
     assert_instance_of Exa::Services::Search, service
   end
 
+  def test_sets_default_search_type_to_fast
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          type: "fast"
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(@connection, query: "test")
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_raises_error_on_invalid_search_type
+    assert_raises(ArgumentError) do
+      Exa::Services::Search.new(@connection, query: "test", type: "neural")
+    end
+
+    assert_raises(ArgumentError) do
+      Exa::Services::Search.new(@connection, query: "test", type: "invalid")
+    end
+  end
+
   def test_call_posts_to_search_endpoint
     stub_request(:post, "https://api.exa.ai/search")
       .with(body: hash_including(query: "ruby programming"))
@@ -35,7 +65,7 @@ class SearchTest < Minitest::Test
             { title: "Test Result", url: "https://example.com", score: 0.95 }
           ],
           requestId: "abc123",
-          resolvedSearchType: "neural"
+          resolvedSearchType: "fast"
         }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
@@ -46,7 +76,7 @@ class SearchTest < Minitest::Test
     assert_instance_of Exa::Resources::SearchResult, result
     assert_equal 1, result.results.length
     assert_equal "abc123", result.request_id
-    assert_equal "neural", result.resolved_search_type
+    assert_equal "fast", result.resolved_search_type
   end
 
   def test_call_raises_unauthorized_on_401
@@ -84,7 +114,7 @@ class SearchTest < Minitest::Test
       .with(
         body: hash_including(
           query: "AI research",
-          type: "neural",
+          type: "deep",
           numResults: 20,
           category: "research paper"
         )
@@ -98,7 +128,7 @@ class SearchTest < Minitest::Test
     service = Exa::Services::Search.new(
       @connection,
       query: "AI research",
-      type: "neural",
+      type: "deep",
       numResults: 20,
       category: "research paper"
     )

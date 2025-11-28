@@ -28,7 +28,7 @@ client = Exa::Client.new(api_key: "your-api-key")
 
 ## Search
 
-Search the web using neural or keyword search.
+Search the web using fast or deep search.
 
 ### Basic Search
 
@@ -46,7 +46,7 @@ end
 ```ruby
 results = client.search("AI",
   num_results: 10,
-  type: "neural",           # neural, keyword, or auto (default)
+  type: "deep",           # fast, deep, keyword, or auto (default: fast)
   include_domains: ["arxiv.org", "github.com"],
   exclude_domains: ["example.com"]
 )

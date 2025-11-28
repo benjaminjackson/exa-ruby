@@ -43,7 +43,7 @@ end
 def print_help
   puts "Exa Context - Get code context from repositories"
   puts ""
-  puts "Usage: exa-api context <query> [options]"
+  puts "Usage: exa-ai context <query> [options]"
   puts ""
   puts "Arguments:"
   puts "  query                  Search query for code context (required)"
@@ -55,9 +55,9 @@ def print_help
   puts "  --help, -h             Show this help message"
   puts ""
   puts "Examples:"
-  puts "  exa-api context 'React hooks'"
-  puts "  exa-api context 'authentication with JWT in Ruby' --tokens-num 5000"
-  puts "  exa-api context 'React hooks' --output-format text"
+  puts "  exa-ai context 'React hooks'"
+  puts "  exa-ai context 'authentication with JWT in Ruby' --tokens-num 5000"
+  puts "  exa-ai context 'React hooks' --output-format text"
 end
 
 begin
@@ -68,7 +68,7 @@ begin
   unless options[:query]
     puts "Error: Query argument required"
     puts ""
-    puts "Run 'exa-api context --help' for usage information."
+    puts "Run 'exa-ai context --help' for usage information."
     exit 1
   end
 
@@ -91,6 +91,7 @@ begin
   # Format and output
   output = Exa::CLI::Formatters::ContextFormatter.format(result, output_format)
   puts output
+  $stdout.flush
 rescue Exa::Error => e
   puts "Error: #{e.message}"
   exit 1

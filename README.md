@@ -128,6 +128,15 @@ exa-ai enrichment-get WEBSET_ID ENRICHMENT_ID
 exa-ai enrichment-update WEBSET_ID ENRICHMENT_ID --description "Updated description"
 exa-ai enrichment-delete WEBSET_ID ENRICHMENT_ID --force
 exa-ai enrichment-cancel WEBSET_ID ENRICHMENT_ID
+
+# Webset Imports
+exa-ai webset-import-create companies.csv --count 100 --title "My Companies" --format csv --entity-type company
+exa-ai webset-import-create data.csv --count 50 --title "Tech Startups" --format csv --entity-type company --csv-identifier 0
+exa-ai webset-import-create import.csv --count 100 --title "Import" --format csv --entity-type company --metadata '{"source":"crm"}' --quiet
+exa-ai webset-import-list
+exa-ai webset-import-get IMPORT_ID
+exa-ai webset-import-update IMPORT_ID --title "Updated Title"
+exa-ai webset-import-delete IMPORT_ID
 ```
 
 ## Features
@@ -150,6 +159,7 @@ The gem provides complete access to Exa's API endpoints:
 - **Webset Searches** — Run searches within websets and manage search tasks
 - **Webset Items** — List, retrieve, and manage individual items in websets
 - **Enrichments** — Create and manage AI-powered data enrichment tasks on websets
+- **Imports** — Upload CSV files to import external data into websets
 
 ## Error Handling
 

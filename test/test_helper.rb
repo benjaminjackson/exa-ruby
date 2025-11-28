@@ -110,6 +110,7 @@ module WebsetsCleanupHelper
     @created_websets = []
     @created_searches = []
     @created_enrichments = []
+    @created_imports = []
   end
 
   def teardown
@@ -135,6 +136,12 @@ module WebsetsCleanupHelper
     enrichment_id
   end
 
+  # Track a created import for cleanup
+  def track_import(import_id)
+    @created_imports << import_id
+    import_id
+  end
+
   private
 
   # Clean up all tracked resources in the correct dependency order
@@ -147,6 +154,9 @@ module WebsetsCleanupHelper
 
     # Then clean up searches (they also depend on websets)
     cleanup_searches
+
+    # Clean up imports (independent resources)
+    cleanup_imports
 
     # Finally clean up websets
     cleanup_websets
@@ -169,6 +179,14 @@ module WebsetsCleanupHelper
   def cleanup_searches
     @created_searches.each do |webset_id, search_id|
       delete_search(webset_id, search_id)
+    rescue => e
+      # Ignore errors during cleanup
+    end
+  end
+
+  def cleanup_imports
+    @created_imports.each do |import_id|
+      delete_import(import_id)
     rescue => e
       # Ignore errors during cleanup
     end
@@ -207,6 +225,15 @@ module WebsetsCleanupHelper
       run_cli_command("bundle exec exe/exa-ai webset-delete #{webset_id} --force")
     else
       get_client.delete_webset(webset_id)
+    end
+  end
+
+  # Delete an import - supports both client and CLI approaches
+  def delete_import(import_id)
+    if use_cli_cleanup?
+      run_cli_command("bundle exec exe/exa-ai webset-import-delete #{import_id}")
+    else
+      get_client.delete_import(import_id)
     end
   end
 

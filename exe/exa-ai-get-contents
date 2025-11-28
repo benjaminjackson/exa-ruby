@@ -164,7 +164,7 @@ end
 
 def print_help
   puts <<~HELP
-    Usage: exa-api get-contents <urls> [options]
+    Usage: exa-ai get-contents <urls> [options]
 
     Retrieve full page contents from URLs
 
@@ -203,12 +203,12 @@ def print_help
         --help, -h                   Show this help message
 
     Examples:
-      exa-api get-contents 'https://example.com'
-      exa-api get-contents 'https://example.com' --text
-      exa-api get-contents 'https://example.com' --text --text-max-characters 3000 --include-html-tags
-      exa-api get-contents 'url1,url2' --summary --summary-query "Be terse"
-      exa-api get-contents 'https://example.com' --subpages 1 --subpage-target about
-      exa-api get-contents 'https://example.com' --links 5 --image-links 10
+      exa-ai get-contents 'https://example.com'
+      exa-ai get-contents 'https://example.com' --text
+      exa-ai get-contents 'https://example.com' --text --text-max-characters 3000 --include-html-tags
+      exa-ai get-contents 'url1,url2' --summary --summary-query "Be terse"
+      exa-ai get-contents 'https://example.com' --subpages 1 --subpage-target about
+      exa-ai get-contents 'https://example.com' --links 5 --image-links 10
   HELP
 end
 
@@ -220,7 +220,7 @@ begin
   if options[:ids].empty?
     $stderr.puts "Error: URLs argument required"
     $stderr.puts ""
-    $stderr.puts "Run 'exa-api get-contents --help' for usage information."
+    $stderr.puts "Run 'exa-ai get-contents --help' for usage information."
     exit 1
   end
 
@@ -243,6 +243,7 @@ begin
   # Format and output
   output = Exa::CLI::Formatters::ContentsFormatter.format(result, output_format)
   puts output
+  $stdout.flush
 rescue Exa::ConfigurationError => e
   $stderr.puts "Configuration error: #{e.message}"
   exit 1

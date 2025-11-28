@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/imports
+    body:
+      encoding: UTF-8
+      string: '{"size":1024,"count":10,"title":"Should Fail","format":"csv","entity":{"type":"company"}}'
+    headers:
+      X-Api-Key:
+      - invalid_api_key
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 23 Nov 2025 17:17:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '86'
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"56-Md1xk5Zg1VVE1uJMKngEHaoxD3s"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=U0mdsoVc8Uht60rVzF8qYXAJEXMAQ4xsJbTUkGHF7P20rotMpyI358kuY6TfrzfJhmCm4dGmXLuEvvckvYzLe70ua7DVHwCK%2F63Wt21Eljy%2BQ9Cxaw%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a3251e529153d85-EWR
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"5d33e4235eb5b3a05b7e4cb192548d2f","error":"x-api-key
+        header is invalid"}'
+  recorded_at: Sun, 23 Nov 2025 17:17:24 GMT
+recorded_with: VCR 6.3.1

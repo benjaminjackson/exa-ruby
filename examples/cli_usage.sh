@@ -23,7 +23,7 @@ exa-ai search "tutorials" \
   --num-results 10
 
 exa-ai search "Python" \
-  --type neural \
+  --type deep \
   --exclude-domains "old-blog.com"
 
 echo ""

@@ -23,8 +23,8 @@ class SearchResultTest < Minitest::Test
       { "title" => "Test Result", "url" => "https://example.com", "score" => 0.95 }
     ]
     request_id = "abc123"
-    resolved_search_type = "neural"
-    search_type = "auto"
+    resolved_search_type = "fast"
+    search_type = "fast"
     context = "This is a context string"
     cost_dollars = { "total" => 0.005 }
 
@@ -100,8 +100,8 @@ class SearchResultTest < Minitest::Test
     # Arrange
     results = [{ "title" => "Test" }]
     request_id = "abc123"
-    resolved_search_type = "neural"
-    search_type = "auto"
+    resolved_search_type = "fast"
+    search_type = "fast"
     context = "Test context"
     cost_dollars = { "total" => 0.005 }
 

@@ -41,6 +41,11 @@ module Exa
         body = env[:body]
 
         if body.is_a?(Hash)
+          # Prioritize "message" field for detailed error descriptions
+          return body["message"] if body["message"]
+          return body[:message] if body[:message]
+
+          # Fall back to "error" field
           return body["error"] if body["error"]
           return body[:error] if body[:error]
         end
