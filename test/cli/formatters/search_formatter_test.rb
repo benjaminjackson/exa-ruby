@@ -51,6 +51,19 @@ class Exa::CLI::Formatters::SearchFormatterTest < Minitest::Test
     assert parsed["results"]
   end
 
+  def test_toon_format_returns_toon_string
+    result = create_search_result
+    output = Exa::CLI::Formatters::SearchFormatter.format(result, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "Example Title 1"
+    assert_includes output, "https://example.com/1"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::SearchFormatter.format(result, "json")
+    assert output.length < json_output.length
+  end
+
   private
 
   def create_search_result

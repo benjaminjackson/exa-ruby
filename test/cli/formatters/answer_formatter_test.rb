@@ -105,4 +105,16 @@ class Exa::CLI::Formatters::AnswerFormatterTest < Minitest::Test
     assert_includes output, "Albany"
     assert_includes output, "New York"
   end
+
+  def test_toon_format_returns_toon_string
+    output = Exa::CLI::Formatters::AnswerFormatter.format(@result, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "SpaceX"
+    assert_includes output, "180 billion"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::AnswerFormatter.format(@result, "json")
+    assert output.length < json_output.length
+  end
 end

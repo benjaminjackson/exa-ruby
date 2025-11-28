@@ -44,6 +44,11 @@ class Exa::CLI::BaseTest < Minitest::Test
     assert_equal "text", format
   end
 
+  def test_accepts_toon_output_format
+    format = Exa::CLI::Base.resolve_output_format("toon")
+    assert_equal "toon", format
+  end
+
   def test_raises_error_on_invalid_output_format
     error = assert_raises(Exa::ConfigurationError) do
       Exa::CLI::Base.resolve_output_format("invalid_format")
@@ -74,5 +79,14 @@ class Exa::CLI::BaseTest < Minitest::Test
     data = "test string"
     output = Exa::CLI::Base.format_output(data, "text")
     assert_equal "test string", output
+  end
+
+  def test_encode_as_toon
+    data = { key: "value", nested: { inner: 123 } }
+    output = Exa::CLI::Base.encode_as_toon(data)
+
+    assert_instance_of String, output
+    assert_includes output, "key"
+    assert_includes output, "value"
   end
 end

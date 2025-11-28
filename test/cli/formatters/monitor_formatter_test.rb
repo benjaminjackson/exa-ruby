@@ -91,4 +91,34 @@ class MonitorFormatterTest < Minitest::Test
     assert_includes output, "active"
     assert_includes output, "paused"
   end
+
+  def test_toon_format_returns_toon_string
+    output = Exa::CLI::Formatters::MonitorFormatter.format(@monitor, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "mon_123"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::MonitorFormatter.format(@monitor, "json")
+    assert output.length < json_output.length
+  end
+
+  def test_format_collection_toon_format_returns_toon_string
+    collection = Exa::Resources::MonitorCollection.new(
+      data: [
+        {"id" => "mon_1", "status" => "active", "websetId" => "ws_1"},
+        {"id" => "mon_2", "status" => "paused", "websetId" => "ws_2"}
+      ],
+      has_more: false
+    )
+
+    output = Exa::CLI::Formatters::MonitorFormatter.format_collection(collection, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "mon_1"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::MonitorFormatter.format_collection(collection, "json")
+    assert output.length < json_output.length
+  end
 end

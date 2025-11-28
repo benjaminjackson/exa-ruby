@@ -4,6 +4,7 @@ PATH
     exa-ai (0.5.0)
       faraday (~> 2.0)
       ld-eventsource (~> 2.0)
+      toon-ruby (~> 0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -57,6 +58,7 @@ GEM
     rake (13.3.0)
     rexml (3.4.4)
     thor (1.4.0)
+    toon-ruby (0.1.1)
     uri (1.0.4)
     vcr (6.3.1)
       base64

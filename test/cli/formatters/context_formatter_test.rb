@@ -55,4 +55,15 @@ class Exa::CLI::Formatters::ContextFormatterTest < Minitest::Test
     assert_includes output, "Sample code"
     assert_includes output, "def authenticate"
   end
+
+  def test_toon_format_returns_toon_string
+    output = Exa::CLI::Formatters::ContextFormatter.format(@result, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "ruby authentication"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::ContextFormatter.format(@result, "json")
+    assert output.length < json_output.length
+  end
 end

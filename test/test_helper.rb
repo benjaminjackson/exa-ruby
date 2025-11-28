@@ -3,6 +3,7 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
 require "exa-ai"
+require "toon"
 require "minitest/autorun"
 require "minitest/fail_fast"
 require "webmock/minitest"

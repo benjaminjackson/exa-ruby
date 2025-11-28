@@ -36,4 +36,32 @@ class WebsetFormatterTest < Minitest::Test
     assert_includes output, "ws_123"
     assert_includes output, "idle"
   end
+
+  def test_toon_format_returns_toon_string
+    output = Exa::CLI::Formatters::WebsetFormatter.format(@webset, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "ws_123"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::WebsetFormatter.format(@webset, "json")
+    assert output.length < json_output.length
+  end
+
+  def test_format_collection_toon_format_returns_toon_string
+    collection = Exa::Resources::WebsetCollection.new(
+      data: [@webset.to_h],
+      has_more: false,
+      next_cursor: nil
+    )
+
+    output = Exa::CLI::Formatters::WebsetFormatter.format_collection(collection, "toon")
+
+    assert_instance_of String, output
+    assert_includes output, "ws_123"
+
+    # TOON should be more compact than JSON
+    json_output = Exa::CLI::Formatters::WebsetFormatter.format_collection(collection, "json")
+    assert output.length < json_output.length
+  end
 end
