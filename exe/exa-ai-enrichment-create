@@ -51,9 +51,7 @@ def parse_args(argv)
         --format TYPE              One of: #{VALID_FORMATS.join(', ')}
 
       Options:
-        --title TEXT               Display title
         --options JSON             Array of {label: "..."} (required if format=options, supports @file.json)
-        --instructions TEXT        Additional instructions
         --metadata JSON            Custom metadata (supports @file.json)
         --wait                     Wait for enrichment to complete
         --api-key KEY              Exa API key (or set EXA_API_KEY env var)
@@ -91,14 +89,8 @@ def parse_args(argv)
     when "--format"
       args[:format] = argv[i + 1]
       i += 2
-    when "--title"
-      args[:title] = argv[i + 1]
-      i += 2
     when "--options"
       args[:options] = parse_json_or_file(argv[i + 1])
-      i += 2
-    when "--instructions"
-      args[:instructions] = argv[i + 1]
       i += 2
     when "--metadata"
       args[:metadata] = parse_json_or_file(argv[i + 1])
@@ -170,9 +162,7 @@ begin
     description: args[:description],
     format: args[:format]
   }
-  enrichment_params[:title] = args[:title] if args[:title]
   enrichment_params[:options] = args[:options] if args[:options]
-  enrichment_params[:instructions] = args[:instructions] if args[:instructions]
   enrichment_params[:metadata] = args[:metadata] if args[:metadata]
 
   # Create enrichment
