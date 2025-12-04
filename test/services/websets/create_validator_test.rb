@@ -465,4 +465,96 @@ class WebsetsCreateValidatorTest < Minitest::Test
 
     assert_match(/1000 characters/i, error.message)
   end
+
+  def test_raises_when_same_import_id_in_both_import_and_search_scope
+    params = {
+      import: [
+        { source: "import", id: "import_abc123" }
+      ],
+      search: {
+        query: "test",
+        count: 10,
+        scope: [
+          { source: "import", id: "import_abc123" }
+        ]
+      }
+    }
+
+    error = assert_raises(ArgumentError) do
+      Exa::Services::Websets::CreateValidator.validate!(params)
+    end
+
+    assert_match(/cannot use the same.*import.*in both/i, error.message)
+    assert_match(/import_abc123/i, error.message)
+  end
+
+  def test_raises_when_same_webset_id_in_both_import_and_search_scope
+    params = {
+      import: [
+        { source: "webset", id: "ws_xyz789" }
+      ],
+      search: {
+        query: "test",
+        count: 10,
+        scope: [
+          { source: "webset", id: "ws_xyz789" }
+        ]
+      }
+    }
+
+    error = assert_raises(ArgumentError) do
+      Exa::Services::Websets::CreateValidator.validate!(params)
+    end
+
+    assert_match(/cannot use the same.*in both/i, error.message)
+    assert_match(/ws_xyz789/i, error.message)
+  end
+
+  def test_allows_different_ids_in_import_and_search_scope
+    params = {
+      import: [
+        { source: "import", id: "import_abc123" }
+      ],
+      search: {
+        query: "test",
+        count: 10,
+        scope: [
+          { source: "import", id: "import_xyz789" }
+        ]
+      }
+    }
+
+    # Should not raise
+    Exa::Services::Websets::CreateValidator.validate!(params)
+  end
+
+  def test_allows_import_without_search_scope
+    params = {
+      import: [
+        { source: "import", id: "import_abc123" }
+      ],
+      search: {
+        query: "test",
+        count: 10
+      }
+    }
+
+    # Should not raise
+    Exa::Services::Websets::CreateValidator.validate!(params)
+  end
+
+  def test_allows_search_scope_without_import
+    params = {
+      search: {
+        query: "test",
+        count: 10,
+        scope: [
+          { source: "import", id: "import_abc123" }
+        ]
+      }
+    }
+
+    # Should not raise
+    Exa::Services::Websets::CreateValidator.validate!(params)
+  end
 end

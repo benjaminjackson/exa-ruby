@@ -80,19 +80,35 @@ def parse_args(argv)
         Create a new webset from search criteria or an import
 
         Required (choose one):
-          --search JSON              Search configuration (supports @file.json)
-          --import ID                Import or webset ID to create webset from
-                                     (accepts import_* or webset_* IDs)
+          --search JSON              Search configuration as JSON (supports @file.json)
+                                     Format: {"query":"...","count":10,"scope":[...]}
+                                     The 'scope' field limits search to specific sources
+          --import ID                Import/webset ID to attach data to this webset
+                                     (loads data but does NOT filter searches)
+                                     Format: import_abc123 or webset_xyz789
 
         Options:
           --enrichments JSON         Array of enrichment configs (supports @file.json)
-          --exclude JSON             Array of exclude configs (supports @file.json)
+                                     Format: [{"description":"...","format":"text"}]
+          --exclude JSON             Sources to exclude from searches (supports @file.json)
+                                     Format: [{"source":"import|webset","id":"..."}]
           --external-id ID           External identifier for the webset
           --metadata JSON            Custom metadata (supports @file.json)
+                                     Format: {"key":"value"}
           --wait                     Wait for webset to reach idle status
           --api-key KEY              Exa API key (or set EXA_API_KEY env var)
           --output-format FMT        Output format: json, pretty, or text (default: json)
           --help, -h                 Show this help message
+
+        JSON Format Details:
+          search.scope               Array of source references to limit search
+                                     Format: [{"source":"import|webset","id":"..."}]
+                                     With relationship (hop search):
+                                     [{"source":"webset","id":"ws_123",
+                                       "relationship":{"definition":"investors of","limit":3}}]
+
+          IMPORTANT: Cannot use the same import ID in both --import and search.scope
+                    (this will return a 400 error from the API)
 
         Examples:
           # Create webset from search
@@ -100,12 +116,15 @@ def parse_args(argv)
           exa-ai webset-create --search @search.json --enrichments @enrichments.json
           exa-ai webset-create --search @search.json --wait
 
+          # Create webset with scoped search (filter to specific import)
+          exa-ai webset-create --search '{"query":"CEOs","count":10,"scope":[{"source":"import","id":"import_abc"}]}'
+
           # Create webset from import
           exa-ai webset-create --import import_abc123
           exa-ai webset-create --import import_def456 --enrichments @enrichments.json
 
-          # Create webset from existing webset
-          exa-ai webset-create --import webset_xyz789
+          # Load import AND run search (search not scoped to import)
+          exa-ai webset-create --import import_abc123 --search '{"query":"investors","count":20}'
       HELP
       exit 0
     else

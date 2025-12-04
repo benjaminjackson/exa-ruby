@@ -20,6 +20,7 @@ module Exa
             validate_exclude!(params[:exclude]) if params[:exclude]
             validate_external_id!(params[:externalId]) if params[:externalId]
             validate_metadata!(params[:metadata]) if params[:metadata]
+            validate_no_duplicate_ids_in_import_and_scope!(params)
           end
 
           private
@@ -183,6 +184,20 @@ module Exa
             raise ArgumentError, "#{name} must be a String" unless value.is_a?(String)
             raise ArgumentError, "#{name} must be at least #{min} characters" if min && value.length < min
             raise ArgumentError, "#{name} cannot exceed #{max} characters" if max && value.length > max
+          end
+
+          def validate_no_duplicate_ids_in_import_and_scope!(params)
+            return unless params[:import] && params[:search] && params[:search][:scope]
+
+            import_ids = params[:import].map { |item| item[:id] }
+            scope_ids = params[:search][:scope].map { |item| item[:id] }
+
+            duplicates = import_ids & scope_ids
+
+            return if duplicates.empty?
+
+            raise ArgumentError,
+                  "Cannot use the same import/webset ID in both :import and search[:scope]: #{duplicates.join(', ')}"
           end
         end
       end
