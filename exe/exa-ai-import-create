@@ -56,6 +56,7 @@ def parse_args(argv)
         --entity-type TYPE        Entity type (options: #{VALID_ENTITY_TYPES.join(', ')})
 
       Options:
+        --entity-description TXT  Description for custom entity type (required with --entity-type custom)
         --csv-identifier N        CSV column identifier (0-indexed)
         --metadata JSON           Custom metadata (supports @file.json)
         --quiet                   Suppress normal output (only show errors)
@@ -101,6 +102,9 @@ def parse_args(argv)
       i += 2
     when "--entity-type"
       args[:entity_type] = argv[i + 1]
+      i += 2
+    when "--entity-description"
+      args[:entity_description] = argv[i + 1]
       i += 2
     when "--csv-identifier"
       args[:csv_identifier] = argv[i + 1].to_i
@@ -161,6 +165,17 @@ begin
     exit 1
   end
 
+  # Validate entity-description for custom entity type
+  if args[:entity_type] == "custom"
+    unless args[:entity_description]
+      $stderr.puts "Error: --entity-description is required when --entity-type is 'custom'"
+      $stderr.puts "Run 'exa-ai import-create --help' for usage information"
+      exit 1
+    end
+  elsif args[:entity_description]
+    $stderr.puts "Warning: --entity-description is only used with --entity-type custom (ignoring)"
+  end
+
   # Validate file exists
   unless File.exist?(args[:file_path])
     $stderr.puts "Error: File not found: #{args[:file_path]}"
@@ -177,12 +192,15 @@ begin
   client = Exa::CLI::Base.build_client(api_key)
 
   # Prepare import parameters
+  entity = { type: args[:entity_type] }
+  entity[:description] = args[:entity_description] if args[:entity_description]
+
   import_params = {
     file_path: args[:file_path],
     count: args[:count],
     title: args[:title],
     format: args[:format],
-    entity: { type: args[:entity_type] }
+    entity: entity
   }
   import_params[:metadata] = args[:metadata] if args[:metadata]
 
