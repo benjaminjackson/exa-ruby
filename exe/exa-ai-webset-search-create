@@ -104,11 +104,20 @@ def parse_args(argv)
           --entity TYPE            Entity type: person, company, article, research_paper, custom
           --entity-description TXT Description for custom entity type (required with --entity custom)
           --criteria JSON          Search criteria array (supports @file.json)
+                                   Format: [{"description":"criterion 1"},{"description":"criterion 2"}]
           --exclude JSON           Items to exclude from results (supports @file.json)
+                                   Format: [{"source":"import|webset","id":"..."}]
           --scope JSON             Limit search to specific sources (supports @file.json)
+                                   Format: [{"source":"import|webset","id":"..."}]
+                                   Filters this search to only items from these sources
+                                   With relationship (hop search):
+                                   [{"source":"webset","id":"ws_123",
+                                     "relationship":{"definition":"investors of","limit":3}}]
           --recall                 Estimate total available results
-          --behavior TYPE          "override" or "append" (default: override)
+          --behavior TYPE          "override" (replace items) or "append" (add items)
+                                   Default: override when scope is present, append otherwise
           --metadata JSON          Custom metadata (supports @file.json)
+                                   Format: {"key":"value"}
           --api-key KEY            Exa API key (or set EXA_API_KEY env var)
           --output-format FMT      Output format: json, pretty, or text (default: json)
           --help, -h               Show this help message
@@ -121,11 +130,15 @@ def parse_args(argv)
           exa-ai webset-search-create ws_123 --query "tech CEOs" --entity person
           exa-ai webset-search-create ws_123 --query "Silicon Valley firms" --entity company
 
-          # Search with custom entity type
-          exa-ai webset-search-create ws_123 --query "Ford Mustang" \\
-            --entity custom --entity-description "vintage cars"
+          # Scoped search (filter to specific import)
+          exa-ai webset-search-create ws_123 --query "CTOs" \\
+            --scope '[{"source":"import","id":"import_abc"}]'
 
-          # Other options
+          # Hop search (find investors of companies in webset)
+          exa-ai webset-search-create ws_123 --query "investors" \\
+            --scope '[{"source":"webset","id":"ws_companies","relationship":{"definition":"investors of","limit":5}}]'
+
+          # Search with criteria and behavior
           exa-ai webset-search-create ws_123 --query "machine learning" --count 50
           exa-ai webset-search-create ws_123 --query "research" --behavior append --recall
       HELP
