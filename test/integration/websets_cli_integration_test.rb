@@ -301,6 +301,28 @@ class WebsetsCLIIntegrationTest < Minitest::Test
     assert result2["data"].is_a?(Array)
   end
 
+  # Test webset-list with pretty format
+  def test_webset_list_pretty_format
+    skip_if_no_api_key
+
+    command = "bundle exec exe/exa-ai webset-list --limit 2 --output-format pretty"
+    stdout, _stderr, status = run_command(command)
+
+    assert status.success?, "webset-list with pretty format should succeed"
+
+    # Verify it's NOT JSON (should not be parseable)
+    assert_raises(JSON::ParserError) { parse_json_output(stdout) }
+
+    # Verify presence of expected human-readable format
+    assert_includes stdout, "Websets"
+    assert_includes stdout, "items"
+    assert_includes stdout, "Webset ID:"
+    assert_includes stdout, "Status:"
+
+    # Should have at least one webset listed
+    assert_match(/webset_\w+/, stdout)
+  end
+
   # Test webset-update command
   def test_webset_update
     skip_if_no_api_key
