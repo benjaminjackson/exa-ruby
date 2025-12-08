@@ -193,6 +193,40 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for:
 - Code conventions
 - Building and releasing
 
+## Testing
+
+### Running Tests
+
+```bash
+# Run all tests (skips CLI integration tests by default)
+bundle exec rake test
+
+# Run only unit and client integration tests (uses VCR cassettes)
+bundle exec rake test TEST="test/{*,**/*}_test.rb" TESTOPTS="--exclude /cli_integration/"
+
+# Run CLI integration tests (requires explicit opt-in)
+RUN_CLI_INTEGRATION_TESTS=true bundle exec rake test TEST="test/integration/*_cli_integration_test.rb"
+```
+
+### CLI Integration Tests
+
+CLI integration tests make real API calls and consume Exa's concurrent search quota. They are **skipped by default** to prevent rate limit exhaustion during development.
+
+**To run CLI integration tests:**
+1. Ensure `EXA_API_KEY` is set in your environment
+2. Set `RUN_CLI_INTEGRATION_TESTS=true` explicitly
+3. Run: `RUN_CLI_INTEGRATION_TESTS=true bundle exec rake test`
+
+**Warning:** Running CLI integration tests repeatedly can exhaust your API quota and trigger rate limits lasting 1-2 days. Only run these tests:
+- Manually before releases
+- When testing CLI-specific functionality
+- In dedicated CI jobs with higher rate limits
+
+**Test Coverage:**
+- **Unit tests** - Fast, no API calls
+- **Client integration tests** - Use VCR cassettes, no real API calls
+- **CLI integration tests** - Real API calls via shell, skipped by default
+
 ## Support
 
 - **Documentation**: https://docs.exa.ai
