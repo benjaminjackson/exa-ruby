@@ -9,10 +9,12 @@ require "minitest/fail_fast"
 require "webmock/minitest"
 require "vcr"
 
-# Check for required environment variables
-unless ENV["EXA_API_KEY"]
-  warn "WARNING: EXA_API_KEY environment variable is not set. Integration tests will fail."
-  warn "Set it with: export EXA_API_KEY=your_api_key"
+# Check for required environment variables only when integration tests will run
+if ENV["RUN_INTEGRATION_TESTS"] == "true" || ENV["RUN_CLI_INTEGRATION_TESTS"] == "true"
+  unless ENV["EXA_API_KEY"]
+    warn "WARNING: EXA_API_KEY environment variable is not set. Integration tests will fail."
+    warn "Set it with: export EXA_API_KEY=your_api_key"
+  end
 end
 
 # Helper method for integration tests to check if they should run
