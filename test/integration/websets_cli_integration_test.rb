@@ -20,12 +20,21 @@ require "open3"
 class WebsetsCLIIntegrationTest < Minitest::Test
   include WebsetsCleanupHelper
 
-  def skip_if_no_api_key
-    skip "Set EXA_API_KEY to run CLI integration tests" unless ENV["EXA_API_KEY"] && !ENV["EXA_API_KEY"].empty?
+  def skip_unless_cli_integration_enabled
+    skip "Set RUN_CLI_INTEGRATION_TESTS=true to run CLI integration tests" unless ENV["RUN_CLI_INTEGRATION_TESTS"] == "true"
   end
 
   def setup
     super
+
+    # Check for API key before proceeding with CLI integration tests
+    if ENV["RUN_CLI_INTEGRATION_TESTS"] == "true"
+      if ENV["EXA_API_KEY"].nil? || ENV["EXA_API_KEY"].empty?
+        flunk "EXA_API_KEY environment variable must be set to run CLI integration tests. " \
+              "Set it with: export EXA_API_KEY=your_api_key"
+      end
+    end
+
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
     ENV["EXA_API_KEY"] = @api_key
   end
@@ -52,7 +61,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-create command with basic search
   def test_webset_create_basic
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     # Using a simple, generic query to avoid API errors
     command = "bundle exec exe/exa-ai webset-create " \
@@ -75,7 +84,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-create with search from file
   def test_webset_create_with_search_file
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     # Create temporary search file
     search_file = Tempfile.new(["search", ".json"])
@@ -110,7 +119,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-create with metadata
   def test_webset_create_with_metadata
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           command = "bundle exec exe/exa-ai webset-create " \
                 "--search '{\"query\":\"Tech startups\",\"count\":1}' " \
@@ -133,7 +142,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-create with external ID
   def test_webset_create_with_external_id
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           external_id = "cli-test-#{Time.now.to_i}"
 
@@ -156,7 +165,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-create with enrichments
   def test_webset_create_with_enrichments
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     enrichments = [
       {
@@ -199,7 +208,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-get command
   def test_webset_get
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset
       create_command = "bundle exec exe/exa-ai webset-create " \
@@ -229,7 +238,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-get with pretty format
   def test_webset_get_pretty_format
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset
       create_command = "bundle exec exe/exa-ai webset-create " \
@@ -260,7 +269,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-list command
   def test_webset_list
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           command = "bundle exec exe/exa-ai webset-list --limit 5 --output-format json"
 
@@ -277,7 +286,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-list with pagination
   def test_webset_list_pagination
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     # Get first page
     command1 = "bundle exec exe/exa-ai webset-list --limit 2 --output-format json"
@@ -303,7 +312,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-list with pretty format
   def test_webset_list_pretty_format
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     command = "bundle exec exe/exa-ai webset-list --limit 2 --output-format pretty"
     stdout, _stderr, status = run_command(command)
@@ -325,7 +334,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-update command
   def test_webset_update
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset
       create_command = "bundle exec exe/exa-ai webset-create " \
@@ -361,7 +370,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-delete command
   def test_webset_delete
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset
       create_command = "bundle exec exe/exa-ai webset-create " \
@@ -392,7 +401,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-cancel command
   def test_webset_cancel
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset (should be in running/pending state initially)
       create_command = "bundle exec exe/exa-ai webset-create " \
@@ -426,7 +435,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-create with text output format
   def test_webset_create_text_format
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     # Using a simple, generic query to avoid API errors
     command = "bundle exec exe/exa-ai webset-create " \
@@ -572,7 +581,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
   end
 
   def test_webset_search_create
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     # First create a webset
     create_command = "bundle exec exe/exa-ai webset-create " \
@@ -600,7 +609,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
   end
 
   def test_webset_search_get
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     # First create a webset
     create_command = "bundle exec exe/exa-ai webset-create " \
@@ -633,7 +642,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
   end
 
   def test_webset_search_cancel
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     # First create a webset
     create_command = "bundle exec exe/exa-ai webset-create " \

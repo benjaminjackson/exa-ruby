@@ -20,12 +20,21 @@ require "open3"
 class EnrichmentsCLIIntegrationTest < Minitest::Test
   include WebsetsCleanupHelper
 
-  def skip_if_no_api_key
-    skip "Set EXA_API_KEY to run CLI integration tests" unless ENV["EXA_API_KEY"] && !ENV["EXA_API_KEY"].empty?
+  def skip_unless_cli_integration_enabled
+    skip "Set RUN_CLI_INTEGRATION_TESTS=true to run CLI integration tests" unless ENV["RUN_CLI_INTEGRATION_TESTS"] == "true"
   end
 
   def setup
     super
+
+    # Check for API key before proceeding with CLI integration tests
+    if ENV["RUN_CLI_INTEGRATION_TESTS"] == "true"
+      if ENV["EXA_API_KEY"].nil? || ENV["EXA_API_KEY"].empty?
+        flunk "EXA_API_KEY environment variable must be set to run CLI integration tests. " \
+              "Set it with: export EXA_API_KEY=your_api_key"
+      end
+    end
+
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
     ENV["EXA_API_KEY"] = @api_key
   end
@@ -52,7 +61,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-create command with basic text format
   def test_enrichment_create_text_format
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -82,7 +91,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-create with options format
   def test_enrichment_create_options_format
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -118,7 +127,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-create with options from file
   def test_enrichment_create_options_from_file
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -160,7 +169,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-get command
   def test_enrichment_get
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset and enrichment
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -193,7 +202,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-list command
   def test_enrichment_list
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # First create a webset with enrichments
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -228,7 +237,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-update command
   def test_enrichment_update
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # Create webset and enrichment
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -263,7 +272,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-delete command
   def test_enrichment_delete
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # Create webset and enrichment
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -298,7 +307,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-cancel command
   def test_enrichment_cancel
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # Create webset and enrichment
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -331,7 +340,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test enrichment-create with pretty output
   def test_enrichment_create_pretty_format
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
           # Create webset
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
@@ -392,7 +401,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
   # Test error handling for options format without options
   def test_enrichment_create_options_without_options
-    skip_if_no_api_key
+    skip_unless_cli_integration_enabled
 
     command = "bundle exec exe/exa-ai enrichment-create ws_test " \
               "--description 'Test' " \
