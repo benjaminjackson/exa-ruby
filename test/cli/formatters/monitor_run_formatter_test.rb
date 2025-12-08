@@ -29,10 +29,18 @@ class MonitorRunFormatterTest < Minitest::Test
 
   def test_formats_monitor_run_as_pretty
     output = Exa::CLI::Formatters::MonitorRunFormatter.format(@monitor_run, "pretty")
-    result = JSON.parse(output)
 
-    assert_equal "run_123", result["id"]
-    assert output.include?("\n"), "Pretty format should have newlines"
+    # Verify it's NOT JSON (should not be parseable as JSON)
+    assert_raises(JSON::ParserError) { JSON.parse(output) }
+
+    # Verify presence of key fields in human-readable format
+    assert_includes output, "run_123"
+    assert_includes output, "mon_abc"
+    assert_includes output, "completed"
+
+    # Verify it has structured formatting with aligned labels
+    assert_includes output, "Monitor Run ID:"
+    assert_includes output, "Status:"
   end
 
   def test_formats_monitor_run_as_text
@@ -70,10 +78,17 @@ class MonitorRunFormatterTest < Minitest::Test
     )
 
     output = Exa::CLI::Formatters::MonitorRunFormatter.format_collection(collection, "pretty")
-    result = JSON.parse(output)
 
-    assert_equal 1, result["data"].length
-    assert output.include?("\n"), "Pretty format should have newlines"
+    # Verify it's NOT JSON (should not be parseable as JSON)
+    assert_raises(JSON::ParserError) { JSON.parse(output) }
+
+    # Verify presence of key fields in human-readable format
+    assert_includes output, "run_1"
+    assert_includes output, "completed"
+    assert_includes output, "1 items"
+
+    # Verify it has structured formatting
+    assert_includes output, "Monitor Run ID:"
   end
 
   def test_formats_collection_as_text

@@ -9,7 +9,7 @@ module Exa
           when "json"
             JSON.generate(monitor_run.to_h)
           when "pretty"
-            JSON.pretty_generate(monitor_run.to_h)
+            format_as_pretty(monitor_run)
           when "text"
             format_as_text(monitor_run)
           when "toon"
@@ -24,7 +24,7 @@ module Exa
           when "json"
             JSON.generate(collection.to_h)
           when "pretty"
-            JSON.pretty_generate(collection.to_h)
+            format_collection_as_pretty(collection)
           when "text"
             format_collection_as_text(collection)
           when "toon"
@@ -33,6 +33,27 @@ module Exa
             raise ArgumentError, "Unknown output format: #{output_format}"
           end
         end
+
+        def self.format_as_pretty(monitor_run)
+          lines = []
+          lines << "Monitor Run ID: #{monitor_run.id}"
+          lines << "Monitor ID:     #{monitor_run.monitor_id}" if monitor_run.monitor_id
+          lines << "Status:         #{monitor_run.status}"
+
+          lines << ""
+          lines << "Created:        #{monitor_run.created_at}" if monitor_run.created_at
+          lines << "Updated:        #{monitor_run.updated_at}" if monitor_run.updated_at
+          lines << "Completed:      #{monitor_run.completed_at}" if monitor_run.completed_at
+
+          if monitor_run.failed?
+            lines << ""
+            lines << "Failed:         #{monitor_run.failed_at}" if monitor_run.failed_at
+            lines << "Reason:         #{monitor_run.failed_reason}" if monitor_run.failed_reason
+          end
+
+          lines.join("\n")
+        end
+        private_class_method :format_as_pretty
 
         def self.format_as_text(monitor_run)
           lines = []
@@ -52,6 +73,36 @@ module Exa
           lines.join("\n")
         end
         private_class_method :format_as_text
+
+        def self.format_collection_as_pretty(collection)
+          lines = []
+          lines << "Monitor Runs (#{collection.data.length} items)"
+          lines << ""
+
+          collection.data.each_with_index do |run, idx|
+            lines << "" if idx > 0  # Blank line between runs
+
+            lines << "Monitor Run ID: #{run['id']}"
+            lines << "Monitor ID:     #{run['monitorId']}" if run['monitorId']
+            lines << "Status:         #{run['status']}"
+            lines << "Created:        #{run['createdAt']}" if run['createdAt']
+            lines << "Updated:        #{run['updatedAt']}" if run['updatedAt']
+            lines << "Completed:      #{run['completedAt']}" if run['completedAt']
+
+            if run['status'] == 'failed'
+              lines << "Failed:         #{run['failedAt']}" if run['failedAt']
+              lines << "Reason:         #{run['failedReason']}" if run['failedReason']
+            end
+          end
+
+          if collection.has_more
+            lines << ""
+            lines << "Next Cursor:    #{collection.next_cursor}"
+          end
+
+          lines.join("\n")
+        end
+        private_class_method :format_collection_as_pretty
 
         def self.format_collection_as_text(collection)
           lines = ["Monitor Runs (#{collection.data.length} items):"]

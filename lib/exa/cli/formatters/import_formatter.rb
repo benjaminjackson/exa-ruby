@@ -9,7 +9,7 @@ module Exa
           when "json"
             JSON.generate(import.to_h)
           when "pretty"
-            JSON.pretty_generate(import.to_h)
+            format_as_pretty(import)
           when "text"
             format_as_text(import)
           when "toon"
@@ -24,7 +24,7 @@ module Exa
           when "json"
             JSON.generate(collection.to_h)
           when "pretty"
-            JSON.pretty_generate(collection.to_h)
+            format_collection_as_pretty(collection)
           when "text"
             format_collection_as_text(collection)
           when "toon"
@@ -33,6 +33,43 @@ module Exa
             raise ArgumentError, "Unknown output format: #{output_format}"
           end
         end
+
+        def self.format_as_pretty(import)
+          lines = []
+          lines << "Import ID:     #{import.id}"
+          lines << "Status:        #{import.status}"
+          lines << "Title:         #{import.title}" if import.title
+          lines << "Format:        #{import.format}" if import.format
+
+          if import.entity
+            entity_type = import.entity['type'] || import.entity[:type]
+            lines << "Entity Type:   #{entity_type}" if entity_type
+          end
+
+          lines << "Count:         #{import.count}" if import.count
+
+          if import.failed?
+            lines << ""
+            lines << "Failure:"
+            lines << "  Reason:      #{import.failed_reason}" if import.failed_reason
+            lines << "  Message:     #{import.failed_message}" if import.failed_message
+            lines << "  Failed At:   #{import.failed_at}" if import.failed_at
+          end
+
+          if import.upload_url
+            lines << ""
+            lines << "Upload:"
+            lines << "  URL:         #{import.upload_url}"
+            lines << "  Valid Until: #{import.upload_valid_until}" if import.upload_valid_until
+          end
+
+          lines << ""
+          lines << "Created:       #{import.created_at}" if import.created_at
+          lines << "Updated:       #{import.updated_at}" if import.updated_at
+
+          lines.join("\n")
+        end
+        private_class_method :format_as_pretty
 
         def self.format_as_text(import)
           lines = []
@@ -67,6 +104,37 @@ module Exa
           lines.join("\n")
         end
         private_class_method :format_as_text
+
+        def self.format_collection_as_pretty(collection)
+          lines = []
+          lines << "Imports (#{collection.data.length} items)"
+          lines << ""
+
+          collection.data.each_with_index do |imp, idx|
+            lines << "" if idx > 0  # Blank line between imports
+
+            lines << "Import ID:     #{imp.id}"
+            lines << "Status:        #{imp.status}"
+            lines << "Title:         #{imp.title}" if imp.title
+            lines << "Format:        #{imp.format}" if imp.format
+            lines << "Entity Type:   #{imp.entity['type']}" if imp.entity && imp.entity['type']
+            lines << "Count:         #{imp.count}" if imp.count
+            lines << "Created:       #{imp.created_at}" if imp.created_at
+            lines << "Updated:       #{imp.updated_at}" if imp.updated_at
+
+            if imp.status == 'failed'
+              lines << "Failed Reason: #{imp.failed_reason}" if imp.failed_reason
+            end
+          end
+
+          if collection.has_more
+            lines << ""
+            lines << "Next Cursor:   #{collection.next_cursor}"
+          end
+
+          lines.join("\n")
+        end
+        private_class_method :format_collection_as_pretty
 
         def self.format_collection_as_text(collection)
           lines = ["Imports (#{collection.data.length} items):"]
