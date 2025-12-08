@@ -30,10 +30,19 @@ class EnrichmentFormatterTest < Minitest::Test
 
   def test_formats_enrichment_as_pretty
     output = Exa::CLI::Formatters::EnrichmentFormatter.format(@enrichment, "pretty")
-    result = JSON.parse(output)
 
-    assert_equal "enr_123", result["id"]
-    assert output.include?("\n"), "Pretty format should have newlines"
+    # Verify it's NOT JSON (should not be parseable as JSON)
+    assert_raises(JSON::ParserError) { JSON.parse(output) }
+
+    # Verify presence of key fields in human-readable format
+    assert_includes output, "enr_123"
+    assert_includes output, "completed"
+    assert_includes output, "Company Size"
+    assert_includes output, "Extract company size information"
+
+    # Verify it has structured formatting with aligned labels
+    assert_includes output, "Enrichment ID:"
+    assert_includes output, "Status:"
   end
 
   def test_formats_enrichment_as_text
