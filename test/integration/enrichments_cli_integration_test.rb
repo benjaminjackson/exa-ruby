@@ -350,12 +350,16 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       stdout, _stderr, status = run_command(command)
 
       assert status.success?, "enrichment-create with pretty format should succeed"
-      # Pretty format is still JSON, just nicely formatted
-      result = parse_json_output(stdout)
-      track_enrichment(webset_id, result["id"])
-      assert result["id"].start_with?("wenrich_") || result["id"].start_with?("enrich_")
-      # Verify it has indentation (pretty-printed)
-      assert_includes stdout, "  "
+      # Pretty format outputs human-readable text, not JSON
+      assert_includes stdout, "Enrichment ID:"
+      assert_includes stdout, "Webset ID:"
+      assert_includes stdout, "Status:"
+      assert_includes stdout, "Description:"
+      assert_includes stdout, "Format:"
+
+      # Extract and track the enrichment ID from the pretty output
+      enrichment_id = stdout.match(/Enrichment ID: (wenrich_\w+|enrich_\w+)/)[1]
+      track_enrichment(webset_id, enrichment_id)
     end
 
 

@@ -221,12 +221,40 @@ module WebsetsCleanupHelper
   end
 
   # Delete a webset - supports both client and CLI approaches
+  # First cancels all searches to avoid hitting concurrent request limits
   def delete_webset(webset_id)
+    # Cancel all searches in the webset first
+    cancel_all_webset_searches(webset_id)
+
     if use_cli_cleanup?
       run_cli_command("bundle exec exe/exa-ai webset-delete #{webset_id} --force")
     else
       get_client.delete_webset(webset_id)
     end
+  end
+
+  # Cancel all searches in a webset to avoid concurrent request limits
+  def cancel_all_webset_searches(webset_id)
+    if use_cli_cleanup?
+      # Use CLI to get webset details and cancel searches
+      stdout, _stderr, status = run_command("bundle exec exe/exa-ai webset-get #{webset_id} --output-format json")
+      return unless status.success?
+
+      webset = JSON.parse(stdout)
+      searches = webset["searches"] || []
+      searches.each do |search|
+        run_cli_command("bundle exec exe/exa-ai search-cancel #{webset_id} #{search['id']} --force") rescue nil
+      end
+    else
+      # Use client to get webset and cancel searches
+      webset = get_client.get_webset(webset_id)
+      searches = webset.searches || []
+      searches.each do |search|
+        get_client.cancel_webset_search(webset_id: webset_id, id: search["id"]) rescue nil
+      end
+    end
+  rescue => e
+    # Ignore errors - webset might not exist or searches might already be cancelled
   end
 
   # Delete an import - supports both client and CLI approaches

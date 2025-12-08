@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.1] - 2025-12-07
+
+### Changed
+- **Enhanced pretty format output** - Replaced JSON.pretty_generate with human-readable text format across all CLI formatters for better readability
+
+### Fixed
+- **CLI enrichment flags** - Removed unused enrichment flags that were causing confusion
+- **Webset import/search scope validation** - Added proper validation to prevent conflicts between import and search scope parameters
+- **CLI formatter test** - Fixed enrichment CLI integration test to properly handle pretty format output (text instead of JSON)
+- **Test cleanup** - Improved webset cleanup in tests to cancel all searches before deletion, preventing concurrent request limit issues
+
 ## [0.6.0] - 2025-11-28
 
 ### Added
