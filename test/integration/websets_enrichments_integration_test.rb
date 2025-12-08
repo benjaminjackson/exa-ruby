@@ -6,6 +6,7 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
   include WebsetsCleanupHelper
 
   def setup
+    skip_unless_integration_enabled
     super
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
   end

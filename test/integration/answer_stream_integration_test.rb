@@ -3,6 +3,10 @@
 require "test_helper"
 
 class AnswerStreamIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
+
   def test_answer_stream_yields_chunks
     VCR.use_cassette("answer_stream_spacex_valuation") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])

@@ -1,6 +1,10 @@
 require "test_helper"
 
 class ResearchListIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
+
   def test_research_list_returns_list_object
     VCR.use_cassette("research_list_first_page") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])

@@ -3,6 +3,10 @@
 require "test_helper"
 
 class AnswerIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
+
   def test_answer_returns_answer_with_citations
     VCR.use_cassette("answer_spacex_valuation") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])

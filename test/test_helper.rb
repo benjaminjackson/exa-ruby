@@ -15,6 +15,17 @@ unless ENV["EXA_API_KEY"]
   warn "Set it with: export EXA_API_KEY=your_api_key"
 end
 
+# Helper method for integration tests to check if they should run
+# Integration tests require explicit opt-in via RUN_INTEGRATION_TESTS=true
+# CLI integration tests use RUN_CLI_INTEGRATION_TESTS=true instead
+def skip_unless_integration_enabled
+  skip "Set RUN_INTEGRATION_TESTS=true to run integration tests" unless ENV["RUN_INTEGRATION_TESTS"] == "true"
+end
+
+def skip_unless_cli_integration_enabled
+  skip "Set RUN_CLI_INTEGRATION_TESTS=true to run CLI integration tests" unless ENV["RUN_CLI_INTEGRATION_TESTS"] == "true"
+end
+
 # Configure VCR for integration tests
 # VCR works with WebMock to record/replay HTTP interactions
 VCR.configure do |config|
