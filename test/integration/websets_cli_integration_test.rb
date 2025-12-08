@@ -26,6 +26,15 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   def setup
     super
+
+    # Check for API key before proceeding with CLI integration tests
+    if ENV["RUN_CLI_INTEGRATION_TESTS"] == "true"
+      if ENV["EXA_API_KEY"].nil? || ENV["EXA_API_KEY"].empty?
+        flunk "EXA_API_KEY environment variable must be set to run CLI integration tests. " \
+              "Set it with: export EXA_API_KEY=your_api_key"
+      end
+    end
+
     @api_key = ENV.fetch("EXA_API_KEY", "test_key_for_vcr")
     ENV["EXA_API_KEY"] = @api_key
   end
