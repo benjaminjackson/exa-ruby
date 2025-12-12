@@ -2,6 +2,14 @@
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
+# Load environment variables from .env file if dotenv is available
+begin
+  require "dotenv"
+  Dotenv.load
+rescue LoadError
+  # dotenv not available, skip loading .env file
+end
+
 require "exa-ai"
 require "toon"
 require "minitest/autorun"
@@ -9,10 +17,14 @@ require "minitest/fail_fast"
 require "webmock/minitest"
 require "vcr"
 
-# Check for required environment variables
+# Check for required environment variables and provide fallback for VCR playback
 unless ENV["EXA_API_KEY"]
-  warn "WARNING: EXA_API_KEY environment variable is not set. Integration tests will fail."
-  warn "Set it with: export EXA_API_KEY=your_api_key"
+  warn "WARNING: EXA_API_KEY environment variable is not set."
+  warn "Using test key for VCR playback. To record new cassettes, set: export EXA_API_KEY=your_api_key"
+  # Provide a default API key for VCR playback when not set
+  # This value is never used for real API calls - VCR replays from cassettes
+  # and WebMock blocks network connections
+  ENV["EXA_API_KEY"] = "test_key_for_vcr_playback"
 end
 
 # Configure VCR for integration tests
@@ -43,6 +55,12 @@ end
 
 # Disable external network connections in tests (VCR will manage allowed connections)
 WebMock.disable_net_connect!(allow_localhost: true)
+
+# Skip integration tests unless RUN_INTEGRATION_TESTS flag is set
+# This prevents accidental API calls during development
+def skip_unless_integration_enabled
+  skip "Set RUN_INTEGRATION_TESTS=true to run integration tests (VCR-based)" unless ENV["RUN_INTEGRATION_TESTS"] == "true"
+end
 
 # Debug logging helper
 def with_debug_logging

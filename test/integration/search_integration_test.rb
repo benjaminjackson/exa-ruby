@@ -3,6 +3,10 @@
 require "test_helper"
 
 class SearchIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
+
   # Test that we can make a real search request and get results back
   def test_search_returns_search_result_with_results
     VCR.use_cassette("search_ruby_programming") do

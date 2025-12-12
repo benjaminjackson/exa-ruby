@@ -3,6 +3,9 @@
 require "test_helper"
 
 class ContextIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
   def test_context_returns_context_result_with_code_snippets
     VCR.use_cassette("context_react_hooks") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
