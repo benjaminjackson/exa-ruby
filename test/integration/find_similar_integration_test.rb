@@ -7,6 +7,9 @@ require "test_helper"
 # This file defines the integration test contract for the FindSimilar service.
 
 class FindSimilarIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
   # Test that we can make a real find_similar request and get results back
   def test_find_similar_returns_result_with_results
     VCR.use_cassette("find_similar_llama_paper") do

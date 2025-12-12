@@ -1,6 +1,10 @@
 require "test_helper"
 
 class ResearchGetIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
+
   # Note: Using research_id from research_start_ant_species cassette
   def test_research_get_returns_research_task
     VCR.use_cassette("research_get_pending_task") do

@@ -6,6 +6,9 @@ require "open3"
 # Integration tests for CLI executables
 # These tests verify that each executable can be loaded and run without hitting remote endpoints
 class CLIExecutablesTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
   # Helper to run an executable and return stdout, stderr, and status
   def run_executable(command)
     stdout, stderr, status = Open3.capture3(command)

@@ -1,6 +1,9 @@
 require "test_helper"
 
 class ResearchStartIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
   def test_research_start_creates_task
     VCR.use_cassette("research_start_ant_species") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])

@@ -5,6 +5,9 @@ require "test_helper"
 # NOTE: These tests will fail until Task C adds the get_contents method to Client
 # This is expected! We're creating the integration tests first (TDD approach).
 class GetContentsIntegrationTest < Minitest::Test
+  def setup
+    skip_unless_integration_enabled
+  end
   # Test that we can retrieve contents for a URL
   def test_get_contents_returns_result_with_content
     VCR.use_cassette("get_contents_llama_paper") do

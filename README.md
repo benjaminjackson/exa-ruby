@@ -32,6 +32,20 @@ Get your API key from [dashboard.exa.ai](https://dashboard.exa.ai).
 export EXA_API_KEY="your-api-key-here"
 ```
 
+**Using .env file (local development)**
+
+Create a `.env` file in your project root:
+
+```bash
+# Copy the example file
+cp .env.example .env
+
+# Edit .env and add your API key
+EXA_API_KEY=your-api-key-here
+```
+
+The gem automatically loads `.env` files in development when the `dotenv` gem is installed.
+
 **Ruby Code**
 
 ```ruby
@@ -198,33 +212,39 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for:
 ### Running Tests
 
 ```bash
-# Run all tests (skips CLI integration tests by default)
+# Run unit tests (integration tests skip by default)
 bundle exec rake test
 
-# Run only unit and client integration tests (uses VCR cassettes)
-bundle exec rake test TEST="test/{*,**/*}_test.rb" TESTOPTS="--exclude /cli_integration/"
+# Run integration tests (VCR-based, no real API calls)
+RUN_INTEGRATION_TESTS=true bundle exec rake test
 
-# Run CLI integration tests (requires explicit opt-in)
-RUN_CLI_INTEGRATION_TESTS=true bundle exec rake test TEST="test/integration/*_cli_integration_test.rb"
+# Run CLI integration tests (real API calls, requires explicit opt-in)
+RUN_CLI_INTEGRATION_TESTS=true bundle exec rake test
 ```
 
-### CLI Integration Tests
+### Integration Tests
 
-CLI integration tests make real API calls and consume Exa's concurrent search quota. They are **skipped by default** to prevent rate limit exhaustion during development.
+**Integration tests are skipped by default** to prevent accidental API calls.
 
-**To run CLI integration tests:**
-1. Ensure `EXA_API_KEY` is set in your environment
-2. Set `RUN_CLI_INTEGRATION_TESTS=true` explicitly
-3. Run: `RUN_CLI_INTEGRATION_TESTS=true bundle exec rake test`
+**VCR-based integration tests (`RUN_INTEGRATION_TESTS`):**
+- Use recorded HTTP interactions (VCR cassettes)
+- No real API calls when replaying cassettes
+- Set `RUN_INTEGRATION_TESTS=true` to run them
+- Safe to run during development
 
-**Warning:** Running CLI integration tests repeatedly can exhaust your API quota and trigger rate limits lasting 1-2 days. Only run these tests:
-- Manually before releases
-- When testing CLI-specific functionality
-- In dedicated CI jobs with higher rate limits
+**CLI integration tests (`RUN_CLI_INTEGRATION_TESTS`):**
+- Make real API calls through shell commands
+- Consume Exa's concurrent search quota
+- Set `RUN_CLI_INTEGRATION_TESTS=true` AND `EXA_API_KEY` to run them
+- **Warning:** Can exhaust API quota and trigger rate limits lasting 1-2 days
+
+**When to run integration tests:**
+- VCR tests: Anytime (safe, no real API calls)
+- CLI tests: Only before releases or when testing CLI-specific functionality
 
 **Test Coverage:**
-- **Unit tests** - Fast, no API calls
-- **Client integration tests** - Use VCR cassettes, no real API calls
+- **Unit tests** - Fast, no API calls, always run
+- **VCR integration tests** - Replay cassettes, skipped by default
 - **CLI integration tests** - Real API calls via shell, skipped by default
 
 ## Support
