@@ -7,7 +7,7 @@ module Exa
       ENTITY_TYPES = %w[company person article research_paper custom].freeze
 
       # Valid enrichment formats
-      ENRICHMENT_FORMATS = %w[text date number options url].freeze
+      ENRICHMENT_FORMATS = %w[text date number options email phone url].freeze
 
       # Valid source types for imports and exclusions
       SOURCE_TYPES = %w[import webset].freeze

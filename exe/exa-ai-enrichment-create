@@ -3,7 +3,7 @@
 
 require "exa-ai"
 
-VALID_FORMATS = %w[text url options].freeze
+VALID_FORMATS = Exa::Constants::Websets::ENRICHMENT_FORMATS
 
 # Recursively convert hash keys from strings to symbols
 def deep_symbolize_keys(obj)
