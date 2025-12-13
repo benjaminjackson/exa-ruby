@@ -19,16 +19,16 @@ module Exa
           end
         end
 
-        def self.format_collection(items, output_format)
+        def self.format_collection(collection, output_format)
           case output_format
           when "json"
-            JSON.generate(items)
+            JSON.generate(collection.to_h)
           when "pretty"
-            format_collection_as_pretty(items)
+            format_collection_as_pretty(collection)
           when "text"
-            format_collection_as_text(items)
+            format_collection_as_text(collection)
           when "toon"
-            Exa::CLI::Base.encode_as_toon(items)
+            Exa::CLI::Base.encode_as_toon(collection.to_h)
           else
             raise ArgumentError, "Unknown output format: #{output_format}"
           end
@@ -74,12 +74,17 @@ module Exa
         end
         private_class_method :format_as_text
 
-        def self.format_collection_as_pretty(items)
+        def self.format_collection_as_pretty(collection)
           lines = []
-          lines << "Items (#{items.length})"
+          lines << "Webset Items (#{collection.data.length} items)"
+
+          if collection.has_more
+            lines << "Next Cursor:   #{collection.next_cursor}"
+          end
+
           lines << ""
 
-          items.each_with_index do |item, idx|
+          collection.data.each_with_index do |item, idx|
             lines << "" if idx > 0  # Blank line between items
 
             lines << "Item ID:       #{item['id']}"
@@ -101,9 +106,9 @@ module Exa
         end
         private_class_method :format_collection_as_pretty
 
-        def self.format_collection_as_text(items)
-          lines = ["Items (#{items.length} total):"]
-          items.each_with_index do |item, idx|
+        def self.format_collection_as_text(collection)
+          lines = ["Webset Items (#{collection.data.length} items):"]
+          collection.data.each_with_index do |item, idx|
             lines << "\n#{idx + 1}. #{item['id']}"
             lines << "   URL: #{item['url']}" if item['url']
             lines << "   Title: #{item['title']}" if item['title']
@@ -112,6 +117,11 @@ module Exa
               lines << "   Entity: #{item['entity']['name']}"
             end
           end
+
+          if collection.has_more
+            lines << "\nMore available (cursor: #{collection.next_cursor})"
+          end
+
           lines.join("\n")
         end
         private_class_method :format_collection_as_text
