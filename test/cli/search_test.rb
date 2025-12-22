@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "exa/cli/search_parser"
 
 class Exa::CLI::SearchTest < Minitest::Test
   def test_requires_query_argument
@@ -111,52 +112,8 @@ class Exa::CLI::SearchTest < Minitest::Test
   private
 
   # Helper method to parse command-line arguments
-  # This simulates what the exe/exa-search script will do
+  # Uses the real SearchParser implementation to avoid code duplication
   def parse_search_args(argv)
-    args = { output_format: "json" }
-
-    # Extract query (first non-flag argument)
-    query_parts = []
-    i = 0
-    while i < argv.length
-      arg = argv[i]
-      case arg
-      when "--num-results"
-        args[:num_results] = argv[i + 1].to_i
-        i += 2
-      when "--type"
-        search_type = argv[i + 1]
-        valid_types = ["fast", "deep", "keyword", "auto"]
-        raise ArgumentError, "Search type must be one of: #{valid_types.join(', ')}" unless valid_types.include?(search_type)
-        args[:type] = search_type
-        i += 2
-      when "--include-domains"
-        args[:include_domains] = argv[i + 1].split(",").map(&:strip)
-        i += 2
-      when "--exclude-domains"
-        args[:exclude_domains] = argv[i + 1].split(",").map(&:strip)
-        i += 2
-      when "--api-key"
-        args[:api_key] = argv[i + 1]
-        i += 2
-      when "--output-format"
-        args[:output_format] = argv[i + 1]
-        i += 2
-      when "--category"
-        category = argv[i + 1]
-        valid_categories = ["company", "research paper", "news", "pdf", "github", "tweet", "personal site", "financial report", "people"]
-        raise ArgumentError, "Category must be one of: #{valid_categories.join(', ')}" unless valid_categories.include?(category)
-        args[:category] = category
-        i += 2
-      else
-        query_parts << arg
-        i += 1
-      end
-    end
-
-    args[:query] = query_parts.join(" ")
-    raise ArgumentError, "Query is required" if args[:query].empty?
-
-    args
+    Exa::CLI::SearchParser.parse(argv)
   end
 end
