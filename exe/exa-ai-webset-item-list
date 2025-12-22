@@ -7,6 +7,8 @@ require "exa-ai"
 webset_id = nil
 api_key = nil
 output_format = "json"
+limit = nil
+cursor = nil
 
 args = ARGV.dup
 while args.any?
@@ -16,6 +18,10 @@ while args.any?
     api_key = args.shift
   when "--output-format"
     output_format = args.shift
+  when "--limit"
+    limit = args.shift&.to_i
+  when "--cursor"
+    cursor = args.shift
   when "--help", "-h"
     puts <<~HELP
       Usage: exa-ai webset-item-list <webset_id> [OPTIONS]
@@ -26,14 +32,17 @@ while args.any?
         webset_id              ID of the webset (required)
 
       Options:
+        --limit N              Maximum number of items to return (default: 20)
+        --cursor CURSOR        Cursor for pagination (use nextCursor from previous response)
         --api-key KEY          Exa API key (or set EXA_API_KEY env var)
-        --output-format FMT    Output format: json, pretty, or text (default: json)
+        --output-format FMT    Output format: json, pretty, text, or toon (default: json)
         --help, -h             Show this help message
 
       Examples:
         exa-ai webset-item-list ws_123
+        exa-ai webset-item-list ws_123 --limit 10
+        exa-ai webset-item-list ws_123 --limit 5 --cursor "abc123"
         exa-ai webset-item-list ws_123 --output-format pretty
-        exa-ai webset-item-list ws_123 --output-format text
     HELP
     exit 0
   else
@@ -63,11 +72,16 @@ begin
   # Build client
   client = Exa::CLI::Base.build_client(api_key)
 
+  # Build list params
+  list_params = {}
+  list_params[:limit] = limit if limit
+  list_params[:cursor] = cursor if cursor
+
   # List items
-  items = client.list_items(webset_id: webset_id)
+  collection = client.list_items(webset_id: webset_id, **list_params)
 
   # Format and output
-  output = Exa::CLI::Formatters::WebsetItemFormatter.format_collection(items, output_format)
+  output = Exa::CLI::Formatters::WebsetItemFormatter.format_collection(collection, output_format)
   puts output
   $stdout.flush
 

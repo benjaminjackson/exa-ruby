@@ -314,9 +314,12 @@ module Exa
     # List all items in a webset
     #
     # @param webset_id [String] Webset ID
-    # @return [Array<Hash>] Array of items
-    def list_items(webset_id:)
-      Services::Websets::ListItems.new(connection, webset_id: webset_id).call
+    # @param params [Hash] Pagination parameters
+    # @option params [String] :cursor Cursor for pagination
+    # @option params [Integer] :limit Maximum number of items to return (default: 20)
+    # @return [Resources::WebsetItemCollection] Paginated list of items
+    def list_items(webset_id:, **params)
+      Services::Websets::ListItems.new(connection, webset_id: webset_id, **params).call
     end
 
     # List all imports
