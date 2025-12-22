@@ -67,31 +67,36 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_equal "pretty", args[:output_format]
   end
 
-  def test_parses_linkedin_company_flag
-    args = parse_search_args(["Anthropic", "--linkedin", "company"])
-    assert_equal "company", args[:linkedin]
+  def test_parses_category_people_flag
+    args = parse_search_args(["John Smith software engineer", "--category", "people"])
+    assert_equal "people", args[:category]
   end
 
-  def test_parses_linkedin_person_flag
-    args = parse_search_args(["Dario Amodei", "--linkedin", "person"])
-    assert_equal "person", args[:linkedin]
+  def test_parses_category_company_flag
+    args = parse_search_args(["Anthropic AI safety", "--category", "company"])
+    assert_equal "company", args[:category]
   end
 
-  def test_parses_linkedin_all_flag
-    args = parse_search_args(["AI", "--linkedin", "all"])
-    assert_equal "all", args[:linkedin]
-  end
-
-  def test_linkedin_defaults_to_all_when_not_specified
-    args = parse_search_args(["test query"])
-    assert_nil args[:linkedin]
-  end
-
-  def test_rejects_invalid_linkedin_value
-    error = assert_raises(ArgumentError) do
-      parse_search_args(["test query", "--linkedin", "invalid"])
+  def test_parses_all_valid_categories
+    valid_categories = ["company", "research paper", "news", "pdf", "github", "tweet", "personal site", "financial report", "people"]
+    valid_categories.each do |category|
+      args = parse_search_args(["test query", "--category", category])
+      assert_equal category, args[:category], "Failed to parse category: #{category}"
     end
-    assert_includes error.message.downcase, "linkedin"
+  end
+
+  def test_rejects_invalid_category
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["test query", "--category", "invalid"])
+    end
+    assert_includes error.message.downcase, "category"
+  end
+
+  def test_rejects_obsolete_linkedin_profile_category
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["test query", "--category", "linkedin profile"])
+    end
+    assert_includes error.message.downcase, "category"
   end
 
   def test_handles_api_error_gracefully
@@ -137,11 +142,11 @@ class Exa::CLI::SearchTest < Minitest::Test
       when "--output-format"
         args[:output_format] = argv[i + 1]
         i += 2
-      when "--linkedin"
-        linkedin_type = argv[i + 1]
-        valid_types = ["company", "person", "all"]
-        raise ArgumentError, "LinkedIn type must be one of: #{valid_types.join(', ')}" unless valid_types.include?(linkedin_type)
-        args[:linkedin] = linkedin_type
+      when "--category"
+        category = argv[i + 1]
+        valid_categories = ["company", "research paper", "news", "pdf", "github", "tweet", "personal site", "financial report", "people"]
+        raise ArgumentError, "Category must be one of: #{valid_categories.join(', ')}" unless valid_categories.include?(category)
+        args[:category] = category
         i += 2
       else
         query_parts << arg

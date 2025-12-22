@@ -137,6 +137,54 @@ class SearchTest < Minitest::Test
     assert_requested :post, "https://api.exa.ai/search"
   end
 
+  def test_call_sends_people_category
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "John Smith software engineer",
+          category: "people"
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "John Smith software engineer",
+      category: "people"
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_sends_company_category
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "Anthropic AI safety",
+          category: "company"
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "Anthropic AI safety",
+      category: "company"
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
   def test_call_converts_date_range_parameters
     stub_request(:post, "https://api.exa.ai/search")
       .with(

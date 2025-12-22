@@ -30,7 +30,7 @@ def parse_args(argv)
       i += 2
     when "--category"
       category = argv[i + 1]
-      valid_categories = ["company", "research paper", "news", "pdf", "github", "tweet", "personal site", "linkedin profile", "financial report"]
+      valid_categories = ["company", "research paper", "news", "pdf", "github", "tweet", "personal site", "financial report", "people"]
       unless valid_categories.include?(category)
         $stderr.puts "Error: Category must be one of: #{valid_categories.map { |c| "\"#{c}\"" }.join(', ')}"
         exit 1
@@ -48,15 +48,6 @@ def parse_args(argv)
       i += 2
     when "--output-format"
       args[:output_format] = argv[i + 1]
-      i += 2
-    when "--linkedin"
-      linkedin_type = argv[i + 1]
-      valid_types = ["company", "person", "all"]
-      unless valid_types.include?(linkedin_type)
-        $stderr.puts "Error: LinkedIn type must be one of: #{valid_types.join(', ')}"
-        exit 1
-      end
-      args[:linkedin] = linkedin_type
       i += 2
     when "--start-published-date"
       args[:start_published_date] = argv[i + 1]
@@ -134,8 +125,8 @@ def parse_args(argv)
           --type TYPE                  Search type: fast, deep, keyword, or auto (default: fast)
           --category CAT               Focus on specific data category
                                        Options: "company", "research paper", "news", "pdf",
-                                       "github", "tweet", "personal site", "linkedin profile",
-                                       "financial report"
+                                       "github", "tweet", "personal site", "financial report",
+                                       "people"
           --include-domains D          Comma-separated list of domains to include
           --exclude-domains D          Comma-separated list of domains to exclude
           --start-published-date DATE  Filter by published date (ISO 8601 format)
@@ -160,7 +151,6 @@ def parse_args(argv)
           --image-links N              Number of image links to extract
 
         General Options:
-          --linkedin TYPE              Search LinkedIn: company, person, or all
           --api-key KEY                Exa API key (or set EXA_API_KEY env var)
           --output-format FMT          Output format: json, pretty, or text (default: json)
           --help, -h                   Show this help message
@@ -170,9 +160,7 @@ def parse_args(argv)
           exa-ai search "machine learning" --num-results 5 --type deep
           exa-ai search "Latest LLM research" --category "research paper"
           exa-ai search "AI startups" --category company
-          exa-ai search "Anthropic" --linkedin company
-          exa-ai search "Dario Amodei" --linkedin person
-          exa-ai search "AI" --linkedin all
+          exa-ai search "Dario Amodei" --category people
           exa-ai search "AI research" --include-domains arxiv.org,scholar.google.com
           exa-ai search "tutorials" --output-format pretty
       HELP
@@ -272,17 +260,8 @@ begin
   contents = build_contents(args)
   search_params.merge!(contents) if contents
 
-  # Execute search based on LinkedIn type
-  result = case args[:linkedin]
-           when "company"
-             client.linkedin_company(args[:query], **search_params)
-           when "person"
-             client.linkedin_person(args[:query], **search_params)
-           when "all"
-             client.search(args[:query], includeDomains: ["linkedin.com"], **search_params)
-           else
-             client.search(args[:query], **search_params)
-           end
+  # Execute search
+  result = client.search(args[:query], **search_params)
 
   # Format and output result
   output = Exa::CLI::Formatters::SearchFormatter.format(result, output_format)
