@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    exa-ai (0.7.0)
+    exa-ai (0.7.1)
       faraday (~> 2.0)
       ld-eventsource (~> 2.0)
       toon-ruby (~> 0.1)

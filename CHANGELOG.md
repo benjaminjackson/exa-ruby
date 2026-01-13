@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-01-13
+
+### Added
+- **Answer command --skip-citations flag** - Added `--skip-citations` and `--no-citations` flags to the answer command to omit citations from output, saving tokens when citations aren't needed
+
+## [0.7.0] - 2026-01-13
+
+### Added
+- **Search categories** - Added support for people and company categories in search command
+
+### Changed
+- **CLI argument parsing** - Refactored search command argument parsing into reusable module
+- **LinkedIn workaround removed** - Removed legacy LinkedIn-specific workaround
+
 ## [0.6.1] - 2025-12-07
 
 ### Changed
