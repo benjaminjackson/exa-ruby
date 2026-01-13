@@ -117,4 +117,39 @@ class Exa::CLI::Formatters::AnswerFormatterTest < Minitest::Test
     json_output = Exa::CLI::Formatters::AnswerFormatter.format(@result, "json")
     assert output.length < json_output.length
   end
+
+  def test_json_format_with_skip_citations_removes_citations
+    output = Exa::CLI::Formatters::AnswerFormatter.format(@result, "json", skip_citations: true)
+
+    parsed = JSON.parse(output)
+    assert_equal "SpaceX's valuation as of late 2024 is approximately $180 billion.", parsed["answer"]
+    refute parsed.key?("citations")
+    assert_equal 0.005, parsed["cost_dollars"]
+  end
+
+  def test_pretty_format_with_skip_citations_hides_citations_section
+    output = Exa::CLI::Formatters::AnswerFormatter.format(@result, "pretty", skip_citations: true)
+
+    assert_includes output, "Answer:"
+    assert_includes output, "SpaceX's valuation as of late 2024 is approximately $180 billion."
+    refute_includes output, "Citations:"
+    refute_includes output, "[1] SpaceX Valuation in 2024"
+    refute_includes output, "https://example.com/spacex-valuation"
+    assert_includes output, "Cost: $0.005"
+  end
+
+  def test_json_format_without_skip_citations_includes_citations
+    output = Exa::CLI::Formatters::AnswerFormatter.format(@result, "json", skip_citations: false)
+
+    parsed = JSON.parse(output)
+    assert_equal 2, parsed["citations"].length
+  end
+
+  def test_pretty_format_without_skip_citations_shows_citations_section
+    output = Exa::CLI::Formatters::AnswerFormatter.format(@result, "pretty", skip_citations: false)
+
+    assert_includes output, "Citations:"
+    assert_includes output, "[1] SpaceX Valuation in 2024"
+    assert_includes output, "[2] Latest SpaceX Funding Round"
+  end
 end

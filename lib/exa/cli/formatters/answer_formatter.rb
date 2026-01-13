@@ -4,24 +4,30 @@ module Exa
   module CLI
     module Formatters
       class AnswerFormatter
-        def self.format(result, format)
+        def self.format(result, format, skip_citations: false)
           case format
           when "json"
-            JSON.pretty_generate(result.to_h)
+            format_json(result, skip_citations: skip_citations)
           when "pretty"
-            format_pretty(result)
+            format_pretty(result, skip_citations: skip_citations)
           when "text"
             format_text(result)
           when "toon"
             Exa::CLI::Base.encode_as_toon(result.to_h)
           else
-            JSON.pretty_generate(result.to_h)
+            format_json(result, skip_citations: skip_citations)
           end
         end
 
         private
 
-        def self.format_pretty(result)
+        def self.format_json(result, skip_citations: false)
+          hash = result.to_h
+          hash.delete(:citations) if skip_citations
+          JSON.pretty_generate(hash)
+        end
+
+        def self.format_pretty(result, skip_citations: false)
           output = []
           output << "Answer:"
           output << "-" * 60
@@ -34,15 +40,17 @@ module Exa
           end
           output << ""
 
-          if result.citations && !result.citations.empty?
-            output << "Citations:"
-            output << "-" * 60
-            result.citations.each_with_index do |citation, idx|
-              output << "[#{idx + 1}] #{citation['title']}"
-              output << "    URL:      #{citation['url']}"
-              output << "    Author:   #{citation['author']}" if citation['author']
-              output << "    Date:     #{citation['publishedDate']}" if citation['publishedDate']
-              output << ""
+          unless skip_citations
+            if result.citations && !result.citations.empty?
+              output << "Citations:"
+              output << "-" * 60
+              result.citations.each_with_index do |citation, idx|
+                output << "[#{idx + 1}] #{citation['title']}"
+                output << "    URL:      #{citation['url']}"
+                output << "    Author:   #{citation['author']}" if citation['author']
+                output << "    Date:     #{citation['publishedDate']}" if citation['publishedDate']
+                output << ""
+              end
             end
           end
 

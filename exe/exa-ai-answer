@@ -9,7 +9,8 @@ def parse_args(argv)
     output_format: "json",
     api_key: nil,
     text: false,
-    stream: false
+    stream: false,
+    skip_citations: false
   }
 
   # Extract query (first non-flag argument)
@@ -23,6 +24,9 @@ def parse_args(argv)
       i += 1
     when "--stream"
       args[:stream] = true
+      i += 1
+    when "--skip-citations", "--no-citations"
+      args[:skip_citations] = true
       i += 1
     when "--output-schema"
       args[:output_schema] = argv[i + 1]
@@ -48,6 +52,8 @@ def parse_args(argv)
         Options:
           --stream              Stream answer chunks in real-time
           --text                Include full text content from sources
+          --skip-citations      Remove citations from output (saves tokens)
+          --no-citations        Alias for --skip-citations
           --output-schema JSON  JSON schema for structured output
           --system-prompt TEXT  System prompt to guide answer generation
           --api-key KEY         Exa API key (or set EXA_API_KEY env var)
@@ -123,7 +129,7 @@ begin
   else
     # Non-streaming mode - collect full response and format
     result = client.answer(args[:query], **answer_params)
-    output = Exa::CLI::Formatters::AnswerFormatter.format(result, output_format)
+    output = Exa::CLI::Formatters::AnswerFormatter.format(result, output_format, skip_citations: args[:skip_citations])
     puts output
     $stdout.flush
   end
