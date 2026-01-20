@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   # Executables
   spec.bindir = "exe"
-  spec.executables = ["exa-ai", "exa-ai-answer", "exa-ai-context", "exa-ai-get-contents", "exa-ai-research-get", "exa-ai-research-list", "exa-ai-research-start", "exa-ai-search"]
+  spec.executables = ["exa-ai"]
 
   # Runtime dependencies
   spec.add_dependency "faraday", "~> 2.0"
