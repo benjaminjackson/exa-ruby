@@ -77,9 +77,9 @@ class WebsetsItemsCLIIntegrationTest < Minitest::Test
   # Test 5: Help text shows pagination options
   def test_help_text_shows_pagination_options
     command = "bundle exec exe/exa-ai-webset-item-list --help"
-    stdout, _stderr, status = run_command(command)
+    stdout, stderr, status = run_command(command)
 
-    assert status.success?, "Help command should succeed"
+    assert status.success?, "Help command should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "--limit N", "Help should document --limit flag"
     assert_includes stdout, "--cursor CURSOR", "Help should document --cursor flag"
     assert_includes stdout, "pagination", "Help should mention pagination"

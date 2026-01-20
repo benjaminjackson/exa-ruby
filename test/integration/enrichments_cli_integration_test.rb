@@ -77,9 +77,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
                 "--format text " \
                 "--output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-create should succeed"
+      assert status.success?, "enrichment-create should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
       track_enrichment(webset_id, result["id"])
 
@@ -114,9 +114,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
                 "--options '#{JSON.generate(options)}' " \
                 "--output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-create with options should succeed"
+      assert status.success?, "enrichment-create with options should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
       track_enrichment(webset_id, result["id"])
 
@@ -154,9 +154,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
                 "--options @#{options_file.path} " \
                 "--output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-create with options file should succeed"
+      assert status.success?, "enrichment-create with options file should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
       track_enrichment(webset_id, result["id"])
 
@@ -190,9 +190,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       # Get the enrichment
       command = "bundle exec exe/exa-ai enrichment-get #{webset_id} #{enrichment_id} --output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-get should succeed"
+      assert status.success?, "enrichment-get should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
 
       assert_equal enrichment_id, result["id"]
@@ -224,9 +224,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       # List enrichments
       command = "bundle exec exe/exa-ai enrichment-list #{webset_id} --output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-list should succeed"
+      assert status.success?, "enrichment-list should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
 
       # List response has data array
@@ -260,9 +260,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
                 "--description 'Updated description' " \
                 "--output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-update should succeed"
+      assert status.success?, "enrichment-update should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
 
       assert_equal enrichment_id, result["id"]
@@ -294,9 +294,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       command = "bundle exec exe/exa-ai enrichment-delete #{webset_id} #{enrichment_id} " \
                 "--force --output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-delete should succeed"
+      assert status.success?, "enrichment-delete should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
 
       # API returns the enrichment object after deletion
@@ -328,9 +328,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       # Cancel the enrichment
       command = "bundle exec exe/exa-ai enrichment-cancel #{webset_id} #{enrichment_id} --output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-cancel should succeed"
+      assert status.success?, "enrichment-cancel should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
 
       assert_equal enrichment_id, result["id"]
@@ -356,9 +356,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
                 "--format url " \
                 "--output-format pretty"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "enrichment-create with pretty format should succeed"
+      assert status.success?, "enrichment-create with pretty format should succeed. stderr: #{stderr}, stdout: #{stdout}"
       # Pretty format outputs human-readable text, not JSON
       assert_includes stdout, "Enrichment ID:"
       assert_includes stdout, "Webset ID:"
@@ -381,7 +381,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
     stdout, stderr, status = run_command(command)
 
-    refute status.success?, "enrichment-create with invalid format should fail"
+    refute status.success?, "enrichment-create with invalid format should fail. stderr: #{stderr}, stdout: #{stdout}"
     combined = stdout + stderr
     assert_includes combined.downcase, "error"
   end
@@ -394,7 +394,7 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
     stdout, stderr, status = run_command(command)
 
-    refute status.success?, "enrichment-create without description should fail"
+    refute status.success?, "enrichment-create without description should fail. stderr: #{stderr}, stdout: #{stdout}"
     combined = stdout + stderr
     assert_includes combined, "description"
   end
@@ -410,16 +410,16 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
 
     stdout, stderr, status = run_command(command)
 
-    refute status.success?, "enrichment-create with options format but no options should fail"
+    refute status.success?, "enrichment-create with options format but no options should fail. stderr: #{stderr}, stdout: #{stdout}"
     combined = stdout + stderr
     assert_includes combined.downcase, "options"
   end
 
   # Test help output for each command
   def test_enrichment_create_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai enrichment-create --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai enrichment-create --help")
 
-    assert status.success?, "enrichment-create --help should succeed"
+    assert status.success?, "enrichment-create --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "--description"
@@ -428,26 +428,26 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
   end
 
   def test_enrichment_get_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai enrichment-get --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai enrichment-get --help")
 
-    assert status.success?, "enrichment-get --help should succeed"
+    assert status.success?, "enrichment-get --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "enrichment_id"
   end
 
   def test_enrichment_list_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai enrichment-list --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai enrichment-list --help")
 
-    assert status.success?, "enrichment-list --help should succeed"
+    assert status.success?, "enrichment-list --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
   end
 
   def test_enrichment_update_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai enrichment-update --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai enrichment-update --help")
 
-    assert status.success?, "enrichment-update --help should succeed"
+    assert status.success?, "enrichment-update --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "enrichment_id"
@@ -455,9 +455,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
   end
 
   def test_enrichment_delete_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai enrichment-delete --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai enrichment-delete --help")
 
-    assert status.success?, "enrichment-delete --help should succeed"
+    assert status.success?, "enrichment-delete --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "enrichment_id"
@@ -465,9 +465,9 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
   end
 
   def test_enrichment_cancel_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai enrichment-cancel --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai enrichment-cancel --help")
 
-    assert status.success?, "enrichment-cancel --help should succeed"
+    assert status.success?, "enrichment-cancel --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "enrichment_id"

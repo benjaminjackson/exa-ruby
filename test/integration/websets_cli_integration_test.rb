@@ -226,9 +226,9 @@ class WebsetsCLIIntegrationTest < Minitest::Test
       # Now get it
       get_command = "bundle exec exe/exa-ai webset-get #{webset_id} --output-format json"
 
-      stdout, _stderr, status = run_command(get_command)
+      stdout, stderr, status = run_command(get_command)
 
-      assert status.success?, "webset-get should succeed"
+      assert status.success?, "webset-get should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
 
       assert_equal webset_id, result["id"]
@@ -256,9 +256,9 @@ class WebsetsCLIIntegrationTest < Minitest::Test
       # Get with pretty format
       get_command = "bundle exec exe/exa-ai webset-get #{webset_id} --output-format pretty"
 
-      stdout, _stderr, status = run_command(get_command)
+      stdout, stderr, status = run_command(get_command)
 
-      assert status.success?, "webset-get with pretty format should succeed"
+      assert status.success?, "webset-get with pretty format should succeed. stderr: #{stderr}, stdout: #{stdout}"
       # Pretty format is still JSON, just nicely formatted with indentation
       result = parse_json_output(stdout)
       assert_equal webset_id, result["id"]
@@ -273,9 +273,9 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
           command = "bundle exec exe/exa-ai webset-list --limit 5 --output-format json"
 
-      stdout, _stderr, status = run_command(command)
+      stdout, stderr, status = run_command(command)
 
-      assert status.success?, "webset-list should succeed"
+      assert status.success?, "webset-list should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
 
       # List response has data array and optional pagination fields
@@ -315,9 +315,9 @@ class WebsetsCLIIntegrationTest < Minitest::Test
     skip_unless_cli_integration_enabled
 
     command = "bundle exec exe/exa-ai webset-list --limit 2 --output-format pretty"
-    stdout, _stderr, status = run_command(command)
+    stdout, stderr, status = run_command(command)
 
-    assert status.success?, "webset-list with pretty format should succeed"
+    assert status.success?, "webset-list with pretty format should succeed. stderr: #{stderr}, stdout: #{stdout}"
 
     # Verify it's NOT JSON (should not be parseable)
     assert_raises(JSON::ParserError) { parse_json_output(stdout) }
@@ -388,9 +388,9 @@ class WebsetsCLIIntegrationTest < Minitest::Test
       # Delete it (using --force to skip confirmation)
       delete_command = "bundle exec exe/exa-ai webset-delete #{webset_id} --force --output-format json"
 
-      stdout, _stderr, status = run_command(delete_command)
+      stdout, stderr, status = run_command(delete_command)
 
-      assert status.success?, "webset-delete should succeed"
+      assert status.success?, "webset-delete should succeed. stderr: #{stderr}, stdout: #{stdout}"
       result = parse_json_output(stdout)
 
       # API returns the webset object after deletion
@@ -469,7 +469,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
     stdout, stderr, status = run_command(command)
 
-    refute status.success?, "webset-create with invalid JSON should fail"
+    refute status.success?, "webset-create with invalid JSON should fail. stderr: #{stderr}, stdout: #{stdout}"
     # Error could be in stdout or stderr
     combined = stdout + stderr
     assert_includes combined.downcase, "error"
@@ -481,7 +481,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
     stdout, stderr, status = run_command(command)
 
-    refute status.success?, "webset-create without --search should fail"
+    refute status.success?, "webset-create without --search should fail. stderr: #{stderr}, stdout: #{stdout}"
     combined = stdout + stderr
     assert_includes combined, "search"
   end
@@ -494,7 +494,7 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
     stdout, stderr, status = run_command(command)
 
-    refute status.success?, "webset-get with non-existent ID should fail"
+    refute status.success?, "webset-get with non-existent ID should fail. stderr: #{stderr}, stdout: #{stdout}"
     # Should get a 404 error
     combined = stdout + stderr
     assert_includes combined.downcase, "not found"
@@ -503,9 +503,9 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test help output for each command
   def test_webset_create_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai webset-create --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai webset-create --help")
 
-    assert status.success?, "webset-create --help should succeed"
+    assert status.success?, "webset-create --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "--search"
     assert_includes stdout, "--enrichments"
@@ -513,70 +513,70 @@ class WebsetsCLIIntegrationTest < Minitest::Test
   end
 
   def test_webset_get_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai webset-get --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai webset-get --help")
 
-    assert status.success?, "webset-get --help should succeed"
+    assert status.success?, "webset-get --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
   end
 
   def test_webset_list_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai webset-list --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai webset-list --help")
 
-    assert status.success?, "webset-list --help should succeed"
+    assert status.success?, "webset-list --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "--limit"
     assert_includes stdout, "--cursor"
   end
 
   def test_webset_update_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai webset-update --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai webset-update --help")
 
-    assert status.success?, "webset-update --help should succeed"
+    assert status.success?, "webset-update --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "--metadata"
   end
 
   def test_webset_delete_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai webset-delete --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai webset-delete --help")
 
-    assert status.success?, "webset-delete --help should succeed"
+    assert status.success?, "webset-delete --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "--force"
   end
 
   def test_webset_cancel_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai webset-cancel --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai webset-cancel --help")
 
-    assert status.success?, "webset-cancel --help should succeed"
+    assert status.success?, "webset-cancel --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
   end
 
   # Webset search commands
   def test_webset_search_create_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai-webset-search-create --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai-webset-search-create --help")
 
-    assert status.success?, "webset-search-create --help should succeed"
+    assert status.success?, "webset-search-create --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "--query"
   end
 
   def test_webset_search_get_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai-webset-search-get --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai-webset-search-get --help")
 
-    assert status.success?, "webset-search-get --help should succeed"
+    assert status.success?, "webset-search-get --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "search_id"
   end
 
   def test_webset_search_cancel_help
-    stdout, _stderr, status = run_command("bundle exec exe/exa-ai-webset-search-cancel --help")
+    stdout, stderr, status = run_command("bundle exec exe/exa-ai-webset-search-cancel --help")
 
-    assert status.success?, "webset-search-cancel --help should succeed"
+    assert status.success?, "webset-search-cancel --help should succeed. stderr: #{stderr}, stdout: #{stdout}"
     assert_includes stdout, "Usage:"
     assert_includes stdout, "webset_id"
     assert_includes stdout, "search_id"
