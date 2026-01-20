@@ -69,10 +69,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
               "--output-format json"
 
     stdout, stderr, status = run_command(command)
-    skip "webset-create failed: #{stderr}" unless status.success?
+    assert status.success?, "webset-create failed: #{stderr}"
 
     result = parse_json_output(stdout)
-    skip "webset-create returned no ID" if result["id"].nil?
+    refute_nil result["id"], "webset-create returned no ID"
 
     track_webset(result["id"])
 
@@ -101,10 +101,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
               "--output-format json"
 
     stdout, stderr, status = run_command(command)
-    skip "webset-create failed: #{stderr}" unless status.success?
+    assert status.success?, "webset-create failed: #{stderr}"
 
     result = parse_json_output(stdout)
-    skip "webset-create returned no ID" if result["id"].nil?
+    refute_nil result["id"], "webset-create returned no ID"
 
     track_webset(result["id"])
 
@@ -127,10 +127,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                 "--output-format json"
 
       stdout, stderr, status = run_command(command)
-      skip "webset-create failed: #{stderr}" unless status.success?
+      assert status.success?, "webset-create failed: #{stderr}"
 
       result = parse_json_output(stdout)
-      skip "webset-create returned no ID" if result["id"].nil?
+      refute_nil result["id"], "webset-create returned no ID"
 
       track_webset(result["id"])
 
@@ -152,10 +152,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                 "--output-format json"
 
       stdout, stderr, status = run_command(command)
-      skip "webset-create failed: #{stderr}" unless status.success?
+      assert status.success?, "webset-create failed: #{stderr}"
 
       result = parse_json_output(stdout)
-      skip "webset-create returned no ID" if result["id"].nil?
+      refute_nil result["id"], "webset-create returned no ID"
 
       track_webset(result["id"])
 
@@ -189,10 +189,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
               "--output-format json"
 
     stdout, stderr, status = run_command(command)
-    skip "webset-create failed: #{stderr}" unless status.success?
+    assert status.success?, "webset-create failed: #{stderr}"
 
     result = parse_json_output(stdout)
-    skip "webset-create returned no ID" if result["id"].nil?
+    refute_nil result["id"], "webset-create returned no ID"
 
     track_webset(result["id"])
 
@@ -216,10 +216,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                        "--output-format json"
 
       create_stdout, create_stderr, create_status = run_command(create_command)
-      skip "webset-create failed: #{create_stderr}" unless create_status.success?
+      assert create_status.success?, "webset-create failed: #{create_stderr}"
 
       created = parse_json_output(create_stdout)
-      skip "webset-create returned no ID" if created["id"].nil?
+      refute_nil created["id"], "webset-create returned no ID"
 
       webset_id = track_webset(created["id"])
 
@@ -246,10 +246,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                        "--output-format json"
 
       create_stdout, create_stderr, create_status = run_command(create_command)
-      skip "webset-create failed: #{create_stderr}" unless create_status.success?
+      assert create_status.success?, "webset-create failed: #{create_stderr}"
 
       created = parse_json_output(create_stdout)
-      skip "webset-create returned no ID" if created["id"].nil?
+      refute_nil created["id"], "webset-create returned no ID"
 
       webset_id = track_webset(created["id"])
 
@@ -342,10 +342,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                        "--output-format json"
 
       create_stdout, create_stderr, create_status = run_command(create_command)
-      skip "webset-create failed: #{create_stderr}" unless create_status.success?
+      assert create_status.success?, "webset-create failed: #{create_stderr}"
 
       created = parse_json_output(create_stdout)
-      skip "webset-create returned no ID" if created["id"].nil?
+      refute_nil created["id"], "webset-create returned no ID"
 
       webset_id = track_webset(created["id"])
 
@@ -378,10 +378,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                        "--output-format json"
 
       create_stdout, create_stderr, create_status = run_command(create_command)
-      skip "webset-create failed: #{create_stderr}" unless create_status.success?
+      assert create_status.success?, "webset-create failed: #{create_stderr}"
 
       created = parse_json_output(create_stdout)
-      skip "webset-create returned no ID" if created["id"].nil?
+      refute_nil created["id"], "webset-create returned no ID"
 
       webset_id = track_webset(created["id"])
 
@@ -409,10 +409,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                        "--output-format json"
 
       create_stdout, create_stderr, create_status = run_command(create_command)
-      skip "webset-create failed: #{create_stderr}" unless create_status.success?
+      assert create_status.success?, "webset-create failed: #{create_stderr}"
 
       created = parse_json_output(create_stdout)
-      skip "webset-create returned no ID" if created["id"].nil?
+      refute_nil created["id"], "webset-create returned no ID"
 
       webset_id = track_webset(created["id"])
 
@@ -590,10 +590,10 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                      "--search '{\"query\":\"Tech companies\",\"count\":1}' " \
                      "--output-format json"
     create_stdout, create_stderr, create_status = run_command(create_command)
-    skip "webset-create failed: #{create_stderr}" unless create_status.success?
+    assert create_status.success?, "webset-create failed: #{create_stderr}"
 
     created = parse_json_output(create_stdout)
-    skip "webset-create returned no ID" if created["id"].nil?
+    refute_nil created["id"], "webset-create returned no ID"
 
     webset_id = track_webset(created["id"])
 
@@ -618,18 +618,21 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                      "--search '{\"query\":\"Software companies\",\"count\":1}' " \
                      "--output-format json"
     create_stdout, create_stderr, create_status = run_command(create_command)
-    skip "webset-create failed: #{create_stderr}" unless create_status.success?
+    assert create_status.success?, "webset-create failed: #{create_stderr}"
 
     created = parse_json_output(create_stdout)
-    skip "webset-create returned no ID" if created["id"].nil?
+    refute_nil created["id"], "webset-create returned no ID"
 
     webset_id = track_webset(created["id"])
 
     # Create a search within the webset
     search_command = "bundle exec exe/exa-ai-webset-search-create #{webset_id} " \
                      "--query 'Machine learning startups' --output-format json"
-    search_stdout, _stderr, _status = run_command(search_command)
+    search_stdout, search_stderr, search_status = run_command(search_command)
+    assert search_status.success?, "webset-search-create failed: #{search_stderr}"
+
     search = parse_json_output(search_stdout)
+    refute_nil search["id"], "webset-search-create returned no ID"
     search_id = track_search(webset_id, search["id"])
 
     # Get the search
@@ -651,18 +654,21 @@ class WebsetsCLIIntegrationTest < Minitest::Test
                      "--search '{\"query\":\"Healthcare companies\",\"count\":1}' " \
                      "--output-format json"
     create_stdout, create_stderr, create_status = run_command(create_command)
-    skip "webset-create failed: #{create_stderr}" unless create_status.success?
+    assert create_status.success?, "webset-create failed: #{create_stderr}"
 
     created = parse_json_output(create_stdout)
-    skip "webset-create returned no ID" if created["id"].nil?
+    refute_nil created["id"], "webset-create returned no ID"
 
     webset_id = track_webset(created["id"])
 
     # Create a search within the webset
     search_command = "bundle exec exe/exa-ai-webset-search-create #{webset_id} " \
                      "--query 'Medical device companies' --output-format json"
-    search_stdout, _stderr, _status = run_command(search_command)
+    search_stdout, search_stderr, search_status = run_command(search_command)
+    assert search_status.success?, "webset-search-create failed: #{search_stderr}"
+
     search = parse_json_output(search_stdout)
+    refute_nil search["id"], "webset-search-create returned no ID"
     search_id = track_search(webset_id, search["id"])
 
     # Cancel the search

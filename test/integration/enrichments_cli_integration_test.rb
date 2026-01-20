@@ -67,8 +67,11 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Tech companies\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       # Create enrichment
@@ -97,8 +100,11 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Startups\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       # Create enrichment with options format
@@ -133,8 +139,11 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"E-commerce companies\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       # Create temporary options file
@@ -175,16 +184,22 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Healthcare companies\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       create_enrich_cmd = "bundle exec exe/exa-ai enrichment-create #{webset_id} " \
                           "--description 'Find phone number' " \
                           "--format text " \
                           "--output-format json"
-      enrich_stdout, _stderr, _status = run_command(create_enrich_cmd)
+      enrich_stdout, enrich_stderr, enrich_status = run_command(create_enrich_cmd)
+      assert enrich_status.success?, "enrichment-create failed: #{enrich_stderr}"
+
       enrichment = parse_json_output(enrich_stdout)
+      refute_nil enrichment["id"], "enrichment-create returned no ID"
       enrichment_id = track_enrichment(webset_id, enrichment["id"])
 
       # Get the enrichment
@@ -208,8 +223,11 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Fintech companies\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       # Create an enrichment
@@ -217,8 +235,11 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
                           "--description 'Find headquarters location' " \
                           "--format text " \
                           "--output-format json"
-      enrich_stdout, _stderr, _status = run_command(create_enrich_cmd)
+      enrich_stdout, enrich_stderr, enrich_status = run_command(create_enrich_cmd)
+      assert enrich_status.success?, "enrichment-create failed: #{enrich_stderr}"
+
       enrichment = parse_json_output(enrich_stdout)
+      refute_nil enrichment["id"], "enrichment-create returned no ID"
       track_enrichment(webset_id, enrichment["id"])
 
       # List enrichments
@@ -243,16 +264,22 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Retail companies\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       create_enrich_cmd = "bundle exec exe/exa-ai enrichment-create #{webset_id} " \
                           "--description 'Initial description' " \
                           "--format text " \
                           "--output-format json"
-      enrich_stdout, _stderr, _status = run_command(create_enrich_cmd)
+      enrich_stdout, enrich_stderr, enrich_status = run_command(create_enrich_cmd)
+      assert enrich_status.success?, "enrichment-create failed: #{enrich_stderr}"
+
       enrichment = parse_json_output(enrich_stdout)
+      refute_nil enrichment["id"], "enrichment-create returned no ID"
       enrichment_id = track_enrichment(webset_id, enrichment["id"])
 
       # Update the enrichment
@@ -278,16 +305,22 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Manufacturing companies\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       create_enrich_cmd = "bundle exec exe/exa-ai enrichment-create #{webset_id} " \
                           "--description 'To be deleted' " \
                           "--format text " \
                           "--output-format json"
-      enrich_stdout, _stderr, _status = run_command(create_enrich_cmd)
+      enrich_stdout, enrich_stderr, enrich_status = run_command(create_enrich_cmd)
+      assert enrich_status.success?, "enrichment-create failed: #{enrich_stderr}"
+
       enrichment = parse_json_output(enrich_stdout)
+      refute_nil enrichment["id"], "enrichment-create returned no ID"
       enrichment_id = track_enrichment(webset_id, enrichment["id"])
 
       # Delete the enrichment (with --force to skip confirmation)
@@ -313,16 +346,22 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"Education companies\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       create_enrich_cmd = "bundle exec exe/exa-ai enrichment-create #{webset_id} " \
                           "--description 'To be cancelled' " \
                           "--format text " \
                           "--output-format json"
-      enrich_stdout, _stderr, _status = run_command(create_enrich_cmd)
+      enrich_stdout, enrich_stderr, enrich_status = run_command(create_enrich_cmd)
+      assert enrich_status.success?, "enrichment-create failed: #{enrich_stderr}"
+
       enrichment = parse_json_output(enrich_stdout)
+      refute_nil enrichment["id"], "enrichment-create returned no ID"
       enrichment_id = track_enrichment(webset_id, enrichment["id"])
 
       # Cancel the enrichment
@@ -346,8 +385,11 @@ class EnrichmentsCLIIntegrationTest < Minitest::Test
       create_ws_cmd = "bundle exec exe/exa-ai webset-create " \
                       "--search '{\"query\":\"AI companies\",\"count\":1}' " \
                       "--output-format json"
-      ws_stdout, _stderr, _status = run_command(create_ws_cmd)
+      ws_stdout, ws_stderr, ws_status = run_command(create_ws_cmd)
+      assert ws_status.success?, "webset-create failed: #{ws_stderr}"
+
       webset = parse_json_output(ws_stdout)
+      refute_nil webset["id"], "webset-create returned no ID"
       webset_id = track_webset(webset["id"])
 
       # Create enrichment with pretty format

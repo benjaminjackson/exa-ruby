@@ -95,7 +95,7 @@ class WebsetsItemsCLIIntegrationTest < Minitest::Test
     command = "bundle exec exe/exa-ai-webset-item-list #{webset_id} --output-format json"
     stdout, stderr, status = run_command(command)
 
-    skip "webset-item-list failed: #{stderr}" unless status.success?
+    assert status.success?, "webset-item-list failed: #{stderr}"
 
     result = parse_json_output(stdout)
 
@@ -123,7 +123,7 @@ class WebsetsItemsCLIIntegrationTest < Minitest::Test
     command1 = "bundle exec exe/exa-ai-webset-item-list #{webset_id} --limit 2 --output-format json"
     stdout1, stderr1, status1 = run_command(command1)
 
-    skip "First page request failed: #{stderr1}" unless status1.success?
+    assert status1.success?, "First page request failed: #{stderr1}"
 
     result1 = parse_json_output(stdout1)
 
@@ -145,7 +145,7 @@ class WebsetsItemsCLIIntegrationTest < Minitest::Test
     command2 = "bundle exec exe/exa-ai-webset-item-list #{webset_id} --limit 2 --cursor '#{cursor}' --output-format json"
     stdout2, stderr2, status2 = run_command(command2)
 
-    skip "Second page request failed: #{stderr2}" unless status2.success?
+    assert status2.success?, "Second page request failed: #{stderr2}"
 
     result2 = parse_json_output(stdout2)
 
