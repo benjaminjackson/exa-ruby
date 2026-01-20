@@ -2,6 +2,43 @@
 
 Ruby client for the Exa.ai API. Search and analyze web content using neural search, question answering, code discovery, and research automation.
 
+## Requirements
+
+- **Ruby 3.0.0 or higher**
+
+### Installing Ruby on macOS
+
+If you're setting up on a fresh macOS laptop, the easiest way to get Ruby 3.x is through Homebrew:
+
+**1. Install Homebrew** (if not already installed):
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+**2. Install Ruby:**
+
+```bash
+brew install ruby
+```
+
+**3. Add Homebrew's Ruby to your PATH** (follow the instructions Homebrew prints, usually adding to `~/.zshrc`):
+
+```bash
+echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+**4. Verify installation:**
+
+```bash
+ruby -v  # Should show Ruby 3.x
+```
+
+**Alternative: Using a version manager**
+
+For managing multiple Ruby versions, consider [rbenv](https://github.com/rbenv/rbenv) or [asdf](https://asdf-vm.com/).
+
 ## Installation
 
 Add to your Gemfile:
