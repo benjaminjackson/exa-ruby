@@ -2,6 +2,23 @@
 
 Ruby client for the Exa.ai API. Search and analyze web content using neural search, question answering, code discovery, and research automation.
 
+## Table of Contents
+
+- [Requirements](#requirements)
+  - [Installing Ruby on macOS](#installing-ruby-on-macos)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Quick Start](#quick-start)
+  - [Ruby API](#ruby-api)
+  - [Command Line](#command-line)
+- [Features](#features)
+- [Error Handling](#error-handling)
+- [Documentation](#documentation)
+- [Development](#development)
+- [Testing](#testing)
+- [Support](#support)
+- [License](#license)
+
 ## Requirements
 
 - **Ruby 3.0.0 or higher**
