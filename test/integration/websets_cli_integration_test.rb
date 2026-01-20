@@ -488,14 +488,16 @@ class WebsetsCLIIntegrationTest < Minitest::Test
 
   # Test webset-get with non-existent ID
   def test_webset_get_not_found
-          command = "bundle exec exe/exa-ai webset-get ws_nonexistent123 --output-format json"
+    skip_unless_cli_integration_enabled
 
-      stdout, stderr, status = run_command(command)
+    command = "bundle exec exe/exa-ai webset-get ws_nonexistent123 --output-format json"
 
-      refute status.success?, "webset-get with non-existent ID should fail"
-      # Should get a 404 error
-      combined = stdout + stderr
-      assert_includes combined.downcase, "not found"
+    stdout, stderr, status = run_command(command)
+
+    refute status.success?, "webset-get with non-existent ID should fail"
+    # Should get a 404 error
+    combined = stdout + stderr
+    assert_includes combined.downcase, "not found"
     end
 
 
