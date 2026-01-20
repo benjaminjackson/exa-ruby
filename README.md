@@ -5,12 +5,9 @@ Ruby client for the Exa.ai API. Search and analyze web content using neural sear
 ## Table of Contents
 
 - [Requirements](#requirements)
-  - [Installing Ruby on macOS](#installing-ruby-on-macos)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Quick Start](#quick-start)
-  - [Ruby API](#ruby-api)
-  - [Command Line](#command-line)
 - [Features](#features)
 - [Error Handling](#error-handling)
 - [Documentation](#documentation)
