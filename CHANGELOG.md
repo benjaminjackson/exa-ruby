@@ -7,10 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.7.1] - 2026-01-13
+## [0.7.1] - 2026-01-20
 
 ### Added
 - **Answer command --skip-citations flag** - Added `--skip-citations` and `--no-citations` flags to the answer command to omit citations from output, saving tokens when citations aren't needed
+
+### Changed
+- **Documentation improvements** - Added Ruby requirements and macOS setup instructions, simplified table of contents
+- **Test improvements** - Enhanced CLI integration test error messages, made setup commands fail fast instead of skip, improved handling of missing API keys
 
 ## [0.7.0] - 2026-01-13
 
