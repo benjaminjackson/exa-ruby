@@ -11,12 +11,12 @@ class SearchTest < Minitest::Test
     assert_instance_of Exa::Services::Search, service
   end
 
-  def test_sets_default_search_type_to_fast
+  def test_sets_default_search_type_to_auto
     stub_request(:post, "https://api.exa.ai/search")
       .with(
         body: hash_including(
           query: "test",
-          type: "fast"
+          type: "auto"
         )
       )
       .to_return(

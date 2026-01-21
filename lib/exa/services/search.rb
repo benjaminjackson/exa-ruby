@@ -6,7 +6,7 @@ module Exa
   module Services
     class Search
       VALID_SEARCH_TYPES = ["fast", "deep", "keyword", "auto"].freeze
-      DEFAULT_SEARCH_TYPE = "fast"
+      DEFAULT_SEARCH_TYPE = "auto"
 
       def initialize(connection, **params)
         @connection = connection

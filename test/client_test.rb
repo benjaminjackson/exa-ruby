@@ -71,7 +71,7 @@ class ClientTest < Minitest::Test
 
   def test_search_delegates_to_search_service
     stub_request(:post, "https://api.exa.ai/search")
-      .with(body: hash_including(query: "test", type: "fast"))
+      .with(body: hash_including(query: "test", type: "auto"))
       .to_return(
         status: 200,
         body: { results: [], requestId: "abc123" }.to_json,
