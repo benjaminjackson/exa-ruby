@@ -29,7 +29,7 @@ while args.any?
 
       Options:
         --limit N              Maximum number of websets to return (default: 25, max: 100)
-        --cursor CURSOR        Cursor for pagination (use nextCursor from previous response)
+        --cursor CURSOR        Cursor for pagination (use next_cursor from previous response)
         --api-key KEY          Exa API key (or set EXA_API_KEY env var)
         --output-format FMT    Output format: json, pretty, or text (default: json)
         --help, -h             Show this help message
