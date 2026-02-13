@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.2] - 2026-02-13
+
+### Changed
+- **Removed native extension dependency** - Removed unused `ld-eventsource` dependency, eliminating FFI and native compilation requirements
+
+### Fixed
+- **CLI improvements** - Corrected cursor field name in webset-list help text, improved dispatcher executable handling
+- **Search defaults** - Changed default search type to `auto` for better results
+
 ## [0.7.1] - 2026-01-20
 
 ### Added

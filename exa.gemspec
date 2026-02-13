@@ -28,8 +28,7 @@ Gem::Specification.new do |spec|
 
   # Runtime dependencies
   spec.add_dependency "faraday", "~> 2.0"
-  spec.add_dependency "ld-eventsource", "~> 2.0"
-  spec.add_dependency "toon-ruby", "~> 0.1"
+spec.add_dependency "toon-ruby", "~> 0.1"
 
   # Development dependencies
   spec.add_development_dependency "minitest", "~> 5.0"
