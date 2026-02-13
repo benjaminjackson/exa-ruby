@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-02-13
+
+### Added
+- **Automatic .env file loading** - CLI and library now automatically load environment variables from .env files, eliminating the need to manually set EXA_API_KEY environment variable
+
+### Changed
+- **dotenv dependency** - Moved dotenv from development to runtime dependency to support automatic .env file loading
+
 ## [0.7.2] - 2026-02-13
 
 ### Changed

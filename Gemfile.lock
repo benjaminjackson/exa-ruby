@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    exa-ai (0.7.2)
+    exa-ai (0.8.0)
       dotenv (~> 3.0)
       faraday (~> 2.0)
       toon-ruby (~> 0.1)
