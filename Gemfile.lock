@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     exa-ai (0.7.2)
+      dotenv (~> 3.0)
       faraday (~> 2.0)
       toon-ruby (~> 0.1)
 
@@ -52,7 +53,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler-audit (~> 0.9)
-  dotenv (~> 3.0)
   exa-ai!
   minitest (~> 5.0)
   minitest-fail-fast (~> 0.1)

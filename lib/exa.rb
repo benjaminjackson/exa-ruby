@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dotenv/load"
+
 require_relative "exa/version"
 require_relative "exa/error"
 require_relative "exa/constants/websets"
