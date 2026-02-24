@@ -38,6 +38,7 @@ module Exa
           lines = []
           lines << "Webset: #{webset.id}"
           lines << "Status: #{webset.status}"
+          lines << "Title: #{webset.title}" if webset.title
           lines << "Created: #{webset.created_at}" if webset.created_at
           lines << "Updated: #{webset.updated_at}" if webset.updated_at
 
@@ -61,6 +62,7 @@ module Exa
           collection.data.each do |ws|
             lines << "\n  #{ws['id']}"
             lines << "  Status: #{ws['status']}"
+            lines << "  Title: #{ws['title']}" if ws['title']
             lines << "  Created: #{ws['createdAt']}" if ws['createdAt']
           end
           lines.join("\n")

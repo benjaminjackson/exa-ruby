@@ -619,6 +619,49 @@ class WebsetsCreateTest < Minitest::Test
     @connection.verify
   end
 
+  def test_creates_webset_with_title
+    response_body = {
+      "id" => "ws_titled",
+      "object" => "webset",
+      "status" => "pending",
+      "externalId" => nil,
+      "title" => "Q1 AI Startups Research",
+      "searches" => [{
+        "id" => "search_xyz",
+        "query" => "AI startups with Series A funding",
+        "status" => "created"
+      }],
+      "imports" => [],
+      "enrichments" => [],
+      "monitors" => [],
+      "excludes" => [],
+      "metadata" => {},
+      "createdAt" => "2024-01-15T10:00:00Z",
+      "updatedAt" => "2024-01-15T10:00:00Z"
+    }
+
+    response = Minitest::Mock.new
+    response.expect :body, response_body
+
+    @connection.expect :post, response, [
+      "/websets/v0/websets",
+      {
+        search: { query: "AI startups with Series A funding", count: 10 },
+        title: "Q1 AI Startups Research"
+      }
+    ]
+
+    service = Exa::Services::Websets::Create.new(@connection,
+      search: { query: "AI startups with Series A funding", count: 10 },
+      title: "Q1 AI Startups Research"
+    )
+    result = service.call
+
+    assert_equal "ws_titled", result.id
+    assert_equal "Q1 AI Startups Research", result.title
+    @connection.verify
+  end
+
   def test_creates_webset_with_enrichment_options
     response_body = {
       "id" => "ws_options",

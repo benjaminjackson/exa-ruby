@@ -61,6 +61,9 @@ def parse_args(argv)
     when "--external-id"
       args[:external_id] = argv[i + 1]
       i += 2
+    when "--title"
+      args[:title] = argv[i + 1]
+      i += 2
     when "--metadata"
       args[:metadata] = parse_json_or_file(argv[i + 1])
       i += 2
@@ -93,6 +96,7 @@ def parse_args(argv)
           --exclude JSON             Sources to exclude from searches (supports @file.json)
                                      Format: [{"source":"import|webset","id":"..."}]
           --external-id ID           External identifier for the webset
+          --title TITLE              Title for the webset
           --metadata JSON            Custom metadata (supports @file.json)
                                      Format: {"key":"value"}
           --wait                     Wait for webset to reach idle status
@@ -185,6 +189,7 @@ begin
   webset_params[:enrichments] = args[:enrichments] if args[:enrichments]
   webset_params[:exclude] = args[:exclude] if args[:exclude]
   webset_params[:externalId] = args[:external_id] if args[:external_id]
+  webset_params[:title] = args[:title] if args[:title]
   webset_params[:metadata] = args[:metadata] if args[:metadata]
 
   # Create webset

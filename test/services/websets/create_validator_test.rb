@@ -557,4 +557,53 @@ class WebsetsCreateValidatorTest < Minitest::Test
     # Should not raise
     Exa::Services::Websets::CreateValidator.validate!(params)
   end
+
+  def test_validates_title
+    params = {
+      search: { query: "venture-backed SaaS companies", count: 10 },
+      title: "SaaS Research"
+    }
+
+    # Should not raise
+    Exa::Services::Websets::CreateValidator.validate!(params)
+  end
+
+  def test_raises_when_title_is_not_string
+    params = {
+      search: { query: "test", count: 10 },
+      title: 123
+    }
+
+    error = assert_raises(ArgumentError) do
+      Exa::Services::Websets::CreateValidator.validate!(params)
+    end
+
+    assert_match(/title must be a String/i, error.message)
+  end
+
+  def test_raises_when_title_is_empty
+    params = {
+      search: { query: "test", count: 10 },
+      title: "   "
+    }
+
+    error = assert_raises(ArgumentError) do
+      Exa::Services::Websets::CreateValidator.validate!(params)
+    end
+
+    assert_match(/title cannot be empty/i, error.message)
+  end
+
+  def test_raises_when_title_exceeds_max_length
+    params = {
+      search: { query: "test", count: 10 },
+      title: "a" * 1001
+    }
+
+    error = assert_raises(ArgumentError) do
+      Exa::Services::Websets::CreateValidator.validate!(params)
+    end
+
+    assert_match(/1000 characters/i, error.message)
+  end
 end

@@ -19,6 +19,7 @@ module Exa
             validate_enrichments!(params[:enrichments]) if params[:enrichments]
             validate_exclude!(params[:exclude]) if params[:exclude]
             validate_external_id!(params[:externalId]) if params[:externalId]
+            validate_title!(params[:title]) if params[:title]
             validate_metadata!(params[:metadata]) if params[:metadata]
             validate_no_duplicate_ids_in_import_and_scope!(params)
           end
@@ -156,6 +157,12 @@ module Exa
           def validate_external_id!(external_id)
             raise ArgumentError, "externalId must be a String" unless external_id.is_a?(String)
             raise ArgumentError, "externalId cannot exceed 300 characters" if external_id.length > 300
+          end
+
+          def validate_title!(title)
+            raise ArgumentError, "title must be a String" unless title.is_a?(String)
+            raise ArgumentError, "title cannot be empty" if title.strip.empty?
+            raise ArgumentError, "title cannot exceed 1000 characters" if title.length > 1000
           end
 
           def validate_metadata!(metadata)

@@ -158,10 +158,11 @@ module Exa
       Services::Websets::Cancel.new(connection, id: id).call
     end
 
-    # Update a webset's metadata
+    # Update a webset's title and/or metadata
     #
     # @param id [String] Webset ID
     # @param params [Hash] Update parameters
+    # @option params [String] :title Title for the webset
     # @option params [Hash] :metadata Metadata to update
     # @return [Resources::Webset] The updated webset
     def update_webset(id, **params)
