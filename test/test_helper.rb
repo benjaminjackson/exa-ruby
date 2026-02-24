@@ -124,6 +124,28 @@ end
 module WebsetsCleanupHelper
   require "open3"
 
+  FAKE_API_KEYS = %w[test_key_for_vcr test_key_for_vcr_playback].freeze
+
+  # Delete all websets on the account. Run before/after the suite to clear
+  # debris left by previous failed or interrupted runs.
+  def self.sweep_stale_websets(api_key)
+    client = Exa::Client.new(api_key: api_key)
+    cursor = nil
+    loop do
+      collection = client.list_websets(limit: 100, **({ cursor: cursor } if cursor).to_h)
+      collection.data.each do |ws|
+        client.delete_webset(ws["id"])
+      rescue Exa::Error
+        nil
+      end
+      break unless collection.has_more
+
+      cursor = collection.next_cursor
+    end
+  rescue Exa::Error => e
+    warn "Webset sweep failed: #{e.message}"
+  end
+
   def setup
     super
     @created_websets = []
@@ -184,7 +206,7 @@ module WebsetsCleanupHelper
   # Check if we should perform cleanup
   # Only cleanup when using a real API key (not VCR placeholder)
   def should_cleanup?
-    @api_key && @api_key != "test_key_for_vcr"
+    @api_key && !FAKE_API_KEYS.include?(@api_key)
   end
 
   def cleanup_enrichments
@@ -299,5 +321,21 @@ module WebsetsCleanupHelper
   def run_cli_command(command)
     stdout, stderr, status = Open3.capture3(command)
     [stdout, stderr, status]
+  end
+end
+
+# When running integration tests against the real API, sweep leftover websets
+# from previous failed or interrupted runs before the suite starts, and again
+# after it finishes to leave the account clean.
+if ENV["RUN_INTEGRATION_TESTS"] == "true" &&
+    ENV["EXA_API_KEY"] &&
+    !WebsetsCleanupHelper::FAKE_API_KEYS.include?(ENV["EXA_API_KEY"])
+
+  $stderr.puts "Sweeping leftover websets before suite..."
+  WebsetsCleanupHelper.sweep_stale_websets(ENV["EXA_API_KEY"])
+
+  Minitest.after_run do
+    $stderr.puts "Sweeping websets after suite..."
+    WebsetsCleanupHelper.sweep_stale_websets(ENV["EXA_API_KEY"])
   end
 end
