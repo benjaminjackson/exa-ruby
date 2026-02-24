@@ -115,4 +115,26 @@ class UpdateWebsetIntegrationTest < Minitest::Test
       assert_equal "true", updated.metadata["updated"]
     end
   end
+
+  def test_update_webset_title
+    VCR.use_cassette("update_webset_title", record: :new_episodes) do
+      client = Exa::Client.new(api_key: @api_key)
+
+      webset = client.create_webset(
+        search: {
+          query: "B2B software companies in Austin",
+          count: 1
+        }
+      )
+      track_webset(webset.id)
+
+      assert_nil webset.title
+
+      updated = client.update_webset(webset.id, title: "Austin B2B Research")
+
+      assert_instance_of Exa::Resources::Webset, updated
+      assert_equal webset.id, updated.id
+      assert_equal "Austin B2B Research", updated.title
+    end
+  end
 end
