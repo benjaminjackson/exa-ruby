@@ -1,0 +1,154 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets
+    body:
+      encoding: UTF-8
+      string: '{"search":{"query":"B2B software companies in Austin","count":1}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 24 Feb 2026 19:28:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"2fa-f/qTz0+sErdEsUK4wZQ5uq85BMo"
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=mJ1Jd1qlDk5X2LpyqCvOD8aU5r5FaDcNguEjDM4KTvaWjtRWdEwnsu%2F2dVSpRNsIVYevigYkz37Pm8gsmPtrRjRymDo9VP8c6y8l%2F7AQXdnbeW%2FcWQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9d315d894e99cb3c-GIG
+    body:
+      encoding: UTF-8
+      string: '{"id":"webset_01kj8hzdkafst2qq2en5np4e26","object":"webset","status":"running","externalId":null,"title":null,"searches":[{"id":"wsearch_01kj8hzdvr8m12be1cwm30a1cc","object":"webset_search","websetId":"webset_01kj8hzdkafst2qq2en5np4e26","status":"running","query":"B2B
+        software companies in Austin","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2026-02-24T19:28:20.856Z","updatedAt":"2026-02-24T19:28:21.115Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2026-02-24T19:28:20.586Z","updatedAt":"2026-02-24T19:28:21.115Z"}'
+  recorded_at: Tue, 24 Feb 2026 19:28:21 GMT
+- request:
+    method: post
+    uri: https://api.exa.ai/websets/v0/websets/webset_01kj8hzdkafst2qq2en5np4e26
+    body:
+      encoding: UTF-8
+      string: '{"title":"Austin B2B Research"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 24 Feb 2026 19:28:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Etag:
+      - W/"30b-teyshCcO1V2I70wEjnzdsWSI7aI"
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=i%2FF8Ouu2MQIWgPLTzRVFOB9M%2BXZqug0VXKuP8dywwkn8rdeMNlDeiOaZkcSNsV6sU%2By9fSd5Ak8kZK2dJ%2BvEcYTQVyHLB894%2FN4fjvKn6aKJbXKRgg%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9d315d999f9ccb41-GIG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"webset_01kj8hzdkafst2qq2en5np4e26","object":"webset","status":"running","externalId":null,"title":"Austin
+        B2B Research","searches":[{"id":"wsearch_01kj8hzdvr8m12be1cwm30a1cc","object":"webset_search","websetId":"webset_01kj8hzdkafst2qq2en5np4e26","status":"running","query":"B2B
+        software companies in Austin","entity":{"type":"company"},"criteria":[],"count":1,"behavior":"override","exclude":[],"scope":[],"progress":{"found":0,"analyzed":0,"completion":0,"timeLeft":null},"recall":null,"metadata":{},"canceledAt":null,"canceledReason":null,"createdAt":"2026-02-24T19:28:20.856Z","updatedAt":"2026-02-24T19:28:21.115Z"}],"imports":[],"enrichments":[],"monitors":[],"excludes":[],"metadata":{},"createdAt":"2026-02-24T19:28:20.586Z","updatedAt":"2026-02-24T19:28:22.584Z"}'
+  recorded_at: Tue, 24 Feb 2026 19:28:22 GMT
+recorded_with: VCR 6.3.1
