@@ -101,9 +101,9 @@ class WebsetsItemsIntegrationTest < Minitest::Test
       # List all items in the webset
       items = client.list_items(webset_id: webset.id)
 
-      assert_instance_of Array, items
+      assert_instance_of Exa::Resources::WebsetItemCollection, items
       refute_empty items
-      items.each do |item|
+      items.data.each do |item|
         assert item.key?("id")
         # Items have a nested properties structure with the URL
         assert item.key?("properties")

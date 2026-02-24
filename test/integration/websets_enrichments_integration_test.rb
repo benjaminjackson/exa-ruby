@@ -315,7 +315,7 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       skip "No items in webset" if items.nil? || items.empty?
 
       # Verify items have enrichment values
-      first_item = items.first
+      first_item = items.data.first
       assert first_item.key?("id")
       assert first_item.key?("properties")
 

@@ -208,7 +208,7 @@ class SearchIntegrationTest < Minitest::Test
 
       result = client.search(
         "artificial intelligence",
-        type: "neural",
+        type: "auto",
         num_results: 5,
         start_published_date: "2025-01-01T00:00:00.000Z",
         end_published_date: "2025-12-31T23:59:59.999Z",
