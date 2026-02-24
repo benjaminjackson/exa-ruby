@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-02-24
+
+### Added
+- **Webset title support** - Websets can now be created and updated with an optional `title` field via both the Ruby client and CLI (`--title` flag on `webset-create` and `webset-update`)
+
+### Fixed
+- **Integration test stability** - Added pre/post-suite sweep of stale websets to prevent hitting concurrent webset API limits during test runs
+
 ## [0.8.0] - 2026-02-13
 
 ### Added
