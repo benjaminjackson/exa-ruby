@@ -33,12 +33,44 @@ class SearchTest < Minitest::Test
 
   def test_raises_error_on_invalid_search_type
     assert_raises(ArgumentError) do
-      Exa::Services::Search.new(@connection, query: "test", type: "neural")
+      Exa::Services::Search.new(@connection, query: "test", type: "fast")
+    end
+
+    assert_raises(ArgumentError) do
+      Exa::Services::Search.new(@connection, query: "test", type: "keyword")
     end
 
     assert_raises(ArgumentError) do
       Exa::Services::Search.new(@connection, query: "test", type: "invalid")
     end
+  end
+
+  def test_accepts_deep_reasoning_search_type
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(@connection, query: "test", type: "deep-reasoning")
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_accepts_instant_search_type
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(@connection, query: "test", type: "instant")
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
   end
 
   def test_call_posts_to_search_endpoint
@@ -65,7 +97,7 @@ class SearchTest < Minitest::Test
             { title: "Test Result", url: "https://example.com", score: 0.95 }
           ],
           requestId: "abc123",
-          resolvedSearchType: "fast"
+          resolvedSearchType: "neural"
         }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
@@ -76,7 +108,7 @@ class SearchTest < Minitest::Test
     assert_instance_of Exa::Resources::SearchResult, result
     assert_equal 1, result.results.length
     assert_equal "abc123", result.request_id
-    assert_equal "fast", result.resolved_search_type
+    assert_equal "neural", result.resolved_search_type
   end
 
   def test_call_raises_unauthorized_on_401
