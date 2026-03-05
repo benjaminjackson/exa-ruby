@@ -435,6 +435,82 @@ class SearchTest < Minitest::Test
     assert_requested :post, "https://api.exa.ai/search"
   end
 
+  def test_call_converts_additional_queries_parameter
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          additionalQueries: ["related query 1", "related query 2"]
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      additional_queries: ["related query 1", "related query 2"]
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_converts_output_schema_parameter
+    schema = { type: "object", properties: { name: { type: "string" } } }
+
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          outputSchema: schema
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      output_schema: schema
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_converts_user_location_parameter
+    location = { latitude: 37.7749, longitude: -122.4194 }
+
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          userLocation: location
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      user_location: location
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
   def test_call_handles_highlights_as_boolean
     stub_request(:post, "https://api.exa.ai/search")
       .with(

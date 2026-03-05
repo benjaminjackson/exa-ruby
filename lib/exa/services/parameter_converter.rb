@@ -36,6 +36,9 @@ module Exa
         when :include_text then :includeText
         when :exclude_text then :excludeText
         when :external_id then :externalId
+        when :additional_queries then :additionalQueries
+        when :output_schema then :outputSchema
+        when :user_location then :userLocation
         else
           key
         end
