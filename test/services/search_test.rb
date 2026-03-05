@@ -111,6 +111,46 @@ class SearchTest < Minitest::Test
     assert_equal "neural", result.resolved_search_type
   end
 
+  def test_call_maps_output_field_from_response
+    output_data = {
+      "content" => "Synthesized answer",
+      "grounding" => [{ "url" => "https://example.com", "title" => "Example" }]
+    }
+
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(
+        status: 200,
+        body: {
+          results: [],
+          requestId: "abc123",
+          output: output_data
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(@connection, query: "test")
+    result = service.call
+
+    assert_equal output_data, result.output
+  end
+
+  def test_call_output_is_nil_when_absent
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(
+        status: 200,
+        body: {
+          results: [],
+          requestId: "abc123"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(@connection, query: "test")
+    result = service.call
+
+    assert_nil result.output
+  end
+
   def test_call_raises_unauthorized_on_401
     stub_request(:post, "https://api.exa.ai/search")
       .to_return(

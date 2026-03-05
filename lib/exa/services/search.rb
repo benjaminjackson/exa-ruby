@@ -24,7 +24,8 @@ module Exa
           resolved_search_type: body["resolvedSearchType"],
           search_type: body["searchType"],
           context: body["context"],
-          cost_dollars: body["costDollars"]
+          cost_dollars: body["costDollars"],
+          output: body["output"]
         )
       end
 
