@@ -37,6 +37,7 @@ class SearchIntegrationTest < Minitest::Test
       assert_respond_to result, :search_type
       assert_respond_to result, :context
       assert_respond_to result, :cost_dollars
+      assert_respond_to result, :output
 
       # Verify helper methods
       assert_respond_to result, :empty?
@@ -234,6 +235,21 @@ class SearchIntegrationTest < Minitest::Test
       assert_instance_of Exa::Resources::SearchResult, result
       refute_empty result.results
       assert result.results.length <= 5
+    end
+  end
+
+  # Test deep-reasoning search type
+  def test_search_with_deep_reasoning
+    VCR.use_cassette("search_deep_reasoning") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search(
+        "What are the latest breakthroughs in quantum error correction?",
+        type: "deep-reasoning"
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
     end
   end
 
