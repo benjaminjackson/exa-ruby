@@ -435,6 +435,66 @@ class SearchTest < Minitest::Test
     assert_requested :post, "https://api.exa.ai/search"
   end
 
+  def test_call_handles_highlights_as_boolean
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: { highlights: true }
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      highlights: true
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_handles_highlights_as_hash_with_snake_case_conversion
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: {
+            highlights: {
+              maxCharacters: 200,
+              numSentences: 3,
+              highlightsPerUrl: 5,
+              query: "key findings"
+            }
+          }
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      highlights: {
+        max_characters: 200,
+        num_sentences: 3,
+        highlights_per_url: 5,
+        query: "key findings"
+      }
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
   def test_call_handles_links_and_image_links_extraction
     stub_request(:post, "https://api.exa.ai/search")
       .with(

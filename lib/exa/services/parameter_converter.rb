@@ -42,7 +42,7 @@ module Exa
       end
 
       def content_key?(key)
-        %i[text summary context subpages subpage_target extras].include?(key)
+        %i[text summary context subpages subpage_target extras highlights].include?(key)
       end
 
       def convert_content_key(key)
@@ -76,6 +76,12 @@ module Exa
         when :extras
           if value.is_a?(Hash)
             convert_hash_value(value, extras_hash_mappings)
+          else
+            value
+          end
+        when :highlights
+          if value.is_a?(Hash)
+            convert_hash_value(value, highlights_hash_mappings)
           else
             value
           end
@@ -116,6 +122,15 @@ module Exa
       def extras_hash_mappings
         {
           image_links: :imageLinks
+        }
+      end
+
+      def highlights_hash_mappings
+        {
+          max_characters: :maxCharacters,
+          num_sentences: :numSentences,
+          highlights_per_url: :highlightsPerUrl,
+          query: :query
         }
       end
     end
