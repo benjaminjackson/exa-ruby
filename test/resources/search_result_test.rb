@@ -120,7 +120,8 @@ class SearchResultTest < Minitest::Test
       resolved_search_type: resolved_search_type,
       search_type: search_type,
       context: context,
-      cost_dollars: cost_dollars
+      cost_dollars: cost_dollars,
+      output: nil
     }
 
     # Act
