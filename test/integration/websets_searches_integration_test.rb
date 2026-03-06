@@ -23,13 +23,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_create_minimal") do
       # First create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "AI startups",
           count: 1
         }
       )
-      track_webset(webset.id)
       assert_instance_of Exa::Resources::Webset, webset
 
       # Create a search within the webset
@@ -55,14 +54,13 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_create_with_entity") do
       # Create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Tech founders",
           count: 1,
           entity: { type: "person" }
         }
       )
-      track_webset(webset.id)
 
       # Create a search for people
       search = client.create_webset_search(
@@ -85,7 +83,7 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_create_with_custom_entity") do
       # Create a webset with custom entity type
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Open source sustainability projects",
           count: 1,
@@ -95,7 +93,6 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
           }
         }
       )
-      track_webset(webset.id)
 
       # Create a search with custom entity type
       search = client.create_webset_search(
@@ -121,13 +118,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     search = nil
 
     VCR.use_cassette("websets_searches_create_with_criteria") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "B2B SaaS",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       criteria = [
         { description: "focused on enterprise customers" },
@@ -154,13 +150,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     search = nil
 
     VCR.use_cassette("websets_searches_create_with_recall") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Biotech companies",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       search = client.create_webset_search(
         webset_id: webset.id,
@@ -182,13 +177,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     search = nil
 
     VCR.use_cassette("websets_searches_override") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Series A fintech startups in London",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Create a search with override behavior
       search = client.create_webset_search(
@@ -212,13 +206,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     search = nil
 
     VCR.use_cassette("websets_searches_create_with_append") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "London Fintechs",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       search = client.create_webset_search(
         webset_id: webset.id,
@@ -243,13 +236,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
 
     VCR.use_cassette("websets_searches_create_and_retrieve") do
       # Create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Tech companies",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Create a search
       created_search = client.create_webset_search(
@@ -282,13 +274,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     retrieved = nil
 
     VCR.use_cassette("websets_searches_status_progression") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Healthcare technology startups",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       search = client.create_webset_search(
         webset_id: webset.id,
@@ -320,13 +311,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     canceled = nil
 
     VCR.use_cassette("websets_searches_cancel") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "enterprise AI/ML infrastructure startups with Series A funding",
           count: 2
         }
       )
-      track_webset(webset.id)
 
       search = client.create_webset_search(
         webset_id: webset.id,
@@ -355,13 +345,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     search = nil
 
     VCR.use_cassette("websets_searches_with_metadata") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Climate tech companies",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       search = client.create_webset_search(
         webset_id: webset.id,
@@ -390,13 +379,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     search2 = nil
 
     VCR.use_cassette("websets_searches_multiple") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "venture-backed SaaS companies",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Create first search
       search1 = client.create_webset_search(
@@ -428,13 +416,12 @@ class WebsetsSearchesIntegrationTest < Minitest::Test
     search = nil
 
     VCR.use_cassette("websets_searches_helper_methods") do
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "EdTech companies",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       search = client.create_webset_search(
         webset_id: webset.id,

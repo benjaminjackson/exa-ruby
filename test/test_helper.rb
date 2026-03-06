@@ -125,16 +125,27 @@ module WebsetsCleanupHelper
   require "open3"
 
   FAKE_API_KEYS = %w[test_key_for_vcr test_key_for_vcr_playback].freeze
+  TEST_METADATA_KEY = "test"
+  TEST_METADATA_VALUE = "integration_test"
 
-  # Delete all websets on the account. Run before/after the suite to clear
-  # debris left by previous failed or interrupted runs.
+  # Delete websets created by the test suite (identified by metadata).
+  # Only removes websets with metadata {"test" => "integration_test"} to
+  # avoid accidentally destroying non-test websets.
   def self.sweep_stale_websets(api_key)
     client = Exa::Client.new(api_key: api_key)
     cursor = nil
+    swept = 0
+    skipped = 0
     loop do
       collection = client.list_websets(limit: 100, **({ cursor: cursor } if cursor).to_h)
       collection.data.each do |ws|
-        client.delete_webset(ws["id"])
+        metadata = ws["metadata"] || {}
+        if metadata[TEST_METADATA_KEY] == TEST_METADATA_VALUE
+          client.delete_webset(ws["id"])
+          swept += 1
+        else
+          skipped += 1
+        end
       rescue Exa::Error
         nil
       end
@@ -142,6 +153,7 @@ module WebsetsCleanupHelper
 
       cursor = collection.next_cursor
     end
+    warn "Swept #{swept} test webset(s), skipped #{skipped} non-test webset(s)" if swept > 0 || skipped > 0
   rescue Exa::Error => e
     warn "Webset sweep failed: #{e.message}"
   end
@@ -157,6 +169,17 @@ module WebsetsCleanupHelper
   def teardown
     cleanup_resources
     super
+  end
+
+  # Create a webset with test metadata auto-injected for sweep safety.
+  # Use this instead of client.create_webset in tests.
+  def create_test_webset(client, **params)
+    params[:metadata] = (params[:metadata] || {}).merge(
+      TEST_METADATA_KEY => TEST_METADATA_VALUE
+    )
+    webset = client.create_webset(**params)
+    track_webset(webset.id)
+    webset
   end
 
   # Track a created webset for cleanup

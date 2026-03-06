@@ -20,7 +20,7 @@ class WebsetsIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_create_with_search") do
       client = Exa::Client.new(api_key: @api_key)
 
-      result = client.create_webset(
+      result = create_test_webset(client,
         search: {
           query: "AI companies in San Francisco with 10-50 employees",
           count: 1
@@ -30,7 +30,6 @@ class WebsetsIntegrationTest < Minitest::Test
           "created_by" => "exa-ruby"
         }
       )
-      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       assert result.id.start_with?("ws_") || result.id.start_with?("webset_")
@@ -49,14 +48,13 @@ class WebsetsIntegrationTest < Minitest::Test
       # Use static external_id for VCR to work properly
       external_id = "test-external-static-id"
 
-      result = client.create_webset(
+      result = create_test_webset(client,
         search: {
           query: "SaaS companies in Europe",
           count: 1
         },
         externalId: external_id
       )
-      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       assert_equal external_id, result.external_id
@@ -68,7 +66,7 @@ class WebsetsIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_create_with_criteria") do
       client = Exa::Client.new(api_key: @api_key)
 
-      result = client.create_webset(
+      result = create_test_webset(client,
         search: {
           query: "Marketing agencies in the US",
           count: 1,
@@ -78,7 +76,6 @@ class WebsetsIntegrationTest < Minitest::Test
           ]
         }
       )
-      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       refute_empty result.searches
@@ -93,7 +90,7 @@ class WebsetsIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_create_with_enrichments") do
       client = Exa::Client.new(api_key: @api_key)
 
-      result = client.create_webset(
+      result = create_test_webset(client,
         search: {
           query: "Tech startups in NYC",
           count: 1
@@ -115,7 +112,6 @@ class WebsetsIntegrationTest < Minitest::Test
           }
         ]
       )
-      track_webset(result.id)
 
       # Track enrichments if they have IDs
       result.enrichments.each { |e| track_enrichment(result.id, e["id"]) if e["id"] }
@@ -134,14 +130,13 @@ class WebsetsIntegrationTest < Minitest::Test
     VCR.use_cassette("websets_create_with_entity") do
       client = Exa::Client.new(api_key: @api_key)
 
-      result = client.create_webset(
+      result = create_test_webset(client,
         search: {
           query: "CTOs at AI companies",
           count: 1,
           entity: { type: "person" }
         }
       )
-      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       assert_equal "webset", result.object
@@ -153,7 +148,7 @@ class WebsetsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create webset
-      created = client.create_webset(
+      created = create_test_webset(client,
         search: {
           query: "Fintech companies in London",
           count: 1
@@ -162,7 +157,6 @@ class WebsetsIntegrationTest < Minitest::Test
           "purpose" => "integration_test"
         }
       )
-      track_webset(created.id)
 
       assert_instance_of Exa::Resources::Webset, created
       webset_id = created.id
@@ -181,7 +175,7 @@ class WebsetsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a comprehensive webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "E-commerce companies in California with recent funding",
           count: 1,
@@ -206,7 +200,6 @@ class WebsetsIntegrationTest < Minitest::Test
           "team" => "growth"
         }
       )
-      track_webset(webset.id)
 
       # Track enrichments if they have IDs
       webset.enrichments.each { |e| track_enrichment(webset.id, e["id"]) if e["id"] }
@@ -235,19 +228,18 @@ class WebsetsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # First create a webset to exclude from
-      existing = client.create_webset(
+      existing = create_test_webset(client,
         search: {
           query: "Tech companies in Seattle",
           count: 1
         }
       )
-      track_webset(existing.id)
 
       # Wait for first webset to complete before using it in exclude
       wait_for_webset_completion(client, existing.id)
 
       # Create new webset excluding the previous one
-      result = client.create_webset(
+      result = create_test_webset(client,
         search: {
           query: "Tech companies in Pacific Northwest",
           count: 1
@@ -259,7 +251,6 @@ class WebsetsIntegrationTest < Minitest::Test
           }
         ]
       )
-      track_webset(result.id)
 
       assert_instance_of Exa::Resources::Webset, result
       refute_empty result.excludes if result.excludes

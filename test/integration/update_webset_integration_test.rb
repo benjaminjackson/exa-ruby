@@ -21,7 +21,7 @@ class UpdateWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset first
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "AI startups in Silicon Valley",
           count: 1
@@ -31,7 +31,6 @@ class UpdateWebsetIntegrationTest < Minitest::Test
           "project" => "initial_project"
         }
       )
-      track_webset(webset.id)
 
       assert_instance_of Exa::Resources::Webset, webset
       assert_equal "original_value", webset.metadata["original_key"]
@@ -59,7 +58,7 @@ class UpdateWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Fintech companies in London",
           count: 1
@@ -69,7 +68,6 @@ class UpdateWebsetIntegrationTest < Minitest::Test
           "quarter" => "Q1"
         }
       )
-      track_webset(webset.id)
 
       # Update with additional metadata
       updated = client.update_webset(
@@ -93,13 +91,12 @@ class UpdateWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "SaaS companies in Europe",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Update it
       updated = client.update_webset(
@@ -120,13 +117,12 @@ class UpdateWebsetIntegrationTest < Minitest::Test
     VCR.use_cassette("update_webset_title", record: :new_episodes) do
       client = Exa::Client.new(api_key: @api_key)
 
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "B2B software companies in Austin",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       assert_nil webset.title
 

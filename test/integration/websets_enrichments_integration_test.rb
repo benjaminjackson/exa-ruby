@@ -21,13 +21,12 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # First create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "SaaS companies in San Francisco",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Create enrichment with text format
       enrichment = client.create_enrichment(
@@ -51,13 +50,12 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Tech startups in NYC",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Create enrichment with url format
       enrichment = client.create_enrichment(
@@ -78,13 +76,12 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "E-commerce companies in California",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Create enrichment with options format
       enrichment = client.create_enrichment(
@@ -112,13 +109,12 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create webset and enrichment
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Fintech companies in London",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       created_enrichment = client.create_enrichment(
         webset_id: webset.id,
@@ -145,13 +141,12 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Marketing agencies in Boston",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Create multiple enrichments
       enrichment1 = client.create_enrichment(
@@ -185,13 +180,12 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create webset and enrichment
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Healthcare companies in Seattle",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       enrichment = client.create_enrichment(
         webset_id: webset.id,
@@ -218,13 +212,12 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create webset and enrichment
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Retail companies in Chicago",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       enrichment = client.create_enrichment(
         webset_id: webset.id,
@@ -250,13 +243,12 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create webset and enrichment
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Manufacturing companies in Detroit",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       enrichment = client.create_enrichment(
         webset_id: webset.id,
@@ -282,7 +274,7 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create webset with search and enrichments
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "AI/ML infrastructure companies with venture funding",
           count: 1
@@ -298,7 +290,6 @@ class WebsetsEnrichmentsIntegrationTest < Minitest::Test
           }
         ]
       )
-      track_webset(webset.id)
 
       # Track enrichments for cleanup
       webset.enrichments.each { |e| track_enrichment(webset.id, e["id"]) if e["id"] }

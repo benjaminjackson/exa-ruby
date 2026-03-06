@@ -21,14 +21,13 @@ class DeleteWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset to delete
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "AI companies in San Francisco",
           count: 1
         }
       )
       webset_id = webset.id
-      track_webset(webset_id)
 
       assert_instance_of Exa::Resources::Webset, webset
 
@@ -46,7 +45,7 @@ class DeleteWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset with metadata
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Fintech startups in New York",
           count: 1
@@ -56,7 +55,6 @@ class DeleteWebsetIntegrationTest < Minitest::Test
           "purpose" => "integration_testing"
         }
       )
-      track_webset(webset.id)
 
       # Delete it
       deleted = client.delete_webset(webset.id)
@@ -72,7 +70,7 @@ class DeleteWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset with enrichments
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "E-commerce companies in Europe",
           count: 1
@@ -84,7 +82,6 @@ class DeleteWebsetIntegrationTest < Minitest::Test
           }
         ]
       )
-      track_webset(webset.id)
 
       # Track enrichments for cleanup
       webset.enrichments.each { |e| track_enrichment(webset.id, e["id"]) if e["id"] }
@@ -102,13 +99,12 @@ class DeleteWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Healthcare tech startups",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Delete and verify the returned resource
       deleted = client.delete_webset(webset.id)
@@ -126,13 +122,12 @@ class DeleteWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset and wait for it to complete
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "SaaS companies in Seattle",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Wait for completion
       completed = wait_for_webset_completion(client, webset.id)

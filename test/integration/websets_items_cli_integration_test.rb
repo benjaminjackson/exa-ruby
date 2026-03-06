@@ -60,12 +60,10 @@ class WebsetsItemsCLIIntegrationTest < Minitest::Test
   # Helper to create a webset with items for testing
   def create_webset_with_items(count:)
     client = Exa::Client.new(api_key: @api_key)
-    webset = client.create_webset(search: {
+    webset = create_test_webset(client, search: {
       query: "venture-backed technology startups",
       count: count
     })
-
-    track_webset(webset.id)
 
     # Wait for webset to complete
     completed = wait_for_webset_completion(client, webset.id, timeout: 120)

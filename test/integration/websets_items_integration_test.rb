@@ -21,13 +21,12 @@ class WebsetsItemsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # First create a webset with items
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "AI/ML infrastructure startups with Series A funding",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Wait for webset to complete and have items
       completed = wait_for_webset_completion(client, webset.id)
@@ -55,13 +54,12 @@ class WebsetsItemsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # First create a webset with items
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "B2B SaaS companies with recent funding rounds",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Wait for webset to complete and have items
       completed = wait_for_webset_completion(client, webset.id)
@@ -86,13 +84,12 @@ class WebsetsItemsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # First create a webset with items
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Cybersecurity companies with enterprise customers",
           count: 2
         }
       )
-      track_webset(webset.id)
 
       # Wait for webset to complete and have items
       completed = wait_for_webset_completion(client, webset.id)
@@ -117,13 +114,12 @@ class WebsetsItemsIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset with items
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Enterprise SaaS companies with AI features",
           count: 2
         }
       )
-      track_webset(webset.id)
 
       # Wait for webset to complete and have items
       completed = wait_for_webset_completion(client, webset.id)

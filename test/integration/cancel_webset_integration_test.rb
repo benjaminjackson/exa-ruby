@@ -21,13 +21,12 @@ class CancelWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset with a search that will take time to process
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "AI/ML infrastructure startups with Series A funding",
           count: 5
         }
       )
-      track_webset(webset.id)
 
       assert_instance_of Exa::Resources::Webset, webset
 
@@ -47,7 +46,7 @@ class CancelWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset with enrichments
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "Tech startups in San Francisco",
           count: 3
@@ -59,7 +58,6 @@ class CancelWebsetIntegrationTest < Minitest::Test
           }
         ]
       )
-      track_webset(webset.id)
 
       # Track enrichments for cleanup
       webset.enrichments.each { |e| track_enrichment(webset.id, e["id"]) if e["id"] }
@@ -77,13 +75,12 @@ class CancelWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "E-commerce companies in California",
           count: 2
         }
       )
-      track_webset(webset.id)
 
       # Cancel it
       result = client.cancel_webset(webset.id)
@@ -101,13 +98,12 @@ class CancelWebsetIntegrationTest < Minitest::Test
       client = Exa::Client.new(api_key: @api_key)
 
       # Create a webset with minimal work
-      webset = client.create_webset(
+      webset = create_test_webset(client,
         search: {
           query: "AI startups",
           count: 1
         }
       )
-      track_webset(webset.id)
 
       # Wait for it to complete
       completed = wait_for_webset_completion(client, webset.id)
