@@ -33,16 +33,40 @@ class SearchTest < Minitest::Test
 
   def test_raises_error_on_invalid_search_type
     assert_raises(ArgumentError) do
-      Exa::Services::Search.new(@connection, query: "test", type: "fast")
-    end
-
-    assert_raises(ArgumentError) do
       Exa::Services::Search.new(@connection, query: "test", type: "keyword")
     end
 
     assert_raises(ArgumentError) do
       Exa::Services::Search.new(@connection, query: "test", type: "invalid")
     end
+  end
+
+  def test_accepts_neural_search_type
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(@connection, query: "test", type: "neural")
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_accepts_fast_search_type
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(@connection, query: "test", type: "fast")
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
   end
 
   def test_accepts_deep_reasoning_search_type

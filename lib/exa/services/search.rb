@@ -5,7 +5,7 @@ require_relative "parameter_converter"
 module Exa
   module Services
     class Search
-      VALID_SEARCH_TYPES = ["auto", "deep", "deep-reasoning", "instant"].freeze
+      VALID_SEARCH_TYPES = ["auto", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
       DEFAULT_SEARCH_TYPE = "auto"
 
       def initialize(connection, **params)
