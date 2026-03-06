@@ -582,13 +582,11 @@ class SearchTest < Minitest::Test
   end
 
   def test_call_converts_user_location_parameter
-    location = { latitude: 37.7749, longitude: -122.4194 }
-
     stub_request(:post, "https://api.exa.ai/search")
       .with(
         body: hash_including(
           query: "test",
-          userLocation: location
+          userLocation: "US"
         )
       )
       .to_return(
@@ -600,7 +598,7 @@ class SearchTest < Minitest::Test
     service = Exa::Services::Search.new(
       @connection,
       query: "test",
-      user_location: location
+      user_location: "US"
     )
     service.call
 
