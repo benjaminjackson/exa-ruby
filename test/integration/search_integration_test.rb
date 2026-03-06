@@ -253,6 +253,130 @@ class SearchIntegrationTest < Minitest::Test
     end
   end
 
+  # Test neural search type
+  def test_search_with_neural_type
+    VCR.use_cassette("search_neural_type") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search("Ruby programming language", type: "neural")
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+    end
+  end
+
+  # Test fast search type
+  def test_search_with_fast_type
+    VCR.use_cassette("search_fast_type") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search("Ruby programming language", type: "fast")
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+    end
+  end
+
+  # Test num_results conversion
+  def test_search_with_num_results
+    VCR.use_cassette("search_with_num_results") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search("Ruby programming language", num_results: 3)
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+      assert result.results.length <= 3
+    end
+  end
+
+  # Test include_domains and exclude_domains conversion
+  def test_search_with_domain_filters
+    VCR.use_cassette("search_with_domain_filters") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search(
+        "Ruby programming language",
+        include_domains: ["ruby-lang.org"],
+        num_results: 5
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+      result.results.each do |r|
+        assert_includes r["url"], "ruby-lang.org"
+      end
+    end
+  end
+
+  # Test livecrawl nesting under contents
+  def test_search_with_livecrawl
+    VCR.use_cassette("search_with_livecrawl") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search(
+        "Ruby programming language",
+        text: true,
+        livecrawl: "fallback",
+        num_results: 2
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+    end
+  end
+
+  # Test highlights nesting under contents
+  def test_search_with_highlights
+    VCR.use_cassette("search_with_highlights") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search(
+        "Ruby programming language",
+        highlights: true,
+        num_results: 3
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+
+      first_result = result.first
+      assert first_result.key?("highlights"), "Expected highlights in results"
+    end
+  end
+
+  # Test user_location conversion
+  def test_search_with_user_location
+    VCR.use_cassette("search_with_user_location") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search(
+        "best coffee shops",
+        user_location: "US",
+        num_results: 3
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+    end
+  end
+
+  # Test additional_queries conversion
+  def test_search_with_additional_queries
+    VCR.use_cassette("search_with_additional_queries") do
+      client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
+
+      result = client.search(
+        "Ruby programming",
+        additional_queries: ["Rails framework", "Ruby gems"],
+        num_results: 3
+      )
+
+      assert_instance_of Exa::Resources::SearchResult, result
+      refute_empty result.results
+    end
+  end
+
   # Test parameter conversion (snake_case to camelCase)
   def test_parameter_conversion_from_snake_case_to_camel_case
     VCR.use_cassette("search_with_crawl_dates") do
