@@ -807,4 +807,54 @@ class SearchTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/search"
   end
+
+  def test_call_converts_num_results_parameter
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          numResults: 20
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      num_results: 20
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_converts_include_and_exclude_domains_parameters
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          includeDomains: ["example.com"],
+          excludeDomains: ["spam.com"]
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      include_domains: ["example.com"],
+      exclude_domains: ["spam.com"]
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
 end

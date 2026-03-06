@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/search
     body:
       encoding: UTF-8
-      string: '{"query":"artificial intelligence","type":"auto","num_results":5,"startPublishedDate":"2025-01-01T00:00:00.000Z","endPublishedDate":"2025-12-31T23:59:59.999Z","includeText":["machine
+      string: '{"query":"artificial intelligence","type":"auto","numResults":5,"startPublishedDate":"2025-01-01T00:00:00.000Z","endPublishedDate":"2025-12-31T23:59:59.999Z","includeText":["machine
         learning"],"contents":{"text":{"maxCharacters":3000,"includeHtmlTags":true},"summary":{"query":"What
         are the latest developments?"},"context":{"maxCharacters":5000},"subpages":1,"subpageTarget":["research","papers"],"extras":{"links":3,"imageLinks":2}}}'
     headers:

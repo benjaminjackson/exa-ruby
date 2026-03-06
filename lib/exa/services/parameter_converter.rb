@@ -39,6 +39,9 @@ module Exa
         when :additional_queries then :additionalQueries
         when :output_schema then :outputSchema
         when :user_location then :userLocation
+        when :num_results then :numResults
+        when :include_domains then :includeDomains
+        when :exclude_domains then :excludeDomains
         else
           key
         end
