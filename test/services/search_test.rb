@@ -138,7 +138,7 @@ class SearchTest < Minitest::Test
   def test_call_maps_output_field_from_response
     output_data = {
       "content" => "Synthesized answer",
-      "grounding" => [{ "url" => "https://example.com", "title" => "Example" }]
+      "grounding" => [{ "field" => "content", "citations" => [{ "url" => "https://example.com", "title" => "Example" }] }]
     }
 
     stub_request(:post, "https://api.exa.ai/search")
