@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"Ruby programming language","type":"neural"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 06 Mar 2026 15:34:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '450'
+      X-Ratelimit-Remaining:
+      - '392'
+      X-Ratelimit-Reset:
+      - '1772811277'
+      Etag:
+      - W/"7e1-HKqZLeV7Bjb0R8hfTuiHO7nW+X0"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=JYyi09p6A4NjbY6xp01cnImgoXJ0kd9XVYrGpflNxc3gJe5vLqp0GEWy60DyFJOoDetmj9zc4N7w3xlacjAumbTMHmAABe5Qs3sxEXJNeJ2RP3o%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9d826cea4fecc325-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJyZXF1ZXN0SWQiOiJiZjk5ODJmMmUwM2QwZjAwOGNlMDhkYTY3MDdjYTgzOSIsInJlc29sdmVkU2VhcmNoVHlwZSI6Im5ldXJhbCIsInJlc3VsdHMiOlt7ImlkIjoiaHR0cHM6Ly93d3cucnVieS1sYW5nLm9yZy8iLCJ0aXRsZSI6IlJ1YnkgUHJvZ3JhbW1pbmcgTGFuZ3VhZ2UiLCJ1cmwiOiJodHRwczovL3d3dy5ydWJ5LWxhbmcub3JnLyIsImF1dGhvciI6IiIsInNjb3JlIjowLjUxMzkzNzQwNTg1NzIxMDZ9LHsiaWQiOiJodHRwczovL3J1YnkudHlwZXNjcmlwdHMub3JnL2VuIiwidGl0bGUiOiJSdWJ5IFByb2dyYW1taW5nIExhbmd1YWdlIiwidXJsIjoiaHR0cHM6Ly9ydWJ5LnR5cGVzY3JpcHRzLm9yZy9lbiIsInB1Ymxpc2hlZERhdGUiOiIyMDI0LTAxLTE4VDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOiIiLCJzY29yZSI6MC41MDA5OTI1NDQ1NjE5MTIzfSx7ImlkIjoiaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUnVieV8ocHJvZ3JhbW1pbmdfbGFuZ3VhZ2UpIiwidGl0bGUiOiJSdWJ5IChwcm9ncmFtbWluZyBsYW5ndWFnZSkiLCJ1cmwiOiJodHRwczovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9SdWJ5Xyhwcm9ncmFtbWluZ19sYW5ndWFnZSkiLCJhdXRob3IiOiIiLCJzY29yZSI6MC40ODgwNDc2ODMyNjY2MTQyfSx7ImlkIjoiaHR0cHM6Ly93d3cucnVieS1sYW5nLm9yZy9lbi9kb3dubG9hZHMvIiwidGl0bGUiOiJEb3dubG9hZCBSdWJ5IHwgUnVieSIsInVybCI6Imh0dHBzOi8vd3d3LnJ1YnktbGFuZy5vcmcvZW4vZG93bmxvYWRzLyIsImF1dGhvciI6IiIsInNjb3JlIjowLjQ3NTEwMjgyMTk3MTMxNn0seyJpZCI6Imh0dHBzOi8vZG9jcy5ydWJ5LWxhbmcub3JnL2VuLzMuMyIsInRpdGxlIjoiRG9jdW1lbnRhdGlvbiBmb3IgUnVieSAzLjMiLCJ1cmwiOiJodHRwczovL2RvY3MucnVieS1sYW5nLm9yZy9lbi8zLjMiLCJwdWJsaXNoZWREYXRlIjoiMTk5NS0wMS0wMVQwMDowMDowMC4wMDBaIiwiYXV0aG9yIjoiVGhlIEF1dGhvcsK2IOKGkSIsInNjb3JlIjowLjQ2MjE1Nzk2MDY3NjAxNzh9LHsiaWQiOiJodHRwczovL2RvY3MucnVieS1sYW5nLm9yZy9lbi9tYXN0ZXIiLCJ0aXRsZSI6IkRvY3VtZW50YXRpb24gZm9yIFJ1YnkgMy41IiwidXJsIjoiaHR0cHM6Ly9kb2NzLnJ1YnktbGFuZy5vcmcvZW4vbWFzdGVyIiwicHVibGlzaGVkRGF0ZSI6IjIwMTQtMDItMDZUMDA6MDA6MDAuMDAwWiIsImF1dGhvciI6IiIsInNjb3JlIjowLjQ0OTIxMzA5OTM4MDcxOTU3fSx7ImlkIjoiaHR0cHM6Ly9ydWJ5LWxhbmcub3JnL2VuL2Fib3V0IiwidGl0bGUiOiJBYm91dCBSdWJ5IiwidXJsIjoiaHR0cHM6Ly9ydWJ5LWxhbmcub3JnL2VuL2Fib3V0IiwicHVibGlzaGVkRGF0ZSI6IjIwMDMtMTItMjJUMDA6MDA6MDAuMDAwWiIsImF1dGhvciI6IiIsInNjb3JlIjowLjQzNjI2ODIzODA4NTQyMTM3fSx7ImlkIjoiaHR0cHM6Ly9ydWJ5LWxhbmcub3JnL2RlIiwidGl0bGUiOiJEaWUgUHJvZ3JhbW1pZXJzcHJhY2hlIFJ1YnkiLCJ1cmwiOiJodHRwczovL3J1YnktbGFuZy5vcmcvZGUiLCJwdWJsaXNoZWREYXRlIjoiMjAyNS0wMi0xNFQwMDowMDowMC4wMDBaIiwiYXV0aG9yIjoiIiwic2NvcmUiOjAuNDIzMzIzMzc2NzkwMTIzMTZ9LHsiaWQiOiJodHRwczovL3d3dy5ydWJ5LWxhbmcub3JnL3BsLyIsInRpdGxlIjoiSsSZenlrIHByb2dyYW1vd2FuaWEgUnVieSIsInVybCI6Imh0dHBzOi8vd3d3LnJ1YnktbGFuZy5vcmcvcGwvIiwiYXV0aG9yIjoiIiwic2NvcmUiOjAuNDEwMzc4NTE1NDk0ODI0OTZ9LHsiaWQiOiJodHRwczovL3J1YnktbGFuZy5vcmcvZnIiLCJ0aXRsZSI6IkxlIGxhbmdhZ2UgUnVieSIsInVybCI6Imh0dHBzOi8vcnVieS1sYW5nLm9yZy9mciIsInB1Ymxpc2hlZERhdGUiOiIyMDI1LTAzLTI2VDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOiIiLCJzY29yZSI6MC4zOTc0MzM2NTQxOTk1MjY3NX1dLCJzZWFyY2hUaW1lIjoxNzIuOCwiY29zdERvbGxhcnMiOnsidG90YWwiOjAuMDA1LCJzZWFyY2giOnsibmV1cmFsIjowLjAwNX19fQ==
+  recorded_at: Fri, 06 Mar 2026 15:34:36 GMT
+recorded_with: VCR 6.3.1

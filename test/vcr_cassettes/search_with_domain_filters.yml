@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"Ruby programming language","includeDomains":["ruby-lang.org"],"numResults":5,"type":"auto"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 06 Mar 2026 15:34:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '450'
+      X-Ratelimit-Remaining:
+      - '433'
+      X-Ratelimit-Reset:
+      - '1772811274'
+      Etag:
+      - W/"3f8-rHF7MQ/r+x2tauJ9kxFkxRbha5k"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=VxlIxWWCMePWYXvdwf64YjkEE8Dm0JFTqtBOYktgXw0EBsjNUVFioaDJm7mjUnxYqlROxCCzJdOSPmv44MwExlE4XGmLLaBLZlbZpdpaJpnEqi0DWQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9d826cd53a209b29-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"126ed33fdd30e1831622e1b2b6a6bafb","resolvedSearchType":"neural","results":[{"id":"https://www.ruby-lang.org/en/news/2025/12/25/ruby-4-0-0-released/","title":"Ruby
+        4.0.0 Released","url":"https://www.ruby-lang.org/en/news/2025/12/25/ruby-4-0-0-released/","author":null},{"id":"https://www.ruby-lang.org/en/","title":"Ruby
+        Programming Language","url":"https://www.ruby-lang.org/en/","author":null},{"id":"https://www.ruby-lang.org/en/documentation/","title":"Documentation
+        - Ruby","url":"https://www.ruby-lang.org/en/documentation/","author":null},{"id":"https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/","title":"Ruby
+        From Other Languages","url":"https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/","author":null},{"id":"https://www.ruby-lang.org/en/documentation/quickstart/","title":"Ruby
+        in Twenty Minutes","url":"https://www.ruby-lang.org/en/documentation/quickstart/","author":null}],"searchTime":950.4,"costDollars":{"total":0.005,"search":{"neural":0.005}}}'
+  recorded_at: Fri, 06 Mar 2026 15:34:33 GMT
+recorded_with: VCR 6.3.1

@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 24 Feb 2026 19:47:47 GMT
+      - Fri, 06 Mar 2026 15:34:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -61,24 +61,34 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ratelimit-Limit:
-      - '2250'
+      - '450'
       X-Ratelimit-Remaining:
-      - '1975'
+      - '428'
       X-Ratelimit-Reset:
-      - '1771962470'
+      - '1772811291'
       Etag:
-      - W/"afe-SR3qFJl7izQQzZxODpAOgx6jwCE"
+      - W/"9a6-bpK3q0c/QWNX2p+zhGLPN773ms0"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=j4G8OZN4QOCqe8H0bw8LEbbMhWgOdx4Zv0vvpp3%2Bn6v9JX2OKP7lwBHCZbSk5%2BTuuruSQtOzvcoMxE8TMmJsax7qpb%2FEIXRCow1KNyolQ7wwykL%2FAQ%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=TOT%2BtyWJlIvdOugO4KcvzMOpLW8eJYwNqyZBmIlbUnROP%2FAGwPBTw0KQ8EzLfzWKnDv%2BJnF6h7Ajcci%2FCmRMsljBIpqQOGbaq2qSJ8h1idp26buJoA%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9d317a0cadd2cb49-GIG
+      - 9d826d407ae7421c-EWR
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJyZXF1ZXN0SWQiOiJhMWRmMDFlMTE2OTE2NjRhZmJkNjc2OTliOTEwMzRhOCIsInJlc3VsdHMiOlt7ImlkIjoiaHR0cHM6Ly9ob3dzdG9sZWFybmFpLmNvbS9tYWNoaW5lLWxlYXJuaW5nL3doYXQtaXMtbWFjaGluZS1sZWFybmluZy1hbmQtaG93LWRvZXMtaXQtd29yay1hLWNvbXBsZXRlLWJlZ2lubmVycy1ndWlkZS0yMDI2LyIsInRpdGxlIjoiV2hhdCBJcyBNYWNoaW5lIExlYXJuaW5nICYgSG93IEl0IFdvcmtzIHwgQmVnaW5uZXLigJlzIEd1aWRlIDIwMjYiLCJ1cmwiOiJodHRwczovL2hvd3N0b2xlYXJuYWkuY29tL21hY2hpbmUtbGVhcm5pbmcvd2hhdC1pcy1tYWNoaW5lLWxlYXJuaW5nLWFuZC1ob3ctZG9lcy1pdC13b3JrLWEtY29tcGxldGUtYmVnaW5uZXJzLWd1aWRlLTIwMjYvIiwicHVibGlzaGVkRGF0ZSI6IjIwMjYtMDEtMjhUMDA6MDA6MDAuMDAwWiIsImF1dGhvciI6ImFkbWluIn0seyJpZCI6Imh0dHBzOi8vd3d3LmNvdXJzZXJhLm9yZy9hcnRpY2xlcy93aGF0LWlzLW1hY2hpbmUtbGVhcm5pbmc/bXNvY2tpZD0yYjQ4YjlhZjhlYjE2ODBlMzk4OWFmZDM4Zjc4NjljZSIsInRpdGxlIjoiV2hhdCBJcyBNYWNoaW5lIExlYXJuaW5nPyBEZWZpbml0aW9uLCBUeXBlcywgYW5kIEV4YW1wbGVzIHwgQ291cnNlcmEiLCJ1cmwiOiJodHRwczovL3d3dy5jb3Vyc2VyYS5vcmcvYXJ0aWNsZXMvd2hhdC1pcy1tYWNoaW5lLWxlYXJuaW5nP21zb2NraWQ9MmI0OGI5YWY4ZWIxNjgwZTM5ODlhZmQzOGY3ODY5Y2UiLCJwdWJsaXNoZWREYXRlIjoiMjAyMy0wOS0xMVQwMDowMDowMC4wMDBaIiwiYXV0aG9yIjoiQ291cnNlcmEgU3RhZmYifSx7ImlkIjoiaHR0cHM6Ly93d3cuaWJtLmNvbS90aGluay90b3BpY3MvbWFjaGluZS1sZWFybmluZyIsInRpdGxlIjoiV2hhdCBpcyBNYWNoaW5lIExlYXJuaW5nPyB8IElCTSIsInVybCI6Imh0dHBzOi8vd3d3LmlibS5jb20vdGhpbmsvdG9waWNzL21hY2hpbmUtbGVhcm5pbmciLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9NYWNoaW5lX2xlYXJuaW5nIiwidGl0bGUiOiJNYWNoaW5lIGxlYXJuaW5nIiwidXJsIjoiaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTWFjaGluZV9sZWFybmluZyIsImF1dGhvciI6bnVsbH0seyJpZCI6Imh0dHBzOi8vd3d3LnNhcy5jb20vZW5fdXMvaW5zaWdodHMvYW5hbHl0aWNzL21hY2hpbmUtbGVhcm5pbmcuaHRtbCIsInRpdGxlIjoiTWFjaGluZSBMZWFybmluZzogV2hhdCBpdCBpcyBhbmQgd2h5IGl0IG1hdHRlcnMiLCJ1cmwiOiJodHRwczovL3d3dy5zYXMuY29tL2VuX3VzL2luc2lnaHRzL2FuYWx5dGljcy9tYWNoaW5lLWxlYXJuaW5nLmh0bWwiLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL3d3dy5nZWVrc2ZvcmdlZWtzLm9yZy9tYWNoaW5lLWxlYXJuaW5nL21hY2hpbmUtbGVhcm5pbmcvIiwidGl0bGUiOiJNYWNoaW5lIExlYXJuaW5nIFR1dG9yaWFsIiwidXJsIjoiaHR0cHM6Ly93d3cuZ2Vla3Nmb3JnZWVrcy5vcmcvbWFjaGluZS1sZWFybmluZy9tYWNoaW5lLWxlYXJuaW5nLyIsInB1Ymxpc2hlZERhdGUiOiIyMDI1LTEyLTI2VDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL21pdHNsb2FuLm1pdC5lZHUvaWRlYXMtbWFkZS10by1tYXR0ZXIvbWFjaGluZS1sZWFybmluZy1leHBsYWluZWQiLCJ0aXRsZSI6Ik1hY2hpbmUgbGVhcm5pbmcsIGV4cGxhaW5lZCIsInVybCI6Imh0dHBzOi8vbWl0c2xvYW4ubWl0LmVkdS9pZGVhcy1tYWRlLXRvLW1hdHRlci9tYWNoaW5lLWxlYXJuaW5nLWV4cGxhaW5lZCIsInB1Ymxpc2hlZERhdGUiOiIyMDIxLTA0LTIxVDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL21sZm9yYmVnaW5uZXJzLmNvbS9tYWNoaW5lLWxlYXJuaW5nLWZvci1iZWdpbm5lcnMvIiwidGl0bGUiOiJBIEJlZ2lubmVy4oCZcyBHdWlkZSB0byBNYWNoaW5lIExlYXJuaW5nOiBVbmxvY2tpbmcgdGhlIEZ1dHVyZSBvZiBUZWNobm9sb2d5IiwidXJsIjoiaHR0cHM6Ly9tbGZvcmJlZ2lubmVycy5jb20vbWFjaGluZS1sZWFybmluZy1mb3ItYmVnaW5uZXJzLyIsInB1Ymxpc2hlZERhdGUiOiIyMDI1LTExLTE1VDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOiJbZW1haWzCoHByb3RlY3RlZF0ifSx7ImlkIjoiaHR0cHM6Ly93d3cub3JhY2xlLmNvbS9hcnRpZmljaWFsLWludGVsbGlnZW5jZS9tYWNoaW5lLWxlYXJuaW5nL3doYXQtaXMtbWFjaGluZS1sZWFybmluZy8iLCJ0aXRsZSI6IldoYXQgSXMgTWFjaGluZSBMZWFybmluZz8iLCJ1cmwiOiJodHRwczovL3d3dy5vcmFjbGUuY29tL2FydGlmaWNpYWwtaW50ZWxsaWdlbmNlL21hY2hpbmUtbGVhcm5pbmcvd2hhdC1pcy1tYWNoaW5lLWxlYXJuaW5nLyIsInB1Ymxpc2hlZERhdGUiOiIyMDI0LTExLTI1VDAwOjAwOjAwLjAwMFoiLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL3d3dy5yb3lhbHNvY2lldHkub3JnL2N1cnJlbnQtdG9waWNzL2FpLWRhdGEvd2hhdC1pcy1tYWNoaW5lLWxlYXJuaW5nLyIsInRpdGxlIjoiV2hhdCBpcyBtYWNoaW5lIGxlYXJuaW5nIGFuZCBob3cgZG9lcyBpdCB3b3JrPyB8IFJveWFsIFNvY2lldHkiLCJ1cmwiOiJodHRwczovL3d3dy5yb3lhbHNvY2lldHkub3JnL2N1cnJlbnQtdG9waWNzL2FpLWRhdGEvd2hhdC1pcy1tYWNoaW5lLWxlYXJuaW5nLyIsImF1dGhvciI6IiJ9XSwic2VhcmNoVGltZSI6Ni40LCJyZXNvbHZlZFNlYXJjaFR5cGUiOiJuZXVyYWwiLCJjb3N0RG9sbGFycyI6eyJ0b3RhbCI6MC4wMDUsInNlYXJjaCI6eyJuZXVyYWwiOjAuMDA1fX19
-  recorded_at: Tue, 24 Feb 2026 19:47:47 GMT
+      string: '{"requestId":"01c52c7e01157cc4ec6c3bd9ad411480","resolvedSearchType":"neural","results":[{"id":"https://en.wikipedia.org/wiki/Machine_learning","title":"Machine
+        learning","url":"https://en.wikipedia.org/wiki/Machine_learning","author":null},{"id":"https://www.ibm.com/think/topics/machine-learning","title":"What
+        is Machine Learning? | IBM","url":"https://www.ibm.com/think/topics/machine-learning","author":null},{"id":"https://www.coursera.org/articles/what-is-machine-learning","title":"What
+        Is Machine Learning? Definition, Types, and Examples","url":"https://www.coursera.org/articles/what-is-machine-learning","author":null},{"id":"https://mitsloan.mit.edu/ideas-made-to-matter/machine-learning-explained","title":"Machine
+        learning, explained","url":"https://mitsloan.mit.edu/ideas-made-to-matter/machine-learning-explained","author":null},{"id":"https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-machine-learning","title":"What
+        is machine learning (ML)?","url":"https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-machine-learning","author":null},{"id":"https://www.oracle.com/business-analytics/machine-learning/","title":"Machine
+        Learning and Analytics: An Expert Guide","url":"https://www.oracle.com/business-analytics/machine-learning/","publishedDate":"2024-10-18T00:00:00.000Z","author":""},{"id":"https://www.databricks.com/blog/what-are-machine-learning-models","title":"What
+        are Machine Learning Models? Types","url":"https://www.databricks.com/blog/what-are-machine-learning-models","author":null},{"id":"https://www.coursera.org/learn/machine-learning-and-its-engineering-applications","title":"Machine
+        Learning and its Applications | Coursera","url":"https://www.coursera.org/learn/machine-learning-and-its-engineering-applications","publishedDate":"2025-11-23T00:00:00.000Z","author":""},{"id":"https://www.mltut.com/machine-learning-roadmap-with-free-resources/","title":"Machine
+        Learning Roadmap With Free Resources- Step-By-Step","url":"https://www.mltut.com/machine-learning-roadmap-with-free-resources/","publishedDate":"2025-12-04T00:00:00.000Z","author":"Aqsa
+        Zafar"},{"id":"https://nature.com/articles/s44384-025-00021-w","title":"Machine
+        Learning in Acoustics: A Review and Open-source Repository | npj Acoustics","url":"https://nature.com/articles/s44384-025-00021-w","publishedDate":"2025-09-09T00:00:00.000Z","author":""}],"searchTime":938.2,"costDollars":{"total":0.005,"search":{"neural":0.005}}}'
+  recorded_at: Fri, 06 Mar 2026 15:34:50 GMT
 recorded_with: VCR 6.3.1

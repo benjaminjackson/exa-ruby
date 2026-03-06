@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 24 Feb 2026 19:47:58 GMT
+      - Fri, 06 Mar 2026 15:34:35 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -61,34 +61,34 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ratelimit-Limit:
-      - '2250'
+      - '450'
       X-Ratelimit-Remaining:
-      - '1899'
+      - '364'
       X-Ratelimit-Reset:
-      - '1771962481'
+      - '1772811276'
       Etag:
-      - W/"c64-CGD8c2tbf3/0Dw9t72GzCvHujh4"
+      - W/"a1b-XsakdTkL2j1QcKJ1IhYZv7CdLHY"
       Report-To:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2BRMBrkpbIpQWei%2Bvsj%2Fjq5dyqNIibjY1LMfzndzrjYK5oKig5KxyMIHfe0pBgrlwPIP1tpnNcsW3WopRiZv0MHOFMCUJfL%2FawE7GKoC1s4gRqAe29Q%3D%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=I%2FGTuTg39YxJbfYX7woCoyorKCjYOR2NPm9L9OikSJrKwYOW9DzUNbdCwKAjnG9ww5mDUWsr%2BUd8AUAf3D%2BzeBtOkBGiOysgdq5cNuh8xvIq191IJg%3D%3D"}]}'
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
       Cf-Ray:
-      - 9d317a504b25cad8-GIG
+      - 9d826ce39c3c42e4-EWR
     body:
       encoding: ASCII-8BIT
-      string: '{"requestId":"2d589ea1f5beba3b51a8cf12591919fa","results":[{"id":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries","title":"JavaScript
-        frameworks and libraries - Learn web development | MDN","url":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries","publishedDate":"2025-10-02T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks","title":"Comparison
-        of JavaScript-based web frameworks - Wikipedia","url":"https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks","author":null,"subpages":[]},{"id":"https://strapi.io/blog/best-javascript-frameworks","title":"6
-        Best Javascript Frameworks for 2025 - Strapi","url":"https://strapi.io/blog/best-javascript-frameworks","publishedDate":"2026-01-25T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://www.contentful.com/blog/best-javascript-frameworks/","title":"Building
-        an app? These are the best JavaScript frameworks in 2025","url":"https://www.contentful.com/blog/best-javascript-frameworks/","publishedDate":"2025-01-30T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://www.geeksforgeeks.org/javascript/most-popular-javascript-frameworks-for-web-development/","title":"Top
-        10 Most Popular JavaScript Frameworks For Web Development","url":"https://www.geeksforgeeks.org/javascript/most-popular-javascript-frameworks-for-web-development/","publishedDate":"2025-07-15T00:00:00.000Z","author":null,"subpages":[]},{"id":"https://www.octalsoftware.com/blog/best-front-end-frameworks","title":"20
-        Best Frontend Frameworks for Web Development in 2025","url":"https://www.octalsoftware.com/blog/best-front-end-frameworks","publishedDate":"2025-01-06T00:00:00.000Z","author":"Arun
-        Goyal","subpages":[]},{"id":"https://building.theatlantic.com/top-20-javascript-typescript-frameworks-on-github-ranked-by-stars-2025-analysis-7c0aa75a4040","title":"Top
-        20 JavaScript/TypeScript Frameworks on GitHub Ranked by Stars: 2025 Analysis
-        | by florinelchis | Medium","url":"https://building.theatlantic.com/top-20-javascript-typescript-frameworks-on-github-ranked-by-stars-2025-analysis-7c0aa75a4040","publishedDate":"2025-12-10T00:00:00.000Z","author":"florinelchis","subpages":[]},{"id":"https://react.dev/?uwu=true","title":"React","url":"https://react.dev/?uwu=true","publishedDate":"2024-05-22T00:00:00.000Z","author":"","subpages":[]},{"id":"https://inument.com/choosing-the-best-javascript-framework-a-comprehensive-comparison/","title":"Choosing
-        the Best JavaScript Framework: A Comprehensive Comparison - Inument","url":"https://inument.com/choosing-the-best-javascript-framework-a-comprehensive-comparison/","publishedDate":"2023-12-11T00:00:00.000Z","author":"Saffat","subpages":[]},{"id":"https://www.educative.io/blog/what-is-the-best-frontend-javascript-framework","title":"What
-        is the best frontend JavaScript framework?","url":"https://www.educative.io/blog/what-is-the-best-frontend-javascript-framework","author":"","subpages":[]}],"searchTime":51.8,"resolvedSearchType":"neural","costDollars":{"total":0.005,"search":{"neural":0.005}}}'
-  recorded_at: Tue, 24 Feb 2026 19:47:58 GMT
+      string: '{"requestId":"f07d9b850a48cbc4e2125e306b05f306","resolvedSearchType":"neural","results":[{"id":"https://medium.com/%40hashbyt/react-vs-vue-vs-angular-2026-6f5e9b3f0e3e","title":"React
+        vs Vue vs Angular 2026: Which JavaScript Framework Should You Choose? | Medium","url":"https://medium.com/%40hashbyt/react-vs-vue-vs-angular-2026-6f5e9b3f0e3e","publishedDate":"2026-02-19T00:00:00.000Z","author":"Hashbyt
+        | AI-First Frontend & UI/UX SaaS Partner","subpages":[]},{"id":"https://strapi.io/blog/best-javascript-frameworks","title":"6
+        Best Javascript Frameworks for 2025 - Strapi","url":"https://strapi.io/blog/best-javascript-frameworks","author":null,"subpages":[]},{"id":"https://www.testmuai.com/blog/best-javascript-frameworks/","title":"The
+        17 Best JavaScript Frameworks for Web Development and Testing ...","url":"https://www.testmuai.com/blog/best-javascript-frameworks/","author":null,"subpages":[]},{"id":"https://www.contentful.com/blog/best-javascript-frameworks/","title":"Building
+        an app? These are the best JavaScript frameworks in 2025","url":"https://www.contentful.com/blog/best-javascript-frameworks/","author":null,"subpages":[]},{"id":"https://www.youtube.com/watch?v=DAci3O2j31o","title":"Introduction
+        to JavaScript Frameworks - YouTube","url":"https://www.youtube.com/watch?v=DAci3O2j31o","author":null,"subpages":[]},{"id":"https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks","title":"Comparison
+        of JavaScript-based web frameworks - Wikipedia","url":"https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks","author":null,"subpages":[]},{"id":"https://www.geeksforgeeks.org/javascript/javascript-libraries-and-frameworks/","title":"JavaScript
+        Libraries and Frameworks - GeeksforGeeks","url":"https://www.geeksforgeeks.org/javascript/javascript-libraries-and-frameworks/","author":null,"subpages":[]},{"id":"https://www.dotcms.com/blog/javascript-frameworks-guide","title":"JavaScript
+        Frameworks: The Complete Guide - dotCMS","url":"https://www.dotcms.com/blog/javascript-frameworks-guide","author":null,"subpages":[]},{"id":"https://stateofjs.com/en-US","title":"State
+        of JavaScript","url":"https://stateofjs.com/en-US","author":null,"subpages":[]},{"id":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries","title":"JavaScript
+        frameworks and libraries - Learn web development - MDN","url":"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries","author":null,"subpages":[]}],"searchTime":788,"costDollars":{"total":0.005,"search":{"neural":0.005}}}'
+  recorded_at: Fri, 06 Mar 2026 15:34:35 GMT
 recorded_with: VCR 6.3.1

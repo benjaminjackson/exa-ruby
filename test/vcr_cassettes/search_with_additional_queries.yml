@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"Ruby programming","additionalQueries":["Rails framework","Ruby
+        gems"],"numResults":3,"type":"auto"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 06 Mar 2026 15:34:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '450'
+      X-Ratelimit-Remaining:
+      - '395'
+      X-Ratelimit-Reset:
+      - '1772811276'
+      Etag:
+      - W/"361-sijxJa4t6yXdNExH11zZXeBJDVg"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=iiahZ3yGxdIBYhI3AKK%2Bjd7hJNIiZVvIR77NQq2p%2FurHEO5cX3oO9Xa7zOPF%2F22DyeaquRTcuqxu1AjQ4uko%2BG5Zm2mkNdiu0V6z2tXXg0s%2FMw4rhA%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9d826ce25f675e7f-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"ccf846a0f035f470f0ea1198cab6b594","results":[{"id":"https://ironcoders.com/learn/ruby/","title":"Introduction
+        to Programming in Ruby","url":"https://ironcoders.com/learn/ruby/","publishedDate":"2025-03-25T00:00:00.000Z","author":""},{"id":"https://reintech.io/blog/introduction-to-ruby-programming","title":"Introduction
+        to Ruby Programming | Reintech media","url":"https://reintech.io/blog/introduction-to-ruby-programming","publishedDate":"2023-05-19T00:00:00.000Z","author":"Arthur
+        C. Codex"},{"id":"https://www.masaischool.com/blog/ruby-programming-language-guide/","title":"What
+        is the Ruby programming language?","url":"https://www.masaischool.com/blog/ruby-programming-language-guide/","publishedDate":"2023-09-09T00:00:00.000Z","author":""}],"searchTime":4,"resolvedSearchType":"neural","costDollars":{"total":0.005,"search":{"neural":0.005}}}'
+  recorded_at: Fri, 06 Mar 2026 15:34:34 GMT
+recorded_with: VCR 6.3.1

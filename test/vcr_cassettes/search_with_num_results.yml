@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"Ruby programming language","numResults":3,"type":"auto"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 06 Mar 2026 15:34:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '450'
+      X-Ratelimit-Remaining:
+      - '448'
+      X-Ratelimit-Reset:
+      - '1772811280'
+      Etag:
+      - W/"29e-Tqu4/KXyfGNTG8eoIkj0BBQ5UY0"
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=bHam8%2F8eI50aSUkhn6BP3oAL%2B6a7UaLBqYyB4rnW3RAwUoMWvwyOzGDWcAqyS6vtECTzsPUqDvebm0fON81NmMB2bD8qTUDZnXN%2FCGleq5ovdLEZcQ%3D%3D"}]}'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9d826cf99903dafc-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"2340eaa254ebf9b5430ca869061a8423","resolvedSearchType":"neural","results":[{"id":"https://en.wikipedia.org/wiki/Ruby_(programming_language)","title":"Ruby
+        (programming language)","url":"https://en.wikipedia.org/wiki/Ruby_(programming_language)","author":null},{"id":"https://www.geeksforgeeks.org/ruby/ruby-programming-language/","title":"Ruby
+        Programming Language","url":"https://www.geeksforgeeks.org/ruby/ruby-programming-language/","author":null},{"id":"https://github.com/ruby/ruby","title":"The
+        Ruby Programming Language","url":"https://github.com/ruby/ruby","author":null}],"searchTime":631.3,"costDollars":{"total":0.005,"search":{"neural":0.005}}}'
+  recorded_at: Fri, 06 Mar 2026 15:34:38 GMT
+recorded_with: VCR 6.3.1

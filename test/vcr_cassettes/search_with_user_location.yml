@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"best coffee shops","userLocation":"US","numResults":3,"type":"auto"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 06 Mar 2026 15:34:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '450'
+      X-Ratelimit-Remaining:
+      - '382'
+      X-Ratelimit-Reset:
+      - '1772811298'
+      Etag:
+      - W/"35e-L6P6X2ZN8pB6ohOLest9N99dRq8"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=bxfyssyA48%2FQgyfw5rywrvvSar4%2BBjXuxepxjLmdv17LnR7xBmU7SM1SuEzKZSX9DolqQ%2BS7ZgpQ70e1UMIaXQNtSPHj8srWPWna3k3QVx8AWN3G7A%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9d826d6efea0be83-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJyZXF1ZXN0SWQiOiJjY2M0MzY3NzE5ZGQ4ZmJiNTdiMzlkMDVjY2QyYjcwNSIsInJlc3VsdHMiOlt7ImlkIjoiaHR0cHM6Ly90aGVyYW1ibGluZ3JlbmVnYWRlLmNvbS9iZXN0LWNvZmZlZS1zaG9wcy1pbi13aWNoaXRhLyIsInRpdGxlIjoiMTEgQmVzdCBMb2NhbCBDb2ZmZWUgU2hvcHMgdG8gQ2hlY2sgT3V0IGluIFdpY2hpdGEgS2Fuc2FzIiwidXJsIjoiaHR0cHM6Ly90aGVyYW1ibGluZ3JlbmVnYWRlLmNvbS9iZXN0LWNvZmZlZS1zaG9wcy1pbi13aWNoaXRhLyIsImF1dGhvciI6bnVsbH0seyJpZCI6Imh0dHBzOi8vd3d3LnRyaXBhZHZpc29yLmNvbS9SZXN0YXVyYW50cy1nMzkxNDMtYzgtV2ljaGl0YV9LYW5zYXMuaHRtbCIsInRpdGxlIjoiVEhFIDEwIEJFU1QgQ2Fmw6lzIGluIFdpY2hpdGEgKFVwZGF0ZWQgMjAyNikiLCJ1cmwiOiJodHRwczovL3d3dy50cmlwYWR2aXNvci5jb20vUmVzdGF1cmFudHMtZzM5MTQzLWM4LVdpY2hpdGFfS2Fuc2FzLmh0bWwiLCJhdXRob3IiOm51bGx9LHsiaWQiOiJodHRwczovL21ldHJvcG9saXNjb2ZmZWUuY29tL2VkZ2V3YXRlci1jYWZlLyIsInRpdGxlIjoiTWV0cm9wb2xpcyBFZGdld2F0ZXIgQ2Fmw6kg4oCTIEJlc3QgY2Fmw6kgaW4gQ2hpY2FnbyAtIE1ldHJvcG9saXMgQ29mZmVlIENvLiIsInVybCI6Imh0dHBzOi8vbWV0cm9wb2xpc2NvZmZlZS5jb20vZWRnZXdhdGVyLWNhZmUvIiwicHVibGlzaGVkRGF0ZSI6IjIwMjUtMDMtMTZUMDA6MDA6MDAuMDAwWiIsImF1dGhvciI6IiJ9XSwic2VhcmNoVGltZSI6MjIuMiwicmVzb2x2ZWRTZWFyY2hUeXBlIjoibmV1cmFsIiwiY29zdERvbGxhcnMiOnsidG90YWwiOjAuMDA1LCJzZWFyY2giOnsibmV1cmFsIjowLjAwNX19fQ==
+  recorded_at: Fri, 06 Mar 2026 15:34:57 GMT
+recorded_with: VCR 6.3.1
