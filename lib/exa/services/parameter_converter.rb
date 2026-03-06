@@ -45,12 +45,14 @@ module Exa
       end
 
       def content_key?(key)
-        %i[text summary context subpages subpage_target extras highlights].include?(key)
+        %i[text summary context subpages subpage_target extras highlights livecrawl livecrawl_timeout max_age_hours].include?(key)
       end
 
       def convert_content_key(key)
         case key
         when :subpage_target then :subpageTarget
+        when :livecrawl_timeout then :livecrawlTimeout
+        when :max_age_hours then :maxAgeHours
         else
           key
         end
@@ -105,7 +107,9 @@ module Exa
       def text_hash_mappings
         {
           max_characters: :maxCharacters,
-          include_html_tags: :includeHtmlTags
+          include_html_tags: :includeHtmlTags,
+          include_sections: :includeSections,
+          exclude_sections: :excludeSections
         }
       end
 

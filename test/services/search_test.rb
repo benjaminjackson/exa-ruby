@@ -696,4 +696,115 @@ class SearchTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/search"
   end
+
+  def test_call_nests_livecrawl_under_contents
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: hash_including(
+            livecrawl: "always"
+          )
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      text: true,
+      livecrawl: "always"
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_converts_livecrawl_timeout_under_contents
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: hash_including(
+            livecrawlTimeout: 10000
+          )
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      text: true,
+      livecrawl_timeout: 10000
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_converts_max_age_hours_under_contents
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: hash_including(
+            maxAgeHours: 24
+          )
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      text: true,
+      max_age_hours: 24
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_converts_text_include_sections
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: {
+            text: {
+              includeSections: ["abstract", "introduction"]
+            }
+          }
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      text: {
+        include_sections: ["abstract", "introduction"]
+      }
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
 end
