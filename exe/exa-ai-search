@@ -15,7 +15,8 @@ def print_help
 
     Options:
       --num-results N              Number of results to return (default: 10)
-      --type TYPE                  Search type: fast, deep, keyword, or auto (default: fast)
+      --type TYPE                  Search type: auto, neural, fast, deep, deep-reasoning,
+                                   or instant (default: auto)
       --category CAT               Focus on specific data category
                                    Options: "company", "research paper", "news", "pdf",
                                    "github", "tweet", "personal site", "financial report",
@@ -42,6 +43,19 @@ def print_help
       --subpage-target PHRASE      Subpage target phrases (repeatable)
       --links N                    Number of links to extract per result
       --image-links N              Number of image links to extract
+      --highlights                 Include text highlights in results
+      --highlights-max-characters N  Max characters per highlight
+      --highlights-num-sentences N   Number of sentences per highlight
+      --highlights-per-url N       Number of highlights per URL
+      --highlights-query QUERY     Custom query for highlight extraction
+      --livecrawl MODE             Livecrawl mode: always, fallback, or never
+      --livecrawl-timeout N        Livecrawl timeout in milliseconds
+      --max-age-hours N            Maximum age of results in hours
+
+    Search Options:
+      --additional-queries QUERY   Additional search queries (repeatable)
+      --output-schema JSON         JSON schema for output structure (@file syntax)
+      --user-location CODE         User location (ISO country code)
 
     General Options:
       --api-key KEY                Exa API key (or set EXA_API_KEY env var)
@@ -105,6 +119,25 @@ def build_contents(args)
     contents[:extras][:image_links] = args[:image_links] if args[:image_links]
   end
 
+  # Highlights options
+  if args[:highlights]
+    highlight_opts = %i[highlights_max_characters highlights_num_sentences highlights_per_url highlights_query]
+    if highlight_opts.any? { |k| args[k] }
+      contents[:highlights] = {}
+      contents[:highlights][:max_characters] = args[:highlights_max_characters] if args[:highlights_max_characters]
+      contents[:highlights][:num_sentences] = args[:highlights_num_sentences] if args[:highlights_num_sentences]
+      contents[:highlights][:highlights_per_url] = args[:highlights_per_url] if args[:highlights_per_url]
+      contents[:highlights][:query] = args[:highlights_query] if args[:highlights_query]
+    else
+      contents[:highlights] = true
+    end
+  end
+
+  # Livecrawl options
+  contents[:livecrawl] = args[:livecrawl] if args[:livecrawl]
+  contents[:livecrawl_timeout] = args[:livecrawl_timeout] if args[:livecrawl_timeout]
+  contents[:max_age_hours] = args[:max_age_hours] if args[:max_age_hours]
+
   contents.empty? ? nil : contents
 end
 
@@ -141,6 +174,9 @@ begin
   search_params[:end_crawl_date] = args[:end_crawl_date] if args[:end_crawl_date]
   search_params[:include_text] = args[:include_text] if args[:include_text]
   search_params[:exclude_text] = args[:exclude_text] if args[:exclude_text]
+  search_params[:additional_queries] = args[:additional_queries] if args[:additional_queries]
+  search_params[:output_schema] = args[:output_schema] if args[:output_schema]
+  search_params[:user_location] = args[:user_location] if args[:user_location]
   contents = build_contents(args)
   search_params.merge!(contents) if contents
 

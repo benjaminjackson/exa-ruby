@@ -23,29 +23,19 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_type_flag
-    args = parse_search_args(["test query", "--type", "fast"])
-    assert_equal "fast", args[:type]
-
-    args = parse_search_args(["test query", "--type", "deep"])
-    assert_equal "deep", args[:type]
-
-    args = parse_search_args(["test query", "--type", "keyword"])
-    assert_equal "keyword", args[:type]
-
-    args = parse_search_args(["test query", "--type", "auto"])
-    assert_equal "auto", args[:type]
+    %w[auto neural fast deep deep-reasoning instant].each do |type|
+      args = parse_search_args(["test query", "--type", type])
+      assert_equal type, args[:type], "Failed to parse type: #{type}"
+    end
   end
 
   def test_rejects_invalid_search_type
-    error = assert_raises(ArgumentError) do
-      parse_search_args(["test query", "--type", "neural"])
+    %w[keyword invalid bogus].each do |type|
+      error = assert_raises(ArgumentError) do
+        parse_search_args(["test query", "--type", type])
+      end
+      assert_includes error.message.downcase, "search type"
     end
-    assert_includes error.message.downcase, "search type"
-
-    error = assert_raises(ArgumentError) do
-      parse_search_args(["test query", "--type", "invalid"])
-    end
-    assert_includes error.message.downcase, "search type"
   end
 
   def test_parses_include_domains_flag
@@ -98,6 +88,53 @@ class Exa::CLI::SearchTest < Minitest::Test
       parse_search_args(["test query", "--category", "linkedin profile"])
     end
     assert_includes error.message.downcase, "category"
+  end
+
+  def test_parses_highlights_flag
+    args = parse_search_args(["test query", "--highlights"])
+    assert_equal true, args[:highlights]
+  end
+
+  def test_parses_highlights_options
+    args = parse_search_args(["test query", "--highlights", "--highlights-max-characters", "500",
+                              "--highlights-num-sentences", "3", "--highlights-per-url", "2",
+                              "--highlights-query", "key points"])
+    assert_equal true, args[:highlights]
+    assert_equal 500, args[:highlights_max_characters]
+    assert_equal 3, args[:highlights_num_sentences]
+    assert_equal 2, args[:highlights_per_url]
+    assert_equal "key points", args[:highlights_query]
+  end
+
+  def test_parses_livecrawl_flag
+    args = parse_search_args(["test query", "--livecrawl", "always"])
+    assert_equal "always", args[:livecrawl]
+  end
+
+  def test_parses_livecrawl_timeout_flag
+    args = parse_search_args(["test query", "--livecrawl-timeout", "5000"])
+    assert_equal 5000, args[:livecrawl_timeout]
+  end
+
+  def test_parses_max_age_hours_flag
+    args = parse_search_args(["test query", "--max-age-hours", "24"])
+    assert_equal 24, args[:max_age_hours]
+  end
+
+  def test_parses_additional_queries_repeatable
+    args = parse_search_args(["test query", "--additional-queries", "Rails framework",
+                              "--additional-queries", "Ruby gems"])
+    assert_equal ["Rails framework", "Ruby gems"], args[:additional_queries]
+  end
+
+  def test_parses_output_schema_json_string
+    args = parse_search_args(["test query", "--output-schema", '{"type":"object"}'])
+    assert_equal({ "type" => "object" }, args[:output_schema])
+  end
+
+  def test_parses_user_location_flag
+    args = parse_search_args(["test query", "--user-location", "US"])
+    assert_equal "US", args[:user_location]
   end
 
   def test_handles_api_error_gracefully

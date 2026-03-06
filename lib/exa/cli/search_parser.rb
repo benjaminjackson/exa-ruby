@@ -3,7 +3,7 @@
 module Exa
   module CLI
     class SearchParser
-      VALID_SEARCH_TYPES = ["fast", "deep", "keyword", "auto"].freeze
+      VALID_SEARCH_TYPES = ["auto", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
       VALID_CATEGORIES = [
         "company", "research paper", "news", "pdf", "github",
         "tweet", "personal site", "financial report", "people"
@@ -122,6 +122,45 @@ module Exa
             i += 2
           when "--image-links"
             @args[:image_links] = @argv[i + 1].to_i
+            i += 2
+          when "--highlights"
+            @args[:highlights] = true
+            i += 1
+          when "--highlights-max-characters"
+            @args[:highlights_max_characters] = @argv[i + 1].to_i
+            i += 2
+          when "--highlights-num-sentences"
+            @args[:highlights_num_sentences] = @argv[i + 1].to_i
+            i += 2
+          when "--highlights-per-url"
+            @args[:highlights_per_url] = @argv[i + 1].to_i
+            i += 2
+          when "--highlights-query"
+            @args[:highlights_query] = @argv[i + 1]
+            i += 2
+          when "--livecrawl"
+            @args[:livecrawl] = @argv[i + 1]
+            i += 2
+          when "--livecrawl-timeout"
+            @args[:livecrawl_timeout] = @argv[i + 1].to_i
+            i += 2
+          when "--max-age-hours"
+            @args[:max_age_hours] = @argv[i + 1].to_i
+            i += 2
+          when "--additional-queries"
+            @args[:additional_queries] ||= []
+            @args[:additional_queries] << @argv[i + 1]
+            i += 2
+          when "--output-schema"
+            schema_arg = @argv[i + 1]
+            @args[:output_schema] = if schema_arg.start_with?("@")
+                                      JSON.parse(File.read(schema_arg[1..]))
+                                    else
+                                      JSON.parse(schema_arg)
+                                    end
+            i += 2
+          when "--user-location"
+            @args[:user_location] = @argv[i + 1]
             i += 2
           else
             query_parts << arg
