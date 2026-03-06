@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/search
+    body:
+      encoding: UTF-8
+      string: '{"query":"What are the latest breakthroughs in quantum error correction?","type":"deep-reasoning"}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 06 Mar 2026 05:35:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ratelimit-Limit:
+      - '2'
+      X-Ratelimit-Remaining:
+      - '1'
+      X-Ratelimit-Reset:
+      - '1772775347'
+      Etag:
+      - W/"1295-Xqr5Tf1X0mRybd9w6D393eTYXAM"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=XqHSFameB5qp0QUDz0G3mGmpgj0auE67BdK5JdyYsmOAj6Bkq7LPxhcOo%2Fu1%2FW74FcAyFL2fpZDFZZVX9Nd2jxryRRdwKNhNX%2F7DyUEvuSywuWQD1A%3D%3D"}]}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9d7effb3cf4f440b-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"requestId":"6f683270666bb3e14cae5a8bdbcb7fe2","resolvedSearchType":"deep-reasoning","results":[{"id":"https://nature.com/articles/s41567-025-03157-4","title":"Demonstration
+        of low-overhead quantum error correction codes | Nature Physics","url":"https://nature.com/articles/s41567-025-03157-4","publishedDate":"2026-01-22T00:00:00.000Z","author":"","image":"https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41567-025-03157-4/MediaObjects/41567_2025_3157_Fig1_HTML.png","favicon":"http://nature.com/static/images/favicons/nature/favicon-32x32-3fe59ece92.png"},{"id":"https://arxiv.org/abs/2601.09921","title":"Quantum
+        Physics","url":"https://arxiv.org/abs/2601.09921","author":""},{"id":"https://phys.org/news/2026-01-error-technology-quantum-real-world.html","title":"Error-correction
+        technology to turn quantum computing into real-world power","url":"https://phys.org/news/2026-01-error-technology-quantum-real-world.html","author":null,"image":"https://scx2.b-cdn.net/gfx/news/hires/2026/ripples.jpg","favicon":"https://phys.org/favicon.ico"},{"id":"https://www.nature.com/articles/s41467-026-70011-3","title":"Demonstration
+        of high-fidelity entangled logical qubits using transmons | Nature Communications","url":"https://www.nature.com/articles/s41467-026-70011-3","publishedDate":"2026-02-27T00:00:00.000Z","author":"","favicon":"https://www.nature.com/static/images/favicons/nature/apple-touch-icon-f39cb19454.png"},{"id":"https://www.nature.com/articles/s41586-024-08449-y","title":"Quantum
+        error correction below the surface code threshold | Nature","url":"https://www.nature.com/articles/s41586-024-08449-y","author":null,"image":"https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41586-024-08449-y/MediaObjects/41586_2024_8449_Fig1_HTML.png","favicon":"https://www.nature.com/static/images/favicons/nature/apple-touch-icon-f39cb19454.png"},{"id":"https://arxiv.org/abs/2602.22211","title":"[2602.22211]
+        Computing with many encoded logical qubits beyond break-even","url":"https://arxiv.org/abs/2602.22211","author":"","image":"/static/browse/0.3.4/images/arxiv-logo-fb.png","favicon":"https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png"},{"id":"https://arxiv.org/abs/2412.21171","title":"Quantum
+        Physics","url":"https://arxiv.org/abs/2412.21171","author":null,"image":"/static/browse/0.3.4/images/arxiv-logo-fb.png","favicon":"https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png"},{"id":"https://arxiv.org/abs/2506.10185","title":"Quantum
+        Physics","url":"https://arxiv.org/abs/2506.10185","author":null,"image":"/static/browse/0.3.4/images/arxiv-logo-fb.png","favicon":"https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png"},{"id":"https://arxiv.org/abs/2601.02183","title":"[2601.02183]
+        Developments in superconducting erasure qubits for hardware-efficient quantum
+        error correction","url":"https://arxiv.org/abs/2601.02183","author":null,"image":"/static/browse/0.3.4/images/arxiv-logo-fb.png","favicon":"https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png"},{"id":"https://www.forbes.com/sites/johnkoetsier/2025/09/25/massive-quantum-computing-breakthrough-long-lived-qubits/","title":"Massive
+        Quantum Computing Breakthrough: Long-Lived ...","url":"https://www.forbes.com/sites/johnkoetsier/2025/09/25/massive-quantum-computing-breakthrough-long-lived-qubits/","author":null}],"searchTime":12661.7,"output":{"content":"Latest
+        breakthroughs in quantum error correction include low-overhead bicycle codes
+        on 32-qubit processors, real-time neural decoders achieving state-of-the-art
+        accuracy, high-fidelity entangled logical qubits, and codes near theoretical
+        hashing bounds, demonstrated in early 2026.","grounding":[{"field":"content","citations":[{"url":"https://nature.com/articles/s41567-025-03157-4","title":"Demonstration
+        of low-overhead quantum error correction codes | Nature Physics"},{"url":"https://arxiv.org/abs/2601.09921","title":"Quantum
+        Physics"},{"url":"https://phys.org/news/2026-01-error-technology-quantum-real-world.html","title":"Error-correction
+        technology to turn quantum computing into real-world power"},{"url":"https://www.nature.com/articles/s41467-026-70011-3","title":"Demonstration
+        of high-fidelity entangled logical qubits using transmons | Nature Communications"},{"url":"https://www.nature.com/articles/s41586-024-08449-y","title":"Quantum
+        error correction below the surface code threshold | Nature"},{"url":"https://arxiv.org/abs/2602.22211","title":"[2602.22211]
+        Computing with many encoded logical qubits beyond break-even"},{"url":"https://arxiv.org/abs/2412.21171","title":"Quantum
+        Physics"}],"confidence":"high"}]},"costDollars":{"total":0.005,"search":{"neural":0.005}}}'
+  recorded_at: Fri, 06 Mar 2026 05:35:58 GMT
+recorded_with: VCR 6.3.1
