@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-03-07
+
+### Added
+- **Livecrawl support** - Added `livecrawl` and `max_age_hours` parameters to search, with CLI `--livecrawl` and `--max-age-hours` flags
+- **Deep-reasoning search type** - Added `deep-reasoning` and `instant` search types alongside existing types
+- **Output field** - Search results now include an `output` field for deep-reasoning responses
+- **Additional search parameters** - Added `additional_queries`, `output_schema`, and `user_location` parameter conversions
+- **Integration tests** - Comprehensive integration tests for post-v0.9.0 search features including deep-reasoning
+
+### Fixed
+- **Parameter conversion** - `num_results`, `include_domains`, `exclude_domains`, and highlights now correctly convert to camelCase in request body
+- **CLI search parser** - Updated to support current API search types (`auto`, `fast`, `deep`, `neural`, `instant`, `deep-reasoning`)
+- **Livecrawl validation** - Added proper validation for livecrawl parameter values in CLI
+- **User location** - Use ISO country code format per API spec
+- **VCR cassettes** - Re-recorded search cassettes against live API for accuracy
+
 ## [0.9.0] - 2026-02-24
 
 ### Added
