@@ -4,6 +4,7 @@ module Exa
   module CLI
     class SearchParser
       VALID_SEARCH_TYPES = ["auto", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
+      VALID_LIVECRAWL_MODES = ["always", "fallback", "never", "auto", "preferred"].freeze
       VALID_CATEGORIES = [
         "company", "research paper", "news", "pdf", "github",
         "tweet", "personal site", "financial report", "people"
@@ -139,7 +140,9 @@ module Exa
             @args[:highlights_query] = @argv[i + 1]
             i += 2
           when "--livecrawl"
-            @args[:livecrawl] = @argv[i + 1]
+            livecrawl = @argv[i + 1]
+            validate_livecrawl(livecrawl)
+            @args[:livecrawl] = livecrawl
             i += 2
           when "--livecrawl-timeout"
             @args[:livecrawl_timeout] = @argv[i + 1].to_i
@@ -179,6 +182,12 @@ module Exa
         return if VALID_SEARCH_TYPES.include?(search_type)
 
         raise ArgumentError, "Search type must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
+      end
+
+      def validate_livecrawl(mode)
+        return if VALID_LIVECRAWL_MODES.include?(mode)
+
+        raise ArgumentError, "Livecrawl mode must be one of: #{VALID_LIVECRAWL_MODES.join(', ')}"
       end
 
       def validate_category(category)

@@ -48,7 +48,7 @@ def print_help
       --highlights-num-sentences N   Number of sentences per highlight
       --highlights-per-url N       Number of highlights per URL
       --highlights-query QUERY     Custom query for highlight extraction
-      --livecrawl MODE             Livecrawl mode: always, fallback, or never
+      --livecrawl MODE             Livecrawl mode: always, fallback, never, auto, or preferred
       --livecrawl-timeout N        Livecrawl timeout in milliseconds
       --max-age-hours N            Maximum age of results in hours
 
@@ -163,11 +163,11 @@ begin
 
   # Prepare search parameters
   search_params = {}
-  search_params[:numResults] = args[:num_results] if args[:num_results]
+  search_params[:num_results] = args[:num_results] if args[:num_results]
   search_params[:type] = args[:type] if args[:type]
   search_params[:category] = args[:category] if args[:category]
-  search_params[:includeDomains] = args[:include_domains] if args[:include_domains]
-  search_params[:excludeDomains] = args[:exclude_domains] if args[:exclude_domains]
+  search_params[:include_domains] = args[:include_domains] if args[:include_domains]
+  search_params[:exclude_domains] = args[:exclude_domains] if args[:exclude_domains]
   search_params[:start_published_date] = args[:start_published_date] if args[:start_published_date]
   search_params[:end_published_date] = args[:end_published_date] if args[:end_published_date]
   search_params[:start_crawl_date] = args[:start_crawl_date] if args[:start_crawl_date]

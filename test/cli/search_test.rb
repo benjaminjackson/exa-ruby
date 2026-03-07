@@ -107,8 +107,17 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_livecrawl_flag
-    args = parse_search_args(["test query", "--livecrawl", "always"])
-    assert_equal "always", args[:livecrawl]
+    %w[always fallback never auto preferred].each do |mode|
+      args = parse_search_args(["test query", "--livecrawl", mode])
+      assert_equal mode, args[:livecrawl], "Failed to parse livecrawl mode: #{mode}"
+    end
+  end
+
+  def test_rejects_invalid_livecrawl_mode
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["test query", "--livecrawl", "bogus"])
+    end
+    assert_includes error.message.downcase, "livecrawl"
   end
 
   def test_parses_livecrawl_timeout_flag
