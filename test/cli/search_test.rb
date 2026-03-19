@@ -69,7 +69,7 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_all_valid_categories
-    valid_categories = ["company", "research paper", "news", "pdf", "github", "tweet", "personal site", "financial report", "people"]
+    valid_categories = ["company", "research paper", "news", "github", "tweet", "personal site", "financial report", "people"]
     valid_categories.each do |category|
       args = parse_search_args(["test query", "--category", category])
       assert_equal category, args[:category], "Failed to parse category: #{category}"
@@ -83,11 +83,23 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_includes error.message.downcase, "category"
   end
 
+  def test_rejects_pdf_category
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["test query", "--category", "pdf"])
+    end
+    assert_includes error.message.downcase, "category"
+  end
+
   def test_rejects_obsolete_linkedin_profile_category
     error = assert_raises(ArgumentError) do
       parse_search_args(["test query", "--category", "linkedin profile"])
     end
     assert_includes error.message.downcase, "category"
+  end
+
+  def test_parses_category_github_flag
+    args = parse_search_args(["test query", "--category", "github"])
+    assert_equal "github", args[:category]
   end
 
   def test_parses_highlights_flag
@@ -107,17 +119,8 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_livecrawl_flag
-    %w[always fallback never auto preferred].each do |mode|
-      args = parse_search_args(["test query", "--livecrawl", mode])
-      assert_equal mode, args[:livecrawl], "Failed to parse livecrawl mode: #{mode}"
-    end
-  end
-
-  def test_rejects_invalid_livecrawl_mode
-    error = assert_raises(ArgumentError) do
-      parse_search_args(["test query", "--livecrawl", "bogus"])
-    end
-    assert_includes error.message.downcase, "livecrawl"
+    args = parse_search_args(["test query", "--livecrawl"])
+    assert_equal true, args[:livecrawl]
   end
 
   def test_parses_livecrawl_timeout_flag
@@ -144,6 +147,28 @@ class Exa::CLI::SearchTest < Minitest::Test
   def test_parses_user_location_flag
     args = parse_search_args(["test query", "--user-location", "US"])
     assert_equal "US", args[:user_location]
+  end
+
+  def test_parses_system_prompt_flag
+    args = parse_search_args(["test query", "--system-prompt", "You are a helpful assistant"])
+    assert_equal "You are a helpful assistant", args[:system_prompt]
+  end
+
+  def test_parses_moderation_flag
+    args = parse_search_args(["test query", "--moderation"])
+    assert_equal true, args[:moderation]
+  end
+
+  def test_parses_text_verbosity_flag
+    args = parse_search_args(["test query", "--text-verbosity", "compact"])
+    assert_equal "compact", args[:text_verbosity]
+  end
+
+  def test_rejects_invalid_text_verbosity
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["test query", "--text-verbosity", "verbose"])
+    end
+    assert_includes error.message.downcase, "verbosity"
   end
 
   def test_handles_api_error_gracefully

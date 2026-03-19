@@ -4,9 +4,9 @@ module Exa
   module CLI
     class SearchParser
       VALID_SEARCH_TYPES = ["auto", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
-      VALID_LIVECRAWL_MODES = ["always", "fallback", "never", "auto", "preferred"].freeze
+      VALID_TEXT_VERBOSITY = ["compact", "standard", "full"].freeze
       VALID_CATEGORIES = [
-        "company", "research paper", "news", "pdf", "github",
+        "company", "research paper", "news", "github",
         "tweet", "personal site", "financial report", "people"
       ].freeze
 
@@ -140,10 +140,8 @@ module Exa
             @args[:highlights_query] = @argv[i + 1]
             i += 2
           when "--livecrawl"
-            livecrawl = @argv[i + 1]
-            validate_livecrawl(livecrawl)
-            @args[:livecrawl] = livecrawl
-            i += 2
+            @args[:livecrawl] = true
+            i += 1
           when "--livecrawl-timeout"
             @args[:livecrawl_timeout] = @argv[i + 1].to_i
             i += 2
@@ -165,6 +163,17 @@ module Exa
           when "--user-location"
             @args[:user_location] = @argv[i + 1]
             i += 2
+          when "--system-prompt"
+            @args[:system_prompt] = @argv[i + 1]
+            i += 2
+          when "--moderation"
+            @args[:moderation] = true
+            i += 1
+          when "--text-verbosity"
+            verbosity = @argv[i + 1]
+            validate_text_verbosity(verbosity)
+            @args[:text_verbosity] = verbosity
+            i += 2
           else
             query_parts << arg
             i += 1
@@ -184,16 +193,16 @@ module Exa
         raise ArgumentError, "Search type must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
       end
 
-      def validate_livecrawl(mode)
-        return if VALID_LIVECRAWL_MODES.include?(mode)
-
-        raise ArgumentError, "Livecrawl mode must be one of: #{VALID_LIVECRAWL_MODES.join(', ')}"
-      end
-
       def validate_category(category)
         return if VALID_CATEGORIES.include?(category)
 
         raise ArgumentError, "Category must be one of: #{VALID_CATEGORIES.map { |c| "\"#{c}\"" }.join(', ')}"
+      end
+
+      def validate_text_verbosity(verbosity)
+        return if VALID_TEXT_VERBOSITY.include?(verbosity)
+
+        raise ArgumentError, "Text verbosity must be one of: #{VALID_TEXT_VERBOSITY.join(', ')}"
       end
     end
   end

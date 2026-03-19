@@ -808,6 +808,82 @@ class SearchTest < Minitest::Test
     assert_requested :post, "https://api.exa.ai/search"
   end
 
+  def test_call_handles_text_verbosity_in_contents
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          contents: {
+            text: {
+              verbosity: "standard"
+            }
+          }
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      text: { verbosity: "standard" }
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_passes_moderation_parameter
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          moderation: true
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      moderation: true
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_call_converts_system_prompt_parameter
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(
+        body: hash_including(
+          query: "test",
+          systemPrompt: "You are a research assistant"
+        )
+      )
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "test123" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::Search.new(
+      @connection,
+      query: "test",
+      system_prompt: "You are a research assistant"
+    )
+    service.call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
   def test_call_converts_num_results_parameter
     stub_request(:post, "https://api.exa.ai/search")
       .with(

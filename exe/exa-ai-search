@@ -18,9 +18,8 @@ def print_help
       --type TYPE                  Search type: auto, neural, fast, deep, deep-reasoning,
                                    or instant (default: auto)
       --category CAT               Focus on specific data category
-                                   Options: "company", "research paper", "news", "pdf",
-                                   "github", "tweet", "personal site", "financial report",
-                                   "people"
+                                   Options: "company", "research paper", "news", "github",
+                                   "tweet", "personal site", "financial report", "people"
       --include-domains D          Comma-separated list of domains to include
       --exclude-domains D          Comma-separated list of domains to exclude
       --start-published-date DATE  Filter by published date (ISO 8601 format)
@@ -33,6 +32,7 @@ def print_help
     Content Extraction:
       --text                       Include full webpage text
       --text-max-characters N      Max characters for webpage text
+      --text-verbosity LEVEL       Text verbosity: compact, standard, or full
       --include-html-tags          Include HTML tags in text extraction
       --summary                    Include AI-generated summary
       --summary-query PROMPT       Custom prompt for summary generation
@@ -48,14 +48,16 @@ def print_help
       --highlights-num-sentences N   Number of sentences per highlight
       --highlights-per-url N       Number of highlights per URL
       --highlights-query QUERY     Custom query for highlight extraction
-      --livecrawl MODE             Livecrawl mode: always, fallback, never, auto, or preferred
-      --livecrawl-timeout N        Livecrawl timeout in milliseconds
+      --livecrawl                  Enable livecrawl (sets maxAgeHours=0, livecrawlTimeout=5000)
+      --livecrawl-timeout N        Livecrawl timeout in milliseconds (overrides --livecrawl default)
       --max-age-hours N            Maximum age of results in hours
 
     Search Options:
       --additional-queries QUERY   Additional search queries (repeatable)
       --output-schema JSON         JSON schema for output structure (@file syntax)
       --user-location CODE         User location (ISO country code)
+      --system-prompt PROMPT       System prompt for AI-powered search
+      --moderation                 Enable content moderation
 
     General Options:
       --api-key KEY                Exa API key (or set EXA_API_KEY env var)
@@ -79,10 +81,11 @@ def build_contents(args)
 
   # Text options
   if args[:text]
-    if args[:text_max_characters] || args[:include_html_tags]
+    if args[:text_max_characters] || args[:include_html_tags] || args[:text_verbosity]
       contents[:text] = {}
       contents[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
       contents[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
+      contents[:text][:verbosity] = args[:text_verbosity] if args[:text_verbosity]
     else
       contents[:text] = true
     end
@@ -134,9 +137,13 @@ def build_contents(args)
   end
 
   # Livecrawl options
-  contents[:livecrawl] = args[:livecrawl] if args[:livecrawl]
-  contents[:livecrawl_timeout] = args[:livecrawl_timeout] if args[:livecrawl_timeout]
-  contents[:max_age_hours] = args[:max_age_hours] if args[:max_age_hours]
+  if args[:livecrawl]
+    contents[:max_age_hours] = args[:max_age_hours].nil? ? 0 : args[:max_age_hours]
+    contents[:livecrawl_timeout] = args[:livecrawl_timeout].nil? ? 5000 : args[:livecrawl_timeout]
+  else
+    contents[:livecrawl_timeout] = args[:livecrawl_timeout] if args[:livecrawl_timeout]
+    contents[:max_age_hours] = args[:max_age_hours] if args[:max_age_hours]
+  end
 
   contents.empty? ? nil : contents
 end
@@ -177,6 +184,8 @@ begin
   search_params[:additional_queries] = args[:additional_queries] if args[:additional_queries]
   search_params[:output_schema] = args[:output_schema] if args[:output_schema]
   search_params[:user_location] = args[:user_location] if args[:user_location]
+  search_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
+  search_params[:moderation] = args[:moderation] if args[:moderation]
   contents = build_contents(args)
   search_params.merge!(contents) if contents
 

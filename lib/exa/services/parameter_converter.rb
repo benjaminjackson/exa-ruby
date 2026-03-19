@@ -42,6 +42,7 @@ module Exa
         when :num_results then :numResults
         when :include_domains then :includeDomains
         when :exclude_domains then :excludeDomains
+        when :system_prompt then :systemPrompt
         else
           key
         end
@@ -112,7 +113,8 @@ module Exa
           max_characters: :maxCharacters,
           include_html_tags: :includeHtmlTags,
           include_sections: :includeSections,
-          exclude_sections: :excludeSections
+          exclude_sections: :excludeSections,
+          verbosity: :verbosity
         }
       end
 
