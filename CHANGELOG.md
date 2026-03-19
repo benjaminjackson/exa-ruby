@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.0] - 2026-03-19
+
+### Added
+- **Text verbosity** - Added `--text-verbosity` CLI flag with `compact`, `standard`, and `full` options for controlling text extraction detail level
+- **System prompt** - Added `--system-prompt` CLI flag and `system_prompt` parameter (converts to `systemPrompt`) for AI-powered search customization
+- **Content moderation** - Added `--moderation` CLI flag to enable content moderation on search results
+
+### Changed
+- **Livecrawl flag** - `--livecrawl` is now a boolean flag (was a mode string). Enables livecrawl with smart defaults: `maxAgeHours=0` and `livecrawlTimeout=5000`. Use `--livecrawl-timeout` and `--max-age-hours` to override defaults
+
+### Fixed
+- **Category list** - Removed deprecated `pdf` category from valid categories
+
 ## [0.10.0] - 2026-03-07
 
 ### Added
