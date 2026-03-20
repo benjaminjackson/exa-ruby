@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.1] - 2026-03-20
+
+### Fixed
+- **Structured summary parsing** - When `summary: { schema: ... }` is provided, the gem now automatically parses the JSON-encoded summary string returned by the API into a Ruby Hash. Plain text summaries (no schema) are unchanged.
+
+### Changed
+- **Parameter consolidation** - Flat content sub-parameters (e.g., `text_max_characters`, `highlights_query`) are now automatically nested under their parent hashes before conversion, simplifying CLI integration
+
 ## [0.11.0] - 2026-03-19
 
 ### Added
