@@ -10,10 +10,11 @@ module Exa
       end
 
       def convert(params)
+        consolidated = consolidate_content_params(params)
         converted = {}
         contents = {}
 
-        params.each do |key, value|
+        consolidated.each do |key, value|
           if content_key?(key)
             contents[convert_content_key(key)] = convert_content_value(key, value)
           else
@@ -26,6 +27,37 @@ module Exa
       end
 
       private
+
+      CONTENT_SUB_PARAMS = {
+        text_max_characters: { parent: :text, key: :max_characters },
+        include_html_tags: { parent: :text, key: :include_html_tags },
+        text_verbosity: { parent: :text, key: :verbosity },
+        summary_query: { parent: :summary, key: :query },
+        summary_schema: { parent: :summary, key: :schema },
+        context_max_characters: { parent: :context, key: :max_characters },
+        highlights_max_characters: { parent: :highlights, key: :max_characters },
+        highlights_num_sentences: { parent: :highlights, key: :num_sentences },
+        highlights_per_url: { parent: :highlights, key: :highlights_per_url },
+        highlights_query: { parent: :highlights, key: :query },
+        image_links: { parent: :extras, key: :image_links },
+        links: { parent: :extras, key: :links }
+      }.freeze
+
+      def consolidate_content_params(params)
+        result = {}
+        params.each do |key, value|
+          mapping = CONTENT_SUB_PARAMS[key]
+          if mapping
+            parent = mapping[:parent]
+            result[parent] = {} if result[parent] == true || !result.key?(parent)
+            result[parent] = {} unless result[parent].is_a?(Hash)
+            result[parent][mapping[:key]] = value
+          else
+            result[key] = value
+          end
+        end
+        result
+      end
 
       def convert_key(key)
         case key
