@@ -150,4 +150,56 @@ class GetContentsTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/contents"
   end
+
+  def test_call_parses_json_summary_when_schema_requested
+    json_summary = { "jobs" => [{ "title" => "Engineer" }] }
+
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(
+        status: 200,
+        body: {
+          results: [
+            { "url" => "https://example.com", "summary" => json_summary.to_json }
+          ],
+          requestId: "test123"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::GetContents.new(
+      @connection,
+      urls: ["https://example.com"],
+      summary: { schema: { type: "object" } }
+    )
+    result = service.call
+
+    assert_equal json_summary, result.results.first["summary"]
+    assert_instance_of Hash, result.results.first["summary"]
+  end
+
+  def test_call_does_not_parse_summary_without_schema
+    plain_summary = "This page lists job openings at the company."
+
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(
+        status: 200,
+        body: {
+          results: [
+            { "url" => "https://example.com", "summary" => plain_summary }
+          ],
+          requestId: "test123"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::GetContents.new(
+      @connection,
+      urls: ["https://example.com"],
+      summary: { query: "What jobs are available?" }
+    )
+    result = service.call
+
+    assert_equal plain_summary, result.results.first["summary"]
+    assert_instance_of String, result.results.first["summary"]
+  end
 end

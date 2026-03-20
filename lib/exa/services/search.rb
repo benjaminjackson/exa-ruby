@@ -18,8 +18,11 @@ module Exa
         response = @connection.post("/search", ParameterConverter.convert(@params))
         body = response.body
 
+        results = body["results"]
+        results = parse_json_summaries(results) if summary_schema?
+
         Resources::SearchResult.new(
-          results: body["results"],
+          results: results,
           request_id: body["requestId"],
           resolved_search_type: body["resolvedSearchType"],
           search_type: body["searchType"],
@@ -43,6 +46,20 @@ module Exa
         return if VALID_SEARCH_TYPES.include?(search_type)
 
         raise ArgumentError, "Invalid search type: '#{search_type}'. Must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
+      end
+
+      def summary_schema?
+        @params[:summary].is_a?(Hash) && @params[:summary][:schema]
+      end
+
+      def parse_json_summaries(results)
+        results&.map do |r|
+          if r["summary"].is_a?(String)
+            r.merge("summary" => JSON.parse(r["summary"]))
+          else
+            r
+          end
+        end
       end
     end
   end
