@@ -14,6 +14,7 @@ module Exa
   class ClientError < Error; end
   class BadRequest < ClientError; end          # 400
   class Unauthorized < ClientError; end        # 401
+  class PaymentRequired < ClientError; end     # 402
   class Forbidden < ClientError; end           # 403
   class NotFound < ClientError; end            # 404
   class UnprocessableEntity < ClientError; end # 422

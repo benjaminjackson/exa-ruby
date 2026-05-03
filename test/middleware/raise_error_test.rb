@@ -35,6 +35,23 @@ class RaiseErrorTest < Minitest::Test
     assert_equal "Invalid API key", error.message
   end
 
+  def test_raises_payment_required_on_402
+    connection = Exa::Connection.build(api_key: "test_key")
+
+    stub_request(:get, "https://api.exa.ai/test")
+      .to_return(
+        status: 402,
+        body: '{"error":"Payment required"}',
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    error = assert_raises(Exa::PaymentRequired) do
+      connection.get("/test")
+    end
+
+    assert_equal "Payment required", error.message
+  end
+
   def test_raises_forbidden_on_403
     connection = Exa::Connection.build(api_key: "test_key")
 

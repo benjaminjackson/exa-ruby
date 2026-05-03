@@ -11,6 +11,8 @@ module Exa
           handle_error(env, Exa::BadRequest)
         when 401
           handle_error(env, Exa::Unauthorized)
+        when 402
+          handle_error(env, Exa::PaymentRequired)
         when 403
           handle_error(env, Exa::Forbidden)
         when 404
