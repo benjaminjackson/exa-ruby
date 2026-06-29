@@ -17,10 +17,7 @@ class AgentRunEventsTest < Minitest::Test
     stub_request(:get, "https://api.exa.ai/agent/runs/#{@run_id}/events")
       .to_return(
         status: 200,
-        body: [
-          { "type" => "tool_use", "timestamp" => "2024-01-15T10:00:01Z" },
-          { "type" => "tool_result", "timestamp" => "2024-01-15T10:00:02Z" }
-        ].to_json,
+        body: { "object" => "list", "data" => [], "hasMore" => false, "nextCursor" => nil }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
 
@@ -30,23 +27,26 @@ class AgentRunEventsTest < Minitest::Test
     assert_requested :get, "https://api.exa.ai/agent/runs/#{@run_id}/events"
   end
 
-  def test_call_returns_parsed_body_verbatim
+  def test_call_returns_paginated_event_list
     events = [
-      { "type" => "tool_use", "timestamp" => "2024-01-15T10:00:01Z", "data" => { "tool" => "web_search" } },
-      { "type" => "tool_result", "timestamp" => "2024-01-15T10:00:02Z", "data" => { "result" => "found results" } }
+      { "id" => "1", "event" => "agent_run.created", "data" => { "status" => "queued" }, "createdAt" => "2024-01-15T10:00:01Z" },
+      { "id" => "2", "event" => "agent_run.started", "data" => { "status" => "running" }, "createdAt" => "2024-01-15T10:00:02Z" }
     ]
 
     stub_request(:get, "https://api.exa.ai/agent/runs/#{@run_id}/events")
       .to_return(
         status: 200,
-        body: events.to_json,
+        body: { "object" => "list", "data" => events, "hasMore" => true, "nextCursor" => "cur_next" }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
 
     service = Exa::Services::AgentRunEvents.new(@connection, run_id: @run_id)
     result = service.call
 
-    assert_equal events, result
+    assert_instance_of Exa::Resources::AgentRunEventList, result
+    assert_equal events, result.data
+    assert_equal true, result.has_more
+    assert_equal "cur_next", result.next_cursor
   end
 
   def test_call_passes_query_params_for_pagination
@@ -54,7 +54,7 @@ class AgentRunEventsTest < Minitest::Test
       .with(query: { "cursor" => "cur_xyz", "limit" => "25" })
       .to_return(
         status: 200,
-        body: [].to_json,
+        body: { "object" => "list", "data" => [], "hasMore" => false, "nextCursor" => nil }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
 

@@ -65,26 +65,19 @@ begin
   events = client.agent_run_events(run_id)
 
   # Format output
+  items = events.respond_to?(:data) ? events.data : events
   case output_format
   when "json"
     puts JSON.pretty_generate(events.respond_to?(:to_h) ? events.to_h : events)
   when "pretty"
-    if events.respond_to?(:each)
-      puts "Events for Agent Run: #{run_id}"
-      puts ""
-      events.each_with_index do |event, i|
-        puts "#{i + 1}. #{event.respond_to?(:to_h) ? event.to_h.inspect : event}"
-      end
-    else
-      puts events.inspect
+    puts "Events for Agent Run: #{run_id}"
+    puts ""
+    items.each_with_index do |event, i|
+      puts "#{i + 1}. #{event.respond_to?(:to_h) ? event.to_h.inspect : event}"
     end
   when "text"
-    if events.respond_to?(:each)
-      events.each do |event|
-        puts event.respond_to?(:to_h) ? event.to_h.inspect : event.to_s
-      end
-    else
-      puts events.to_s
+    items.each do |event|
+      puts event.respond_to?(:to_h) ? event.to_h.inspect : event.to_s
     end
   else
     puts JSON.pretty_generate(events.respond_to?(:to_h) ? events.to_h : events)

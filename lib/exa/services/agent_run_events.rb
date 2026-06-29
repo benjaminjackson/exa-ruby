@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "../resources/agent_run_event_list"
+
 module Exa
   module Services
     class AgentRunEvents
@@ -11,8 +13,15 @@ module Exa
 
       def call
         response = @connection.get("/agent/runs/#{@run_id}/events", @params)
-        # ponytail: events response shape unconfirmed; returning parsed body verbatim. Wrap in a collection if it paginates. Confirm against live API.
-        response.body
+        body = response.body
+
+        # Confirmed live: GET /agent/runs/{id}/events returns a paginated list
+        # {object: "list", data: [...], hasMore, nextCursor}.
+        Resources::AgentRunEventList.new(
+          data: body["data"] || [],
+          has_more: body["hasMore"],
+          next_cursor: body["nextCursor"]
+        )
       end
     end
   end
