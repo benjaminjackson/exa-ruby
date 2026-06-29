@@ -2,6 +2,25 @@ require "test_helper"
 require_relative "../../lib/exa/resources/agent_run"
 
 class AgentRunTest < Minitest::Test
+  def test_from_response_maps_camel_case_payload
+    run = Exa::Resources::AgentRun.from_response(
+      "id" => "r1", "status" => "completed", "stopReason" => "schema_satisfied",
+      "costDollars" => { "total" => 0.01 }, "completedAt" => "t"
+    )
+
+    assert_equal "agent_run", run.object
+    assert_equal "schema_satisfied", run.stop_reason
+    assert_equal({ "total" => 0.01 }, run.cost_dollars)
+    assert_equal "t", run.completed_at
+  end
+
+  def test_from_response_defaults_object_when_absent
+    run = Exa::Resources::AgentRun.from_response("id" => "r1", "status" => "failed")
+
+    assert_equal "agent_run", run.object
+    assert run.failed?
+  end
+
   def test_initialize_queued_status_with_minimal_fields
     run = Exa::Resources::AgentRun.new(
       id: "run_abc123",

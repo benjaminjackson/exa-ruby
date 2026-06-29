@@ -9,6 +9,23 @@ module Exa
         freeze
       end
 
+      # Build from a raw API response body (camelCase keys), e.g. a GET payload
+      # or the data of a terminal agent_run.* stream event.
+      def self.from_response(body)
+        new(
+          id: body["id"],
+          object: body["object"] || "agent_run",
+          status: body["status"],
+          stop_reason: body["stopReason"],
+          created_at: body["createdAt"],
+          completed_at: body["completedAt"],
+          request: body["request"],
+          output: body["output"],
+          usage: body["usage"],
+          cost_dollars: body["costDollars"]
+        )
+      end
+
       def queued?    = status == 'queued'
       def running?   = status == 'running'
       def completed? = status == 'completed'

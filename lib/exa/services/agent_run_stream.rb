@@ -1,20 +1,33 @@
 require "json"
 require_relative "parameter_converter"
+require_relative "../resources/agent_run"
 
 # ponytail: copied AnswerStream's SSE parser rather than extracting a shared module — agent frames add event:/id: lines and the two may diverge. Extract only if a third SSE consumer appears.
 
 module Exa
   module Services
     class AgentRunStream
+      TERMINAL_EVENTS = %w[agent_run.completed agent_run.failed agent_run.cancelled].freeze
+
       def initialize(connection, **params)
         @connection = connection
         @params = params
       end
 
+      # Streams SSE frames to the block as (event_type, data). Returns the final
+      # AgentRun built from the terminal event's payload (completed/failed/
+      # cancelled), or nil if the stream ended before a terminal event arrived.
       def call(&block)
         raise ArgumentError, "block required for streaming" unless block_given?
 
         @buffer = ""
+        @final_payload = nil
+
+        # Capture the terminal payload as it streams, then forward to the caller.
+        interceptor = proc do |event_type, data|
+          @final_payload = data if TERMINAL_EVENTS.include?(event_type)
+          block.call(event_type, data)
+        end
 
         body = ParameterConverter.convert(@params)
 
@@ -22,11 +35,13 @@ module Exa
           req.headers["Accept"] = "text/event-stream"
           req.options.on_data = proc do |chunk|
             @buffer += chunk
-            process_sse_buffer(&block)
+            process_sse_buffer(&interceptor)
           end
         end
 
-        process_remaining_buffer(&block) if @buffer.length.positive?
+        process_remaining_buffer(&interceptor) if @buffer.length.positive?
+
+        @final_payload && Resources::AgentRun.from_response(@final_payload)
       end
 
       private

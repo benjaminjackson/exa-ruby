@@ -60,6 +60,55 @@ class AgentRunStreamTest < Minitest::Test
     assert_equal frame2, events[1][1]
   end
 
+  def test_call_returns_final_run_from_terminal_event
+    completed = {
+      "id" => "run_123", "object" => "agent_run", "status" => "completed",
+      "stopReason" => "schema_satisfied",
+      "output" => { "text" => "Done.", "structured" => { "x" => 1 } },
+      "costDollars" => { "total" => 0.012 }
+    }
+
+    connection = Faraday.new(url: "https://api.exa.ai") do |faraday|
+      faraday.request :json
+      faraday.response :json, content_type: /\bjson$/
+      faraday.adapter :test do |stub|
+        stub.post("/agent/runs") do |env|
+          on_data = env.request.on_data
+          on_data&.call("event: agent_run.created\ndata: {\"id\":\"run_123\",\"status\":\"queued\"}\n\n")
+          on_data&.call("event: agent_run.completed\ndata: #{JSON.generate(completed)}\n\n")
+          [200, { "Content-Type" => "text/event-stream" }, ""]
+        end
+      end
+    end
+
+    result = Exa::Services::AgentRunStream.new(connection, query: "test").call { |_e, _d| }
+
+    assert_instance_of Exa::Resources::AgentRun, result
+    assert_equal "run_123", result.id
+    assert result.completed?
+    assert_equal "schema_satisfied", result.stop_reason
+    assert_equal({ "x" => 1 }, result.output["structured"])
+    assert_equal({ "total" => 0.012 }, result.cost_dollars)
+  end
+
+  def test_call_returns_nil_without_terminal_event
+    connection = Faraday.new(url: "https://api.exa.ai") do |faraday|
+      faraday.request :json
+      faraday.response :json, content_type: /\bjson$/
+      faraday.adapter :test do |stub|
+        stub.post("/agent/runs") do |env|
+          on_data = env.request.on_data
+          on_data&.call("event: agent_run.created\ndata: {\"id\":\"run_123\",\"status\":\"queued\"}\n\n")
+          [200, { "Content-Type" => "text/event-stream" }, ""]
+        end
+      end
+    end
+
+    result = Exa::Services::AgentRunStream.new(connection, query: "test").call { |_e, _d| }
+
+    assert_nil result
+  end
+
   def test_call_converts_snake_case_params
     captured_body = nil
 
