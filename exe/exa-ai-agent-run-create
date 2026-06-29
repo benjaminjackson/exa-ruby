@@ -3,15 +3,15 @@
 
 require "exa-ai"
 
-# Parse an --output-schema value: inline JSON, or @path to read JSON from a file.
-def parse_schema_arg(value)
+# Parse a JSON flag value: inline JSON, or @path to read JSON from a file.
+def parse_json_arg(value, flag_name)
   json = value.to_s.start_with?("@") ? File.read(value.to_s[1..]) : value.to_s
   JSON.parse(json)
 rescue JSON::ParserError => e
-  $stderr.puts "Error: --output-schema is not valid JSON (#{e.message})"
+  $stderr.puts "Error: #{flag_name} is not valid JSON (#{e.message})"
   exit 1
 rescue Errno::ENOENT
-  $stderr.puts "Error: --output-schema file not found: #{value.to_s[1..]}"
+  $stderr.puts "Error: #{flag_name} file not found: #{value.to_s[1..]}"
   exit 1
 end
 
@@ -41,8 +41,17 @@ def parse_args(argv)
       # For richer per-provider config, use the Ruby API (client.agent_run_create).
       args[:data_sources] = argv[i + 1].to_s.split(",").map { |s| { provider: s.strip } }
       i += 2
+    when "--input-data"
+      args[:input_data] = parse_json_arg(argv[i + 1], "--input-data")
+      i += 2
+    when "--input-exclusion"
+      args[:input_exclusion] = parse_json_arg(argv[i + 1], "--input-exclusion")
+      i += 2
+    when "--previous-run-id"
+      args[:previous_run_id] = argv[i + 1]
+      i += 2
     when "--output-schema"
-      args[:output_schema] = parse_schema_arg(argv[i + 1])
+      args[:output_schema] = parse_json_arg(argv[i + 1], "--output-schema")
       i += 2
     when "--output-format"
       args[:output_format] = argv[i + 1]
@@ -62,19 +71,26 @@ def parse_args(argv)
         web search and blends everything into one grounded answer.
 
         Options:
-          --query TEXT          Query for the agent run (required)
-          --system-prompt TEXT  System prompt to guide the agent
-          --effort LEVEL        Effort level: low, medium, high
-          --data-sources LIST   Comma-separated partner slugs to attach (see
-                                "Data sources" below), e.g. fiber_ai,similarweb
-          --output-schema JSON  JSON schema for structured output, or @file.json
-                                to read it from a file. Recommended alongside
-                                --data-sources so the agent knows which fields
-                                each partner should fill.
-          --wait                Stream the run and wait for it to complete
-          --api-key KEY         Exa API key (or set EXA_API_KEY env var)
-          --output-format FMT   Output format: json, pretty, or text (default: json)
-          --help, -h            Show this help message
+          --query TEXT           Query for the agent run (required)
+          --system-prompt TEXT   System prompt to guide the agent
+          --effort LEVEL         Effort level: low, medium, high
+          --data-sources LIST    Comma-separated partner slugs to attach (see
+                                 "Data sources" below), e.g. fiber_ai,similarweb
+          --input-data JSON      JSON array of objects for the agent to process,
+                                 or @file.json to read from a file. Each element
+                                 is a record the agent enriches or acts on.
+          --input-exclusion JSON JSON array of objects to exclude from results,
+                                 or @file.json. Useful to skip already-known rows.
+          --previous-run-id ID   Continue from a completed run. The agent picks
+                                 up where the prior run left off.
+          --output-schema JSON   JSON schema for structured output, or @file.json
+                                 to read it from a file. Recommended alongside
+                                 --data-sources so the agent knows which fields
+                                 each partner should fill.
+          --wait                 Stream the run and wait for it to complete
+          --api-key KEY          Exa API key (or set EXA_API_KEY env var)
+          --output-format FMT    Output format: json, pretty, or text (default: json)
+          --help, -h             Show this help message
 
         Data sources (Exa Connect):
           Each attached partner is billed per call on top of normal agent costs.
@@ -104,6 +120,12 @@ def parse_args(argv)
         Examples:
           exa-ai agent-run-create --query "Find Ruby performance tips"
           exa-ai agent-run-create --query "Analyze AI trends" --wait
+
+          # Enrich a list of companies from a JSON file:
+          exa-ai agent-run-create --wait \\
+            --query "For each company, find the CEO and their LinkedIn URL." \\
+            --input-data @companies.json \\
+            --output-schema '{"type":"object","properties":{"companies":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"ceo":{"type":"string"},"linkedin":{"type":"string"}}}}}}'
 
           # Company profile blending two partners + web, as structured JSON:
           exa-ai agent-run-create --wait \\
@@ -149,6 +171,13 @@ begin
   run_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
   run_params[:effort] = args[:effort] if args[:effort]
   run_params[:data_sources] = args[:data_sources] if args[:data_sources]
+  if args[:input_data] || args[:input_exclusion]
+    input = {}
+    input[:data]      = args[:input_data]      if args[:input_data]
+    input[:exclusion] = args[:input_exclusion] if args[:input_exclusion]
+    run_params[:input] = input
+  end
+  run_params[:previous_run_id] = args[:previous_run_id] if args[:previous_run_id]
   run_params[:output_schema] = args[:output_schema] if args[:output_schema]
 
   if args[:wait]

@@ -36,4 +36,17 @@ class AgentRunCreateExeTest < Minitest::Test
     assert_includes out, "not valid JSON"
     refute_equal 0, $?.exitstatus
   end
+
+  def test_help_documents_input_and_previous_run_flags
+    out = run_exe("--help")
+    assert_includes out, "--input-data"
+    assert_includes out, "--input-exclusion"
+    assert_includes out, "--previous-run-id"
+  end
+
+  def test_invalid_input_data_json_exits_nonzero
+    out = run_exe("--query", "AI infrastructure startups", "--input-data", "{not json")
+    assert_includes out, "not valid JSON"
+    refute_equal 0, $?.exitstatus
+  end
 end
