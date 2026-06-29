@@ -43,7 +43,7 @@ def parse_args(argv)
           --query TEXT          Query for the agent run (required)
           --system-prompt TEXT  System prompt to guide the agent
           --effort LEVEL        Effort level: low, medium, high
-          --wait                Wait for run to complete (polls until done)
+          --wait                Stream the run and wait for it to complete
           --api-key KEY         Exa API key (or set EXA_API_KEY env var)
           --output-format FMT   Output format: json, pretty, or text (default: json)
           --help, -h            Show this help message
@@ -88,52 +88,78 @@ begin
   run_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
   run_params[:effort] = args[:effort] if args[:effort]
 
-  # Create agent run
-  run = client.agent_run_create(**run_params)
-
-  # If --wait flag is set, poll until run completes
   if args[:wait]
-    $stderr.print "Starting agent run... "
+    # Stream the run and watch it to completion. The SSE stream creates the run
+    # and pushes lifecycle events (created/started/completed); the final run is
+    # rendered the instant it lands — lower latency than polling, and the run
+    # still persists with an id.
+    start = Time.now
+    run_id = nil
+    phase = "starting"
+    done = false
 
-    begin
-      final_run = Exa::CLI::Polling.poll(max_duration: 300, initial_delay: 2, max_delay: 10) do
-        # Get current run status
-        current_run = client.agent_run_get(run.id)
-
-        # Show progress indicator
-        case current_run.status
-        when "queued"
-          $stderr.print "⏳"
-        when "running"
-          $stderr.print "⚙️"
-        end
-
-        # Check if done
-        done = current_run.finished?
-
-        { done: done, result: current_run, status: current_run.status }
+    # ponytail: the SSE block only fires on events, and nothing arrives between
+    # "started" and "completed". A background thread paints a live elapsed timer
+    # so the user can see it's alive during the silent running phase.
+    painter = Thread.new do
+      frames = %w[⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏]
+      i = 0
+      until done
+        elapsed = (Time.now - start).round
+        $stderr.print "\r#{frames[i % frames.size]} #{run_id || "agent run"}  #{phase}  #{elapsed}s   "
+        $stderr.flush
+        i += 1
+        sleep 0.2
       end
+    end
 
-      $stderr.puts " #{final_run.status.upcase}"
+    final = nil
+    stream_error = nil
+    begin
+      final = client.agent_run_stream(**run_params) do |event, data|
+        run_id ||= data["id"] if data.is_a?(Hash)
+        phase = "queued"  if event == "agent_run.created"
+        phase = "running" if event == "agent_run.started"
+      end
+    rescue Faraday::Error, Exa::Error => e
+      stream_error = e # stream dropped mid-run; recover via polling below if we have an id
+    ensure
+      done = true
+      painter.join
+    end
 
-      # Format and output final result
-      output = Exa::CLI::Formatters::AgentRunFormatter.format_run(final_run, output_format)
-      puts output
-      $stdout.flush
+    # Fallback: stream ended/dropped without a terminal event. If we learned the
+    # run id, poll it to completion rather than losing the run.
+    if final.nil? && run_id
+      $stderr.print "\r(stream interrupted; polling #{run_id})                 "
+      begin
+        final = Exa::CLI::Polling.poll(max_duration: 300, initial_delay: 2, max_delay: 10) do
+          current = client.agent_run_get(run_id)
+          { done: current.finished?, result: current, status: current.status }
+        end
+      rescue Exa::CLI::Polling::TimeoutError
+        $stderr.puts "\nError: run did not complete within 5 minutes"
+        $stderr.puts "Run ID: #{run_id} — check later with: exa-ai agent-run-get #{run_id}"
+        exit 1
+      end
+    end
 
-      # Exit with error code if run failed
-      exit 1 if final_run.failed?
+    $stderr.print "\r" + (" " * 72) + "\r"
 
-    rescue Exa::CLI::Polling::TimeoutError => e
-      $stderr.puts "\nError: Run did not complete within timeout period (5 minutes)"
-      $stderr.puts "Run ID: #{run.id}"
-      $stderr.puts "You can check the status later with: exa-ai agent-run-get #{run.id}"
+    if final.nil?
+      $stderr.puts "Error: the run did not produce a result#{stream_error ? " (#{stream_error.message})" : ""}"
+      $stderr.puts "Run ID: #{run_id}" if run_id
       exit 1
     end
+
+    $stderr.puts "#{final.completed? ? "✓" : "•"} #{final.status} · #{(Time.now - start).round}s"
+    puts Exa::CLI::Formatters::AgentRunFormatter.format_run(final, output_format)
+    $stdout.flush
+    exit 1 if final.failed?
   else
-    # Just return the initial run (with status "queued")
-    output = Exa::CLI::Formatters::AgentRunFormatter.format_run(run, output_format)
-    puts output
+    # Not waiting: create and return the initial (queued) run.
+    run = client.agent_run_create(**run_params)
+    puts Exa::CLI::Formatters::AgentRunFormatter.format_run(run, output_format)
   end
 
 rescue Exa::ConfigurationError => e
