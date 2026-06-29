@@ -112,6 +112,83 @@ module Exa
       Services::ResearchGet.new(connection, research_id: research_id, **params).call
     end
 
+    # Create a new agent run
+    #
+    # @param query [String] The query or task for the agent to execute (required)
+    # @param params [Hash] Additional run parameters
+    # @option params [Hash] :input Input data for the agent run. Multi-word keys inside
+    #   +input+, +data_sources+ items, and +metadata+ must be supplied in the exact shape
+    #   the API expects — the parameter converter does not recurse into nested values
+    #   (same contract as +output_schema+).
+    # @option params [Array<Hash>] :data_sources Data sources for the agent run
+    # @option params [Hash] :metadata Custom metadata
+    # @return [Resources::AgentRun] The newly created agent run
+    def agent_run_create(query:, **params)
+      Services::AgentRunCreate.new(connection, query: query, **params).call
+    end
+
+    # Stream an agent run, yielding chunks as they arrive
+    #
+    # @param query [String] The query or task for the agent to execute (required)
+    # @param params [Hash] Additional run parameters
+    # @option params [Hash] :input Input data for the agent run. Multi-word keys inside
+    #   +input+, +data_sources+ items, and +metadata+ must be supplied in the exact shape
+    #   the API expects — the parameter converter does not recurse into nested values
+    #   (same contract as +output_schema+).
+    # @option params [Array<Hash>] :data_sources Data sources for the agent run
+    # @option params [Hash] :metadata Custom metadata
+    # @yield [chunk] Yields each streamed event chunk as it arrives
+    # @yieldparam chunk [Hash] Partial agent run event data
+    # @return [void]
+    def agent_run_stream(query:, **params, &block)
+      Services::AgentRunStream.new(connection, query: query, **params).call(&block)
+    end
+
+    # Get the status and results of an agent run
+    #
+    # @param run_id [String] Agent run ID
+    # @return [Resources::AgentRun] Agent run with current status and results
+    def agent_run_get(run_id)
+      Services::AgentRunGet.new(connection, run_id: run_id).call
+    end
+
+    # List all agent runs
+    #
+    # @param params [Hash] Listing parameters
+    # @option params [Integer] :limit Maximum number of runs to return
+    # @option params [String] :cursor Cursor for pagination
+    # @return [Resources::AgentRunList] List of agent runs
+    def agent_run_list(**params)
+      Services::AgentRunList.new(connection, **params).call
+    end
+
+    # Cancel an in-progress agent run
+    #
+    # @param run_id [String] Agent run ID
+    # @return [Resources::AgentRun] The cancelled agent run
+    def agent_run_cancel(run_id)
+      Services::AgentRunCancel.new(connection, run_id: run_id).call
+    end
+
+    # Delete an agent run
+    #
+    # @param run_id [String] Agent run ID
+    # @return [Resources::AgentRun] The deleted agent run
+    def agent_run_delete(run_id)
+      Services::AgentRunDelete.new(connection, run_id: run_id).call
+    end
+
+    # List events for an agent run
+    #
+    # @param run_id [String] Agent run ID
+    # @param params [Hash] Listing parameters
+    # @option params [Integer] :limit Maximum number of events to return
+    # @option params [String] :cursor Cursor for pagination
+    # @return [Array<Hash>] List of agent run events
+    def agent_run_events(run_id, **params)
+      Services::AgentRunEvents.new(connection, run_id: run_id, **params).call
+    end
+
     # Search code repositories
     #
     # @param query [String] Code search query
