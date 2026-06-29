@@ -3,6 +3,18 @@
 
 require "exa-ai"
 
+# Parse an --output-schema value: inline JSON, or @path to read JSON from a file.
+def parse_schema_arg(value)
+  json = value.to_s.start_with?("@") ? File.read(value.to_s[1..]) : value.to_s
+  JSON.parse(json)
+rescue JSON::ParserError => e
+  $stderr.puts "Error: --output-schema is not valid JSON (#{e.message})"
+  exit 1
+rescue Errno::ENOENT
+  $stderr.puts "Error: --output-schema file not found: #{value.to_s[1..]}"
+  exit 1
+end
+
 # Parse command-line arguments
 def parse_args(argv)
   args = {
@@ -24,6 +36,14 @@ def parse_args(argv)
     when "--effort"
       args[:effort] = argv[i + 1]
       i += 2
+    when "--data-sources"
+      # ponytail: comma-separated slugs cover all documented usage ({provider: slug}).
+      # For richer per-provider config, use the Ruby API (client.agent_run_create).
+      args[:data_sources] = argv[i + 1].to_s.split(",").map { |s| { provider: s.strip } }
+      i += 2
+    when "--output-schema"
+      args[:output_schema] = parse_schema_arg(argv[i + 1])
+      i += 2
     when "--output-format"
       args[:output_format] = argv[i + 1]
       i += 2
@@ -37,22 +57,63 @@ def parse_args(argv)
       puts <<~HELP
         Usage: exa-ai agent-run-create --query "TEXT" [OPTIONS]
 
-        Create an agent run using Exa AI
+        Create an agent run using Exa AI. Optionally attach premium data
+        partners (Exa Connect) so the agent queries their databases alongside
+        web search and blends everything into one grounded answer.
 
         Options:
           --query TEXT          Query for the agent run (required)
           --system-prompt TEXT  System prompt to guide the agent
           --effort LEVEL        Effort level: low, medium, high
+          --data-sources LIST   Comma-separated partner slugs to attach (see
+                                "Data sources" below), e.g. fiber_ai,similarweb
+          --output-schema JSON  JSON schema for structured output, or @file.json
+                                to read it from a file. Recommended alongside
+                                --data-sources so the agent knows which fields
+                                each partner should fill.
           --wait                Stream the run and wait for it to complete
           --api-key KEY         Exa API key (or set EXA_API_KEY env var)
           --output-format FMT   Output format: json, pretty, or text (default: json)
           --help, -h            Show this help message
 
+        Data sources (Exa Connect):
+          Each attached partner is billed per call on top of normal agent costs.
+          The agent picks the right source per step and cites everything.
+
+          fiber_ai            GTM & recruiting. 40M+ companies, 850M+ people,
+                              work/personal emails and phones. Use for B2B
+                              prospecting, CRM enrichment, finding contacts.
+          similarweb          Web analytics. Traffic estimates, global rankings,
+                              and competitors for any domain. Use for traffic
+                              benchmarking and market sizing.
+          baselayer           Compliance & KYB. Verify US businesses: officers,
+                              state registrations, risk scores. Use for KYB and
+                              vendor/customer screening.
+          affiliate           Commerce. Product catalog with live pricing,
+                              brands, and merchant links. Use for price
+                              comparison and shopping assistants.
+          particle_news       Media intelligence. Podcast transcripts with
+                              speaker attribution and timestamps. Use to find
+                              who said what on podcasts.
+          financial_datasets  Finance. Ticker-based news for US public
+                              companies. Use to track news/earnings for stocks.
+          jinko               Travel. Destinations ranked by lowest available
+                              fare from your departure airports. Use for
+                              budget trip ideas.
+
         Examples:
           exa-ai agent-run-create --query "Find Ruby performance tips"
           exa-ai agent-run-create --query "Analyze AI trends" --wait
-          exa-ai agent-run-create --query "Summarize papers" --effort high --wait
-          exa-ai agent-run-create --query "Find stats" --system-prompt "Be concise"
+
+          # Company profile blending two partners + web, as structured JSON:
+          exa-ai agent-run-create --wait \\
+            --query "Profile Anthropic: total funding and monthly web traffic" \\
+            --data-sources fiber_ai,similarweb \\
+            --output-schema '{"type":"object","properties":{"name":{"type":"string"},"totalFunding":{"type":"string"},"monthlyVisits":{"type":"number"}}}'
+
+          # KYB check with a larger schema read from a file:
+          exa-ai agent-run-create --wait --query "Verify Stripe, Inc." \\
+            --data-sources baselayer --output-schema @schema.json
       HELP
       exit 0
     else
@@ -87,6 +148,8 @@ begin
   run_params = { query: args[:query] }
   run_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
   run_params[:effort] = args[:effort] if args[:effort]
+  run_params[:data_sources] = args[:data_sources] if args[:data_sources]
+  run_params[:output_schema] = args[:output_schema] if args[:output_schema]
 
   if args[:wait]
     # Stream the run and watch it to completion. The SSE stream creates the run

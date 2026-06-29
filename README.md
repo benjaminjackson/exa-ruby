@@ -271,6 +271,22 @@ run = client.agent_run_create(
   }
 )
 
+# Attach premium data partners (Exa Connect) alongside web search.
+# The agent queries each partner where it's strongest and blends the
+# results into one grounded, structured answer.
+run = client.agent_run_create(
+  query: "Profile Anthropic: total funding and estimated monthly web traffic",
+  data_sources: [{ provider: "fiber_ai" }, { provider: "similarweb" }],
+  output_schema: {
+    type: "object",
+    properties: {
+      name: { type: "string" },
+      totalFunding: { type: "string" },  # from Fiber.ai
+      monthlyVisits: { type: "number" }  # from Similarweb
+    }
+  }
+)
+
 # Stream events as they arrive
 client.agent_run_stream(query: "AI infrastructure startups that raised Series A in 2025") do |event, data|
   puts "#{event}: #{data.inspect}"
@@ -299,6 +315,14 @@ client.agent_run_delete(run.id)
 ```bash
 # Create a run and wait for it to finish
 exa-ai agent-run-create --query "AI infrastructure startups that raised Series A in 2025" --wait --output-format pretty
+
+# Attach premium data partners (Exa Connect) with a structured schema.
+# Run `exa-ai agent-run-create --help` to see every provider and when to use it:
+# fiber_ai, similarweb, baselayer, affiliate, particle_news, financial_datasets, jinko
+exa-ai agent-run-create --wait \
+  --query "Profile Anthropic: total funding and monthly web traffic" \
+  --data-sources fiber_ai,similarweb \
+  --output-schema '{"type":"object","properties":{"name":{"type":"string"},"totalFunding":{"type":"string"},"monthlyVisits":{"type":"number"}}}'
 
 # Fetch an existing run
 exa-ai agent-run-get <run_id>
