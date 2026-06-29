@@ -1,0 +1,160 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+# Parse command-line arguments
+def parse_args(argv)
+  args = {
+    output_format: "json",
+    api_key: nil,
+    wait: false
+  }
+
+  i = 0
+  while i < argv.length
+    arg = argv[i]
+    case arg
+    when "--query"
+      args[:query] = argv[i + 1]
+      i += 2
+    when "--system-prompt"
+      args[:system_prompt] = argv[i + 1]
+      i += 2
+    when "--effort"
+      args[:effort] = argv[i + 1]
+      i += 2
+    when "--output-format"
+      args[:output_format] = argv[i + 1]
+      i += 2
+    when "--wait"
+      args[:wait] = true
+      i += 1
+    when "--api-key"
+      args[:api_key] = argv[i + 1]
+      i += 2
+    when "--help", "-h"
+      puts <<~HELP
+        Usage: exa-ai agent-run-create --query "TEXT" [OPTIONS]
+
+        Create an agent run using Exa AI
+
+        Options:
+          --query TEXT          Query for the agent run (required)
+          --system-prompt TEXT  System prompt to guide the agent
+          --effort LEVEL        Effort level: low, medium, high
+          --wait                Wait for run to complete (polls until done)
+          --api-key KEY         Exa API key (or set EXA_API_KEY env var)
+          --output-format FMT   Output format: json, pretty, or text (default: json)
+          --help, -h            Show this help message
+
+        Examples:
+          exa-ai agent-run-create --query "Find Ruby performance tips"
+          exa-ai agent-run-create --query "Analyze AI trends" --wait
+          exa-ai agent-run-create --query "Summarize papers" --effort high --wait
+          exa-ai agent-run-create --query "Find stats" --system-prompt "Be concise"
+      HELP
+      exit 0
+    else
+      i += 1
+    end
+  end
+
+  args
+end
+
+# Main execution
+begin
+  args = parse_args(ARGV)
+
+  # Validate query
+  if args[:query].nil? || args[:query].empty?
+    $stderr.puts "Error: --query flag is required"
+    $stderr.puts "Run 'exa-ai agent-run-create --help' for usage information"
+    exit 1
+  end
+
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
+
+  # Resolve output format
+  output_format = Exa::CLI::Base.resolve_output_format(args[:output_format])
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Prepare run parameters
+  run_params = { query: args[:query] }
+  run_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
+  run_params[:effort] = args[:effort] if args[:effort]
+
+  # Create agent run
+  run = client.agent_run_create(**run_params)
+
+  # If --wait flag is set, poll until run completes
+  if args[:wait]
+    $stderr.print "Starting agent run... "
+
+    begin
+      final_run = Exa::CLI::Polling.poll(max_duration: 300, initial_delay: 2, max_delay: 10) do
+        # Get current run status
+        current_run = client.agent_run_get(run.id)
+
+        # Show progress indicator
+        case current_run.status
+        when "queued"
+          $stderr.print "⏳"
+        when "running"
+          $stderr.print "⚙️"
+        end
+
+        # Check if done
+        done = current_run.finished?
+
+        { done: done, result: current_run, status: current_run.status }
+      end
+
+      $stderr.puts " #{final_run.status.upcase}"
+
+      # Format and output final result
+      output = Exa::CLI::Formatters::AgentRunFormatter.format_run(final_run, output_format)
+      puts output
+      $stdout.flush
+
+      # Exit with error code if run failed
+      exit 1 if final_run.failed?
+
+    rescue Exa::CLI::Polling::TimeoutError => e
+      $stderr.puts "\nError: Run did not complete within timeout period (5 minutes)"
+      $stderr.puts "Run ID: #{run.id}"
+      $stderr.puts "You can check the status later with: exa-ai agent-run-get #{run.id}"
+      exit 1
+    end
+  else
+    # Just return the initial run (with status "queued")
+    output = Exa::CLI::Formatters::AgentRunFormatter.format_run(run, output_format)
+    puts output
+  end
+
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end
