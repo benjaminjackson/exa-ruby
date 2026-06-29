@@ -55,7 +55,10 @@ module Exa
               output << run.output.to_s
             end
             output << ""
-            output << "Cost: $#{run.cost_dollars}" if run.cost_dollars
+            if run.cost_dollars
+              total = run.cost_dollars.is_a?(Hash) ? (run.cost_dollars["total"] || run.cost_dollars[:total]) : run.cost_dollars
+              output << "Cost: $#{total}"
+            end
             output << "Completed: #{run.completed_at}" if run.completed_at
           when "failed"
             output << "Run failed"
