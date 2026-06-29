@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.1] - 2026-06-29
+
+### Fixed
+- **`--effort` help text** - Corrected the listed values to match the full API set: `minimal, low, medium, high, xhigh, auto` (was missing `minimal`, `xhigh`, and `auto`)
+
 ## [0.12.0] - 2026-06-29
 
 ### Added

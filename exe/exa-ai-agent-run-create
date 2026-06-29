@@ -73,7 +73,7 @@ def parse_args(argv)
         Options:
           --query TEXT           Query for the agent run (required)
           --system-prompt TEXT   System prompt to guide the agent
-          --effort LEVEL         Effort level: low, medium, high
+          --effort LEVEL         Effort level: minimal, low, medium, high, xhigh, auto (default: auto)
           --data-sources LIST    Comma-separated partner slugs to attach (see
                                  "Data sources" below), e.g. fiber_ai,similarweb
           --input-data JSON      JSON array of objects for the agent to process,
