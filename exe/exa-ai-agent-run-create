@@ -1,0 +1,249 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+# Parse an --output-schema value: inline JSON, or @path to read JSON from a file.
+def parse_schema_arg(value)
+  json = value.to_s.start_with?("@") ? File.read(value.to_s[1..]) : value.to_s
+  JSON.parse(json)
+rescue JSON::ParserError => e
+  $stderr.puts "Error: --output-schema is not valid JSON (#{e.message})"
+  exit 1
+rescue Errno::ENOENT
+  $stderr.puts "Error: --output-schema file not found: #{value.to_s[1..]}"
+  exit 1
+end
+
+# Parse command-line arguments
+def parse_args(argv)
+  args = {
+    output_format: "json",
+    api_key: nil,
+    wait: false
+  }
+
+  i = 0
+  while i < argv.length
+    arg = argv[i]
+    case arg
+    when "--query"
+      args[:query] = argv[i + 1]
+      i += 2
+    when "--system-prompt"
+      args[:system_prompt] = argv[i + 1]
+      i += 2
+    when "--effort"
+      args[:effort] = argv[i + 1]
+      i += 2
+    when "--data-sources"
+      # ponytail: comma-separated slugs cover all documented usage ({provider: slug}).
+      # For richer per-provider config, use the Ruby API (client.agent_run_create).
+      args[:data_sources] = argv[i + 1].to_s.split(",").map { |s| { provider: s.strip } }
+      i += 2
+    when "--output-schema"
+      args[:output_schema] = parse_schema_arg(argv[i + 1])
+      i += 2
+    when "--output-format"
+      args[:output_format] = argv[i + 1]
+      i += 2
+    when "--wait"
+      args[:wait] = true
+      i += 1
+    when "--api-key"
+      args[:api_key] = argv[i + 1]
+      i += 2
+    when "--help", "-h"
+      puts <<~HELP
+        Usage: exa-ai agent-run-create --query "TEXT" [OPTIONS]
+
+        Create an agent run using Exa AI. Optionally attach premium data
+        partners (Exa Connect) so the agent queries their databases alongside
+        web search and blends everything into one grounded answer.
+
+        Options:
+          --query TEXT          Query for the agent run (required)
+          --system-prompt TEXT  System prompt to guide the agent
+          --effort LEVEL        Effort level: low, medium, high
+          --data-sources LIST   Comma-separated partner slugs to attach (see
+                                "Data sources" below), e.g. fiber_ai,similarweb
+          --output-schema JSON  JSON schema for structured output, or @file.json
+                                to read it from a file. Recommended alongside
+                                --data-sources so the agent knows which fields
+                                each partner should fill.
+          --wait                Stream the run and wait for it to complete
+          --api-key KEY         Exa API key (or set EXA_API_KEY env var)
+          --output-format FMT   Output format: json, pretty, or text (default: json)
+          --help, -h            Show this help message
+
+        Data sources (Exa Connect):
+          Each attached partner is billed per call on top of normal agent costs.
+          The agent picks the right source per step and cites everything.
+
+          fiber_ai            GTM & recruiting. 40M+ companies, 850M+ people,
+                              work/personal emails and phones. Use for B2B
+                              prospecting, CRM enrichment, finding contacts.
+          similarweb          Web analytics. Traffic estimates, global rankings,
+                              and competitors for any domain. Use for traffic
+                              benchmarking and market sizing.
+          baselayer           Compliance & KYB. Verify US businesses: officers,
+                              state registrations, risk scores. Use for KYB and
+                              vendor/customer screening.
+          affiliate           Commerce. Product catalog with live pricing,
+                              brands, and merchant links. Use for price
+                              comparison and shopping assistants.
+          particle_news       Media intelligence. Podcast transcripts with
+                              speaker attribution and timestamps. Use to find
+                              who said what on podcasts.
+          financial_datasets  Finance. Ticker-based news for US public
+                              companies. Use to track news/earnings for stocks.
+          jinko               Travel. Destinations ranked by lowest available
+                              fare from your departure airports. Use for
+                              budget trip ideas.
+
+        Examples:
+          exa-ai agent-run-create --query "Find Ruby performance tips"
+          exa-ai agent-run-create --query "Analyze AI trends" --wait
+
+          # Company profile blending two partners + web, as structured JSON:
+          exa-ai agent-run-create --wait \\
+            --query "Profile Anthropic: total funding and monthly web traffic" \\
+            --data-sources fiber_ai,similarweb \\
+            --output-schema '{"type":"object","properties":{"name":{"type":"string"},"totalFunding":{"type":"string"},"monthlyVisits":{"type":"number"}}}'
+
+          # KYB check with a larger schema read from a file:
+          exa-ai agent-run-create --wait --query "Verify Stripe, Inc." \\
+            --data-sources baselayer --output-schema @schema.json
+      HELP
+      exit 0
+    else
+      i += 1
+    end
+  end
+
+  args
+end
+
+# Main execution
+begin
+  args = parse_args(ARGV)
+
+  # Validate query
+  if args[:query].nil? || args[:query].empty?
+    $stderr.puts "Error: --query flag is required"
+    $stderr.puts "Run 'exa-ai agent-run-create --help' for usage information"
+    exit 1
+  end
+
+  # Resolve API key
+  api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
+
+  # Resolve output format
+  output_format = Exa::CLI::Base.resolve_output_format(args[:output_format])
+
+  # Build client
+  client = Exa::CLI::Base.build_client(api_key)
+
+  # Prepare run parameters
+  run_params = { query: args[:query] }
+  run_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
+  run_params[:effort] = args[:effort] if args[:effort]
+  run_params[:data_sources] = args[:data_sources] if args[:data_sources]
+  run_params[:output_schema] = args[:output_schema] if args[:output_schema]
+
+  if args[:wait]
+    # Stream the run and watch it to completion. The SSE stream creates the run
+    # and pushes lifecycle events (created/started/completed); the final run is
+    # rendered the instant it lands — lower latency than polling, and the run
+    # still persists with an id.
+    start = Time.now
+    run_id = nil
+    phase = "starting"
+    done = false
+
+    # ponytail: the SSE block only fires on events, and nothing arrives between
+    # "started" and "completed". A background thread paints a live elapsed timer
+    # so the user can see it's alive during the silent running phase.
+    painter = Thread.new do
+      frames = %w[⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏]
+      i = 0
+      until done
+        elapsed = (Time.now - start).round
+        $stderr.print "\r#{frames[i % frames.size]} #{run_id || "agent run"}  #{phase}  #{elapsed}s   "
+        $stderr.flush
+        i += 1
+        sleep 0.2
+      end
+    end
+
+    final = nil
+    stream_error = nil
+    begin
+      final = client.agent_run_stream(**run_params) do |event, data|
+        run_id ||= data["id"] if data.is_a?(Hash)
+        phase = "queued"  if event == "agent_run.created"
+        phase = "running" if event == "agent_run.started"
+      end
+    rescue Faraday::Error, Exa::Error => e
+      stream_error = e # stream dropped mid-run; recover via polling below if we have an id
+    ensure
+      done = true
+      painter.join
+    end
+
+    # Fallback: stream ended/dropped without a terminal event. If we learned the
+    # run id, poll it to completion rather than losing the run.
+    if final.nil? && run_id
+      $stderr.print "\r(stream interrupted; polling #{run_id})                 "
+      begin
+        final = Exa::CLI::Polling.poll(max_duration: 300, initial_delay: 2, max_delay: 10) do
+          current = client.agent_run_get(run_id)
+          { done: current.finished?, result: current, status: current.status }
+        end
+      rescue Exa::CLI::Polling::TimeoutError
+        $stderr.puts "\nError: run did not complete within 5 minutes"
+        $stderr.puts "Run ID: #{run_id} — check later with: exa-ai agent-run-get #{run_id}"
+        exit 1
+      end
+    end
+
+    $stderr.print "\r" + (" " * 72) + "\r"
+
+    if final.nil?
+      $stderr.puts "Error: the run did not produce a result#{stream_error ? " (#{stream_error.message})" : ""}"
+      $stderr.puts "Run ID: #{run_id}" if run_id
+      exit 1
+    end
+
+    $stderr.puts "#{final.completed? ? "✓" : "•"} #{final.status} · #{(Time.now - start).round}s"
+    puts Exa::CLI::Formatters::AgentRunFormatter.format_run(final, output_format)
+    $stdout.flush
+    exit 1 if final.failed?
+  else
+    # Not waiting: create and return the initial (queued) run.
+    run = client.agent_run_create(**run_params)
+    puts Exa::CLI::Formatters::AgentRunFormatter.format_run(run, output_format)
+  end
+
+rescue Exa::ConfigurationError => e
+  $stderr.puts "Configuration error: #{e.message}"
+  exit 1
+rescue Exa::Unauthorized => e
+  $stderr.puts "Authentication error: #{e.message}"
+  $stderr.puts "Check your API key (set EXA_API_KEY or use --api-key)"
+  exit 1
+rescue Exa::ClientError => e
+  $stderr.puts "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  $stderr.puts "Server error: #{e.message}"
+  $stderr.puts "The Exa API may be experiencing issues. Please try again later."
+  exit 1
+rescue Exa::Error => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
+  exit 1
+end

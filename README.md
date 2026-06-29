@@ -9,6 +9,7 @@ Ruby client for the Exa.ai API. Search and analyze web content using neural sear
 - [Configuration](#configuration)
 - [Quick Start](#quick-start)
 - [Features](#features)
+- [Agent](#agent)
 - [Error Handling](#error-handling)
 - [Documentation](#documentation)
 - [Development](#development)
@@ -225,6 +226,117 @@ The gem provides complete access to Exa's API endpoints:
 - **Webset Items** — List, retrieve, and manage individual items in websets
 - **Enrichments** — Create and manage AI-powered data enrichment tasks on websets
 - **Imports** — Upload CSV files to import external data into websets
+
+### Agent
+- **Agent API** — Asynchronous research agent with citations, streaming, and full run lifecycle
+
+## Agent
+
+Exa's Agent API runs asynchronous research agents that search the web, synthesize findings, and return structured output with source citations. Runs are long-lived — create one, poll for completion, and stream events as it progresses.
+
+### Ruby API
+
+```ruby
+require 'exa-ai'
+
+client = Exa::Client.new(api_key: ENV['EXA_API_KEY'])
+
+# Create an async agent run
+run = client.agent_run_create(
+  query: "AI infrastructure startups that raised Series A in 2025",
+  effort: "high"
+)
+puts run.id      # => "run_abc123"
+puts run.status  # => "queued"
+puts run.queued? # => true
+
+# Poll for the result
+run = client.agent_run_get(run.id)
+if run.completed?
+  puts run.output[:text]
+  puts run.output[:structured]  # already-parsed JSON — no string parsing needed
+  puts run.output[:grounding]
+end
+
+# Create a run with structured output and a system prompt
+run = client.agent_run_create(
+  query: "AI infrastructure startups that raised Series A in 2025",
+  system_prompt: "Return only companies headquartered in the US.",
+  effort: "high",
+  output_schema: {
+    type: "object",
+    properties: {
+      companies: { type: "array", items: { type: "string" } }
+    }
+  }
+)
+
+# Attach premium data partners (Exa Connect) alongside web search.
+# The agent queries each partner where it's strongest and blends the
+# results into one grounded, structured answer.
+run = client.agent_run_create(
+  query: "Profile Anthropic: total funding and estimated monthly web traffic",
+  data_sources: [{ provider: "fiber_ai" }, { provider: "similarweb" }],
+  output_schema: {
+    type: "object",
+    properties: {
+      name: { type: "string" },
+      totalFunding: { type: "string" },  # from Fiber.ai
+      monthlyVisits: { type: "number" }  # from Similarweb
+    }
+  }
+)
+
+# Stream events as they arrive
+client.agent_run_stream(query: "AI infrastructure startups that raised Series A in 2025") do |event, data|
+  puts "#{event}: #{data.inspect}"
+  # event is the SSE event-type string, e.g. "agent_run.completed"
+  # data is the parsed JSON hash
+end
+
+# List recent runs
+runs = client.agent_run_list(limit: 5)
+puts runs.has_more    # => true/false
+puts runs.next_cursor # => pagination cursor
+runs.data.each { |r| puts "#{r.id}: #{r.status}" }
+
+# Fetch a run's events
+events = client.agent_run_events(run.id)
+
+# Cancel or delete a run
+client.agent_run_cancel(run.id)
+client.agent_run_delete(run.id)
+```
+
+> **Note:** Multi-word keys inside `input`, `data_sources` items, and `metadata` are passed through verbatim — supply them in the exact shape the API expects, the same contract as `output_schema`.
+
+### Command Line
+
+```bash
+# Create a run and wait for it to finish
+exa-ai agent-run-create --query "AI infrastructure startups that raised Series A in 2025" --wait --output-format pretty
+
+# Attach premium data partners (Exa Connect) with a structured schema.
+# Run `exa-ai agent-run-create --help` to see every provider and when to use it:
+# fiber_ai, similarweb, baselayer, affiliate, particle_news, financial_datasets, jinko
+exa-ai agent-run-create --wait \
+  --query "Profile Anthropic: total funding and monthly web traffic" \
+  --data-sources fiber_ai,similarweb \
+  --output-schema '{"type":"object","properties":{"name":{"type":"string"},"totalFunding":{"type":"string"},"monthlyVisits":{"type":"number"}}}'
+
+# Fetch an existing run
+exa-ai agent-run-get <run_id>
+
+# List recent runs
+exa-ai agent-run-list --limit 5
+
+# Cancel or delete a run
+exa-ai agent-run-cancel <run_id>
+exa-ai agent-run-delete <run_id>
+
+# Fetch a run's events
+exa-ai agent-run-events <run_id>
+```
 
 ## Error Handling
 

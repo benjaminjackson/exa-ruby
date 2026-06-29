@@ -44,7 +44,13 @@ module ExaCLI
     "monitor-update" => "Update a monitor",
     "monitor-delete" => "Delete a monitor",
     "monitor-runs-list" => "List monitor runs",
-    "monitor-runs-get" => "Get monitor run details"
+    "monitor-runs-get" => "Get monitor run details",
+    "agent-run-create" => "Create an agent run",
+    "agent-run-get" => "Get agent run details",
+    "agent-run-list" => "List agent runs",
+    "agent-run-cancel" => "Cancel an agent run",
+    "agent-run-delete" => "Delete an agent run",
+    "agent-run-events" => "Get events for an agent run"
   }.freeze
 
   def self.run
@@ -134,6 +140,18 @@ module ExaCLI
       exec File.expand_path("../exa-ai-monitor-runs-list", __FILE__), *ARGV[1..]
     when "monitor-runs-get"
       exec File.expand_path("../exa-ai-monitor-runs-get", __FILE__), *ARGV[1..]
+    when "agent-run-create"
+      exec File.expand_path("../exa-ai-agent-run-create", __FILE__), *ARGV[1..]
+    when "agent-run-get"
+      exec File.expand_path("../exa-ai-agent-run-get", __FILE__), *ARGV[1..]
+    when "agent-run-list"
+      exec File.expand_path("../exa-ai-agent-run-list", __FILE__), *ARGV[1..]
+    when "agent-run-cancel"
+      exec File.expand_path("../exa-ai-agent-run-cancel", __FILE__), *ARGV[1..]
+    when "agent-run-delete"
+      exec File.expand_path("../exa-ai-agent-run-delete", __FILE__), *ARGV[1..]
+    when "agent-run-events"
+      exec File.expand_path("../exa-ai-agent-run-events", __FILE__), *ARGV[1..]
     else
       print_error_for_command(ARGV[0])
       exit 1
@@ -196,6 +214,15 @@ module ExaCLI
       ["import-get", "Get import details"],
       ["import-update", "Update an import"],
       ["import-delete", "Delete an import"]
+    ])
+
+    print_command_section("Agent Runs", [
+      ["agent-run-create", "Create an agent run"],
+      ["agent-run-get", "Get agent run details"],
+      ["agent-run-list", "List agent runs"],
+      ["agent-run-cancel", "Cancel an agent run"],
+      ["agent-run-delete", "Delete an agent run"],
+      ["agent-run-events", "Get events for an agent run"]
     ])
 
     print_command_section("Webset Monitors", [

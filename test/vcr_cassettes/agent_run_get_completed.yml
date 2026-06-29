@@ -1,0 +1,36 @@
+# SYNTHETIC cassette — authored from documented schema, NOT a live recording. Replace with a live-recorded interaction during live-API verification.
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.exa.ai/agent/runs/run_01abc123def456ghi789jkl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      x-api-key:
+      - <EXA_API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 12:01:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '700'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"run_01abc123def456ghi789jkl","object":"agent_run","status":"completed","stopReason":"end_turn","createdAt":1751198400000,"completedAt":1751198460000,"request":{"query":"AI infrastructure startups that raised Series A in 2025"},"output":{"text":"Based on my research, several AI infrastructure startups raised Series A funding in 2025, including Groq, Together AI, and Modal Labs, focusing on GPU cloud and inference optimization.","structured":null,"grounding":[{"url":"https://techcrunch.com/2025/03/15/groq-series-a","title":"Groq Raises $100M Series A"},{"url":"https://www.together.ai/blog/series-a-2025","title":"Together AI Announces Series A"}]},"usage":{"inputTokens":1500,"outputTokens":250},"costDollars":0.0423}'
+  recorded_at: Mon, 29 Jun 2026 12:01:00 GMT
+recorded_with: VCR 6.3.1

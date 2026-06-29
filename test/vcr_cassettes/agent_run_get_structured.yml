@@ -1,0 +1,36 @@
+# Body shape confirmed against the live API: completed run with an output_schema populates output.structured. IDs sanitized; structured values are the real recorded response.
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.exa.ai/agent/runs/run_01struct23def456ghi789jkl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      x-api-key:
+      - <EXA_API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 18:34:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '920'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"run_01struct23def456ghi789jkl","object":"agent_run","status":"completed","stopReason":"schema_satisfied","createdAt":"2026-06-29T18:33:47.303Z","completedAt":"2026-06-29T18:34:09.238Z","request":{"query":"What is the capital of Japan and its approximate metro population in millions?","outputSchema":{"type":"object","required":["capital"],"properties":{"capital":{"type":"string"},"population_millions":{"type":"number"}}},"effort":"minimal"},"output":{"text":"Japan’s capital is Tokyo. Its metro population (Tokyo metro area / Greater Tokyo urban agglomeration) is approximately 36.954 million (reported as 36,954,000 for 2026).","structured":{"capital":"Tokyo","population_millions":36.954},"grounding":[{"field":"structured","citations":[{"url":"https://www.macrotrends.net/global-metrics/cities/21671/tokyo/population","title":"Tokyo, Japan Metro Area Population (1950-2026) | MacroTrends"},{"url":"https://en.wikipedia.org/wiki/Greater_Tokyo_Area","title":"Greater Tokyo Area"}],"confidence":"medium"}]},"usage":{"agentComputeUnits":0,"searches":3,"emails":0,"phoneNumbers":0},"costDollars":{"total":0.012,"agentCompute":0,"search":0.012,"emails":0,"phoneNumbers":0}}'
+  recorded_at: Mon, 29 Jun 2026 18:34:09 GMT
+recorded_with: VCR 6.3.1

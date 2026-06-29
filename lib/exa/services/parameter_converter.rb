@@ -75,6 +75,8 @@ module Exa
         when :include_domains then :includeDomains
         when :exclude_domains then :excludeDomains
         when :system_prompt then :systemPrompt
+        when :previous_run_id then :previousRunId
+        when :data_sources then :dataSources
         else
           key
         end
