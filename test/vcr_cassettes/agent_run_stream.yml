@@ -1,0 +1,38 @@
+# SYNTHETIC cassette — authored from documented schema, NOT a live recording. Replace with a live-recorded interaction during live-API verification.
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/agent/runs
+    body:
+      encoding: UTF-8
+      string: '{"query":"AI infrastructure startups that raised Series A in 2025"}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      x-api-key:
+      - <EXA_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - text/event-stream
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 12:06:00 GMT
+      Content-Type:
+      - text/event-stream
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "event: agent_run.created\ndata: {\"id\":\"run_01abc123def456ghi789jkl\",\"object\":\"agent_run\",\"status\":\"queued\",\"createdAt\":1751198400000}\n\nevent: agent_run.completed\ndata: {\"id\":\"run_01abc123def456ghi789jkl\",\"object\":\"agent_run\",\"status\":\"completed\",\"stopReason\":\"end_turn\",\"createdAt\":1751198400000,\"completedAt\":1751198460000,\"output\":{\"text\":\"Based on my research, several AI infrastructure startups raised Series A funding in 2025.\",\"structured\":null,\"grounding\":[]}}\n\n"
+  recorded_at: Mon, 29 Jun 2026 12:06:00 GMT
+recorded_with: VCR 6.3.1
