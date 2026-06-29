@@ -54,6 +54,17 @@ module Exa
             else
               output << run.output.to_s
             end
+            if run.output.is_a?(Hash) && (structured = run.output["structured"] || run.output[:structured])
+              output << ""
+              output << "Structured:"
+              output << JSON.pretty_generate(structured)
+            end
+            sources = grounding_sources(run)
+            unless sources.empty?
+              output << ""
+              output << "Grounding:"
+              sources.each { |s| output << "  - #{s}" }
+            end
             output << ""
             if run.cost_dollars
               total = run.cost_dollars.is_a?(Hash) ? (run.cost_dollars["total"] || run.cost_dollars[:total]) : run.cost_dollars
@@ -106,10 +117,24 @@ module Exa
           if run.status == "completed" && run.output
             text = run.output.is_a?(Hash) ? (run.output[:text] || run.output["text"]) : run.output.to_s
             output << text.to_s
+            if run.output.is_a?(Hash) && (structured = run.output["structured"] || run.output[:structured])
+              output << JSON.generate(structured)
+            end
           elsif run.status == "failed"
             output << "Stop reason: #{run.stop_reason}"
           end
           output.join("\n")
+        end
+
+        # Flattens an output.grounding array into displayable source strings,
+        # tolerating both shapes seen from the API: flat {url,title} items and
+        # nested {citations:[{url,title}]} items.
+        def self.grounding_sources(run)
+          grounding = run.output.is_a?(Hash) ? (run.output["grounding"] || run.output[:grounding]) : nil
+          Array(grounding).flat_map do |item|
+            citations = item.is_a?(Hash) && item["citations"] ? item["citations"] : [item]
+            citations.map { |c| c.is_a?(Hash) ? (c["title"] || c["url"]) : c }
+          end.compact
         end
 
         def self.format_list_text(list)
