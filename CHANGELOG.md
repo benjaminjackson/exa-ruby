@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-06-29
+
+### Added
+- **Agent API** - Full support for Exa's Agent Run API: create, list, get, delete, and stream agent runs (`client.create_agent_run`, `client.list_agent_runs`, `client.get_agent_run`, `client.delete_agent_run`)
+- **AgentRun resource** - New `Exa::Resources::AgentRun` and `Exa::Resources::AgentRunList` resource objects wrapping agent run API responses
+- **CLI agent-run commands** - New `exa agent-run create`, `agent-run list`, `agent-run get`, and `agent-run delete` subcommands
+- **Live streaming** - `exa agent-run create --wait` streams events in real time with live status updates
+- **Structured output & grounding** - CLI renders structured output and grounding sources from agent run responses
+- **Exa Connect data sources** - `--input-data` flag on `agent-run create` to pass Exa Connect data sources (websets, web streams)
+- **Input exclusion** - `--input-exclusion` flag to exclude specific domains or URLs from agent runs
+- **Previous run chaining** - `--previous-run-id` flag to chain an agent run to a prior one for iterative workflows
+
 ## [0.11.2] - 2026-05-03
 
 ### Fixed

@@ -2,6 +2,8 @@
 
 Ruby client for the Exa.ai API. Follows pragmatic Ruby patterns with emphasis on TDD using Minitest.
 
+**The CLI executable is `exa-ai`**, not `exa`. Gem name on RubyGems is `exa-ai`, gemspec is `exa.gemspec`.
+
 ## Architecture Overview
 
 ### Core Design Patterns
