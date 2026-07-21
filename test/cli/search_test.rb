@@ -69,7 +69,7 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_all_valid_categories
-    valid_categories = ["company", "research paper", "news", "github", "tweet", "personal site", "financial report", "people"]
+    valid_categories = ["company", "publication", "news", "github", "personal site", "people", "financial report"]
     valid_categories.each do |category|
       args = parse_search_args(["test query", "--category", category])
       assert_equal category, args[:category], "Failed to parse category: #{category}"

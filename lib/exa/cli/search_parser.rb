@@ -6,8 +6,8 @@ module Exa
       VALID_SEARCH_TYPES = ["auto", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
       VALID_TEXT_VERBOSITY = ["compact", "standard", "full"].freeze
       VALID_CATEGORIES = [
-        "company", "research paper", "news", "github",
-        "tweet", "personal site", "financial report", "people"
+        "company", "publication", "news", "github",
+        "personal site", "people", "financial report"
       ].freeze
 
       def self.parse(argv)
