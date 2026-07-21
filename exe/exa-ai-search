@@ -18,8 +18,8 @@ def print_help
       --type TYPE                  Search type: auto, neural, fast, deep, deep-reasoning,
                                    or instant (default: auto)
       --category CAT               Focus on specific data category
-                                   Options: "company", "research paper", "news", "github",
-                                   "tweet", "personal site", "financial report", "people"
+                                   Options: "company", "publication", "news", "github",
+                                   "personal site", "people", "financial report"
       --include-domains D          Comma-separated list of domains to include
       --exclude-domains D          Comma-separated list of domains to exclude
       --start-published-date DATE  Filter by published date (ISO 8601 format)
@@ -67,7 +67,7 @@ def print_help
     Examples:
       exa-ai search "ruby programming"
       exa-ai search "machine learning" --num-results 5 --type deep
-      exa-ai search "Latest LLM research" --category "research paper"
+      exa-ai search "Latest LLM research" --category publication
       exa-ai search "AI startups" --category company
       exa-ai search "Dario Amodei" --category people
       exa-ai search "AI research" --include-domains arxiv.org,scholar.google.com

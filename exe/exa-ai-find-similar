@@ -24,7 +24,7 @@ def parse_args(argv)
       i += 1
     when "--category"
       category = argv[i + 1]
-      valid_categories = ["company", "research paper", "news", "pdf", "github", "tweet", "personal site", "linkedin profile", "financial report"]
+      valid_categories = ["company", "publication", "news", "github", "personal site", "people", "financial report"]
       unless valid_categories.include?(category)
         $stderr.puts "Error: Category must be one of: #{valid_categories.map { |c| "\"#{c}\"" }.join(', ')}"
         exit 1
@@ -99,9 +99,8 @@ def parse_args(argv)
           --num-results N              Number of results to return (default: 10)
           --exclude-source-domain      Exclude results from the source URL's domain
           --category CAT               Focus on specific data category
-                                       Options: "company", "research paper", "news", "pdf",
-                                       "github", "tweet", "personal site", "linkedin profile",
-                                       "financial report"
+                                       Options: "company", "publication", "news", "github",
+                                       "personal site", "people", "financial report"
           --include-domains D          Comma-separated list of domains to include
           --exclude-domains D          Comma-separated list of domains to exclude
           --start-published-date DATE  Filter by published date (ISO 8601 format)
@@ -127,7 +126,7 @@ def parse_args(argv)
         Examples:
           exa-ai find-similar "https://example.com/article"
           exa-ai find-similar "https://techcrunch.com/ai-startup" --num-results 5
-          exa-ai find-similar "https://arxiv.org/paper" --category "research paper"
+          exa-ai find-similar "https://arxiv.org/paper" --category publication
           exa-ai find-similar "https://example.com" --exclude-source-domain
           exa-ai find-similar "https://example.com" --output-format pretty
       HELP
