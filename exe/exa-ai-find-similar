@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "exa-ai"
+require_relative "../lib/exa/cli/search_parser"
 
 # Parse command-line arguments
 def parse_args(argv)
@@ -24,7 +25,7 @@ def parse_args(argv)
       i += 1
     when "--category"
       category = argv[i + 1]
-      valid_categories = ["company", "publication", "news", "github", "personal site", "people", "financial report"]
+      valid_categories = Exa::CLI::SearchParser::VALID_CATEGORIES
       unless valid_categories.include?(category)
         $stderr.puts "Error: Category must be one of: #{valid_categories.map { |c| "\"#{c}\"" }.join(', ')}"
         exit 1
