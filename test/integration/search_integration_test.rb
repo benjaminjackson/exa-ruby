@@ -243,13 +243,21 @@ class SearchIntegrationTest < Minitest::Test
     VCR.use_cassette("search_deep_reasoning") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
 
+      # deep-reasoning only synthesizes the `output` field when an
+      # output_schema is supplied; without it the API returns bare results.
       result = client.search(
         "What are the latest breakthroughs in quantum error correction?",
-        type: "deep-reasoning"
+        type: "deep-reasoning",
+        output_schema: {
+          type: "object",
+          properties: { answer: { type: "string" } }
+        }
       )
 
       assert_instance_of Exa::Resources::SearchResult, result
       refute_empty result.results
+      refute_nil result.output
+      assert result.output["content"] || result.output[:content]
     end
   end
 
