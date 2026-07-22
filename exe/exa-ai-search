@@ -17,6 +17,8 @@ def print_help
       --num-results N              Number of results to return (default: 10)
       --type TYPE                  Search type: auto, neural, fast, deep, deep-reasoning,
                                    or instant (default: auto)
+                                   deep/deep-reasoning synthesize an 'output' field
+                                   only when --output-schema is provided
       --category CAT               Focus on specific data category
                                    Options: "company", "publication", "news", "github",
                                    "personal site", "people", "financial report"
@@ -55,6 +57,7 @@ def print_help
     Search Options:
       --additional-queries QUERY   Additional search queries (repeatable)
       --output-schema JSON         JSON schema for output structure (@file syntax)
+                                   Required to get synthesized 'output' from deep/deep-reasoning
       --user-location CODE         User location (ISO country code)
       --system-prompt PROMPT       System prompt for AI-powered search
       --moderation                 Enable content moderation
