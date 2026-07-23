@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.2] - 2026-07-23
+
+### Fixed
+- **`tweet` category removed** - The Exa API now rejects `category: "tweet"` with a hard error, so `exa-ai search` and `exa-ai find-similar` no longer accept or advertise it. Valid categories are: company, publication, news, github, personal site, people, financial report
+
+### Changed
+- **`--output-schema` note in help text** - `deep` and `deep-reasoning` searches no longer auto-synthesize the `output` field; the API returns it only when an output schema is supplied. The `--type` and `--output-schema` help now say so
+- **Shared category list** - `exa-ai find-similar` references `Exa::CLI::SearchParser::VALID_CATEGORIES` instead of keeping a hand-synced copy
+
 ## [0.12.1] - 2026-06-29
 
 ### Fixed
