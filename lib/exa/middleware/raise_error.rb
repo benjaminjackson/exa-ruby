@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "faraday"
+require "json"
 
 module Exa
   module Middleware
@@ -45,6 +46,7 @@ module Exa
 
       def extract_error_message(env)
         body = env[:body]
+        body = parse_streamed_error_body(env) if body.nil? || body == ""
 
         if body.is_a?(Hash)
           # Prioritize "message" field for detailed error descriptions
@@ -57,6 +59,14 @@ module Exa
         end
 
         "HTTP #{env[:status]}"
+      end
+
+      # Streaming requests hand the body to on_data, so the adapter leaves
+      # env[:body] empty. Stream services keep error chunks in env[:error_body].
+      def parse_streamed_error_body(env)
+        JSON.parse(env[:error_body].to_s)
+      rescue JSON::ParserError
+        nil
       end
     end
   end

@@ -16,7 +16,9 @@ module Exa
 
         # Configure the request to stream chunks via on_data callback
         @connection.post("/answer", @params) do |req|
-          req.options.on_data = proc do |chunk|
+          req.options.on_data = proc do |chunk, _size, env|
+            next env[:error_body] = "#{env[:error_body]}#{chunk}" if env&.status.to_i >= 400
+
             # Add chunk to buffer and process complete SSE events
             @buffer += chunk
             process_sse_buffer(&block)

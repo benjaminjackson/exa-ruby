@@ -44,6 +44,7 @@ module Exa
           file_content = File.read(@file_path)
 
           upload_connection = Faraday.new do |f|
+            f.response :raise_error
             f.adapter Faraday.default_adapter
           end
 

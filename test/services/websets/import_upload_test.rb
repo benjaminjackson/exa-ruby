@@ -73,6 +73,35 @@ module Exa
           assert_instance_of Exa::Resources::Import, result
         end
 
+        def test_call_raises_error_when_file_upload_fails
+          stub_request(:post, "https://api.exa.ai/websets/v0/imports")
+            .to_return(
+              status: 201,
+              body: {
+                id: "import_123",
+                object: "import",
+                status: "pending",
+                uploadUrl: "https://s3.example.com/expired",
+                uploadValidUntil: "2023-11-07T06:31:56Z"
+              }.to_json,
+              headers: { "Content-Type" => "application/json" }
+            )
+
+          stub_request(:put, "https://s3.example.com/expired")
+            .to_return(status: 403, body: "<Error><Code>AccessDenied</Code></Error>")
+
+          service = UploadImport.new(
+            @connection,
+            file_path: @test_file,
+            count: 1,
+            title: "Portfolio companies of Sequoia Capital",
+            format: "csv",
+            entity: { type: "company" }
+          )
+
+          assert_raises(Exa::Forbidden) { service.call }
+        end
+
         def test_call_uploads_file_to_upload_url
           file_size = File.size(@test_file)
 

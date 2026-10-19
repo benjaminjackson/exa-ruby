@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Unmapped error statuses now raise** - Any 4xx or 5xx status without its own error class (for example 405, 409, 410, 501) now raises `Exa::ClientError` or `Exa::ServerError` with the API's message. Before, these responses returned as if the request worked, and callers got resources with nil fields. Code that relied on that silent return must now rescue the error
+- **Streaming errors keep the API message** - `answer` streaming and agent run streaming now show the error message from the API, not only `HTTP <status>`
+- **Failed import file uploads now raise** - `UploadImport` raises when the PUT to the upload URL fails (for example an expired URL). Before, it reported success
+
 ## [0.12.2] - 2026-07-23
 
 ### Fixed
