@@ -29,6 +29,10 @@ module Exa
           handle_error(env, Exa::ServiceUnavailable)
         when 504
           handle_error(env, Exa::GatewayTimeout)
+        when 400..499
+          handle_error(env, Exa::ClientError)
+        when 500..599
+          handle_error(env, Exa::ServerError)
         end
       end
 

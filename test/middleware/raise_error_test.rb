@@ -204,4 +204,34 @@ class RaiseErrorTest < Minitest::Test
 
     assert_equal "Your team has reached the maximum number of concurrent requests", error.message
   end
+
+  def test_raises_client_error_on_unmapped_4xx
+    connection = Exa::Connection.build(api_key: "test_key")
+
+    stub_request(:get, "https://api.exa.ai/test")
+      .to_return(
+        status: 410,
+        body: %q({"error":"The Exa Research API has been retired"}),
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    error = assert_raises(Exa::ClientError) do
+      connection.get("/test")
+    end
+
+    assert_equal "The Exa Research API has been retired", error.message
+  end
+
+  def test_raises_server_error_on_unmapped_5xx
+    connection = Exa::Connection.build(api_key: "test_key")
+
+    stub_request(:get, "https://api.exa.ai/test")
+      .to_return(status: 501, body: "")
+
+    error = assert_raises(Exa::ServerError) do
+      connection.get("/test")
+    end
+
+    assert_equal "HTTP 501", error.message
+  end
 end
