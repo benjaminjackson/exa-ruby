@@ -4,7 +4,7 @@ module Exa
   # Main client for interacting with the Exa.ai API
   #
   # Provides methods for all supported Exa.ai operations including search,
-  # content retrieval, answer generation, and async research tasks.
+  # content retrieval, answer generation, and agent runs.
   #
   # @example Basic usage
   #   client = Exa::Client.new(api_key: "your-key")
@@ -84,32 +84,6 @@ module Exa
     # @return [void]
     def answer_stream(query, **options, &block)
       Services::AnswerStream.new(connection, query: query, **options).call(&block)
-    end
-
-    # Start an asynchronous research task
-    #
-    # @param params [Hash] Research parameters
-    # @return [Resources::Research] Research task with ID
-    def research_start(**params)
-      Services::ResearchStart.new(connection, **params).call
-    end
-
-    # List all research tasks
-    #
-    # @param params [Hash] Listing parameters
-    # @option params [Integer] :limit Maximum number of tasks to return
-    # @return [Resources::ResearchList] List of research tasks
-    def research_list(**params)
-      Services::ResearchList.new(connection, **params).call
-    end
-
-    # Get status and results of a research task
-    #
-    # @param research_id [String] Research task ID
-    # @param params [Hash] Fetch options
-    # @return [Resources::Research] Research task with current status and results
-    def research_get(research_id, **params)
-      Services::ResearchGet.new(connection, research_id: research_id, **params).call
     end
 
     # Create a new agent run

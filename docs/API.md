@@ -9,7 +9,6 @@ Complete reference for the Exa Ruby client library.
 - [Answer](#answer)
 - [Context](#context)
 - [Get Contents](#get-contents)
-- [Research](#research)
 
 ## Client Initialization
 
@@ -243,52 +242,6 @@ contents = client.get_contents(["https://example.com"],
 )
 ```
 
-## Research
-
-Start and manage long-running research tasks.
-
-### Start a Research Task
-
-```ruby
-task = client.research_start(
-  instructions: "Analyze recent AI breakthroughs",
-  model: "gpt-4"
-)
-puts task.research_id  # Save for later polling
-```
-
-### With Output Schema
-
-```ruby
-task = client.research_start(
-  instructions: "Extract key metrics",
-  output_schema: {
-    format: "json",
-    fields: ["metric", "value"]
-  }
-)
-```
-
-### Check Task Status
-
-```ruby
-status = client.research_get(task.research_id)
-puts status.status     # pending, completed, failed
-puts status.output if status.completed?
-```
-
-### List All Tasks
-
-```ruby
-list = client.research_list(limit: 20)
-list.data.each do |task|
-  puts "#{task.research_id}: #{task.status}"
-end
-
-# With pagination
-list = client.research_list(limit: 20, cursor: "next_cursor")
-```
-
 ## Response Objects
 
 The API returns wrapped response objects with convenient accessor methods:
@@ -297,8 +250,6 @@ The API returns wrapped response objects with convenient accessor methods:
 - `AnswerResult` - Wraps answer and citations
 - `ContextResult` - Wraps code context
 - `ContentsResult` - Wraps page contents
-- `ResearchTask` - Wraps research task information
-- `ResearchList` - Wraps paginated research tasks
 
 All response objects provide `#to_h` for serialization to plain hashes.
 

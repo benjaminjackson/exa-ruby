@@ -75,35 +75,6 @@ class CLIExecutablesTest < Minitest::Test
     assert_includes stdout, "get-contents"
   end
 
-  # Research start command
-  def test_research_start_help
-    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-research-start --help")
-
-    assert status.success?, "exa-ai-research-start --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
-    assert_includes stdout, "Usage:"
-    assert_includes stdout, "research-start"
-    assert_includes stdout, "--instructions"
-  end
-
-  # Research get command
-  def test_research_get_help
-    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-research-get --help")
-
-    assert status.success?, "exa-ai-research-get --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
-    assert_includes stdout, "Usage:"
-    assert_includes stdout, "research-get"
-    assert_includes stdout, "research_id"
-  end
-
-  # Research list command
-  def test_research_list_help
-    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-research-list --help")
-
-    assert status.success?, "exa-ai-research-list --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
-    assert_includes stdout, "Usage:"
-    assert_includes stdout, "research-list"
-  end
-
   # Test that main dispatcher can route to subcommands
   def test_dispatcher_routes_to_search_help
     stdout, stderr, status = run_executable("bundle exec exe/exa-ai search --help")
@@ -129,5 +100,12 @@ class CLIExecutablesTest < Minitest::Test
     # Error message could be in stdout or stderr
     combined_output = stdout + stderr
     assert_includes combined_output, "Unknown command"
+  end
+
+  def test_retired_research_command_points_to_agent_run_create
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai research-start --instructions 'Compare honeypot ant species'")
+
+    refute status.success?, "research-start should exit with error. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stderr, "agent-run-create --query"
   end
 end

@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- **Research API support** - Removed the `research_start`, `research_list` and `research_get` client methods and the `exa-ai research-start`, `research-get` and `research-list` commands. Exa retired the Research API (it now returns HTTP 410). Use the Agent API instead (`agent_run_create(query: ...)`, `exa-ai agent-run-create --query ...`)
+
 ### Fixed
 - **Unmapped error statuses now raise** - Any 4xx or 5xx status without its own error class (for example 405, 409, 410, 501) now raises `Exa::ClientError` or `Exa::ServerError` with the API's message. Before, these responses returned as if the request worked, and callers got resources with nil fields. Code that relied on that silent return must now rescue the error
 - **Streaming errors keep the API message** - `answer` streaming and agent run streaming now show the error message from the API, not only `HTTP <status>`

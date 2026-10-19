@@ -1,6 +1,6 @@
 # exa-ruby
 
-Ruby client for the Exa.ai API. Search and analyze web content using neural search, question answering, code discovery, and research automation.
+Ruby client for the Exa.ai API. Search and analyze web content using neural search, question answering, code discovery, and agent-based research.
 
 ## Table of Contents
 
@@ -161,11 +161,6 @@ exa-ai answer "What is machine learning?"
 exa-ai context "React hooks" --tokens-num 5000
 exa-ai get-contents "https://ruby-lang.org"
 
-# Research Commands
-exa-ai research-start --instructions "What species of ant are similar to honeypot ants?"
-exa-ai research-get RESEARCH_ID
-exa-ai research-list
-
 # Webset Management
 exa-ai webset-create --search '{"query":"technology companies","count":1}'
 exa-ai webset-list --limit 5
@@ -216,10 +211,6 @@ The gem provides complete access to Exa's API endpoints:
 - **Context** — Find relevant code and documentation snippets
 - **Get Contents** — Extract full text content from web pages
 
-### Research
-- **Research Tasks** — Start and manage long-running research tasks with AI
-- **Task Management** — Get status updates and list all research tasks
-
 ### Websets
 - **Webset Management** — Create, update, delete, and list datasets of web pages
 - **Webset Searches** — Run searches within websets and manage search tasks
@@ -232,7 +223,7 @@ The gem provides complete access to Exa's API endpoints:
 
 ## Agent
 
-Exa's Agent API runs asynchronous research agents that search the web, synthesize findings, and return structured output with source citations. Runs are long-lived — create one, poll for completion, and stream events as it progresses.
+Exa's Agent API runs asynchronous research agents that search the web, synthesize findings, and return structured output with source citations. Runs are long-lived — create one, poll for completion, and stream events as it progresses. Exa retired the Research API; the Agent API (`exa-ai agent-run-create` and related commands) is its replacement. Pass your prompt as `--query` (Ruby: `query:`), not `--instructions`.
 
 ### Ruby API
 

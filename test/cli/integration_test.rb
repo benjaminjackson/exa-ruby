@@ -8,27 +8,12 @@ class Exa::CLI::IntegrationTest < Minitest::Test
     assert_instance_of Exa::Client, client
   end
 
-  def test_research_start_client_initialization
-    client = Exa::Client.new(api_key: "test_api_key")
-    assert_instance_of Exa::Client, client
-  end
-
   def test_context_client_initialization
     client = Exa::Client.new(api_key: "test_api_key")
     assert_instance_of Exa::Client, client
   end
 
   def test_get_contents_client_initialization
-    client = Exa::Client.new(api_key: "test_api_key")
-    assert_instance_of Exa::Client, client
-  end
-
-  def test_research_get_client_initialization
-    client = Exa::Client.new(api_key: "test_api_key")
-    assert_instance_of Exa::Client, client
-  end
-
-  def test_research_list_client_initialization
     client = Exa::Client.new(api_key: "test_api_key")
     assert_instance_of Exa::Client, client
   end
