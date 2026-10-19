@@ -101,4 +101,11 @@ class CLIExecutablesTest < Minitest::Test
     combined_output = stdout + stderr
     assert_includes combined_output, "Unknown command"
   end
+
+  def test_retired_research_command_points_to_agent_run_create
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai research-start --instructions 'Compare honeypot ant species'")
+
+    refute status.success?, "research-start should exit with error. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stderr, "agent-run-create --query"
+  end
 end

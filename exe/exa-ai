@@ -143,6 +143,9 @@ module ExaCLI
       exec File.expand_path("../exa-ai-agent-run-delete", __FILE__), *ARGV[1..]
     when "agent-run-events"
       exec File.expand_path("../exa-ai-agent-run-events", __FILE__), *ARGV[1..]
+    when "research-start", "research-get", "research-list"
+      $stderr.puts "Error: Exa retired the Research API. Use 'exa-ai agent-run-create --query TEXT' instead."
+      exit 1
     else
       print_error_for_command(ARGV[0])
       exit 1
@@ -227,7 +230,7 @@ module ExaCLI
     puts "Examples:"
     puts "  exa-ai search 'ruby programming'"
     puts "  exa-ai context 'React hooks' --tokens-num 5000"
-    puts "  exa-ai agent-run-create --instructions 'Find AI papers'"
+    puts "  exa-ai agent-run-create --query 'Find AI papers'"
   end
 
   def self.print_command_section(title, commands)

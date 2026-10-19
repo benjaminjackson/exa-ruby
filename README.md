@@ -223,7 +223,7 @@ The gem provides complete access to Exa's API endpoints:
 
 ## Agent
 
-Exa's Agent API runs asynchronous research agents that search the web, synthesize findings, and return structured output with source citations. Runs are long-lived — create one, poll for completion, and stream events as it progresses. Exa retired the Research API; the Agent API (`exa-ai agent-run-create` and related commands) is its replacement.
+Exa's Agent API runs asynchronous research agents that search the web, synthesize findings, and return structured output with source citations. Runs are long-lived — create one, poll for completion, and stream events as it progresses. Exa retired the Research API; the Agent API (`exa-ai agent-run-create` and related commands) is its replacement. Pass your prompt as `--query` (Ruby: `query:`), not `--instructions`.
 
 ### Ruby API
 
