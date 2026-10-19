@@ -56,4 +56,19 @@ class AnswerStreamTest < Minitest::Test
     assert_equal "Hello ", chunks[0]["choices"][0]["delta"]["content"]
     assert_equal "world", chunks[1]["choices"][0]["delta"]["content"]
   end
+
+  def test_call_raises_with_api_message_on_error_status
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(
+        status: 410,
+        body: %q({"error":"This endpoint has been retired"}),
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    service = Exa::Services::AnswerStream.new(@connection, query: "What is the latest valuation of SpaceX?")
+
+    error = assert_raises(Exa::ClientError) { service.call { |_chunk| } }
+
+    assert_equal "This endpoint has been retired", error.message
+  end
 end

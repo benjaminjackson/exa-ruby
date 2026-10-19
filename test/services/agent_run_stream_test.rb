@@ -141,4 +141,20 @@ class AgentRunStreamTest < Minitest::Test
     assert_equal "You are helpful", captured_body["systemPrompt"]
     assert_equal "run_prev_123", captured_body["previousRunId"]
   end
+
+  def test_call_raises_with_api_message_on_error_status
+    stub_request(:post, "https://api.exa.ai/agent/runs")
+      .to_return(
+        status: 409,
+        body: %q({"error":"A run with this idempotency key already exists"}),
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    connection = Exa::Connection.build(api_key: "test_key")
+    service = Exa::Services::AgentRunStream.new(connection, instructions: "Find Series A AI infrastructure startups")
+
+    error = assert_raises(Exa::ClientError) { service.call { |_event, _data| } }
+
+    assert_equal "A run with this idempotency key already exists", error.message
+  end
 end

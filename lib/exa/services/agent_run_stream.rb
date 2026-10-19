@@ -33,7 +33,9 @@ module Exa
 
         @connection.post("/agent/runs", body) do |req|
           req.headers["Accept"] = "text/event-stream"
-          req.options.on_data = proc do |chunk|
+          req.options.on_data = proc do |chunk, _size, env|
+            next env[:error_body] = "#{env[:error_body]}#{chunk}" if env&.status.to_i >= 400
+
             @buffer += chunk
             process_sse_buffer(&interceptor)
           end
