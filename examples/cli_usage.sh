@@ -44,31 +44,11 @@ exa-ai get-contents "https://site1.com,https://site2.com" --text
 exa-ai get-contents "id1,id2,id3" --highlights --output-format pretty
 
 echo ""
-echo "7. Research Tasks"
-# Start a research task (returns task ID)
-exa-ai research-start --instructions "Find Ruby performance tips"
-
-# Start and wait for completion
-exa-ai research-start \
-  --instructions "Analyze AI safety papers" \
-  --model gpt-4 \
-  --wait
-
-# Check task status
-exa-ai research-get "task-id-123"
-exa-ai research-get "task-id-123" --events --output-format pretty
-
-# List all tasks
-exa-ai research-list
-exa-ai research-list --limit 20
-exa-ai research-list --cursor "next-page-cursor" --output-format pretty
-
-echo ""
-echo "8. Using Custom API Key"
+echo "7. Using Custom API Key"
 exa-ai search "test" --api-key "your-api-key-here"
 
 echo ""
-echo "9. Complex Workflows"
+echo "8. Complex Workflows"
 # Search and get contents from top results (requires JSON parsing)
 echo "Finding pages about Rust programming and getting their content..."
 SEARCH_RESULT=$(exa-ai search "Rust programming best practices" --num-results 3 --output-format json)
