@@ -21,7 +21,7 @@ def parse_args(argv)
       args[:query] = argv[i + 1]
       i += 2
     when "--count"
-      args[:count] = argv[i + 1].to_i
+      args[:count] = Exa::CLI::Base.parse_integer("--count", argv[i + 1])
       i += 2
     when "--entity"
       args[:entity] = argv[i + 1]

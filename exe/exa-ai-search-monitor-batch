@@ -25,7 +25,7 @@ while args.any?
   when "--metadata"
     filter[:metadata] = Exa::CLI::Base.parse_json_or_file("--metadata", args.shift)
   when "--limit"
-    limit = args.shift.to_i
+    limit = Exa::CLI::Base.parse_integer("--limit", args.shift)
   when "--execute"
     dry_run = false
   when "--output-format"

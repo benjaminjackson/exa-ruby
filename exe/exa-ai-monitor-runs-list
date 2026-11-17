@@ -15,7 +15,7 @@ while args.any?
   arg = args.shift
   case arg
   when "--limit"
-    limit = args.shift&.to_i
+    limit = Exa::CLI::Base.parse_integer("--limit", args.shift)
   when "--cursor"
     cursor = args.shift
   when "--api-key"

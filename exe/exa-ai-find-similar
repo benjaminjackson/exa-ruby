@@ -18,7 +18,7 @@ def parse_args(argv)
     arg = argv[i]
     case arg
     when "--num-results"
-      args[:num_results] = argv[i + 1].to_i
+      args[:num_results] = Exa::CLI::Base.parse_integer("--num-results", argv[i + 1])
       i += 2
     when "--exclude-source-domain"
       args[:exclude_source_domain] = true
@@ -62,7 +62,7 @@ def parse_args(argv)
       args[:text] = true
       i += 1
     when "--text-max-characters"
-      args[:text_max_characters] = argv[i + 1].to_i
+      args[:text_max_characters] = Exa::CLI::Base.parse_integer("--text-max-characters", argv[i + 1])
       i += 2
     when "--include-html-tags"
       args[:include_html_tags] = true

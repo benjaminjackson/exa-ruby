@@ -61,7 +61,7 @@ def parse_args(argv)
     arg = argv[i]
     case arg
     when "--count"
-      args[:count] = argv[i + 1].to_i
+      args[:count] = Exa::CLI::Base.parse_integer("--count", argv[i + 1])
       i += 2
     when "--title"
       args[:title] = argv[i + 1]
@@ -76,7 +76,7 @@ def parse_args(argv)
       args[:entity_description] = argv[i + 1]
       i += 2
     when "--csv-identifier"
-      args[:csv_identifier] = argv[i + 1].to_i
+      args[:csv_identifier] = Exa::CLI::Base.parse_integer("--csv-identifier", argv[i + 1])
       i += 2
     when "--metadata"
       args[:metadata] = Exa::CLI::Base.parse_json_or_file("--metadata", argv[i + 1], symbolize_names: true)

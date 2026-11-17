@@ -20,7 +20,7 @@ while args.any?
   when "--cursor"
     params[:cursor] = args.shift
   when "--limit"
-    params[:limit] = args.shift.to_i
+    params[:limit] = Exa::CLI::Base.parse_integer("--limit", args.shift)
   when "--output-format"
     output_format = args.shift
   when "--help", "-h"

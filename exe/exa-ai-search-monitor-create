@@ -18,7 +18,7 @@ while args.any?
   when "--query"
     search[:query] = args.shift
   when "--num-results"
-    search[:num_results] = args.shift.to_i
+    search[:num_results] = Exa::CLI::Base.parse_integer("--num-results", args.shift)
   when "--include-domains"
     search[:include_domains] = args.shift.split(",").map(&:strip)
   when "--exclude-domains"

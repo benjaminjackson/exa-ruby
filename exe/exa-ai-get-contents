@@ -54,7 +54,7 @@ def parse_args(args)
       text = true
       i += 1
     when "--text-max-characters"
-      text_max_characters = args[i + 1].to_i
+      text_max_characters = Exa::CLI::Base.parse_integer("--text-max-characters", args[i + 1])
       i += 2
     when "--include-html-tags"
       include_html_tags = true
@@ -69,25 +69,25 @@ def parse_args(args)
       summary_schema = Exa::CLI::Base.parse_json_or_file("--summary-schema", args[i + 1])
       i += 2
     when "--subpages"
-      subpages = args[i + 1].to_i
+      subpages = Exa::CLI::Base.parse_integer("--subpages", args[i + 1])
       i += 2
     when "--subpage-target"
       subpage_target << args[i + 1]
       i += 2
     when "--links"
-      links = args[i + 1].to_i
+      links = Exa::CLI::Base.parse_integer("--links", args[i + 1])
       i += 2
     when "--image-links"
-      image_links = args[i + 1].to_i
+      image_links = Exa::CLI::Base.parse_integer("--image-links", args[i + 1])
       i += 2
     when "--context"
       context = true
       i += 1
     when "--context-max-characters"
-      context_max_characters = args[i + 1].to_i
+      context_max_characters = Exa::CLI::Base.parse_integer("--context-max-characters", args[i + 1])
       i += 2
     when "--livecrawl-timeout"
-      livecrawl_timeout = args[i + 1].to_i
+      livecrawl_timeout = Exa::CLI::Base.parse_integer("--livecrawl-timeout", args[i + 1])
       i += 2
     when "--output-format"
       output_format = args[i + 1]
@@ -96,7 +96,7 @@ def parse_args(args)
       ids = args[i + 1].split(",").map(&:strip)
       i += 2
     when "--max-age-hours"
-      max_age_hours = args[i + 1].to_i
+      max_age_hours = Exa::CLI::Base.parse_integer("--max-age-hours", args[i + 1])
       i += 2
     when "--snapshot-as-of"
       snapshot_as_of = args[i + 1]
@@ -115,7 +115,7 @@ def parse_args(args)
       highlights_query = args[i + 1]
       i += 2
     when "--highlights-max-characters"
-      highlights_max_characters = args[i + 1].to_i
+      highlights_max_characters = Exa::CLI::Base.parse_integer("--highlights-max-characters", args[i + 1])
       i += 2
     when "--highlights-verbosity"
       highlights_verbosity = args[i + 1]
