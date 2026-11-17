@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **CHANGELOG.md ships in the gem** - the installed `exa-ai` gem now includes this changelog, so you can see what changed (deprecations, removed categories) without going online
+
 ## [0.14.0] - 2026-11-16
 
 ### Removed
