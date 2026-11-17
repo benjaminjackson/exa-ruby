@@ -60,7 +60,7 @@ module Exa
     # @option options [Array<String>] :ids Document IDs from earlier searches
     # @return [Resources::ContentsResult] Page contents with metadata
     def get_contents(urls = nil, **options)
-      options = options.merge(urls: urls) if urls
+      options = { urls: urls }.merge(options) if urls
       Services::GetContents.new(connection, **options).call
     end
 

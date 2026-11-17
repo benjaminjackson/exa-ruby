@@ -277,4 +277,15 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     assert_includes stderr, "--ids"
     assert_not_requested :post, "https://api.exa.ai/contents"
   end
+
+  def test_client_get_contents_posts_urls_as_first_body_key
+    raw_body = nil
+    stub_request(:post, "https://api.exa.ai/contents")
+      .with { |request| raw_body = request.body }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Client.new(api_key: "test_key").get_contents(["https://www.anthropic.com/research"], text: true)
+
+    assert_equal "urls", JSON.parse(raw_body).keys.first
+  end
 end
