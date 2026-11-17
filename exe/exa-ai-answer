@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "exa-ai"
+require_relative "../lib/exa/cli/search_parser"
 
 VALID_ANSWER_MODELS = %w[exa exa-pro exa-research exa-fast].freeze
 
@@ -126,17 +127,7 @@ begin
   answer_params[:model] = args[:model] if args[:model]
   answer_params[:user_identifier] = args[:user_identifier] if args[:user_identifier]
 
-  # A country code stays a string; "{...}" is a JSON object and "@path" a JSON file
-  if args[:user_location]
-    location = args[:user_location]
-    answer_params[:user_location] = if location.start_with?("@")
-                                      JSON.parse(File.read(location[1..]))
-                                    elsif location.start_with?("{")
-                                      JSON.parse(location)
-                                    else
-                                      location
-                                    end
-  end
+  answer_params[:user_location] = Exa::CLI::SearchParser.parse_user_location(args[:user_location]) if args[:user_location]
 
   # Parse output_schema as JSON if provided
   if args[:output_schema]

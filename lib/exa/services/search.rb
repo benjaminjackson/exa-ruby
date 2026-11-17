@@ -24,6 +24,13 @@ module Exa
         { "Exa-Beta" => DYNAMIC_HIGHLIGHTS_BETA }
       end
 
+      # Raises ArgumentError unless search_type is one of VALID_SEARCH_TYPES.
+      def self.validate_search_type!(search_type)
+        return if VALID_SEARCH_TYPES.include?(search_type)
+
+        raise ArgumentError, "Invalid search type: '#{search_type}'. Must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
+      end
+
       def initialize(connection, **params)
         @connection = connection
         @params = normalize_params(params)
@@ -64,10 +71,7 @@ module Exa
       end
 
       def validate_search_type!
-        search_type = @params[:type]
-        return if VALID_SEARCH_TYPES.include?(search_type)
-
-        raise ArgumentError, "Invalid search type: '#{search_type}'. Must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
+        self.class.validate_search_type!(@params[:type])
       end
 
       def summary_schema?

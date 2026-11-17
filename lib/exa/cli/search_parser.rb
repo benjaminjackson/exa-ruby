@@ -15,6 +15,16 @@ module Exa
         new(argv).parse
       end
 
+      # A country code stays a string. An argument that starts with "{" is
+      # parsed as a JSON object, and one that starts with "@" is read as a
+      # JSON file, the way --output-schema works.
+      def self.parse_user_location(value)
+        return JSON.parse(File.read(value[1..])) if value.start_with?("@")
+        return JSON.parse(value) if value.start_with?("{")
+
+        value
+      end
+
       def initialize(argv)
         @argv = argv
         @args = {
@@ -162,7 +172,7 @@ module Exa
                                     end
             i += 2
           when "--user-location"
-            @args[:user_location] = parse_user_location(@argv[i + 1])
+            @args[:user_location] = self.class.parse_user_location(@argv[i + 1])
             i += 2
           when "--objective"
             @args[:objective] = @argv[i + 1]
@@ -212,16 +222,6 @@ module Exa
         return if VALID_CATEGORIES.include?(category)
 
         raise ArgumentError, "Category must be one of: #{VALID_CATEGORIES.map { |c| "\"#{c}\"" }.join(', ')}"
-      end
-
-      # A country code stays a string. An argument that starts with "{" is
-      # parsed as a JSON object, and one that starts with "@" is read as a
-      # JSON file, the way --output-schema works.
-      def parse_user_location(value)
-        return JSON.parse(File.read(value[1..])) if value.start_with?("@")
-        return JSON.parse(value) if value.start_with?("{")
-
-        value
       end
 
       def validate_compliance(compliance)

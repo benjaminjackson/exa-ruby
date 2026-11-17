@@ -184,18 +184,15 @@ class Exa::CLI::GetContentsTest < Minitest::Test
   end
 
   def test_exe_reads_url_after_options_that_take_values
-    posted_body = nil
-    stub_request(:post, "https://api.exa.ai/contents")
-      .with { |request| posted_body = JSON.parse(request.body) }
-      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    posted = stub_contents_and_capture_body
 
     run_exe_in_process(
       "exa-ai-get-contents", "--api-key", "test_key", "--text", "--text-max-characters", "3000",
       "https://www.anthropic.com/research"
     )
 
-    assert_equal ["https://www.anthropic.com/research"], posted_body["urls"]
-    assert_equal({ "maxCharacters" => 3000 }, posted_body["text"])
+    assert_equal ["https://www.anthropic.com/research"], posted[:body]["urls"]
+    assert_equal({ "maxCharacters" => 3000 }, posted[:body]["text"])
   end
 
   def test_cli_help_lists_spec_catch_up_flags
@@ -208,22 +205,16 @@ class Exa::CLI::GetContentsTest < Minitest::Test
   end
 
   def test_client_get_contents_with_only_ids_sends_no_urls
-    posted_body = nil
-    stub_request(:post, "https://api.exa.ai/contents")
-      .with { |request| posted_body = JSON.parse(request.body) }
-      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    posted = stub_contents_and_capture_body
 
     Exa::Client.new(api_key: "test_key").get_contents(ids: ["doc_1"])
 
-    assert_equal ["doc_1"], posted_body["ids"]
-    refute posted_body.key?("urls")
+    assert_equal ["doc_1"], posted[:body]["ids"]
+    refute posted[:body].key?("urls")
   end
 
   def test_exe_sends_new_flags_in_request_body
-    posted_body = nil
-    stub_request(:post, "https://api.exa.ai/contents")
-      .with { |request| posted_body = JSON.parse(request.body) }
-      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    posted = stub_contents_and_capture_body
 
     run_exe_in_process(
       "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key",
@@ -234,37 +225,31 @@ class Exa::CLI::GetContentsTest < Minitest::Test
       "--highlights-verbosity", "low"
     )
 
-    assert_equal ["https://www.anthropic.com/research"], posted_body["urls"]
-    assert_equal 24, posted_body["maxAgeHours"]
-    assert_equal "2026-01-01T00:00:00Z", posted_body["snapshotAsOf"]
-    assert_equal "user_42", posted_body["userIdentifier"]
-    assert_equal "hipaa", posted_body["compliance"]
-    assert_equal({ "verbosity" => "compact" }, posted_body["text"])
-    assert_equal({ "query" => "funding", "maxCharacters" => 300, "verbosity" => "low" }, posted_body["highlights"])
+    assert_equal ["https://www.anthropic.com/research"], posted[:body]["urls"]
+    assert_equal 24, posted[:body]["maxAgeHours"]
+    assert_equal "2026-01-01T00:00:00Z", posted[:body]["snapshotAsOf"]
+    assert_equal "user_42", posted[:body]["userIdentifier"]
+    assert_equal "hipaa", posted[:body]["compliance"]
+    assert_equal({ "verbosity" => "compact" }, posted[:body]["text"])
+    assert_equal({ "query" => "funding", "maxCharacters" => 300, "verbosity" => "low" }, posted[:body]["highlights"])
     assert_requested :post, "https://api.exa.ai/contents", headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" }
   end
 
   def test_exe_sends_plain_highlights_as_true
-    posted_body = nil
-    stub_request(:post, "https://api.exa.ai/contents")
-      .with { |request| posted_body = JSON.parse(request.body) }
-      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    posted = stub_contents_and_capture_body
 
     run_exe_in_process("exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", "--highlights")
 
-    assert_equal true, posted_body["highlights"]
+    assert_equal true, posted[:body]["highlights"]
   end
 
   def test_exe_sends_ids_without_urls
-    posted_body = nil
-    stub_request(:post, "https://api.exa.ai/contents")
-      .with { |request| posted_body = JSON.parse(request.body) }
-      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    posted = stub_contents_and_capture_body
 
     run_exe_in_process("exa-ai-get-contents", "--ids", "doc_1,doc_2", "--api-key", "test_key")
 
-    assert_equal %w[doc_1 doc_2], posted_body["ids"]
-    refute posted_body.key?("urls")
+    assert_equal %w[doc_1 doc_2], posted[:body]["ids"]
+    refute posted[:body].key?("urls")
   end
 
   def test_exe_errors_when_neither_urls_nor_ids_given
@@ -295,5 +280,17 @@ class Exa::CLI::GetContentsTest < Minitest::Test
 
     assert_raises(ArgumentError) { Exa::Client.new(api_key: "test_key").get_contents(text: true) }
     assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
+  private
+
+  # Stubs /contents and returns a Hash whose :body is set to the parsed
+  # JSON request body once a request is made.
+  def stub_contents_and_capture_body
+    posted = {}
+    stub_request(:post, "https://api.exa.ai/contents")
+      .with { |request| posted[:body] = JSON.parse(request.body) }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    posted
   end
 end

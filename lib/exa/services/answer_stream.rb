@@ -44,14 +44,12 @@ module Exa
         {}
       end
 
-      # Raises Exa::Error when a chunk is an error event, otherwise yields it.
+      # Raises Exa::Error when a chunk is an error event.
       # /search sends {"type":"error","error":{"message":...}}; /answer sends
       # {"tag":"ERROR","payload":{"error":{"code":...,"message":...}}}.
-      def yield_chunk(data)
+      def raise_if_error_chunk(data)
         raise Exa::Error, data.dig("error", "message") if data["type"] == "error"
         raise Exa::Error, data.dig("payload", "error", "message") if data["tag"] == "ERROR"
-
-        yield(data)
       end
 
       def process_sse_buffer
@@ -86,7 +84,8 @@ module Exa
               json_str = line.sub(/^data: /, "").strip
               begin
                 data = JSON.parse(json_str)
-                yield_chunk(data) { |chunk| yield(chunk) }
+                raise_if_error_chunk(data)
+                yield(data)
               rescue JSON::ParserError
                 # Skip lines that aren't valid JSON
               end
@@ -103,7 +102,8 @@ module Exa
             json_str = line.sub(/^data: /, "").strip
             begin
               data = JSON.parse(json_str)
-              yield_chunk(data) { |chunk| yield(chunk) }
+              raise_if_error_chunk(data)
+              yield(data)
             rescue JSON::ParserError
               # Skip lines that aren't valid JSON
             end

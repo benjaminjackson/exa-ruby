@@ -2,10 +2,9 @@
 # frozen_string_literal: true
 
 require "exa-ai"
+require_relative "../lib/exa/cli/search_parser"
 
-VALID_TEXT_VERBOSITY = %w[compact standard full].freeze
 VALID_HIGHLIGHTS_VERBOSITY = %w[low medium high].freeze
-VALID_COMPLIANCE = %w[hipaa].freeze
 
 # Raises ArgumentError unless value is one of the allowed values for flag.
 def validate_choice(flag, value, allowed)
@@ -112,7 +111,7 @@ def parse_args(args)
       i += 2
     when "--compliance"
       compliance = args[i + 1]
-      validate_choice("--compliance", compliance, VALID_COMPLIANCE)
+      validate_choice("--compliance", compliance, Exa::CLI::SearchParser::VALID_COMPLIANCE)
       i += 2
     when "--highlights"
       highlights = true
@@ -129,7 +128,7 @@ def parse_args(args)
       i += 2
     when "--text-verbosity"
       text_verbosity = args[i + 1]
-      validate_choice("--text-verbosity", text_verbosity, VALID_TEXT_VERBOSITY)
+      validate_choice("--text-verbosity", text_verbosity, Exa::CLI::SearchParser::VALID_TEXT_VERBOSITY)
       i += 2
     when "--help", "-h"
       print_help
