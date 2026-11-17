@@ -5,10 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Tech startups in NYC","count":1},"enrichments":[{"description":"Primary
-        contact email","format":"text"},{"description":"Company size","format":"options","options":[{"label":"1-10
-        employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+
-        employees"}]}]}'
+      string: '{"search":{"query":"Tech startups in NYC","count":1},"enrichments":[{"description":"Primary contact email","format":"text"},{"description":"Company size","format":"options","options":[{"label":"1-10 employees"},{"label":"11-50 employees"},{"label":"51-200 employees"},{"label":"201+ employees"}]}],"metadata":{"test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"

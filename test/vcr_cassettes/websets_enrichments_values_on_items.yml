@@ -5,9 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"AI/ML infrastructure companies with venture funding","count":1},"enrichments":[{"description":"Find
-        the company''s headquarters location","format":"text"},{"description":"Find
-        the company''s website URL","format":"url"}]}'
+      string: '{"search":{"query":"AI/ML infrastructure companies with venture funding","count":1},"enrichments":[{"description":"Find the company''s headquarters location","format":"text"},{"description":"Find the company''s website URL","format":"url"}],"metadata":{"test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"

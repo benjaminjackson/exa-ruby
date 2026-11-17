@@ -5,8 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"enterprise AI/ML infrastructure startups with Series
-        A funding","count":2}}'
+      string: '{"search":{"query":"enterprise AI/ML infrastructure startups with Series A funding","count":2},"metadata":{"test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"

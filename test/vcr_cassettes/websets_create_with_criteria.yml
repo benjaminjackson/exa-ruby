@@ -5,8 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Marketing agencies in the US","count":1,"criteria":[{"description":"focused
-        on consumer products"},{"description":"at least 50 employees"}]}}'
+      string: '{"search":{"query":"Marketing agencies in the US","count":1,"criteria":[{"description":"focused on consumer products"},{"description":"at least 50 employees"}]},"metadata":{"test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
