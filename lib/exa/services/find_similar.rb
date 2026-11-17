@@ -2,6 +2,8 @@
 
 require_relative "../resources/find_similar_result"
 
+require_relative "parameter_converter"
+
 module Exa
   module Services
     class FindSimilar
@@ -11,7 +13,7 @@ module Exa
       end
 
       def call
-        response = @connection.post("/findSimilar", @params)
+        response = @connection.post("/findSimilar", ParameterConverter.convert(@params))
         body = response.body
 
         Resources::FindSimilarResult.new(

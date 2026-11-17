@@ -207,7 +207,7 @@ begin
   params[:include_text] = args[:include_text] if args[:include_text]
   params[:exclude_text] = args[:exclude_text] if args[:exclude_text]
   contents = build_contents(args)
-  params.merge!(contents) if contents
+  params[:contents] = contents if contents
 
   # Execute find_similar
   result = client.find_similar(args[:url], **params)

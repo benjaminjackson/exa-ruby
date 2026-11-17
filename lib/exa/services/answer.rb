@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "parameter_converter"
+
 module Exa
   module Services
     class Answer
@@ -9,7 +11,7 @@ module Exa
       end
 
       def call
-        response = @connection.post("/answer", @params)
+        response = @connection.post("/answer", ParameterConverter.convert_keys(@params))
         body = response.body
 
         Resources::Answer.new(
