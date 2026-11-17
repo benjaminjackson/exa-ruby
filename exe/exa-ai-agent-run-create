@@ -3,25 +3,12 @@
 
 require "exa-ai"
 
-# Parse a JSON flag value: inline JSON, or @path to read JSON from a file.
-def parse_json_arg(value, flag_name)
-  json = value.to_s.start_with?("@") ? File.read(value.to_s[1..]) : value.to_s
-  JSON.parse(json)
-rescue JSON::ParserError => e
-  $stderr.puts "Error: #{flag_name} is not valid JSON (#{e.message})"
-  exit 1
-rescue Errno::ENOENT
-  $stderr.puts "Error: #{flag_name} file not found: #{value.to_s[1..]}"
-  exit 1
-end
-
-# Parse a numeric flag value with the given block, for example
-# { |text| Float(text) }. Prints one error line and exits 1 when the block
-# raises ArgumentError because the value is not a number.
-def parse_number_arg(value, flag_name)
-  yield value.to_s
+# Parse --max-cost-dollars, the only option in the gem that takes a decimal
+# number, so it stays here instead of in Exa::CLI::Base.
+def parse_float(flag, value)
+  Float(Exa::CLI::Base.option_value(flag, value))
 rescue ArgumentError
-  $stderr.puts "Error: #{flag_name} must be a number (got #{value.inspect})"
+  warn "Error: #{flag} must be a number (got #{value.inspect})"
   exit 1
 end
 
@@ -52,25 +39,25 @@ def parse_args(argv)
       args[:data_sources] = argv[i + 1].to_s.split(",").map { |s| { provider: s.strip } }
       i += 2
     when "--input-data"
-      args[:input_data] = parse_json_arg(argv[i + 1], "--input-data")
+      args[:input_data] = Exa::CLI::Base.parse_json_or_file("--input-data", argv[i + 1])
       i += 2
     when "--input-exclusion"
-      args[:input_exclusion] = parse_json_arg(argv[i + 1], "--input-exclusion")
+      args[:input_exclusion] = Exa::CLI::Base.parse_json_or_file("--input-exclusion", argv[i + 1])
       i += 2
     when "--previous-run-id"
       args[:previous_run_id] = argv[i + 1]
       i += 2
     when "--output-schema"
-      args[:output_schema] = parse_json_arg(argv[i + 1], "--output-schema")
+      args[:output_schema] = Exa::CLI::Base.parse_json_or_file("--output-schema", argv[i + 1])
       i += 2
     when "--max-cost-dollars"
-      args[:max_cost_dollars] = parse_number_arg(argv[i + 1], "--max-cost-dollars") { |text| Float(text) }
+      args[:max_cost_dollars] = parse_float("--max-cost-dollars", argv[i + 1])
       i += 2
     when "--max-duration-seconds"
-      args[:max_duration_seconds] = parse_number_arg(argv[i + 1], "--max-duration-seconds") { |text| Integer(text, 10) }
+      args[:max_duration_seconds] = Exa::CLI::Base.parse_integer("--max-duration-seconds", argv[i + 1])
       i += 2
     when "--metadata"
-      metadata = parse_json_arg(argv[i + 1], "--metadata")
+      metadata = Exa::CLI::Base.parse_json_or_file("--metadata", argv[i + 1])
       unless metadata.is_a?(Hash)
         $stderr.puts "Error: --metadata must be a JSON object"
         exit 1

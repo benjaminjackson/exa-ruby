@@ -1,6 +1,7 @@
 require "json"
 
 require_relative "parameter_converter"
+require_relative "agent_run_stream"
 
 module Exa
   module Services
@@ -22,14 +23,15 @@ module Exa
           req.options.on_data = proc do |chunk, _size, env|
             next env[:error_body] = "#{env[:error_body]}#{chunk}" if env&.status.to_i >= 400
 
-            # Add chunk to buffer and process complete SSE events
-            @buffer += chunk
+            # Normalise CRLF line endings. A "\r" at the end of one chunk joins
+            # its "\n" here once the next chunk arrives.
+            @buffer = (@buffer + chunk).gsub("\r\n", "\n")
             process_sse_buffer(&block)
           end
         end
 
-        # Process any remaining data in buffer after stream ends
-        process_remaining_buffer(&block) if @buffer.length.positive?
+        # Process the last frame when the stream ends without a blank line
+        process_frame(@buffer, &block)
       end
 
       private
@@ -62,62 +64,36 @@ module Exa
         raise Exa::Error, message || JSON.generate(data)
       end
 
-      def process_sse_buffer
-        # Extract and process complete SSE events (separated by \n\n)
-        # If buffer ends with \n\n, all parts are complete.
-        # Otherwise, keep the last part in buffer for next chunk.
-
+      # Yields each complete frame in the buffer and keeps the incomplete
+      # tail for the next chunk.
+      def process_sse_buffer(&block)
         return if @buffer.empty?
 
         parts = @buffer.split("\n\n")
 
-        # When split by a delimiter, if the string ends with the delimiter,
-        # split doesn't add a trailing empty string. So we need to track
-        # whether the buffer ended with \n\n to know if the last part is incomplete.
         if @buffer.end_with?("\n\n")
-          # All parts are complete, clear buffer
           complete_parts = parts
           @buffer = ""
         else
-          # Last part is incomplete, keep it for next chunk
           complete_parts = parts[0...-1]
           @buffer = parts.last || ""
         end
 
-        # Process all complete events
-        complete_parts.each do |event|
-          next if event.empty?
-
-          lines = event.split("\n")
-          lines.each do |line|
-            if line.start_with?("data: ")
-              json_str = line.sub(/^data: /, "").strip
-              begin
-                data = JSON.parse(json_str)
-                raise_if_error_chunk(data)
-                yield(data)
-              rescue JSON::ParserError
-                # Skip lines that aren't valid JSON
-              end
-            end
-          end
-        end
+        complete_parts.each { |frame| process_frame(frame, &block) }
       end
 
-      def process_remaining_buffer
-        # Process any remaining incomplete buffer
-        lines = @buffer.split("\n")
-        lines.each do |line|
-          if line.start_with?("data: ")
-            json_str = line.sub(/^data: /, "").strip
-            begin
-              data = JSON.parse(json_str)
-              raise_if_error_chunk(data)
-              yield(data)
-            rescue JSON::ParserError
-              # Skip lines that aren't valid JSON
-            end
-          end
+      # Yields the data of each data: line in one SSE frame. Each line is its
+      # own JSON value, so a bad line does not drop a good one next to it.
+      # Lines that are not data lines, and data that is not JSON such as
+      # [DONE], are skipped.
+      def process_frame(frame)
+        frame.split("\n").each do |line|
+          event = AgentRunStream.parse_frame(line)
+          next unless event
+
+          data = event[1]
+          raise_if_error_chunk(data)
+          yield(data)
         end
       end
     end

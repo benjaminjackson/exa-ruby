@@ -20,18 +20,6 @@ class AgentRunCreateExeTest < Minitest::Test
     `ruby -I#{LIB} #{EXE} #{quoted} 2>&1`
   end
 
-  # Runs the executable inside this process, so WebMock stubs apply to its
-  # request. ARGV is restored afterwards; returns [stdout, stderr].
-  def run_exe_in_process(*args)
-    original_argv = ARGV.dup
-    ARGV.replace(args)
-    capture_io { load EXE }
-  rescue SystemExit => e
-    flunk "the executable exited with status #{e.status}"
-  ensure
-    ARGV.replace(original_argv)
-  end
-
   def stub_agent_run_create
     stub_request(:post, AGENT_RUNS_URL).to_return(
       status: 200,
@@ -94,8 +82,11 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_budget_flags_send_budget_in_request_body
     stub_agent_run_create
 
-    run_exe_in_process("--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
-                       "--max-cost-dollars", "5", "--max-duration-seconds", "1800")
+    _, stderr, status = run_exe_in_process(
+      "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
+      "--max-cost-dollars", "5", "--max-duration-seconds", "1800"
+    )
+    assert_nil status, stderr
 
     assert_equal({ "maxCostDollars" => 5.0, "maxDurationSeconds" => 1800 }, request_body["budget"])
   end
@@ -103,8 +94,11 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_one_budget_flag_sends_only_that_budget_field
     stub_agent_run_create
 
-    run_exe_in_process("--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
-                       "--max-cost-dollars", "2.5")
+    _, stderr, status = run_exe_in_process(
+      "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
+      "--max-cost-dollars", "2.5"
+    )
+    assert_nil status, stderr
 
     assert_equal({ "maxCostDollars" => 2.5 }, request_body["budget"])
   end
@@ -112,7 +106,10 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_no_budget_flags_send_no_budget
     stub_agent_run_create
 
-    run_exe_in_process("--query", "Series A climate tech startups in Europe", "--api-key", "test_key")
+    _, stderr, status = run_exe_in_process(
+      "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key"
+    )
+    assert_nil status, stderr
 
     refute request_body.key?("budget")
   end
@@ -120,8 +117,11 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_metadata_and_user_identifier_go_in_request_body
     stub_agent_run_create
 
-    run_exe_in_process("--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
-                       "--metadata", '{"crm_account_id":"acct_42"}', "--user-identifier", "user_7f3a")
+    _, stderr, status = run_exe_in_process(
+      "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
+      "--metadata", '{"crm_account_id":"acct_42"}', "--user-identifier", "user_7f3a"
+    )
+    assert_nil status, stderr
 
     body = request_body
     assert_equal({ "crm_account_id" => "acct_42" }, body["metadata"])
@@ -149,8 +149,11 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_max_duration_seconds_reads_leading_zero_as_decimal
     stub_agent_run_create
 
-    run_exe_in_process("--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
-                       "--max-duration-seconds", "0300")
+    _, stderr, status = run_exe_in_process(
+      "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
+      "--max-duration-seconds", "0300"
+    )
+    assert_nil status, stderr
 
     assert_equal({ "maxDurationSeconds" => 300 }, request_body["budget"])
   end

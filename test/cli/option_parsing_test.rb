@@ -13,7 +13,7 @@ class OptionParsingTest < Minitest::Test
   OPTION_TO_I = /(?:\.shift|\[i \+ 1\])&?\.to_i\b/
 
   def test_no_command_defines_its_own_json_parsing_helper
-    offenders = COMMAND_FILES.select { |path| File.read(path).include?("def parse_json_or_file") }
+    offenders = COMMAND_FILES.select { |path| File.read(path).match?(/def parse_json_(or_file|arg)\b/) }
 
     assert_empty offenders.map { |path| File.basename(path) }
   end

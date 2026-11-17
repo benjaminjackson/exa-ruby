@@ -26,13 +26,7 @@ while args.any?
   when "--output-format"
     output_format = args.shift
   when "--limit"
-    value = args.shift
-    begin
-      list_params[:limit] = Integer(value.to_s, 10)
-    rescue ArgumentError
-      warn "Error: --limit must be a number (got #{value.inspect})"
-      exit 1
-    end
+    list_params[:limit] = Exa::CLI::Base.parse_integer("--limit", args.shift)
   when "--cursor"
     list_params[:cursor] = args.shift
   when "--help", "-h"
