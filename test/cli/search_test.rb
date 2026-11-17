@@ -415,6 +415,30 @@ class Exa::CLI::SearchTest < Minitest::Test
     end
   end
 
+  # --api-key and --output-format must stop when their value is missing or
+  # is the next flag, instead of taking that flag as the value.
+  {
+    "missing" => [],
+    "another_flag" => ["--print-request"]
+  }.each do |case_name, after_flag|
+    %w[--api-key --output-format].each do |flag|
+      define_method("test_exe_stops_when_#{flag.delete_prefix('--').tr('-', '_')}_value_is_#{case_name}") do
+        stub_request(:post, "https://api.exa.ai/search")
+          .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+        stdout, stderr, exit_status = run_exe_in_process(
+          "exa-ai-search", "AI/ML infrastructure startups with Series A funding", flag, *after_flag
+        )
+
+        assert_equal 1, exit_status
+        assert_empty stdout
+        assert_equal 1, stderr.lines.count
+        assert_match(/\AError: #{flag} needs a value/, stderr)
+        assert_not_requested :post, "https://api.exa.ai/search"
+      end
+    end
+  end
+
   private
 
   # Helper method to parse command-line arguments

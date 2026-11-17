@@ -143,10 +143,10 @@ module Exa
             @args[:exclude_domains] = Exa::CLI::Base.option_value("--exclude-domains", @argv[i + 1]).split(",").map(&:strip)
             i += 2
           when "--api-key"
-            @args[:api_key] = @argv[i + 1]
+            @args[:api_key] = Exa::CLI::Base.text_value("--api-key", @argv[i + 1])
             i += 2
           when "--output-format"
-            @args[:output_format] = @argv[i + 1]
+            @args[:output_format] = Exa::CLI::Base.text_value("--output-format", @argv[i + 1])
             i += 2
           when "--start-published-date"
             @args[:start_published_date] = @argv[i + 1]
