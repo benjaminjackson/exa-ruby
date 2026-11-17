@@ -35,4 +35,30 @@ class OptionParsingTest < Minitest::Test
     assert_equal "Error: --limit must be a number (got \"abc\")\n", stderr
     assert_not_requested :any, /exa\.ai/
   end
+
+  def test_search_monitor_create_rejects_include_domains_without_value
+    stub_request(:any, /exa\.ai/)
+
+    _stdout, stderr, status = run_exe_in_process(
+      "exa-ai-search-monitor-create", "--api-key", "test_key",
+      "--query", "AI/ML infrastructure startups with Series A funding",
+      "--webhook-url", "https://example.com/hook", "--include-domains"
+    )
+
+    assert_equal 1, status
+    assert_equal "Error: --include-domains needs a value\n", stderr
+    assert_not_requested :any, /exa\.ai/
+  end
+
+  def test_get_contents_rejects_ids_without_value
+    stub_request(:any, /exa\.ai/)
+
+    _stdout, stderr, status = run_exe_in_process(
+      "exa-ai-get-contents", "https://example.com/article", "--api-key", "test_key", "--ids"
+    )
+
+    assert_equal 1, status
+    assert_equal "Error: --ids needs a value\n", stderr
+    assert_not_requested :any, /exa\.ai/
+  end
 end

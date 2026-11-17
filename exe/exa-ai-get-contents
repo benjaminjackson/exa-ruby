@@ -93,7 +93,7 @@ def parse_args(args)
       output_format = args[i + 1]
       i += 2
     when "--ids"
-      ids = args[i + 1].split(",").map(&:strip)
+      ids = Exa::CLI::Base.option_value("--ids", args[i + 1]).split(",").map(&:strip)
       i += 2
     when "--max-age-hours"
       max_age_hours = Exa::CLI::Base.parse_integer("--max-age-hours", args[i + 1])

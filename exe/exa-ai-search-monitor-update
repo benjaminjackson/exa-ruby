@@ -29,7 +29,7 @@ while args.any?
   when "--webhook-url"
     webhook[:url] = args.shift
   when "--webhook-events"
-    webhook[:events] = args.shift.split(",").map(&:strip)
+    webhook[:events] = Exa::CLI::Base.option_value("--webhook-events", args.shift).split(",").map(&:strip)
   when "--output-schema"
     params[:output_schema] = Exa::CLI::Base.parse_json_or_file("--output-schema", args.shift)
   when "--metadata"

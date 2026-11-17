@@ -64,10 +64,10 @@ module Exa
             @args[:category] = category
             i += 2
           when "--include-domains"
-            @args[:include_domains] = @argv[i + 1].split(",").map(&:strip)
+            @args[:include_domains] = Exa::CLI::Base.option_value("--include-domains", @argv[i + 1]).split(",").map(&:strip)
             i += 2
           when "--exclude-domains"
-            @args[:exclude_domains] = @argv[i + 1].split(",").map(&:strip)
+            @args[:exclude_domains] = Exa::CLI::Base.option_value("--exclude-domains", @argv[i + 1]).split(",").map(&:strip)
             i += 2
           when "--api-key"
             @args[:api_key] = @argv[i + 1]
