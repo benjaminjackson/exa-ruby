@@ -27,6 +27,7 @@ module Exa
         deep_convert(params)
       end
 
+      # Instance form of ParameterConverter.convert_contents.
       def convert_contents(params)
         deep_convert(consolidate_content_params(params))
       end
@@ -95,10 +96,11 @@ module Exa
         result
       end
 
-      # Merges an incoming option value into an existing one, so the order of
-      # text: true and text_max_characters: 500 does not matter. Two Hashes
+      # Merges an incoming option value into an existing one. Two Hashes
       # merge key by key; a Hash beats a bare true, which only turns the
-      # option on; otherwise the incoming value wins. A value under a
+      # option on, so text: true and text_max_characters: 500 give the same
+      # result in either order. Otherwise the incoming value wins, so with
+      # false or nil the key given last wins. A value under a
       # protected key (a user's schema) is replaced, never merged.
       def merge_option(existing, incoming)
         return existing if existing.is_a?(Hash) && incoming == true

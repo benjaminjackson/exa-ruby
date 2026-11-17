@@ -3,10 +3,12 @@
 require "test_helper"
 
 class ParameterConverterTest < Minitest::Test
+  # Calls ParameterConverter.convert, which search and find_similar use.
   def convert(params)
     Exa::Services::ParameterConverter.convert(params)
   end
 
+  # Calls ParameterConverter.convert_contents, which get_contents uses.
   def convert_contents(params)
     Exa::Services::ParameterConverter.convert_contents(params)
   end
