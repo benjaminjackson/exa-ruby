@@ -177,6 +177,22 @@ class GetContentsTest < Minitest::Test
     assert_instance_of Hash, result.results.first["summary"]
   end
 
+  def test_call_keeps_summary_that_is_not_json_as_received
+    results = [
+      { "url" => "https://example.com/a", "summary" => '{"funding":"Series A"}' },
+      { "url" => "https://example.com/b", "summary" => "" },
+      { "url" => "https://example.com/c", "summary" => "The page lists open roles." }
+    ]
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: results }.to_json, headers: { "Content-Type" => "application/json" })
+
+    result = Exa::Services::GetContents.new(@connection, urls: results.map { |item| item["url"] },
+                                                         summary: { schema: { type: "object" } }).call
+
+    assert_equal [{ "funding" => "Series A" }, "", "The page lists open roles."],
+                 result.results.map { |item| item["summary"] }
+  end
+
   def test_call_does_not_parse_summary_without_schema
     plain_summary = "This page lists job openings at the company."
 

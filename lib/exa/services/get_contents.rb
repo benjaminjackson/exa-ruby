@@ -19,7 +19,7 @@ module Exa
         body = response.body
 
         results = body["results"]
-        results = parse_json_summaries(results) if summary_schema?(request_body)
+        results = Search.parse_json_summaries(results) if summary_schema?(request_body)
 
         Resources::ContentsResult.new(
           results: results,
@@ -37,16 +37,6 @@ module Exa
       # body, so a flat summary_schema: counts as well as summary: {schema:}.
       def summary_schema?(request_body)
         request_body[:summary].is_a?(Hash) && request_body[:summary][:schema]
-      end
-
-      def parse_json_summaries(results)
-        results&.map do |r|
-          if r["summary"].is_a?(String)
-            r.merge("summary" => JSON.parse(r["summary"]))
-          else
-            r
-          end
-        end
       end
     end
   end

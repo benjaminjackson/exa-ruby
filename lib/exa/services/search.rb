@@ -31,6 +31,23 @@ module Exa
         raise ArgumentError, "Invalid search type: '#{search_type}'. Must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
       end
 
+      # Parses each result whose summary is a String of JSON into a Hash. The
+      # API returns a summary as JSON text when the request gave a schema.
+      # A summary that is not valid JSON, an empty one included, is kept as
+      # received, so one bad summary does not lose the other results.
+      # GetContents uses it too.
+      def self.parse_json_summaries(results)
+        results&.map do |r|
+          next r unless r["summary"].is_a?(String)
+
+          begin
+            r.merge("summary" => JSON.parse(r["summary"]))
+          rescue JSON::ParserError
+            r
+          end
+        end
+      end
+
       def initialize(connection, **params)
         @connection = connection
         @params = normalize_params(params)
@@ -45,7 +62,7 @@ module Exa
         body = response.body
 
         results = body["results"]
-        results = parse_json_summaries(results) if summary_schema?
+        results = self.class.parse_json_summaries(results) if summary_schema?(request_body)
 
         Resources::SearchResult.new(
           results: results,
@@ -74,18 +91,14 @@ module Exa
         self.class.validate_search_type!(@params[:type])
       end
 
-      def summary_schema?
-        @params[:summary].is_a?(Hash) && @params[:summary][:schema]
-      end
+      # True when the request asked for JSON summaries. Reads the converted
+      # body, so a flat summary_schema: and a caller's contents: {summary:
+      # {schema:}} count as well as summary: {schema:}.
+      def summary_schema?(request_body)
+        contents = request_body[:contents]
+        return false unless contents.is_a?(Hash)
 
-      def parse_json_summaries(results)
-        results&.map do |r|
-          if r["summary"].is_a?(String)
-            r.merge("summary" => JSON.parse(r["summary"]))
-          else
-            r
-          end
-        end
+        contents[:summary].is_a?(Hash) && contents[:summary][:schema]
       end
     end
   end
