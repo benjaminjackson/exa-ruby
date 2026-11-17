@@ -16,7 +16,7 @@ class Exa::CLI::FindSimilarExeTest < Minitest::Test
     )
 
     assert_equal 1, exit_status
-    assert_includes stderr, "Category must be one of"
+    assert_includes stderr, "--category must be one of"
     assert_not_requested :post, "https://api.exa.ai/findSimilar"
   end
 

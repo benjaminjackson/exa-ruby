@@ -139,6 +139,10 @@ begin
   $stdout.flush
   Exa::CLI::Formatters::SearchFormatter.print_warnings(result)
 
+rescue ArgumentError => e
+  # A flag value the parser rejects, such as --type quick, or no query.
+  $stderr.puts "Error: #{e.message}"
+  exit 1
 rescue Exa::ConfigurationError => e
   $stderr.puts "Configuration error: #{e.message}"
   exit 1

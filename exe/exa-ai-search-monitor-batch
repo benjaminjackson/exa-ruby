@@ -15,13 +15,13 @@ while args.any?
   arg = args.shift
   case arg
   when "--api-key"
-    api_key = args.shift
+    api_key = Exa::CLI::Base.text_value("--api-key", args.shift)
   when "--action"
-    action = args.shift
+    action = Exa::CLI::Base.text_value("--action", args.shift)
   when "--status"
-    filter[:status] = args.shift
+    filter[:status] = Exa::CLI::Base.text_value("--status", args.shift)
   when "--name"
-    filter[:name] = args.shift
+    filter[:name] = Exa::CLI::Base.text_value("--name", args.shift)
   when "--metadata"
     filter[:metadata] = Exa::CLI::Base.parse_json_or_file("--metadata", args.shift)
   when "--limit"
@@ -29,7 +29,7 @@ while args.any?
   when "--execute"
     dry_run = false
   when "--output-format"
-    output_format = args.shift
+    output_format = Exa::CLI::Base.text_value("--output-format", args.shift)
   when "--help", "-h"
     puts <<~HELP
       Usage: exa-ai search-monitor-batch --action ACTION [filter options] [options]

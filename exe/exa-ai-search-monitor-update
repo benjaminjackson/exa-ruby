@@ -15,27 +15,27 @@ while args.any?
   arg = args.shift
   case arg
   when "--api-key"
-    api_key = args.shift
+    api_key = Exa::CLI::Base.text_value("--api-key", args.shift)
   when "--name"
-    params[:name] = args.shift
+    params[:name] = Exa::CLI::Base.text_value("--name", args.shift)
   when "--status"
-    params[:status] = args.shift
+    params[:status] = Exa::CLI::Base.text_value("--status", args.shift)
   when "--query"
-    search[:query] = args.shift
+    search[:query] = Exa::CLI::Base.text_value("--query", args.shift)
   when "--period"
-    params[:trigger] = { type: "interval", period: args.shift }
+    params[:trigger] = { type: "interval", period: Exa::CLI::Base.text_value("--period", args.shift) }
   when "--remove-trigger"
     params[:trigger] = nil
   when "--webhook-url"
-    webhook[:url] = args.shift
+    webhook[:url] = Exa::CLI::Base.text_value("--webhook-url", args.shift)
   when "--webhook-events"
-    webhook[:events] = Exa::CLI::Base.option_value("--webhook-events", args.shift).split(",").map(&:strip)
+    webhook[:events] = Exa::CLI::Base.text_value("--webhook-events", args.shift).split(",").map(&:strip)
   when "--output-schema"
     params[:output_schema] = Exa::CLI::Base.parse_json_or_file("--output-schema", args.shift)
   when "--metadata"
     params[:metadata] = Exa::CLI::Base.parse_json_or_file("--metadata", args.shift)
   when "--output-format"
-    output_format = args.shift
+    output_format = Exa::CLI::Base.text_value("--output-format", args.shift)
   when "--help", "-h"
     puts <<~HELP
       Usage: exa-ai search-monitor-update ID [options]

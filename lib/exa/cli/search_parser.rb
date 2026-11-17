@@ -89,11 +89,11 @@ module Exa
 
       # A country code stays a string. An argument that starts with "{" is
       # parsed as a JSON object, and one that starts with "@" is read as a
-      # JSON file, the way --output-schema works. A missing value gives nil,
-      # so the flag is skipped. Bad JSON or an unreadable file exits 1 with
-      # one error line that names --user-location.
+      # JSON file, the way --output-schema works. Callers check for a missing
+      # value first with Base.text_value, so value is never nil. Bad JSON or
+      # an unreadable file exits 1 with one error line that names
+      # --user-location.
       def self.parse_user_location(value)
-        return nil if value.nil?
         return Base.parse_json_or_file("--user-location", value) if value.start_with?("@", "{")
 
         value
@@ -228,23 +228,28 @@ module Exa
         raise ArgumentError, "Query is required" if @args[:query].nil? || @args[:query].empty?
       end
 
+      # Raises ArgumentError unless search_type is a value the API accepts.
+      # The message names the flag, so exa-ai search prints it as is.
       def validate_search_type(search_type)
         return if VALID_SEARCH_TYPES.include?(search_type)
 
-        raise ArgumentError, "Search type must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
+        raise ArgumentError, "--type must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
       end
 
+      # Raises ArgumentError unless category is a value the API accepts.
+      # The message names the flag, so exa-ai search prints it as is.
       def validate_category(category)
         return if VALID_CATEGORIES.include?(category)
 
-        raise ArgumentError, "Category must be one of: #{VALID_CATEGORIES.map { |c| "\"#{c}\"" }.join(', ')}"
+        raise ArgumentError, "--category must be one of: #{VALID_CATEGORIES.map { |c| "\"#{c}\"" }.join(', ')}"
       end
 
       # Raises ArgumentError unless compliance is a value the API accepts.
+      # The message names the flag, so exa-ai search prints it as is.
       def validate_compliance(compliance)
         return if VALID_COMPLIANCE.include?(compliance)
 
-        raise ArgumentError, "Compliance must be one of: #{VALID_COMPLIANCE.join(', ')}"
+        raise ArgumentError, "--compliance must be one of: #{VALID_COMPLIANCE.join(', ')}"
       end
     end
   end
