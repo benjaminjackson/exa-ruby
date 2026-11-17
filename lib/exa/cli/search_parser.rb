@@ -51,7 +51,7 @@ module Exa
           arg = @argv[i]
           case arg
           when "--num-results"
-            @args[:num_results] = @argv[i + 1].to_i
+            @args[:num_results] = Exa::CLI::Base.parse_integer("--num-results", @argv[i + 1])
             i += 2
           when "--type"
             search_type = @argv[i + 1]
@@ -64,10 +64,10 @@ module Exa
             @args[:category] = category
             i += 2
           when "--include-domains"
-            @args[:include_domains] = @argv[i + 1].split(",").map(&:strip)
+            @args[:include_domains] = Exa::CLI::Base.option_value("--include-domains", @argv[i + 1]).split(",").map(&:strip)
             i += 2
           when "--exclude-domains"
-            @args[:exclude_domains] = @argv[i + 1].split(",").map(&:strip)
+            @args[:exclude_domains] = Exa::CLI::Base.option_value("--exclude-domains", @argv[i + 1]).split(",").map(&:strip)
             i += 2
           when "--api-key"
             @args[:api_key] = @argv[i + 1]
@@ -99,7 +99,7 @@ module Exa
             @args[:text] = true
             i += 1
           when "--text-max-characters"
-            @args[:text_max_characters] = @argv[i + 1].to_i
+            @args[:text_max_characters] = Exa::CLI::Base.parse_integer("--text-max-characters", @argv[i + 1])
             i += 2
           when "--include-html-tags"
             @args[:include_html_tags] = true
@@ -111,43 +111,38 @@ module Exa
             @args[:summary_query] = @argv[i + 1]
             i += 2
           when "--summary-schema"
-            schema_arg = @argv[i + 1]
-            @args[:summary_schema] = if schema_arg.start_with?("@")
-                                      JSON.parse(File.read(schema_arg[1..]))
-                                    else
-                                      JSON.parse(schema_arg)
-                                    end
+            @args[:summary_schema] = Exa::CLI::Base.parse_json_or_file("--summary-schema", @argv[i + 1])
             i += 2
           when "--context"
             @args[:context] = true
             i += 1
           when "--context-max-characters"
-            @args[:context_max_characters] = @argv[i + 1].to_i
+            @args[:context_max_characters] = Exa::CLI::Base.parse_integer("--context-max-characters", @argv[i + 1])
             i += 2
           when "--subpages"
-            @args[:subpages] = @argv[i + 1].to_i
+            @args[:subpages] = Exa::CLI::Base.parse_integer("--subpages", @argv[i + 1])
             i += 2
           when "--subpage-target"
             @args[:subpage_target] ||= []
             @args[:subpage_target] << @argv[i + 1]
             i += 2
           when "--links"
-            @args[:links] = @argv[i + 1].to_i
+            @args[:links] = Exa::CLI::Base.parse_integer("--links", @argv[i + 1])
             i += 2
           when "--image-links"
-            @args[:image_links] = @argv[i + 1].to_i
+            @args[:image_links] = Exa::CLI::Base.parse_integer("--image-links", @argv[i + 1])
             i += 2
           when "--highlights"
             @args[:highlights] = true
             i += 1
           when "--highlights-max-characters"
-            @args[:highlights_max_characters] = @argv[i + 1].to_i
+            @args[:highlights_max_characters] = Exa::CLI::Base.parse_integer("--highlights-max-characters", @argv[i + 1])
             i += 2
           when "--highlights-num-sentences"
-            @args[:highlights_num_sentences] = @argv[i + 1].to_i
+            @args[:highlights_num_sentences] = Exa::CLI::Base.parse_integer("--highlights-num-sentences", @argv[i + 1])
             i += 2
           when "--highlights-per-url"
-            @args[:highlights_per_url] = @argv[i + 1].to_i
+            @args[:highlights_per_url] = Exa::CLI::Base.parse_integer("--highlights-per-url", @argv[i + 1])
             i += 2
           when "--highlights-query"
             @args[:highlights_query] = @argv[i + 1]
@@ -156,22 +151,17 @@ module Exa
             @args[:livecrawl] = true
             i += 1
           when "--livecrawl-timeout"
-            @args[:livecrawl_timeout] = @argv[i + 1].to_i
+            @args[:livecrawl_timeout] = Exa::CLI::Base.parse_integer("--livecrawl-timeout", @argv[i + 1])
             i += 2
           when "--max-age-hours"
-            @args[:max_age_hours] = @argv[i + 1].to_i
+            @args[:max_age_hours] = Exa::CLI::Base.parse_integer("--max-age-hours", @argv[i + 1])
             i += 2
           when "--additional-queries"
             @args[:additional_queries] ||= []
             @args[:additional_queries] << @argv[i + 1]
             i += 2
           when "--output-schema"
-            schema_arg = @argv[i + 1]
-            @args[:output_schema] = if schema_arg.start_with?("@")
-                                      JSON.parse(File.read(schema_arg[1..]))
-                                    else
-                                      JSON.parse(schema_arg)
-                                    end
+            @args[:output_schema] = Exa::CLI::Base.parse_json_or_file("--output-schema", @argv[i + 1])
             i += 2
           when "--user-location"
             @args[:user_location] = self.class.parse_user_location(@argv[i + 1])

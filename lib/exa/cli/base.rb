@@ -52,6 +52,43 @@ module Exa
         require "toon" unless defined?(Toon)
         Toon.encode(data)
       end
+
+      # Return the value given after a flag. When the flag came last with no
+      # value, print one error line and exit, so the command does not crash
+      # later with a NoMethodError on nil. Exits instead of raising because
+      # many commands parse their options outside their rescue block.
+      def self.option_value(flag, value)
+        fail_with("#{flag} needs a value") if value.nil?
+
+        value
+      end
+
+      # Parse a base-10 integer option. "abc", "10abc", "1.5" and "0x10" all
+      # fail with one error line instead of silently becoming a number.
+      def self.parse_integer(flag, value)
+        Integer(option_value(flag, value), 10)
+      rescue ArgumentError
+        fail_with("#{flag} must be a number (got #{value.inspect})")
+      end
+
+      # Parse a JSON option. A value that starts with @ names a file to read
+      # the JSON from. Hash keys stay strings unless symbolize_names is true.
+      def self.parse_json_or_file(flag, value, symbolize_names: false)
+        text = option_value(flag, value)
+        text = File.read(text[1..]) if text.start_with?("@")
+        JSON.parse(text, symbolize_names: symbolize_names)
+      rescue JSON::ParserError => e
+        fail_with("#{flag} is not valid JSON: #{e.message.lines.first.strip}")
+      rescue SystemCallError => e
+        fail_with("#{flag} file could not be read: #{e.message}")
+      end
+
+      # Print one error line to stderr and exit with status 1.
+      def self.fail_with(message)
+        warn "Error: #{message}"
+        exit 1
+      end
+      private_class_method :fail_with
     end
   end
 end

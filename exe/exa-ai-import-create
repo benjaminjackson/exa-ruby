@@ -6,37 +6,6 @@ require "exa-ai"
 VALID_FORMATS = Exa::Constants::Websets::IMPORT_FORMATS
 VALID_ENTITY_TYPES = Exa::Constants::Websets::ENTITY_TYPES
 
-# Recursively convert hash keys from strings to symbols
-def deep_symbolize_keys(obj)
-  case obj
-  when Hash
-    obj.each_with_object({}) do |(key, value), result|
-      result[key.to_sym] = deep_symbolize_keys(value)
-    end
-  when Array
-    obj.map { |item| deep_symbolize_keys(item) }
-  else
-    obj
-  end
-end
-
-# Parse JSON string or load from file (supports @file.json syntax)
-def parse_json_or_file(value)
-  json_data = if value.start_with?("@")
-                file_path = value[1..]
-                JSON.parse(File.read(file_path))
-              else
-                JSON.parse(value)
-              end
-  deep_symbolize_keys(json_data)
-rescue JSON::ParserError => e
-  $stderr.puts "Error: Invalid JSON: #{e.message}"
-  exit 1
-rescue Errno::ENOENT => e
-  $stderr.puts "Error: File not found: #{e.message}"
-  exit 1
-end
-
 # Parse command-line arguments
 def parse_args(argv)
   # Check for help first
@@ -92,7 +61,7 @@ def parse_args(argv)
     arg = argv[i]
     case arg
     when "--count"
-      args[:count] = argv[i + 1].to_i
+      args[:count] = Exa::CLI::Base.parse_integer("--count", argv[i + 1])
       i += 2
     when "--title"
       args[:title] = argv[i + 1]
@@ -107,10 +76,10 @@ def parse_args(argv)
       args[:entity_description] = argv[i + 1]
       i += 2
     when "--csv-identifier"
-      args[:csv_identifier] = argv[i + 1].to_i
+      args[:csv_identifier] = Exa::CLI::Base.parse_integer("--csv-identifier", argv[i + 1])
       i += 2
     when "--metadata"
-      args[:metadata] = parse_json_or_file(argv[i + 1])
+      args[:metadata] = Exa::CLI::Base.parse_json_or_file("--metadata", argv[i + 1], symbolize_names: true)
       i += 2
     when "--quiet"
       args[:quiet] = true

@@ -3,18 +3,6 @@
 
 require "exa-ai"
 
-# Parse a JSON string, or read JSON from a file when the value starts with @.
-def parse_json_or_file(value)
-  text = value.start_with?("@") ? File.read(value[1..]) : value
-  JSON.parse(text)
-rescue JSON::ParserError => e
-  warn "Error: Invalid JSON: #{e.message}"
-  exit 1
-rescue Errno::ENOENT => e
-  warn "Error: File not found: #{e.message}"
-  exit 1
-end
-
 api_key = nil
 output_format = "json"
 search = {}
@@ -30,23 +18,23 @@ while args.any?
   when "--query"
     search[:query] = args.shift
   when "--num-results"
-    search[:num_results] = args.shift.to_i
+    search[:num_results] = Exa::CLI::Base.parse_integer("--num-results", args.shift)
   when "--include-domains"
-    search[:include_domains] = args.shift.split(",").map(&:strip)
+    search[:include_domains] = Exa::CLI::Base.option_value("--include-domains", args.shift).split(",").map(&:strip)
   when "--exclude-domains"
-    search[:exclude_domains] = args.shift.split(",").map(&:strip)
+    search[:exclude_domains] = Exa::CLI::Base.option_value("--exclude-domains", args.shift).split(",").map(&:strip)
   when "--webhook-url"
     webhook[:url] = args.shift
   when "--webhook-events"
-    webhook[:events] = args.shift.split(",").map(&:strip)
+    webhook[:events] = Exa::CLI::Base.option_value("--webhook-events", args.shift).split(",").map(&:strip)
   when "--period"
     params[:trigger] = { type: "interval", period: args.shift }
   when "--name"
     params[:name] = args.shift
   when "--output-schema"
-    params[:output_schema] = parse_json_or_file(args.shift)
+    params[:output_schema] = Exa::CLI::Base.parse_json_or_file("--output-schema", args.shift)
   when "--metadata"
-    params[:metadata] = parse_json_or_file(args.shift)
+    params[:metadata] = Exa::CLI::Base.parse_json_or_file("--metadata", args.shift)
   when "--output-format"
     output_format = args.shift
   when "--help", "-h"

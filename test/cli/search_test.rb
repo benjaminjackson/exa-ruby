@@ -23,6 +23,17 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_equal 10, args[:num_results]
   end
 
+  def test_rejects_num_results_that_is_not_a_number
+    _stdout, stderr = capture_io do
+      error = assert_raises(SystemExit) do
+        parse_search_args(["AI/ML infrastructure startups", "--num-results", "abc"])
+      end
+      assert_equal 1, error.status
+    end
+
+    assert_equal "Error: --num-results must be a number (got \"abc\")\n", stderr
+  end
+
   def test_parses_type_flag
     %w[auto lite deep-lite neural fast deep deep-reasoning instant].each do |type|
       args = parse_search_args(["test query", "--type", type])

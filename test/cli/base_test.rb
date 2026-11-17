@@ -89,4 +89,95 @@ class Exa::CLI::BaseTest < Minitest::Test
     assert_includes output, "key"
     assert_includes output, "value"
   end
+
+  def test_option_value_returns_the_value
+    assert_equal "ai.com", Exa::CLI::Base.option_value("--include-domains", "ai.com")
+  end
+
+  def test_option_value_exits_when_value_missing
+    stderr, status = capture_exit { Exa::CLI::Base.option_value("--include-domains", nil) }
+
+    assert_equal 1, status
+    assert_equal "Error: --include-domains needs a value\n", stderr
+  end
+
+  def test_parse_integer_returns_integer
+    assert_equal 25, Exa::CLI::Base.parse_integer("--limit", "25")
+  end
+
+  def test_parse_integer_exits_when_value_missing
+    stderr, status = capture_exit { Exa::CLI::Base.parse_integer("--limit", nil) }
+
+    assert_equal 1, status
+    assert_equal "Error: --limit needs a value\n", stderr
+  end
+
+  def test_parse_integer_rejects_values_that_are_not_base_ten_integers
+    ["abc", "12abc", "1.5", "0x10"].each do |value|
+      stderr, status = capture_exit { Exa::CLI::Base.parse_integer("--limit", value) }
+
+      assert_equal 1, status, value
+      assert_equal "Error: --limit must be a number (got #{value.inspect})\n", stderr
+    end
+  end
+
+  def test_parse_json_or_file_parses_inline_json_with_string_keys
+    result = Exa::CLI::Base.parse_json_or_file("--metadata", '{"team":"research"}')
+
+    assert_equal({ "team" => "research" }, result)
+  end
+
+  def test_parse_json_or_file_symbolizes_nested_keys_when_asked
+    result = Exa::CLI::Base.parse_json_or_file(
+      "--criteria", '[{"description":"Series A funding"}]', symbolize_names: true
+    )
+
+    assert_equal [{ description: "Series A funding" }], result
+  end
+
+  def test_parse_json_or_file_reads_file_after_at_sign
+    Tempfile.create(["schema", ".json"]) do |file|
+      file.write('{"type":"object"}')
+      file.flush
+
+      result = Exa::CLI::Base.parse_json_or_file("--output-schema", "@#{file.path}")
+
+      assert_equal({ "type" => "object" }, result)
+    end
+  end
+
+  def test_parse_json_or_file_exits_on_invalid_json
+    stderr, status = capture_exit { Exa::CLI::Base.parse_json_or_file("--metadata", "{not json") }
+
+    assert_equal 1, status
+    assert_match(/\AError: --metadata is not valid JSON: .+\n\z/, stderr)
+  end
+
+  def test_parse_json_or_file_exits_when_file_missing
+    stderr, status = capture_exit do
+      Exa::CLI::Base.parse_json_or_file("--metadata", "@/nonexistent/metadata.json")
+    end
+
+    assert_equal 1, status
+    assert_match(%r{\AError: --metadata file could not be read: .*/nonexistent/metadata\.json\n\z}, stderr)
+  end
+
+  def test_parse_json_or_file_exits_when_value_missing
+    stderr, status = capture_exit { Exa::CLI::Base.parse_json_or_file("--metadata", nil) }
+
+    assert_equal 1, status
+    assert_equal "Error: --metadata needs a value\n", stderr
+  end
+
+  private
+
+  # Run the block, which must exit, and return its stderr and exit status.
+  def capture_exit
+    status = nil
+    _stdout, stderr = capture_io do
+      error = assert_raises(SystemExit) { yield }
+      status = error.status
+    end
+    [stderr, status]
+  end
 end

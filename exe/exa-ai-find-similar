@@ -18,7 +18,7 @@ def parse_args(argv)
     arg = argv[i]
     case arg
     when "--num-results"
-      args[:num_results] = argv[i + 1].to_i
+      args[:num_results] = Exa::CLI::Base.parse_integer("--num-results", argv[i + 1])
       i += 2
     when "--exclude-source-domain"
       args[:exclude_source_domain] = true
@@ -33,10 +33,10 @@ def parse_args(argv)
       args[:category] = category
       i += 2
     when "--include-domains"
-      args[:include_domains] = argv[i + 1].split(",").map(&:strip)
+      args[:include_domains] = Exa::CLI::Base.option_value("--include-domains", argv[i + 1]).split(",").map(&:strip)
       i += 2
     when "--exclude-domains"
-      args[:exclude_domains] = argv[i + 1].split(",").map(&:strip)
+      args[:exclude_domains] = Exa::CLI::Base.option_value("--exclude-domains", argv[i + 1]).split(",").map(&:strip)
       i += 2
     when "--start-published-date"
       args[:start_published_date] = argv[i + 1]
@@ -62,7 +62,7 @@ def parse_args(argv)
       args[:text] = true
       i += 1
     when "--text-max-characters"
-      args[:text_max_characters] = argv[i + 1].to_i
+      args[:text_max_characters] = Exa::CLI::Base.parse_integer("--text-max-characters", argv[i + 1])
       i += 2
     when "--include-html-tags"
       args[:include_html_tags] = true
@@ -74,12 +74,7 @@ def parse_args(argv)
       args[:summary_query] = argv[i + 1]
       i += 2
     when "--summary-schema"
-      schema_arg = argv[i + 1]
-      args[:summary_schema] = if schema_arg.start_with?("@")
-                               JSON.parse(File.read(schema_arg[1..]))
-                             else
-                               JSON.parse(schema_arg)
-                             end
+      args[:summary_schema] = Exa::CLI::Base.parse_json_or_file("--summary-schema", argv[i + 1])
       i += 2
     when "--api-key"
       args[:api_key] = argv[i + 1]

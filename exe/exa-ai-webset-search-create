@@ -3,37 +3,6 @@
 
 require "exa-ai"
 
-# Recursively convert hash keys from strings to symbols
-def deep_symbolize_keys(obj)
-  case obj
-  when Hash
-    obj.each_with_object({}) do |(key, value), result|
-      result[key.to_sym] = deep_symbolize_keys(value)
-    end
-  when Array
-    obj.map { |item| deep_symbolize_keys(item) }
-  else
-    obj
-  end
-end
-
-# Parse JSON string or load from file (supports @file.json syntax)
-def parse_json_or_file(value)
-  json_data = if value.start_with?("@")
-                file_path = value[1..]
-                JSON.parse(File.read(file_path))
-              else
-                JSON.parse(value)
-              end
-  deep_symbolize_keys(json_data)
-rescue JSON::ParserError => e
-  $stderr.puts "Error: Invalid JSON: #{e.message}"
-  exit 1
-rescue Errno::ENOENT => e
-  $stderr.puts "Error: File not found: #{e.message}"
-  exit 1
-end
-
 # Parse command-line arguments
 def parse_args(argv)
   args = {
@@ -52,7 +21,7 @@ def parse_args(argv)
       args[:query] = argv[i + 1]
       i += 2
     when "--count"
-      args[:count] = argv[i + 1].to_i
+      args[:count] = Exa::CLI::Base.parse_integer("--count", argv[i + 1])
       i += 2
     when "--entity"
       args[:entity] = argv[i + 1]
@@ -61,13 +30,13 @@ def parse_args(argv)
       args[:entity_description] = argv[i + 1]
       i += 2
     when "--criteria"
-      args[:criteria] = parse_json_or_file(argv[i + 1])
+      args[:criteria] = Exa::CLI::Base.parse_json_or_file("--criteria", argv[i + 1], symbolize_names: true)
       i += 2
     when "--exclude"
-      args[:exclude] = parse_json_or_file(argv[i + 1])
+      args[:exclude] = Exa::CLI::Base.parse_json_or_file("--exclude", argv[i + 1], symbolize_names: true)
       i += 2
     when "--scope"
-      args[:scope] = parse_json_or_file(argv[i + 1])
+      args[:scope] = Exa::CLI::Base.parse_json_or_file("--scope", argv[i + 1], symbolize_names: true)
       i += 2
     when "--recall"
       args[:recall] = true
@@ -81,7 +50,7 @@ def parse_args(argv)
       args[:behavior] = behavior
       i += 2
     when "--metadata"
-      args[:metadata] = parse_json_or_file(argv[i + 1])
+      args[:metadata] = Exa::CLI::Base.parse_json_or_file("--metadata", argv[i + 1], symbolize_names: true)
       i += 2
     when "--api-key"
       args[:api_key] = argv[i + 1]

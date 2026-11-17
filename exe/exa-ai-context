@@ -20,9 +20,9 @@ def parse_args(args)
       api_key = args[i]
     when "--tokens-num"
       i += 1
-      tokens_num = args[i]
+      tokens_num = Exa::CLI::Base.option_value("--tokens-num", args[i])
       # Convert to integer if it's not "dynamic"
-      tokens_num = tokens_num.to_i unless tokens_num.downcase == "dynamic"
+      tokens_num = Exa::CLI::Base.parse_integer("--tokens-num", tokens_num) unless tokens_num.downcase == "dynamic"
     when "--output-format"
       i += 1
       output_format = args[i]

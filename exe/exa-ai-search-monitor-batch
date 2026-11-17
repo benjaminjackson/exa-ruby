@@ -3,18 +3,6 @@
 
 require "exa-ai"
 
-# Parse a JSON string, or read JSON from a file when the value starts with @.
-def parse_json_or_file(value)
-  text = value.start_with?("@") ? File.read(value[1..]) : value
-  JSON.parse(text)
-rescue JSON::ParserError => e
-  warn "Error: Invalid JSON: #{e.message}"
-  exit 1
-rescue Errno::ENOENT => e
-  warn "Error: File not found: #{e.message}"
-  exit 1
-end
-
 api_key = nil
 output_format = "json"
 action = nil
@@ -35,9 +23,9 @@ while args.any?
   when "--name"
     filter[:name] = args.shift
   when "--metadata"
-    filter[:metadata] = parse_json_or_file(args.shift)
+    filter[:metadata] = Exa::CLI::Base.parse_json_or_file("--metadata", args.shift)
   when "--limit"
-    limit = args.shift.to_i
+    limit = Exa::CLI::Base.parse_integer("--limit", args.shift)
   when "--execute"
     dry_run = false
   when "--output-format"
