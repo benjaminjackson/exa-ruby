@@ -54,11 +54,14 @@ module Exa
 
     # Get full page contents for URLs
     #
-    # @param urls [Array<String>, String] URL or URLs to fetch contents for
+    # @param urls [Array<String>, String, nil] URL or URLs to fetch contents for.
+    #   Leave out when passing :ids instead; urls is sent only when given.
     # @param options [Hash] Fetch options
-    # @return [Resources::ContentCollection] Collection of page contents
-    def get_contents(urls, **options)
-      Services::GetContents.new(connection, urls: urls, **options).call
+    # @option options [Array<String>] :ids Document IDs from earlier searches
+    # @return [Resources::ContentsResult] Page contents with metadata
+    def get_contents(urls = nil, **options)
+      options = options.merge(urls: urls) if urls
+      Services::GetContents.new(connection, **options).call
     end
 
     # Get AI-generated answers to a query

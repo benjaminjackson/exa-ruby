@@ -3,9 +3,30 @@
 
 require "exa-ai"
 
+VALID_TEXT_VERBOSITY = %w[compact standard full].freeze
+VALID_HIGHLIGHTS_VERBOSITY = %w[low medium high].freeze
+VALID_COMPLIANCE = %w[hipaa].freeze
+
+# Raises ArgumentError unless value is one of the allowed values for flag.
+def validate_choice(flag, value, allowed)
+  return if allowed.include?(value)
+
+  raise ArgumentError, "#{flag} must be one of: #{allowed.join(', ')}"
+end
+
 # Parse command line arguments
 def parse_args(args)
+  urls = []
   ids = []
+  max_age_hours = nil
+  snapshot_as_of = nil
+  user_identifier = nil
+  compliance = nil
+  highlights = false
+  highlights_query = nil
+  highlights_max_characters = nil
+  highlights_verbosity = nil
+  text_verbosity = nil
   api_key = nil
   text = false
   text_max_characters = nil
@@ -77,21 +98,61 @@ def parse_args(args)
     when "--output-format"
       output_format = args[i + 1]
       i += 2
+    when "--ids"
+      ids = args[i + 1].split(",").map(&:strip)
+      i += 2
+    when "--max-age-hours"
+      max_age_hours = args[i + 1].to_i
+      i += 2
+    when "--snapshot-as-of"
+      snapshot_as_of = args[i + 1]
+      i += 2
+    when "--user-identifier"
+      user_identifier = args[i + 1]
+      i += 2
+    when "--compliance"
+      compliance = args[i + 1]
+      validate_choice("--compliance", compliance, VALID_COMPLIANCE)
+      i += 2
+    when "--highlights"
+      highlights = true
+      i += 1
+    when "--highlights-query"
+      highlights_query = args[i + 1]
+      i += 2
+    when "--highlights-max-characters"
+      highlights_max_characters = args[i + 1].to_i
+      i += 2
+    when "--highlights-verbosity"
+      highlights_verbosity = args[i + 1]
+      validate_choice("--highlights-verbosity", highlights_verbosity, VALID_HIGHLIGHTS_VERBOSITY)
+      i += 2
+    when "--text-verbosity"
+      text_verbosity = args[i + 1]
+      validate_choice("--text-verbosity", text_verbosity, VALID_TEXT_VERBOSITY)
+      i += 2
     when "--help", "-h"
       print_help
       exit 0
     else
-      # First non-flag argument is the IDs (comma-separated or single)
-      if ids.empty?
-        ids_arg = arg
-        ids = ids_arg.include?(",") ? ids_arg.split(",").map(&:strip) : [ids_arg]
-      end
+      # First non-flag argument is the URLs (comma-separated or single)
+      urls = arg.split(",").map(&:strip) if urls.empty?
       i += 1
     end
   end
 
   {
+    urls: urls,
     ids: ids,
+    max_age_hours: max_age_hours,
+    snapshot_as_of: snapshot_as_of,
+    user_identifier: user_identifier,
+    compliance: compliance,
+    highlights: highlights,
+    highlights_query: highlights_query,
+    highlights_max_characters: highlights_max_characters,
+    highlights_verbosity: highlights_verbosity,
+    text_verbosity: text_verbosity,
     api_key: api_key,
     text: text,
     text_max_characters: text_max_characters,
@@ -116,10 +177,11 @@ def build_contents_params(args)
 
   # Text options
   if args[:text]
-    if args[:text_max_characters] || args[:include_html_tags]
+    if args[:text_max_characters] || args[:include_html_tags] || args[:text_verbosity]
       params[:text] = {}
       params[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
       params[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
+      params[:text][:verbosity] = args[:text_verbosity] if args[:text_verbosity]
     else
       params[:text] = true
     end
@@ -156,8 +218,27 @@ def build_contents_params(args)
     params[:extras][:image_links] = args[:image_links] if args[:image_links]
   end
 
-  # Livecrawl options
+  # Highlights options
+  if args[:highlights]
+    if args[:highlights_query] || args[:highlights_max_characters] || args[:highlights_verbosity]
+      params[:highlights] = {}
+      params[:highlights][:query] = args[:highlights_query] if args[:highlights_query]
+      params[:highlights][:max_characters] = args[:highlights_max_characters] if args[:highlights_max_characters]
+      params[:highlights][:verbosity] = args[:highlights_verbosity] if args[:highlights_verbosity]
+    else
+      params[:highlights] = true
+    end
+  end
+
+  # Livecrawl and freshness options
   params[:livecrawl_timeout] = args[:livecrawl_timeout] if args[:livecrawl_timeout]
+  params[:max_age_hours] = args[:max_age_hours] if args[:max_age_hours]
+  params[:snapshot_as_of] = args[:snapshot_as_of] if args[:snapshot_as_of]
+
+  # Request options
+  params[:ids] = args[:ids] if args[:ids].any?
+  params[:user_identifier] = args[:user_identifier] if args[:user_identifier]
+  params[:compliance] = args[:compliance] if args[:compliance]
 
   params.empty? ? nil : params
 end
@@ -165,17 +246,19 @@ end
 def print_help
   puts <<~HELP
     Usage: exa-ai get-contents <urls> [options]
+           exa-ai get-contents --ids ID1,ID2 [options]
 
-    Retrieve full page contents from URLs
+    Retrieve full page contents from URLs or document IDs
 
     Arguments:
-      urls                   Comma-separated list of URLs (required)
+      urls                   Comma-separated list of URLs (required unless --ids is given)
 
     Options:
       Text Extraction:
         --text                       Include page text in response
         --text-max-characters N      Max characters for page text
         --include-html-tags          Include HTML tags in text extraction
+        --text-verbosity LEVEL       Text verbosity: compact, standard, or full
 
       Summary:
         --summary                    Include AI-generated summary
@@ -194,8 +277,22 @@ def print_help
         --links N                    Number of links to extract per result
         --image-links N              Number of image links to extract
 
-      Livecrawl:
+      Highlights:
+        --highlights                 Include text highlights in results
+        --highlights-query QUERY     Custom query for highlight extraction
+        --highlights-max-characters N  Max characters per highlight
+        --highlights-verbosity LEVEL Highlights verbosity: low, medium, or high
+                                     (sends the Exa-Beta dynamic highlights header)
+
+      Livecrawl and Freshness:
         --livecrawl-timeout N        Timeout for livecrawling in milliseconds
+        --max-age-hours N            Maximum age of cached content in hours
+        --snapshot-as-of DATE        Return page contents as of this time (ISO 8601)
+
+      Request:
+        --ids ID1,ID2                Comma-separated document IDs from earlier searches
+        --user-identifier ID         Your identifier for the end user
+        --compliance MODE            Compliance mode: hipaa (enterprise only)
 
       General:
         --api-key KEY                Exa API key (or set EXA_API_KEY env var)
@@ -216,9 +313,9 @@ begin
   # Parse arguments
   options = parse_args(ARGV)
 
-  # Validate IDs
-  if options[:ids].empty?
-    $stderr.puts "Error: URLs argument required"
+  # Validate that there is something to fetch
+  if options[:urls].empty? && options[:ids].empty?
+    $stderr.puts "Error: URLs argument or --ids required"
     $stderr.puts ""
     $stderr.puts "Run 'exa-ai get-contents --help' for usage information."
     exit 1
@@ -238,12 +335,16 @@ begin
   params ||= {}
 
   # Call API
-  result = client.get_contents(options[:ids], **params)
+  urls = options[:urls].empty? ? nil : options[:urls]
+  result = client.get_contents(urls, **params)
 
   # Format and output
   output = Exa::CLI::Formatters::ContentsFormatter.format(result, output_format)
   puts output
   $stdout.flush
+rescue ArgumentError => e
+  $stderr.puts "Error: #{e.message}"
+  exit 1
 rescue Exa::ConfigurationError => e
   $stderr.puts "Configuration error: #{e.message}"
   exit 1
