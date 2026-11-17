@@ -328,4 +328,15 @@ class GetContentsTest < Minitest::Test
 
     assert_equal json_summary, result.results.first["summary"]
   end
+
+  def test_call_sends_a_zero_max_age_hours
+    sent_body = nil
+    stub_request(:post, "https://api.exa.ai/contents")
+      .with { |request| sent_body = request.body }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(@connection, urls: ["https://exa.ai"], max_age_hours: 0).call
+
+    assert_equal 0, JSON.parse(sent_body)["maxAgeHours"]
+  end
 end

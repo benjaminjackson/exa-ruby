@@ -1150,6 +1150,20 @@ class SearchTest < Minitest::Test
     assert_equal({ "funding" => "Series A" }, result.results.first["summary"])
   end
 
+  def test_call_sends_nested_text_options_under_contents
+    sent_body = nil
+    stub_request(:post, "https://api.exa.ai/search")
+      .with { |request| sent_body = request.body }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(
+      @connection,
+      query: "venture-backed SaaS companies", num_results: 2, text: { max_characters: 500 }
+    ).call
+
+    assert_equal({ "maxCharacters" => 500 }, JSON.parse(sent_body).dig("contents", "text"))
+  end
+
   private
 
   # Stubs /search to return one result whose summary is a JSON string, then
@@ -1176,4 +1190,5 @@ class SearchTest < Minitest::Test
     Exa::Services::Search.new(@connection, query: "Series A climate tech startups", **params).call
     posted_body
   end
+
 end

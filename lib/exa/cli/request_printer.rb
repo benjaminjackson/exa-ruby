@@ -10,6 +10,8 @@ module Exa
     # out on the wire. $stderr is read on each call, so a test that swaps
     # $stderr sees the output.
     class RequestPrinter < Faraday::Middleware
+      # Print the encoded body, when the request has one, then pass the
+      # request on to the rest of the stack.
       def call(env)
         $stderr.puts env.body if env.body
         @app.call(env)
