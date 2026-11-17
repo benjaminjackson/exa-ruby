@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **`exa-ai get-contents` missing values** - when `--snapshot-as-of`, `--summary-query`, `--highlights-query` or `--subpage-target` has no value, or the next argument is another flag, `get-contents` now stops with one error line and sends no request. Before, it sent the request without the value. `get-contents` now reads its contents flags with the same code as `search` and `find-similar`, so the `--text-verbosity` error text is now the same as on `search`
 - **`exa-ai get-contents` unknown flags** - `get-contents` now stops at a flag it does not know with `Error: unknown option <flag>` and sends no request. This includes `--livecrawl`, `--highlights-num-sentences` and `--highlights-per-url`, which `search` and `find-similar` take but `get-contents` does not. Before, `get-contents` dropped an unknown flag in silence, or used it as the URL when it came first
+- **`exa-ai get-contents` own flag values and one-dash options** - when `--ids`, `--api-key`, `--output-format` or `--user-identifier` has no value, or the next argument is another flag, `get-contents` now stops with `Error: <flag> needs a value` and sends no request. An argument that starts with one dash, such as `-t`, now stops with `Error: unknown option <arg>`; `-h` still prints help. Before, `get-contents` used the next flag as the value, and used a one-dash argument as the URL
 
 ## [0.14.0] - 2026-11-16
 

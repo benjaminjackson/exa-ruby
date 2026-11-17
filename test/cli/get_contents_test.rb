@@ -411,6 +411,56 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     end
   end
 
+  %w[--ids --api-key --output-format --user-identifier].each do |flag|
+    flag_name = flag.delete_prefix("--").tr("-", "_")
+
+    define_method("test_exe_stops_when_own_flag_#{flag_name}_comes_last_with_no_value") do
+      stub_request(:post, "https://api.exa.ai/contents")
+
+      _stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", flag
+      )
+
+      assert_equal "Error: #{flag} needs a value\n", stderr
+      refute_equal 0, exit_status
+      assert_not_requested :post, "https://api.exa.ai/contents"
+    end
+
+    define_method("test_exe_stops_when_own_flag_#{flag_name}_is_followed_by_another_flag") do
+      stub_request(:post, "https://api.exa.ai/contents")
+
+      _stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", flag, "--summary"
+      )
+
+      assert_equal "Error: #{flag} needs a value (got the flag --summary)\n", stderr
+      refute_equal 0, exit_status
+      assert_not_requested :post, "https://api.exa.ai/contents"
+    end
+  end
+
+  def test_exe_rejects_a_one_dash_option_in_the_url_position
+    stub_request(:post, "https://api.exa.ai/contents")
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "-t", "https://www.anthropic.com/research", "--api-key", "test_key"
+    )
+
+    assert_equal "Error: unknown option -t\n", stderr
+    refute_equal 0, exit_status
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_prints_help_for_short_h_option
+    stub_request(:post, "https://api.exa.ai/contents")
+
+    stdout, _stderr, exit_status = run_exe_in_process("exa-ai-get-contents", "-h")
+
+    assert_includes stdout, "Usage: exa-ai get-contents"
+    assert_equal 0, exit_status
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
   def test_exe_rejects_unknown_option_before_the_url
     stub_request(:post, "https://api.exa.ai/contents")
 

@@ -65,16 +65,16 @@ def parse_args(args)
 
     case arg
     when "--api-key"
-      options[:api_key] = args[i + 1]
+      options[:api_key] = Exa::CLI::Base.text_value("--api-key", args[i + 1])
       i += 2
     when "--output-format"
-      options[:output_format] = args[i + 1]
+      options[:output_format] = Exa::CLI::Base.text_value("--output-format", args[i + 1])
       i += 2
     when "--ids"
-      options[:ids] = Exa::CLI::Base.option_value("--ids", args[i + 1]).split(",").map(&:strip)
+      options[:ids] = Exa::CLI::Base.text_value("--ids", args[i + 1]).split(",").map(&:strip)
       i += 2
     when "--user-identifier"
-      options[:user_identifier] = args[i + 1]
+      options[:user_identifier] = Exa::CLI::Base.text_value("--user-identifier", args[i + 1])
       i += 2
     when "--compliance"
       options[:compliance] = args[i + 1]
@@ -91,7 +91,9 @@ def parse_args(args)
       print_help
       exit 0
     else
-      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
+      # A URL never starts with a dash, so any dash argument left here
+      # (one dash or two) is an option this command does not know.
+      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("-")
 
       # First non-flag argument is the URLs (comma-separated or single)
       options[:urls] = arg.split(",").map(&:strip) if options[:urls].empty?
