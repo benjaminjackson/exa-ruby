@@ -92,11 +92,10 @@ class Exa::CLI::FlagsTableTest < Minitest::Test
       assert_equal table.map { |entry| entry[:flag] }.sort, help_lines_by_flag(exe_name).keys.sort
     end
 
-    define_method("test_#{command}_reason_is_set_exactly_when_a_deprecated_flag_has_no_replacement") do
+    define_method("test_#{command}_reason_is_only_set_on_a_deprecated_flag_with_no_replacement") do
       table.each do |entry|
         if entry[:deprecated] && entry[:replacement].nil?
-          assert_kind_of String, entry[:reason], entry[:flag]
-          refute_empty entry[:reason], entry[:flag]
+          assert(entry[:reason].nil? || !entry[:reason].empty?, entry[:flag])
         else
           assert_nil entry[:reason], entry[:flag]
         end

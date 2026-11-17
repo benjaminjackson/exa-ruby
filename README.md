@@ -236,7 +236,7 @@ Each entry has these keys, in this order:
 - `api_field`: the request body field the flag sets, as sent (camelCase, dotted path). It is `null` when the flag sets no field (`--api-key`, `--output-format`), and an array when the flag sets more than one (`--livecrawl`).
 - `deprecated`: `true` when the help text marks the flag deprecated.
 - `replacement`: what to type instead of a deprecated flag. It can be a phrase, such as `--max-age-hours 0 --livecrawl-timeout 5000`. It is `null` when there is no replacement.
-- `reason`: why a deprecated flag with no replacement is deprecated, such as `the API ignores it`. It is `null` for every other flag. A deprecated flag always has a `replacement` or a `reason`.
+- `reason`: why a deprecated flag with no replacement is deprecated, such as `the API ignores it`. It is `null` for every other flag, and for `--include-text` and `--exclude-text`, which have no replacement and no reason in the list.
 
 The commands reject any flag that is not in their list. The constants and the `--flags-json` output are public API: wrappers can rely on them instead of reading the gem's source.
 

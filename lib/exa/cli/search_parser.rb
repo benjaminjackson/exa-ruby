@@ -19,7 +19,7 @@ module Exa
       # flag sets (nil when it sets none, an Array when it sets several), and
       # replacement is what to type instead of a deprecated flag. reason says
       # why a deprecated flag with no replacement is deprecated (nil for every
-      # other flag). --help and
+      # other flag, and for a deprecated flag whose reason is not known). --help and
       # --flags-json are in the list, but exe/exa-ai-search handles them before
       # it calls the parser, which has no branch for them.
       FLAGS = [
@@ -34,10 +34,8 @@ module Exa
           reason: "the API ignores it and returns a warning" },
         { flag: "--end-crawl-date", api_field: "endCrawlDate", deprecated: true, replacement: nil,
           reason: "the API ignores it and returns a warning" },
-        { flag: "--include-text", api_field: "includeText", deprecated: true, replacement: nil,
-          reason: "it still works, but the match is approximate (word-level, not exact phrase)" },
-        { flag: "--exclude-text", api_field: "excludeText", deprecated: true, replacement: nil,
-          reason: "it still works, but the match is approximate (word-level, not exact phrase)" },
+        { flag: "--include-text", api_field: "includeText", deprecated: true, replacement: nil, reason: nil },
+        { flag: "--exclude-text", api_field: "excludeText", deprecated: true, replacement: nil, reason: nil },
         { flag: "--text", api_field: "contents.text", deprecated: false, replacement: nil, reason: nil },
         { flag: "--text-max-characters", api_field: "contents.text.maxCharacters", deprecated: false, replacement: nil, reason: nil },
         { flag: "--text-verbosity", api_field: "contents.text.verbosity", deprecated: false, replacement: nil, reason: nil },

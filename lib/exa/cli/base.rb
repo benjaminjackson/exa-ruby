@@ -111,7 +111,8 @@ module Exa
 
       # Print one stderr line for each deprecated flag the user typed, given
       # as flag table entries in command-line order. The line names the
-      # replacement, or the reason when there is none. A flag given twice
+      # replacement, or the reason when there is none (no advice at all when
+      # the table has neither). A flag given twice
       # gets one line. Without strict each line starts with "Warning:" and the
       # command goes on; with strict each starts with "Error:" and the
       # command exits 1, so wrappers can refuse deprecated flags. The lines go
@@ -123,7 +124,9 @@ module Exa
         prefix = strict ? "Error" : "Warning"
         entries.uniq.each do |entry|
           advice = entry[:replacement] ? "use #{entry[:replacement]}" : entry[:reason]
-          $stderr.puts "#{prefix}: #{entry[:flag]} is deprecated; #{advice}"
+          line = "#{prefix}: #{entry[:flag]} is deprecated"
+          line += "; #{advice}" if advice
+          $stderr.puts line
         end
         exit 1 if strict
       end
