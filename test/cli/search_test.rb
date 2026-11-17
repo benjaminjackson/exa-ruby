@@ -237,6 +237,19 @@ class Exa::CLI::SearchTest < Minitest::Test
     end
   end
 
+  def test_exe_rejects_invalid_user_location_json_with_one_line
+    stub_request(:post, "https://api.exa.ai/search")
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-search", "AI infrastructure startups", "--user-location", "{bad", "--api-key", "test_key"
+    )
+
+    assert_equal 1, exit_status
+    assert_equal 1, stderr.lines.count
+    assert_match(/\AError: --user-location is not valid JSON/, stderr)
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
+
   def test_help_lists_new_flags
     output = `bundle exec exe/exa-ai-search --help`
 
