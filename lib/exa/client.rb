@@ -54,11 +54,22 @@ module Exa
 
     # Get full page contents for URLs
     #
-    # @param urls [Array<String>, String] URL or URLs to fetch contents for
+    # @param urls [Array<String>, String, nil] URL or URLs to fetch contents for,
+    #   positional or as the urls: keyword. Leave out when passing :ids
+    #   instead; urls is sent only when given. Nil and empty count as missing.
     # @param options [Hash] Fetch options
-    # @return [Resources::ContentCollection] Collection of page contents
-    def get_contents(urls, **options)
-      Services::GetContents.new(connection, urls: urls, **options).call
+    # @option options [Array<String>] :ids Document IDs from earlier searches
+    # @raise [ArgumentError] when neither urls nor :ids is given
+    # @return [Resources::ContentsResult] Page contents with metadata
+    def get_contents(urls = nil, **options)
+      urls ||= options.delete(:urls)
+      urls = nil if urls.respond_to?(:empty?) && urls.empty?
+      ids = options[:ids]
+      ids = nil if ids.respond_to?(:empty?) && ids.empty?
+      raise ArgumentError, "get_contents requires urls or the ids: option" unless urls || ids
+
+      options = { urls: urls }.merge(options) if urls
+      Services::GetContents.new(connection, **options).call
     end
 
     # Get AI-generated answers to a query
@@ -84,6 +95,25 @@ module Exa
     # @return [void]
     def answer_stream(query, **options, &block)
       Services::AnswerStream.new(connection, query: query, **options).call(&block)
+    end
+
+    # Stream a search with a synthesized answer
+    #
+    # The API streams /search only when an output schema is set, so
+    # :output_schema is required.
+    #
+    # @param query [String] Search query
+    # @param params [Hash] Search parameters, as for #search
+    # @option params [Hash] :output_schema JSON schema for the synthesized output (required)
+    # @yield [chunk] Yields each server-sent event as it arrives
+    # @yieldparam chunk [Hash] Event with a "type" of text-delta, grounding,
+    #   results, stream-reset or done. Chunks are yielded as received, so a
+    #   summary requested with a schema arrives as a JSON string, not a Hash.
+    # @raise [ArgumentError] when :output_schema is missing
+    # @raise [Exa::Error] when the stream sends an error event
+    # @return [void]
+    def search_stream(query, **params, &block)
+      Services::SearchStream.new(connection, query: query, **params).call(&block)
     end
 
     # Create a new agent run

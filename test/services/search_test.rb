@@ -987,4 +987,144 @@ class SearchTest < Minitest::Test
     assert_equal plain_summary, result.results.first["summary"]
     assert_instance_of String, result.results.first["summary"]
   end
+
+  def test_accepts_lite_search_type
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(body: hash_including(type: "lite"))
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", type: "lite").call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_accepts_deep_lite_search_type
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(body: hash_including(type: "deep-lite"))
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", type: "deep-lite").call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_snapshot_as_of_goes_under_contents
+    body = posted_search_body(snapshot_as_of: "2026-01-01T00:00:00Z")
+
+    assert_equal "2026-01-01T00:00:00Z", body.dig("contents", "snapshotAsOf")
+    refute body.key?("snapshotAsOf")
+  end
+
+  def test_crawled_before_date_goes_under_contents
+    body = posted_search_body(crawled_before_date: "2026-01-01T00:00:00Z")
+
+    assert_equal "2026-01-01T00:00:00Z", body.dig("contents", "crawledBeforeDate")
+  end
+
+  def test_nested_text_link_style_goes_to_contents_text_link_style
+    body = posted_search_body(text: { link_style: "citation" })
+
+    assert_equal "citation", body.dig("contents", "text", "linkStyle")
+  end
+
+  def test_nested_highlights_verbosity_goes_to_contents_highlights_verbosity
+    body = posted_search_body(highlights: { verbosity: "high" })
+
+    assert_equal "high", body.dig("contents", "highlights", "verbosity")
+  end
+
+  def test_nested_extras_rich_image_links_goes_to_contents_extras_rich_image_links
+    body = posted_search_body(extras: { rich_image_links: 3 })
+
+    assert_equal 3, body.dig("contents", "extras", "richImageLinks")
+  end
+
+  def test_user_identifier_goes_to_user_identifier
+    body = posted_search_body(user_identifier: "user_42")
+
+    assert_equal "user_42", body["userIdentifier"]
+  end
+
+  def test_objective_and_compliance_go_to_top_level
+    body = posted_search_body(objective: "Find primary sources", compliance: "hipaa")
+
+    assert_equal "Find primary sources", body["objective"]
+    assert_equal "hipaa", body["compliance"]
+  end
+
+  def test_user_location_hash_is_sent_as_object
+    body = posted_search_body(user_location: { country: "US", latitude: 37.77, longitude: -122.42 })
+
+    assert_equal({ "country" => "US", "latitude" => 37.77, "longitude" => -122.42 }, body["userLocation"])
+  end
+
+  def test_flat_text_keys_fold_under_contents_text
+    body = posted_search_body(text_link_style: "full", text_include_sections: ["body"], text_exclude_sections: ["footer"])
+
+    assert_equal({ "linkStyle" => "full", "includeSections" => ["body"], "excludeSections" => ["footer"] }, body.dig("contents", "text"))
+  end
+
+  def test_flat_highlights_keys_fold_under_contents_highlights
+    body = posted_search_body(highlights_verbosity: "low", highlights_dynamic: true)
+
+    assert_equal({ "verbosity" => "low", "dynamic" => true }, body.dig("contents", "highlights"))
+  end
+
+  def test_flat_rich_image_links_folds_under_contents_extras
+    body = posted_search_body(rich_image_links: 2)
+
+    assert_equal 2, body.dig("contents", "extras", "richImageLinks")
+  end
+
+  def test_dynamic_highlights_sends_exa_beta_header
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" })
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", highlights: { dynamic: true }).call
+
+    assert_requested :post, "https://api.exa.ai/search", headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" }
+  end
+
+  def test_highlights_verbosity_sends_exa_beta_header
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", highlights_verbosity: "low").call
+
+    assert_requested :post, "https://api.exa.ai/search", headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" }
+  end
+
+  def test_plain_search_sends_no_exa_beta_header
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", text: { verbosity: "full" }).call
+
+    assert_requested(:post, "https://api.exa.ai/search") { |request| !request.headers.key?("Exa-Beta") }
+  end
+
+  def test_beta_headers_reads_string_keys
+    body = { "contents" => { "highlights" => { "dynamic" => true } } }
+
+    assert_equal({ "Exa-Beta" => "dynamic-highlights-2026-08-28" }, Exa::Services::Search.beta_headers(body))
+  end
+
+  def test_beta_headers_is_empty_when_highlights_is_true
+    assert_equal({}, Exa::Services::Search.beta_headers({ contents: { highlights: true } }))
+  end
+
+  private
+
+  # Stubs /search, runs a search with the given params and returns the
+  # JSON body the service posted.
+  def posted_search_body(**params)
+    posted_body = nil
+    stub_request(:post, "https://api.exa.ai/search")
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", **params).call
+    posted_body
+  end
 end

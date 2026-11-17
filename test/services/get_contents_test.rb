@@ -230,4 +230,22 @@ class GetContentsTest < Minitest::Test
       assert_empty snake_case_keys(body)
     end
   end
+
+  def test_call_sends_exa_beta_header_for_highlights_verbosity
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(@connection, urls: ["https://www.anthropic.com/research"], highlights: { verbosity: "high" }).call
+
+    assert_requested :post, "https://api.exa.ai/contents", headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" }
+  end
+
+  def test_call_sends_no_exa_beta_header_without_beta_highlights
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(@connection, urls: ["https://www.anthropic.com/research"], highlights: { max_characters: 300 }).call
+
+    assert_requested(:post, "https://api.exa.ai/contents") { |request| !request.headers.key?("Exa-Beta") }
+  end
 end

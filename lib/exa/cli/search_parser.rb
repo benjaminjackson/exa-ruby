@@ -3,8 +3,9 @@
 module Exa
   module CLI
     class SearchParser
-      VALID_SEARCH_TYPES = ["auto", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
+      VALID_SEARCH_TYPES = ["auto", "lite", "deep-lite", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
       VALID_TEXT_VERBOSITY = ["compact", "standard", "full"].freeze
+      VALID_COMPLIANCE = ["hipaa"].freeze
       VALID_CATEGORIES = [
         "company", "publication", "news", "github",
         "personal site", "people", "financial report"
@@ -12,6 +13,18 @@ module Exa
 
       def self.parse(argv)
         new(argv).parse
+      end
+
+      # A country code stays a string. An argument that starts with "{" is
+      # parsed as a JSON object, and one that starts with "@" is read as a
+      # JSON file, the way --output-schema works. A missing value gives nil,
+      # so the flag is skipped.
+      def self.parse_user_location(value)
+        return nil if value.nil?
+        return JSON.parse(File.read(value[1..])) if value.start_with?("@")
+        return JSON.parse(value) if value.start_with?("{")
+
+        value
       end
 
       def initialize(argv)
@@ -161,7 +174,21 @@ module Exa
                                     end
             i += 2
           when "--user-location"
-            @args[:user_location] = @argv[i + 1]
+            @args[:user_location] = self.class.parse_user_location(@argv[i + 1])
+            i += 2
+          when "--objective"
+            @args[:objective] = @argv[i + 1]
+            i += 2
+          when "--user-identifier"
+            @args[:user_identifier] = @argv[i + 1]
+            i += 2
+          when "--compliance"
+            compliance = @argv[i + 1]
+            validate_compliance(compliance)
+            @args[:compliance] = compliance
+            i += 2
+          when "--snapshot-as-of"
+            @args[:snapshot_as_of] = @argv[i + 1]
             i += 2
           when "--system-prompt"
             @args[:system_prompt] = @argv[i + 1]
@@ -197,6 +224,13 @@ module Exa
         return if VALID_CATEGORIES.include?(category)
 
         raise ArgumentError, "Category must be one of: #{VALID_CATEGORIES.map { |c| "\"#{c}\"" }.join(', ')}"
+      end
+
+      # Raises ArgumentError unless compliance is a value the API accepts.
+      def validate_compliance(compliance)
+        return if VALID_COMPLIANCE.include?(compliance)
+
+        raise ArgumentError, "Compliance must be one of: #{VALID_COMPLIANCE.join(', ')}"
       end
 
       def validate_text_verbosity(verbosity)

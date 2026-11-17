@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Monitors API** - `search_monitor_create`, `_list`, `_get`, `_update`, `_delete`, `_trigger`, `_batch`, `_runs_list` and `_runs_get` cover the `/monitors` API: scheduled searches that post new results to a webhook. CLI commands `exa-ai search-monitor-*`. This is a different product from Websets monitors (`create_monitor`, `exa-ai monitor-*`), which are unchanged
 - **Agent run errors** - `AgentRun#error` holds the `{type, code, message}` the API returns for a failed run, and `to_h` includes it. The CLI prints it for a failed run
+- **`lite` and `deep-lite` search types** - `search(type: "lite")` and `type: "deep-lite"`, also on `exa-ai search --type`. `lite` accepts only a limited set of parameters; the API rejects a request with any other
+- **Search warnings, notices and search time** - `SearchResult#warnings`, `#notices` and `#search_time`; `ContentsResult#search_time` and `FindSimilarResult#search_time`. `exa-ai search` prints each warning to stderr as `Warning: <message> (<path>)` and shows notices in `pretty` and `text` output
+- **`Answer#request_id`** - from the API's `requestId`, also in `to_h`
+- **New content options** - `snapshot_as_of` and `crawled_before_date` on search and find-similar go under `contents`. New flat keys `text_link_style`, `text_include_sections`, `text_exclude_sections`, `highlights_verbosity`, `highlights_dynamic` and `rich_image_links` fold under `text`, `highlights` and `extras`
+- **Dynamic highlights header** - when a request sets `highlights.dynamic` or `highlights.verbosity`, `search`, `find_similar`, `get_contents` and `search_stream` send the header `Exa-Beta: dynamic-highlights-2026-08-28`, which the API requires for these options
+- **`search_stream`** - `client.search_stream(query, output_schema:, **params) { |chunk| ... }` yields each server-sent event (`text-delta`, `grounding`, `results`, `stream-reset`, `done`). It requires `output_schema`, because the API streams search only with one. An `error` event raises `Exa::Error`
+- **Answer stream errors** - an `ERROR` event in an `answer_stream` raises `Exa::Error` with the API's message
+- **`get_contents` with document IDs** - `client.get_contents(ids: [...])` sends only `ids`; `urls` is sent only when given
+- **`exa-ai search` flags** - `--objective`, `--user-identifier`, `--compliance hipaa` and `--snapshot-as-of`. `--user-location` also takes a JSON object (`{"country":"US","latitude":...,"longitude":...}`) or `@file`
+- **`exa-ai get-contents` flags** - `--ids`, `--max-age-hours`, `--snapshot-as-of`, `--user-identifier`, `--compliance`, `--highlights`, `--highlights-query`, `--highlights-max-characters`, `--highlights-verbosity` and `--text-verbosity`. URLs are optional when `--ids` is given
+- **`exa-ai answer` flags** - `--model` (`exa`, `exa-pro`, `exa-research`, `exa-fast`), `--user-location` and `--user-identifier`, with and without `--stream`
 - **Stop an agent run** - `agent_run_stop` and `exa-ai agent-run-stop` call `POST /agent/runs/{id}/stop`. The run completes with stop reason `stopped` and keeps its results. The API supports it only for effort `high`, `xhigh` and `ultra`
 - **Agent run budget, metadata and user flags** - `exa-ai agent-run-create` takes `--max-cost-dollars`, `--max-duration-seconds`, `--metadata` and `--user-identifier`
 - **Agent run event replay** - `agent_run_events(run_id, last_event_id: "7")` replays the events after that id over server-sent events and returns the same `AgentRunEventList`
@@ -27,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`--effort` help includes `ultra`**
 - **camelCase request keys for contents, find-similar, answer, context and agent runs** - `get_contents`, `find_similar`, `answer`, `answer` streaming and `context` now send camelCase keys (for example `systemPrompt`, `outputSchema`, `subpageTarget`, `tokensNum`), and nested keys are converted too (for example `budget.maxCostDollars` on agent runs). Keys inside `outputSchema`, `schema`, `metadata`, `data` and `exclusion` are sent as given
 - **find-similar content options** - `text` and `summary` go under `contents`, as the spec requires
+- **`exa-ai get-contents` option values** - an option that takes a value no longer has its value read again as the URL argument when the option comes before the URL
 
 ## [0.13.0] - 2026-11-16
 

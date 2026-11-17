@@ -64,7 +64,51 @@ class Exa::CLI::Formatters::SearchFormatterTest < Minitest::Test
     assert output.length < json_output.length
   end
 
+  def test_print_warnings_prints_each_warning_message_and_path
+    io = StringIO.new
+
+    Exa::CLI::Formatters::SearchFormatter.print_warnings(result_with_warning_and_notice, io)
+
+    assert_equal "Warning: livecrawl is ignored for lite search (contents.livecrawl)\n", io.string
+  end
+
+  def test_print_warnings_prints_nothing_without_warnings
+    io = StringIO.new
+
+    Exa::CLI::Formatters::SearchFormatter.print_warnings(create_search_result, io)
+
+    assert_equal "", io.string
+  end
+
+  def test_pretty_format_shows_notices
+    output = Exa::CLI::Formatters::SearchFormatter.format(result_with_warning_and_notice, "pretty")
+
+    assert_includes output, "Notice: The query was shortened"
+    refute_includes output, "livecrawl is ignored"
+  end
+
+  def test_text_format_shows_notices
+    output = Exa::CLI::Formatters::SearchFormatter.format(result_with_warning_and_notice, "text")
+
+    assert_includes output, "Notice: The query was shortened"
+  end
+
+  def test_json_format_carries_warnings_and_notices
+    parsed = JSON.parse(Exa::CLI::Formatters::SearchFormatter.format(result_with_warning_and_notice, "json"))
+
+    assert_equal "livecrawl is ignored for lite search", parsed["warnings"].first["message"]
+    assert_equal "The query was shortened", parsed["notices"].first["message"]
+  end
+
   private
+
+  def result_with_warning_and_notice
+    Exa::Resources::SearchResult.new(
+      results: [{ "title" => "Example Title 1", "url" => "https://example.com/1" }],
+      warnings: [{ "code" => "PARAM_IGNORED", "path" => "contents.livecrawl", "message" => "livecrawl is ignored for lite search" }],
+      notices: [{ "code" => "QUERY_REWRITTEN", "path" => "query", "message" => "The query was shortened", "details" => {} }]
+    )
+  end
 
   def create_search_result
     Exa::Resources::SearchResult.new(

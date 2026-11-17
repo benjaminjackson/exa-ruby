@@ -5,8 +5,31 @@ require_relative "parameter_converter"
 module Exa
   module Services
     class Search
-      VALID_SEARCH_TYPES = ["auto", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
+      VALID_SEARCH_TYPES = ["auto", "lite", "deep-lite", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
       DEFAULT_SEARCH_TYPE = "auto"
+      DYNAMIC_HIGHLIGHTS_BETA = "dynamic-highlights-2026-08-28"
+      BETA_HIGHLIGHTS_KEYS = %w[dynamic verbosity].freeze
+
+      # Returns the Exa-Beta header that a converted request body needs, or an
+      # empty hash. The API rejects highlights.dynamic and highlights.verbosity
+      # without it. Highlights sit under contents on /search and /findSimilar
+      # and at the top level on /contents, so both places are checked.
+      def self.beta_headers(body)
+        contents = body[:contents] || body["contents"]
+        highlights = contents[:highlights] || contents["highlights"] if contents.is_a?(Hash)
+        highlights ||= body[:highlights] || body["highlights"]
+        return {} unless highlights.is_a?(Hash)
+        return {} unless highlights.keys.any? { |key| BETA_HIGHLIGHTS_KEYS.include?(key.to_s) }
+
+        { "Exa-Beta" => DYNAMIC_HIGHLIGHTS_BETA }
+      end
+
+      # Raises ArgumentError unless search_type is one of VALID_SEARCH_TYPES.
+      def self.validate_search_type!(search_type)
+        return if VALID_SEARCH_TYPES.include?(search_type)
+
+        raise ArgumentError, "Invalid search type: '#{search_type}'. Must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
+      end
 
       def initialize(connection, **params)
         @connection = connection
@@ -15,7 +38,10 @@ module Exa
       end
 
       def call
-        response = @connection.post("/search", ParameterConverter.convert(@params))
+        request_body = ParameterConverter.convert(@params)
+        response = @connection.post("/search", request_body) do |request|
+          request.headers.update(self.class.beta_headers(request_body))
+        end
         body = response.body
 
         results = body["results"]
@@ -28,7 +54,10 @@ module Exa
           search_type: body["searchType"],
           context: body["context"],
           cost_dollars: body["costDollars"],
-          output: body["output"]
+          output: body["output"],
+          warnings: body["warnings"],
+          notices: body["notices"],
+          search_time: body["searchTime"]
         )
       end
 
@@ -42,10 +71,7 @@ module Exa
       end
 
       def validate_search_type!
-        search_type = @params[:type]
-        return if VALID_SEARCH_TYPES.include?(search_type)
-
-        raise ArgumentError, "Invalid search type: '#{search_type}'. Must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
+        self.class.validate_search_type!(@params[:type])
       end
 
       def summary_schema?

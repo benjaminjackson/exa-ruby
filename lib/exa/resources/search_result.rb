@@ -12,9 +12,13 @@ module Exa
       :context,
       :cost_dollars,
       :output,
+      :warnings,
+      :notices,
+      :search_time,
       keyword_init: true
     )
-      def initialize(results:, request_id: nil, resolved_search_type: nil, search_type: nil, context: nil, cost_dollars: nil, output: nil)
+      def initialize(results:, request_id: nil, resolved_search_type: nil, search_type: nil, context: nil, cost_dollars: nil, output: nil,
+                     warnings: nil, notices: nil, search_time: nil)
         super
         freeze
       end

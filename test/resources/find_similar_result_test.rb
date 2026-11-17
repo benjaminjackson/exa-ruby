@@ -82,4 +82,15 @@ class FindSimilarResultTest < Minitest::Test
     assert_equal context, result.context
     assert_equal cost_dollars, result.cost_dollars
   end
+
+  def test_stubbed_response_exposes_search_time
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+      .to_return(status: 200, body: { results: [], requestId: "req_1", searchTime: 140.0 }.to_json, headers: { "Content-Type" => "application/json" })
+    connection = Exa::Connection.build(api_key: "test_key")
+
+    result = Exa::Services::FindSimilar.new(connection, url: "https://www.anthropic.com/research").call
+
+    assert_equal 140.0, result.search_time
+    assert_equal 140.0, result.to_h[:search_time]
+  end
 end

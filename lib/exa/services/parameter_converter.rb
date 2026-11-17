@@ -44,6 +44,9 @@ module Exa
         text_max_characters: { parent: :text, key: :max_characters },
         include_html_tags: { parent: :text, key: :include_html_tags },
         text_verbosity: { parent: :text, key: :verbosity },
+        text_link_style: { parent: :text, key: :link_style },
+        text_include_sections: { parent: :text, key: :include_sections },
+        text_exclude_sections: { parent: :text, key: :exclude_sections },
         summary_query: { parent: :summary, key: :query },
         summary_schema: { parent: :summary, key: :schema },
         context_max_characters: { parent: :context, key: :max_characters },
@@ -51,7 +54,10 @@ module Exa
         highlights_num_sentences: { parent: :highlights, key: :num_sentences },
         highlights_per_url: { parent: :highlights, key: :highlights_per_url },
         highlights_query: { parent: :highlights, key: :query },
+        highlights_verbosity: { parent: :highlights, key: :verbosity },
+        highlights_dynamic: { parent: :highlights, key: :dynamic },
         image_links: { parent: :extras, key: :image_links },
+        rich_image_links: { parent: :extras, key: :rich_image_links },
         links: { parent: :extras, key: :links }
       }.freeze
 
@@ -110,7 +116,8 @@ module Exa
       end
 
       def content_key?(key)
-        %i[text summary context subpages subpage_target extras highlights livecrawl livecrawl_timeout max_age_hours].include?(key)
+        %i[text summary context subpages subpage_target extras highlights livecrawl livecrawl_timeout max_age_hours
+           snapshot_as_of crawled_before_date].include?(key)
       end
     end
   end

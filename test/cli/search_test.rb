@@ -2,6 +2,7 @@
 
 require "test_helper"
 require "exa/cli/search_parser"
+require "tempfile"
 
 class Exa::CLI::SearchTest < Minitest::Test
   def test_requires_query_argument
@@ -23,7 +24,7 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_type_flag
-    %w[auto neural fast deep deep-reasoning instant].each do |type|
+    %w[auto lite deep-lite neural fast deep deep-reasoning instant].each do |type|
       args = parse_search_args(["test query", "--type", type])
       assert_equal type, args[:type], "Failed to parse type: #{type}"
     end
@@ -178,6 +179,91 @@ class Exa::CLI::SearchTest < Minitest::Test
     # This test will be implemented when we have the actual command
     # For now, just verify WebMock is set up
     assert true
+  end
+
+  def test_parses_objective_flag
+    args = parse_search_args(["climate startups", "--objective", "Find primary sources"])
+    assert_equal "Find primary sources", args[:objective]
+  end
+
+  def test_parses_user_identifier_flag
+    args = parse_search_args(["climate startups", "--user-identifier", "user_42"])
+    assert_equal "user_42", args[:user_identifier]
+  end
+
+  def test_parses_compliance_flag
+    args = parse_search_args(["climate startups", "--compliance", "hipaa"])
+    assert_equal "hipaa", args[:compliance]
+  end
+
+  def test_rejects_unknown_compliance_value
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["climate startups", "--compliance", "gdpr"])
+    end
+    assert_includes error.message.downcase, "compliance"
+  end
+
+  def test_parses_snapshot_as_of_flag
+    args = parse_search_args(["climate startups", "--snapshot-as-of", "2026-01-01T00:00:00Z"])
+    assert_equal "2026-01-01T00:00:00Z", args[:snapshot_as_of]
+  end
+
+  def test_parses_user_location_json_object
+    args = parse_search_args(["coffee near me", "--user-location", '{"country":"US","latitude":37.77,"longitude":-122.42}'])
+    assert_equal({ "country" => "US", "latitude" => 37.77, "longitude" => -122.42 }, args[:user_location])
+  end
+
+  def test_parses_user_location_from_file
+    Tempfile.create(["location", ".json"]) do |file|
+      file.write('{"country":"GB"}')
+      file.flush
+      args = parse_search_args(["coffee near me", "--user-location", "@#{file.path}"])
+      assert_equal({ "country" => "GB" }, args[:user_location])
+    end
+  end
+
+  def test_help_lists_new_flags
+    output = `bundle exec exe/exa-ai-search --help`
+
+    %w[--objective --user-identifier --compliance --snapshot-as-of].each do |flag|
+      assert_includes output, flag
+    end
+  end
+
+  def test_exe_sends_new_flags_in_request_body
+    posted_body = nil
+    stub_request(:post, "https://api.exa.ai/search")
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    run_exe_in_process(
+      "exa-ai-search", "coffee near me", "--api-key", "test_key",
+      "--objective", "Find primary sources", "--user-identifier", "user_42",
+      "--compliance", "hipaa", "--snapshot-as-of", "2026-01-01T00:00:00Z",
+      "--user-location", '{"country":"US"}'
+    )
+
+    assert_equal "Find primary sources", posted_body["objective"]
+    assert_equal "user_42", posted_body["userIdentifier"]
+    assert_equal "hipaa", posted_body["compliance"]
+    assert_equal "2026-01-01T00:00:00Z", posted_body.dig("contents", "snapshotAsOf")
+    assert_equal({ "country" => "US" }, posted_body["userLocation"])
+  end
+
+  def test_exe_prints_warnings_to_stderr
+    warnings = [{ "code" => "PARAM_IGNORED", "path" => "contents.livecrawl", "message" => "livecrawl is ignored for lite search" }]
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [], warnings: warnings }.to_json, headers: { "Content-Type" => "application/json" })
+
+    stdout, stderr = run_exe_in_process("exa-ai-search", "coffee near me", "--api-key", "test_key", "--output-format", "json")
+
+    assert_includes stderr, "Warning: livecrawl is ignored for lite search (contents.livecrawl)"
+    refute_includes stdout, "Warning:"
+  end
+
+  def test_user_location_without_value_is_skipped
+    args = parse_search_args(["coffee near me", "--user-location"])
+    assert_nil args[:user_location]
   end
 
   private

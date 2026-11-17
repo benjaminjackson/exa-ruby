@@ -121,7 +121,10 @@ class SearchResultTest < Minitest::Test
       search_type: search_type,
       context: context,
       cost_dollars: cost_dollars,
-      output: nil
+      output: nil,
+      warnings: nil,
+      notices: nil,
+      search_time: nil
     }
 
     # Act
@@ -129,5 +132,26 @@ class SearchResultTest < Minitest::Test
 
     # Assert
     assert_equal expected_hash, result_hash
+  end
+
+  def test_stubbed_response_exposes_warnings_notices_and_search_time
+    warnings = [{ "code" => "PARAM_IGNORED", "path" => "contents.livecrawl", "message" => "livecrawl is ignored for lite search" }]
+    notices = [{ "code" => "QUERY_REWRITTEN", "path" => "query", "message" => "The query was shortened", "details" => {} }]
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(
+        status: 200,
+        body: { results: [], requestId: "req_1", warnings: warnings, notices: notices, searchTime: 412.5 }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+    connection = Exa::Connection.build(api_key: "test_key")
+
+    result = Exa::Services::Search.new(connection, query: "Series A climate tech startups").call
+
+    assert_equal warnings, result.warnings
+    assert_equal notices, result.notices
+    assert_equal 412.5, result.search_time
+    assert_equal warnings, result.to_h[:warnings]
+    assert_equal notices, result.to_h[:notices]
+    assert_equal 412.5, result.to_h[:search_time]
   end
 end

@@ -46,11 +46,62 @@ end
 ```ruby
 results = client.search("AI",
   num_results: 10,
-  type: "deep",           # fast, deep, keyword, or auto (default: fast)
+  type: "deep",           # auto (default), lite, deep-lite, deep; legacy: fast, instant, deep-reasoning, neural
   include_domains: ["arxiv.org", "github.com"],
   exclude_domains: ["example.com"]
 )
 ```
+
+`lite` accepts only a limited set of parameters, and the API rejects a request that sets any other. See https://exa.ai/docs/search/quickstart.md#lite.
+
+### Request Options from the Spec
+
+```ruby
+results = client.search("coffee near me",
+  objective: "Find independent cafes open now",
+  user_identifier: "user_42",               # opaque ID, no personal data
+  compliance: "hipaa",                      # enterprise only
+  user_location: { country: "US", latitude: 37.77, longitude: -122.42 },
+  snapshot_as_of: "2026-01-01T00:00:00Z",   # goes under contents
+  text: { link_style: "citation" },
+  extras: { rich_image_links: 3 }
+)
+```
+
+### Warnings, Notices and Search Time
+
+```ruby
+results = client.search("climate tech seed rounds", type: "lite")
+results.warnings     # [{"code", "path", "message"}] - for your logs, not for a model
+results.notices      # [{"code", "path", "message", "details"}] - written for a model
+results.search_time  # milliseconds
+```
+
+The CLI prints warnings to stderr and shows notices in `pretty` and `text` output.
+
+### Dynamic Highlights
+
+```ruby
+results = client.search("AI chip export rules", highlights: { dynamic: true, verbosity: "low" })
+```
+
+When a request sets `highlights.dynamic` or `highlights.verbosity`, the gem sends the header `Exa-Beta: dynamic-highlights-2026-08-28`. The API rejects these options without it.
+
+### Streaming Search
+
+The API streams `/search` only when `output_schema` is set, so `search_stream` requires it.
+
+```ruby
+schema = { type: "object", properties: { lead_investor: { type: "string" } } }
+client.search_stream("Who led the latest Anthropic funding round?", output_schema: schema) do |chunk|
+  case chunk["type"]
+  when "text-delta" then print chunk["delta"]
+  when "results" then puts chunk["results"].size
+  end
+end
+```
+
+Each chunk is a Hash with a `type` of `text-delta`, `grounding`, `results`, `stream-reset` or `done`. An `error` chunk raises `Exa::Error`.
 
 ### Advanced: Date Filtering
 
@@ -174,6 +225,19 @@ puts answer.citations     # Array of source citations
 puts answer.cost_dollars  # API cost
 ```
 
+### Answer Model and End User
+
+```ruby
+answer = client.answer("What is the latest valuation of SpaceX?",
+  model: "exa-pro",               # exa (default), exa-pro, exa-research, exa-fast
+  user_location: "US",
+  user_identifier: "user_42"
+)
+answer.request_id
+```
+
+On the command line: `exa-ai answer QUERY --model exa-pro --user-location US --user-identifier user_42`.
+
 ### Answer with Text Content
 
 ```ruby
@@ -237,11 +301,22 @@ contents = client.get_contents([
 
 ```ruby
 contents = client.get_contents(["https://example.com"],
-  text: true,
-  highlights: true,
-  summary: true
+  text: { verbosity: "compact" },
+  highlights: { query: "pricing", verbosity: "low" },
+  summary: true,
+  max_age_hours: 24,
+  snapshot_as_of: "2026-01-01T00:00:00Z"
 )
+contents.search_time
 ```
+
+### By Document ID
+
+```ruby
+contents = client.get_contents(ids: ["DOC_ID_1", "DOC_ID_2"], text: true)
+```
+
+`urls` is sent only when you pass it. On the command line: `exa-ai get-contents --ids DOC_ID_1,DOC_ID_2`.
 
 ## Search Monitors
 

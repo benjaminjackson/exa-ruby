@@ -17,7 +17,8 @@ module Exa
         @buffer = ""
 
         # Configure the request to stream chunks via on_data callback
-        @connection.post("/answer", @params) do |req|
+        @connection.post(path, @params) do |req|
+          req.headers.update(headers)
           req.options.on_data = proc do |chunk, _size, env|
             next env[:error_body] = "#{env[:error_body]}#{chunk}" if env&.status.to_i >= 400
 
@@ -32,6 +33,34 @@ module Exa
       end
 
       private
+
+      # The endpoint this stream posts to. SearchStream overrides it.
+      def path
+        "/answer"
+      end
+
+      # Extra request headers for this stream. SearchStream overrides it.
+      def headers
+        {}
+      end
+
+      # Raises Exa::Error when a chunk is an error event.
+      # /search sends {"type":"error","error":{"message":...}}; /answer sends
+      # {"tag":"ERROR","payload":{"error":{"code":...,"message":...}}}.
+      # A chunk that is not a JSON object is never an error event. When the
+      # message is missing, the chunk itself becomes the message.
+      def raise_if_error_chunk(data)
+        return unless data.is_a?(Hash)
+
+        message = if data["type"] == "error"
+                    data.dig("error", "message")
+                  elsif data["tag"] == "ERROR"
+                    data.dig("payload", "error", "message")
+                  else
+                    return
+                  end
+        raise Exa::Error, message || JSON.generate(data)
+      end
 
       def process_sse_buffer
         # Extract and process complete SSE events (separated by \n\n)
@@ -65,6 +94,7 @@ module Exa
               json_str = line.sub(/^data: /, "").strip
               begin
                 data = JSON.parse(json_str)
+                raise_if_error_chunk(data)
                 yield(data)
               rescue JSON::ParserError
                 # Skip lines that aren't valid JSON
@@ -82,6 +112,7 @@ module Exa
             json_str = line.sub(/^data: /, "").strip
             begin
               data = JSON.parse(json_str)
+              raise_if_error_chunk(data)
               yield(data)
             rescue JSON::ParserError
               # Skip lines that aren't valid JSON
