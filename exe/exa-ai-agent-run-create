@@ -8,7 +8,7 @@ require "exa-ai"
 def parse_float(flag, value)
   Float(Exa::CLI::Base.option_value(flag, value))
 rescue ArgumentError
-  warn "Error: #{flag} must be a number (got #{value.inspect})"
+  $stderr.puts "Error: #{flag} must be a number (got #{value.inspect})"
   exit 1
 end
 
@@ -170,6 +170,7 @@ def parse_args(argv)
       HELP
       exit 0
     else
+      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
       i += 1
     end
   end

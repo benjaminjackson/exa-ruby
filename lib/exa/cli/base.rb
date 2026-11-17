@@ -61,9 +61,12 @@ module Exa
       # Return the value given after a flag. When the flag came last with no
       # value, print one error line and exit, so the command does not crash
       # later with a NoMethodError on nil. Exits instead of raising because
-      # many commands parse their options outside their rescue block.
+      # many commands parse their options outside their rescue block. The
+      # short help flag -h also counts as a missing value, so that
+      # "--system-prompt -h" is not sent to the API as the text "-h".
       def self.option_value(flag, value)
         fail_with("#{flag} needs a value") if value.nil?
+        fail_with("#{flag} needs a value (got the flag -h)") if value == "-h"
 
         value
       end

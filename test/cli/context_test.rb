@@ -19,6 +19,28 @@ class Exa::CLI::ContextTest < Minitest::Test
     assert_includes output.downcase, "query"
   end
 
+  def test_missing_query_prints_error_lines_on_stderr_only
+    stdout, stderr, status = run_exe_in_process("exa-ai-context", "--api-key", "test_key")
+
+    assert_equal 1, status
+    assert_empty stdout
+    assert_includes stderr, "Error: Query argument required"
+    assert_not_requested :any, /api\.exa\.ai/
+  end
+
+  def test_api_error_prints_error_line_on_stderr_only
+    stub_request(:post, "https://api.exa.ai/context").to_return(status: 401, body: { error: "Invalid API key" }.to_json)
+
+    stdout, stderr, status = run_exe_in_process(
+      "exa-ai-context", "how to paginate ActiveRecord queries in Rails", "--api-key", "test_key"
+    )
+
+    assert_equal 1, status
+    assert_empty stdout
+    assert_match(/\AError: /, stderr)
+    assert_requested :post, "https://api.exa.ai/context"
+  end
+
   def test_parses_query_from_argv
     stub_context_request(query: "ruby programming")
 

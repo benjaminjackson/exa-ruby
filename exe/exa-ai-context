@@ -30,6 +30,7 @@ def parse_args(args)
       print_help
       exit 0
     else
+      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
       # First non-flag argument is the query
       query = arg if query.nil?
     end
@@ -70,9 +71,9 @@ begin
 
   # Validate query
   unless options[:query]
-    puts "Error: Query argument required"
-    puts ""
-    puts "Run 'exa-ai context --help' for usage information."
+    $stderr.puts "Error: Query argument required"
+    $stderr.puts ""
+    $stderr.puts "Run 'exa-ai context --help' for usage information."
     exit 1
   end
 
@@ -97,10 +98,10 @@ begin
   puts output
   $stdout.flush
 rescue Exa::Error => e
-  puts "Error: #{e.message}"
+  $stderr.puts "Error: #{e.message}"
   exit 1
 rescue StandardError => e
-  puts "Unexpected error: #{e.message}"
-  puts e.backtrace.first(5) if ENV["DEBUG"]
+  $stderr.puts "Unexpected error: #{e.message}"
+  $stderr.puts e.backtrace.first(5) if ENV["DEBUG"]
   exit 1
 end

@@ -44,6 +44,21 @@ class AgentRunEventsExeTest < Minitest::Test
     assert_includes stdout, "--cursor cur_2"
   end
 
+  def test_unknown_option_is_printed_on_stderr_when_ruby_warnings_are_off
+    original_verbose = $VERBOSE
+    $VERBOSE = nil
+    stdout, stderr, status = run_exe_in_process(
+      "exa-ai-agent-run-events", "run_123", "--include-tool-calls", "--api-key", "test_key"
+    )
+
+    assert_equal 1, status
+    assert_equal "Unknown option: --include-tool-calls\n", stderr
+    assert_empty stdout
+    assert_not_requested :any, /api\.exa\.ai/
+  ensure
+    $VERBOSE = original_verbose
+  end
+
   def test_invalid_limit_exits_nonzero
     out = run_exe("run_123", "--limit", "ten")
     assert_includes out, "Error: --limit must be a number"
