@@ -80,8 +80,8 @@ module Exa
         value
       end
 
-      # Stop the command for an argument that starts with two dashes but is
-      # not a flag the command knows, so it is not read as a query or a URL.
+      # Stop the command for an argument that looks like an option but is not
+      # one the command knows, so it is not read as a query or a URL.
       def self.reject_unknown_option(arg)
         fail_with("unknown option #{arg}")
       end

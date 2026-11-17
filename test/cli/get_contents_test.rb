@@ -464,6 +464,14 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     assert_not_requested :post, "https://api.exa.ai/contents"
   end
 
+  def test_exe_takes_the_url_after_an_empty_argument
+    posted = stub_contents_and_capture_body
+
+    run_exe_in_process("exa-ai-get-contents", "", "https://www.anthropic.com/research", "--api-key", "test_key")
+
+    assert_equal ["https://www.anthropic.com/research"], posted[:body]["urls"]
+  end
+
   def test_exe_sends_every_url_in_one_comma_separated_argument
     posted = stub_contents_and_capture_body
 

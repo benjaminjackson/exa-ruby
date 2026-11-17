@@ -52,7 +52,6 @@ def parse_args(args)
     print_request: false
   }
 
-  urls_argument_seen = false
   i = 0
   while i < args.length
     arg = args[i]
@@ -98,10 +97,10 @@ def parse_args(args)
 
       # The one non-flag argument is the URLs (comma-separated or single).
       # A second one is refused, not dropped, so no URL is lost in silence.
-      raise ArgumentError, "unexpected argument #{arg}: join several URLs with commas into one argument" if urls_argument_seen
+      # An argument that held no URL (empty, or only commas) does not count.
+      raise ArgumentError, "unexpected argument #{arg}: join several URLs with commas into one argument" unless options[:urls].empty?
 
       options[:urls] = arg.split(",").map(&:strip)
-      urls_argument_seen = true
       i += 1
     end
   end
