@@ -265,8 +265,9 @@ def print_help
         --summary-schema FILE        JSON schema for summary structure (@file syntax)
 
       Context:
-        --context                    Format results as context for LLM RAG
-        --context-max-characters N   Max characters for context string
+        --context                    Deprecated: use --highlights or --text instead
+                                     (format results as one context string)
+        --context-max-characters N   Deprecated: max characters for context string
 
       Subpages:
         --subpages N                 Number of subpages to crawl
