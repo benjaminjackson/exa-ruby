@@ -3,7 +3,7 @@
 module Exa
   module CLI
     class SearchParser
-      VALID_SEARCH_TYPES = ["auto", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
+      VALID_SEARCH_TYPES = ["auto", "lite", "deep-lite", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
       VALID_TEXT_VERBOSITY = ["compact", "standard", "full"].freeze
       VALID_CATEGORIES = [
         "company", "publication", "news", "github",

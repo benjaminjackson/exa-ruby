@@ -987,4 +987,24 @@ class SearchTest < Minitest::Test
     assert_equal plain_summary, result.results.first["summary"]
     assert_instance_of String, result.results.first["summary"]
   end
+
+  def test_accepts_lite_search_type
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(body: hash_including(type: "lite"))
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", type: "lite").call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_accepts_deep_lite_search_type
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(body: hash_including(type: "deep-lite"))
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", type: "deep-lite").call
+
+    assert_requested :post, "https://api.exa.ai/search"
+  end
 end

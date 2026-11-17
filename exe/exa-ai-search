@@ -15,9 +15,10 @@ def print_help
 
     Options:
       --num-results N              Number of results to return (default: 10)
-      --type TYPE                  Search type: auto, neural, fast, deep, deep-reasoning,
-                                   or instant (default: auto)
-                                   deep/deep-reasoning synthesize an 'output' field
+      --type TYPE                  Search type: auto, lite, deep-lite, deep, neural, fast,
+                                   deep-reasoning, or instant (default: auto)
+                                   lite accepts a limited set of parameters
+                                   deep/deep-lite/deep-reasoning synthesize an 'output' field
                                    only when --output-schema is provided
       --category CAT               Focus on specific data category
                                    Options: "company", "publication", "news", "github",

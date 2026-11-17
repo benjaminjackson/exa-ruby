@@ -23,7 +23,7 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_type_flag
-    %w[auto neural fast deep deep-reasoning instant].each do |type|
+    %w[auto lite deep-lite neural fast deep deep-reasoning instant].each do |type|
       args = parse_search_args(["test query", "--type", type])
       assert_equal type, args[:type], "Failed to parse type: #{type}"
     end
