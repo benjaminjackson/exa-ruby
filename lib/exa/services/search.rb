@@ -7,6 +7,22 @@ module Exa
     class Search
       VALID_SEARCH_TYPES = ["auto", "lite", "deep-lite", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
       DEFAULT_SEARCH_TYPE = "auto"
+      DYNAMIC_HIGHLIGHTS_BETA = "dynamic-highlights-2026-08-28"
+      BETA_HIGHLIGHTS_KEYS = %w[dynamic verbosity].freeze
+
+      # Returns the Exa-Beta header that a converted request body needs, or an
+      # empty hash. The API rejects highlights.dynamic and highlights.verbosity
+      # without it. Highlights sit under contents on /search and /findSimilar
+      # and at the top level on /contents, so both places are checked.
+      def self.beta_headers(body)
+        contents = body[:contents] || body["contents"]
+        highlights = contents[:highlights] || contents["highlights"] if contents.is_a?(Hash)
+        highlights ||= body[:highlights] || body["highlights"]
+        return {} unless highlights.is_a?(Hash)
+        return {} unless highlights.keys.any? { |key| BETA_HIGHLIGHTS_KEYS.include?(key.to_s) }
+
+        { "Exa-Beta" => DYNAMIC_HIGHLIGHTS_BETA }
+      end
 
       def initialize(connection, **params)
         @connection = connection
@@ -15,7 +31,10 @@ module Exa
       end
 
       def call
-        response = @connection.post("/search", ParameterConverter.convert(@params))
+        request_body = ParameterConverter.convert(@params)
+        response = @connection.post("/search", request_body) do |request|
+          request.headers.update(self.class.beta_headers(request_body))
+        end
         body = response.body
 
         results = body["results"]

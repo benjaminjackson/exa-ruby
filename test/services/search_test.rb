@@ -1076,6 +1076,44 @@ class SearchTest < Minitest::Test
     assert_equal 2, body.dig("contents", "extras", "richImageLinks")
   end
 
+  def test_dynamic_highlights_sends_exa_beta_header
+    stub_request(:post, "https://api.exa.ai/search")
+      .with(headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" })
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", highlights: { dynamic: true }).call
+
+    assert_requested :post, "https://api.exa.ai/search", headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" }
+  end
+
+  def test_highlights_verbosity_sends_exa_beta_header
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", highlights_verbosity: "low").call
+
+    assert_requested :post, "https://api.exa.ai/search", headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" }
+  end
+
+  def test_plain_search_sends_no_exa_beta_header
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", text: { verbosity: "full" }).call
+
+    assert_requested(:post, "https://api.exa.ai/search") { |request| !request.headers.key?("Exa-Beta") }
+  end
+
+  def test_beta_headers_reads_string_keys
+    body = { "contents" => { "highlights" => { "dynamic" => true } } }
+
+    assert_equal({ "Exa-Beta" => "dynamic-highlights-2026-08-28" }, Exa::Services::Search.beta_headers(body))
+  end
+
+  def test_beta_headers_is_empty_when_highlights_is_true
+    assert_equal({}, Exa::Services::Search.beta_headers({ contents: { highlights: true } }))
+  end
+
   private
 
   # Stubs /search, runs a search with the given params and returns the

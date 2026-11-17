@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "parameter_converter"
+require_relative "search"
 
 module Exa
   module Services
@@ -11,7 +12,10 @@ module Exa
       end
 
       def call
-        response = @connection.post("/contents", ParameterConverter.convert_keys(@params))
+        request_body = ParameterConverter.convert_keys(@params)
+        response = @connection.post("/contents", request_body) do |request|
+          request.headers.update(Search.beta_headers(request_body))
+        end
         body = response.body
 
         results = body["results"]
