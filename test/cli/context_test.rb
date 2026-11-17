@@ -38,6 +38,7 @@ class Exa::CLI::ContextTest < Minitest::Test
     assert_equal 1, status
     assert_empty stdout
     assert_match(/\AError: /, stderr)
+    assert_requested :post, "https://api.exa.ai/context"
   end
 
   def test_parses_query_from_argv
