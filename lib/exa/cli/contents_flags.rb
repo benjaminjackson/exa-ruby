@@ -37,79 +37,79 @@ module Exa
         --snapshot-as-of DATE        Return page contents as of this time (ISO 8601)
       HELP
 
-      # Reads the contents flag at argv[i] into args and returns the index
-      # of the next argument. Returns nil when argv[i] is not a contents flag.
-      def self.parse(argv, i, args)
-        case argv[i]
+      # Reads the contents flag at argv[index] into args and returns the index
+      # of the next argument. Returns nil when argv[index] is not a contents flag.
+      def self.parse(argv, index, args)
+        case argv[index]
         when "--text"
           args[:text] = true
-          i + 1
+          index + 1
         when "--text-max-characters"
-          args[:text_max_characters] = Base.parse_integer("--text-max-characters", argv[i + 1])
-          i + 2
+          args[:text_max_characters] = Base.parse_integer("--text-max-characters", argv[index + 1])
+          index + 2
         when "--text-verbosity"
-          verbosity = argv[i + 1]
+          verbosity = argv[index + 1]
           validate_text_verbosity(verbosity)
           args[:text_verbosity] = verbosity
-          i + 2
+          index + 2
         when "--include-html-tags"
           args[:include_html_tags] = true
-          i + 1
+          index + 1
         when "--summary"
           args[:summary] = true
-          i + 1
+          index + 1
         when "--summary-query"
-          args[:summary_query] = argv[i + 1]
-          i + 2
+          args[:summary_query] = argv[index + 1]
+          index + 2
         when "--summary-schema"
-          args[:summary_schema] = Base.parse_json_or_file("--summary-schema", argv[i + 1])
-          i + 2
+          args[:summary_schema] = Base.parse_json_or_file("--summary-schema", argv[index + 1])
+          index + 2
         when "--context"
           args[:context] = true
-          i + 1
+          index + 1
         when "--context-max-characters"
-          args[:context_max_characters] = Base.parse_integer("--context-max-characters", argv[i + 1])
-          i + 2
+          args[:context_max_characters] = Base.parse_integer("--context-max-characters", argv[index + 1])
+          index + 2
         when "--subpages"
-          args[:subpages] = Base.parse_integer("--subpages", argv[i + 1])
-          i + 2
+          args[:subpages] = Base.parse_integer("--subpages", argv[index + 1])
+          index + 2
         when "--subpage-target"
           args[:subpage_target] ||= []
-          args[:subpage_target] << argv[i + 1]
-          i + 2
+          args[:subpage_target] << argv[index + 1]
+          index + 2
         when "--links"
-          args[:links] = Base.parse_integer("--links", argv[i + 1])
-          i + 2
+          args[:links] = Base.parse_integer("--links", argv[index + 1])
+          index + 2
         when "--image-links"
-          args[:image_links] = Base.parse_integer("--image-links", argv[i + 1])
-          i + 2
+          args[:image_links] = Base.parse_integer("--image-links", argv[index + 1])
+          index + 2
         when "--highlights"
           args[:highlights] = true
-          i + 1
+          index + 1
         when "--highlights-max-characters"
-          args[:highlights_max_characters] = Base.parse_integer("--highlights-max-characters", argv[i + 1])
-          i + 2
+          args[:highlights_max_characters] = Base.parse_integer("--highlights-max-characters", argv[index + 1])
+          index + 2
         when "--highlights-num-sentences"
-          args[:highlights_num_sentences] = Base.parse_integer("--highlights-num-sentences", argv[i + 1])
-          i + 2
+          args[:highlights_num_sentences] = Base.parse_integer("--highlights-num-sentences", argv[index + 1])
+          index + 2
         when "--highlights-per-url"
-          args[:highlights_per_url] = Base.parse_integer("--highlights-per-url", argv[i + 1])
-          i + 2
+          args[:highlights_per_url] = Base.parse_integer("--highlights-per-url", argv[index + 1])
+          index + 2
         when "--highlights-query"
-          args[:highlights_query] = argv[i + 1]
-          i + 2
+          args[:highlights_query] = argv[index + 1]
+          index + 2
         when "--livecrawl"
           args[:livecrawl] = true
-          i + 1
+          index + 1
         when "--livecrawl-timeout"
-          args[:livecrawl_timeout] = Base.parse_integer("--livecrawl-timeout", argv[i + 1])
-          i + 2
+          args[:livecrawl_timeout] = Base.parse_integer("--livecrawl-timeout", argv[index + 1])
+          index + 2
         when "--max-age-hours"
-          args[:max_age_hours] = Base.parse_integer("--max-age-hours", argv[i + 1])
-          i + 2
+          args[:max_age_hours] = Base.parse_integer("--max-age-hours", argv[index + 1])
+          index + 2
         when "--snapshot-as-of"
-          args[:snapshot_as_of] = argv[i + 1]
-          i + 2
+          args[:snapshot_as_of] = argv[index + 1]
+          index + 2
         end
       end
 

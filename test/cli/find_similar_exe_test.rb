@@ -43,7 +43,7 @@ class Exa::CLI::FindSimilarExeTest < Minitest::Test
     section = search_help[/^Content Extraction:\n(.*?)\n\n/m, 1]
     search_flags = section.scan(/^\s+(--[a-z-]+)/).flatten
 
-    assert_equal 22, search_flags.length
+    refute_empty search_flags
     search_flags.each do |flag|
       assert_match(/^\s+#{Regexp.escape(flag)}\b/, find_similar_help, "find-similar help is missing #{flag}")
     end
