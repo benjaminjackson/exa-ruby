@@ -154,8 +154,11 @@ exa-ai search "ruby" --output-format json
 - `--links N` - Number of links to extract
 - `--image-links N` - Number of image links to extract
 - `--output-format FORMAT` - json or pretty
-- `--print-request` - Write the JSON request body sent to the API to stderr as one line, before any warning or error message; the request is still sent. Headers and the API key are never printed
+- `--print-request` - Write the JSON request body sent to the API to stderr as one line; the request is still sent. A deprecation warning for each deprecated flag comes before the body; API warnings and error messages come after it. Headers and the API key are never printed
+- `--strict` - Stop with an error instead of a warning when a deprecated flag is given. The command prints one `Error:` line per deprecated flag, exits 1, and sends no request. Without a deprecated flag, `--strict` changes nothing
 - `--flags-json` - Print every flag this command accepts as a JSON array and exit 0. It needs no API key, sends no request, and wins over every other argument. See "Flag list for wrappers" in the README
+
+Each deprecated flag prints one line on stderr before the request is sent, for example `Warning: --livecrawl is deprecated; use --max-age-hours 0 --livecrawl-timeout 5000`. When a flag has no replacement, the line gives the reason instead. stdout does not change. With `--strict`, the same lines start with `Error:`, the command exits 1, and no request is sent. `exa-ai get-contents` does the same for its deprecated flags; `exa-ai find-similar` does not warn and does not take `--strict`.
 
 ## answer
 
@@ -302,7 +305,8 @@ exa-ai get-contents "https://example.com" --output-format json
 - `--summary` - Include summary
 - `--context` - Deprecated. Use `--highlights` or `--text`
 - `--output-format FORMAT` - json or pretty (default: json)
-- `--print-request` - Write the JSON request body sent to the API to stderr as one line, before any warning or error message; the request is still sent. Headers and the API key are never printed
+- `--print-request` - Write the JSON request body sent to the API to stderr as one line; the request is still sent. A deprecation warning for each deprecated flag comes before the body; API warnings and error messages come after it. Headers and the API key are never printed
+- `--strict` - Stop with an error instead of a warning when a deprecated flag is given. The command prints one `Error:` line per deprecated flag, exits 1, and sends no request. Without a deprecated flag, `--strict` changes nothing
 - `--flags-json` - Print every flag this command accepts as a JSON array and exit 0. It needs no API key, sends no request, and wins over every other argument. See "Flag list for wrappers" in the README
 
 

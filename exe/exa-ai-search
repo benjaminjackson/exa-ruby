@@ -58,6 +58,8 @@ def print_help
       --output-format FMT          Output format: json, pretty, or text (default: json)
       --print-request              Write the JSON request body sent to the API to stderr
                                    (one line); the request is still sent
+      --strict                     Stop with an error instead of a warning when a
+                                   deprecated flag is given; no request is sent
       --flags-json                 Print every flag this command accepts as JSON and exit
       --help, -h                   Show this help message
 
@@ -89,6 +91,10 @@ begin
 
   # Parse command-line arguments
   args = Exa::CLI::SearchParser.parse(ARGV)
+
+  # Warn about deprecated flags, or stop on them with --strict, before the
+  # API key is read or a request is sent.
+  Exa::CLI::Base.report_deprecated_flags(args[:deprecated_flags], strict: args[:strict])
 
   # Resolve API key
   api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])

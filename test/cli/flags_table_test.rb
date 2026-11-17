@@ -9,7 +9,7 @@ require "exa/cli/get_contents"
 # (Exa::CLI::SearchParser::FLAGS and Exa::CLI::GetContents::FLAGS) and for
 # the --flags-json option that prints them.
 class Exa::CLI::FlagsTableTest < Minitest::Test
-  ENTRY_KEYS = %i[flag api_field deprecated replacement].freeze
+  ENTRY_KEYS = %i[flag api_field deprecated replacement reason].freeze
 
   # A sample value for each table flag that takes one. Flags not listed here
   # take no value.
@@ -52,7 +52,7 @@ class Exa::CLI::FlagsTableTest < Minitest::Test
       end
     end
 
-    define_method("test_#{command}_entries_have_exactly_the_four_keys_in_order") do
+    define_method("test_#{command}_entries_have_exactly_the_five_keys_in_order") do
       table.each { |entry| assert_equal ENTRY_KEYS, entry.keys, entry[:flag] }
     end
 
@@ -78,6 +78,17 @@ class Exa::CLI::FlagsTableTest < Minitest::Test
       assert_equal table.map { |entry| entry[:flag] }.sort, help_lines_by_flag(exe_name).keys.sort
     end
 
+    define_method("test_#{command}_reason_is_set_exactly_when_a_deprecated_flag_has_no_replacement") do
+      table.each do |entry|
+        if entry[:deprecated] && entry[:replacement].nil?
+          assert_kind_of String, entry[:reason], entry[:flag]
+          refute_empty entry[:reason], entry[:flag]
+        else
+          assert_nil entry[:reason], entry[:flag]
+        end
+      end
+    end
+
     define_method("test_#{command}_help_says_deprecated_exactly_when_the_table_does") do
       help_lines = help_lines_by_flag(exe_name)
 
@@ -92,7 +103,7 @@ class Exa::CLI::FlagsTableTest < Minitest::Test
 
     assert_equal(
       { flag: "--highlights-num-sentences", api_field: "contents.highlights.numSentences",
-        deprecated: true, replacement: "--highlights-max-characters" },
+        deprecated: true, replacement: "--highlights-max-characters", reason: nil },
       entry
     )
   end

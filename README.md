@@ -171,9 +171,13 @@ exa-ai search "climate tech seed rounds" --type lite --objective "Find primary s
 exa-ai get-contents --ids DOC_ID_1,DOC_ID_2 --highlights --highlights-verbosity low
 exa-ai answer "What is machine learning?" --model exa-pro --user-location US
 
-# Print the JSON request body sent to the API. It is the first line on stderr;
-# API warnings and error messages come after it. Results still go to stdout
+# Print the JSON request body sent to the API as one line on stderr. A
+# deprecation warning for each deprecated flag comes before it; API warnings
+# and error messages come after it. Results still go to stdout
 exa-ai search "AI/ML infrastructure startups with Series A funding" --print-request 2>stderr.log
+
+# Stop with an error, and send no request, when a deprecated flag is given
+exa-ai search "venture-backed SaaS companies" --livecrawl --strict
 ```
 
 ## Features
@@ -203,6 +207,8 @@ These still work, so existing code keeps running. The search command prints the 
 - The `resolved_search_type` response field is deprecated.
 - The CLI no longer accepts `--category github`; it is not in the API's category list.
 
+`exa-ai search` and `exa-ai get-contents` print one line on stderr for each deprecated flag you give, before the request is sent: `Warning: --livecrawl is deprecated; use --max-age-hours 0 --livecrawl-timeout 5000`. When a flag has no replacement, the line gives the reason. stdout does not change. Add `--strict` to make each line an `Error:` line: the command exits 1 and sends no request. With `--print-request`, the warnings come before the request body; with `--strict` and a deprecated flag, no body is printed. `exa-ai find-similar` does not warn and does not take `--strict`.
+
 See [docs/API.md](docs/API.md) and [docs/CLI.md](docs/CLI.md) for details.
 
 ### Flag list for wrappers
@@ -223,13 +229,14 @@ Exa::CLI::GetContents::FLAGS   # exa-ai get-contents
 Each entry has these keys, in this order:
 
 ```json
-{"flag":"--highlights-num-sentences","api_field":"contents.highlights.numSentences","deprecated":true,"replacement":"--highlights-max-characters"}
+{"flag":"--highlights-num-sentences","api_field":"contents.highlights.numSentences","deprecated":true,"replacement":"--highlights-max-characters","reason":null}
 ```
 
 - `flag`: the flag name. The short alias `-h` is not listed.
 - `api_field`: the request body field the flag sets, as sent (camelCase, dotted path). It is `null` when the flag sets no field (`--api-key`, `--output-format`), and an array when the flag sets more than one (`--livecrawl`).
 - `deprecated`: `true` when the help text marks the flag deprecated.
 - `replacement`: what to type instead of a deprecated flag. It can be a phrase, such as `--max-age-hours 0 --livecrawl-timeout 5000`. It is `null` when there is no replacement.
+- `reason`: why a deprecated flag with no replacement is deprecated, such as `the API ignores it`. It is `null` for every other flag. A deprecated flag always has a `replacement` or a `reason`.
 
 The commands reject any flag that is not in their list. The constants and the `--flags-json` output are public API: wrappers can rely on them instead of reading the gem's source.
 
