@@ -35,10 +35,10 @@ module Exa
       # Folds flat content keys under their parent, then moves content
       # options under :contents. A caller's own contents hash, given under
       # :contents or "contents", is merged with the folded keys into one
-      # :contents key; flat keys win on a real conflict. Only the top level of
-      # the params is normalised: flat keys inside the caller's contents hash
-      # are not folded, and a String key inside it is not matched with the
-      # same Symbol key.
+      # :contents key; flat keys win on a real conflict. A String key that
+      # names a content option, at the top level, inside contents or inside
+      # an option such as text, is matched with the same Symbol key. Flat
+      # keys inside the caller's contents hash are not folded.
       def convert(params)
         consolidated = consolidate_content_params(params)
         converted = {}
@@ -82,9 +82,49 @@ module Exa
         links: { parent: :extras, key: :links }
       }.freeze
 
+      # Keys that go under :contents on /search and /findSimilar.
+      CONTENT_KEYS = %i[text summary context subpages subpage_target extras highlights livecrawl livecrawl_timeout
+                        max_age_hours snapshot_as_of crawled_before_date].freeze
+
+      # The parents whose own option keys are all matched as Symbols.
+      OPTION_PARENTS = %i[text highlights summary extras context].freeze
+
+      # Content option names that a String key is matched against.
+      CONTENT_OPTION_NAMES = (CONTENT_KEYS + CONTENT_SUB_PARAMS.keys + [:contents]).map(&:to_s).freeze
+
+      # Returns the Symbol form of a String key that names a content option,
+      # so "text" and :text fold into one key. Any other key is returned as is.
+      def content_symbol(key)
+        return key unless key.is_a?(String) && CONTENT_OPTION_NAMES.include?(key)
+
+        key.to_sym
+      end
+
+      # Gives String keys inside a content option's Hash their Symbol form:
+      # every key inside text, highlights, summary, extras and context, and
+      # content option names inside contents (and their keys in turn). Keys
+      # that become the same Symbol merge with merge_option. Values under
+      # these keys, a schema included, are left as given.
+      def symbolize_option_keys(parent, value)
+        return value unless value.is_a?(Hash)
+        return value unless parent == :contents || OPTION_PARENTS.include?(parent)
+
+        value.reduce({}) do |result, (key, nested)|
+          if parent == :contents
+            key = content_symbol(key)
+            nested = symbolize_option_keys(key, nested)
+          elsif key.is_a?(String)
+            key = key.to_sym
+          end
+          merge_option(result, { key => nested })
+        end
+      end
+
       def consolidate_content_params(params)
         result = {}
         params.each do |key, value|
+          key = content_symbol(key)
+          value = symbolize_option_keys(key, value)
           mapping = CONTENT_SUB_PARAMS[key]
           if mapping
             parent = mapping[:parent]
@@ -152,8 +192,7 @@ module Exa
       end
 
       def content_key?(key)
-        %i[text summary context subpages subpage_target extras highlights livecrawl livecrawl_timeout max_age_hours
-           snapshot_as_of crawled_before_date].include?(key)
+        CONTENT_KEYS.include?(key)
       end
     end
   end

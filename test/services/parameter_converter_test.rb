@@ -54,7 +54,7 @@ class ParameterConverterTest < Minitest::Test
   def test_convert_merges_string_contents_key_into_one_contents_key
     result = convert("contents" => { "text" => true }, summary: true)
 
-    assert_equal({ contents: { "text" => true, summary: true } }, result)
+    assert_equal({ contents: { text: true, summary: true } }, result)
     assert_equal({ "contents" => { "text" => true, "summary" => true } }, JSON.parse(JSON.generate(result)))
   end
 
@@ -70,5 +70,44 @@ class ParameterConverterTest < Minitest::Test
     result = convert(summary_schema: schema)
 
     assert_equal({ contents: { summary: { schema: schema } } }, result)
+  end
+  def test_convert_contents_matches_string_parent_key_with_flat_symbol_key
+    result = convert_contents("text" => true, text_max_characters: 500)
+
+    assert_equal({ text: { maxCharacters: 500 } }, result)
+    assert_equal '{"text":{"maxCharacters":500}}', JSON.generate(result)
+  end
+
+  def test_convert_contents_matches_string_key_inside_parent_hash
+    result = convert_contents(text: { "max_characters" => 5 }, text_max_characters: 7)
+
+    assert_equal({ text: { maxCharacters: 7 } }, result)
+    assert_equal '{"text":{"maxCharacters":7}}', JSON.generate(result)
+  end
+
+  def test_convert_contents_matches_string_flat_key
+    result = convert_contents("text_max_characters" => 500, text: true)
+
+    assert_equal '{"text":{"maxCharacters":500}}', JSON.generate(result)
+  end
+
+  def test_convert_matches_string_key_inside_contents_hash
+    result = convert("contents" => { "text" => { "max_characters" => 5 } }, text_max_characters: 7)
+
+    assert_equal '{"contents":{"text":{"maxCharacters":7}}}', JSON.generate(result)
+  end
+
+  def test_convert_keeps_string_keys_under_summary_schema_as_given
+    schema = { "type" => "object", "properties" => { "job_title" => { "type" => "string" } } }
+
+    result = convert("summary" => { "schema" => schema })
+
+    assert_equal({ contents: { summary: { schema: schema } } }, result)
+  end
+
+  def test_convert_leaves_string_keys_that_are_not_content_options
+    result = convert("user_location" => "US", "query" => "Series A climate tech startups")
+
+    assert_equal({ "userLocation" => "US", "query" => "Series A climate tech startups" }, result)
   end
 end
