@@ -451,6 +451,29 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     assert_not_requested :post, "https://api.exa.ai/contents"
   end
 
+  def test_exe_refuses_a_second_url_argument
+    stub_request(:post, "https://api.exa.ai/contents")
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "https://exa.ai", "https://www.anthropic.com/research", "--api-key", "test_key"
+    )
+
+    assert_equal 1, stderr.lines.count
+    assert_match(/\AError: .*https:\/\/www\.anthropic\.com\/research.*commas/, stderr)
+    refute_equal 0, exit_status
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_sends_every_url_in_one_comma_separated_argument
+    posted = stub_contents_and_capture_body
+
+    run_exe_in_process(
+      "exa-ai-get-contents", "https://exa.ai,https://www.anthropic.com/research", "--api-key", "test_key"
+    )
+
+    assert_equal ["https://exa.ai", "https://www.anthropic.com/research"], posted[:body]["urls"]
+  end
+
   def test_exe_prints_help_for_short_h_option
     stub_request(:post, "https://api.exa.ai/contents")
 

@@ -52,6 +52,7 @@ def parse_args(args)
     print_request: false
   }
 
+  urls_argument_seen = false
   i = 0
   while i < args.length
     arg = args[i]
@@ -95,8 +96,12 @@ def parse_args(args)
       # (one dash or two) is an option this command does not know.
       Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("-")
 
-      # First non-flag argument is the URLs (comma-separated or single)
-      options[:urls] = arg.split(",").map(&:strip) if options[:urls].empty?
+      # The one non-flag argument is the URLs (comma-separated or single).
+      # A second one is refused, not dropped, so no URL is lost in silence.
+      raise ArgumentError, "unexpected argument #{arg}: join several URLs with commas into one argument" if urls_argument_seen
+
+      options[:urls] = arg.split(",").map(&:strip)
+      urls_argument_seen = true
       i += 1
     end
   end
