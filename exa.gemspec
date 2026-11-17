@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://github.com/benjaminjackson/exa-ruby/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem
-  spec.files = Dir.glob("{lib,exe}/**/*") + %w[LICENSE README.md]
+  spec.files = Dir.glob("{lib,exe}/**/*") + %w[LICENSE README.md CHANGELOG.md]
   spec.require_paths = ["lib"]
 
   # Executables
