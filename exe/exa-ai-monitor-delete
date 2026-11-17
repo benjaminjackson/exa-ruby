@@ -63,7 +63,7 @@ begin
   client = Exa::CLI::Base.build_client(api_key)
 
   # Delete monitor
-  result = client.delete_monitor(monitor_id)
+  result = client.delete_monitor(id: monitor_id)
 
   # Format and output
   output = case output_format

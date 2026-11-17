@@ -143,7 +143,7 @@ begin
   end
 
   # Update monitor
-  monitor = client.update_monitor(args[:monitor_id], **update_params)
+  monitor = client.update_monitor(id: args[:monitor_id], **update_params)
 
   # Format and output
   output = Exa::CLI::Formatters::MonitorFormatter.format(monitor, output_format)
