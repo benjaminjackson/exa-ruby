@@ -83,11 +83,11 @@ def parse_args(args)
       options[:user_identifier] = Exa::CLI::Base.text_value("--user-identifier", args[i + 1])
       i += 2
     when "--compliance"
-      options[:compliance] = args[i + 1]
+      options[:compliance] = Exa::CLI::Base.text_value("--compliance", args[i + 1])
       validate_choice("--compliance", options[:compliance], Exa::CLI::SearchParser::VALID_COMPLIANCE)
       i += 2
     when "--highlights-verbosity"
-      options[:highlights_verbosity] = args[i + 1]
+      options[:highlights_verbosity] = Exa::CLI::Base.text_value("--highlights-verbosity", args[i + 1])
       validate_choice("--highlights-verbosity", options[:highlights_verbosity], VALID_HIGHLIGHTS_VERBOSITY)
       i += 2
     when "--print-request"

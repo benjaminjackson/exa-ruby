@@ -53,7 +53,7 @@ module Exa
           args[:text_max_characters] = Base.parse_integer("--text-max-characters", argv[index + 1])
           index + 2
         when "--text-verbosity"
-          verbosity = argv[index + 1]
+          verbosity = Base.text_value("--text-verbosity", argv[index + 1])
           validate_text_verbosity(verbosity)
           args[:text_verbosity] = verbosity
           index + 2
