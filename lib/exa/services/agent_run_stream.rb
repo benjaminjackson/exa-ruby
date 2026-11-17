@@ -2,7 +2,7 @@ require "json"
 require_relative "parameter_converter"
 require_relative "../resources/agent_run"
 
-# ponytail: copied AnswerStream's SSE parser rather than extracting a shared module — agent frames add event:/id: lines and the two may diverge. Extract only if a third SSE consumer appears.
+# ponytail: parse_frame now has three callers (this class, AnswerStream and AgentRunEvents) and stays here; no separate SSE module.
 
 module Exa
   module Services

@@ -57,6 +57,37 @@ class AnswerStreamTest < Minitest::Test
     assert_equal "world", chunks[1]["choices"][0]["delta"]["content"]
   end
 
+  def test_call_yields_crlf_chunks_in_real_time
+    contents = ["Ruby ", "3.4 ", "ships YJIT"]
+    frames = contents.each_with_index.map do |content, index|
+      chunk = { "choices" => [{ "delta" => { "role" => "assistant", "content" => content } }] }
+      "id: #{index + 1}\r\ndata: #{JSON.generate(chunk)}\r\n\r\n"
+    end
+    # The third frame is split between the "\r" and the "\n" of its id line.
+    pieces = [frames[0], frames[1] + "id: 3\r", frames[2].delete_prefix("id: 3\r")]
+
+    chunks = []
+    counts_before_each_piece = []
+    connection = Faraday.new(url: "https://api.exa.ai") do |faraday|
+      faraday.request :json
+      faraday.adapter :test do |stub|
+        stub.post("/answer") do |env|
+          pieces.each do |piece|
+            counts_before_each_piece << chunks.length
+            env.request.on_data.call(piece, 0, env)
+          end
+          [200, { "Content-Type" => "text/event-stream" }, ""]
+        end
+      end
+    end
+
+    Exa::Services::AnswerStream.new(connection, query: "What changed in the Ruby 3.4 release?")
+                               .call { |chunk| chunks << chunk }
+
+    assert_equal [0, 1, 2], counts_before_each_piece
+    assert_equal contents, chunks.map { |chunk| chunk["choices"][0]["delta"]["content"] }
+  end
+
   def test_call_raises_with_api_message_on_error_status
     stub_request(:post, "https://api.exa.ai/answer")
       .to_return(
