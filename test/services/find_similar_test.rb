@@ -171,4 +171,15 @@ class FindSimilarTest < Minitest::Test
       assert_equal({ "text" => { "includeHtmlTags" => true }, "summary" => true }, body["contents"])
     end
   end
+
+  def test_call_folds_snapshot_as_of_under_contents
+    posted_body = nil
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::FindSimilar.new(@connection, url: "https://www.anthropic.com/research", snapshot_as_of: "2026-01-01T00:00:00Z").call
+
+    assert_equal "2026-01-01T00:00:00Z", posted_body.dig("contents", "snapshotAsOf")
+  end
 end

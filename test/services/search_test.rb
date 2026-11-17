@@ -1007,4 +1007,86 @@ class SearchTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/search"
   end
+
+  def test_snapshot_as_of_goes_under_contents
+    body = posted_search_body(snapshot_as_of: "2026-01-01T00:00:00Z")
+
+    assert_equal "2026-01-01T00:00:00Z", body.dig("contents", "snapshotAsOf")
+    refute body.key?("snapshotAsOf")
+  end
+
+  def test_crawled_before_date_goes_under_contents
+    body = posted_search_body(crawled_before_date: "2026-01-01T00:00:00Z")
+
+    assert_equal "2026-01-01T00:00:00Z", body.dig("contents", "crawledBeforeDate")
+  end
+
+  def test_nested_text_link_style_goes_to_contents_text_link_style
+    body = posted_search_body(text: { link_style: "citation" })
+
+    assert_equal "citation", body.dig("contents", "text", "linkStyle")
+  end
+
+  def test_nested_highlights_verbosity_goes_to_contents_highlights_verbosity
+    body = posted_search_body(highlights: { verbosity: "high" })
+
+    assert_equal "high", body.dig("contents", "highlights", "verbosity")
+  end
+
+  def test_nested_extras_rich_image_links_goes_to_contents_extras_rich_image_links
+    body = posted_search_body(extras: { rich_image_links: 3 })
+
+    assert_equal 3, body.dig("contents", "extras", "richImageLinks")
+  end
+
+  def test_user_identifier_goes_to_user_identifier
+    body = posted_search_body(user_identifier: "user_42")
+
+    assert_equal "user_42", body["userIdentifier"]
+  end
+
+  def test_objective_and_compliance_go_to_top_level
+    body = posted_search_body(objective: "Find primary sources", compliance: "hipaa")
+
+    assert_equal "Find primary sources", body["objective"]
+    assert_equal "hipaa", body["compliance"]
+  end
+
+  def test_user_location_hash_is_sent_as_object
+    body = posted_search_body(user_location: { country: "US", latitude: 37.77, longitude: -122.42 })
+
+    assert_equal({ "country" => "US", "latitude" => 37.77, "longitude" => -122.42 }, body["userLocation"])
+  end
+
+  def test_flat_text_keys_fold_under_contents_text
+    body = posted_search_body(text_link_style: "full", text_include_sections: ["body"], text_exclude_sections: ["footer"])
+
+    assert_equal({ "linkStyle" => "full", "includeSections" => ["body"], "excludeSections" => ["footer"] }, body.dig("contents", "text"))
+  end
+
+  def test_flat_highlights_keys_fold_under_contents_highlights
+    body = posted_search_body(highlights_verbosity: "low", highlights_dynamic: true)
+
+    assert_equal({ "verbosity" => "low", "dynamic" => true }, body.dig("contents", "highlights"))
+  end
+
+  def test_flat_rich_image_links_folds_under_contents_extras
+    body = posted_search_body(rich_image_links: 2)
+
+    assert_equal 2, body.dig("contents", "extras", "richImageLinks")
+  end
+
+  private
+
+  # Stubs /search, runs a search with the given params and returns the
+  # JSON body the service posted.
+  def posted_search_body(**params)
+    posted_body = nil
+    stub_request(:post, "https://api.exa.ai/search")
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Search.new(@connection, query: "Series A climate tech startups", **params).call
+    posted_body
+  end
 end
