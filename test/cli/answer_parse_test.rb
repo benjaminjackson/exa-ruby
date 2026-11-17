@@ -2,115 +2,77 @@
 
 require "test_helper"
 
-# Tests for the answer CLI executable argument parsing
-# Note: This loads the exe/exa-ai-answer script to test its parse_args function
+# Runs exe/exa-ai-answer in-process and checks how its flags reach the
+# request body.
 class AnswerParseTest < Minitest::Test
-  def parse_args(argv)
-    # This simulates the parse_args function from exe/exa-ai-answer
-    args = {
-      output_format: "json",
-      api_key: nil,
-      text: false
-    }
+  ANSWER_URL = "https://api.exa.ai/answer"
+  QUERY = "What is the capital of France?"
 
-    query_parts = []
-    i = 0
-    while i < argv.length
-      arg = argv[i]
-      case arg
-      when "--text"
-        args[:text] = true
-        i += 1
-      when "--output-schema"
-        args[:output_schema] = argv[i + 1]
-        i += 2
-      when "--system-prompt"
-        args[:system_prompt] = argv[i + 1]
-        i += 2
-      when "--api-key"
-        args[:api_key] = argv[i + 1]
-        i += 2
-      when "--output-format"
-        args[:output_format] = argv[i + 1]
-        i += 2
-      when "--help", "-h"
-        i += 1
-      else
-        query_parts << arg
-        i += 1
-      end
-    end
+  def test_sends_output_schema_parsed_as_json
+    body, = post_answer(QUERY, "--output-schema", '{"type":"object","properties":{"city":{"type":"string"}}}')
 
-    args[:query] = query_parts.join(" ")
-    args
+    assert_equal({ "type" => "object", "properties" => { "city" => { "type" => "string" } } }, body["outputSchema"])
+    assert_equal QUERY, body["query"]
   end
 
-  def test_parse_output_schema_flag
-    argv = ["What is Paris?", "--output-schema", '{"type":"object"}']
-    result = parse_args(argv)
+  def test_sends_system_prompt
+    body, = post_answer(QUERY, "--system-prompt", "Respond in the voice of a pirate")
 
-    assert_equal '{"type":"object"}', result[:output_schema]
-    assert_equal "What is Paris?", result[:query]
+    assert_equal "Respond in the voice of a pirate", body["systemPrompt"]
+    assert_equal QUERY, body["query"]
   end
 
-  def test_parse_output_schema_with_text_flag
-    argv = ["test query", "--text", "--output-schema", '{"type":"object","properties":{"city":{"type":"string"}}}']
-    result = parse_args(argv)
+  def test_omits_output_schema_and_system_prompt_when_not_given
+    body, = post_answer(QUERY)
 
-    assert_equal true, result[:text]
-    assert_equal '{"type":"object","properties":{"city":{"type":"string"}}}', result[:output_schema]
-    assert_equal "test query", result[:query]
+    refute body.key?("outputSchema")
+    refute body.key?("systemPrompt")
+    assert_equal QUERY, body["query"]
   end
 
-  def test_parse_output_schema_not_required
-    argv = ["test query"]
-    result = parse_args(argv)
+  def test_combines_text_system_prompt_output_schema_and_output_format
+    body, stdout = post_answer(
+      QUERY, "--text", "--system-prompt", "Be concise", "--output-schema", "{}", "--output-format", "pretty"
+    )
 
-    assert_nil result[:output_schema]
-    assert_equal "test query", result[:query]
+    assert_equal true, body["text"]
+    assert_equal "Be concise", body["systemPrompt"]
+    assert_equal({}, body["outputSchema"])
+    assert_requested(:post, ANSWER_URL, headers: { "x-api-key" => "test_key" })
+    assert_raises(JSON::ParserError) { JSON.parse(stdout) }
+    assert_includes stdout, "Paris is the capital of France."
   end
 
-  def test_parse_output_schema_with_other_flags
-    argv = ["query", "--api-key", "key123", "--output-schema", '{}', "--output-format", "pretty"]
-    result = parse_args(argv)
+  def test_rejects_invalid_user_location_json_with_one_line
+    stub_request(:post, ANSWER_URL)
 
-    assert_equal '{}', result[:output_schema]
-    assert_equal "key123", result[:api_key]
-    assert_equal "pretty", result[:output_format]
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-answer", QUERY, "--user-location", "{bad", "--api-key", "test_key"
+    )
+
+    assert_equal 1, exit_status
+    assert_equal 1, stderr.lines.count
+    assert_match(/\AError: --user-location is not valid JSON/, stderr)
+    assert_not_requested :post, ANSWER_URL
   end
 
-  def test_parse_system_prompt_flag
-    argv = ["What is Paris?", "--system-prompt", "Respond in the voice of a pirate"]
-    result = parse_args(argv)
+  private
 
-    assert_equal "Respond in the voice of a pirate", result[:system_prompt]
-    assert_equal "What is Paris?", result[:query]
-  end
+  # Runs exa-ai-answer in-process with the given arguments. Returns the
+  # parsed body of the request it sends and stdout.
+  def post_answer(*argv)
+    posted_body = nil
+    stub_request(:post, ANSWER_URL)
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(
+        status: 200,
+        body: { answer: "Paris is the capital of France.", citations: [] }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
 
-  def test_parse_system_prompt_with_text_flag
-    argv = ["test query", "--text", "--system-prompt", "Be concise"]
-    result = parse_args(argv)
+    stdout, stderr, exit_status = run_exe_in_process("exa-ai-answer", *argv, "--api-key", "test_key")
 
-    assert_equal true, result[:text]
-    assert_equal "Be concise", result[:system_prompt]
-    assert_equal "test query", result[:query]
-  end
-
-  def test_parse_system_prompt_not_required
-    argv = ["test query"]
-    result = parse_args(argv)
-
-    assert_nil result[:system_prompt]
-    assert_equal "test query", result[:query]
-  end
-
-  def test_parse_system_prompt_with_all_flags
-    argv = ["query", "--api-key", "key123", "--system-prompt", "Pirate voice", "--output-schema", '{}', "--text"]
-    result = parse_args(argv)
-
-    assert_equal "Pirate voice", result[:system_prompt]
-    assert_equal "key123", result[:api_key]
-    assert_equal '{}', result[:output_schema]
-    assert_equal true, result[:text]
+    assert_nil exit_status, "command failed: #{stderr}"
+    [posted_body, stdout]
   end
 end

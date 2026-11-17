@@ -1,229 +1,103 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "tempfile"
 
 class Exa::CLI::WebsetSearchCreateTest < Minitest::Test
-  def test_parses_webset_id_as_first_positional_argument
-    args = parse_args(["ws_123", "--query", "AI startups"])
-    assert_equal "ws_123", args[:webset_id]
+  WEBSET_ID = "ws_ai_infrastructure"
+  SEARCHES_URL = "https://api.exa.ai/websets/v0/websets/#{WEBSET_ID}/searches"
+
+  def test_sends_query_to_webset_given_as_first_argument
+    body, = post_search("--query", "AI infrastructure startups with Series A funding")
+
+    assert_equal "AI infrastructure startups with Series A funding", body["query"]
   end
 
-  def test_requires_query_flag
-    args = parse_args(["ws_123", "--query", "tech companies"])
-    assert_equal "tech companies", args[:query]
+  def test_sends_count_in_request_body
+    body, = post_search("--query", "venture-backed SaaS companies", "--count", "50")
+
+    assert_equal 50, body["count"]
   end
 
-  def test_parses_count_flag
-    args = parse_args(["ws_123", "--query", "startups", "--count", "50"])
-    assert_equal 50, args[:count]
+  def test_sends_recall_in_request_body
+    body, = post_search("--query", "venture-backed SaaS companies", "--recall")
+
+    assert_equal true, body["recall"]
   end
 
-  def test_parses_recall_flag
-    args = parse_args(["ws_123", "--query", "startups", "--recall"])
-    assert_equal true, args[:recall]
+  def test_sends_behavior_in_request_body
+    body, = post_search("--query", "venture-backed SaaS companies", "--behavior", "append")
+
+    assert_equal "append", body["behavior"]
   end
 
-  def test_parses_behavior_flag
-    args = parse_args(["ws_123", "--query", "startups", "--behavior", "append"])
-    assert_equal "append", args[:behavior]
+  def test_sends_predefined_entity_type_without_description
+    body, = post_search("--query", "CTOs of robotics companies", "--entity", "person")
+
+    assert_equal({ "type" => "person" }, body["entity"])
   end
 
-  # Tests for entity parameter parsing in parse_args
+  def test_sends_custom_entity_with_description
+    body, = post_search(
+      "--query", "Ford Mustang listings", "--entity", "custom", "--entity-description", "vintage cars for sale"
+    )
 
-  def test_parses_entity_flag_with_predefined_type
-    args = parse_args(["ws_123", "--query", "tech CEOs", "--entity", "person"])
-    assert_equal "person", args[:entity]
+    assert_equal({ "type" => "custom", "description" => "vintage cars for sale" }, body["entity"])
   end
 
-  def test_parses_entity_description_flag
-    args = parse_args([
-      "ws_123",
-      "--query", "Ford Mustang",
-      "--entity", "custom",
-      "--entity-description", "vintage cars"
-    ])
-    assert_equal "custom", args[:entity]
-    assert_equal "vintage cars", args[:entity_description]
+  def test_custom_entity_without_description_exits_before_any_request
+    stub_request(:post, SEARCHES_URL)
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-webset-search-create", WEBSET_ID,
+      "--query", "Ford Mustang listings", "--entity", "custom", "--api-key", "test_key"
+    )
+
+    assert_equal 1, exit_status
+    assert_includes stderr, "--entity-description is required"
+    assert_not_requested :post, SEARCHES_URL
   end
 
-  # Tests for entity building logic (simulating lines 187-206)
+  def test_warns_and_drops_entity_description_for_non_custom_type
+    body, stderr = post_search(
+      "--query", "CTOs of robotics companies", "--entity", "person", "--entity-description", "robotics executives"
+    )
 
-  def test_builds_entity_hash_for_predefined_type
-    entity_input = "person"
-    entity = build_entity(entity_input, nil)
-
-    assert_instance_of Hash, entity
-    assert_equal "person", entity[:type]
-    refute entity.key?(:description)
+    assert_includes stderr, "Warning: --entity-description is only used with --entity custom"
+    assert_equal({ "type" => "person" }, body["entity"])
   end
 
-  def test_builds_entity_hash_for_custom_type_with_description
-    entity_input = "custom"
-    entity_description = "vintage cars"
-    entity = build_entity(entity_input, entity_description)
+  def test_prints_json_by_default
+    _body, _stderr, stdout = post_search("--query", "venture-backed SaaS companies")
 
-    assert_instance_of Hash, entity
-    assert_equal "custom", entity[:type]
-    assert_equal "vintage cars", entity[:description]
+    assert_equal "ws_search_saas", JSON.parse(stdout)["id"]
   end
 
-  def test_raises_error_for_custom_entity_without_description
-    entity_input = "custom"
+  def test_prints_pretty_output_when_asked
+    _body, _stderr, stdout = post_search("--query", "venture-backed SaaS companies", "--output-format", "pretty")
 
-    error = assert_raises(ArgumentError) do
-      build_entity(entity_input, nil)
-    end
-
-    assert_includes error.message.downcase, "entity-description"
-    assert_includes error.message.downcase, "required"
-  end
-
-  def test_warns_for_entity_description_with_non_custom_type
-    # Capture stderr to verify warning
-    original_stderr = $stderr
-    $stderr = StringIO.new
-
-    entity_input = "person"
-    entity_description = "should be ignored"
-    entity = build_entity(entity_input, entity_description)
-
-    warning = $stderr.string
-    assert_includes warning.downcase, "warning"
-    assert_includes warning.downcase, "entity-description"
-    assert_includes warning.downcase, "custom"
-
-    # Verify entity was built correctly without description
-    assert_equal "person", entity[:type]
-    refute entity.key?(:description)
-  ensure
-    $stderr = original_stderr
-  end
-
-  def test_outputs_json_by_default
-    args = parse_args(["ws_123", "--query", "startups"])
-    assert_equal "json", args[:output_format]
-  end
-
-  def test_parses_output_format_flag
-    args = parse_args(["ws_123", "--query", "startups", "--output-format", "pretty"])
-    assert_equal "pretty", args[:output_format]
+    assert_raises(JSON::ParserError) { JSON.parse(stdout) }
+    assert_includes stdout, "ws_search_saas"
   end
 
   private
 
-  # Helper method to parse command-line arguments
-  # Mirrors the logic from exe/exa-ai-webset-search-create
-  def parse_args(argv)
-    args = {
-      output_format: "json",
-      api_key: nil
-    }
+  # Runs exa-ai-webset-search-create in-process with the given flags.
+  # Returns the parsed body of the request it sends, stderr and stdout.
+  def post_search(*flags)
+    posted_body = nil
+    stub_request(:post, SEARCHES_URL)
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(
+        status: 200,
+        body: { id: "ws_search_saas", object: "webset_search", status: "created", websetId: WEBSET_ID }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
 
-    webset_id_found = false
+    stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-webset-search-create", WEBSET_ID, *flags, "--api-key", "test_key"
+    )
 
-    i = 0
-    while i < argv.length
-      arg = argv[i]
-      case arg
-      when "--query"
-        args[:query] = argv[i + 1]
-        i += 2
-      when "--count"
-        args[:count] = argv[i + 1].to_i
-        i += 2
-      when "--entity"
-        args[:entity] = argv[i + 1]
-        i += 2
-      when "--entity-description"
-        args[:entity_description] = argv[i + 1]
-        i += 2
-      when "--criteria"
-        args[:criteria] = parse_json_or_file(argv[i + 1])
-        i += 2
-      when "--exclude"
-        args[:exclude] = parse_json_or_file(argv[i + 1])
-        i += 2
-      when "--scope"
-        args[:scope] = parse_json_or_file(argv[i + 1])
-        i += 2
-      when "--recall"
-        args[:recall] = true
-        i += 1
-      when "--behavior"
-        behavior = argv[i + 1]
-        unless ["override", "append"].include?(behavior)
-          raise ArgumentError, "Behavior must be 'override' or 'append'"
-        end
-        args[:behavior] = behavior
-        i += 2
-      when "--metadata"
-        args[:metadata] = parse_json_or_file(argv[i + 1])
-        i += 2
-      when "--api-key"
-        args[:api_key] = argv[i + 1]
-        i += 2
-      when "--output-format"
-        args[:output_format] = argv[i + 1]
-        i += 2
-      else
-        # First positional argument is webset_id
-        unless webset_id_found
-          args[:webset_id] = arg
-          webset_id_found = true
-        else
-          raise ArgumentError, "Unknown option: #{arg}"
-        end
-        i += 1
-      end
-    end
-
-    args
-  end
-
-  # Helper to parse JSON or file - mirrors exe/exa-ai-webset-search-create:20-35
-  def parse_json_or_file(value)
-    json_data = if value.start_with?("@")
-                  file_path = value[1..]
-                  JSON.parse(File.read(file_path))
-                else
-                  JSON.parse(value)
-                end
-    deep_symbolize_keys(json_data)
-  rescue JSON::ParserError => e
-    raise ArgumentError, "Invalid JSON: #{e.message}"
-  rescue Errno::ENOENT => e
-    raise ArgumentError, "File not found: #{e.message}"
-  end
-
-  # Helper to symbolize keys - mirrors exe/exa-ai-webset-search-create:6-18
-  def deep_symbolize_keys(obj)
-    case obj
-    when Hash
-      obj.each_with_object({}) do |(key, value), result|
-        result[key.to_sym] = deep_symbolize_keys(value)
-      end
-    when Array
-      obj.map { |item| deep_symbolize_keys(item) }
-    else
-      obj
-    end
-  end
-
-  # Helper to build entity parameter - mirrors exe/exa-ai-webset-search-create:175-189
-  def build_entity(entity_input, entity_description)
-    return nil unless entity_input
-
-    # Build entity hash from string type
-    entity = { type: entity_input }
-    if entity_input == "custom"
-      unless entity_description
-        raise ArgumentError, "Error: --entity-description is required when --entity is 'custom'"
-      end
-      entity[:description] = entity_description
-    elsif entity_description
-      $stderr.puts "Warning: --entity-description is only used with --entity custom (ignoring)"
-    end
-    entity
+    assert_nil exit_status, "command failed: #{stderr}"
+    [posted_body, stderr, stdout]
   end
 end
