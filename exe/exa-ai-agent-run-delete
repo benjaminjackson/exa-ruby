@@ -13,9 +13,9 @@ while args.any?
   arg = args.shift
   case arg
   when "--api-key"
-    api_key = args.shift
+    api_key = Exa::CLI::Base.text_value("--api-key", args.shift)
   when "--output-format"
-    output_format = args.shift
+    output_format = Exa::CLI::Base.text_value("--output-format", args.shift)
   when "--help", "-h"
     puts <<~HELP
       Usage: exa-ai agent-run-delete <run_id> [options]

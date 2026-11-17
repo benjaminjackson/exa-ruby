@@ -22,13 +22,13 @@ while args.any?
   arg = args.shift
   case arg
   when "--api-key"
-    api_key = args.shift
+    api_key = Exa::CLI::Base.text_value("--api-key", args.shift)
   when "--output-format"
-    output_format = args.shift
+    output_format = Exa::CLI::Base.text_value("--output-format", args.shift)
   when "--limit"
     list_params[:limit] = Exa::CLI::Base.parse_integer("--limit", args.shift)
   when "--cursor"
-    list_params[:cursor] = args.shift
+    list_params[:cursor] = Exa::CLI::Base.text_value("--cursor", args.shift)
   when "--help", "-h"
     puts <<~HELP
       Usage: exa-ai agent-run-events <run_id> [options]

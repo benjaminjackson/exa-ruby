@@ -32,25 +32,25 @@ def parse_args(argv)
       args[:skip_citations] = true
       i += 1
     when "--output-schema"
-      args[:output_schema] = argv[i + 1]
+      args[:output_schema] = Exa::CLI::Base.text_value("--output-schema", argv[i + 1])
       i += 2
     when "--system-prompt"
-      args[:system_prompt] = argv[i + 1]
+      args[:system_prompt] = Exa::CLI::Base.text_value("--system-prompt", argv[i + 1])
       i += 2
     when "--model"
-      args[:model] = argv[i + 1]
+      args[:model] = Exa::CLI::Base.text_value("--model", argv[i + 1])
       i += 2
     when "--user-location"
-      args[:user_location] = argv[i + 1]
+      args[:user_location] = Exa::CLI::Base.text_value("--user-location", argv[i + 1])
       i += 2
     when "--user-identifier"
-      args[:user_identifier] = argv[i + 1]
+      args[:user_identifier] = Exa::CLI::Base.text_value("--user-identifier", argv[i + 1])
       i += 2
     when "--api-key"
-      args[:api_key] = argv[i + 1]
+      args[:api_key] = Exa::CLI::Base.text_value("--api-key", argv[i + 1])
       i += 2
     when "--output-format"
-      args[:output_format] = argv[i + 1]
+      args[:output_format] = Exa::CLI::Base.text_value("--output-format", argv[i + 1])
       i += 2
     when "--help", "-h"
       puts <<~HELP

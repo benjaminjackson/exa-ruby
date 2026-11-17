@@ -17,7 +17,7 @@ def parse_args(args)
     case arg
     when "--api-key"
       i += 1
-      api_key = args[i]
+      api_key = Exa::CLI::Base.text_value("--api-key", args[i])
     when "--tokens-num"
       i += 1
       tokens_num = Exa::CLI::Base.option_value("--tokens-num", args[i])
@@ -25,7 +25,7 @@ def parse_args(args)
       tokens_num = Exa::CLI::Base.parse_integer("--tokens-num", tokens_num) unless tokens_num.downcase == "dynamic"
     when "--output-format"
       i += 1
-      output_format = args[i]
+      output_format = Exa::CLI::Base.text_value("--output-format", args[i])
     when "--help", "-h"
       print_help
       exit 0
