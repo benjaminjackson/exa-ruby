@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require_relative "contents_flags"
+
 module Exa
   module CLI
     class SearchParser
       VALID_SEARCH_TYPES = ["auto", "lite", "deep-lite", "neural", "fast", "deep", "deep-reasoning", "instant"].freeze
-      VALID_TEXT_VERBOSITY = ["compact", "standard", "full"].freeze
+      VALID_TEXT_VERBOSITY = ContentsFlags::VALID_TEXT_VERBOSITY
       VALID_COMPLIANCE = ["hipaa"].freeze
       VALID_CATEGORIES = [
         "company", "publication", "news",
@@ -49,6 +51,12 @@ module Exa
 
         while i < @argv.length
           arg = @argv[i]
+          next_index = ContentsFlags.parse(@argv, i, @args)
+          if next_index
+            i = next_index
+            next
+          end
+
           case arg
           when "--num-results"
             @args[:num_results] = Exa::CLI::Base.parse_integer("--num-results", @argv[i + 1])
@@ -95,67 +103,6 @@ module Exa
             @args[:exclude_text] ||= []
             @args[:exclude_text] << @argv[i + 1]
             i += 2
-          when "--text"
-            @args[:text] = true
-            i += 1
-          when "--text-max-characters"
-            @args[:text_max_characters] = Exa::CLI::Base.parse_integer("--text-max-characters", @argv[i + 1])
-            i += 2
-          when "--include-html-tags"
-            @args[:include_html_tags] = true
-            i += 1
-          when "--summary"
-            @args[:summary] = true
-            i += 1
-          when "--summary-query"
-            @args[:summary_query] = @argv[i + 1]
-            i += 2
-          when "--summary-schema"
-            @args[:summary_schema] = Exa::CLI::Base.parse_json_or_file("--summary-schema", @argv[i + 1])
-            i += 2
-          when "--context"
-            @args[:context] = true
-            i += 1
-          when "--context-max-characters"
-            @args[:context_max_characters] = Exa::CLI::Base.parse_integer("--context-max-characters", @argv[i + 1])
-            i += 2
-          when "--subpages"
-            @args[:subpages] = Exa::CLI::Base.parse_integer("--subpages", @argv[i + 1])
-            i += 2
-          when "--subpage-target"
-            @args[:subpage_target] ||= []
-            @args[:subpage_target] << @argv[i + 1]
-            i += 2
-          when "--links"
-            @args[:links] = Exa::CLI::Base.parse_integer("--links", @argv[i + 1])
-            i += 2
-          when "--image-links"
-            @args[:image_links] = Exa::CLI::Base.parse_integer("--image-links", @argv[i + 1])
-            i += 2
-          when "--highlights"
-            @args[:highlights] = true
-            i += 1
-          when "--highlights-max-characters"
-            @args[:highlights_max_characters] = Exa::CLI::Base.parse_integer("--highlights-max-characters", @argv[i + 1])
-            i += 2
-          when "--highlights-num-sentences"
-            @args[:highlights_num_sentences] = Exa::CLI::Base.parse_integer("--highlights-num-sentences", @argv[i + 1])
-            i += 2
-          when "--highlights-per-url"
-            @args[:highlights_per_url] = Exa::CLI::Base.parse_integer("--highlights-per-url", @argv[i + 1])
-            i += 2
-          when "--highlights-query"
-            @args[:highlights_query] = @argv[i + 1]
-            i += 2
-          when "--livecrawl"
-            @args[:livecrawl] = true
-            i += 1
-          when "--livecrawl-timeout"
-            @args[:livecrawl_timeout] = Exa::CLI::Base.parse_integer("--livecrawl-timeout", @argv[i + 1])
-            i += 2
-          when "--max-age-hours"
-            @args[:max_age_hours] = Exa::CLI::Base.parse_integer("--max-age-hours", @argv[i + 1])
-            i += 2
           when "--additional-queries"
             @args[:additional_queries] ||= []
             @args[:additional_queries] << @argv[i + 1]
@@ -177,20 +124,12 @@ module Exa
             validate_compliance(compliance)
             @args[:compliance] = compliance
             i += 2
-          when "--snapshot-as-of"
-            @args[:snapshot_as_of] = @argv[i + 1]
-            i += 2
           when "--system-prompt"
             @args[:system_prompt] = @argv[i + 1]
             i += 2
           when "--moderation"
             @args[:moderation] = true
             i += 1
-          when "--text-verbosity"
-            verbosity = @argv[i + 1]
-            validate_text_verbosity(verbosity)
-            @args[:text_verbosity] = verbosity
-            i += 2
           else
             query_parts << arg
             i += 1
@@ -221,12 +160,6 @@ module Exa
         return if VALID_COMPLIANCE.include?(compliance)
 
         raise ArgumentError, "Compliance must be one of: #{VALID_COMPLIANCE.join(', ')}"
-      end
-
-      def validate_text_verbosity(verbosity)
-        return if VALID_TEXT_VERBOSITY.include?(verbosity)
-
-        raise ArgumentError, "Text verbosity must be one of: #{VALID_TEXT_VERBOSITY.join(', ')}"
       end
     end
   end
