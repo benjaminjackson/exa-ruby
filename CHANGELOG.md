@@ -60,6 +60,7 @@ These still work. Help text, doc comments, README and docs now mark them with th
 - **`highlights` `num_sentences` and `highlights_per_url`** - use `max_characters`; the API ignores `highlights_per_url`
 - **`subpages` and `subpage_target` on `search` and `find_similar`** - they stay valid on `get_contents`
 - **`resolved_search_type`** - may be an empty string; `search_type` is not in the API spec
+- **`livecrawl` and `crawled_before_date` contents options** - use `max_age_hours` instead of `livecrawl`. `crawled_before_date` is an alias of `snapshot_as_of` with identical behavior; use `snapshot_as_of`
 
 ## [0.13.0] - 2026-11-16
 

@@ -52,6 +52,8 @@ module Exa
     #   ignored by the API.
     # - :subpages and :subpage_target are deprecated on search; pass them to
     #   #get_contents instead.
+    # - :livecrawl is deprecated; use :max_age_hours. :crawled_before_date is
+    #   deprecated; use :snapshot_as_of, an alias with identical behavior.
     # @return [Resources::SearchResult] Search results with metadata
     def search(query, **params)
       Services::Search.new(connection, query: query, **params).call
@@ -62,7 +64,8 @@ module Exa
     # @deprecated The API marks /findSimilar as deprecated. Use #search with
     #   a query that describes the source page instead. This method still
     #   works. Its :start_crawl_date, :end_crawl_date, :include_text,
-    #   :exclude_text and :context options are deprecated as on #search.
+    #   :exclude_text, :context, :livecrawl and :crawled_before_date options
+    #   are deprecated as on #search.
     # @param url [String] URL to find similar content for
     # @param options [Hash] Search options
     # @option options [Integer] :num_results Number of results to return
@@ -82,6 +85,9 @@ module Exa
     #   :text. The highlights numSentences and highlightsPerUrl keys are also
     #   deprecated; use maxCharacters. :subpages and :subpage_target stay
     #   valid here.
+    # @option options [String] :livecrawl Deprecated; use :max_age_hours.
+    # @option options [String] :crawled_before_date Deprecated; use
+    #   :snapshot_as_of, an alias with identical behavior.
     # @raise [ArgumentError] when neither urls nor :ids is given
     # @return [Resources::ContentsResult] Page contents with metadata
     def get_contents(urls = nil, **options)
