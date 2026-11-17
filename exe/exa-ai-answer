@@ -3,6 +3,8 @@
 
 require "exa-ai"
 
+VALID_ANSWER_MODELS = %w[exa exa-pro exa-research exa-fast].freeze
+
 # Parse command-line arguments
 def parse_args(argv)
   args = {
@@ -34,6 +36,15 @@ def parse_args(argv)
     when "--system-prompt"
       args[:system_prompt] = argv[i + 1]
       i += 2
+    when "--model"
+      args[:model] = argv[i + 1]
+      i += 2
+    when "--user-location"
+      args[:user_location] = argv[i + 1]
+      i += 2
+    when "--user-identifier"
+      args[:user_identifier] = argv[i + 1]
+      i += 2
     when "--api-key"
       args[:api_key] = argv[i + 1]
       i += 2
@@ -56,6 +67,10 @@ def parse_args(argv)
           --no-citations        Alias for --skip-citations
           --output-schema JSON  JSON schema for structured output
           --system-prompt TEXT  System prompt to guide answer generation
+          --model MODEL         Model: exa, exa-pro, exa-research, or exa-fast (default: exa)
+          --user-location LOC   User location: ISO country code (US), or a JSON object
+                                with country, latitude, longitude (@file syntax)
+          --user-identifier ID  Your identifier for the end user
           --api-key KEY         Exa API key (or set EXA_API_KEY env var)
           --output-format FMT   Output format: json, pretty, or text (default: json)
           --help, -h            Show this help message
@@ -90,6 +105,11 @@ begin
     exit 1
   end
 
+  if args[:model] && !VALID_ANSWER_MODELS.include?(args[:model])
+    $stderr.puts "Error: --model must be one of: #{VALID_ANSWER_MODELS.join(', ')}"
+    exit 1
+  end
+
   # Resolve API key
   api_key = Exa::CLI::Base.resolve_api_key(args[:api_key])
 
@@ -103,6 +123,20 @@ begin
   answer_params = {}
   answer_params[:text] = args[:text] if args[:text]
   answer_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
+  answer_params[:model] = args[:model] if args[:model]
+  answer_params[:user_identifier] = args[:user_identifier] if args[:user_identifier]
+
+  # A country code stays a string; "{...}" is a JSON object and "@path" a JSON file
+  if args[:user_location]
+    location = args[:user_location]
+    answer_params[:user_location] = if location.start_with?("@")
+                                      JSON.parse(File.read(location[1..]))
+                                    elsif location.start_with?("{")
+                                      JSON.parse(location)
+                                    else
+                                      location
+                                    end
+  end
 
   # Parse output_schema as JSON if provided
   if args[:output_schema]

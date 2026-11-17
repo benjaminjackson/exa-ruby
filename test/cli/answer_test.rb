@@ -105,4 +105,59 @@ class Exa::CLI::AnswerTest < Minitest::Test
       body: hash_including(systemPrompt: "Be concise", text: true)
     assert_instance_of Exa::Resources::Answer, result
   end
+
+  def test_help_lists_model_user_location_and_user_identifier
+    output = `bundle exec exe/exa-ai-answer --help`
+
+    %w[--model --user-location --user-identifier].each do |flag|
+      assert_includes output, flag
+    end
+  end
+
+  def test_exe_sends_model_user_location_and_user_identifier
+    posted_body = nil
+    stub_request(:post, "https://api.exa.ai/answer")
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(status: 200, body: { answer: "About $350 billion", citations: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    run_exe_in_process(
+      "exa-ai-answer", "What is the latest valuation of SpaceX?", "--api-key", "test_key",
+      "--model", "exa-pro", "--user-location", "US", "--user-identifier", "user_42"
+    )
+
+    assert_equal "exa-pro", posted_body["model"]
+    assert_equal "US", posted_body["userLocation"]
+    assert_equal "user_42", posted_body["userIdentifier"]
+  end
+
+  def test_exe_stream_sends_model_user_location_and_user_identifier
+    posted_body = nil
+    stub_request(:post, "https://api.exa.ai/answer")
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(status: 200, body: "data: [DONE]\n\n", headers: { "Content-Type" => "text/event-stream" })
+
+    run_exe_in_process(
+      "exa-ai-answer", "What is the latest valuation of SpaceX?", "--api-key", "test_key", "--stream",
+      "--model", "exa-fast", "--user-location", '{"country":"US","latitude":37.77,"longitude":-122.42}',
+      "--user-identifier", "user_42"
+    )
+
+    assert_equal true, posted_body["stream"]
+    assert_equal "exa-fast", posted_body["model"]
+    assert_equal({ "country" => "US", "latitude" => 37.77, "longitude" => -122.42 }, posted_body["userLocation"])
+    assert_equal "user_42", posted_body["userIdentifier"]
+  end
+
+  def test_exe_rejects_unknown_model
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: { answer: "unused", citations: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-answer", "What is the latest valuation of SpaceX?", "--api-key", "test_key", "--model", "gpt-4"
+    )
+
+    assert_equal 1, exit_status
+    assert_includes stderr, "exa-research"
+    assert_not_requested :post, "https://api.exa.ai/answer"
+  end
 end
