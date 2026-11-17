@@ -17,7 +17,9 @@ module Exa
       # through `exa-ai search --flags-json`, and the parser rejects any "--"
       # argument that is not in it. api_field is the request body path the
       # flag sets (nil when it sets none, an Array when it sets several), and
-      # replacement is what to type instead of a deprecated flag.
+      # replacement is what to type instead of a deprecated flag. --help and
+      # --flags-json are in the list, but exe/exa-ai-search handles them before
+      # it calls the parser, which has no branch for them.
       FLAGS = [
         { flag: "--num-results", api_field: "numResults", deprecated: false, replacement: nil },
         { flag: "--type", api_field: "type", deprecated: false, replacement: nil },
