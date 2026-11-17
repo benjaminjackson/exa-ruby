@@ -104,4 +104,26 @@ class AnswerStreamTest < Minitest::Test
 
     assert_equal "Answer generation failed", error.message
   end
+
+  def test_call_passes_through_chunks_that_are_not_objects
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: "data: [1,2]\n\ndata: 42\n\ndata: null\n\ndata: true\n\n", headers: { "Content-Type" => "text/event-stream" })
+
+    chunks = []
+    Exa::Services::AnswerStream.new(@connection, query: "What is the latest valuation of SpaceX?").call { |chunk| chunks << chunk }
+
+    assert_equal [[1, 2], 42, nil, true], chunks
+  end
+
+  def test_call_error_chunk_without_message_uses_chunk_json_as_message
+    error_chunk = { "tag" => "ERROR", "payload" => { "error" => { "code" => "INTERNAL" } } }
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: "data: #{JSON.generate(error_chunk)}\n\n", headers: { "Content-Type" => "text/event-stream" })
+
+    service = Exa::Services::AnswerStream.new(@connection, query: "What is the latest valuation of SpaceX?")
+
+    error = assert_raises(Exa::Error) { service.call { |_chunk| } }
+
+    assert_equal JSON.generate(error_chunk), error.message
+  end
 end

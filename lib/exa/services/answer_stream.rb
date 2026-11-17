@@ -47,9 +47,19 @@ module Exa
       # Raises Exa::Error when a chunk is an error event.
       # /search sends {"type":"error","error":{"message":...}}; /answer sends
       # {"tag":"ERROR","payload":{"error":{"code":...,"message":...}}}.
+      # A chunk that is not a JSON object is never an error event. When the
+      # message is missing, the chunk itself becomes the message.
       def raise_if_error_chunk(data)
-        raise Exa::Error, data.dig("error", "message") if data["type"] == "error"
-        raise Exa::Error, data.dig("payload", "error", "message") if data["tag"] == "ERROR"
+        return unless data.is_a?(Hash)
+
+        message = if data["type"] == "error"
+                    data.dig("error", "message")
+                  elsif data["tag"] == "ERROR"
+                    data.dig("payload", "error", "message")
+                  else
+                    return
+                  end
+        raise Exa::Error, message || JSON.generate(data)
       end
 
       def process_sse_buffer

@@ -282,6 +282,24 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     assert_not_requested :post, "https://api.exa.ai/contents"
   end
 
+  def test_client_get_contents_with_empty_urls_or_ids_raises_argument_error
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    client = Exa::Client.new(api_key: "test_key")
+
+    assert_raises(ArgumentError) { client.get_contents([]) }
+    assert_raises(ArgumentError) { client.get_contents(ids: []) }
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_client_get_contents_accepts_urls_keyword
+    posted = stub_contents_and_capture_body
+
+    Exa::Client.new(api_key: "test_key").get_contents(urls: ["https://www.anthropic.com/research"])
+
+    assert_equal ["https://www.anthropic.com/research"], posted[:body]["urls"]
+  end
+
   private
 
   # Stubs /contents and returns a Hash whose :body is set to the parsed

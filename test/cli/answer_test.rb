@@ -160,4 +160,18 @@ class Exa::CLI::AnswerTest < Minitest::Test
     assert_includes stderr, "exa-research"
     assert_not_requested :post, "https://api.exa.ai/answer"
   end
+
+  def test_exe_skips_user_location_without_value
+    posted_body = nil
+    stub_request(:post, "https://api.exa.ai/answer")
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(status: 200, body: { answer: "About $350 billion", citations: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    _stdout, _stderr, exit_status = run_exe_in_process(
+      "exa-ai-answer", "What is the latest valuation of SpaceX?", "--api-key", "test_key", "--user-location"
+    )
+
+    assert_nil exit_status
+    refute posted_body.key?("userLocation")
+  end
 end

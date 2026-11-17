@@ -261,6 +261,11 @@ class Exa::CLI::SearchTest < Minitest::Test
     refute_includes stdout, "Warning:"
   end
 
+  def test_user_location_without_value_is_skipped
+    args = parse_search_args(["coffee near me", "--user-location"])
+    assert_nil args[:user_location]
+  end
+
   private
 
   # Helper method to parse command-line arguments

@@ -17,8 +17,10 @@ module Exa
 
       # A country code stays a string. An argument that starts with "{" is
       # parsed as a JSON object, and one that starts with "@" is read as a
-      # JSON file, the way --output-schema works.
+      # JSON file, the way --output-schema works. A missing value gives nil,
+      # so the flag is skipped.
       def self.parse_user_location(value)
+        return nil if value.nil?
         return JSON.parse(File.read(value[1..])) if value.start_with?("@")
         return JSON.parse(value) if value.start_with?("{")
 
@@ -224,6 +226,7 @@ module Exa
         raise ArgumentError, "Category must be one of: #{VALID_CATEGORIES.map { |c| "\"#{c}\"" }.join(', ')}"
       end
 
+      # Raises ArgumentError unless compliance is a value the API accepts.
       def validate_compliance(compliance)
         return if VALID_COMPLIANCE.include?(compliance)
 
