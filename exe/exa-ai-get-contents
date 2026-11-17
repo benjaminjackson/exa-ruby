@@ -262,12 +262,11 @@ begin
   output_format = Exa::CLI::Base.resolve_output_format(options[:output_format])
 
   # Build client
-  client = Exa::CLI::Base.build_client(api_key)
+  client = Exa::CLI::Base.build_client(api_key, print_request: options[:print_request])
 
   # Build request parameters
   params = build_contents_params(options)
   params ||= {}
-  params[:on_request] = Exa::CLI::Base.request_printer if options[:print_request]
 
   # Call API
   urls = options[:urls].empty? ? nil : options[:urls]

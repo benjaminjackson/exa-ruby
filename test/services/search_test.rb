@@ -12,25 +12,6 @@ class SearchTest < Minitest::Test
     assert_instance_of Exa::Services::Search, service
   end
 
-  def test_on_request_receives_the_body_that_is_sent
-    sent_body = nil
-    stub_request(:post, "https://api.exa.ai/search")
-      .with { |request| sent_body = request.body }
-      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
-    yielded_body = nil
-
-    Exa::Services::Search.new(
-      @connection,
-      query: "venture-backed SaaS companies", num_results: 2, text: { max_characters: 500 },
-      on_request: ->(body) { yielded_body = body }
-    ).call
-
-    assert_equal sent_body, JSON.generate(yielded_body)
-    assert_equal({ "maxCharacters" => 500 }, JSON.parse(sent_body).dig("contents", "text"))
-    refute_includes sent_body, "on_request"
-    refute_includes sent_body, "onRequest"
-  end
-
   def test_sets_default_search_type_to_auto
     stub_request(:post, "https://api.exa.ai/search")
       .with(

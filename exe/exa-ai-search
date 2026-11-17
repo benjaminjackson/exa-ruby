@@ -89,7 +89,7 @@ begin
   output_format = Exa::CLI::Base.resolve_output_format(args[:output_format])
 
   # Build client
-  client = Exa::CLI::Base.build_client(api_key)
+  client = Exa::CLI::Base.build_client(api_key, print_request: args[:print_request])
 
   # Prepare search parameters
   search_params = {}
@@ -115,8 +115,6 @@ begin
   search_params[:snapshot_as_of] = args[:snapshot_as_of] if args[:snapshot_as_of]
   contents = Exa::CLI::ContentsFlags.build(args)
   search_params.merge!(contents) if contents
-
-  search_params[:on_request] = Exa::CLI::Base.request_printer if args[:print_request]
 
   # Execute search
   result = client.search(args[:query], **search_params)

@@ -48,19 +48,14 @@ module Exa
         end
       end
 
-      # on_request, when given, is called with the converted request body
-      # just before it is sent. It is a keyword of its own so it never
-      # reaches the body.
-      def initialize(connection, on_request: nil, **params)
+      def initialize(connection, **params)
         @connection = connection
-        @on_request = on_request
         @params = normalize_params(params)
         validate_search_type!
       end
 
       def call
         request_body = ParameterConverter.convert(@params)
-        @on_request&.call(request_body)
         response = @connection.post("/search", request_body) do |request|
           request.headers.update(self.class.beta_headers(request_body))
         end
