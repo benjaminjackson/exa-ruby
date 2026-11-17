@@ -56,6 +56,8 @@ def print_help
     General Options:
       --api-key KEY                Exa API key (or set EXA_API_KEY env var)
       --output-format FMT          Output format: json, pretty, or text (default: json)
+      --print-request              Write the JSON request body sent to the API to stderr
+                                   (one line); the request is still sent
       --help, -h                   Show this help message
 
     Examples:
@@ -113,6 +115,8 @@ begin
   search_params[:snapshot_as_of] = args[:snapshot_as_of] if args[:snapshot_as_of]
   contents = Exa::CLI::ContentsFlags.build(args)
   search_params.merge!(contents) if contents
+
+  search_params[:on_request] = Exa::CLI::Base.request_printer if args[:print_request]
 
   # Execute search
   result = client.search(args[:query], **search_params)

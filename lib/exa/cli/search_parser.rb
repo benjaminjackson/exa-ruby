@@ -130,6 +130,9 @@ module Exa
           when "--moderation"
             @args[:moderation] = true
             i += 1
+          when "--print-request"
+            @args[:print_request] = true
+            i += 1
           else
             Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
 
