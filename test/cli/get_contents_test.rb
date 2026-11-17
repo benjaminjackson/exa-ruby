@@ -395,6 +395,60 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     end
   end
 
+  %w[--bogus --livecrawl --highlights-num-sentences --highlights-per-url].each do |flag|
+    flag_name = flag.delete_prefix("--").tr("-", "_")
+
+    define_method("test_exe_rejects_unknown_option_#{flag_name}_after_the_url") do
+      stub_request(:post, "https://api.exa.ai/contents")
+
+      _stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-get-contents", "https://exa.ai", flag, "--api-key", "test_key"
+      )
+
+      assert_equal "Error: unknown option #{flag}\n", stderr
+      refute_equal 0, exit_status
+      assert_not_requested :post, "https://api.exa.ai/contents"
+    end
+  end
+
+  def test_exe_rejects_unknown_option_before_the_url
+    stub_request(:post, "https://api.exa.ai/contents")
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "--bogus", "https://exa.ai", "--api-key", "test_key"
+    )
+
+    assert_equal "Error: unknown option --bogus\n", stderr
+    refute_equal 0, exit_status
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_accepts_every_flag_in_the_help_text
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    help_text, = run_exe_in_process("exa-ai-get-contents", "--help")
+    values_by_flag = {
+      "--text" => nil, "--text-max-characters" => "3000", "--include-html-tags" => nil,
+      "--text-verbosity" => "compact", "--summary" => nil, "--summary-query" => "Name the founders",
+      "--summary-schema" => '{"type":"object"}', "--context" => nil, "--context-max-characters" => "500",
+      "--subpages" => "1", "--subpage-target" => "careers", "--links" => "5", "--image-links" => "10",
+      "--highlights" => nil, "--highlights-query" => "funding rounds", "--highlights-max-characters" => "300",
+      "--highlights-verbosity" => "low", "--livecrawl-timeout" => "5000", "--max-age-hours" => "24",
+      "--snapshot-as-of" => "2026-01-01T00:00:00Z", "--ids" => "doc_1", "--user-identifier" => "user_42",
+      "--compliance" => "hipaa", "--api-key" => "test_key", "--output-format" => "json",
+      "--print-request" => nil
+    }
+    assert_equal help_text.scan(/--[a-z][a-z-]*/).uniq.sort - ["--help"], values_by_flag.keys.sort
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "https://exa.ai", *values_by_flag.flat_map { |flag, value| [flag, value].compact }
+    )
+
+    assert_nil exit_status
+    assert_equal 1, stderr.lines.count
+    assert_requested :post, "https://api.exa.ai/contents"
+  end
+
   def test_contents_flags_parse_skips_a_flag_in_except
     parsed = {}
 

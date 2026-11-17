@@ -91,6 +91,8 @@ def parse_args(args)
       print_help
       exit 0
     else
+      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
+
       # First non-flag argument is the URLs (comma-separated or single)
       options[:urls] = arg.split(",").map(&:strip) if options[:urls].empty?
       i += 1
