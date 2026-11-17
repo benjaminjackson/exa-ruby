@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 - **`exa-ai --livecrawl` flag** - help text and docs for `exa-ai search` and `exa-ai find-similar` now mark `--livecrawl` deprecated. Use `--max-age-hours 0 --livecrawl-timeout 5000`. The flag still works and sends the same request: `maxAgeHours: 0` and `livecrawlTimeout: 5000`, not the API's deprecated `livecrawl` field
 
+### Fixed
+- **`exa-ai get-contents` missing values** - when `--snapshot-as-of`, `--summary-query`, `--highlights-query` or `--subpage-target` has no value, or the next argument is another flag, `get-contents` now stops with one error line and sends no request. Before, it sent the request without the value. `get-contents` now reads its contents flags with the same code as `search` and `find-similar`, so the `--text-verbosity` error text is now the same as on `search`
+- **`exa-ai get-contents` unknown flags** - `get-contents` now stops at a flag it does not know with `Error: unknown option <flag>` and sends no request. This includes `--livecrawl`, `--highlights-num-sentences` and `--highlights-per-url`, which `search` and `find-similar` take but `get-contents` does not. Before, `get-contents` dropped an unknown flag in silence, or used it as the URL when it came first
+
 ## [0.14.0] - 2026-11-16
 
 ### Removed

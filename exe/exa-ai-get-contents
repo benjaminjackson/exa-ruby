@@ -13,161 +13,93 @@ def validate_choice(flag, value, allowed)
   raise ArgumentError, "#{flag} must be one of: #{allowed.join(', ')}"
 end
 
-# Parse command line arguments
+# Contents flags that ContentsFlags.parse knows but get-contents does not
+# take. parse_args skips them, so they stay unknown options here.
+UNSUPPORTED_CONTENTS_FLAGS = %w[--livecrawl --highlights-num-sentences --highlights-per-url].freeze
+
+# Parse command line arguments into the options hash that
+# build_contents_params reads. The contents flags that search and
+# find-similar share go through Exa::CLI::ContentsFlags.parse, so all three
+# commands read them the same way; the loop below reads only the flags that
+# are get-contents' own.
 def parse_args(args)
-  urls = []
-  ids = []
-  max_age_hours = nil
-  snapshot_as_of = nil
-  user_identifier = nil
-  compliance = nil
-  highlights = false
-  highlights_query = nil
-  highlights_max_characters = nil
-  highlights_verbosity = nil
-  text_verbosity = nil
-  api_key = nil
-  text = false
-  text_max_characters = nil
-  include_html_tags = false
-  summary = false
-  summary_query = nil
-  summary_schema = nil
-  subpages = nil
-  subpage_target = []
-  links = nil
-  image_links = nil
-  context = false
-  context_max_characters = nil
-  livecrawl_timeout = nil
-  output_format = nil
-  print_request = false
+  options = {
+    urls: [],
+    ids: [],
+    max_age_hours: nil,
+    snapshot_as_of: nil,
+    user_identifier: nil,
+    compliance: nil,
+    highlights: false,
+    highlights_query: nil,
+    highlights_max_characters: nil,
+    highlights_verbosity: nil,
+    text_verbosity: nil,
+    api_key: nil,
+    text: false,
+    text_max_characters: nil,
+    include_html_tags: false,
+    summary: false,
+    summary_query: nil,
+    summary_schema: nil,
+    subpages: nil,
+    subpage_target: [],
+    links: nil,
+    image_links: nil,
+    context: false,
+    context_max_characters: nil,
+    livecrawl_timeout: nil,
+    output_format: nil,
+    print_request: false
+  }
 
   i = 0
   while i < args.length
+    next_index = Exa::CLI::ContentsFlags.parse(args, i, options, except: UNSUPPORTED_CONTENTS_FLAGS)
+    if next_index
+      i = next_index
+      next
+    end
+
     arg = args[i]
 
     case arg
     when "--api-key"
-      api_key = args[i + 1]
-      i += 2
-    when "--text"
-      text = true
-      i += 1
-    when "--text-max-characters"
-      text_max_characters = Exa::CLI::Base.parse_integer("--text-max-characters", args[i + 1])
-      i += 2
-    when "--include-html-tags"
-      include_html_tags = true
-      i += 1
-    when "--summary"
-      summary = true
-      i += 1
-    when "--summary-query"
-      summary_query = args[i + 1]
-      i += 2
-    when "--summary-schema"
-      summary_schema = Exa::CLI::Base.parse_json_or_file("--summary-schema", args[i + 1])
-      i += 2
-    when "--subpages"
-      subpages = Exa::CLI::Base.parse_integer("--subpages", args[i + 1])
-      i += 2
-    when "--subpage-target"
-      subpage_target << args[i + 1]
-      i += 2
-    when "--links"
-      links = Exa::CLI::Base.parse_integer("--links", args[i + 1])
-      i += 2
-    when "--image-links"
-      image_links = Exa::CLI::Base.parse_integer("--image-links", args[i + 1])
-      i += 2
-    when "--context"
-      context = true
-      i += 1
-    when "--context-max-characters"
-      context_max_characters = Exa::CLI::Base.parse_integer("--context-max-characters", args[i + 1])
-      i += 2
-    when "--livecrawl-timeout"
-      livecrawl_timeout = Exa::CLI::Base.parse_integer("--livecrawl-timeout", args[i + 1])
+      options[:api_key] = args[i + 1]
       i += 2
     when "--output-format"
-      output_format = args[i + 1]
+      options[:output_format] = args[i + 1]
       i += 2
     when "--ids"
-      ids = Exa::CLI::Base.option_value("--ids", args[i + 1]).split(",").map(&:strip)
-      i += 2
-    when "--max-age-hours"
-      max_age_hours = Exa::CLI::Base.parse_integer("--max-age-hours", args[i + 1])
-      i += 2
-    when "--snapshot-as-of"
-      snapshot_as_of = args[i + 1]
+      options[:ids] = Exa::CLI::Base.option_value("--ids", args[i + 1]).split(",").map(&:strip)
       i += 2
     when "--user-identifier"
-      user_identifier = args[i + 1]
+      options[:user_identifier] = args[i + 1]
       i += 2
     when "--compliance"
-      compliance = args[i + 1]
-      validate_choice("--compliance", compliance, Exa::CLI::SearchParser::VALID_COMPLIANCE)
-      i += 2
-    when "--highlights"
-      highlights = true
-      i += 1
-    when "--highlights-query"
-      highlights_query = args[i + 1]
-      i += 2
-    when "--highlights-max-characters"
-      highlights_max_characters = Exa::CLI::Base.parse_integer("--highlights-max-characters", args[i + 1])
+      options[:compliance] = args[i + 1]
+      validate_choice("--compliance", options[:compliance], Exa::CLI::SearchParser::VALID_COMPLIANCE)
       i += 2
     when "--highlights-verbosity"
-      highlights_verbosity = args[i + 1]
-      validate_choice("--highlights-verbosity", highlights_verbosity, VALID_HIGHLIGHTS_VERBOSITY)
-      i += 2
-    when "--text-verbosity"
-      text_verbosity = args[i + 1]
-      validate_choice("--text-verbosity", text_verbosity, Exa::CLI::SearchParser::VALID_TEXT_VERBOSITY)
+      options[:highlights_verbosity] = args[i + 1]
+      validate_choice("--highlights-verbosity", options[:highlights_verbosity], VALID_HIGHLIGHTS_VERBOSITY)
       i += 2
     when "--print-request"
-      print_request = true
+      options[:print_request] = true
       i += 1
     when "--help", "-h"
       print_help
       exit 0
     else
+      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
+
       # First non-flag argument is the URLs (comma-separated or single)
-      urls = arg.split(",").map(&:strip) if urls.empty?
+      options[:urls] = arg.split(",").map(&:strip) if options[:urls].empty?
       i += 1
     end
   end
 
-  {
-    urls: urls,
-    ids: ids,
-    max_age_hours: max_age_hours,
-    snapshot_as_of: snapshot_as_of,
-    user_identifier: user_identifier,
-    compliance: compliance,
-    highlights: highlights,
-    highlights_query: highlights_query,
-    highlights_max_characters: highlights_max_characters,
-    highlights_verbosity: highlights_verbosity,
-    text_verbosity: text_verbosity,
-    api_key: api_key,
-    text: text,
-    text_max_characters: text_max_characters,
-    include_html_tags: include_html_tags,
-    summary: summary,
-    summary_query: summary_query,
-    summary_schema: summary_schema,
-    subpages: subpages,
-    subpage_target: subpage_target,
-    links: links,
-    image_links: image_links,
-    context: context,
-    context_max_characters: context_max_characters,
-    livecrawl_timeout: livecrawl_timeout,
-    output_format: output_format,
-    print_request: print_request
-  }
+  options
 end
 
 # Build contents parameters from extracted flags

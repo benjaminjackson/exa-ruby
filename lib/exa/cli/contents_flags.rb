@@ -5,6 +5,10 @@ module Exa
     # The contents flags that exa-ai-search and exa-ai-find-similar share:
     # how each flag is read from the command line, how the flags become the
     # request's contents hash, and their lines in the help text.
+    # exa-ai-get-contents reads its flags through parse too, but leaves some
+    # out (UNSUPPORTED_CONTENTS_FLAGS in that file) and builds its own request.
+    # A flag added to parse is accepted by get-contents unless it is added to
+    # that list.
     module ContentsFlags
       VALID_TEXT_VERBOSITY = ["compact", "standard", "full"].freeze
 
@@ -38,8 +42,12 @@ module Exa
       HELP
 
       # Reads the contents flag at argv[index] into args and returns the index
-      # of the next argument. Returns nil when argv[index] is not a contents flag.
-      def self.parse(argv, index, args)
+      # of the next argument. Returns nil when argv[index] is not a contents
+      # flag, or is one of the flags in except: a command that does not take
+      # some contents flags names them there, so it can treat them as unknown.
+      def self.parse(argv, index, args, except: [])
+        return nil if except.include?(argv[index])
+
         case argv[index]
         when "--text"
           args[:text] = true
