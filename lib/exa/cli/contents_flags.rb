@@ -31,7 +31,7 @@ module Exa
         --highlights-num-sentences N   Deprecated: use --highlights-max-characters instead
         --highlights-per-url N       Deprecated: the API ignores it
         --highlights-query QUERY     Custom query for highlight extraction
-        --livecrawl                  Enable livecrawl (sets maxAgeHours=0, livecrawlTimeout=5000)
+        --livecrawl                  Deprecated: use --max-age-hours 0 --livecrawl-timeout 5000
         --livecrawl-timeout N        Livecrawl timeout in milliseconds (overrides --livecrawl default)
         --max-age-hours N            Maximum age of results in hours
         --snapshot-as-of DATE        Return page contents as of this time (ISO 8601)

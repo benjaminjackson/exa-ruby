@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- **`exa-ai --livecrawl` flag** - help text and docs for `exa-ai search` and `exa-ai find-similar` now mark `--livecrawl` deprecated. Use `--max-age-hours 0 --livecrawl-timeout 5000`. The flag still works and sends the same request: `maxAgeHours: 0` and `livecrawlTimeout: 5000`, not the API's deprecated `livecrawl` field
+
 ## [0.14.0] - 2026-11-16
 
 ### Removed

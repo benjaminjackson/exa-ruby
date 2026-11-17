@@ -195,6 +195,7 @@ These still work, so existing code keeps running. The search command prints the 
 - The `context` contents option and the `context` response field are deprecated. Use `highlights` or `text`.
 - `highlights` `num_sentences` and `highlights_per_url` are deprecated. Use `max_characters`.
 - `subpages` and `subpage_target` are deprecated on `search` and `find_similar`. They stay valid on `get_contents`.
+- `exa-ai search --livecrawl` and `exa-ai find-similar --livecrawl` are deprecated. Use `--max-age-hours 0 --livecrawl-timeout 5000`, which sends the same request.
 - The `resolved_search_type` response field is deprecated.
 - The CLI no longer accepts `--category github`; it is not in the API's category list.
 
