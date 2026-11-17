@@ -382,3 +382,15 @@ if ENV["RUN_INTEGRATION_TESTS"] == "true" &&
     WebsetsCleanupHelper.sweep_stale_websets(ENV["EXA_API_KEY"])
   end
 end
+
+# Runs an executable from exe/ inside the test process, so WebMock stubs
+# apply to its requests, and returns [stdout, stderr]. The second argument
+# to load wraps the script's top-level methods in an anonymous module, so
+# they do not leak onto Object. A script that calls exit raises SystemExit.
+def run_exe_in_process(name, *argv)
+  original_argv = ARGV.dup
+  ARGV.replace(argv)
+  capture_io { load File.expand_path("../exe/#{name}", __dir__), true }
+ensure
+  ARGV.replace(original_argv)
+end

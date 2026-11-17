@@ -54,12 +54,18 @@ def print_help
       --livecrawl                  Enable livecrawl (sets maxAgeHours=0, livecrawlTimeout=5000)
       --livecrawl-timeout N        Livecrawl timeout in milliseconds (overrides --livecrawl default)
       --max-age-hours N            Maximum age of results in hours
+      --snapshot-as-of DATE        Return page contents as of this time (ISO 8601)
 
     Search Options:
       --additional-queries QUERY   Additional search queries (repeatable)
       --output-schema JSON         JSON schema for output structure (@file syntax)
                                    Required to get synthesized 'output' from deep/deep-reasoning
-      --user-location CODE         User location (ISO country code)
+      --user-location LOC          User location: ISO country code (US), or a JSON
+                                   object with country, latitude, longitude
+                                   (@file syntax)
+      --objective TEXT             The broader goal this search serves
+      --user-identifier ID         Your identifier for the end user
+      --compliance MODE            Compliance mode: hipaa (enterprise only)
       --system-prompt PROMPT       System prompt for AI-powered search
       --moderation                 Enable content moderation
 
@@ -190,6 +196,10 @@ begin
   search_params[:user_location] = args[:user_location] if args[:user_location]
   search_params[:system_prompt] = args[:system_prompt] if args[:system_prompt]
   search_params[:moderation] = args[:moderation] if args[:moderation]
+  search_params[:objective] = args[:objective] if args[:objective]
+  search_params[:user_identifier] = args[:user_identifier] if args[:user_identifier]
+  search_params[:compliance] = args[:compliance] if args[:compliance]
+  search_params[:snapshot_as_of] = args[:snapshot_as_of] if args[:snapshot_as_of]
   contents = build_contents(args)
   search_params.merge!(contents) if contents
 
