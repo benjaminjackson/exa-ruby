@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **`exa-ai find-similar` contents flags** - `find-similar` now takes every Content Extraction flag that `search` takes. The 16 new flags are `--text-verbosity`, `--context`, `--context-max-characters`, `--subpages`, `--subpage-target`, `--links`, `--image-links`, `--highlights`, `--highlights-max-characters`, `--highlights-num-sentences`, `--highlights-per-url`, `--highlights-query`, `--livecrawl`, `--livecrawl-timeout`, `--max-age-hours` and `--snapshot-as-of`. Both commands share one implementation in `Exa::CLI::ContentsFlags`
 - **Monitors API** - `search_monitor_create`, `_list`, `_get`, `_update`, `_delete`, `_trigger`, `_batch`, `_runs_list` and `_runs_get` cover the `/monitors` API: scheduled searches that post new results to a webhook. CLI commands `exa-ai search-monitor-*`. This is a different product from Websets monitors (`create_monitor`, `exa-ai monitor-*`), which are unchanged
 - **Agent run errors** - `AgentRun#error` holds the `{type, code, message}` the API returns for a failed run, and `to_h` includes it. The CLI prints it for a failed run
 - **`lite` and `deep-lite` search types** - `search(type: "lite")` and `type: "deep-lite"`, also on `exa-ai search --type`. `lite` accepts only a limited set of parameters; the API rejects a request with any other

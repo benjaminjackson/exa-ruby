@@ -200,7 +200,10 @@ The API marks `/findSimilar` as deprecated. `exa-ai find-similar` still works. U
 
 ```bash
 exa-ai find-similar "https://arxiv.org/abs/2307.06435" --num-results 5
+exa-ai find-similar "https://arxiv.org/abs/2307.06435" --highlights --highlights-query "key findings" --links 3
 ```
+
+`find-similar` takes the same Content Extraction flags as `search`: `--text`, `--text-max-characters`, `--text-verbosity`, `--include-html-tags`, `--summary`, `--summary-query`, `--summary-schema`, `--context`, `--context-max-characters`, `--subpages`, `--subpage-target`, `--links`, `--image-links`, `--highlights`, `--highlights-max-characters`, `--highlights-num-sentences`, `--highlights-per-url`, `--highlights-query`, `--livecrawl`, `--livecrawl-timeout`, `--max-age-hours` and `--snapshot-as-of`. They go under `contents` in the request. `--highlights-query` and the other `--highlights-*` flags have an effect only with `--highlights`. The search-only flags, such as `--type` and `--output-schema`, are not available.
 
 ## context (deprecated)
 
