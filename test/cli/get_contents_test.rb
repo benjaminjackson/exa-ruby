@@ -341,6 +341,78 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     assert_equal ["https://www.anthropic.com/research"], posted[:body]["urls"]
   end
 
+  def test_exe_sends_the_same_body_for_every_shared_contents_flag
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    _stdout, stderr, _exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "https://exa.ai", "--api-key", "test_key", "--print-request",
+      "--text", "--text-max-characters", "100", "--include-html-tags", "--text-verbosity", "compact",
+      "--summary", "--summary-query", "Name the founders", "--summary-schema", '{"type":"object"}',
+      "--context", "--context-max-characters", "50",
+      "--subpages", "1", "--subpage-target", "about", "--subpage-target", "careers",
+      "--links", "2", "--image-links", "3",
+      "--highlights", "--highlights-query", "funding rounds", "--highlights-max-characters", "10",
+      "--highlights-verbosity", "low",
+      "--livecrawl-timeout", "1000", "--max-age-hours", "0", "--snapshot-as-of", "2024-01-01"
+    )
+
+    expected_body = '{"urls":["https://exa.ai"],' \
+                    '"text":{"maxCharacters":100,"includeHtmlTags":true,"verbosity":"compact"},' \
+                    '"summary":{"query":"Name the founders","schema":{"type":"object"}},' \
+                    '"context":{"maxCharacters":50},"subpages":1,"subpageTarget":["about","careers"],' \
+                    '"extras":{"links":2,"imageLinks":3},' \
+                    '"highlights":{"query":"funding rounds","maxCharacters":10,"verbosity":"low"},' \
+                    '"livecrawlTimeout":1000,"maxAgeHours":0,"snapshotAsOf":"2024-01-01"}'
+    assert_equal expected_body, stderr.lines.first.chomp
+  end
+
+  %w[--snapshot-as-of --summary-query --highlights-query --subpage-target].each do |flag|
+    flag_name = flag.delete_prefix("--").tr("-", "_")
+
+    define_method("test_exe_stops_when_#{flag_name}_comes_last_with_no_value") do
+      stub_request(:post, "https://api.exa.ai/contents")
+
+      _stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-get-contents", "https://exa.ai", "--api-key", "test_key", flag
+      )
+
+      assert_equal "Error: #{flag} needs a value\n", stderr
+      refute_equal 0, exit_status
+      assert_not_requested :post, "https://api.exa.ai/contents"
+    end
+
+    define_method("test_exe_stops_when_#{flag_name}_is_followed_by_another_flag") do
+      stub_request(:post, "https://api.exa.ai/contents")
+
+      _stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-get-contents", "https://exa.ai", "--api-key", "test_key", flag, "--text"
+      )
+
+      assert_equal "Error: #{flag} needs a value (got the flag --text)\n", stderr
+      refute_equal 0, exit_status
+      assert_not_requested :post, "https://api.exa.ai/contents"
+    end
+  end
+
+  def test_contents_flags_parse_skips_a_flag_in_except
+    parsed = {}
+
+    next_index = Exa::CLI::ContentsFlags.parse(["--livecrawl"], 0, parsed, except: ["--livecrawl"])
+
+    assert_nil next_index
+    assert_empty parsed
+  end
+
+  def test_contents_flags_parse_reads_a_flag_without_except
+    parsed = {}
+
+    next_index = Exa::CLI::ContentsFlags.parse(["--livecrawl"], 0, parsed)
+
+    assert_equal 1, next_index
+    assert_equal({ livecrawl: true }, parsed)
+  end
+
   private
 
   # Stubs /contents and returns a Hash whose :body is set to the parsed

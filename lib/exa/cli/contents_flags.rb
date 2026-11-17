@@ -38,8 +38,12 @@ module Exa
       HELP
 
       # Reads the contents flag at argv[index] into args and returns the index
-      # of the next argument. Returns nil when argv[index] is not a contents flag.
-      def self.parse(argv, index, args)
+      # of the next argument. Returns nil when argv[index] is not a contents
+      # flag, or is one of the flags in except: a command that does not take
+      # some contents flags names them there, so it can treat them as unknown.
+      def self.parse(argv, index, args, except: [])
+        return nil if except.include?(argv[index])
+
         case argv[index]
         when "--text"
           args[:text] = true
