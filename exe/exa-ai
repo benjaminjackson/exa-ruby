@@ -42,6 +42,15 @@ module ExaCLI
     "monitor-delete" => "Delete a monitor",
     "monitor-runs-list" => "List monitor runs",
     "monitor-runs-get" => "Get monitor run details",
+    "search-monitor-create" => "Create a search monitor",
+    "search-monitor-get" => "Get search monitor details",
+    "search-monitor-list" => "List search monitors",
+    "search-monitor-update" => "Update a search monitor",
+    "search-monitor-delete" => "Delete a search monitor",
+    "search-monitor-trigger" => "Run a search monitor now",
+    "search-monitor-batch" => "Delete, pause or unpause search monitors in bulk",
+    "search-monitor-runs-list" => "List search monitor runs",
+    "search-monitor-runs-get" => "Get search monitor run details",
     "agent-run-create" => "Create an agent run",
     "agent-run-get" => "Get agent run details",
     "agent-run-list" => "List agent runs",
@@ -131,6 +140,24 @@ module ExaCLI
       exec File.expand_path("../exa-ai-monitor-runs-list", __FILE__), *ARGV[1..]
     when "monitor-runs-get"
       exec File.expand_path("../exa-ai-monitor-runs-get", __FILE__), *ARGV[1..]
+    when "search-monitor-create"
+      exec File.expand_path("../exa-ai-search-monitor-create", __FILE__), *ARGV[1..]
+    when "search-monitor-get"
+      exec File.expand_path("../exa-ai-search-monitor-get", __FILE__), *ARGV[1..]
+    when "search-monitor-list"
+      exec File.expand_path("../exa-ai-search-monitor-list", __FILE__), *ARGV[1..]
+    when "search-monitor-update"
+      exec File.expand_path("../exa-ai-search-monitor-update", __FILE__), *ARGV[1..]
+    when "search-monitor-delete"
+      exec File.expand_path("../exa-ai-search-monitor-delete", __FILE__), *ARGV[1..]
+    when "search-monitor-trigger"
+      exec File.expand_path("../exa-ai-search-monitor-trigger", __FILE__), *ARGV[1..]
+    when "search-monitor-batch"
+      exec File.expand_path("../exa-ai-search-monitor-batch", __FILE__), *ARGV[1..]
+    when "search-monitor-runs-list"
+      exec File.expand_path("../exa-ai-search-monitor-runs-list", __FILE__), *ARGV[1..]
+    when "search-monitor-runs-get"
+      exec File.expand_path("../exa-ai-search-monitor-runs-get", __FILE__), *ARGV[1..]
     when "agent-run-create"
       exec File.expand_path("../exa-ai-agent-run-create", __FILE__), *ARGV[1..]
     when "agent-run-get"
@@ -221,6 +248,18 @@ module ExaCLI
       ["monitor-delete", "Delete a monitor"],
       ["monitor-runs-list", "List monitor runs"],
       ["monitor-runs-get", "Get monitor run details"]
+    ])
+
+    print_command_section("Search Monitors (not Websets monitors)", [
+      ["search-monitor-create", "Create a search monitor"],
+      ["search-monitor-get", "Get search monitor details"],
+      ["search-monitor-list", "List search monitors"],
+      ["search-monitor-update", "Update a search monitor"],
+      ["search-monitor-delete", "Delete a search monitor"],
+      ["search-monitor-trigger", "Run a search monitor now"],
+      ["search-monitor-batch", "Delete, pause or unpause search monitors in bulk"],
+      ["search-monitor-runs-list", "List search monitor runs"],
+      ["search-monitor-runs-get", "Get search monitor run details"]
     ])
 
     puts "Global Options:"

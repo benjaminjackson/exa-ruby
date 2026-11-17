@@ -9,6 +9,7 @@ Complete reference for the `exa-ai` command-line interface.
 - [answer](#answer)
 - [context](#context)
 - [get-contents](#get-contents)
+- [search-monitor](#search-monitor)
 - [Output Formats](#output-formats)
 
 ## Global Options
@@ -279,6 +280,31 @@ exa-ai get-contents "https://example.com" --output-format json
 - `--summary` - Include summary
 - `--output-format FORMAT` - json or pretty (default: json)
 
+
+## search-monitor
+
+Search monitors run an Exa search on a schedule and post new results to a webhook (the `/monitors` API). They are a different product from Websets monitors (`exa-ai monitor-*`). Each command has its own executable, `exa-ai-search-monitor-<command>`, and `exa-ai search-monitor-<command>` runs the same thing. All take `--api-key`, `--output-format json|pretty|text|toon` and `--help`.
+
+| Command | Arguments and options |
+|---|---|
+| `search-monitor-create` | `--query TEXT` and `--webhook-url URL` (required); `--period 1d`, `--name`, `--num-results`, `--include-domains a,b`, `--exclude-domains a,b`, `--webhook-events a,b`, `--output-schema JSON\|@file`, `--metadata JSON\|@file` |
+| `search-monitor-list` | `--status`, `--name`, `--limit`, `--cursor` |
+| `search-monitor-get` | `ID` |
+| `search-monitor-update` | `ID`; `--name`, `--status active\|paused`, `--query`, `--period`, `--remove-trigger`, `--webhook-url`, `--webhook-events`, `--output-schema`, `--metadata` |
+| `search-monitor-delete` | `ID` |
+| `search-monitor-trigger` | `ID` (runs the monitor now) |
+| `search-monitor-batch` | `--action delete\|pause\|unpause` (required); filter `--status`, `--name`, `--metadata JSON`; `--limit`; `--execute` |
+| `search-monitor-runs-list` | `MONITOR_ID`; `--limit`, `--cursor` |
+| `search-monitor-runs-get` | `MONITOR_ID RUN_ID` |
+
+Without `--period`, a monitor runs only when you call `search-monitor-trigger`. The create response holds the webhook secret, which the API returns only once. `search-monitor-batch` is a dry run unless you pass `--execute`.
+
+```bash
+exa-ai-search-monitor-create --query "AI/ML infrastructure startups with Series A funding" \
+  --webhook-url https://your-app.example/webhooks/exa --period 1d --output-format pretty
+exa-ai-search-monitor-batch --action pause --status active            # dry run
+exa-ai-search-monitor-batch --action pause --status active --execute  # apply
+```
 
 ## Output Formats
 

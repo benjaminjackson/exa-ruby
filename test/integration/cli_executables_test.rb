@@ -44,6 +44,70 @@ class CLIExecutablesTest < Minitest::Test
     assert_includes stdout, "QUERY"
   end
 
+  # Search monitor commands (the /monitors API, not Websets monitors)
+  def test_search_monitor_create_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-create --help")
+
+    assert status.success?, "exa-ai-search-monitor-create --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-create"
+  end
+
+  def test_search_monitor_list_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-list --help")
+
+    assert status.success?, "exa-ai-search-monitor-list --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-list"
+  end
+
+  def test_search_monitor_get_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-get --help")
+
+    assert status.success?, "exa-ai-search-monitor-get --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-get"
+  end
+
+  def test_search_monitor_update_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-update --help")
+
+    assert status.success?, "exa-ai-search-monitor-update --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-update"
+  end
+
+  def test_search_monitor_delete_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-delete --help")
+
+    assert status.success?, "exa-ai-search-monitor-delete --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-delete"
+  end
+
+  def test_search_monitor_trigger_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-trigger --help")
+
+    assert status.success?, "exa-ai-search-monitor-trigger --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-trigger"
+  end
+
+  def test_search_monitor_batch_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-batch --help")
+
+    assert status.success?, "exa-ai-search-monitor-batch --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-batch"
+  end
+
+  def test_search_monitor_runs_list_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-runs-list --help")
+
+    assert status.success?, "exa-ai-search-monitor-runs-list --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-runs-list"
+  end
+
+  def test_search_monitor_runs_get_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-runs-get --help")
+
+    assert status.success?, "exa-ai-search-monitor-runs-get --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai search-monitor-runs-get"
+  end
+
   # Answer command
   def test_answer_help
     stdout, stderr, status = run_executable("bundle exec exe/exa-ai-answer --help")

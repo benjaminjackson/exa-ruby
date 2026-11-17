@@ -1,0 +1,74 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+api_key = nil
+output_format = "json"
+monitor_id = nil
+params = {}
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--api-key"
+    api_key = args.shift
+  when "--cursor"
+    params[:cursor] = args.shift
+  when "--limit"
+    params[:limit] = args.shift.to_i
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa-ai search-monitor-runs-list MONITOR_ID [options]
+
+      List the runs of a search monitor.
+
+      Options:
+        --cursor CURSOR         Pagination cursor for next page
+        --limit N               Results per page (1-100)
+        --api-key KEY           Exa API key (or use EXA_API_KEY env var)
+        --output-format FORMAT  Output format: json, pretty, text, or toon (default: json)
+        --help, -h              Show this help message
+
+      Example:
+        exa-ai search-monitor-runs-list mon_abc123 --limit 20
+    HELP
+    exit 0
+  else
+    if arg.start_with?("-") || monitor_id
+      warn "Unknown option: #{arg}"
+      exit 1
+    end
+    monitor_id = arg
+  end
+end
+
+unless monitor_id
+  warn "Error: MONITOR_ID is required. Run with --help for usage."
+  exit 1
+end
+
+begin
+  client = Exa::CLI::Base.build_client(Exa::CLI::Base.resolve_api_key(api_key))
+  result = client.search_monitor_runs_list(monitor_id, **params)
+  puts Exa::CLI::Formatters::SearchMonitorFormatter.format(result, output_format)
+rescue Exa::Unauthorized => e
+  warn "Authentication failed: #{e.message}"
+  warn "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
+  exit 1
+rescue Exa::ClientError => e
+  warn "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  warn "Server error: #{e.message}"
+  exit 1
+rescue Exa::Error => e
+  warn "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  warn "Unexpected error: #{e.message}"
+  exit 1
+end

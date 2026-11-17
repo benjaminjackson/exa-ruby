@@ -1,0 +1,113 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+# Parse a JSON string, or read JSON from a file when the value starts with @.
+def parse_json_or_file(value)
+  text = value.start_with?("@") ? File.read(value[1..]) : value
+  JSON.parse(text)
+rescue JSON::ParserError => e
+  warn "Error: Invalid JSON: #{e.message}"
+  exit 1
+rescue Errno::ENOENT => e
+  warn "Error: File not found: #{e.message}"
+  exit 1
+end
+
+api_key = nil
+output_format = "json"
+monitor_id = nil
+search = {}
+webhook = {}
+params = {}
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--api-key"
+    api_key = args.shift
+  when "--name"
+    params[:name] = args.shift
+  when "--status"
+    params[:status] = args.shift
+  when "--query"
+    search[:query] = args.shift
+  when "--period"
+    params[:trigger] = { type: "interval", period: args.shift }
+  when "--remove-trigger"
+    params[:trigger] = nil
+  when "--webhook-url"
+    webhook[:url] = args.shift
+  when "--webhook-events"
+    webhook[:events] = args.shift.split(",").map(&:strip)
+  when "--output-schema"
+    params[:output_schema] = parse_json_or_file(args.shift)
+  when "--metadata"
+    params[:metadata] = parse_json_or_file(args.shift)
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa-ai search-monitor-update ID [options]
+
+      Update a search monitor. Only the options given are changed.
+
+      Options:
+        --name NAME             New name
+        --status STATUS         active or paused
+        --query TEXT            New search query
+        --period PERIOD         New schedule, e.g. 1h, 6h, 1d, 7d
+        --remove-trigger        Remove the schedule (manual runs only)
+        --webhook-url URL       New webhook URL
+        --webhook-events LIST   Comma-separated webhook events
+        --output-schema JSON    JSON schema for structured output (JSON or @file.json)
+        --metadata JSON         Custom metadata (JSON or @file.json)
+        --api-key KEY           Exa API key (or use EXA_API_KEY env var)
+        --output-format FORMAT  Output format: json, pretty, text, or toon (default: json)
+        --help, -h              Show this help message
+
+      Examples:
+        exa-ai search-monitor-update mon_abc123 --status paused
+        exa-ai search-monitor-update mon_abc123 --remove-trigger
+    HELP
+    exit 0
+  else
+    if arg.start_with?("-") || monitor_id
+      warn "Unknown option: #{arg}"
+      exit 1
+    end
+    monitor_id = arg
+  end
+end
+
+unless monitor_id
+  warn "Error: ID is required. Run with --help for usage."
+  exit 1
+end
+
+params[:search] = search unless search.empty?
+params[:webhook] = webhook unless webhook.empty?
+
+begin
+  client = Exa::CLI::Base.build_client(Exa::CLI::Base.resolve_api_key(api_key))
+  result = client.search_monitor_update(monitor_id, **params)
+  puts Exa::CLI::Formatters::SearchMonitorFormatter.format(result, output_format)
+rescue Exa::Unauthorized => e
+  warn "Authentication failed: #{e.message}"
+  warn "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
+  exit 1
+rescue Exa::ClientError => e
+  warn "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  warn "Server error: #{e.message}"
+  exit 1
+rescue Exa::Error => e
+  warn "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  warn "Unexpected error: #{e.message}"
+  exit 1
+end

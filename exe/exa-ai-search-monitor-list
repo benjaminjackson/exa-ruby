@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "exa-ai"
+
+api_key = nil
+output_format = "json"
+params = {}
+
+args = ARGV.dup
+while args.any?
+  arg = args.shift
+  case arg
+  when "--api-key"
+    api_key = args.shift
+  when "--status"
+    params[:status] = args.shift
+  when "--name"
+    params[:name] = args.shift
+  when "--cursor"
+    params[:cursor] = args.shift
+  when "--limit"
+    params[:limit] = args.shift.to_i
+  when "--output-format"
+    output_format = args.shift
+  when "--help", "-h"
+    puts <<~HELP
+      Usage: exa-ai search-monitor-list [options]
+
+      List search monitors (the /monitors API, not Websets monitors).
+
+      Options:
+        --status STATUS         Filter by status: active, paused, or disabled
+        --name TEXT             Filter by name (case-insensitive substring)
+        --cursor CURSOR         Pagination cursor for next page
+        --limit N               Results per page (1-100)
+        --api-key KEY           Exa API key (or use EXA_API_KEY env var)
+        --output-format FORMAT  Output format: json, pretty, text, or toon (default: json)
+        --help, -h              Show this help message
+
+      Examples:
+        exa-ai search-monitor-list
+        exa-ai search-monitor-list --status active --limit 20
+    HELP
+    exit 0
+  else
+    warn "Unknown option: #{arg}"
+    exit 1
+  end
+end
+
+begin
+  client = Exa::CLI::Base.build_client(Exa::CLI::Base.resolve_api_key(api_key))
+  result = client.search_monitor_list(**params)
+  puts Exa::CLI::Formatters::SearchMonitorFormatter.format(result, output_format)
+rescue Exa::Unauthorized => e
+  warn "Authentication failed: #{e.message}"
+  warn "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
+  exit 1
+rescue Exa::ClientError => e
+  warn "Client error: #{e.message}"
+  exit 1
+rescue Exa::ServerError => e
+  warn "Server error: #{e.message}"
+  exit 1
+rescue Exa::Error => e
+  warn "Error: #{e.message}"
+  exit 1
+rescue StandardError => e
+  warn "Unexpected error: #{e.message}"
+  exit 1
+end
