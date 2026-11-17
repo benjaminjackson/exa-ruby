@@ -7,7 +7,8 @@ Complete reference for the Exa Ruby client library.
 - [Client Initialization](#client-initialization)
 - [Search](#search)
 - [Answer](#answer)
-- [Context](#context)
+- [Find Similar (deprecated)](#find-similar-deprecated)
+- [Context (deprecated)](#context-deprecated)
 - [Get Contents](#get-contents)
 - [Search Monitors](#search-monitors)
 
@@ -53,6 +54,24 @@ results = client.search("AI",
 ```
 
 `lite` accepts only a limited set of parameters, and the API rejects a request that sets any other. See https://exa.ai/docs/search/quickstart.md#lite.
+
+### Deprecated and Legacy Options
+
+These options still work. The API reports some of them in the response's `warnings`. Use the replacement in new code.
+
+| Option | Status | Use instead |
+| --- | --- | --- |
+| `type: "fast"`, `type: "instant"` | Legacy | `type: "lite"` |
+| `type: "deep-reasoning"` | Legacy | `type: "deep"` |
+| `start_crawl_date`, `end_crawl_date` | Deprecated. The API ignores them and adds an `IGNORED_FIELD` warning. | None; leave them out |
+| `include_text`, `exclude_text` | Deprecated | No replacement named in the spec |
+| `context` | Deprecated | `highlights` or `text` |
+| `highlights: { num_sentences: }` | Deprecated | `highlights: { max_characters: }` |
+| `highlights: { highlights_per_url: }` | Deprecated. The API ignores it. | `highlights: { max_characters: }` |
+| `subpages`, `subpage_target` on `search` | Deprecated | Pass them to `get_contents` |
+| `category: "github"` | Not in the spec's category list. The CLI rejects it; the Ruby client still sends it. | Another category, or none |
+
+On the result, `resolved_search_type` is deprecated (it may be an empty string), `search_type` is not in the spec, and `context` is deprecated.
 
 ### Request Options from the Spec
 
@@ -111,14 +130,16 @@ results = client.search("AI research",
   end_published_date: "2025-12-31T23:59:59.999Z"
 )
 
-# Filter by crawl date
+# Filter by crawl date (deprecated: the API ignores these and returns a warning)
 results = client.search("news",
   start_crawl_date: "2025-10-01T00:00:00.000Z",
   end_crawl_date: "2025-10-31T23:59:59.999Z"
 )
 ```
 
-### Advanced: Text Filtering
+### Advanced: Text Filtering (deprecated)
+
+`include_text` and `exclude_text` are deprecated. They still work, and matching is approximate (word-level, not exact phrase).
 
 ```ruby
 results = client.search("machine learning",
@@ -158,7 +179,9 @@ results.results.each do |result|
 end
 ```
 
-### Advanced: RAG Context
+### Advanced: RAG Context (deprecated)
+
+`context` is deprecated. Use `highlights` or `text` instead.
 
 ```ruby
 results = client.search("kubernetes",
@@ -167,12 +190,12 @@ results = client.search("kubernetes",
   }
 )
 
-results.results.each do |result|
-  puts result["context"]
-end
+puts results.context
 ```
 
-### Advanced: Subpage Crawling
+### Advanced: Subpage Crawling (deprecated on search)
+
+`subpages` and `subpage_target` are deprecated on `search` and `find_similar`. They stay valid on `get_contents`: send the result URLs there instead.
 
 ```ruby
 results = client.search("documentation",
@@ -205,9 +228,7 @@ results = client.search("AI",
   start_published_date: "2025-01-01T00:00:00.000Z",
   text: { max_characters: 3000 },
   summary: { query: "Main developments?" },
-  context: { max_characters: 5000 },
-  subpages: 1,
-  subpage_target: ["research"],
+  highlights: { max_characters: 2000 },
   extras: { links: 3, image_links: 2 }
 )
 ```
@@ -249,7 +270,17 @@ answer.citations.each do |citation|
 end
 ```
 
-## Context
+## Find Similar (deprecated)
+
+The API marks `/findSimilar` as deprecated. `client.find_similar` still works. Use `client.search` with a query that describes the source page instead.
+
+```ruby
+similar = client.find_similar("https://arxiv.org/abs/2307.06435", num_results: 5)
+```
+
+## Context (deprecated)
+
+`/context` is not in the Exa API spec. `client.context` still works, but no replacement is named. For code lookup, use `client.search`.
 
 Find relevant code snippets and documentation from repositories.
 
@@ -309,6 +340,8 @@ contents = client.get_contents(["https://example.com"],
 )
 contents.search_time
 ```
+
+`context` is deprecated here too; use `highlights` or `text`. In `highlights`, `num_sentences` and `highlights_per_url` are deprecated; use `max_characters`. `subpages` and `subpage_target` stay valid on `get_contents`.
 
 ### By Document ID
 

@@ -7,7 +7,8 @@ Complete reference for the `exa-ai` command-line interface.
 - [Global Options](#global-options)
 - [search](#search)
 - [answer](#answer)
-- [context](#context)
+- [find-similar (deprecated)](#find-similar-deprecated)
+- [context (deprecated)](#context-deprecated)
 - [get-contents](#get-contents)
 - [search-monitor](#search-monitor)
 - [Output Formats](#output-formats)
@@ -57,13 +58,15 @@ exa-ai search "AI research" \
   --start-published-date "2025-01-01T00:00:00.000Z" \
   --end-published-date "2025-12-31T23:59:59.999Z"
 
-# Filter by crawl date
+# Filter by crawl date (deprecated: the API ignores these and returns a warning)
 exa-ai search "news" \
   --start-crawl-date "2025-10-01T00:00:00.000Z" \
   --end-crawl-date "2025-10-31T23:59:59.999Z"
 ```
 
-### Text Filtering
+### Text Filtering (deprecated)
+
+`--include-text` and `--exclude-text` are deprecated. They still work, and matching is approximate (word-level, not exact phrase).
 
 ```bash
 # Must include phrase
@@ -95,12 +98,12 @@ exa-ai search "climate change" \
   --summary \
   --summary-query "What are the main points?"
 
-# Format as LLM context
+# Format as LLM context (deprecated: use --highlights or --text)
 exa-ai search "kubernetes" \
   --context \
   --context-max-characters 5000
 
-# Crawl subpages
+# Crawl subpages (deprecated on search: use exa-ai get-contents --subpages)
 exa-ai search "documentation" \
   --subpages 1 \
   --subpage-target about \
@@ -126,24 +129,27 @@ exa-ai search "ruby" --output-format json
 
 - `QUERY` - Search query (required)
 - `--num-results N` - Number of results (default: 10)
-- `--type TYPE` - Search type: fast, deep, keyword, or auto (default: fast)
+- `--type TYPE` - Search type: auto (default), lite, deep-lite, deep, neural. Legacy: fast and instant (use lite), deep-reasoning (use deep)
+- `--category CAT` - company, publication, news, personal site, people, or financial report. `github` is not in the spec and is rejected
 - `--include-domains DOMAINS` - Comma-separated domains
 - `--exclude-domains DOMAINS` - Comma-separated domains
 - `--start-published-date DATE` - ISO 8601 date string
 - `--end-published-date DATE` - ISO 8601 date string
-- `--start-crawl-date DATE` - ISO 8601 date string
-- `--end-crawl-date DATE` - ISO 8601 date string
-- `--include-text TEXT` - Phrase to include
-- `--exclude-text TEXT` - Phrase to exclude
+- `--start-crawl-date DATE` - Deprecated. The API ignores it and returns a warning
+- `--end-crawl-date DATE` - Deprecated. The API ignores it and returns a warning
+- `--include-text TEXT` - Deprecated. Phrase to include (approximate match)
+- `--exclude-text TEXT` - Deprecated. Phrase to exclude (approximate match)
 - `--text` - Include full webpage text
 - `--text-max-characters N` - Limit text length
 - `--include-html-tags` - Keep HTML tags in text
 - `--summary` - Include AI summary
 - `--summary-query QUERY` - Custom summary query
-- `--context` - Include LLM-formatted context
-- `--context-max-characters N` - Limit context length
-- `--subpages N` - Number of subpages to crawl
-- `--subpage-target TARGET` - Subpage URL pattern (repeatable)
+- `--context` - Deprecated. Use `--highlights` or `--text`
+- `--context-max-characters N` - Deprecated. Limit context length
+- `--subpages N` - Deprecated on search. Use `exa-ai get-contents --subpages`
+- `--subpage-target TARGET` - Deprecated on search. Use `exa-ai get-contents --subpage-target`
+- `--highlights-num-sentences N` - Deprecated. Use `--highlights-max-characters`
+- `--highlights-per-url N` - Deprecated. The API ignores it
 - `--links N` - Number of links to extract
 - `--image-links N` - Number of image links to extract
 - `--output-format FORMAT` - json or pretty
@@ -188,7 +194,17 @@ exa-ai answer "What is AI?" --output-format json
 - `citations` - Array of source citations with URLs
 - `cost_dollars` - Cost of the request
 
-## context
+## find-similar (deprecated)
+
+The API marks `/findSimilar` as deprecated. `exa-ai find-similar` still works. Use `exa-ai search` with a query that describes the source page instead. Its `--start-crawl-date`, `--end-crawl-date`, `--include-text` and `--exclude-text` flags are deprecated as on `search`.
+
+```bash
+exa-ai find-similar "https://arxiv.org/abs/2307.06435" --num-results 5
+```
+
+## context (deprecated)
+
+`/context` is not in the Exa API spec. `exa-ai context` still works, but no replacement is named. For code lookup, use `exa-ai search`.
 
 Find relevant code snippets and documentation from repositories.
 
@@ -278,6 +294,7 @@ exa-ai get-contents "https://example.com" --output-format json
 - `--text` - Include full text content
 - `--highlights` - Include highlighted sections
 - `--summary` - Include summary
+- `--context` - Deprecated. Use `--highlights` or `--text`
 - `--output-format FORMAT` - json or pretty (default: json)
 
 
