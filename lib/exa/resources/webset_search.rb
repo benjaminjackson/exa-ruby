@@ -77,7 +77,7 @@ module Exa
       end
 
       def in_progress?
-        created? || running?
+        created? || pending? || running?
       end
 
       # Behavior helper methods
