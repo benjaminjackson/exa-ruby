@@ -6,6 +6,7 @@ require "fileutils"
 
 class DotenvIntegrationTest < Minitest::Test
   def setup
+    super
     @original_api_key = ENV["EXA_API_KEY"]
     @original_dir = Dir.pwd
   end
@@ -13,6 +14,7 @@ class DotenvIntegrationTest < Minitest::Test
   def teardown
     ENV["EXA_API_KEY"] = @original_api_key
     Dir.chdir(@original_dir)
+    super
   end
 
   def test_dotenv_loads_env_file_when_available

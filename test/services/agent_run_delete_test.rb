@@ -3,6 +3,7 @@ require_relative "../../lib/exa/services/agent_run_delete"
 
 class AgentRunDeleteTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
     @run_id = "run-abc123"
   end

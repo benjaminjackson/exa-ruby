@@ -5,6 +5,7 @@ require "exa/cli/formatters/answer_formatter"
 
 class Exa::CLI::Formatters::AnswerFormatterTest < Minitest::Test
   def setup
+    super
     @result = Exa::Resources::Answer.new(
       answer: "SpaceX's valuation as of late 2024 is approximately $180 billion.",
       citations: [

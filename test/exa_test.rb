@@ -6,6 +6,7 @@ class ExaTest < Minitest::Test
   def teardown
     # Reset configuration after each test to avoid pollution
     Exa.reset
+    super
   end
 
   def test_configure_yields_module_for_configuration

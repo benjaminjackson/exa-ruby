@@ -7,6 +7,7 @@ module Exa
     module Websets
       class CreateSearchTest < Minitest::Test
         def setup
+          super
           @connection = Exa::Connection.build(api_key: "test_key")
           @webset_id = "ws_abc123"
         end

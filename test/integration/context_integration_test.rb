@@ -4,6 +4,7 @@ require "test_helper"
 
 class ContextIntegrationTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
   def test_context_returns_context_result_with_code_snippets

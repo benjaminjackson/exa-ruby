@@ -7,6 +7,7 @@ module Exa
     module Websets
       class UploadImportTest < Minitest::Test
         def setup
+          super
           @connection = Exa::Connection.build(api_key: "test_key")
           @test_file = "/tmp/test_upload.csv"
           File.write(@test_file, "name,url\nTest,https://test.com\n")
@@ -14,6 +15,7 @@ module Exa
 
         def teardown
           File.delete(@test_file) if File.exist?(@test_file)
+          super
         end
 
         def test_initialize_with_connection_file_path_and_params

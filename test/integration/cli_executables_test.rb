@@ -7,6 +7,7 @@ require "open3"
 # These tests verify that each executable can be loaded and run without hitting remote endpoints
 class CLIExecutablesTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
   # Helper to run an executable and return stdout, stderr, and status

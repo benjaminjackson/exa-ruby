@@ -8,6 +8,7 @@ module Exa
       module Monitors
         class UpdateTest < Minitest::Test
           def setup
+            super
             @connection = Exa::Connection.build(api_key: "test_key")
             @monitor_id = "mon_123"
           end

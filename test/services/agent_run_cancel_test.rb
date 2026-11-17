@@ -4,6 +4,7 @@ require_relative "../../lib/exa/resources/agent_run"
 
 class AgentRunCancelTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
     @run_id = "run-abc123"
   end

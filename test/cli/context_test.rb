@@ -4,6 +4,7 @@ require "test_helper"
 
 class Exa::CLI::ContextTest < Minitest::Test
   def setup
+    super
     @api_key = "test_api_key"
   end
 

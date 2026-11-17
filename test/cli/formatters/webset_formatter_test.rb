@@ -4,6 +4,7 @@ require "test_helper"
 
 class WebsetFormatterTest < Minitest::Test
   def setup
+    super
     @webset = Exa::Resources::Webset.new(
       id: "ws_123",
       object: "webset",

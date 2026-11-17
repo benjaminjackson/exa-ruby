@@ -14,6 +14,7 @@ class SearchMonitorsIntegrationTest < Minitest::Test
   MONITOR_NAME = "exa-ruby integration test"
 
   def setup
+    super
     skip_unless_integration_enabled
   end
 

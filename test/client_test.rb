@@ -4,6 +4,7 @@ require "test_helper"
 
 class ClientTest < Minitest::Test
   def setup
+    super
     # Reset WebMock request history before each test
     WebMock.reset!
   end
@@ -11,6 +12,7 @@ class ClientTest < Minitest::Test
   def teardown
     # Reset module-level configuration after each test
     Exa.reset
+    super
   end
 
   def test_initialize_with_api_key

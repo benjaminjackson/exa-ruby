@@ -4,6 +4,7 @@ require "test_helper"
 
 class SearchIntegrationTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
 
