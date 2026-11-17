@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../resources/agent_run"
+require_relative "../resources/agent_run_deletion"
 
 module Exa
   module Services
@@ -11,25 +11,17 @@ module Exa
       end
 
       def call
-        response = @connection.delete("/agent/runs/#{@run_id}")
-        body = response.body
+        body = @connection.delete("/agent/runs/#{@run_id}").body
 
-        # ponytail: 204-vs-200 unconfirmed; nil-guarded. Confirm against live API.
+        # A successful DELETE with no body still means the run was deleted.
         if body.nil? || body.empty?
-          return Resources::AgentRun.new(id: @run_id, object: "agent_run", status: "deleted")
+          return Resources::AgentRunDeletion.new(id: @run_id, object: "agent_run.deleted", deleted: true)
         end
 
-        Resources::AgentRun.new(
+        Resources::AgentRunDeletion.new(
           id: body["id"],
           object: body["object"],
-          status: body["status"],
-          stop_reason: body["stopReason"],
-          created_at: body["createdAt"],
-          completed_at: body["completedAt"],
-          request: body["request"],
-          output: body["output"],
-          usage: body["usage"],
-          cost_dollars: body["costDollars"]
+          deleted: body["deleted"]
         )
       end
     end

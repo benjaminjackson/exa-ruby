@@ -16,18 +16,7 @@ module Exa
         body = response.body
 
         data = body["data"].map do |run_data|
-          Resources::AgentRun.new(
-            id: run_data["id"],
-            object: run_data["object"],
-            status: run_data["status"],
-            stop_reason: run_data["stopReason"],
-            created_at: run_data["createdAt"],
-            completed_at: run_data["completedAt"],
-            request: run_data["request"],
-            output: run_data["output"],
-            usage: run_data["usage"],
-            cost_dollars: run_data["costDollars"]
-          )
+          Resources::AgentRun.from_response(run_data)
         end
 
         Resources::AgentRunList.new(

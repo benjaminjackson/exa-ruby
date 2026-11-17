@@ -57,4 +57,34 @@ class AgentRunFormatterTest < Minitest::Test
     out = Exa::CLI::Formatters::AgentRunFormatter.format_run(structured_run, "text")
     assert_includes out, "{\"capital\":\"Tokyo\""
   end
+
+  def deletion
+    Exa::Resources::AgentRunDeletion.new(id: "run_abc123", object: "agent_run.deleted", deleted: true)
+  end
+
+  def test_format_deletion_in_every_format_does_not_raise
+    assert_includes Exa::CLI::Formatters::AgentRunFormatter.format_deletion(deletion, "pretty"), "Deleted agent run: run_abc123"
+    assert_equal "run_abc123 DELETED", Exa::CLI::Formatters::AgentRunFormatter.format_deletion(deletion, "text")
+    json = JSON.parse(Exa::CLI::Formatters::AgentRunFormatter.format_deletion(deletion, "json"))
+    assert_equal({ "id" => "run_abc123", "object" => "agent_run.deleted", "deleted" => true }, json)
+    assert_includes Exa::CLI::Formatters::AgentRunFormatter.format_deletion(deletion, "toon"), "run_abc123"
+  end
+
+  def failed_run
+    Exa::Resources::AgentRun.new(
+      id: "agent_run_2", object: "agent_run", status: "failed", stop_reason: "error",
+      error: { "type" => "agent_error", "code" => "budget_exceeded", "message" => "Run stopped at the cost limit" }
+    )
+  end
+
+  def test_pretty_prints_error_and_stop_reason_on_separate_lines
+    out = Exa::CLI::Formatters::AgentRunFormatter.format_run(failed_run, "pretty")
+    assert_includes out, "Error: agent_error (budget_exceeded): Run stopped at the cost limit"
+    assert_includes out, "Stop reason: error"
+  end
+
+  def test_text_prints_error_for_failed_run
+    out = Exa::CLI::Formatters::AgentRunFormatter.format_run(failed_run, "text")
+    assert_includes out, "Error: agent_error (budget_exceeded): Run stopped at the cost limit"
+  end
 end

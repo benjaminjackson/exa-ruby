@@ -7,12 +7,13 @@ class AgentRunDeleteIntegrationTest < Minitest::Test
     skip_unless_integration_enabled
   end
 
-  def test_agent_run_delete_returns_agent_run
+  def test_agent_run_delete_returns_deletion
     VCR.use_cassette("agent_run_delete") do
       client = Exa::Client.new(api_key: ENV["EXA_API_KEY"])
       result = client.agent_run_delete("run_01abc123def456ghi789jkl")
 
-      assert_instance_of Exa::Resources::AgentRun, result
+      assert_instance_of Exa::Resources::AgentRunDeletion, result
+      assert result.deleted?
       assert_equal "run_01abc123def456ghi789jkl", result.id
     end
   end

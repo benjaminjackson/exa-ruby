@@ -201,4 +201,31 @@ class AgentRunCreateTest < Minitest::Test
       service.call
     end
   end
+
+  def test_call_converts_nested_keys_and_keeps_user_data_keys
+    stub_request(:post, "https://api.exa.ai/agent/runs")
+      .to_return(
+        status: 200,
+        body: { id: "run_abc123", object: "agent_run", status: "queued" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    Exa::Services::AgentRunCreate.new(
+      @connection,
+      query: "Find Series A AI infrastructure startups in New York",
+      user_identifier: "user_42",
+      budget: { max_cost_dollars: 5, max_duration_seconds: 600 },
+      metadata: { "my_key" => "v" },
+      input: { data: [{ "first_name" => "x" }] }
+    ).call
+
+    assert_requested(:post, "https://api.exa.ai/agent/runs") do |request|
+      body = JSON.parse(request.body)
+      assert_equal "user_42", body["userIdentifier"]
+      assert_equal({ "maxCostDollars" => 5, "maxDurationSeconds" => 600 }, body["budget"])
+      assert_equal({ "my_key" => "v" }, body["metadata"])
+      assert_equal({ "data" => [{ "first_name" => "x" }] }, body["input"])
+      assert_empty snake_case_keys(body)
+    end
+  end
 end

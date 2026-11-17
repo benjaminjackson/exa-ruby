@@ -76,4 +76,15 @@ class MonitorTest < Minitest::Test
     assert_equal "2025-01-15T10:00:00Z", hash[:created_at]
     assert_equal "2025-01-15T10:00:00Z", hash[:updated_at]
   end
+
+  # Every value of the spec's status enum has a helper that is true only for that value.
+  def test_each_spec_status_has_a_helper
+    %w[enabled disabled].each do |status|
+      resource = Exa::Resources::Monitor.new(status: status)
+
+      %w[enabled disabled].each do |other|
+        assert_equal other == status, resource.public_send("#{other}?"), "#{other}? with status #{status}"
+      end
+    end
+  end
 end

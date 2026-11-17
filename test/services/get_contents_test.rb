@@ -202,4 +202,32 @@ class GetContentsTest < Minitest::Test
     assert_equal plain_summary, result.results.first["summary"]
     assert_instance_of String, result.results.first["summary"]
   end
+
+  def test_call_posts_snake_case_params_as_camel_case_keys
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(
+      @connection,
+      urls: ["https://example.com"],
+      text: { max_characters: 1000, include_html_tags: true },
+      summary: { query: "funding rounds", schema: { "properties" => { "round_size" => { "type" => "number" } } } },
+      extras: { image_links: 2, links: 1 },
+      subpage_target: ["about"],
+      livecrawl_timeout: 5000,
+      max_age_hours: 24
+    ).call
+
+    assert_requested(:post, "https://api.exa.ai/contents") do |request|
+      body = JSON.parse(request.body)
+      assert_equal({ "maxCharacters" => 1000, "includeHtmlTags" => true }, body["text"])
+      assert_equal({ "imageLinks" => 2, "links" => 1 }, body["extras"])
+      assert_equal ["about"], body["subpageTarget"]
+      assert_equal 5000, body["livecrawlTimeout"]
+      assert_equal 24, body["maxAgeHours"]
+      assert_equal({ "round_size" => { "type" => "number" } }, body["summary"]["schema"]["properties"])
+      refute body.key?("contents")
+      assert_empty snake_case_keys(body)
+    end
+  end
 end

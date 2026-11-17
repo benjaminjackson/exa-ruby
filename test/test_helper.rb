@@ -118,6 +118,26 @@ def wait_for_webset_completion(client, webset_id, timeout: 120, interval: 2)
   end
 end
 
+# Lists every key in a parsed JSON request body that still has an
+# underscore, skipping the subtrees that hold user data and keep their keys.
+module RequestBodyKeys
+  def snake_case_keys(value)
+    case value
+    when Hash
+      value.flat_map do |key, nested|
+        own = key.to_s.include?("_") ? [key.to_s] : []
+        Exa::Services::ParameterConverter::PROTECTED_KEYS.include?(key.to_s) ? own : own + snake_case_keys(nested)
+      end
+    when Array
+      value.flat_map { |element| snake_case_keys(element) }
+    else
+      []
+    end
+  end
+end
+
+Minitest::Test.include(RequestBodyKeys)
+
 # Module for automatic cleanup of Websets resources created during tests
 # Include this module in integration tests that create websets, searches, or enrichments
 # to ensure all created resources are properly cleaned up after each test.

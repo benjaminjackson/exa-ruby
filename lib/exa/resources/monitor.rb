@@ -19,6 +19,14 @@ module Exa
         self
       end
 
+      def enabled?
+        status == "enabled"
+      end
+
+      def disabled?
+        status == "disabled"
+      end
+
       def pending?
         status == "pending"
       end

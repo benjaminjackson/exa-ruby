@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "parameter_converter"
+
 module Exa
   module Services
     class GetContents
@@ -9,7 +11,7 @@ module Exa
       end
 
       def call
-        response = @connection.post("/contents", @params)
+        response = @connection.post("/contents", ParameterConverter.convert_keys(@params))
         body = response.body
 
         results = body["results"]

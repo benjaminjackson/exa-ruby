@@ -63,7 +63,7 @@ class AnswerTest < Minitest::Test
   def test_call_includes_output_schema_parameter
     output_schema = { type: "object", properties: { city: { type: "string" } } }
     stub_request(:post, "https://api.exa.ai/answer")
-      .with(body: hash_including(query: "test query", output_schema: output_schema))
+      .with(body: hash_including(query: "test query", outputSchema: output_schema))
       .to_return(
         status: 200,
         body: { answer: "Test", citations: [] }.to_json,
@@ -74,7 +74,7 @@ class AnswerTest < Minitest::Test
     service.call
 
     assert_requested :post, "https://api.exa.ai/answer",
-      body: hash_including(output_schema: output_schema)
+      body: hash_including(outputSchema: output_schema)
   end
 
   def test_call_with_output_schema_returns_structured_answer
@@ -156,7 +156,7 @@ class AnswerTest < Minitest::Test
 
   def test_call_includes_system_prompt_parameter
     stub_request(:post, "https://api.exa.ai/answer")
-      .with(body: hash_including(query: "test query", system_prompt: "Respond in the voice of a pirate"))
+      .with(body: hash_including(query: "test query", systemPrompt: "Respond in the voice of a pirate"))
       .to_return(
         status: 200,
         body: { answer: "Test", citations: [] }.to_json,
@@ -167,6 +167,26 @@ class AnswerTest < Minitest::Test
     service.call
 
     assert_requested :post, "https://api.exa.ai/answer",
-      body: hash_including(system_prompt: "Respond in the voice of a pirate")
+      body: hash_including(systemPrompt: "Respond in the voice of a pirate")
+  end
+
+  def test_call_posts_snake_case_params_as_camel_case_keys
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: { answer: "Test", citations: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    output_schema = { "type" => "object", "properties" => { "lead_investor" => { "type" => "string" } } }
+
+    Exa::Services::Answer.new(
+      @connection,
+      query: "Who led the Series A for Anthropic?",
+      system_prompt: "Answer in one sentence",
+      output_schema: output_schema
+    ).call
+
+    assert_requested(:post, "https://api.exa.ai/answer") do |request|
+      body = JSON.parse(request.body)
+      assert_equal "Answer in one sentence", body["systemPrompt"]
+      assert_equal output_schema, body["outputSchema"]
+      assert_empty snake_case_keys(body)
+    end
   end
 end

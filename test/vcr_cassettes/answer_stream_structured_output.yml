@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/answer
     body:
       encoding: UTF-8
-      string: '{"query":"What is the latest valuation of SpaceX?","output_schema":{"type":"object","properties":{"company":{"type":"string"},"valuation":{"type":"string"}}},"stream":true}'
+      string: '{"query":"What is the latest valuation of SpaceX?","outputSchema":{"type":"object","properties":{"company":{"type":"string"},"valuation":{"type":"string"}}},"stream":true}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
