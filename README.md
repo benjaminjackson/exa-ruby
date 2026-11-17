@@ -200,9 +200,6 @@ These still work, so existing code keeps running. The search command prints the 
 
 See [docs/API.md](docs/API.md) and [docs/CLI.md](docs/CLI.md) for details.
 
-### List-building API support removed
-This release removes the gem's support for Exa's list-building API: the lists of web results, the searches that fill them, their items, enrichments, imports, and the monitors that refresh them. This is a breaking change, with no deprecation release first. The commands for these (including every `exa-ai enrichment-*`, `import-*` and `monitor-*` command) and their client methods are gone; [CHANGELOG.md](CHANGELOG.md) names each one. To build and enrich lists, use the [Agent API](#agent) (agent runs). To run a search on a schedule, use [search monitors](#search-monitors) (`search-monitor-*`), which stay.
-
 ### Agent
 - **Agent API** — Asynchronous research agent with citations, streaming, and full run lifecycle
 
