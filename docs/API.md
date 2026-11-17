@@ -341,6 +341,8 @@ contents = client.get_contents(["https://example.com"],
 contents.search_time
 ```
 
+Flat keys work here as on `search`: `text_max_characters: 3000` sends `text: { maxCharacters: 3000 }`, and `summary_schema:` sends `summary: { schema: }`.
+
 `context` is deprecated here too; use `highlights` or `text`. In `highlights`, `num_sentences` and `highlights_per_url` are deprecated; use `max_characters`. `subpages` and `subpage_target` stay valid on `get_contents`.
 
 ### By Document ID

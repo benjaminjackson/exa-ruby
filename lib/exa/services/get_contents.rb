@@ -12,14 +12,14 @@ module Exa
       end
 
       def call
-        request_body = ParameterConverter.convert_keys(@params)
+        request_body = ParameterConverter.convert_contents(@params)
         response = @connection.post("/contents", request_body) do |request|
           request.headers.update(Search.beta_headers(request_body))
         end
         body = response.body
 
         results = body["results"]
-        results = parse_json_summaries(results) if summary_schema?
+        results = parse_json_summaries(results) if summary_schema?(request_body)
 
         Resources::ContentsResult.new(
           results: results,
@@ -33,8 +33,10 @@ module Exa
 
       private
 
-      def summary_schema?
-        @params[:summary].is_a?(Hash) && @params[:summary][:schema]
+      # True when the request asked for JSON summaries. Reads the converted
+      # body, so a flat summary_schema: counts as well as summary: {schema:}.
+      def summary_schema?(request_body)
+        request_body[:summary].is_a?(Hash) && request_body[:summary][:schema]
       end
 
       def parse_json_summaries(results)

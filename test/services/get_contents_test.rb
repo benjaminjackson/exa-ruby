@@ -248,4 +248,67 @@ class GetContentsTest < Minitest::Test
 
     assert_requested(:post, "https://api.exa.ai/contents") { |request| !request.headers.key?("Exa-Beta") }
   end
+  def test_call_folds_flat_text_max_characters_under_text
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(@connection, urls: ["https://www.anthropic.com/research"], text_max_characters: 500).call
+
+    assert_requested(:post, "https://api.exa.ai/contents") do |request|
+      body = JSON.parse(request.body)
+      body["text"] == { "maxCharacters" => 500 } && !body.key?("textMaxCharacters") && !body.key?("contents")
+    end
+  end
+
+  def test_call_folds_flat_text_max_characters_given_before_text_true
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(@connection, urls: ["https://www.anthropic.com/research"],
+                                                text_max_characters: 500, text: true).call
+
+    assert_requested(:post, "https://api.exa.ai/contents") do |request|
+      JSON.parse(request.body)["text"] == { "maxCharacters" => 500 }
+    end
+  end
+
+  def test_call_folds_flat_text_max_characters_given_after_text_true
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(@connection, urls: ["https://www.anthropic.com/research"],
+                                                text: true, text_max_characters: 500).call
+
+    assert_requested(:post, "https://api.exa.ai/contents") do |request|
+      JSON.parse(request.body)["text"] == { "maxCharacters" => 500 }
+    end
+  end
+
+  def test_call_sends_beta_header_for_flat_highlights_verbosity
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(@connection, urls: ["https://www.anthropic.com/research"],
+                                                highlights_verbosity: "full").call
+
+    assert_requested(:post, "https://api.exa.ai/contents") do |request|
+      body = JSON.parse(request.body)
+      request.headers.key?("Exa-Beta") && body["highlights"] == { "verbosity" => "full" }
+    end
+  end
+
+  def test_call_parses_json_summary_when_flat_summary_schema_given
+    json_summary = { "jobs" => [{ "title" => "Engineer" }] }
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(
+        status: 200,
+        body: { results: [{ "url" => "https://example.com", "summary" => json_summary.to_json }] }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    result = Exa::Services::GetContents.new(@connection, urls: ["https://example.com"],
+                                                         summary_schema: { type: "object" }).call
+
+    assert_equal json_summary, result.results.first["summary"]
+  end
 end

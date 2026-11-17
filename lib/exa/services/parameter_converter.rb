@@ -9,9 +9,16 @@ module Exa
         new.convert(params)
       end
 
-      # Converts every key, at every depth, to camelCase without moving
-      # content options under :contents. For endpoints such as /contents,
-      # /answer and /context, where text and summary sit at the top level.
+      # Folds flat content keys under their parent at the top level, with no
+      # :contents wrapper, then converts every key to camelCase. This is the
+      # shape /contents takes: text, summary and highlights sit at the top.
+      def self.convert_contents(params)
+        new.convert_contents(params)
+      end
+
+      # Converts every key, at every depth, to camelCase without folding or
+      # moving any key. For /answer and /context, which take no content
+      # sub-options.
       def self.convert_keys(params)
         new.convert_keys(params)
       end
@@ -20,6 +27,18 @@ module Exa
         deep_convert(params)
       end
 
+      # Instance form of ParameterConverter.convert_contents.
+      def convert_contents(params)
+        deep_convert(consolidate_content_params(params))
+      end
+
+      # Folds flat content keys under their parent, then moves content
+      # options under :contents. A caller's own contents hash, given under
+      # :contents or "contents", is merged with the folded keys into one
+      # :contents key; flat keys win on a real conflict. Only the top level of
+      # the params is normalised: flat keys inside the caller's contents hash
+      # are not folded, and a String key inside it is not matched with the
+      # same Symbol key.
       def convert(params)
         consolidated = consolidate_content_params(params)
         converted = {}
@@ -27,14 +46,16 @@ module Exa
 
         consolidated.each do |key, value|
           converted_key = convert_key(key)
-          if content_key?(key)
+          if key.to_s == "contents"
+            converted[:contents] = merge_option(converted[:contents], deep_convert(value))
+          elsif content_key?(key)
             contents[converted_key] = convert_value(converted_key, value)
           else
             converted[converted_key] = convert_value(converted_key, value)
           end
         end
 
-        converted[:contents] = (converted[:contents] || {}).merge(contents) if contents.any?
+        converted[:contents] = merge_option(converted[:contents], contents) if contents.any?
         converted
       end
 
@@ -67,14 +88,29 @@ module Exa
           mapping = CONTENT_SUB_PARAMS[key]
           if mapping
             parent = mapping[:parent]
-            result[parent] = {} if result[parent] == true || !result.key?(parent)
-            result[parent] = {} unless result[parent].is_a?(Hash)
-            result[parent][mapping[:key]] = value
+            result[parent] = merge_option(result[parent], { mapping[:key] => value })
           else
-            result[key] = value
+            result[key] = merge_option(result[key], value)
           end
         end
         result
+      end
+
+      # Merges an incoming option value into an existing one. Two Hashes
+      # merge key by key; a Hash beats a bare true, which only turns the
+      # option on, so text: true and text_max_characters: 500 give the same
+      # result in either order. Otherwise the incoming value wins, so with
+      # false or nil the key given last wins. A value under a
+      # protected key (a user's schema) is replaced, never merged.
+      def merge_option(existing, incoming)
+        return existing if existing.is_a?(Hash) && incoming == true
+        return incoming unless existing.is_a?(Hash) && incoming.is_a?(Hash)
+
+        existing.merge(incoming) do |key, existing_value, incoming_value|
+          next incoming_value if PROTECTED_KEYS.include?(camelize(key).to_s)
+
+          merge_option(existing_value, incoming_value)
+        end
       end
 
       # Values under these keys are user data (JSON schemas, free-form maps,
