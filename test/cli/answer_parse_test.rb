@@ -40,6 +40,20 @@ class AnswerParseTest < Minitest::Test
     assert_equal({}, body["outputSchema"])
     assert_requested(:post, ANSWER_URL, headers: { "x-api-key" => "test_key" })
     assert_raises(JSON::ParserError) { JSON.parse(stdout) }
+    assert_includes stdout, "Paris is the capital of France."
+  end
+
+  def test_rejects_invalid_user_location_json_with_one_line
+    stub_request(:post, ANSWER_URL)
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-answer", QUERY, "--user-location", "{bad", "--api-key", "test_key"
+    )
+
+    assert_equal 1, exit_status
+    assert_equal 1, stderr.lines.count
+    assert_match(/\AError: --user-location is not valid JSON/, stderr)
+    assert_not_requested :post, ANSWER_URL
   end
 
   private

@@ -22,7 +22,9 @@ class Exa::CLI::ImportCreateTest < Minitest::Test
   end
 
   def test_sends_count_title_format_and_entity_type_in_request_body
-    body, = post_import("--count", "50", "--title", "Series A AI startups", "--entity-type", "company")
+    body, = post_import(
+      "--count", "50", "--title", "Series A AI startups", "--format", "csv", "--entity-type", "company"
+    )
 
     assert_equal 50, body["count"]
     assert_equal "Series A AI startups", body["title"]
@@ -43,6 +45,21 @@ class Exa::CLI::ImportCreateTest < Minitest::Test
     )
 
     assert_equal({ "type" => "custom", "description" => "nonprofit climate advocacy organizations" }, body["entity"])
+  end
+
+  def test_unsupported_format_exits_before_any_request
+    stub_request(:post, IMPORTS_URL)
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-import-create", @csv_file.path,
+      "--count", "2", "--title", "Series A AI startups", "--format", "xlsx",
+      "--entity-type", "company", "--api-key", "test_key"
+    )
+
+    assert_equal 1, exit_status
+    assert_equal 1, stderr.lines.count
+    assert_includes stderr, "format must be one of"
+    assert_not_requested :post, IMPORTS_URL
   end
 
   def test_custom_entity_without_description_exits_before_any_request
