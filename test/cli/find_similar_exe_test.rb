@@ -37,6 +37,19 @@ class Exa::CLI::FindSimilarExeTest < Minitest::Test
     assert_equal({ "text" => { "maxCharacters" => 100 }, "summary" => true }, body["contents"])
   end
 
+  def test_exe_sends_sub_options_without_their_parent_flags
+    body = post_find_similar(
+      "--text-max-characters", "3000", "--summary-query", "Name the authors",
+      "--context-max-characters", "500", "--highlights-query", "key findings"
+    )
+
+    expected_contents = {
+      "text" => { "maxCharacters" => 3000 }, "summary" => { "query" => "Name the authors" },
+      "context" => { "maxCharacters" => 500 }, "highlights" => { "query" => "key findings" }
+    }
+    assert_equal expected_contents, body["contents"]
+  end
+
   def test_exe_rejects_subpage_target_without_value
     _stdout, stderr, status = run_find_similar_expecting_no_request("--subpage-target")
 

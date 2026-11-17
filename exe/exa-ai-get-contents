@@ -65,16 +65,16 @@ def parse_args(args)
 
     case arg
     when "--api-key"
-      options[:api_key] = args[i + 1]
+      options[:api_key] = Exa::CLI::Base.text_value("--api-key", args[i + 1])
       i += 2
     when "--output-format"
-      options[:output_format] = args[i + 1]
+      options[:output_format] = Exa::CLI::Base.text_value("--output-format", args[i + 1])
       i += 2
     when "--ids"
-      options[:ids] = Exa::CLI::Base.option_value("--ids", args[i + 1]).split(",").map(&:strip)
+      options[:ids] = Exa::CLI::Base.text_value("--ids", args[i + 1]).split(",").map(&:strip)
       i += 2
     when "--user-identifier"
-      options[:user_identifier] = args[i + 1]
+      options[:user_identifier] = Exa::CLI::Base.text_value("--user-identifier", args[i + 1])
       i += 2
     when "--compliance"
       options[:compliance] = args[i + 1]
@@ -91,10 +91,16 @@ def parse_args(args)
       print_help
       exit 0
     else
-      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
+      # A URL never starts with a dash, so any dash argument left here
+      # (one dash or two) is an option this command does not know.
+      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("-")
 
-      # First non-flag argument is the URLs (comma-separated or single)
-      options[:urls] = arg.split(",").map(&:strip) if options[:urls].empty?
+      # The one non-flag argument is the URLs (comma-separated or single).
+      # A second one is refused, not dropped, so no URL is lost in silence.
+      # An argument that held no URL (empty, or only commas) does not count.
+      raise ArgumentError, "unexpected argument #{arg}: join several URLs with commas into one argument" unless options[:urls].empty?
+
+      options[:urls] = arg.split(",").map(&:strip)
       i += 1
     end
   end
@@ -102,40 +108,35 @@ def parse_args(args)
   options
 end
 
-# Build contents parameters from extracted flags
+# Build contents parameters from extracted flags. A sub-option such as
+# --text-max-characters turns its parent on, as ContentsFlags.build does.
 def build_contents_params(args)
   params = {}
 
   # Text options
-  if args[:text]
-    if args[:text_max_characters] || args[:include_html_tags] || args[:text_verbosity]
-      params[:text] = {}
-      params[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
-      params[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
-      params[:text][:verbosity] = args[:text_verbosity] if args[:text_verbosity]
-    else
-      params[:text] = true
-    end
+  if args[:text_max_characters] || args[:include_html_tags] || args[:text_verbosity]
+    params[:text] = {}
+    params[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
+    params[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
+    params[:text][:verbosity] = args[:text_verbosity] if args[:text_verbosity]
+  elsif args[:text]
+    params[:text] = true
   end
 
   # Summary options
-  if args[:summary]
-    if args[:summary_query] || args[:summary_schema]
-      params[:summary] = {}
-      params[:summary][:query] = args[:summary_query] if args[:summary_query]
-      params[:summary][:schema] = args[:summary_schema] if args[:summary_schema]
-    else
-      params[:summary] = true
-    end
+  if args[:summary_query] || args[:summary_schema]
+    params[:summary] = {}
+    params[:summary][:query] = args[:summary_query] if args[:summary_query]
+    params[:summary][:schema] = args[:summary_schema] if args[:summary_schema]
+  elsif args[:summary]
+    params[:summary] = true
   end
 
   # Context options
-  if args[:context]
-    if args[:context_max_characters]
-      params[:context] = { max_characters: args[:context_max_characters] }
-    else
-      params[:context] = true
-    end
+  if args[:context_max_characters]
+    params[:context] = { max_characters: args[:context_max_characters] }
+  elsif args[:context]
+    params[:context] = true
   end
 
   # Subpages options
@@ -150,15 +151,13 @@ def build_contents_params(args)
   end
 
   # Highlights options
-  if args[:highlights]
-    if args[:highlights_query] || args[:highlights_max_characters] || args[:highlights_verbosity]
-      params[:highlights] = {}
-      params[:highlights][:query] = args[:highlights_query] if args[:highlights_query]
-      params[:highlights][:max_characters] = args[:highlights_max_characters] if args[:highlights_max_characters]
-      params[:highlights][:verbosity] = args[:highlights_verbosity] if args[:highlights_verbosity]
-    else
-      params[:highlights] = true
-    end
+  if args[:highlights_query] || args[:highlights_max_characters] || args[:highlights_verbosity]
+    params[:highlights] = {}
+    params[:highlights][:query] = args[:highlights_query] if args[:highlights_query]
+    params[:highlights][:max_characters] = args[:highlights_max_characters] if args[:highlights_max_characters]
+    params[:highlights][:verbosity] = args[:highlights_verbosity] if args[:highlights_verbosity]
+  elsif args[:highlights]
+    params[:highlights] = true
   end
 
   # Livecrawl and freshness options

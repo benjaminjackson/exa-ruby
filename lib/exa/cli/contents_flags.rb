@@ -126,41 +126,37 @@ module Exa
       end
 
       # Builds the contents hash from the parsed flags, or nil when no
-      # contents flag is set. --snapshot-as-of is not in it: each command
-      # sends snapshot_as_of itself.
+      # contents flag is set. A sub-option such as --text-max-characters
+      # turns its parent on, as the Ruby client does with the flat key.
+      # --snapshot-as-of is not in it: each command sends snapshot_as_of
+      # itself.
       def self.build(args)
         contents = {}
 
         # Text options
-        if args[:text]
-          if args[:text_max_characters] || args[:include_html_tags] || args[:text_verbosity]
-            contents[:text] = {}
-            contents[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
-            contents[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
-            contents[:text][:verbosity] = args[:text_verbosity] if args[:text_verbosity]
-          else
-            contents[:text] = true
-          end
+        if args[:text_max_characters] || args[:include_html_tags] || args[:text_verbosity]
+          contents[:text] = {}
+          contents[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
+          contents[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
+          contents[:text][:verbosity] = args[:text_verbosity] if args[:text_verbosity]
+        elsif args[:text]
+          contents[:text] = true
         end
 
         # Summary options
-        if args[:summary]
-          if args[:summary_query] || args[:summary_schema]
-            contents[:summary] = {}
-            contents[:summary][:query] = args[:summary_query] if args[:summary_query]
-            contents[:summary][:schema] = args[:summary_schema] if args[:summary_schema]
-          else
-            contents[:summary] = true
-          end
+        if args[:summary_query] || args[:summary_schema]
+          contents[:summary] = {}
+          contents[:summary][:query] = args[:summary_query] if args[:summary_query]
+          contents[:summary][:schema] = args[:summary_schema] if args[:summary_schema]
+        elsif args[:summary]
+          contents[:summary] = true
         end
 
         # Context options
-        if args[:context]
-          if args[:context_max_characters]
-            contents[:context] = { max_characters: args[:context_max_characters] }
-          else
-            contents[:context] = true
-          end
+        if args[:context_max_characters]
+          contents[:context] = { max_characters: args[:context_max_characters] }
+        elsif args[:context]
+          contents[:context] = true
         end
 
         # Subpages options
@@ -175,17 +171,15 @@ module Exa
         end
 
         # Highlights options
-        if args[:highlights]
-          highlight_opts = %i[highlights_max_characters highlights_num_sentences highlights_per_url highlights_query]
-          if highlight_opts.any? { |k| args[k] }
-            contents[:highlights] = {}
-            contents[:highlights][:max_characters] = args[:highlights_max_characters] if args[:highlights_max_characters]
-            contents[:highlights][:num_sentences] = args[:highlights_num_sentences] if args[:highlights_num_sentences]
-            contents[:highlights][:highlights_per_url] = args[:highlights_per_url] if args[:highlights_per_url]
-            contents[:highlights][:query] = args[:highlights_query] if args[:highlights_query]
-          else
-            contents[:highlights] = true
-          end
+        highlight_opts = %i[highlights_max_characters highlights_num_sentences highlights_per_url highlights_query]
+        if highlight_opts.any? { |k| args[k] }
+          contents[:highlights] = {}
+          contents[:highlights][:max_characters] = args[:highlights_max_characters] if args[:highlights_max_characters]
+          contents[:highlights][:num_sentences] = args[:highlights_num_sentences] if args[:highlights_num_sentences]
+          contents[:highlights][:highlights_per_url] = args[:highlights_per_url] if args[:highlights_per_url]
+          contents[:highlights][:query] = args[:highlights_query] if args[:highlights_query]
+        elsif args[:highlights]
+          contents[:highlights] = true
         end
 
         # Livecrawl options

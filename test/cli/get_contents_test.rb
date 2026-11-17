@@ -411,6 +411,121 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     end
   end
 
+  %w[--ids --api-key --output-format --user-identifier].each do |flag|
+    flag_name = flag.delete_prefix("--").tr("-", "_")
+
+    define_method("test_exe_stops_when_own_flag_#{flag_name}_comes_last_with_no_value") do
+      stub_request(:post, "https://api.exa.ai/contents")
+
+      _stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", flag
+      )
+
+      assert_equal "Error: #{flag} needs a value\n", stderr
+      refute_equal 0, exit_status
+      assert_not_requested :post, "https://api.exa.ai/contents"
+    end
+
+    define_method("test_exe_stops_when_own_flag_#{flag_name}_is_followed_by_another_flag") do
+      stub_request(:post, "https://api.exa.ai/contents")
+
+      _stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", flag, "--summary"
+      )
+
+      assert_equal "Error: #{flag} needs a value (got the flag --summary)\n", stderr
+      refute_equal 0, exit_status
+      assert_not_requested :post, "https://api.exa.ai/contents"
+    end
+  end
+
+  def test_exe_rejects_a_one_dash_option_in_the_url_position
+    stub_request(:post, "https://api.exa.ai/contents")
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "-t", "https://www.anthropic.com/research", "--api-key", "test_key"
+    )
+
+    assert_equal "Error: unknown option -t\n", stderr
+    refute_equal 0, exit_status
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_refuses_a_second_url_argument
+    stub_request(:post, "https://api.exa.ai/contents")
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "https://exa.ai", "https://www.anthropic.com/research", "--api-key", "test_key"
+    )
+
+    assert_equal 1, stderr.lines.count
+    assert_match(/\AError: .*https:\/\/www\.anthropic\.com\/research.*commas/, stderr)
+    refute_equal 0, exit_status
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_takes_the_url_after_an_empty_argument
+    posted = stub_contents_and_capture_body
+
+    run_exe_in_process("exa-ai-get-contents", "", "https://www.anthropic.com/research", "--api-key", "test_key")
+
+    assert_equal ["https://www.anthropic.com/research"], posted[:body]["urls"]
+  end
+
+  def test_exe_sends_every_url_in_one_comma_separated_argument
+    posted = stub_contents_and_capture_body
+
+    run_exe_in_process(
+      "exa-ai-get-contents", "https://exa.ai,https://www.anthropic.com/research", "--api-key", "test_key"
+    )
+
+    assert_equal ["https://exa.ai", "https://www.anthropic.com/research"], posted[:body]["urls"]
+  end
+
+  {
+    "--text-max-characters" => ["3000", "text", { "maxCharacters" => 3000 }],
+    "--text-verbosity" => ["compact", "text", { "verbosity" => "compact" }],
+    "--include-html-tags" => [nil, "text", { "includeHtmlTags" => true }],
+    "--summary-query" => ["Name the founders", "summary", { "query" => "Name the founders" }],
+    "--summary-schema" => ['{"type":"object"}', "summary", { "schema" => { "type" => "object" } }],
+    "--context-max-characters" => ["500", "context", { "maxCharacters" => 500 }],
+    "--highlights-max-characters" => ["300", "highlights", { "maxCharacters" => 300 }],
+    "--highlights-query" => ["pricing", "highlights", { "query" => "pricing" }],
+    "--highlights-verbosity" => ["low", "highlights", { "verbosity" => "low" }]
+  }.each do |flag, (value, parent_field, expected_field)|
+    flag_name = flag.delete_prefix("--").tr("-", "_")
+
+    define_method("test_exe_sends_#{flag_name}_without_its_parent_flag") do
+      posted = stub_contents_and_capture_body
+
+      run_exe_in_process(
+        "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", *[flag, value].compact
+      )
+
+      assert_equal expected_field, posted[:body][parent_field]
+    end
+  end
+
+  def test_exe_sends_beta_header_for_highlights_verbosity_without_highlights
+    stub_contents_and_capture_body
+
+    run_exe_in_process(
+      "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", "--highlights-verbosity", "low"
+    )
+
+    assert_requested :post, "https://api.exa.ai/contents", headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" }
+  end
+
+  def test_exe_prints_help_for_short_h_option
+    stub_request(:post, "https://api.exa.ai/contents")
+
+    stdout, _stderr, exit_status = run_exe_in_process("exa-ai-get-contents", "-h")
+
+    assert_includes stdout, "Usage: exa-ai get-contents"
+    assert_equal 0, exit_status
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
   def test_exe_rejects_unknown_option_before_the_url
     stub_request(:post, "https://api.exa.ai/contents")
 
