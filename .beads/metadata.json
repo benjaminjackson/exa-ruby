@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "exa_ruby",
+  "project_id": "06332903-6f2b-4407-bbbf-80f3f0268059"
+}
