@@ -4,37 +4,6 @@
 require "exa-ai"
 require "json"
 
-# Recursively convert hash keys from strings to symbols
-def deep_symbolize_keys(obj)
-  case obj
-  when Hash
-    obj.each_with_object({}) do |(key, value), result|
-      result[key.to_sym] = deep_symbolize_keys(value)
-    end
-  when Array
-    obj.map { |item| deep_symbolize_keys(item) }
-  else
-    obj
-  end
-end
-
-# Helper to parse JSON string or load from file
-def parse_json_or_file(value)
-  json_data = if value.start_with?("@")
-                file_path = value[1..]
-                JSON.parse(File.read(file_path))
-              else
-                JSON.parse(value)
-              end
-  deep_symbolize_keys(json_data)
-rescue JSON::ParserError => e
-  $stderr.puts "Error: Invalid JSON: #{e.message}"
-  exit 1
-rescue Errno::ENOENT => e
-  $stderr.puts "Error: File not found: #{e.message}"
-  exit 1
-end
-
 # Parse arguments
 webset_id = nil
 enrichment_id = nil
@@ -54,9 +23,9 @@ while args.any?
   when "--format"
     format = args.shift
   when "--options"
-    options = parse_json_or_file(args.shift)
+    options = Exa::CLI::Base.parse_json_or_file("--options", args.shift, symbolize_names: true)
   when "--metadata"
-    metadata = parse_json_or_file(args.shift)
+    metadata = Exa::CLI::Base.parse_json_or_file("--metadata", args.shift, symbolize_names: true)
   when "--api-key"
     api_key = args.shift
   when "--output-format"

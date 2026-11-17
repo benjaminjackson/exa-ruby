@@ -111,12 +111,7 @@ module Exa
             @args[:summary_query] = @argv[i + 1]
             i += 2
           when "--summary-schema"
-            schema_arg = @argv[i + 1]
-            @args[:summary_schema] = if schema_arg.start_with?("@")
-                                      JSON.parse(File.read(schema_arg[1..]))
-                                    else
-                                      JSON.parse(schema_arg)
-                                    end
+            @args[:summary_schema] = Exa::CLI::Base.parse_json_or_file("--summary-schema", @argv[i + 1])
             i += 2
           when "--context"
             @args[:context] = true
@@ -166,12 +161,7 @@ module Exa
             @args[:additional_queries] << @argv[i + 1]
             i += 2
           when "--output-schema"
-            schema_arg = @argv[i + 1]
-            @args[:output_schema] = if schema_arg.start_with?("@")
-                                      JSON.parse(File.read(schema_arg[1..]))
-                                    else
-                                      JSON.parse(schema_arg)
-                                    end
+            @args[:output_schema] = Exa::CLI::Base.parse_json_or_file("--output-schema", @argv[i + 1])
             i += 2
           when "--user-location"
             @args[:user_location] = self.class.parse_user_location(@argv[i + 1])

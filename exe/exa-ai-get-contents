@@ -66,12 +66,7 @@ def parse_args(args)
       summary_query = args[i + 1]
       i += 2
     when "--summary-schema"
-      schema_arg = args[i + 1]
-      summary_schema = if schema_arg.start_with?("@")
-                         JSON.parse(File.read(schema_arg[1..]))
-                       else
-                         JSON.parse(schema_arg)
-                       end
+      summary_schema = Exa::CLI::Base.parse_json_or_file("--summary-schema", args[i + 1])
       i += 2
     when "--subpages"
       subpages = args[i + 1].to_i
