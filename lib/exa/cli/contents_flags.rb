@@ -59,7 +59,7 @@ module Exa
           args[:summary] = true
           index + 1
         when "--summary-query"
-          args[:summary_query] = argv[index + 1]
+          args[:summary_query] = Base.text_value("--summary-query", argv[index + 1])
           index + 2
         when "--summary-schema"
           args[:summary_schema] = Base.parse_json_or_file("--summary-schema", argv[index + 1])
@@ -75,7 +75,7 @@ module Exa
           index + 2
         when "--subpage-target"
           args[:subpage_target] ||= []
-          args[:subpage_target] << argv[index + 1]
+          args[:subpage_target] << Base.text_value("--subpage-target", argv[index + 1])
           index + 2
         when "--links"
           args[:links] = Base.parse_integer("--links", argv[index + 1])
@@ -96,7 +96,7 @@ module Exa
           args[:highlights_per_url] = Base.parse_integer("--highlights-per-url", argv[index + 1])
           index + 2
         when "--highlights-query"
-          args[:highlights_query] = argv[index + 1]
+          args[:highlights_query] = Base.text_value("--highlights-query", argv[index + 1])
           index + 2
         when "--livecrawl"
           args[:livecrawl] = true
@@ -108,7 +108,7 @@ module Exa
           args[:max_age_hours] = Base.parse_integer("--max-age-hours", argv[index + 1])
           index + 2
         when "--snapshot-as-of"
-          args[:snapshot_as_of] = argv[index + 1]
+          args[:snapshot_as_of] = Base.text_value("--snapshot-as-of", argv[index + 1])
           index + 2
         end
       end

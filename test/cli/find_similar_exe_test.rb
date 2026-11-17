@@ -37,6 +37,72 @@ class Exa::CLI::FindSimilarExeTest < Minitest::Test
     assert_equal({ "text" => { "maxCharacters" => 100 }, "summary" => true }, body["contents"])
   end
 
+  def test_exe_rejects_subpage_target_without_value
+    _stdout, stderr, status = run_find_similar_expecting_no_request("--subpage-target")
+
+    assert_equal 1, status
+    assert_equal "Error: --subpage-target needs a value\n", stderr
+  end
+
+  def test_exe_rejects_flag_as_subpage_target_value
+    _stdout, stderr, status = run_find_similar_expecting_no_request("--subpage-target", "--text")
+
+    assert_equal 1, status
+    assert_equal "Error: --subpage-target needs a value (got the flag --text)\n", stderr
+  end
+
+  def test_exe_rejects_flag_as_summary_query_value
+    _stdout, stderr, status = run_find_similar_expecting_no_request("--summary", "--summary-query", "--text")
+
+    assert_equal 1, status
+    assert_equal "Error: --summary-query needs a value (got the flag --text)\n", stderr
+  end
+
+  def test_exe_rejects_summary_query_without_value
+    _stdout, stderr, status = run_find_similar_expecting_no_request("--summary", "--summary-query")
+
+    assert_equal 1, status
+    assert_equal "Error: --summary-query needs a value\n", stderr
+  end
+
+  def test_exe_rejects_flag_as_highlights_query_value
+    _stdout, stderr, status = run_find_similar_expecting_no_request("--highlights-query", "--livecrawl")
+
+    assert_equal 1, status
+    assert_equal "Error: --highlights-query needs a value (got the flag --livecrawl)\n", stderr
+  end
+
+  def test_exe_rejects_snapshot_as_of_without_value
+    _stdout, stderr, status = run_find_similar_expecting_no_request("--snapshot-as-of")
+
+    assert_equal 1, status
+    assert_equal "Error: --snapshot-as-of needs a value\n", stderr
+  end
+
+  def test_exe_keeps_summary_query_with_a_single_dash
+    body = post_find_similar("--summary", "--summary-query", "state-of-the-art chip designs")
+
+    assert_equal({ "query" => "state-of-the-art chip designs" }, body.dig("contents", "summary"))
+  end
+
+  def test_exe_keeps_highlights_query_that_starts_with_two_dashes_and_contains_a_space
+    body = post_find_similar("--highlights", "--highlights-query", "--autosquash behavior")
+
+    assert_equal({ "query" => "--autosquash behavior" }, body.dig("contents", "highlights"))
+  end
+
+  def test_exe_rejects_unknown_flag_before_the_url
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+
+    _stdout, stderr, status = run_exe_in_process(
+      "exa-ai-find-similar", "--highlight", "https://arxiv.org/abs/2307.06435", "--api-key", "test_key"
+    )
+
+    assert_equal 1, status
+    assert_equal "Error: unknown option --highlight\n", stderr
+    assert_not_requested :post, "https://api.exa.ai/findSimilar"
+  end
+
   def test_help_lists_every_content_extraction_flag_of_search
     search_help, = run_exe_in_process("exa-ai-search", "--help")
     find_similar_help, = run_exe_in_process("exa-ai-find-similar", "--help")
@@ -50,6 +116,15 @@ class Exa::CLI::FindSimilarExeTest < Minitest::Test
   end
 
   private
+
+  # Runs exa-ai-find-similar in-process with the given flags after the URL,
+  # checks that no request was sent, and returns stdout, stderr and status.
+  def run_find_similar_expecting_no_request(*flags)
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+    result = run_exe_in_process("exa-ai-find-similar", "https://arxiv.org/abs/2307.06435", "--api-key", "test_key", *flags)
+    assert_not_requested :post, "https://api.exa.ai/findSimilar"
+    result
+  end
 
   # Runs exa-ai-find-similar in-process with the given flags and returns
   # the parsed body of the request it sends.

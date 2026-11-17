@@ -49,6 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **camelCase request keys for contents, find-similar, answer, context and agent runs** - `get_contents`, `find_similar`, `answer`, `answer` streaming and `context` now send camelCase keys (for example `systemPrompt`, `outputSchema`, `subpageTarget`, `tokensNum`), and nested keys are converted too (for example `budget.maxCostDollars` on agent runs). Keys inside `outputSchema`, `schema`, `metadata`, `data` and `exclusion` are sent as given
 - **find-similar content options** - `text` and `summary` go under `contents`, as the spec requires
 - **`exa-ai get-contents` option values** - an option that takes a value no longer has its value read again as the URL argument when the option comes before the URL
+- **Contents flags that take text on `exa-ai search` and `exa-ai find-similar`** - `--summary-query`, `--highlights-query`, `--snapshot-as-of` and `--subpage-target` now stop with one error line and send no request when no value follows or when the next argument starts with `--`. Before, `--summary --summary-query --text` sent `--text` as the summary query and lost `--text`, these flags given last with no value were dropped in silence, and `--subpage-target` given last sent `subpageTarget: [null]`
+- **Unknown flags on `exa-ai search` and `exa-ai find-similar`** - an argument that starts with `--` and is not a known flag now stops the command with `Error: unknown option <flag>`. Before, `find-similar --highlight https://a.com` sent `--highlight` as the URL, and `search` added the unknown flag to the query
 - **`WebsetSearch#in_progress?` with status `pending`** - a search with status `pending` is now in progress, as are `created` and `running`
 
 ### Deprecated

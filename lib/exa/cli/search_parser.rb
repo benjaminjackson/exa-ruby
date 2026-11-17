@@ -131,6 +131,8 @@ module Exa
             @args[:moderation] = true
             i += 1
           else
+            Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
+
             query_parts << arg
             i += 1
           end
