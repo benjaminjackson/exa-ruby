@@ -114,7 +114,7 @@ class UpdateWebsetIntegrationTest < Minitest::Test
   end
 
   def test_update_webset_title
-    VCR.use_cassette("update_webset_title", record: :new_episodes) do
+    VCR.use_cassette("update_webset_title") do
       client = Exa::Client.new(api_key: @api_key)
 
       webset = create_test_webset(client,
