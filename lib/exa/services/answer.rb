@@ -17,7 +17,8 @@ module Exa
         Resources::Answer.new(
           answer: body["answer"],
           citations: body["citations"] || [],
-          cost_dollars: body["costDollars"]
+          cost_dollars: body["costDollars"],
+          request_id: body["requestId"]
         )
       end
     end

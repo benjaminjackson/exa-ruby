@@ -20,7 +20,8 @@ module Exa
           results: body["results"],
           request_id: body["requestId"],
           context: body["context"],
-          cost_dollars: body["costDollars"]
+          cost_dollars: body["costDollars"],
+          search_time: body["searchTime"]
         )
       end
     end

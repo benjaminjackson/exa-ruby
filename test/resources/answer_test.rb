@@ -52,4 +52,15 @@ class AnswerTest < Minitest::Test
     assert_equal citations, hash[:citations]
     assert_equal cost, hash[:cost_dollars]
   end
+
+  def test_stubbed_response_exposes_request_id
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: { answer: "About $350 billion", citations: [], requestId: "req_answer_1" }.to_json, headers: { "Content-Type" => "application/json" })
+    connection = Exa::Connection.build(api_key: "test_key")
+
+    result = Exa::Services::Answer.new(connection, query: "What is the latest valuation of SpaceX?").call
+
+    assert_equal "req_answer_1", result.request_id
+    assert_equal "req_answer_1", result.to_h[:request_id]
+  end
 end

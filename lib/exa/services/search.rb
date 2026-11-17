@@ -28,7 +28,10 @@ module Exa
           search_type: body["searchType"],
           context: body["context"],
           cost_dollars: body["costDollars"],
-          output: body["output"]
+          output: body["output"],
+          warnings: body["warnings"],
+          notices: body["notices"],
+          search_time: body["searchTime"]
         )
       end
 
