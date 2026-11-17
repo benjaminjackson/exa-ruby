@@ -5,6 +5,10 @@ module Exa
     # The contents flags that exa-ai-search and exa-ai-find-similar share:
     # how each flag is read from the command line, how the flags become the
     # request's contents hash, and their lines in the help text.
+    # exa-ai-get-contents reads its flags through parse too, but leaves some
+    # out (UNSUPPORTED_CONTENTS_FLAGS in that file) and builds its own request.
+    # A flag added to parse is accepted by get-contents unless it is added to
+    # that list.
     module ContentsFlags
       VALID_TEXT_VERBOSITY = ["compact", "standard", "full"].freeze
 
