@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "exa/cli/contents_flags"
 
 class Exa::CLI::GetContentsTest < Minitest::Test
   def test_cli_help_shows_new_options
