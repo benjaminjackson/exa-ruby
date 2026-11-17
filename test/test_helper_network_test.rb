@@ -17,4 +17,17 @@ class TestHelperNetworkTest < Minitest::Test
       client.search("AI/ML infrastructure startups with Series A funding")
     end
   end
+
+  # A cassette opened with its own record mode can send a request that does
+  # not match the recording to the live API. Every cassette must use the
+  # default mode set in test_helper.rb.
+  def test_no_test_opens_a_cassette_with_its_own_record_mode
+    offenders = Dir[File.join(__dir__, "**", "*_test.rb")].flat_map do |path|
+      File.readlines(path).each_with_index.filter_map do |line, index|
+        "#{path}:#{index + 1}" if line.match?(/use_cassette\(.*record:/)
+      end
+    end
+
+    assert_empty offenders
+  end
 end
