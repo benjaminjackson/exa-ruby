@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **CHANGELOG.md ships in the gem** - the installed `exa-ai` gem now includes this changelog, so you can see what changed (deprecations, removed categories) without going online
-- **`--print-request`** - `exa-ai search` and `exa-ai get-contents` take `--print-request`. It writes the JSON request body sent to the API to stderr as one line, then sends the request as usual. The body is the first line on stderr; API warnings and error messages come after it. Headers and the API key are never printed. Ruby callers can pass the same hook as `on_request:` to `client.search` and `client.get_contents`: a callable that gets the request body just before it is sent.
+- **`--print-request`** - `exa-ai search` and `exa-ai get-contents` take `--print-request`. It writes the JSON request body sent to the API to stderr as one line, then sends the request as usual. The body is the first line on stderr; API warnings and error messages come after it. Headers and the API key are never printed.
 
 ### Deprecated
 - **`exa-ai --livecrawl` flag** - help text and docs for `exa-ai search` and `exa-ai find-similar` now mark `--livecrawl` deprecated. Use `--max-age-hours 0 --livecrawl-timeout 5000`. The flag still works and sends the same request: `maxAgeHours: 0` and `livecrawlTimeout: 5000`, not the API's deprecated `livecrawl` field
