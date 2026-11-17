@@ -84,7 +84,12 @@ module Exa
               total = run.cost_dollars.is_a?(Hash) ? (run.cost_dollars["total"] || run.cost_dollars[:total]) : run.cost_dollars
               output << "Cost: $#{total}"
             end
+            data_source_costs = data_source_costs_line(run)
+            output << data_source_costs if data_source_costs
+            usage = usage_line(run)
+            output << usage if usage
             output << "Completed: #{run.completed_at}" if run.completed_at
+            output << "Stop reason: #{run.stop_reason}" if run.stop_reason
           when "failed"
             output << "Run failed"
             output << error_line(run) if run.error
@@ -137,8 +142,8 @@ module Exa
             end
           elsif run.status == "failed"
             output << error_line(run) if run.error
-            output << "Stop reason: #{run.stop_reason}" if run.stop_reason
           end
+          output << "Stop reason: #{run.stop_reason}" if run.stop_reason && %w[completed failed].include?(run.status)
           output.join("\n")
         end
 
@@ -152,13 +157,63 @@ module Exa
 
         # Flattens an output.grounding array into displayable source strings,
         # tolerating both shapes seen from the API: flat {url,title} items and
-        # nested {citations:[{url,title}]} items.
+        # nested {citations:[{url,title}]} items. When an item names the output
+        # field it supports, or a confidence, each of its sources ends with
+        # "(field: ..., confidence: ...)".
         def self.grounding_sources(run)
           grounding = run.output.is_a?(Hash) ? (run.output["grounding"] || run.output[:grounding]) : nil
           Array(grounding).flat_map do |item|
             citations = item.is_a?(Hash) && item["citations"] ? item["citations"] : [item]
-            citations.map { |c| c.is_a?(Hash) ? (c["title"] || c["url"]) : c }
+            note = grounding_note(item)
+            citations.map do |c|
+              source = c.is_a?(Hash) ? (c["title"] || c["url"]) : c
+              source && note ? "#{source} (#{note})" : source
+            end
           end.compact
+        end
+
+        # "field: capital, confidence: high" for a grounding item, or nil when
+        # the item has neither.
+        def self.grounding_note(item)
+          return nil unless item.is_a?(Hash)
+
+          parts = []
+          parts << "field: #{item['field']}" if item["field"]
+          parts << "confidence: #{item['confidence']}" if item["confidence"]
+          parts.empty? ? nil : parts.join(", ")
+        end
+
+        # "Data source costs: fiber $0.04, similarweb $0.3" from
+        # costDollars.dataSources, or nil when there is none.
+        def self.data_source_costs_line(run)
+          return nil unless run.cost_dollars.is_a?(Hash)
+
+          costs = run.cost_dollars["dataSources"] || run.cost_dollars[:dataSources]
+          return nil unless costs.is_a?(Hash) && costs.any?
+
+          "Data source costs: " + costs.map { |provider, dollars| "#{provider} $#{dollars}" }.join(", ")
+        end
+
+        USAGE_LABELS = {
+          "agentComputeUnits" => "agent compute units",
+          "searches" => "searches",
+          "emails" => "emails",
+          "phoneNumbers" => "phone numbers"
+        }.freeze
+
+        # One line with the usage quantities the run reports, for example
+        # "Usage: 12.5 agent compute units, 8 searches, data source calls: fiber 2".
+        # Only keys present in run.usage appear. Returns nil when there are none.
+        def self.usage_line(run)
+          return nil unless run.usage.is_a?(Hash)
+
+          usage = run.usage.transform_keys(&:to_s)
+          parts = USAGE_LABELS.filter_map { |key, label| "#{usage[key]} #{label}" if usage.key?(key) }
+          calls = usage["dataSources"]
+          if calls.is_a?(Hash) && calls.any?
+            parts << "data source calls: " + calls.map { |provider, count| "#{provider} #{count}" }.join(", ")
+          end
+          parts.empty? ? nil : "Usage: #{parts.join(', ')}"
         end
 
         def self.format_list_text(list)

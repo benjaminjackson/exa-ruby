@@ -87,4 +87,52 @@ class AgentRunFormatterTest < Minitest::Test
     out = Exa::CLI::Formatters::AgentRunFormatter.format_run(failed_run, "text")
     assert_includes out, "Error: agent_error (budget_exceeded): Run stopped at the cost limit"
   end
+
+  def budget_reached_run
+    Exa::Resources::AgentRun.new(
+      id: "agent_run_3", object: "agent_run", status: "completed", stop_reason: "budget_reached",
+      output: { "text" => "Found 40 of the requested 100 fintech startups." },
+      completed_at: "2026-06-29T18:51:05Z"
+    )
+  end
+
+  def test_pretty_prints_stop_reason_for_completed_run
+    out = Exa::CLI::Formatters::AgentRunFormatter.format_run(budget_reached_run, "pretty")
+    assert_includes out, "Stop reason: budget_reached"
+  end
+
+  def test_text_prints_stop_reason_for_completed_run
+    out = Exa::CLI::Formatters::AgentRunFormatter.format_run(budget_reached_run, "text")
+    assert_includes out, "Stop reason: budget_reached"
+  end
+
+  def test_pretty_prints_cost_per_data_source
+    run = completed_run(cost_dollars: { "total" => 0.5, "dataSources" => { "fiber" => 0.04, "similarweb" => 0.3 } })
+    out = Exa::CLI::Formatters::AgentRunFormatter.format_run(run, "pretty")
+    assert_includes out, "Data source costs: fiber $0.04, similarweb $0.3"
+  end
+
+  def test_pretty_prints_usage_from_present_keys
+    run = Exa::Resources::AgentRun.new(
+      id: "agent_run_4", object: "agent_run", status: "completed",
+      output: { "text" => "Tokyo is the largest." },
+      usage: { "agentComputeUnits" => 12.5, "searches" => 8, "dataSources" => { "fiber" => 2 } }
+    )
+    out = Exa::CLI::Formatters::AgentRunFormatter.format_run(run, "pretty")
+    assert_includes out, "Usage: 12.5 agent compute units, 8 searches, data source calls: fiber 2"
+  end
+
+  def test_pretty_grounding_shows_field_and_confidence
+    run = Exa::Resources::AgentRun.new(
+      id: "agent_run_5", object: "agent_run", status: "completed",
+      output: {
+        "text" => "Tokyo is the capital.",
+        "grounding" => [
+          { "field" => "capital", "confidence" => "high", "citations" => [{ "url" => "https://example.com", "title" => "Tokyo Facts" }] }
+        ]
+      }
+    )
+    out = Exa::CLI::Formatters::AgentRunFormatter.format_run(run, "pretty")
+    assert_includes out, "- Tokyo Facts (field: capital, confidence: high)"
+  end
 end
