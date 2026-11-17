@@ -26,6 +26,8 @@ class AgentRunCreateExeTest < Minitest::Test
     original_argv = ARGV.dup
     ARGV.replace(args)
     capture_io { load EXE }
+  rescue SystemExit => e
+    flunk "the executable exited with status #{e.status}"
   ensure
     ARGV.replace(original_argv)
   end
@@ -141,6 +143,21 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_metadata_that_is_not_an_object_exits_nonzero
     out = run_exe("--query", "AI infrastructure startups", "--metadata", '["acct_42"]')
     assert_includes out, "--metadata"
+    assert_equal 1, $?.exitstatus
+  end
+
+  def test_max_duration_seconds_reads_leading_zero_as_decimal
+    stub_agent_run_create
+
+    run_exe_in_process("--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
+                       "--max-duration-seconds", "0300")
+
+    assert_equal({ "maxDurationSeconds" => 300 }, request_body["budget"])
+  end
+
+  def test_max_duration_seconds_rejects_hex
+    out = run_exe("--query", "AI infrastructure startups", "--max-duration-seconds", "0x3e8")
+    assert_includes out, "Error: --max-duration-seconds must be a number"
     assert_equal 1, $?.exitstatus
   end
 end

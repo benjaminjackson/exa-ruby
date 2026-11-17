@@ -187,6 +187,8 @@ module Exa
     #   Last-Event-ID header) and reads the whole response before it returns. The
     #   docs do not say whether the server closes the stream for a run that is still
     #   in progress, so for such a run this call may block until the run ends.
+    #   If no data arrives within the connection's read timeout, the call raises
+    #   Faraday::TimeoutError.
     #   The result has items {"id", "event", "data"}, has_more false and no cursor.
     # @return [Resources::AgentRunEventList] Agent run events with has_more and next_cursor
     def agent_run_events(run_id, **params)

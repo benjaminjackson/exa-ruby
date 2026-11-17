@@ -3,6 +3,14 @@
 
 require "exa-ai"
 
+# The line that tells the user how to get the next page, or nil when there
+# are no more events.
+def next_page_hint(events)
+  return nil unless events.has_more && events.next_cursor
+
+  "More events available. Use --cursor #{events.next_cursor} for the next page."
+end
+
 # Parse command-line arguments
 api_key = nil
 run_id = nil
@@ -20,7 +28,7 @@ while args.any?
   when "--limit"
     value = args.shift
     begin
-      list_params[:limit] = Integer(value.to_s)
+      list_params[:limit] = Integer(value.to_s, 10)
     rescue ArgumentError
       warn "Error: --limit must be a number (got #{value.inspect})"
       exit 1
@@ -89,14 +97,14 @@ begin
     items.each_with_index do |event, i|
       puts "#{i + 1}. #{event.respond_to?(:to_h) ? event.to_h.inspect : event}"
     end
-    if events.has_more && events.next_cursor
-      puts ""
-      puts "More events available. Use --cursor #{events.next_cursor} for the next page."
-    end
+    hint = next_page_hint(events)
+    puts "", hint if hint
   when "text"
     items.each do |event|
       puts event.respond_to?(:to_h) ? event.to_h.inspect : event.to_s
     end
+    hint = next_page_hint(events)
+    puts hint if hint
   else
     puts JSON.pretty_generate(events.respond_to?(:to_h) ? events.to_h : events)
   end

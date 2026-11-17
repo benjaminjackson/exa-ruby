@@ -231,4 +231,28 @@ class AgentRunStreamTest < Minitest::Test
   def test_parse_frame_returns_nil_without_data
     assert_nil Exa::Services::AgentRunStream.parse_frame(": keep-alive")
   end
+
+  def test_parse_frame_strips_event_name_and_id
+    frame = "id: 7 \nevent: agent_run.completed \ndata: {\"id\":\"run_123\"}"
+
+    assert_equal ["agent_run.completed", { "id" => "run_123" }, "7"],
+                 Exa::Services::AgentRunStream.parse_frame(frame)
+  end
+
+  def test_call_returns_final_run_when_event_name_has_trailing_space
+    connection = Faraday.new(url: "https://api.exa.ai") do |faraday|
+      faraday.request :json
+      faraday.adapter :test do |stub|
+        stub.post("/agent/runs") do |env|
+          env.request.on_data&.call("event: agent_run.completed \ndata: {\"id\":\"run_123\",\"object\":\"agent_run\",\"status\":\"completed\"}\n\n")
+          [200, { "Content-Type" => "text/event-stream" }, ""]
+        end
+      end
+    end
+
+    final = Exa::Services::AgentRunStream.new(connection, query: "Series A climate tech startups in Europe")
+                                         .call { |_event_type, _data| }
+
+    assert_equal "completed", final&.status
+  end
 end

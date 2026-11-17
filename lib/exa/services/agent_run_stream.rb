@@ -19,6 +19,7 @@ module Exa
       # its data is not valid JSON. Reads "id:", "event:" and "data:" with or
       # without the one space after the colon, skips comment lines that start
       # with ":", and joins several data lines with "\n" as the SSE format says.
+      # The event name and id are stripped of surrounding whitespace.
       def self.parse_frame(frame)
         event_type = nil
         event_id = nil
@@ -35,8 +36,8 @@ module Exa
           # The SSE format allows one optional space after the colon.
           value = value.delete_prefix(" ")
           case field
-          when "event" then event_type = value
-          when "id"    then event_id = value
+          when "event" then event_type = value.strip
+          when "id"    then event_id = value.strip
           when "data"  then data_lines << value
           end
         end

@@ -20,6 +20,8 @@ class AgentRunEventsExeTest < Minitest::Test
     original_argv = ARGV.dup
     ARGV.replace(args)
     capture_io { load EXE }
+  rescue SystemExit => e
+    flunk "the executable exited with status #{e.status}"
   ensure
     ARGV.replace(original_argv)
   end
@@ -55,5 +57,43 @@ class AgentRunEventsExeTest < Minitest::Test
     out = run_exe("run_123", "--limit", "ten")
     assert_includes out, "Error: --limit must be a number"
     assert_equal 1, $?.exitstatus
+  end
+
+  # Stubs the events URL with any query string, so a wrong query fails the
+  # assertion instead of reaching the live API.
+  def stub_events_page
+    stub_request(:get, /\A#{Regexp.escape(EVENTS_URL)}/)
+      .to_return(
+        status: 200,
+        body: {
+          object: "list",
+          data: [{ id: "7", event: "agent_run.started", data: {} }],
+          hasMore: true,
+          nextCursor: "cur_2"
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+  end
+
+  def test_limit_reads_leading_zero_as_decimal
+    stub_events_page
+
+    run_exe_in_process("run_123", "--api-key", "test_key", "--limit", "010")
+
+    assert_requested :get, EVENTS_URL, query: { limit: "10" }
+  end
+
+  def test_limit_rejects_hex
+    out = run_exe("run_123", "--limit", "0x3e8")
+    assert_includes out, "Error: --limit must be a number"
+    assert_equal 1, $?.exitstatus
+  end
+
+  def test_text_output_prints_next_cursor
+    stub_events_page
+
+    stdout, = run_exe_in_process("run_123", "--api-key", "test_key", "--limit", "2", "--output-format", "text")
+
+    assert_includes stdout, "--cursor cur_2"
   end
 end
