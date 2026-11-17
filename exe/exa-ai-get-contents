@@ -77,7 +77,7 @@ def parse_args(args)
       options[:output_format] = Exa::CLI::Base.text_value("--output-format", args[i + 1])
       i += 2
     when "--ids"
-      options[:ids] = Exa::CLI::Base.text_value("--ids", args[i + 1]).split(",").map(&:strip)
+      options[:ids] = Exa::CLI::GetContents.split_urls(Exa::CLI::Base.text_value("--ids", args[i + 1]))
       i += 2
     when "--user-identifier"
       options[:user_identifier] = Exa::CLI::Base.text_value("--user-identifier", args[i + 1])
@@ -104,12 +104,9 @@ def parse_args(args)
       # (one dash or two) is an option this command does not know.
       Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("-")
 
-      # The one non-flag argument is the URLs (comma-separated or single).
-      # A second one is refused, not dropped, so no URL is lost in silence.
-      # An argument that held no URL (empty, or only commas) does not count.
-      raise ArgumentError, "unexpected argument #{arg}: join several URLs with commas into one argument" unless options[:urls].empty?
-
-      options[:urls] = arg.split(",").map(&:strip)
+      # Every non-flag argument adds its URLs to the list. One argument can
+      # hold several URLs; split_urls keeps a comma that is part of a URL.
+      options[:urls].concat(Exa::CLI::GetContents.split_urls(arg))
       i += 1
     end
   end
@@ -184,13 +181,14 @@ end
 
 def print_help
   puts <<~HELP
-    Usage: exa-ai get-contents <urls> [options]
+    Usage: exa-ai get-contents <url> [<url> ...] [options]
            exa-ai get-contents --ids ID1,ID2 [options]
 
     Retrieve full page contents from URLs or document IDs
 
     Arguments:
-      urls                   Comma-separated list of URLs (required unless --ids is given)
+      url                    One or more URLs, as separate arguments (required unless --ids is given).
+                             URL1,URL2 in one argument also works when each URL starts with http:// or https://
 
     Options:
       Text Extraction:

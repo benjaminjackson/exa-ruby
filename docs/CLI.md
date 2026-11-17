@@ -264,8 +264,8 @@ exa-ai get-contents "https://example.com/article"
 ### Multiple Pages
 
 ```bash
-# Comma-separated URLs
-exa-ai get-contents "https://site1.com,https://site2.com,https://site3.com"
+# Several URLs, each a separate argument
+exa-ai get-contents https://site1.com https://site2.com https://site3.com
 ```
 
 ### With Options
@@ -281,7 +281,7 @@ exa-ai get-contents "https://example.com" --highlights
 exa-ai get-contents "https://example.com" --summary
 
 # Combine options
-exa-ai get-contents "url1,url2" \
+exa-ai get-contents url1 url2 \
   --text \
   --highlights \
   --summary
@@ -299,7 +299,7 @@ exa-ai get-contents "https://example.com" --output-format json
 
 ### Options Summary
 
-- `IDS` - Page IDs or URLs (required, comma-separated)
+- `URL ...` - One or more URLs, as separate arguments (required unless `--ids` is given). `URL1,URL2` in one argument also works when each URL starts with `http://` or `https://`. A comma inside a URL stays part of that URL
 - `--text` - Include full text content
 - `--highlights` - Include highlighted sections
 - `--summary` - Include summary
