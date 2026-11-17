@@ -153,7 +153,7 @@ exa-ai search "ruby" --output-format json
 - `--links N` - Number of links to extract
 - `--image-links N` - Number of image links to extract
 - `--output-format FORMAT` - json or pretty
-- `--print-request` - Write the JSON request body sent to the API to stderr as one line; the request is still sent. Headers and the API key are never printed
+- `--print-request` - Write the JSON request body sent to the API to stderr as one line, before any warning or error message; the request is still sent. Headers and the API key are never printed
 
 ## answer
 
@@ -300,7 +300,7 @@ exa-ai get-contents "https://example.com" --output-format json
 - `--summary` - Include summary
 - `--context` - Deprecated. Use `--highlights` or `--text`
 - `--output-format FORMAT` - json or pretty (default: json)
-- `--print-request` - Write the JSON request body sent to the API to stderr as one line; the request is still sent. Headers and the API key are never printed
+- `--print-request` - Write the JSON request body sent to the API to stderr as one line, before any warning or error message; the request is still sent. Headers and the API key are never printed
 
 
 ## search-monitor

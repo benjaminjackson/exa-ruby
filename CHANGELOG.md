@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `exa-ai search` and `exa-ai get-contents` take `--print-request`. It writes the JSON request body sent to the API to stderr as one line, then sends the request as usual. Headers and the API key are never printed. Ruby callers can pass the same hook as `on_request:` to `client.search` and `client.get_contents`: a callable that gets the request body just before it is sent.
+- `exa-ai search` and `exa-ai get-contents` take `--print-request`. It writes the JSON request body sent to the API to stderr as one line, then sends the request as usual. The body is the first line on stderr; API warnings and error messages come after it. Headers and the API key are never printed. Ruby callers can pass the same hook as `on_request:` to `client.search` and `client.get_contents`: a callable that gets the request body just before it is sent.
 
 ## [0.14.0] - 2026-11-16
 
