@@ -150,6 +150,7 @@ exa-ai search "ruby" --output-format json
 - `--subpage-target TARGET` - Deprecated on search. Use `exa-ai get-contents --subpage-target`
 - `--highlights-num-sentences N` - Deprecated. Use `--highlights-max-characters`
 - `--highlights-per-url N` - Deprecated. The API ignores it
+- `--livecrawl` - Deprecated. Use `--max-age-hours 0 --livecrawl-timeout 5000`
 - `--links N` - Number of links to extract
 - `--image-links N` - Number of image links to extract
 - `--output-format FORMAT` - json or pretty
