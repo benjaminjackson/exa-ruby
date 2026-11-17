@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.14.0] - 2026-11-16
+
 ### Removed
 - **Websets support (breaking change)** - every command and client method that calls `https://api.exa.ai/websets/v0/` is gone, with no deprecation release first. Code that uses them must change before it upgrades
   - Commands removed (30): `exa-ai webset-*` (create, get, list, update, delete, cancel), `exa-ai webset-search-*` (create, get, cancel), `exa-ai webset-item-*` (list, get, delete), `exa-ai enrichment-*` (create, get, list, update, delete, cancel), `exa-ai import-*` (create, list, get, update, delete) and the Websets monitor commands `exa-ai monitor-*` (create, get, list, update, delete, runs-list, runs-get)
