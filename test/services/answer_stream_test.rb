@@ -92,4 +92,16 @@ class AnswerStreamTest < Minitest::Test
       assert_empty snake_case_keys(body)
     end
   end
+
+  def test_call_raises_exa_error_on_error_chunk
+    error_chunk = { "tag" => "ERROR", "payload" => { "error" => { "code" => "INTERNAL", "message" => "Answer generation failed" } } }
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: "data: #{JSON.generate(error_chunk)}\n\n", headers: { "Content-Type" => "text/event-stream" })
+
+    service = Exa::Services::AnswerStream.new(@connection, query: "What is the latest valuation of SpaceX?")
+
+    error = assert_raises(Exa::Error) { service.call { |_chunk| } }
+
+    assert_equal "Answer generation failed", error.message
+  end
 end

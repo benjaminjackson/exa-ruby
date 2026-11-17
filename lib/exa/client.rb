@@ -86,6 +86,24 @@ module Exa
       Services::AnswerStream.new(connection, query: query, **options).call(&block)
     end
 
+    # Stream a search with a synthesized answer
+    #
+    # The API streams /search only when an output schema is set, so
+    # :output_schema is required.
+    #
+    # @param query [String] Search query
+    # @param params [Hash] Search parameters, as for #search
+    # @option params [Hash] :output_schema JSON schema for the synthesized output (required)
+    # @yield [chunk] Yields each server-sent event as it arrives
+    # @yieldparam chunk [Hash] Event with a "type" of text-delta, grounding,
+    #   results, stream-reset or done
+    # @raise [ArgumentError] when :output_schema is missing
+    # @raise [Exa::Error] when the stream sends an error event
+    # @return [void]
+    def search_stream(query, **params, &block)
+      Services::SearchStream.new(connection, query: query, **params).call(&block)
+    end
+
     # Create a new agent run
     #
     # @param query [String] The query or task for the agent to execute (required)

@@ -17,7 +17,8 @@ module Exa
         @buffer = ""
 
         # Configure the request to stream chunks via on_data callback
-        @connection.post("/answer", @params) do |req|
+        @connection.post(path, @params) do |req|
+          req.headers.update(headers)
           req.options.on_data = proc do |chunk, _size, env|
             next env[:error_body] = "#{env[:error_body]}#{chunk}" if env&.status.to_i >= 400
 
@@ -32,6 +33,26 @@ module Exa
       end
 
       private
+
+      # The endpoint this stream posts to. SearchStream overrides it.
+      def path
+        "/answer"
+      end
+
+      # Extra request headers for this stream. SearchStream overrides it.
+      def headers
+        {}
+      end
+
+      # Raises Exa::Error when a chunk is an error event, otherwise yields it.
+      # /search sends {"type":"error","error":{"message":...}}; /answer sends
+      # {"tag":"ERROR","payload":{"error":{"code":...,"message":...}}}.
+      def yield_chunk(data)
+        raise Exa::Error, data.dig("error", "message") if data["type"] == "error"
+        raise Exa::Error, data.dig("payload", "error", "message") if data["tag"] == "ERROR"
+
+        yield(data)
+      end
 
       def process_sse_buffer
         # Extract and process complete SSE events (separated by \n\n)
@@ -65,7 +86,7 @@ module Exa
               json_str = line.sub(/^data: /, "").strip
               begin
                 data = JSON.parse(json_str)
-                yield(data)
+                yield_chunk(data) { |chunk| yield(chunk) }
               rescue JSON::ParserError
                 # Skip lines that aren't valid JSON
               end
@@ -82,7 +103,7 @@ module Exa
             json_str = line.sub(/^data: /, "").strip
             begin
               data = JSON.parse(json_str)
-              yield(data)
+              yield_chunk(data) { |chunk| yield(chunk) }
             rescue JSON::ParserError
               # Skip lines that aren't valid JSON
             end
