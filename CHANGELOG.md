@@ -21,12 +21,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`exa-ai search` flags** - `--objective`, `--user-identifier`, `--compliance hipaa` and `--snapshot-as-of`. `--user-location` also takes a JSON object (`{"country":"US","latitude":...,"longitude":...}`) or `@file`
 - **`exa-ai get-contents` flags** - `--ids`, `--max-age-hours`, `--snapshot-as-of`, `--user-identifier`, `--compliance`, `--highlights`, `--highlights-query`, `--highlights-max-characters`, `--highlights-verbosity` and `--text-verbosity`. URLs are optional when `--ids` is given
 - **`exa-ai answer` flags** - `--model` (`exa`, `exa-pro`, `exa-research`, `exa-fast`), `--user-location` and `--user-identifier`, with and without `--stream`
+- **Stop an agent run** - `agent_run_stop` and `exa-ai agent-run-stop` call `POST /agent/runs/{id}/stop`. The run completes with stop reason `stopped` and keeps its results. The API supports it only for effort `high`, `xhigh` and `ultra`
+- **Agent run budget, metadata and user flags** - `exa-ai agent-run-create` takes `--max-cost-dollars`, `--max-duration-seconds`, `--metadata` and `--user-identifier`
+- **Agent run event replay** - `agent_run_events(run_id, last_event_id: "7")` replays the events after that id over server-sent events and returns the same `AgentRunEventList`
+- **Event pages on the CLI** - `exa-ai agent-run-events` takes `--limit` and `--cursor`
+- **More agent run output** - pretty and text output show the stop reason of a completed run. Pretty output also shows the cost of each data source, usage, and the field and confidence of each grounding item
 - **Status helpers for every spec status** - `Monitor#enabled?`, `#disabled?`; `Webset#pending?`, `#running?`, `#paused?`; `WebsetEnrichment#canceled?`; `WebsetSearch#pending?`; `MonitorRun#created?`, `#canceled?`; `Import#canceled?`
 
 ### Changed
 - **`agent_run_delete` returns `Exa::Resources::AgentRunDeletion`** - The API answers a delete with `{id, object: "agent_run.deleted", deleted: true}`. Use `#deleted?` and `#id`. Before, the method returned an `AgentRun` whose status was nil
 
 ### Fixed
+- **Agent run stream parsing** - the stream reads the `id:` line and passes it to the block as a third argument (blocks and procs that take two arguments keep working; a lambda must accept three), accepts `\r\n` line endings and fields with no space after the colon, and skips comment lines
+- **Exa Connect provider slugs** - the CLI help and README use the documented slugs `fiber` and `particle` (not `fiber_ai` and `particle_news`) and list `polymarket` and `macrobond`
+- **`agent-run-create --wait` limit** - when the stream drops, polling now waits up to 3 hours (the longest an `ultra` run can take) instead of 5 minutes
+- **`--effort` help includes `ultra`**
 - **camelCase request keys for contents, find-similar, answer, context and agent runs** - `get_contents`, `find_similar`, `answer`, `answer` streaming and `context` now send camelCase keys (for example `systemPrompt`, `outputSchema`, `subpageTarget`, `tokensNum`), and nested keys are converted too (for example `budget.maxCostDollars` on agent runs). Keys inside `outputSchema`, `schema`, `metadata`, `data` and `exclusion` are sent as given
 - **find-similar content options** - `text` and `summary` go under `contents`, as the spec requires
 - **`exa-ai get-contents` option values** - an option that takes a value no longer has its value read again as the URL argument when the option comes before the URL

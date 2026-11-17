@@ -156,6 +156,20 @@ class CLIExecutablesTest < Minitest::Test
     assert_includes stdout, "answer"
   end
 
+  def test_agent_run_stop_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai-agent-run-stop --help")
+
+    assert status.success?, "exa-ai-agent-run-stop --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai agent-run-stop"
+  end
+
+  def test_dispatcher_routes_to_agent_run_stop_help
+    stdout, stderr, status = run_executable("bundle exec exe/exa-ai agent-run-stop --help")
+
+    assert status.success?, "exa-ai agent-run-stop --help should exit successfully. stderr: #{stderr}, stdout: #{stdout}"
+    assert_includes stdout, "Usage: exa-ai agent-run-stop"
+  end
+
   # Test error handling for invalid commands
   def test_invalid_command_shows_error
     stdout, stderr, status = run_executable("bundle exec exe/exa-ai invalid-command")

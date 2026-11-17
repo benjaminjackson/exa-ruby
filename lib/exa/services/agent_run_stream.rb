@@ -14,9 +14,47 @@ module Exa
         @params = params
       end
 
-      # Streams SSE frames to the block as (event_type, data). Returns the final
-      # AgentRun built from the terminal event's payload (completed/failed/
-      # cancelled), or nil if the stream ended before a terminal event arrived.
+      # Parses one SSE frame (the lines between two blank lines) and returns
+      # [event_type, data, event_id], or nil when the frame has no data line or
+      # its data is not valid JSON. Reads "id:", "event:" and "data:" with or
+      # without the one space after the colon, skips comment lines that start
+      # with ":", and joins several data lines with "\n" as the SSE format says.
+      # The event name and id are stripped of surrounding whitespace.
+      def self.parse_frame(frame)
+        event_type = nil
+        event_id = nil
+        data_lines = []
+
+        frame.split("\n").each do |line|
+          # A stream that ends between "\r" and "\n" leaves a "\r" behind.
+          line = line.chomp("\r")
+          next if line.start_with?(":")
+
+          field, value = line.split(":", 2)
+          next if value.nil?
+
+          # The SSE format allows one optional space after the colon.
+          value = value.delete_prefix(" ")
+          case field
+          when "event" then event_type = value.strip
+          when "id"    then event_id = value.strip
+          when "data"  then data_lines << value
+          end
+        end
+
+        return nil if data_lines.empty?
+
+        [event_type, JSON.parse(data_lines.join("\n")), event_id]
+      rescue JSON::ParserError
+        nil
+      end
+
+      # Streams SSE frames to the block as (event_type, data, event_id). Blocks
+      # and procs that take only (event_type, data) keep working; a lambda
+      # must accept three arguments. Returns the
+      # final AgentRun built from the terminal event's payload (completed/
+      # failed/cancelled), or nil if the stream ended before a terminal event
+      # arrived.
       def call(&block)
         raise ArgumentError, "block required for streaming" unless block_given?
 
@@ -24,9 +62,9 @@ module Exa
         @final_payload = nil
 
         # Capture the terminal payload as it streams, then forward to the caller.
-        interceptor = proc do |event_type, data|
+        interceptor = proc do |event_type, data, event_id|
           @final_payload = data if TERMINAL_EVENTS.include?(event_type)
-          block.call(event_type, data)
+          block.call(event_type, data, event_id)
         end
 
         body = ParameterConverter.convert(@params)
@@ -36,18 +74,23 @@ module Exa
           req.options.on_data = proc do |chunk, _size, env|
             next env[:error_body] = "#{env[:error_body]}#{chunk}" if env&.status.to_i >= 400
 
-            @buffer += chunk
+            # Normalise CRLF line endings. A "\r" at the end of one chunk joins
+            # its "\n" here once the next chunk arrives.
+            @buffer = (@buffer + chunk).gsub("\r\n", "\n")
             process_sse_buffer(&interceptor)
           end
         end
 
-        process_remaining_buffer(&interceptor) if @buffer.length.positive?
+        event = self.class.parse_frame(@buffer)
+        interceptor.call(*event) if event
 
         @final_payload && Resources::AgentRun.from_response(@final_payload)
       end
 
       private
 
+      # Yields each complete frame in the buffer and keeps the incomplete
+      # tail for the next chunk.
       def process_sse_buffer
         return if @buffer.empty?
 
@@ -62,49 +105,8 @@ module Exa
         end
 
         complete_parts.each do |frame|
-          next if frame.empty?
-
-          event_type = nil
-          data_json = nil
-
-          frame.split("\n").each do |line|
-            if line.start_with?("event: ")
-              event_type = line.sub(/^event: /, "").strip
-            elsif line.start_with?("data: ")
-              data_json = line.sub(/^data: /, "").strip
-            end
-          end
-
-          next if data_json.nil?
-
-          begin
-            data = JSON.parse(data_json)
-            yield(event_type, data)
-          rescue JSON::ParserError
-            # Skip lines that aren't valid JSON
-          end
-        end
-      end
-
-      def process_remaining_buffer
-        event_type = nil
-        data_json = nil
-
-        @buffer.split("\n").each do |line|
-          if line.start_with?("event: ")
-            event_type = line.sub(/^event: /, "").strip
-          elsif line.start_with?("data: ")
-            data_json = line.sub(/^data: /, "").strip
-          end
-        end
-
-        return if data_json.nil?
-
-        begin
-          data = JSON.parse(data_json)
-          yield(event_type, data)
-        rescue JSON::ParserError
-          # Skip lines that aren't valid JSON
+          event = self.class.parse_frame(frame)
+          yield(*event) if event
         end
       end
     end

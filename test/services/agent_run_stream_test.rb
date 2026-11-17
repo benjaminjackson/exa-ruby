@@ -157,4 +157,102 @@ class AgentRunStreamTest < Minitest::Test
 
     assert_equal "A run with this idempotency key already exists", error.message
   end
+
+  # Builds a connection whose POST /agent/runs feeds the given chunks to the
+  # streaming callback, runs the stream, and returns every yielded
+  # [event_type, data, event_id].
+  def stream_chunks(*chunks)
+    connection = Faraday.new(url: "https://api.exa.ai") do |faraday|
+      faraday.request :json
+      faraday.response :json, content_type: /\bjson$/
+      faraday.adapter :test do |stub|
+        stub.post("/agent/runs") do |env|
+          chunks.each { |chunk| env.request.on_data&.call(chunk) }
+          [200, { "Content-Type" => "text/event-stream" }, ""]
+        end
+      end
+    end
+
+    events = []
+    Exa::Services::AgentRunStream.new(connection, query: "Series A climate tech startups in Europe")
+      .call { |event_type, data, event_id| events << [event_type, data, event_id] }
+    events
+  end
+
+  def test_call_yields_event_id_from_id_line
+    events = stream_chunks("id: 7\nevent: agent_run.created\ndata: {\"id\":\"run_123\"}\n\n")
+
+    assert_equal [["agent_run.created", { "id" => "run_123" }, "7"]], events
+  end
+
+  def test_call_parses_crlf_line_endings
+    events = stream_chunks(
+      "id: 1\r\nevent: agent_run.created\r\ndata: {\"id\":\"run_123\"}\r\n\r\n" \
+      "id: 2\r\nevent: agent_run.completed\r\ndata: {\"id\":\"run_123\",\"status\":\"completed\"}\r\n\r\n"
+    )
+
+    assert_equal [["agent_run.created", "1"], ["agent_run.completed", "2"]], events.map { |event| [event[0], event[2]] }
+  end
+
+  def test_call_joins_frame_split_between_cr_and_lf
+    events = stream_chunks(
+      "id: 1\r\nevent: agent_run.created\r\ndata: {\"id\":\"run_123\"}\r\n\r",
+      "\nid: 2\r\nevent: agent_run.completed\r\ndata: {\"id\":\"run_123\",\"status\":\"completed\"}\r\n\r\n"
+    )
+
+    assert_equal [["agent_run.created", "1"], ["agent_run.completed", "2"]], events.map { |event| [event[0], event[2]] }
+  end
+
+  def test_two_argument_block_still_receives_event_and_data
+    connection = Faraday.new(url: "https://api.exa.ai") do |faraday|
+      faraday.request :json
+      faraday.adapter :test do |stub|
+        stub.post("/agent/runs") do |env|
+          env.request.on_data&.call("id: 7\nevent: agent_run.created\ndata: {\"id\":\"run_123\"}\n\n")
+          [200, { "Content-Type" => "text/event-stream" }, ""]
+        end
+      end
+    end
+
+    received = []
+    Exa::Services::AgentRunStream.new(connection, query: "Series A climate tech startups in Europe")
+      .call { |event_type, data| received << [event_type, data] }
+
+    assert_equal [["agent_run.created", { "id" => "run_123" }]], received
+  end
+
+  def test_parse_frame_reads_fields_without_leading_space_and_skips_comments
+    frame = ": keep-alive\nid:9\nevent:agent_run.started\ndata:{\"id\":\"run_123\"}"
+
+    assert_equal ["agent_run.started", { "id" => "run_123" }, "9"],
+                 Exa::Services::AgentRunStream.parse_frame(frame)
+  end
+
+  def test_parse_frame_returns_nil_without_data
+    assert_nil Exa::Services::AgentRunStream.parse_frame(": keep-alive")
+  end
+
+  def test_parse_frame_strips_event_name_and_id
+    frame = "id: 7 \nevent: agent_run.completed \ndata: {\"id\":\"run_123\"}"
+
+    assert_equal ["agent_run.completed", { "id" => "run_123" }, "7"],
+                 Exa::Services::AgentRunStream.parse_frame(frame)
+  end
+
+  def test_call_returns_final_run_when_event_name_has_trailing_space
+    connection = Faraday.new(url: "https://api.exa.ai") do |faraday|
+      faraday.request :json
+      faraday.adapter :test do |stub|
+        stub.post("/agent/runs") do |env|
+          env.request.on_data&.call("event: agent_run.completed \ndata: {\"id\":\"run_123\",\"object\":\"agent_run\",\"status\":\"completed\"}\n\n")
+          [200, { "Content-Type" => "text/event-stream" }, ""]
+        end
+      end
+    end
+
+    final = Exa::Services::AgentRunStream.new(connection, query: "Series A climate tech startups in Europe")
+                                         .call { |_event_type, _data| }
+
+    assert_equal "completed", final&.status
+  end
 end
