@@ -36,6 +36,20 @@ class Exa::CLI::FlagsTableTest < Minitest::Test
   # Flags that the exe handles before parsing, so the parser never sees them.
   HANDLED_BEFORE_PARSING = %w[--help --flags-json].freeze
 
+  # The table flags that take no value. Every other parsed table flag must
+  # stop the command when its value is missing, so a value flag added to a
+  # table later is checked without a new test.
+  FLAGS_WITHOUT_VALUE = %w[
+    --text --include-html-tags --summary --context --highlights --livecrawl
+    --moderation --print-request --strict
+  ].freeze
+
+  # The query or URL each command is run with.
+  SUBJECTS = {
+    "exa-ai-search" => "AI/ML infrastructure startups with Series A funding",
+    "exa-ai-get-contents" => "https://exa.ai"
+  }.freeze
+
   TABLES = {
     "exa-ai-search" => Exa::CLI::SearchParser::FLAGS,
     "exa-ai-get-contents" => Exa::CLI::GetContents::FLAGS
@@ -87,6 +101,22 @@ class Exa::CLI::FlagsTableTest < Minitest::Test
           assert_nil entry[:reason], entry[:flag]
         end
       end
+    end
+
+    define_method("test_#{command}_stops_when_a_value_flag_has_no_value_or_gets_strict_as_its_value") do
+      (table.map { |entry| entry[:flag] } - HANDLED_BEFORE_PARSING - FLAGS_WITHOUT_VALUE).each do |flag|
+        [[], ["--strict"]].each do |rest|
+          _stdout, stderr, exit_status = run_exe_in_process(
+            exe_name, SUBJECTS.fetch(exe_name), "--api-key", "test_key", flag, *rest
+          )
+          case_name = [flag, *rest].join(" ")
+
+          assert_equal 1, exit_status, "#{case_name}: #{stderr}"
+          assert_equal 1, stderr.lines.size, "#{case_name}: #{stderr}"
+          assert_match(/\AError: #{Regexp.escape(flag)}(?![\w-])/, stderr, case_name)
+        end
+      end
+      assert_not_requested :any, /api\.exa\.ai/
     end
 
     define_method("test_#{command}_help_says_deprecated_exactly_when_the_table_does") do

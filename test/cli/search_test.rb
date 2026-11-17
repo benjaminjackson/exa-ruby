@@ -355,9 +355,21 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_includes stdout, "--print-request"
   end
 
-  def test_user_location_without_value_is_skipped
-    args = parse_search_args(["coffee near me", "--user-location"])
-    assert_nil args[:user_location]
+  def test_user_location_without_value_stops_with_one_error_line
+    _stdout, stderr = capture_io do
+      error = assert_raises(SystemExit) do
+        parse_search_args(["coffee shops open late in Brooklyn", "--user-location"])
+      end
+      assert_equal 1, error.status
+    end
+
+    assert_equal "Error: --user-location needs a value\n", stderr
+  end
+
+  def test_free_text_value_that_starts_with_dashes_and_has_whitespace_is_kept
+    args = parse_search_args(["AI/ML infrastructure startups", "--objective", "--seed stage only, no public companies"])
+
+    assert_equal "--seed stage only, no public companies", args[:objective]
   end
 
   def test_exe_sends_the_same_body_for_every_contents_flag

@@ -31,7 +31,7 @@ def parse_args(argv)
       args[:exclude_source_domain] = true
       i += 1
     when "--category"
-      category = argv[i + 1]
+      category = Exa::CLI::Base.text_value("--category", argv[i + 1])
       valid_categories = Exa::CLI::SearchParser::VALID_CATEGORIES
       unless valid_categories.include?(category)
         $stderr.puts "Error: Category must be one of: #{valid_categories.map { |c| "\"#{c}\"" }.join(', ')}"
@@ -40,36 +40,36 @@ def parse_args(argv)
       args[:category] = category
       i += 2
     when "--include-domains"
-      args[:include_domains] = Exa::CLI::Base.option_value("--include-domains", argv[i + 1]).split(",").map(&:strip)
+      args[:include_domains] = Exa::CLI::Base.text_value("--include-domains", argv[i + 1]).split(",").map(&:strip)
       i += 2
     when "--exclude-domains"
-      args[:exclude_domains] = Exa::CLI::Base.option_value("--exclude-domains", argv[i + 1]).split(",").map(&:strip)
+      args[:exclude_domains] = Exa::CLI::Base.text_value("--exclude-domains", argv[i + 1]).split(",").map(&:strip)
       i += 2
     when "--start-published-date"
-      args[:start_published_date] = argv[i + 1]
+      args[:start_published_date] = Exa::CLI::Base.text_value("--start-published-date", argv[i + 1])
       i += 2
     when "--end-published-date"
-      args[:end_published_date] = argv[i + 1]
+      args[:end_published_date] = Exa::CLI::Base.text_value("--end-published-date", argv[i + 1])
       i += 2
     when "--start-crawl-date"
-      args[:start_crawl_date] = argv[i + 1]
+      args[:start_crawl_date] = Exa::CLI::Base.text_value("--start-crawl-date", argv[i + 1])
       i += 2
     when "--end-crawl-date"
-      args[:end_crawl_date] = argv[i + 1]
+      args[:end_crawl_date] = Exa::CLI::Base.text_value("--end-crawl-date", argv[i + 1])
       i += 2
     when "--include-text"
       args[:include_text] ||= []
-      args[:include_text] << argv[i + 1]
+      args[:include_text] << Exa::CLI::Base.text_value("--include-text", argv[i + 1])
       i += 2
     when "--exclude-text"
       args[:exclude_text] ||= []
-      args[:exclude_text] << argv[i + 1]
+      args[:exclude_text] << Exa::CLI::Base.text_value("--exclude-text", argv[i + 1])
       i += 2
     when "--api-key"
-      args[:api_key] = argv[i + 1]
+      args[:api_key] = Exa::CLI::Base.text_value("--api-key", argv[i + 1])
       i += 2
     when "--output-format"
-      args[:output_format] = argv[i + 1]
+      args[:output_format] = Exa::CLI::Base.text_value("--output-format", argv[i + 1])
       i += 2
     when "--help", "-h"
       puts <<~HELP

@@ -139,20 +139,20 @@ module Exa
             @args[:num_results] = Exa::CLI::Base.parse_integer("--num-results", @argv[i + 1])
             i += 2
           when "--type"
-            search_type = @argv[i + 1]
+            search_type = Exa::CLI::Base.text_value("--type", @argv[i + 1])
             validate_search_type(search_type)
             @args[:type] = search_type
             i += 2
           when "--category"
-            category = @argv[i + 1]
+            category = Exa::CLI::Base.text_value("--category", @argv[i + 1])
             validate_category(category)
             @args[:category] = category
             i += 2
           when "--include-domains"
-            @args[:include_domains] = Exa::CLI::Base.option_value("--include-domains", @argv[i + 1]).split(",").map(&:strip)
+            @args[:include_domains] = Exa::CLI::Base.text_value("--include-domains", @argv[i + 1]).split(",").map(&:strip)
             i += 2
           when "--exclude-domains"
-            @args[:exclude_domains] = Exa::CLI::Base.option_value("--exclude-domains", @argv[i + 1]).split(",").map(&:strip)
+            @args[:exclude_domains] = Exa::CLI::Base.text_value("--exclude-domains", @argv[i + 1]).split(",").map(&:strip)
             i += 2
           when "--api-key"
             @args[:api_key] = Exa::CLI::Base.text_value("--api-key", @argv[i + 1])
@@ -161,48 +161,48 @@ module Exa
             @args[:output_format] = Exa::CLI::Base.text_value("--output-format", @argv[i + 1])
             i += 2
           when "--start-published-date"
-            @args[:start_published_date] = @argv[i + 1]
+            @args[:start_published_date] = Exa::CLI::Base.text_value("--start-published-date", @argv[i + 1])
             i += 2
           when "--end-published-date"
-            @args[:end_published_date] = @argv[i + 1]
+            @args[:end_published_date] = Exa::CLI::Base.text_value("--end-published-date", @argv[i + 1])
             i += 2
           when "--start-crawl-date"
-            @args[:start_crawl_date] = @argv[i + 1]
+            @args[:start_crawl_date] = Exa::CLI::Base.text_value("--start-crawl-date", @argv[i + 1])
             i += 2
           when "--end-crawl-date"
-            @args[:end_crawl_date] = @argv[i + 1]
+            @args[:end_crawl_date] = Exa::CLI::Base.text_value("--end-crawl-date", @argv[i + 1])
             i += 2
           when "--include-text"
             @args[:include_text] ||= []
-            @args[:include_text] << @argv[i + 1]
+            @args[:include_text] << Exa::CLI::Base.text_value("--include-text", @argv[i + 1])
             i += 2
           when "--exclude-text"
             @args[:exclude_text] ||= []
-            @args[:exclude_text] << @argv[i + 1]
+            @args[:exclude_text] << Exa::CLI::Base.text_value("--exclude-text", @argv[i + 1])
             i += 2
           when "--additional-queries"
             @args[:additional_queries] ||= []
-            @args[:additional_queries] << @argv[i + 1]
+            @args[:additional_queries] << Exa::CLI::Base.text_value("--additional-queries", @argv[i + 1])
             i += 2
           when "--output-schema"
             @args[:output_schema] = Exa::CLI::Base.parse_json_or_file("--output-schema", @argv[i + 1])
             i += 2
           when "--user-location"
-            @args[:user_location] = self.class.parse_user_location(@argv[i + 1])
+            @args[:user_location] = self.class.parse_user_location(Exa::CLI::Base.text_value("--user-location", @argv[i + 1]))
             i += 2
           when "--objective"
-            @args[:objective] = @argv[i + 1]
+            @args[:objective] = Exa::CLI::Base.text_value("--objective", @argv[i + 1])
             i += 2
           when "--user-identifier"
-            @args[:user_identifier] = @argv[i + 1]
+            @args[:user_identifier] = Exa::CLI::Base.text_value("--user-identifier", @argv[i + 1])
             i += 2
           when "--compliance"
-            compliance = @argv[i + 1]
+            compliance = Exa::CLI::Base.text_value("--compliance", @argv[i + 1])
             validate_compliance(compliance)
             @args[:compliance] = compliance
             i += 2
           when "--system-prompt"
-            @args[:system_prompt] = @argv[i + 1]
+            @args[:system_prompt] = Exa::CLI::Base.text_value("--system-prompt", @argv[i + 1])
             i += 2
           when "--moderation"
             @args[:moderation] = true

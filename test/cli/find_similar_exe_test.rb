@@ -128,6 +128,46 @@ class Exa::CLI::FindSimilarExeTest < Minitest::Test
     end
   end
 
+  # find-similar has no flag table, so its flags are read from its help
+  # text. Every flag there that is not in this list takes a value.
+  FIND_SIMILAR_FLAGS_WITHOUT_VALUE = %w[
+    --exclude-source-domain --text --include-html-tags --summary --context
+    --highlights --livecrawl --help
+  ].freeze
+
+  # find-similar has no --strict, so --text stands in as the next flag.
+  def test_exe_stops_when_a_value_flag_has_no_value_or_gets_a_flag_as_its_value
+    help_text, = run_exe_in_process("exa-ai-find-similar", "--help")
+    help_flags = help_text.scan(/^\s+(--[a-z][a-z-]*)/).flatten.uniq
+    assert_includes help_flags, "--api-key"
+
+    (help_flags - FIND_SIMILAR_FLAGS_WITHOUT_VALUE).each do |flag|
+      [[], ["--text"]].each do |rest|
+        _stdout, stderr, exit_status = run_find_similar_expecting_no_request(flag, *rest)
+        case_name = [flag, *rest].join(" ")
+
+        assert_equal 1, exit_status, "#{case_name}: #{stderr}"
+        assert_equal 1, stderr.lines.size, "#{case_name}: #{stderr}"
+        assert_match(/\AError: #{Regexp.escape(flag)}(?![\w-])/, stderr, case_name)
+      end
+    end
+  end
+
+  def test_exe_api_key_and_output_format_reject_the_next_flag_as_value
+    %w[--api-key --output-format].each do |flag|
+      _stdout, stderr, exit_status = run_find_similar_expecting_no_request(flag, "--output-format", "json")
+
+      assert_equal 1, exit_status
+      assert_equal "Error: #{flag} needs a value (got the flag --output-format)\n", stderr
+    end
+  end
+
+  def test_exe_keeps_a_free_text_value_that_starts_with_dashes_and_has_whitespace
+    body = post_find_similar("--include-text", "--seed round announced")
+
+    assert_equal ["--seed round announced"], body["includeText"]
+  end
+
   private
 
   # Runs exa-ai-find-similar in-process with the given flags after the URL,
