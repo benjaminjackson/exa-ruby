@@ -109,40 +109,35 @@ def parse_args(args)
   options
 end
 
-# Build contents parameters from extracted flags
+# Build contents parameters from extracted flags. A sub-option such as
+# --text-max-characters turns its parent on, as ContentsFlags.build does.
 def build_contents_params(args)
   params = {}
 
   # Text options
-  if args[:text]
-    if args[:text_max_characters] || args[:include_html_tags] || args[:text_verbosity]
-      params[:text] = {}
-      params[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
-      params[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
-      params[:text][:verbosity] = args[:text_verbosity] if args[:text_verbosity]
-    else
-      params[:text] = true
-    end
+  if args[:text_max_characters] || args[:include_html_tags] || args[:text_verbosity]
+    params[:text] = {}
+    params[:text][:max_characters] = args[:text_max_characters] if args[:text_max_characters]
+    params[:text][:include_html_tags] = args[:include_html_tags] if args[:include_html_tags]
+    params[:text][:verbosity] = args[:text_verbosity] if args[:text_verbosity]
+  elsif args[:text]
+    params[:text] = true
   end
 
   # Summary options
-  if args[:summary]
-    if args[:summary_query] || args[:summary_schema]
-      params[:summary] = {}
-      params[:summary][:query] = args[:summary_query] if args[:summary_query]
-      params[:summary][:schema] = args[:summary_schema] if args[:summary_schema]
-    else
-      params[:summary] = true
-    end
+  if args[:summary_query] || args[:summary_schema]
+    params[:summary] = {}
+    params[:summary][:query] = args[:summary_query] if args[:summary_query]
+    params[:summary][:schema] = args[:summary_schema] if args[:summary_schema]
+  elsif args[:summary]
+    params[:summary] = true
   end
 
   # Context options
-  if args[:context]
-    if args[:context_max_characters]
-      params[:context] = { max_characters: args[:context_max_characters] }
-    else
-      params[:context] = true
-    end
+  if args[:context_max_characters]
+    params[:context] = { max_characters: args[:context_max_characters] }
+  elsif args[:context]
+    params[:context] = true
   end
 
   # Subpages options
@@ -157,15 +152,13 @@ def build_contents_params(args)
   end
 
   # Highlights options
-  if args[:highlights]
-    if args[:highlights_query] || args[:highlights_max_characters] || args[:highlights_verbosity]
-      params[:highlights] = {}
-      params[:highlights][:query] = args[:highlights_query] if args[:highlights_query]
-      params[:highlights][:max_characters] = args[:highlights_max_characters] if args[:highlights_max_characters]
-      params[:highlights][:verbosity] = args[:highlights_verbosity] if args[:highlights_verbosity]
-    else
-      params[:highlights] = true
-    end
+  if args[:highlights_query] || args[:highlights_max_characters] || args[:highlights_verbosity]
+    params[:highlights] = {}
+    params[:highlights][:query] = args[:highlights_query] if args[:highlights_query]
+    params[:highlights][:max_characters] = args[:highlights_max_characters] if args[:highlights_max_characters]
+    params[:highlights][:verbosity] = args[:highlights_verbosity] if args[:highlights_verbosity]
+  elsif args[:highlights]
+    params[:highlights] = true
   end
 
   # Livecrawl and freshness options

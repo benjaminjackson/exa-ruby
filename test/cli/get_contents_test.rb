@@ -474,6 +474,40 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     assert_equal ["https://exa.ai", "https://www.anthropic.com/research"], posted[:body]["urls"]
   end
 
+  {
+    "--text-max-characters" => ["3000", "text", { "maxCharacters" => 3000 }],
+    "--text-verbosity" => ["compact", "text", { "verbosity" => "compact" }],
+    "--include-html-tags" => [nil, "text", { "includeHtmlTags" => true }],
+    "--summary-query" => ["Name the founders", "summary", { "query" => "Name the founders" }],
+    "--summary-schema" => ['{"type":"object"}', "summary", { "schema" => { "type" => "object" } }],
+    "--context-max-characters" => ["500", "context", { "maxCharacters" => 500 }],
+    "--highlights-max-characters" => ["300", "highlights", { "maxCharacters" => 300 }],
+    "--highlights-query" => ["pricing", "highlights", { "query" => "pricing" }],
+    "--highlights-verbosity" => ["low", "highlights", { "verbosity" => "low" }]
+  }.each do |flag, (value, parent_field, expected_field)|
+    flag_name = flag.delete_prefix("--").tr("-", "_")
+
+    define_method("test_exe_sends_#{flag_name}_without_its_parent_flag") do
+      posted = stub_contents_and_capture_body
+
+      run_exe_in_process(
+        "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", *[flag, value].compact
+      )
+
+      assert_equal expected_field, posted[:body][parent_field]
+    end
+  end
+
+  def test_exe_sends_beta_header_for_highlights_verbosity_without_highlights
+    stub_contents_and_capture_body
+
+    run_exe_in_process(
+      "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", "--highlights-verbosity", "low"
+    )
+
+    assert_requested :post, "https://api.exa.ai/contents", headers: { "Exa-Beta" => "dynamic-highlights-2026-08-28" }
+  end
+
   def test_exe_prints_help_for_short_h_option
     stub_request(:post, "https://api.exa.ai/contents")
 

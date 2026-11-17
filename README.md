@@ -228,7 +228,6 @@ Each entry has these keys, in this order:
 
 - `flag`: the flag name. The short alias `-h` is not listed.
 - `api_field`: the request body field the flag sets, as sent (camelCase, dotted path). It is `null` when the flag sets no field (`--api-key`, `--output-format`), and an array when the flag sets more than one (`--livecrawl`).
-  A field below another one, such as `contents.text.maxCharacters`, is sent only when the flag for its parent (`--text`) is also given. Without the parent flag, the command accepts the flag and sends nothing for it.
 - `deprecated`: `true` when the help text marks the flag deprecated.
 - `replacement`: what to type instead of a deprecated flag. It can be a phrase, such as `--max-age-hours 0 --livecrawl-timeout 5000`. It is `null` when there is no replacement.
 

@@ -359,6 +359,62 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_nil args[:user_location]
   end
 
+  def test_exe_sends_the_same_body_for_every_contents_flag
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    _stdout, stderr, _exit_status = run_exe_in_process(
+      "exa-ai-search", "AI/ML infrastructure startups with Series A funding", "--api-key", "test_key", "--print-request",
+      "--text", "--text-max-characters", "100", "--include-html-tags", "--text-verbosity", "compact",
+      "--summary", "--summary-query", "Name the founders", "--summary-schema", '{"type":"object"}',
+      "--context", "--context-max-characters", "50",
+      "--subpages", "1", "--subpage-target", "about", "--subpage-target", "careers",
+      "--links", "2", "--image-links", "3",
+      "--highlights", "--highlights-query", "funding rounds", "--highlights-max-characters", "10",
+      "--highlights-num-sentences", "2", "--highlights-per-url", "4",
+      "--livecrawl", "--livecrawl-timeout", "1000", "--max-age-hours", "0", "--snapshot-as-of", "2024-01-01"
+    )
+
+    expected_body = '{"query":"AI/ML infrastructure startups with Series A funding","type":"auto",' \
+                    '"contents":{"snapshotAsOf":"2024-01-01",' \
+                    '"text":{"maxCharacters":100,"includeHtmlTags":true,"verbosity":"compact"},' \
+                    '"summary":{"query":"Name the founders","schema":{"type":"object"}},' \
+                    '"context":{"maxCharacters":50},"subpages":1,"subpageTarget":["about","careers"],' \
+                    '"extras":{"links":2,"imageLinks":3},' \
+                    '"highlights":{"maxCharacters":10,"numSentences":2,"highlightsPerUrl":4,"query":"funding rounds"},' \
+                    '"maxAgeHours":0,"livecrawlTimeout":1000}}'
+    assert_equal expected_body, stderr.lines.first.chomp
+  end
+
+  {
+    "--text-max-characters" => ["3000", { "text" => { "maxCharacters" => 3000 } }],
+    "--text-verbosity" => ["compact", { "text" => { "verbosity" => "compact" } }],
+    "--include-html-tags" => [nil, { "text" => { "includeHtmlTags" => true } }],
+    "--summary-query" => ["Name the founders", { "summary" => { "query" => "Name the founders" } }],
+    "--summary-schema" => ['{"type":"object"}', { "summary" => { "schema" => { "type" => "object" } } }],
+    "--context-max-characters" => ["500", { "context" => { "maxCharacters" => 500 } }],
+    "--highlights-max-characters" => ["300", { "highlights" => { "maxCharacters" => 300 } }],
+    "--highlights-num-sentences" => ["2", { "highlights" => { "numSentences" => 2 } }],
+    "--highlights-per-url" => ["4", { "highlights" => { "highlightsPerUrl" => 4 } }],
+    "--highlights-query" => ["funding rounds", { "highlights" => { "query" => "funding rounds" } }]
+  }.each do |flag, (value, expected_contents)|
+    flag_name = flag.delete_prefix("--").tr("-", "_")
+
+    define_method("test_exe_sends_#{flag_name}_without_its_parent_flag") do
+      posted_body = nil
+      stub_request(:post, "https://api.exa.ai/search")
+        .with { |request| posted_body = JSON.parse(request.body) }
+        .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+      run_exe_in_process(
+        "exa-ai-search", "AI/ML infrastructure startups with Series A funding", "--api-key", "test_key",
+        *[flag, value].compact
+      )
+
+      assert_equal expected_contents, posted_body["contents"]
+    end
+  end
+
   private
 
   # Helper method to parse command-line arguments
