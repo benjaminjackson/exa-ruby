@@ -289,6 +289,65 @@ class Exa::CLI::SearchTest < Minitest::Test
     refute_includes stdout, "Warning:"
   end
 
+  def test_print_request_writes_the_sent_body_to_stderr
+    sent_body = nil
+    stub_request(:post, "https://api.exa.ai/search")
+      .with { |request| sent_body = request.body }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--num-results", "2", "--text",
+      "--text-max-characters", "500", "--print-request", "--api-key", "test_key"
+    )
+
+    assert_nil exit_status
+    assert_equal 1, stderr.lines.count
+    assert_equal sent_body, stderr.chomp
+    assert_equal({ "maxCharacters" => 500 }, JSON.parse(stderr).dig("contents", "text"))
+    assert_equal [], JSON.parse(stdout)["results"]
+    refute_includes stderr, "test_key"
+    refute_includes stderr, "x-api-key"
+    refute_includes sent_body, "print"
+  end
+
+  def test_without_print_request_stderr_is_empty
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    _stdout, stderr = run_exe_in_process("exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key")
+
+    assert_empty stderr
+  end
+
+  def test_print_request_with_help_prints_only_help
+    stub_request(:post, "https://api.exa.ai/search")
+
+    stdout, stderr, exit_status = run_exe_in_process("exa-ai-search", "--print-request", "--help")
+
+    assert_equal 0, exit_status
+    assert_includes stdout, "Usage: exa-ai search"
+    assert_empty stderr
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_print_request_with_unknown_flag_prints_only_the_error
+    stub_request(:post, "https://api.exa.ai/search")
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--print-request", "--bogus", "--api-key", "test_key"
+    )
+
+    refute_equal 0, exit_status
+    assert_equal "Error: unknown option --bogus\n", stderr
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_help_mentions_print_request
+    stdout, = run_exe_in_process("exa-ai-search", "--help")
+
+    assert_includes stdout, "--print-request"
+  end
+
   def test_user_location_without_value_is_skipped
     args = parse_search_args(["coffee near me", "--user-location"])
     assert_nil args[:user_location]

@@ -170,6 +170,9 @@ exa-ai get-contents "https://ruby-lang.org"
 exa-ai search "climate tech seed rounds" --type lite --objective "Find primary sources"
 exa-ai get-contents --ids DOC_ID_1,DOC_ID_2 --highlights --highlights-verbosity low
 exa-ai answer "What is machine learning?" --model exa-pro --user-location US
+
+# Save the JSON request body sent to the API (stderr, one line); results still go to stdout
+exa-ai search "AI/ML infrastructure startups with Series A funding" --print-request 2>request.json
 ```
 
 ## Features

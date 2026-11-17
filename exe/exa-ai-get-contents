@@ -41,6 +41,7 @@ def parse_args(args)
   context_max_characters = nil
   livecrawl_timeout = nil
   output_format = nil
+  print_request = false
 
   i = 0
   while i < args.length
@@ -125,6 +126,9 @@ def parse_args(args)
       text_verbosity = args[i + 1]
       validate_choice("--text-verbosity", text_verbosity, Exa::CLI::SearchParser::VALID_TEXT_VERBOSITY)
       i += 2
+    when "--print-request"
+      print_request = true
+      i += 1
     when "--help", "-h"
       print_help
       exit 0
@@ -161,7 +165,8 @@ def parse_args(args)
     context: context,
     context_max_characters: context_max_characters,
     livecrawl_timeout: livecrawl_timeout,
-    output_format: output_format
+    output_format: output_format,
+    print_request: print_request
   }
 end
 
@@ -292,6 +297,8 @@ def print_help
       General:
         --api-key KEY                Exa API key (or set EXA_API_KEY env var)
         --output-format FMT          Output format: json, pretty, or text (default: json)
+        --print-request              Write the JSON request body sent to the API to stderr
+                                     (one line); the request is still sent
         --help, -h                   Show this help message
 
     Examples:
@@ -328,6 +335,7 @@ begin
   # Build request parameters
   params = build_contents_params(options)
   params ||= {}
+  params[:on_request] = Exa::CLI::Base.request_printer if options[:print_request]
 
   # Call API
   urls = options[:urls].empty? ? nil : options[:urls]

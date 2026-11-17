@@ -30,6 +30,15 @@ module Exa
               "Invalid output format: #{format}. Valid formats: #{valid_formats.join(', ')}"
       end
 
+      # Return a callback for the on_request: keyword of Services::Search and
+      # Services::GetContents. It writes the request body to stderr as one
+      # line of JSON. JSON.generate is what Faraday's :json request middleware
+      # uses, so the line is the exact body sent. $stderr is read on each call,
+      # so a test that swaps $stderr sees the output.
+      def self.request_printer
+        ->(body) { $stderr.puts JSON.generate(body) }
+      end
+
       # Build a client instance with the given API key
       def self.build_client(api_key, **options)
         Exa::Client.new(api_key: api_key, **options)
