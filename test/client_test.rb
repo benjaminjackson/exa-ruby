@@ -771,6 +771,21 @@ class ClientTest < Minitest::Test
     assert result.paused?
   end
 
+  def test_agent_run_stop_returns_completed_run_with_stopped_reason
+    stub_request(:post, "https://api.exa.ai/agent/runs/run_123/stop")
+      .to_return(
+        status: 200,
+        body: { id: "run_123", object: "agent_run", status: "completed", stopReason: "stopped" }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.agent_run_stop("run_123")
+
+    assert_requested :post, "https://api.exa.ai/agent/runs/run_123/stop"
+    assert_equal "stopped", result.stop_reason
+  end
+
   def test_search_monitor_delete_returns_deleted_monitor
     stub_search_monitor_call(:delete, "/monitors/mon_123", { id: "mon_123", status: "active" })
 
