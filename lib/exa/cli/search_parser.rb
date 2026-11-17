@@ -13,6 +13,69 @@ module Exa
         "personal site", "people", "financial report"
       ].freeze
 
+      # Every flag exa-ai search accepts. Public API: wrappers read it here or
+      # through `exa-ai search --flags-json`, and the parser rejects any "--"
+      # argument that is not in it. api_field is the request body path the
+      # flag sets (nil when it sets none, an Array when it sets several), and
+      # replacement is what to type instead of a deprecated flag. --help and
+      # --flags-json are in the list, but exe/exa-ai-search handles them before
+      # it calls the parser, which has no branch for them.
+      FLAGS = [
+        { flag: "--num-results", api_field: "numResults", deprecated: false, replacement: nil },
+        { flag: "--type", api_field: "type", deprecated: false, replacement: nil },
+        { flag: "--category", api_field: "category", deprecated: false, replacement: nil },
+        { flag: "--include-domains", api_field: "includeDomains", deprecated: false, replacement: nil },
+        { flag: "--exclude-domains", api_field: "excludeDomains", deprecated: false, replacement: nil },
+        { flag: "--start-published-date", api_field: "startPublishedDate", deprecated: false, replacement: nil },
+        { flag: "--end-published-date", api_field: "endPublishedDate", deprecated: false, replacement: nil },
+        { flag: "--start-crawl-date", api_field: "startCrawlDate", deprecated: true, replacement: nil },
+        { flag: "--end-crawl-date", api_field: "endCrawlDate", deprecated: true, replacement: nil },
+        { flag: "--include-text", api_field: "includeText", deprecated: true, replacement: nil },
+        { flag: "--exclude-text", api_field: "excludeText", deprecated: true, replacement: nil },
+        { flag: "--text", api_field: "contents.text", deprecated: false, replacement: nil },
+        { flag: "--text-max-characters", api_field: "contents.text.maxCharacters", deprecated: false, replacement: nil },
+        { flag: "--text-verbosity", api_field: "contents.text.verbosity", deprecated: false, replacement: nil },
+        { flag: "--include-html-tags", api_field: "contents.text.includeHtmlTags", deprecated: false, replacement: nil },
+        { flag: "--summary", api_field: "contents.summary", deprecated: false, replacement: nil },
+        { flag: "--summary-query", api_field: "contents.summary.query", deprecated: false, replacement: nil },
+        { flag: "--summary-schema", api_field: "contents.summary.schema", deprecated: false, replacement: nil },
+        { flag: "--context", api_field: "contents.context", deprecated: true, replacement: "--highlights or --text" },
+        { flag: "--context-max-characters", api_field: "contents.context.maxCharacters", deprecated: true,
+          replacement: nil },
+        { flag: "--subpages", api_field: "contents.subpages", deprecated: true,
+          replacement: "exa-ai get-contents --subpages" },
+        { flag: "--subpage-target", api_field: "contents.subpageTarget", deprecated: true,
+          replacement: "exa-ai get-contents --subpage-target" },
+        { flag: "--links", api_field: "contents.extras.links", deprecated: false, replacement: nil },
+        { flag: "--image-links", api_field: "contents.extras.imageLinks", deprecated: false, replacement: nil },
+        { flag: "--highlights", api_field: "contents.highlights", deprecated: false, replacement: nil },
+        { flag: "--highlights-max-characters", api_field: "contents.highlights.maxCharacters", deprecated: false,
+          replacement: nil },
+        { flag: "--highlights-num-sentences", api_field: "contents.highlights.numSentences", deprecated: true,
+          replacement: "--highlights-max-characters" },
+        { flag: "--highlights-per-url", api_field: "contents.highlights.highlightsPerUrl", deprecated: true,
+          replacement: nil },
+        { flag: "--highlights-query", api_field: "contents.highlights.query", deprecated: false, replacement: nil },
+        { flag: "--livecrawl", api_field: ["contents.maxAgeHours", "contents.livecrawlTimeout"].freeze,
+          deprecated: true, replacement: "--max-age-hours 0 --livecrawl-timeout 5000" },
+        { flag: "--livecrawl-timeout", api_field: "contents.livecrawlTimeout", deprecated: false, replacement: nil },
+        { flag: "--max-age-hours", api_field: "contents.maxAgeHours", deprecated: false, replacement: nil },
+        { flag: "--snapshot-as-of", api_field: "contents.snapshotAsOf", deprecated: false, replacement: nil },
+        { flag: "--additional-queries", api_field: "additionalQueries", deprecated: false, replacement: nil },
+        { flag: "--output-schema", api_field: "outputSchema", deprecated: false, replacement: nil },
+        { flag: "--user-location", api_field: "userLocation", deprecated: false, replacement: nil },
+        { flag: "--objective", api_field: "objective", deprecated: false, replacement: nil },
+        { flag: "--user-identifier", api_field: "userIdentifier", deprecated: false, replacement: nil },
+        { flag: "--compliance", api_field: "compliance", deprecated: false, replacement: nil },
+        { flag: "--system-prompt", api_field: "systemPrompt", deprecated: false, replacement: nil },
+        { flag: "--moderation", api_field: "moderation", deprecated: false, replacement: nil },
+        { flag: "--api-key", api_field: nil, deprecated: false, replacement: nil },
+        { flag: "--output-format", api_field: nil, deprecated: false, replacement: nil },
+        { flag: "--print-request", api_field: nil, deprecated: false, replacement: nil },
+        { flag: "--flags-json", api_field: nil, deprecated: false, replacement: nil },
+        { flag: "--help", api_field: nil, deprecated: false, replacement: nil }
+      ].map(&:freeze).freeze
+
       def self.parse(argv)
         new(argv).parse
       end
@@ -51,6 +114,8 @@ module Exa
 
         while i < @argv.length
           arg = @argv[i]
+          Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--") && FLAGS.none? { |entry| entry[:flag] == arg }
+
           next_index = ContentsFlags.parse(@argv, i, @args)
           if next_index
             i = next_index

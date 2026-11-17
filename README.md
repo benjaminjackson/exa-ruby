@@ -205,6 +205,35 @@ These still work, so existing code keeps running. The search command prints the 
 
 See [docs/API.md](docs/API.md) and [docs/CLI.md](docs/CLI.md) for details.
 
+### Flag list for wrappers
+
+`exa-ai search --flags-json` and `exa-ai get-contents --flags-json` print every flag the command accepts as a JSON array, then exit 0. They need no API key and send no request. The output is the same with a query or other flags on the command line.
+
+The same data is in Ruby constants:
+
+```ruby
+require "exa"
+require "exa/cli/search_parser"
+require "exa/cli/get_contents"
+
+Exa::CLI::SearchParser::FLAGS  # exa-ai search
+Exa::CLI::GetContents::FLAGS   # exa-ai get-contents
+```
+
+Each entry has these keys, in this order:
+
+```json
+{"flag":"--highlights-num-sentences","api_field":"contents.highlights.numSentences","deprecated":true,"replacement":"--highlights-max-characters"}
+```
+
+- `flag`: the flag name. The short alias `-h` is not listed.
+- `api_field`: the request body field the flag sets, as sent (camelCase, dotted path). It is `null` when the flag sets no field (`--api-key`, `--output-format`), and an array when the flag sets more than one (`--livecrawl`).
+  A field below another one, such as `contents.text.maxCharacters`, is sent only when the flag for its parent (`--text`) is also given. Without the parent flag, the command accepts the flag and sends nothing for it.
+- `deprecated`: `true` when the help text marks the flag deprecated.
+- `replacement`: what to type instead of a deprecated flag. It can be a phrase, such as `--max-age-hours 0 --livecrawl-timeout 5000`. It is `null` when there is no replacement.
+
+The commands reject any flag that is not in their list. The constants and the `--flags-json` output are public API: wrappers can rely on them instead of reading the gem's source.
+
 ### Agent
 - **Agent API** — Asynchronous research agent with citations, streaming, and full run lifecycle
 

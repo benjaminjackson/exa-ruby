@@ -3,6 +3,7 @@
 
 require "exa-ai"
 require_relative "../lib/exa/cli/search_parser"
+require_relative "../lib/exa/cli/get_contents"
 
 VALID_HIGHLIGHTS_VERBOSITY = %w[low medium high].freeze
 
@@ -13,15 +14,13 @@ def validate_choice(flag, value, allowed)
   raise ArgumentError, "#{flag} must be one of: #{allowed.join(', ')}"
 end
 
-# Contents flags that ContentsFlags.parse knows but get-contents does not
-# take. parse_args skips them, so they stay unknown options here.
-UNSUPPORTED_CONTENTS_FLAGS = %w[--livecrawl --highlights-num-sentences --highlights-per-url].freeze
-
 # Parse command line arguments into the options hash that
 # build_contents_params reads. The contents flags that search and
 # find-similar share go through Exa::CLI::ContentsFlags.parse, so all three
 # commands read them the same way; the loop below reads only the flags that
-# are get-contents' own.
+# are get-contents' own. A "--" argument that is not in
+# Exa::CLI::GetContents::FLAGS is an unknown option, even when
+# ContentsFlags.parse knows it.
 def parse_args(args)
   options = {
     urls: [],
@@ -55,13 +54,14 @@ def parse_args(args)
 
   i = 0
   while i < args.length
-    next_index = Exa::CLI::ContentsFlags.parse(args, i, options, except: UNSUPPORTED_CONTENTS_FLAGS)
+    arg = args[i]
+    Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--") && Exa::CLI::GetContents::FLAGS.none? { |entry| entry[:flag] == arg }
+
+    next_index = Exa::CLI::ContentsFlags.parse(args, i, options)
     if next_index
       i = next_index
       next
     end
-
-    arg = args[i]
 
     case arg
     when "--api-key"
@@ -231,6 +231,7 @@ def print_help
         --output-format FMT          Output format: json, pretty, or text (default: json)
         --print-request              Write the JSON request body sent to the API to stderr
                                      (one line); the request is still sent
+        --flags-json                 Print every flag this command accepts as JSON and exit
         --help, -h                   Show this help message
 
     Examples:
@@ -244,6 +245,13 @@ def print_help
 end
 
 begin
+  # Print the flag list for wrappers before anything else, so it needs no
+  # API key and wins over every other argument.
+  if ARGV.include?("--flags-json")
+    puts JSON.generate(Exa::CLI::GetContents::FLAGS)
+    exit 0
+  end
+
   # Parse arguments
   options = parse_args(ARGV)
 

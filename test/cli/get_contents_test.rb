@@ -438,7 +438,7 @@ class Exa::CLI::GetContentsTest < Minitest::Test
       "--compliance" => "hipaa", "--api-key" => "test_key", "--output-format" => "json",
       "--print-request" => nil
     }
-    assert_equal help_text.scan(/--[a-z][a-z-]*/).uniq.sort - ["--help"], values_by_flag.keys.sort
+    assert_equal help_text.scan(/--[a-z][a-z-]*/).uniq.sort - ["--help", "--flags-json"], values_by_flag.keys.sort
 
     _stdout, stderr, exit_status = run_exe_in_process(
       "exa-ai-get-contents", "https://exa.ai", *values_by_flag.flat_map { |flag, value| [flag, value].compact }
@@ -449,16 +449,7 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     assert_requested :post, "https://api.exa.ai/contents"
   end
 
-  def test_contents_flags_parse_skips_a_flag_in_except
-    parsed = {}
-
-    next_index = Exa::CLI::ContentsFlags.parse(["--livecrawl"], 0, parsed, except: ["--livecrawl"])
-
-    assert_nil next_index
-    assert_empty parsed
-  end
-
-  def test_contents_flags_parse_reads_a_flag_without_except
+  def test_contents_flags_parse_reads_a_contents_flag
     parsed = {}
 
     next_index = Exa::CLI::ContentsFlags.parse(["--livecrawl"], 0, parsed)
