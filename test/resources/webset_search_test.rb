@@ -11,4 +11,11 @@ class WebsetSearchTest < Minitest::Test
       end
     end
   end
+
+  # A pending search has not finished, so code that waits on in_progress? keeps waiting.
+  def test_in_progress_is_true_when_pending
+    resource = Exa::Resources::WebsetSearch.new(id: "ws_search_1", object: "webset_search", status: "pending")
+
+    assert resource.in_progress?
+  end
 end
