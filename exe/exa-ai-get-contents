@@ -28,14 +28,14 @@ def parse_args(args)
 
     case arg
     when "--api-key"
-      i += 1
-      api_key = args[i]
+      api_key = args[i + 1]
+      i += 2
     when "--text"
       text = true
       i += 1
     when "--text-max-characters"
-      i += 1
-      text_max_characters = args[i].to_i
+      text_max_characters = args[i + 1].to_i
+      i += 2
     when "--include-html-tags"
       include_html_tags = true
       i += 1
@@ -43,40 +43,40 @@ def parse_args(args)
       summary = true
       i += 1
     when "--summary-query"
-      i += 1
-      summary_query = args[i]
+      summary_query = args[i + 1]
+      i += 2
     when "--summary-schema"
-      i += 1
-      schema_arg = args[i]
+      schema_arg = args[i + 1]
       summary_schema = if schema_arg.start_with?("@")
                          JSON.parse(File.read(schema_arg[1..]))
                        else
                          JSON.parse(schema_arg)
                        end
+      i += 2
     when "--subpages"
-      i += 1
-      subpages = args[i].to_i
+      subpages = args[i + 1].to_i
+      i += 2
     when "--subpage-target"
-      i += 1
-      subpage_target << args[i]
+      subpage_target << args[i + 1]
+      i += 2
     when "--links"
-      i += 1
-      links = args[i].to_i
+      links = args[i + 1].to_i
+      i += 2
     when "--image-links"
-      i += 1
-      image_links = args[i].to_i
+      image_links = args[i + 1].to_i
+      i += 2
     when "--context"
       context = true
       i += 1
     when "--context-max-characters"
-      i += 1
-      context_max_characters = args[i].to_i
+      context_max_characters = args[i + 1].to_i
+      i += 2
     when "--livecrawl-timeout"
-      i += 1
-      livecrawl_timeout = args[i].to_i
+      livecrawl_timeout = args[i + 1].to_i
+      i += 2
     when "--output-format"
-      i += 1
-      output_format = args[i]
+      output_format = args[i + 1]
+      i += 2
     when "--help", "-h"
       print_help
       exit 0

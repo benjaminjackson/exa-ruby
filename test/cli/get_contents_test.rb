@@ -182,4 +182,19 @@ class Exa::CLI::GetContentsTest < Minitest::Test
 
     assert_instance_of Exa::Unauthorized, error
   end
+
+  def test_exe_reads_url_after_options_that_take_values
+    posted_body = nil
+    stub_request(:post, "https://api.exa.ai/contents")
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    run_exe_in_process(
+      "exa-ai-get-contents", "--api-key", "test_key", "--text", "--text-max-characters", "3000",
+      "https://www.anthropic.com/research"
+    )
+
+    assert_equal ["https://www.anthropic.com/research"], posted_body["urls"]
+    assert_equal({ "maxCharacters" => 3000 }, posted_body["text"])
+  end
 end

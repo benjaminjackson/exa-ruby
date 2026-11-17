@@ -384,13 +384,20 @@ if ENV["RUN_INTEGRATION_TESTS"] == "true" &&
 end
 
 # Runs an executable from exe/ inside the test process, so WebMock stubs
-# apply to its requests, and returns [stdout, stderr]. The second argument
-# to load wraps the script's top-level methods in an anonymous module, so
-# they do not leak onto Object. A script that calls exit raises SystemExit.
+# apply to its requests, and returns [stdout, stderr, exit_status]. The exit
+# status is nil when the script does not call exit. The second argument to
+# load wraps the script's top-level methods in an anonymous module, so they
+# do not leak onto Object.
 def run_exe_in_process(name, *argv)
   original_argv = ARGV.dup
   ARGV.replace(argv)
-  capture_io { load File.expand_path("../exe/#{name}", __dir__), true }
+  exit_status = nil
+  stdout, stderr = capture_io do
+    load File.expand_path("../exe/#{name}", __dir__), true
+  rescue SystemExit => e
+    exit_status = e.status
+  end
+  [stdout, stderr, exit_status]
 ensure
   ARGV.replace(original_argv)
 end
