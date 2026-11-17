@@ -7,9 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+- **Websets support (breaking change)** - every command and client method that calls `https://api.exa.ai/websets/v0/` is gone, with no deprecation release first. Code that uses them must change before it upgrades
+  - Commands removed (30): `exa-ai webset-*` (create, get, list, update, delete, cancel), `exa-ai webset-search-*` (create, get, cancel), `exa-ai webset-item-*` (list, get, delete), `exa-ai enrichment-*` (create, get, list, update, delete, cancel), `exa-ai import-*` (create, list, get, update, delete) and the Websets monitor commands `exa-ai monitor-*` (create, get, list, update, delete, runs-list, runs-get)
+  - Client methods removed: websets (`list_websets`, `get_webset`, `create_webset`, `update_webset`, `delete_webset`, `cancel_webset`), webset searches (`create_webset_search`, `get_webset_search`, `cancel_webset_search`), webset items (`list_items`, `get_item`, `delete_item`), enrichments (`create_enrichment`, `get_enrichment`, `update_enrichment`, `delete_enrichment`, `cancel_enrichment`), imports (`list_imports`, `create_import`, `upload_import`, `get_import`, `update_import`, `delete_import`) and Websets monitors and their runs (`create_monitor`, `list_monitors`, `get_monitor`, `update_monitor`, `delete_monitor`, `list_monitor_runs`, `get_monitor_run`)
+  - Classes removed: the `Exa::Services::Websets` services, `Exa::Constants::Websets`, the `Webset*`, `Import*`, `Monitor`, `MonitorCollection`, `MonitorRun` and `MonitorRunCollection` resources, and their CLI formatters
+  - Instead: to build and enrich lists, use the Agent API (`agent_run_create` and the other `agent_run_*` methods, `exa-ai agent-run-*`). To run a search on a schedule and get new results, use search monitors (`search_monitor_*`, `exa-ai search-monitor-*`), which stay
+
 ### Added
 - **`exa-ai find-similar` contents flags** - `find-similar` now takes every Content Extraction flag that `search` takes. The 16 new flags are `--text-verbosity`, `--context`, `--context-max-characters`, `--subpages`, `--subpage-target`, `--links`, `--image-links`, `--highlights`, `--highlights-max-characters`, `--highlights-num-sentences`, `--highlights-per-url`, `--highlights-query`, `--livecrawl`, `--livecrawl-timeout`, `--max-age-hours` and `--snapshot-as-of`. Both commands share one implementation in `Exa::CLI::ContentsFlags`
-- **Monitors API** - `search_monitor_create`, `_list`, `_get`, `_update`, `_delete`, `_trigger`, `_batch`, `_runs_list` and `_runs_get` cover the `/monitors` API: scheduled searches that post new results to a webhook. CLI commands `exa-ai search-monitor-*`. This is a different product from Websets monitors (`create_monitor`, `exa-ai monitor-*`), which are unchanged
+- **Monitors API** - `search_monitor_create`, `_list`, `_get`, `_update`, `_delete`, `_trigger`, `_batch`, `_runs_list` and `_runs_get` cover the `/monitors` API: scheduled searches that post new results to a webhook. CLI commands `exa-ai search-monitor-*`.
 - **Agent run errors** - `AgentRun#error` holds the `{type, code, message}` the API returns for a failed run, and `to_h` includes it. The CLI prints it for a failed run
 - **`lite` and `deep-lite` search types** - `search(type: "lite")` and `type: "deep-lite"`, also on `exa-ai search --type`. `lite` accepts only a limited set of parameters; the API rejects a request with any other
 - **Search warnings, notices and search time** - `SearchResult#warnings`, `#notices` and `#search_time`; `ContentsResult#search_time` and `FindSimilarResult#search_time`. `exa-ai search` prints each warning to stderr as `Warning: <message> (<path>)` and shows notices in `pretty` and `text` output
@@ -27,15 +34,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Agent run event replay** - `agent_run_events(run_id, last_event_id: "7")` replays the events after that id over server-sent events and returns the same `AgentRunEventList`
 - **Event pages on the CLI** - `exa-ai agent-run-events` takes `--limit` and `--cursor`
 - **More agent run output** - pretty and text output show the stop reason of a completed run. Pretty output also shows the cost of each data source, usage, and the field and confidence of each grounding item
-- **Status helpers for every spec status** - `Monitor#enabled?`, `#disabled?`; `Webset#pending?`, `#running?`, `#paused?`; `WebsetEnrichment#canceled?`; `WebsetSearch#pending?`; `MonitorRun#created?`, `#canceled?`; `Import#canceled?`
 
 ### Changed
 - **`--category github` rejected** - `exa-ai search` and `exa-ai find-similar` no longer accept `--category github`, which is not in the API's category list. The Ruby client still sends any category it is given
 - **`agent_run_delete` returns `Exa::Resources::AgentRunDeletion`** - The API answers a delete with `{id, object: "agent_run.deleted", deleted: true}`. Use `#deleted?` and `#id`. Before, the method returned an `AgentRun` whose status was nil
 
 ### Fixed
-- **`exa-ai import-create --entity-description`** - for an entity type other than `custom`, the command now drops the description from the request, as its warning says. Before, it printed the warning and still sent the description
-- **`exa-ai monitor-update`, `monitor-get` and `monitor-delete`** - each command now passes the monitor ID as `id:`, the keyword the client method takes. Before, every run exited 1 with "wrong number of arguments" and sent no request
 - **Summaries that are not JSON** - when a request gives a summary schema, `search` and `get_contents` keep a summary that is not valid JSON, an empty one included, as the String received. Before, one such summary raised `JSON::ParserError` and the caller lost every result
 - **String content keys** - a String key that names a content option (`"text"`, `"text_max_characters"`, `"contents"`, or a key inside `text`, `highlights`, `summary`, `extras`, `context` or `contents`) now matches the same Symbol key. `get_contents(urls, "text" => true, text_max_characters: 500)` sends one `text` key, and `text: {"max_characters" => 5}, text_max_characters: 7` no longer raises `JSON::GeneratorError`. On `search`, a top-level `"text"` now goes under `contents`. Keys inside a schema stay as given
 - **JSON summaries on `search`** - a flat `summary_schema` and a `summary.schema` inside a caller's own `contents` now give parsed JSON summaries, as `summary: {schema:}` does. Before, the summaries came back as JSON strings
@@ -52,7 +56,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`exa-ai get-contents` option values** - an option that takes a value no longer has its value read again as the URL argument when the option comes before the URL
 - **Contents flags that take text on `exa-ai search` and `exa-ai find-similar`** - `--summary-query`, `--highlights-query`, `--snapshot-as-of` and `--subpage-target` now stop with one error line and send no request when no value follows or when the next argument starts with `--`. Before, `--summary --summary-query --text` sent `--text` as the summary query and lost `--text`, these flags given last with no value were dropped in silence, and `--subpage-target` given last sent `subpageTarget: [null]`
 - **Unknown flags on `exa-ai search` and `exa-ai find-similar`** - an argument that starts with `--` and is not a known flag now stops the command with `Error: unknown option <flag>`. Before, `find-similar --highlight https://a.com` sent `--highlight` as the URL, and `search` added the unknown flag to the query
-- **`WebsetSearch#in_progress?` with status `pending`** - a search with status `pending` is now in progress, as are `created` and `running`
 
 ### Deprecated
 These still work. Help text, doc comments, README and docs now mark them with their replacements

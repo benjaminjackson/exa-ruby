@@ -303,7 +303,7 @@ exa-ai get-contents "https://example.com" --output-format json
 
 ## search-monitor
 
-Search monitors run an Exa search on a schedule and post new results to a webhook (the `/monitors` API). They are a different product from Websets monitors (`exa-ai monitor-*`). Each command has its own executable, `exa-ai-search-monitor-<command>`, and `exa-ai search-monitor-<command>` runs the same thing. All take `--api-key`, `--output-format json|pretty|text|toon` and `--help`.
+Search monitors run an Exa search on a schedule and post new results to a webhook (the `/monitors` API). Each command has its own executable, `exa-ai-search-monitor-<command>`, and `exa-ai search-monitor-<command>` runs the same thing. All take `--api-key`, `--output-format json|pretty|text|toon` and `--help`.
 
 | Command | Arguments and options |
 |---|---|

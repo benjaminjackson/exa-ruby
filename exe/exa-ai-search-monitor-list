@@ -27,7 +27,7 @@ while args.any?
     puts <<~HELP
       Usage: exa-ai search-monitor-list [options]
 
-      List search monitors (the /monitors API, not Websets monitors).
+      List search monitors (the /monitors API).
 
       Options:
         --status STATUS         Filter by status: active, paused, or disabled

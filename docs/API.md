@@ -357,7 +357,7 @@ contents = client.get_contents(ids: ["DOC_ID_1", "DOC_ID_2"], text: true)
 
 ## Search Monitors
 
-A search monitor runs an Exa search on a schedule and posts new results to a webhook (`/monitors`). It is a different product from Websets monitors (`create_monitor`, `list_monitors`).
+A search monitor runs an Exa search on a schedule and posts new results to a webhook (`/monitors`).
 
 ### Create
 

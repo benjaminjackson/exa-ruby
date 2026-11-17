@@ -170,44 +170,6 @@ exa-ai get-contents "https://ruby-lang.org"
 exa-ai search "climate tech seed rounds" --type lite --objective "Find primary sources"
 exa-ai get-contents --ids DOC_ID_1,DOC_ID_2 --highlights --highlights-verbosity low
 exa-ai answer "What is machine learning?" --model exa-pro --user-location US
-
-# Webset Management
-exa-ai webset-create --search '{"query":"technology companies","count":1}'
-exa-ai webset-list --limit 5
-exa-ai webset-get WEBSET_ID
-exa-ai webset-update WEBSET_ID --metadata '{"updated":"true","version":"2"}'
-exa-ai webset-delete WEBSET_ID --force
-exa-ai webset-cancel WEBSET_ID
-
-# Webset Searches
-exa-ai webset-search-create WEBSET_ID --query "Ford Mustang" --entity custom --entity-description "vintage cars"
-exa-ai webset-search-create WEBSET_ID --query "tech CEOs" --entity person --count 20
-exa-ai webset-search-create WEBSET_ID --query "Y Combinator startups" --entity company
-exa-ai webset-search-get WEBSET_ID SEARCH_ID
-exa-ai webset-search-cancel WEBSET_ID SEARCH_ID
-
-# Webset Items
-exa-ai webset-item-list WEBSET_ID
-exa-ai webset-item-get WEBSET_ID ITEM_ID
-exa-ai webset-item-delete WEBSET_ID ITEM_ID --force
-
-# Enrichments
-exa-ai enrichment-create WEBSET_ID --description "Find company email" --format text
-exa-ai enrichment-create WEBSET_ID --description "Company size category" --format options --options '[{"label":"Small (1-10)"},{"label":"Medium (11-50)"},{"label":"Large (51+)"}]'
-exa-ai enrichment-list WEBSET_ID
-exa-ai enrichment-get WEBSET_ID ENRICHMENT_ID
-exa-ai enrichment-update WEBSET_ID ENRICHMENT_ID --description "Updated description"
-exa-ai enrichment-delete WEBSET_ID ENRICHMENT_ID --force
-exa-ai enrichment-cancel WEBSET_ID ENRICHMENT_ID
-
-# Webset Imports
-exa-ai webset-import-create companies.csv --count 100 --title "My Companies" --format csv --entity-type company
-exa-ai webset-import-create data.csv --count 50 --title "Tech Startups" --format csv --entity-type company --csv-identifier 0
-exa-ai webset-import-create import.csv --count 100 --title "Import" --format csv --entity-type company --metadata '{"source":"crm"}' --quiet
-exa-ai webset-import-list
-exa-ai webset-import-get IMPORT_ID
-exa-ai webset-import-update IMPORT_ID --title "Updated Title"
-exa-ai webset-import-delete IMPORT_ID
 ```
 
 ## Features
@@ -238,12 +200,8 @@ These still work, so existing code keeps running. The search command prints the 
 
 See [docs/API.md](docs/API.md) and [docs/CLI.md](docs/CLI.md) for details.
 
-### Websets
-- **Webset Management** — Create, update, delete, and list datasets of web pages
-- **Webset Searches** — Run searches within websets and manage search tasks
-- **Webset Items** — List, retrieve, and manage individual items in websets
-- **Enrichments** — Create and manage AI-powered data enrichment tasks on websets
-- **Imports** — Upload CSV files to import external data into websets
+### List-building API support removed
+This release removes the gem's support for Exa's list-building API: the lists of web results, the searches that fill them, their items, enrichments, imports, and the monitors that refresh them. This is a breaking change, with no deprecation release first. The commands for these (including every `exa-ai enrichment-*`, `import-*` and `monitor-*` command) and their client methods are gone; [CHANGELOG.md](CHANGELOG.md) names each one. To build and enrich lists, use the [Agent API](#agent) (agent runs). To run a search on a schedule, use [search monitors](#search-monitors) (`search-monitor-*`), which stay.
 
 ### Agent
 - **Agent API** — Asynchronous research agent with citations, streaming, and full run lifecycle
@@ -382,7 +340,7 @@ exa-ai agent-run-events <run_id> --limit 50 --cursor <next_cursor>
 
 ## Search Monitors
 
-A search monitor runs an Exa search on a schedule and posts new results to your webhook. This is the Monitors API (`/monitors`). It is a different product from Websets monitors (`create_monitor`, `exa-ai monitor-*`), which refresh a webset.
+A search monitor runs an Exa search on a schedule and posts new results to your webhook. This is the Monitors API (`/monitors`).
 
 ### Ruby API
 
@@ -473,9 +431,6 @@ bundle exec rake test
 
 # Run integration tests (VCR-based, no real API calls)
 RUN_INTEGRATION_TESTS=true bundle exec rake test
-
-# Run CLI integration tests (real API calls, requires explicit opt-in)
-RUN_CLI_INTEGRATION_TESTS=true bundle exec rake test
 ```
 
 ### Integration Tests
@@ -488,20 +443,12 @@ RUN_CLI_INTEGRATION_TESTS=true bundle exec rake test
 - Set `RUN_INTEGRATION_TESTS=true` to run them
 - Safe to run during development
 
-**CLI integration tests (`RUN_CLI_INTEGRATION_TESTS`):**
-- Make real API calls through shell commands
-- Consume Exa's concurrent search quota
-- Set `RUN_CLI_INTEGRATION_TESTS=true` AND `EXA_API_KEY` to run them
-- **Warning:** Can exhaust API quota and trigger rate limits lasting 1-2 days
-
 **When to run integration tests:**
 - VCR tests: Anytime (safe, no real API calls)
-- CLI tests: Only before releases or when testing CLI-specific functionality
 
 **Test Coverage:**
 - **Unit tests** - Fast, no API calls, always run
 - **VCR integration tests** - Replay cassettes, skipped by default
-- **CLI integration tests** - Real API calls via shell, skipped by default
 
 ## Support
 

@@ -20,7 +20,7 @@ while args.any?
       Usage: exa-ai search-monitor-get ID [options]
 
       Get a search monitor.
-      Search monitors are the /monitors API, not Websets monitors (exa-ai monitor-*).
+      Search monitors are the /monitors API.
 
       Options:
         --api-key KEY           Exa API key (or use EXA_API_KEY env var)
