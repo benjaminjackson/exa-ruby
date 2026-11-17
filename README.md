@@ -268,7 +268,7 @@ run = client.agent_run_create(
 # results into one grounded, structured answer.
 run = client.agent_run_create(
   query: "Profile Anthropic: total funding and estimated monthly web traffic",
-  data_sources: [{ provider: "fiber_ai" }, { provider: "similarweb" }],
+  data_sources: [{ provider: "fiber" }, { provider: "similarweb" }],
   output_schema: {
     type: "object",
     properties: {
@@ -279,11 +279,19 @@ run = client.agent_run_create(
   }
 )
 
+# Limit what a run may spend. max_cost_dollars accepts $1 to $100;
+# max_duration_seconds (300 to 10800) applies only to effort "ultra".
+run = client.agent_run_create(
+  query: "Every public company that announced a lithium recycling plant in 2025",
+  effort: "ultra",
+  budget: { max_cost_dollars: 20.0, max_duration_seconds: 3600 }
+)
+
 # Stream events as they arrive
-client.agent_run_stream(query: "AI infrastructure startups that raised Series A in 2025") do |event, data|
-  puts "#{event}: #{data.inspect}"
+client.agent_run_stream(query: "AI infrastructure startups that raised Series A in 2025") do |event, data, event_id|
+  puts "#{event} (#{event_id}): #{data.inspect}"
   # event is the SSE event-type string, e.g. "agent_run.completed"
-  # data is the parsed JSON hash
+  # data is the parsed JSON hash; event_id is the SSE id, or nil
 end
 
 # List recent runs
@@ -295,7 +303,15 @@ runs.data.each { |r| puts "#{r.id}: #{r.status}" }
 # Fetch a run's events
 events = client.agent_run_events(run.id)
 
-# Cancel or delete a run
+# Replay the events after a known event id (server-sent events).
+# This reads the whole response before it returns.
+events = client.agent_run_events(run.id, last_event_id: "7")
+
+# Stop a run early: it completes with stop_reason "stopped" and keeps the
+# results gathered so far (effort high, xhigh or ultra only)
+client.agent_run_stop(run.id)
+
+# Cancel a run (it ends at once with no results), or delete it
 client.agent_run_cancel(run.id)
 deletion = client.agent_run_delete(run.id) # => Exa::Resources::AgentRunDeletion
 deletion.deleted? # => true
@@ -311,11 +327,16 @@ exa-ai agent-run-create --query "AI infrastructure startups that raised Series A
 
 # Attach premium data partners (Exa Connect) with a structured schema.
 # Run `exa-ai agent-run-create --help` to see every provider and when to use it:
-# fiber_ai, similarweb, baselayer, affiliate, particle_news, financial_datasets, jinko
+# fiber, similarweb, baselayer, polymarket, macrobond, affiliate, particle,
+# financial_datasets, jinko (up to 5 per run)
 exa-ai agent-run-create --wait \
   --query "Profile Anthropic: total funding and monthly web traffic" \
-  --data-sources fiber_ai,similarweb \
+  --data-sources fiber,similarweb \
   --output-schema '{"type":"object","properties":{"name":{"type":"string"},"totalFunding":{"type":"string"},"monthlyVisits":{"type":"number"}}}'
+
+# Cap cost and time for an ultra run
+exa-ai agent-run-create --effort ultra --max-cost-dollars 20 --max-duration-seconds 3600 \
+  --query "Every public company that announced a lithium recycling plant in 2025"
 
 # Fetch an existing run
 exa-ai agent-run-get <run_id>
@@ -323,12 +344,14 @@ exa-ai agent-run-get <run_id>
 # List recent runs
 exa-ai agent-run-list --limit 5
 
-# Cancel or delete a run
+# Stop a run early and keep its results, or cancel or delete it
+exa-ai agent-run-stop <run_id>
 exa-ai agent-run-cancel <run_id>
 exa-ai agent-run-delete <run_id>
 
-# Fetch a run's events
-exa-ai agent-run-events <run_id>
+# Fetch a run's events, one page at a time
+exa-ai agent-run-events <run_id> --limit 50
+exa-ai agent-run-events <run_id> --limit 50 --cursor <next_cursor>
 ```
 
 ## Search Monitors
