@@ -4,266 +4,136 @@ require "test_helper"
 require "tempfile"
 
 class Exa::CLI::ImportCreateTest < Minitest::Test
-  def test_parses_file_path_as_first_argument
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "10", "--title", "Test", "--format", "csv", "--entity-type", "company"])
-    assert_equal file.path, args[:file_path]
-  ensure
-    file.close
-    file.unlink
+  IMPORTS_URL = "https://api.exa.ai/websets/v0/imports"
+  UPLOAD_URL = "https://uploads.exa.ai/imports/imp_series_a_startups"
+  CSV_CONTENT = "name,website\nAnthropic,anthropic.com\nMistral AI,mistral.ai\n"
+
+  def setup
+    super
+    @csv_file = Tempfile.new(["series_a_startups", ".csv"])
+    @csv_file.write(CSV_CONTENT)
+    @csv_file.flush
   end
 
-  def test_requires_count_flag
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "50", "--title", "Test", "--format", "csv", "--entity-type", "company"])
-    assert_equal 50, args[:count]
-  ensure
-    file.close
-    file.unlink
+  def teardown
+    @csv_file.close
+    @csv_file.unlink
+    super
   end
 
-  def test_requires_title_flag
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "10", "--title", "My Import", "--format", "csv", "--entity-type", "company"])
-    assert_equal "My Import", args[:title]
-  ensure
-    file.close
-    file.unlink
+  def test_sends_count_title_format_and_entity_type_in_request_body
+    body, = post_import("--count", "50", "--title", "Series A AI startups", "--entity-type", "company")
+
+    assert_equal 50, body["count"]
+    assert_equal "Series A AI startups", body["title"]
+    assert_equal "csv", body["format"]
+    assert_equal({ "type" => "company" }, body["entity"])
   end
 
-  def test_parses_entity_type_flag
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "10", "--title", "Test", "--format", "csv", "--entity-type", "person"])
-    assert_equal "person", args[:entity_type]
-  ensure
-    file.close
-    file.unlink
+  def test_uploads_contents_of_file_given_as_first_argument
+    post_import("--count", "2", "--title", "Series A AI startups", "--entity-type", "company")
+
+    assert_requested(:put, UPLOAD_URL, body: CSV_CONTENT)
   end
 
-  def test_parses_entity_description_flag
-    file = create_temp_csv
-    args = parse_args([
-      file.path,
-      "--count", "10",
-      "--title", "Test",
-      "--format", "csv",
-      "--entity-type", "custom",
-      "--entity-description", "nonprofit organizations"
-    ])
-    assert_equal "custom", args[:entity_type]
-    assert_equal "nonprofit organizations", args[:entity_description]
-  ensure
-    file.close
-    file.unlink
+  def test_sends_custom_entity_with_description
+    body, = post_import(
+      "--count", "2", "--title", "Climate nonprofits",
+      "--entity-type", "custom", "--entity-description", "nonprofit climate advocacy organizations"
+    )
+
+    assert_equal({ "type" => "custom", "description" => "nonprofit climate advocacy organizations" }, body["entity"])
   end
 
-  # Tests for entity building logic
+  def test_custom_entity_without_description_exits_before_any_request
+    stub_request(:post, IMPORTS_URL)
 
-  def test_builds_entity_hash_for_predefined_type
-    entity_input = "company"
-    entity = build_entity(entity_input, nil)
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-import-create", @csv_file.path,
+      "--count", "2", "--title", "Climate nonprofits", "--entity-type", "custom", "--api-key", "test_key"
+    )
 
-    assert_instance_of Hash, entity
-    assert_equal "company", entity[:type]
-    refute entity.key?(:description)
+    assert_equal 1, exit_status
+    assert_includes stderr, "--entity-description is required"
+    assert_not_requested :post, IMPORTS_URL
   end
 
-  def test_builds_entity_hash_for_custom_type_with_description
-    entity_input = "custom"
-    entity_description = "nonprofit advocacy organizations"
-    entity = build_entity(entity_input, entity_description)
+  # The command warns that it ignores --entity-description for a type
+  # other than custom, but it still sends the description to the API.
+  def test_warns_but_still_sends_entity_description_for_non_custom_type
+    body, stderr = post_import(
+      "--count", "2", "--title", "AI researchers",
+      "--entity-type", "person", "--entity-description", "machine learning researchers"
+    )
 
-    assert_instance_of Hash, entity
-    assert_equal "custom", entity[:type]
-    assert_equal "nonprofit advocacy organizations", entity[:description]
+    assert_includes stderr, "Warning: --entity-description is only used with --entity-type custom"
+    assert_equal({ "type" => "person", "description" => "machine learning researchers" }, body["entity"])
   end
 
-  def test_raises_error_for_custom_entity_without_description
-    entity_input = "custom"
+  def test_sends_csv_identifier_in_request_body
+    body, = post_import(
+      "--count", "2", "--title", "Series A AI startups", "--entity-type", "company", "--csv-identifier", "1"
+    )
 
-    error = assert_raises(ArgumentError) do
-      build_entity(entity_input, nil)
-    end
-
-    assert_includes error.message.downcase, "entity-description"
-    assert_includes error.message.downcase, "required"
+    assert_equal({ "identifier" => 1 }, body["csv"])
   end
 
-  def test_warns_for_entity_description_with_non_custom_type
-    # Capture stderr to verify warning
-    original_stderr = $stderr
-    $stderr = StringIO.new
+  def test_sends_metadata_parsed_from_json
+    body, = post_import(
+      "--count", "2", "--title", "Series A AI startups", "--entity-type", "company",
+      "--metadata", '{"source":"crm"}'
+    )
 
-    entity_input = "person"
-    entity_description = "should be ignored"
-    entity = build_entity(entity_input, entity_description)
-
-    warning = $stderr.string
-    assert_includes warning.downcase, "warning"
-    assert_includes warning.downcase, "entity-description"
-    assert_includes warning.downcase, "custom"
-
-    # Verify entity was built correctly without description
-    assert_equal "person", entity[:type]
-    refute entity.key?(:description)
-  ensure
-    $stderr = original_stderr
+    assert_equal({ "source" => "crm" }, body["metadata"])
   end
 
-  def test_parses_csv_identifier_flag
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "10", "--title", "Test", "--format", "csv", "--entity-type", "company", "--csv-identifier", "2"])
-    assert_equal 2, args[:csv_identifier]
-  ensure
-    file.close
-    file.unlink
+  def test_quiet_flag_suppresses_output
+    _body, stderr, stdout = post_import(
+      "--count", "2", "--title", "Series A AI startups", "--entity-type", "company", "--quiet"
+    )
+
+    assert_empty stdout
+    assert_empty stderr
   end
 
-  def test_parses_metadata_flag
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "10", "--title", "Test", "--format", "csv", "--entity-type", "company", "--metadata", '{"source":"crm"}'])
-    assert_equal({ source: "crm" }, args[:metadata])
-  ensure
-    file.close
-    file.unlink
+  def test_prints_json_by_default
+    _body, _stderr, stdout = post_import("--count", "2", "--title", "Series A AI startups", "--entity-type", "company")
+
+    assert_equal "imp_series_a_startups", JSON.parse(stdout)["id"]
   end
 
-  def test_parses_quiet_flag
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "10", "--title", "Test", "--format", "csv", "--entity-type", "company", "--quiet"])
-    assert_equal true, args[:quiet]
-  ensure
-    file.close
-    file.unlink
-  end
+  def test_prints_pretty_output_when_asked
+    _body, _stderr, stdout = post_import(
+      "--count", "2", "--title", "Series A AI startups", "--entity-type", "company", "--output-format", "pretty"
+    )
 
-  def test_parses_output_format_flag
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "10", "--title", "Test", "--format", "csv", "--entity-type", "company", "--output-format", "pretty"])
-    assert_equal "pretty", args[:output_format]
-  ensure
-    file.close
-    file.unlink
-  end
-
-  def test_defaults_to_json_output_format
-    file = create_temp_csv
-    args = parse_args([file.path, "--count", "10", "--title", "Test", "--format", "csv", "--entity-type", "company"])
-    assert_equal "json", args[:output_format]
-  ensure
-    file.close
-    file.unlink
+    assert_includes stdout, "Import ID:     imp_series_a_startups"
   end
 
   private
 
-  def create_temp_csv
-    file = Tempfile.new(["test", ".csv"])
-    file.write("id,name,email\n")
-    file.write("1,Company A,contact@a.com\n")
-    file.write("2,Company B,contact@b.com\n")
-    file.rewind
-    file
-  end
+  # Runs exa-ai-import-create in-process on the temporary CSV file with the
+  # given flags. Returns the parsed body of the create request, stderr and
+  # stdout. The upload of the file to its upload URL is stubbed too.
+  def post_import(*flags)
+    posted_body = nil
+    stub_request(:post, IMPORTS_URL)
+      .with { |request| posted_body = JSON.parse(request.body) }
+      .to_return(
+        status: 200,
+        body: {
+          id: "imp_series_a_startups", object: "import", status: "pending",
+          title: "Series A AI startups", uploadUrl: UPLOAD_URL
+        }.to_json,
+        headers: { "Content-Type" => "application/json" }
+      )
+    stub_request(:put, UPLOAD_URL).to_return(status: 200)
 
-  # Helper method to parse command-line arguments
-  # Mirrors the logic from exe/exa-ai-import-create
-  def parse_args(argv)
-    args = {
-      output_format: "json",
-      api_key: nil,
-      format: "csv",
-      quiet: false
-    }
+    stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-import-create", @csv_file.path, *flags, "--api-key", "test_key"
+    )
 
-    i = 0
-    while i < argv.length
-      arg = argv[i]
-      case arg
-      when "--count"
-        args[:count] = argv[i + 1].to_i
-        i += 2
-      when "--title"
-        args[:title] = argv[i + 1]
-        i += 2
-      when "--format"
-        args[:format] = argv[i + 1]
-        i += 2
-      when "--entity-type"
-        args[:entity_type] = argv[i + 1]
-        i += 2
-      when "--entity-description"
-        args[:entity_description] = argv[i + 1]
-        i += 2
-      when "--csv-identifier"
-        args[:csv_identifier] = argv[i + 1].to_i
-        i += 2
-      when "--metadata"
-        args[:metadata] = parse_json_or_file(argv[i + 1])
-        i += 2
-      when "--quiet"
-        args[:quiet] = true
-        i += 1
-      when "--api-key"
-        args[:api_key] = argv[i + 1]
-        i += 2
-      when "--output-format"
-        args[:output_format] = argv[i + 1]
-        i += 2
-      else
-        # First argument is the file path
-        unless args[:file_path]
-          args[:file_path] = arg
-          i += 1
-        else
-          raise ArgumentError, "Unknown option: #{arg}"
-        end
-      end
-    end
-
-    args
-  end
-
-  # Helper to parse JSON or file - mirrors exe/exa-ai-import-create:23-38
-  def parse_json_or_file(value)
-    json_data = if value.start_with?("@")
-                  file_path = value[1..]
-                  JSON.parse(File.read(file_path))
-                else
-                  JSON.parse(value)
-                end
-    deep_symbolize_keys(json_data)
-  rescue JSON::ParserError => e
-    raise ArgumentError, "Invalid JSON: #{e.message}"
-  rescue Errno::ENOENT => e
-    raise ArgumentError, "File not found: #{e.message}"
-  end
-
-  # Helper to symbolize keys - mirrors exe/exa-ai-import-create:9-21
-  def deep_symbolize_keys(obj)
-    case obj
-    when Hash
-      obj.each_with_object({}) do |(key, value), result|
-        result[key.to_sym] = deep_symbolize_keys(value)
-      end
-    when Array
-      obj.map { |item| deep_symbolize_keys(item) }
-    else
-      obj
-    end
-  end
-
-  # Helper to build entity parameter - mirrors exe/exa-ai-import-create:194-211
-  def build_entity(entity_input, entity_description)
-    entity = { type: entity_input }
-    if entity_input == "custom"
-      unless entity_description
-        raise ArgumentError, "Error: --entity-description is required when --entity-type is 'custom'"
-      end
-      entity[:description] = entity_description
-    elsif entity_description
-      $stderr.puts "Warning: --entity-description is only used with --entity-type custom (ignoring)"
-    end
-    entity
+    assert_nil exit_status, "command failed: #{stderr}"
+    [posted_body, stderr, stdout]
   end
 end
