@@ -273,4 +273,20 @@ class AgentRunTest < Minitest::Test
     assert_equal({ input_tokens: 1000, output_tokens: 400 }, result[:usage])
     assert_equal({ total: 0.04 }, result[:cost_dollars])
   end
+
+  def test_from_response_keeps_error_and_to_h_includes_it
+    error = { "type" => "agent_error", "code" => "budget_exceeded", "message" => "Run stopped at the cost limit" }
+    run = Exa::Resources::AgentRun.from_response("id" => "r1", "status" => "failed", "error" => error)
+
+    assert_equal "agent_error", run.error["type"]
+    assert_equal "budget_exceeded", run.error["code"]
+    assert_equal "Run stopped at the cost limit", run.error["message"]
+    assert_equal error, run.to_h[:error]
+  end
+
+  def test_to_h_omits_error_when_absent
+    run = Exa::Resources::AgentRun.from_response("id" => "r1", "status" => "completed")
+
+    refute run.to_h.key?(:error)
+  end
 end

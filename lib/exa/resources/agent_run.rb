@@ -2,9 +2,9 @@ module Exa
   module Resources
     class AgentRun < Struct.new(
       :id, :object, :status, :stop_reason, :created_at, :completed_at,
-      :request, :output, :usage, :cost_dollars, keyword_init: true
+      :request, :output, :usage, :cost_dollars, :error, keyword_init: true
     )
-      def initialize(id:, object:, status:, stop_reason: nil, created_at: nil, completed_at: nil, request: nil, output: nil, usage: nil, cost_dollars: nil)
+      def initialize(id:, object:, status:, stop_reason: nil, created_at: nil, completed_at: nil, request: nil, output: nil, usage: nil, cost_dollars: nil, error: nil)
         super
         freeze
       end
@@ -22,7 +22,8 @@ module Exa
           request: body["request"],
           output: body["output"],
           usage: body["usage"],
-          cost_dollars: body["costDollars"]
+          cost_dollars: body["costDollars"],
+          error: body["error"]
         )
       end
 
@@ -47,6 +48,7 @@ module Exa
         result[:output]       = output       if output
         result[:usage]        = usage        if usage
         result[:cost_dollars] = cost_dollars if cost_dollars
+        result[:error]        = error        if error
         result
       end
     end

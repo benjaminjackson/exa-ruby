@@ -17,6 +17,20 @@ module Exa
           end
         end
 
+        # Formats the result of deleting a run (id, object, deleted).
+        def self.format_deletion(deletion, format)
+          case format
+          when "pretty"
+            deletion.deleted? ? "Deleted agent run: #{deletion.id}" : "Agent run not deleted: #{deletion.id}"
+          when "text"
+            "#{deletion.id} #{deletion.deleted? ? 'DELETED' : 'NOT_DELETED'}"
+          when "toon"
+            Exa::CLI::Base.encode_as_toon(deletion.to_h)
+          else
+            JSON.pretty_generate(deletion.to_h)
+          end
+        end
+
         def self.format_list(list, format)
           case format
           when "json"
@@ -73,6 +87,7 @@ module Exa
             output << "Completed: #{run.completed_at}" if run.completed_at
           when "failed"
             output << "Run failed"
+            output << error_line(run) if run.error
             output << "Stop reason: #{run.stop_reason}" if run.stop_reason
           when "cancelled"
             output << "Run was cancelled"
@@ -121,9 +136,18 @@ module Exa
               output << JSON.generate(structured)
             end
           elsif run.status == "failed"
-            output << "Stop reason: #{run.stop_reason}"
+            output << error_line(run) if run.error
+            output << "Stop reason: #{run.stop_reason}" if run.stop_reason
           end
           output.join("\n")
+        end
+
+        # One line with a failed run's error type, code and message.
+        def self.error_line(run)
+          error = run.error
+          return "Error: #{error}" unless error.is_a?(Hash)
+
+          "Error: #{error['type']} (#{error['code']}): #{error['message']}"
         end
 
         # Flattens an output.grounding array into displayable source strings,

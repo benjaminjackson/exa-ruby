@@ -1,6 +1,5 @@
 require "test_helper"
 require_relative "../../lib/exa/services/agent_run_delete"
-require_relative "../../lib/exa/resources/agent_run"
 
 class AgentRunDeleteTest < Minitest::Test
   def setup
@@ -14,61 +13,33 @@ class AgentRunDeleteTest < Minitest::Test
     assert_instance_of Exa::Services::AgentRunDelete, service
   end
 
-  def test_call_sends_delete_to_run_endpoint
+  def stub_delete_response
     stub_request(:delete, "https://api.exa.ai/agent/runs/#{@run_id}")
       .to_return(
         status: 200,
-        body: {
-          id: @run_id,
-          object: "agent_run",
-          status: "deleted"
-        }.to_json,
+        body: { id: @run_id, object: "agent_run.deleted", deleted: true }.to_json,
         headers: { "Content-Type" => "application/json" }
       )
+  end
 
-    service = Exa::Services::AgentRunDelete.new(@connection, run_id: @run_id)
-    service.call
+  def test_call_sends_delete_to_run_endpoint
+    stub_delete_response
+
+    Exa::Services::AgentRunDelete.new(@connection, run_id: @run_id).call
 
     assert_requested :delete, "https://api.exa.ai/agent/runs/#{@run_id}"
   end
 
-  def test_call_returns_agent_run_on_200_with_body
-    stub_request(:delete, "https://api.exa.ai/agent/runs/#{@run_id}")
-      .to_return(
-        status: 200,
-        body: {
-          id: @run_id,
-          object: "agent_run",
-          status: "deleted",
-          createdAt: "2024-01-15T10:00:00Z"
-        }.to_json,
-        headers: { "Content-Type" => "application/json" }
-      )
+  def test_call_returns_deletion_with_id_and_deleted_true
+    stub_delete_response
 
-    service = Exa::Services::AgentRunDelete.new(@connection, run_id: @run_id)
-    result = service.call
+    result = Exa::Services::AgentRunDelete.new(@connection, run_id: @run_id).call
 
-    assert_instance_of Exa::Resources::AgentRun, result
+    assert_instance_of Exa::Resources::AgentRunDeletion, result
     assert_equal @run_id, result.id
-    assert_equal "agent_run", result.object
-    assert_equal "deleted", result.status
-  end
-
-  def test_call_returns_agent_run_on_204_empty_body
-    stub_request(:delete, "https://api.exa.ai/agent/runs/#{@run_id}")
-      .to_return(
-        status: 204,
-        body: "",
-        headers: {}
-      )
-
-    service = Exa::Services::AgentRunDelete.new(@connection, run_id: @run_id)
-    result = service.call
-
-    assert_instance_of Exa::Resources::AgentRun, result
-    assert_equal @run_id, result.id
-    assert_equal "agent_run", result.object
-    assert_equal "deleted", result.status
+    assert_equal "agent_run.deleted", result.object
+    assert_equal true, result.deleted
+    assert result.deleted?
   end
 
   def test_call_raises_unauthorized_on_401
