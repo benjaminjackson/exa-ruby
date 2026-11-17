@@ -529,8 +529,7 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_equal 1, exit_status
     assert_equal [
       "Error: --highlights-num-sentences is deprecated; use --highlights-max-characters\n",
-      "Error: --include-text is deprecated; it still works, but the match is approximate " \
-      "(word-level, not exact phrase)\n"
+      "Error: --include-text is deprecated\n"
     ], stderr.lines
     assert_not_requested :post, "https://api.exa.ai/search"
   end
@@ -544,8 +543,7 @@ class Exa::CLI::SearchTest < Minitest::Test
     )
 
     assert_equal [
-      "Warning: --exclude-text is deprecated; it still works, but the match is approximate " \
-      "(word-level, not exact phrase)\n",
+      "Warning: --exclude-text is deprecated\n",
       "Warning: #{LIVECRAWL_WARNING}\n"
     ], stderr.lines
   end
