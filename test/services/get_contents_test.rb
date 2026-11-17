@@ -14,25 +14,6 @@ class GetContentsTest < Minitest::Test
     assert_instance_of Exa::Services::GetContents, service
   end
 
-  def test_on_request_receives_the_body_that_is_sent
-    sent_body = nil
-    stub_request(:post, "https://api.exa.ai/contents")
-      .with { |request| sent_body = request.body }
-      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
-    yielded_body = nil
-
-    Exa::Services::GetContents.new(
-      @connection,
-      urls: ["https://exa.ai"], max_age_hours: 0,
-      on_request: ->(body) { yielded_body = body }
-    ).call
-
-    assert_equal sent_body, JSON.generate(yielded_body)
-    assert_equal 0, JSON.parse(sent_body)["maxAgeHours"]
-    refute_includes sent_body, "on_request"
-    refute_includes sent_body, "onRequest"
-  end
-
   def test_call_posts_to_contents_endpoint
     stub_request(:post, "https://api.exa.ai/contents")
       .with(body: hash_including(urls: ["https://example.com"]))
@@ -346,5 +327,16 @@ class GetContentsTest < Minitest::Test
                                                          summary_schema: { type: "object" }).call
 
     assert_equal json_summary, result.results.first["summary"]
+  end
+
+  def test_call_sends_a_zero_max_age_hours
+    sent_body = nil
+    stub_request(:post, "https://api.exa.ai/contents")
+      .with { |request| sent_body = request.body }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::GetContents.new(@connection, urls: ["https://exa.ai"], max_age_hours: 0).call
+
+    assert_equal 0, JSON.parse(sent_body)["maxAgeHours"]
   end
 end

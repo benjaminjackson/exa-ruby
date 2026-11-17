@@ -61,6 +61,28 @@ class Exa::CLI::BaseTest < Minitest::Test
     assert_instance_of Exa::Client, client
   end
 
+  def test_build_client_with_print_request_writes_the_sent_body_to_stderr
+    sent_body = nil
+    stub_request(:post, "https://api.exa.ai/search")
+      .with { |request| sent_body = request.body }
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    client = Exa::CLI::Base.build_client("test_key", print_request: true)
+
+    _stdout, stderr = capture_io { client.search("venture-backed SaaS companies", num_results: 2) }
+
+    assert_equal "#{sent_body}\n", stderr
+  end
+
+  def test_build_client_without_print_request_writes_nothing_to_stderr
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+    client = Exa::CLI::Base.build_client("test_key")
+
+    _stdout, stderr = capture_io { client.search("venture-backed SaaS companies", num_results: 2) }
+
+    assert_empty stderr
+  end
+
   def test_formats_output_as_json
     data = { key: "value", nested: { inner: 123 } }
     output = Exa::CLI::Base.format_output(data, "json")
