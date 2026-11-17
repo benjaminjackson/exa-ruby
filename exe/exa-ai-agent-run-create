@@ -15,6 +15,15 @@ rescue Errno::ENOENT
   exit 1
 end
 
+# Parse a numeric flag value with Kernel#Float or Kernel#Integer (passed as
+# converter). Prints one error line and exits 1 when the value is not a number.
+def parse_number_arg(value, flag_name, converter)
+  send(converter, value.to_s)
+rescue ArgumentError, TypeError
+  $stderr.puts "Error: #{flag_name} must be a number (got #{value.inspect})"
+  exit 1
+end
+
 # Parse command-line arguments
 def parse_args(argv)
   args = {
@@ -53,6 +62,23 @@ def parse_args(argv)
     when "--output-schema"
       args[:output_schema] = parse_json_arg(argv[i + 1], "--output-schema")
       i += 2
+    when "--max-cost-dollars"
+      args[:max_cost_dollars] = parse_number_arg(argv[i + 1], "--max-cost-dollars", :Float)
+      i += 2
+    when "--max-duration-seconds"
+      args[:max_duration_seconds] = parse_number_arg(argv[i + 1], "--max-duration-seconds", :Integer)
+      i += 2
+    when "--metadata"
+      metadata = parse_json_arg(argv[i + 1], "--metadata")
+      unless metadata.is_a?(Hash)
+        $stderr.puts "Error: --metadata must be a JSON object"
+        exit 1
+      end
+      args[:metadata] = metadata
+      i += 2
+    when "--user-identifier"
+      args[:user_identifier] = argv[i + 1]
+      i += 2
     when "--output-format"
       args[:output_format] = argv[i + 1]
       i += 2
@@ -73,9 +99,9 @@ def parse_args(argv)
         Options:
           --query TEXT           Query for the agent run (required)
           --system-prompt TEXT   System prompt to guide the agent
-          --effort LEVEL         Effort level: minimal, low, medium, high, xhigh, auto (default: auto)
-          --data-sources LIST    Comma-separated partner slugs to attach (see
-                                 "Data sources" below), e.g. fiber_ai,similarweb
+          --effort LEVEL         Effort level: minimal, low, medium, high, xhigh, ultra, auto (default: auto)
+          --data-sources LIST    Comma-separated partner slugs to attach, up to 5
+                                 (see "Data sources" below), e.g. fiber,similarweb
           --input-data JSON      JSON array of objects for the agent to process,
                                  or @file.json to read from a file. Each element
                                  is a record the agent enriches or acts on.
@@ -87,6 +113,18 @@ def parse_args(argv)
                                  to read it from a file. Recommended alongside
                                  --data-sources so the agent knows which fields
                                  each partner should fill.
+          --max-cost-dollars N   Cost cap in dollars ($1 to $100). For auto and
+                                 ultra it caps the total run cost (default caps
+                                 $5 and $20). For fixed efforts it caps
+                                 contact-enrichment calls.
+          --max-duration-seconds N
+                                 Soft time limit in seconds (300 to 10800, which
+                                 is 5 minutes to 3 hours). Applies only to ultra.
+          --metadata JSON        JSON object of string values stored with the
+                                 run, or @file.json to read it from a file
+          --user-identifier ID   Opaque ID for the end user this run is for
+                                 (1 to 64 letters, digits, _ or -). Do not put
+                                 personal information here.
           --wait                 Stream the run and wait for it to complete
           --api-key KEY          Exa API key (or set EXA_API_KEY env var)
           --output-format FMT    Output format: json, pretty, or text (default: json)
@@ -96,7 +134,7 @@ def parse_args(argv)
           Each attached partner is billed per call on top of normal agent costs.
           The agent picks the right source per step and cites everything.
 
-          fiber_ai            GTM & recruiting. 40M+ companies, 850M+ people,
+          fiber               GTM & recruiting. 40M+ companies, 850M+ people,
                               work/personal emails and phones. Use for B2B
                               prospecting, CRM enrichment, finding contacts.
           similarweb          Web analytics. Traffic estimates, global rankings,
@@ -105,10 +143,15 @@ def parse_args(argv)
           baselayer           Compliance & KYB. Verify US businesses: officers,
                               state registrations, risk scores. Use for KYB and
                               vendor/customer screening.
+          polymarket          Prediction markets. Market odds, price history,
+                              and trader positions from Polymarket.
+          macrobond           Macroeconomic data. Global economic and financial
+                              time series, entity metadata, and release
+                              calendars.
           affiliate           Commerce. Product catalog with live pricing,
                               brands, and merchant links. Use for price
                               comparison and shopping assistants.
-          particle_news       Media intelligence. Podcast transcripts with
+          particle            Media intelligence. Podcast transcripts with
                               speaker attribution and timestamps. Use to find
                               who said what on podcasts.
           financial_datasets  Finance. Ticker-based news for US public
@@ -130,7 +173,7 @@ def parse_args(argv)
           # Company profile blending two partners + web, as structured JSON:
           exa-ai agent-run-create --wait \\
             --query "Profile Anthropic: total funding and monthly web traffic" \\
-            --data-sources fiber_ai,similarweb \\
+            --data-sources fiber,similarweb \\
             --output-schema '{"type":"object","properties":{"name":{"type":"string"},"totalFunding":{"type":"string"},"monthlyVisits":{"type":"number"}}}'
 
           # KYB check with a larger schema read from a file:
@@ -179,6 +222,14 @@ begin
   end
   run_params[:previous_run_id] = args[:previous_run_id] if args[:previous_run_id]
   run_params[:output_schema] = args[:output_schema] if args[:output_schema]
+  if args[:max_cost_dollars] || args[:max_duration_seconds]
+    budget = {}
+    budget[:max_cost_dollars] = args[:max_cost_dollars] if args[:max_cost_dollars]
+    budget[:max_duration_seconds] = args[:max_duration_seconds] if args[:max_duration_seconds]
+    run_params[:budget] = budget
+  end
+  run_params[:metadata] = args[:metadata] if args[:metadata]
+  run_params[:user_identifier] = args[:user_identifier] if args[:user_identifier]
 
   if args[:wait]
     # Stream the run and watch it to completion. The SSE stream creates the run
@@ -225,12 +276,12 @@ begin
     if final.nil? && run_id
       $stderr.print "\r(stream interrupted; polling #{run_id})                 "
       begin
-        final = Exa::CLI::Polling.poll(max_duration: 300, initial_delay: 2, max_delay: 10) do
+        final = Exa::CLI::Polling.poll(max_duration: 10_800, initial_delay: 2, max_delay: 10) do
           current = client.agent_run_get(run_id)
           { done: current.finished?, result: current, status: current.status }
         end
       rescue Exa::CLI::Polling::TimeoutError
-        $stderr.puts "\nError: run did not complete within 5 minutes"
+        $stderr.puts "\nError: run did not complete within 3 hours"
         $stderr.puts "Run ID: #{run_id} — check later with: exa-ai agent-run-get #{run_id}"
         exit 1
       end
