@@ -42,6 +42,17 @@ class AgentRunDeleteTest < Minitest::Test
     assert result.deleted?
   end
 
+  def test_call_returns_deletion_on_empty_body
+    stub_request(:delete, "https://api.exa.ai/agent/runs/#{@run_id}")
+      .to_return(status: 204, body: "", headers: {})
+
+    result = Exa::Services::AgentRunDelete.new(@connection, run_id: @run_id).call
+
+    assert_equal @run_id, result.id
+    assert_equal "agent_run.deleted", result.object
+    assert result.deleted?
+  end
+
   def test_call_raises_unauthorized_on_401
     stub_request(:delete, "https://api.exa.ai/agent/runs/#{@run_id}")
       .to_return(

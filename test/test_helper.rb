@@ -121,14 +121,12 @@ end
 # Lists every key in a parsed JSON request body that still has an
 # underscore, skipping the subtrees that hold user data and keep their keys.
 module RequestBodyKeys
-  USER_DATA_KEYS = %w[outputSchema schema metadata data exclusion].freeze
-
   def snake_case_keys(value)
     case value
     when Hash
       value.flat_map do |key, nested|
         own = key.to_s.include?("_") ? [key.to_s] : []
-        USER_DATA_KEYS.include?(key.to_s) ? own : own + snake_case_keys(nested)
+        Exa::Services::ParameterConverter::PROTECTED_KEYS.include?(key.to_s) ? own : own + snake_case_keys(nested)
       end
     when Array
       value.flat_map { |element| snake_case_keys(element) }

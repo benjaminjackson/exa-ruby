@@ -13,6 +13,11 @@ module Exa
       def call
         body = @connection.delete("/agent/runs/#{@run_id}").body
 
+        # A successful DELETE with no body still means the run was deleted.
+        if body.nil? || body.empty?
+          return Resources::AgentRunDeletion.new(id: @run_id, object: "agent_run.deleted", deleted: true)
+        end
+
         Resources::AgentRunDeletion.new(
           id: body["id"],
           object: body["object"],

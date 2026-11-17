@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`agent_run_delete` returns `Exa::Resources::AgentRunDeletion`** - The API answers a delete with `{id, object: "agent_run.deleted", deleted: true}`. Use `#deleted?` and `#id`. Before, the method returned an `AgentRun` whose status was nil
 
 ### Fixed
-- **camelCase request keys on every endpoint** - `get_contents`, `find_similar`, `answer`, `answer` streaming and `context` now send camelCase keys (for example `systemPrompt`, `outputSchema`, `subpageTarget`, `tokensNum`), and nested keys are converted too (for example `budget.maxCostDollars` on agent runs). Keys inside `outputSchema`, `schema`, `metadata`, `data` and `exclusion` are sent as given
+- **camelCase request keys for contents, find-similar, answer, context and agent runs** - `get_contents`, `find_similar`, `answer`, `answer` streaming and `context` now send camelCase keys (for example `systemPrompt`, `outputSchema`, `subpageTarget`, `tokensNum`), and nested keys are converted too (for example `budget.maxCostDollars` on agent runs). Keys inside `outputSchema`, `schema`, `metadata`, `data` and `exclusion` are sent as given
 - **find-similar content options** - `text` and `summary` go under `contents`, as the spec requires
 
 ## [0.13.0] - 2026-11-16
