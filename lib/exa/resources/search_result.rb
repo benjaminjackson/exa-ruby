@@ -4,6 +4,12 @@ module Exa
     #
     # This class wraps the JSON response from the /search endpoint and provides
     # a Ruby-friendly interface for accessing search results and metadata.
+    #
+    # Deprecated fields, kept for compatibility:
+    # - resolved_search_type: the API marks resolvedSearchType deprecated. It
+    #   may be an empty string; do not branch on it.
+    # - search_type: searchType is not in the API spec.
+    # - context: deprecated. Use the highlights or text of each result.
     class SearchResult < Struct.new(
       :results,
       :request_id,

@@ -93,6 +93,9 @@ def parse_args(argv)
 
         Find content similar to a given URL
 
+        Deprecated: the API marks /findSimilar as deprecated. Use exa-ai search
+        with a query that describes the source page instead.
+
         Arguments:
           URL                       URL to find similar content for (required)
 
@@ -100,16 +103,18 @@ def parse_args(argv)
           --num-results N              Number of results to return (default: 10)
           --exclude-source-domain      Exclude results from the source URL's domain
           --category CAT               Focus on specific data category
-                                       Options: "company", "publication", "news", "github",
+                                       Options: "company", "publication", "news",
                                        "personal site", "people", "financial report"
           --include-domains D          Comma-separated list of domains to include
           --exclude-domains D          Comma-separated list of domains to exclude
           --start-published-date DATE  Filter by published date (ISO 8601 format)
           --end-published-date DATE    Filter by published date (ISO 8601 format)
-          --start-crawl-date DATE      Filter by crawl date (ISO 8601 format)
-          --end-crawl-date DATE        Filter by crawl date (ISO 8601 format)
-          --include-text PHRASE        Include results with exact phrase (repeatable)
-          --exclude-text PHRASE        Exclude results with exact phrase (repeatable)
+          --start-crawl-date DATE      Deprecated: the API ignores it
+          --end-crawl-date DATE        Deprecated: the API ignores it
+          --include-text PHRASE        Deprecated: include results that contain the phrase
+                                       (approximate match, repeatable)
+          --exclude-text PHRASE        Deprecated: exclude results that contain the phrase
+                                       (approximate match, repeatable)
 
         Content Extraction:
           --text                       Include full webpage text

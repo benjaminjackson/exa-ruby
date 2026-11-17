@@ -4,6 +4,9 @@ module Exa
     #
     # This class wraps the JSON response from the /contents endpoint and provides
     # a Ruby-friendly interface for accessing content results and metadata.
+    #
+    # The context field is deprecated in the API. Use the highlights or text
+    # of each result instead.
     class ContentsResult < Struct.new(
       :results,
       :request_id,

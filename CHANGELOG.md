@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Status helpers for every spec status** - `Monitor#enabled?`, `#disabled?`; `Webset#pending?`, `#running?`, `#paused?`; `WebsetEnrichment#canceled?`; `WebsetSearch#pending?`; `MonitorRun#created?`, `#canceled?`; `Import#canceled?`
 
 ### Changed
+- **`--category github` rejected** - `exa-ai search` and `exa-ai find-similar` no longer accept `--category github`, which is not in the API's category list. The Ruby client still sends any category it is given
 - **`agent_run_delete` returns `Exa::Resources::AgentRunDeletion`** - The API answers a delete with `{id, object: "agent_run.deleted", deleted: true}`. Use `#deleted?` and `#id`. Before, the method returned an `AgentRun` whose status was nil
 
 ### Fixed
@@ -39,6 +40,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **camelCase request keys for contents, find-similar, answer, context and agent runs** - `get_contents`, `find_similar`, `answer`, `answer` streaming and `context` now send camelCase keys (for example `systemPrompt`, `outputSchema`, `subpageTarget`, `tokensNum`), and nested keys are converted too (for example `budget.maxCostDollars` on agent runs). Keys inside `outputSchema`, `schema`, `metadata`, `data` and `exclusion` are sent as given
 - **find-similar content options** - `text` and `summary` go under `contents`, as the spec requires
 - **`exa-ai get-contents` option values** - an option that takes a value no longer has its value read again as the URL argument when the option comes before the URL
+
+### Deprecated
+These still work. Help text, doc comments, README and docs now mark them with their replacements
+- **`find_similar` and `exa-ai find-similar`** - the API deprecates `/findSimilar`. Use `search` with a query that describes the source page
+- **`context` and `exa-ai context`** - `/context` is not in the API spec. No replacement is named; for code lookup, use `search`
+- **Legacy search types** - `fast` and `instant` (use `lite`), `deep-reasoning` (use `deep`) and `neural` (not in the spec)
+- **`start_crawl_date` and `end_crawl_date`** - the API ignores them and returns an `IGNORED_FIELD` warning
+- **`include_text` and `exclude_text`**
+- **The `context` contents option and `context` response field** - use `highlights` or `text`
+- **`highlights` `num_sentences` and `highlights_per_url`** - use `max_characters`; the API ignores `highlights_per_url`
+- **`subpages` and `subpage_target` on `search` and `find_similar`** - they stay valid on `get_contents`
+- **`resolved_search_type`** - may be an empty string; `search_type` is not in the API spec
 
 ## [0.13.0] - 2026-11-16
 

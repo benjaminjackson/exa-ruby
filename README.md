@@ -135,7 +135,7 @@ client = Exa::Client.new
 results = client.search("Ruby programming language")
 results.results.each { |item| puts "#{item['title']}: #{item['url']}" }
 
-# Find similar content
+# Find similar content (deprecated: prefer search with a query that describes the page)
 similar = client.find_similar("https://arxiv.org/abs/2307.06435")
 similar.results.each { |item| puts item['url'] }
 
@@ -143,7 +143,7 @@ similar.results.each { |item| puts item['url'] }
 answer = client.answer("What is machine learning?")
 puts answer.answer
 
-# Find code examples
+# Find code examples (deprecated: /context is not in the API spec)
 code = client.context("React hooks")
 puts code.response
 
@@ -163,9 +163,9 @@ end
 ```bash
 # Core Search Commands
 exa-ai search "Ruby programming language"
-exa-ai find-similar "https://arxiv.org/abs/2307.06435"
+exa-ai find-similar "https://arxiv.org/abs/2307.06435"   # deprecated
 exa-ai answer "What is machine learning?"
-exa-ai context "React hooks" --tokens-num 5000
+exa-ai context "React hooks" --tokens-num 5000          # deprecated
 exa-ai get-contents "https://ruby-lang.org"
 exa-ai search "climate tech seed rounds" --type lite --objective "Find primary sources"
 exa-ai get-contents --ids DOC_ID_1,DOC_ID_2 --highlights --highlights-verbosity low
@@ -216,10 +216,27 @@ The gem provides complete access to Exa's API endpoints:
 
 ### Core Search
 - **Search** — Neural and keyword search across billions of web pages
-- **Find Similar** — Discover content similar to a given URL
+- **Find Similar** (deprecated) — Discover content similar to a given URL
 - **Answer** — Generate comprehensive answers with source citations
-- **Context** — Find relevant code and documentation snippets
+- **Context** (deprecated) — Find relevant code and documentation snippets
 - **Get Contents** — Extract full text content from web pages
+
+### Deprecated and legacy options
+
+These still work, so existing code keeps running. The search command prints the API's `warnings` to stderr when the API flags one of them. Use the replacement in new code.
+
+- `find_similar` / `exa-ai find-similar`: deprecated by the API. Use `search` with a query that describes the source page.
+- `context` / `exa-ai context`: `/context` is not in the API spec. No replacement is named; for code lookup, use `search`.
+- Search types `fast` and `instant` are legacy; use `lite`. `deep-reasoning` is legacy; use `deep`.
+- `start_crawl_date` and `end_crawl_date` are deprecated. The API ignores them.
+- `include_text` and `exclude_text` are deprecated.
+- The `context` contents option and the `context` response field are deprecated. Use `highlights` or `text`.
+- `highlights` `num_sentences` and `highlights_per_url` are deprecated. Use `max_characters`.
+- `subpages` and `subpage_target` are deprecated on `search` and `find_similar`. They stay valid on `get_contents`.
+- The `resolved_search_type` response field is deprecated.
+- The CLI no longer accepts `--category github`; it is not in the API's category list.
+
+See [docs/API.md](docs/API.md) and [docs/CLI.md](docs/CLI.md) for details.
 
 ### Websets
 - **Webset Management** — Create, update, delete, and list datasets of web pages
