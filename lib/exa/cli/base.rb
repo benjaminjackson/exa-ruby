@@ -111,21 +111,23 @@ module Exa
       # replacement, or the reason when there is none. A flag given twice
       # gets one line. Without strict each line starts with "Warning:" and the
       # command goes on; with strict each starts with "Error:" and the
-      # command exits 1, so wrappers can refuse deprecated flags.
+      # command exits 1, so wrappers can refuse deprecated flags. The lines go
+      # through $stderr.puts, not warn, because warn prints nothing when Ruby
+      # warnings are off (RUBYOPT=-W0).
       def self.report_deprecated_flags(entries, strict:)
         return if entries.empty?
 
         prefix = strict ? "Error" : "Warning"
         entries.uniq.each do |entry|
           advice = entry[:replacement] ? "use #{entry[:replacement]}" : entry[:reason]
-          warn "#{prefix}: #{entry[:flag]} is deprecated; #{advice}"
+          $stderr.puts "#{prefix}: #{entry[:flag]} is deprecated; #{advice}"
         end
         exit 1 if strict
       end
 
       # Print one error line to stderr and exit with status 1.
       def self.fail_with(message)
-        warn "Error: #{message}"
+        $stderr.puts "Error: #{message}"
         exit 1
       end
       private_class_method :fail_with

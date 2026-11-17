@@ -195,8 +195,6 @@ The gem provides complete access to Exa's API endpoints:
 
 These still work, so existing code keeps running. The search command prints the API's `warnings` to stderr when the API flags one of them. Use the replacement in new code.
 
-`exa-ai search` and `exa-ai get-contents` print one line on stderr for each deprecated flag you give, before the request is sent: `Warning: --livecrawl is deprecated; use --max-age-hours 0 --livecrawl-timeout 5000`. When a flag has no replacement, the line gives the reason. stdout does not change. Add `--strict` to make each line an `Error:` line: the command exits 1 and sends no request. With `--print-request`, the warnings come before the request body; with `--strict` and a deprecated flag, no body is printed. `exa-ai find-similar` does not warn and does not take `--strict`.
-
 - `find_similar` / `exa-ai find-similar`: deprecated by the API. Use `search` with a query that describes the source page.
 - `context` / `exa-ai context`: `/context` is not in the API spec. No replacement is named; for code lookup, use `search`.
 - Search types `fast` and `instant` are legacy; use `lite`. `deep-reasoning` is legacy; use `deep`.
@@ -208,6 +206,8 @@ These still work, so existing code keeps running. The search command prints the 
 - `exa-ai search --livecrawl` and `exa-ai find-similar --livecrawl` are deprecated. Use `--max-age-hours 0 --livecrawl-timeout 5000`, which sends the same request.
 - The `resolved_search_type` response field is deprecated.
 - The CLI no longer accepts `--category github`; it is not in the API's category list.
+
+`exa-ai search` and `exa-ai get-contents` print one line on stderr for each deprecated flag you give, before the request is sent: `Warning: --livecrawl is deprecated; use --max-age-hours 0 --livecrawl-timeout 5000`. When a flag has no replacement, the line gives the reason. stdout does not change. Add `--strict` to make each line an `Error:` line: the command exits 1 and sends no request. With `--print-request`, the warnings come before the request body; with `--strict` and a deprecated flag, no body is printed. `exa-ai find-similar` does not warn and does not take `--strict`.
 
 See [docs/API.md](docs/API.md) and [docs/CLI.md](docs/CLI.md) for details.
 
