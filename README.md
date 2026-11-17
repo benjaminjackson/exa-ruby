@@ -10,6 +10,7 @@ Ruby client for the Exa.ai API. Search and analyze web content using neural sear
 - [Quick Start](#quick-start)
 - [Features](#features)
 - [Agent](#agent)
+- [Search Monitors](#search-monitors)
 - [Error Handling](#error-handling)
 - [Documentation](#documentation)
 - [Development](#development)
@@ -328,6 +329,57 @@ exa-ai agent-run-delete <run_id>
 
 # Fetch a run's events
 exa-ai agent-run-events <run_id>
+```
+
+## Search Monitors
+
+A search monitor runs an Exa search on a schedule and posts new results to your webhook. This is the Monitors API (`/monitors`). It is a different product from Websets monitors (`create_monitor`, `exa-ai monitor-*`), which refresh a webset.
+
+### Ruby API
+
+```ruby
+client = Exa::Client.new(api_key: "your-key")
+
+# Create a monitor that runs once a day.
+# Without trigger:, the monitor runs only when you call search_monitor_trigger.
+monitor = client.search_monitor_create(
+  name: "AI funding news",
+  search: { query: "AI/ML infrastructure startups with Series A funding", num_results: 10 },
+  webhook: { url: "https://your-app.example/webhooks/exa" },
+  trigger: { type: "interval", period: "1d" }
+)
+monitor.webhook_secret # The API returns this only once. Store it now.
+
+client.search_monitor_get(monitor.id)
+client.search_monitor_list(status: "active", limit: 20)
+client.search_monitor_update(monitor.id, status: "paused")
+client.search_monitor_update(monitor.id, trigger: nil) # remove the schedule
+client.search_monitor_trigger(monitor.id)              # run now
+
+runs = client.search_monitor_runs_list(monitor.id)
+client.search_monitor_runs_get(monitor.id, runs.data.first.id)
+
+# Pause, unpause or delete many monitors. This is a dry run unless you pass dry_run: false.
+result = client.search_monitor_batch(action: "pause", filter: { name: "AI funding" })
+result.ids # what would change
+
+client.search_monitor_delete(monitor.id)
+```
+
+### Command Line
+
+```bash
+exa-ai search-monitor-create --query "AI/ML infrastructure startups with Series A funding" \
+  --webhook-url https://your-app.example/webhooks/exa --period 1d --name "AI funding news"
+exa-ai search-monitor-list --status active
+exa-ai search-monitor-get <monitor_id>
+exa-ai search-monitor-update <monitor_id> --status paused
+exa-ai search-monitor-trigger <monitor_id>
+exa-ai search-monitor-runs-list <monitor_id>
+exa-ai search-monitor-runs-get <monitor_id> <run_id>
+exa-ai search-monitor-batch --action pause --name "AI funding"            # dry run
+exa-ai search-monitor-batch --action pause --name "AI funding" --execute  # apply
+exa-ai search-monitor-delete <monitor_id>
 ```
 
 ## Error Handling

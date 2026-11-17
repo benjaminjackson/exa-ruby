@@ -9,6 +9,7 @@ Complete reference for the Exa Ruby client library.
 - [Answer](#answer)
 - [Context](#context)
 - [Get Contents](#get-contents)
+- [Search Monitors](#search-monitors)
 
 ## Client Initialization
 
@@ -241,6 +242,59 @@ contents = client.get_contents(["https://example.com"],
   summary: true
 )
 ```
+
+## Search Monitors
+
+A search monitor runs an Exa search on a schedule and posts new results to a webhook (`/monitors`). It is a different product from Websets monitors (`create_monitor`, `list_monitors`).
+
+### Create
+
+```ruby
+monitor = client.search_monitor_create(
+  search: { query: "AI/ML infrastructure startups with Series A funding", num_results: 10,
+            include_domains: ["techcrunch.com"] },
+  webhook: { url: "https://your-app.example/webhooks/exa", events: ["monitor.run.completed"] },
+  trigger: { type: "interval", period: "1d" }, # 1h minimum; omit for manual runs only
+  name: "AI funding news",
+  output_schema: { type: "object", properties: { company: { type: "string" } } },
+  metadata: { "team" => "research" }
+)
+monitor.webhook_secret # returned only once
+```
+
+Keys inside `search` are converted from snake_case to camelCase the same way as for `client.search`. The values of `output_schema` and `metadata` are sent as given.
+
+### Get, List, Update, Delete
+
+```ruby
+client.search_monitor_get("mon_abc123")
+client.search_monitor_list(status: "active", name: "AI", metadata: { "team" => "research" }, limit: 20, cursor: nil)
+client.search_monitor_update("mon_abc123", status: "paused")
+client.search_monitor_update("mon_abc123", trigger: nil) # sends "trigger": null, which removes the schedule
+client.search_monitor_delete("mon_abc123")
+```
+
+### Trigger and Runs
+
+```ruby
+client.search_monitor_trigger("mon_abc123").triggered # => true
+runs = client.search_monitor_runs_list("mon_abc123", limit: 10)
+run = client.search_monitor_runs_get("mon_abc123", runs.data.first.id)
+run.completed? # also pending?, running?, failed?, cancelled?, finished?
+```
+
+### Batch
+
+```ruby
+result = client.search_monitor_batch(action: "delete", filter: { status: "paused" })
+result.dry_run  # => true; nothing changed
+result = client.search_monitor_batch(action: "delete", filter: { status: "paused" }, dry_run: false, limit: 100)
+result.has_more # call again until false
+```
+
+`action` is `delete`, `pause` or `unpause`. `filter` takes `name`, `status` and `metadata`. The request is a dry run unless you pass `dry_run: false`.
+
+Return types: `SearchMonitor` (with `active?`, `paused?`, `disabled?`), `SearchMonitorList` (also used for pages of runs), `SearchMonitorRun`, `SearchMonitorBatchResult`, `SearchMonitorTriggerResult`.
 
 ## Response Objects
 

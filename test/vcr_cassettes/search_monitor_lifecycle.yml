@@ -1,0 +1,331 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.exa.ai/monitors
+    body:
+      encoding: UTF-8
+      string: '{"name":"exa-ruby integration test","metadata":{"test":"integration_test"},"search":{"query":"AI/ML
+        infrastructure startups with Series A funding","numResults":1},"webhook":{"url":"https://httpbin.org/post"}}'
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 17 Nov 2026 00:22:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - 48767e6e15be90a59b3c7b8d9e640a21
+      X-Exa-Region:
+      - us-west-2
+      X-Exa-Processing-Region:
+      - us
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - PAYMENT-REQUIRED,PAYMENT-RESPONSE,payment-required,payment-response,WWW-Authenticate,Payment-Receipt,x-request-id,x-exa-queued,x-exa-queue-ms,x-exa-region,x-exa-processing-region,Deprecation,Sunset,Retry-After,X-RateLimit-Scope
+      Cache-Control:
+      - private, no-store
+      Cdn-Cache-Control:
+      - no-store
+      Etag:
+      - W/"1b9-MN+qf6+l2Ooy9nsVG+eZkSYZDW8"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a5ba95778fb10f43-EWR
+    body:
+      encoding: UTF-8
+      string: '{"id":"01m7ke59tk48q586bzmavqz4p0","name":"exa-ruby integration test","status":"active","search":{"query":"AI/ML
+        infrastructure startups with Series A funding","numResults":1},"trigger":null,"outputSchema":null,"metadata":{"test":"integration_test"},"webhook":{"url":"https://httpbin.org/post"},"nextRunAt":null,"createdAt":"2026-11-17T00:22:56.083Z","updatedAt":"2026-11-17T00:22:56.128Z","webhookSecret":"<WEBHOOK_SECRET>"}'
+  recorded_at: Tue, 17 Nov 2026 00:22:56 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/monitors/01m7ke59tk48q586bzmavqz4p0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Nov 2026 00:22:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - b851fd33ab80b230f0b93dc699d04185
+      X-Exa-Region:
+      - us-west-2
+      X-Exa-Processing-Region:
+      - us
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - PAYMENT-REQUIRED,PAYMENT-RESPONSE,payment-required,payment-response,WWW-Authenticate,Payment-Receipt,x-request-id,x-exa-queued,x-exa-queue-ms,x-exa-region,x-exa-processing-region,Deprecation,Sunset,Retry-After,X-RateLimit-Scope
+      Cache-Control:
+      - private, no-store
+      Cdn-Cache-Control:
+      - no-store
+      Etag:
+      - W/"186-Dz/rCvyOxS2WUREKj4Bvz9clpk0"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a5ba957b7ce7c334-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"01m7ke59tk48q586bzmavqz4p0","name":"exa-ruby integration test","status":"active","search":{"query":"AI/ML
+        infrastructure startups with Series A funding","numResults":1},"trigger":null,"outputSchema":null,"metadata":{"test":"integration_test"},"webhook":{"url":"https://httpbin.org/post"},"nextRunAt":null,"createdAt":"2026-11-17T00:22:56.083Z","updatedAt":"2026-11-17T00:22:56.128Z"}'
+  recorded_at: Tue, 17 Nov 2026 00:22:56 GMT
+- request:
+    method: get
+    uri: https://api.exa.ai/monitors?limit=5&name=exa-ruby%20integration%20test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Nov 2026 00:22:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - e32d718e00e48dffdb2c0e7123ea69f0
+      X-Exa-Region:
+      - us-west-2
+      X-Exa-Processing-Region:
+      - us
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - PAYMENT-REQUIRED,PAYMENT-RESPONSE,payment-required,payment-response,WWW-Authenticate,Payment-Receipt,x-request-id,x-exa-queued,x-exa-queue-ms,x-exa-region,x-exa-processing-region,Deprecation,Sunset,Retry-After,X-RateLimit-Scope
+      Cache-Control:
+      - private, no-store
+      Cdn-Cache-Control:
+      - no-store
+      Etag:
+      - W/"1b3-Uwvno06m4F3HUYUtyuWPSLhDRpI"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a5ba957dbf671d63-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"01m7ke59tk48q586bzmavqz4p0","name":"exa-ruby integration
+        test","status":"active","search":{"query":"AI/ML infrastructure startups with
+        Series A funding","numResults":1},"trigger":null,"outputSchema":null,"metadata":{"test":"integration_test"},"webhook":{"url":"https://httpbin.org/post"},"nextRunAt":null,"createdAt":"2026-11-17T00:22:56.083Z","updatedAt":"2026-11-17T00:22:56.128Z"}],"hasMore":false,"nextCursor":null}'
+  recorded_at: Tue, 17 Nov 2026 00:22:57 GMT
+- request:
+    method: delete
+    uri: https://api.exa.ai/monitors/01m7ke59tk48q586bzmavqz4p0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - "<EXA_API_KEY>"
+      User-Agent:
+      - Faraday v2.14.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Nov 2026 00:22:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Cross-Origin-Resource-Policy:
+      - same-origin
+      Origin-Agent-Cluster:
+      - "?1"
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - bffd194e08c37e38020f796a3bdd8062
+      X-Exa-Region:
+      - us-west-2
+      X-Exa-Processing-Region:
+      - us
+      Vary:
+      - Origin
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - PAYMENT-REQUIRED,PAYMENT-RESPONSE,payment-required,payment-response,WWW-Authenticate,Payment-Receipt,x-request-id,x-exa-queued,x-exa-queue-ms,x-exa-region,x-exa-processing-region,Deprecation,Sunset,Retry-After,X-RateLimit-Scope
+      Cache-Control:
+      - private, no-store
+      Cdn-Cache-Control:
+      - no-store
+      Etag:
+      - W/"186-njy9fTFvYTOeXEEoVFi0y/vTStY"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a5ba95801ae5c34a-EWR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"01m7ke59tk48q586bzmavqz4p0","name":"exa-ruby integration test","status":"active","search":{"query":"AI/ML
+        infrastructure startups with Series A funding","numResults":1},"trigger":null,"outputSchema":null,"metadata":{"test":"integration_test"},"webhook":{"url":"https://httpbin.org/post"},"nextRunAt":null,"createdAt":"2026-11-17T00:22:56.083Z","updatedAt":"2026-11-17T00:22:57.453Z"}'
+  recorded_at: Tue, 17 Nov 2026 00:22:57 GMT
+recorded_with: VCR 6.3.1

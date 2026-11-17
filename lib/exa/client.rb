@@ -163,6 +163,100 @@ module Exa
       Services::AgentRunEvents.new(connection, run_id: run_id, **params).call
     end
 
+    # Create a search monitor: a scheduled Exa search that posts new results to a webhook.
+    # This is the /monitors API, not Websets monitors (see #create_monitor).
+    #
+    # @param search [Hash] Search to run (required: :query; optional :num_results,
+    #   :include_domains, :exclude_domains, :contents)
+    # @param webhook [Hash] Webhook to call (required: :url; optional :events)
+    # @param params [Hash] Additional parameters
+    # @option params [Hash] :trigger Schedule, e.g. { type: "interval", period: "1d" }.
+    #   Without it the monitor runs only when triggered by hand.
+    # @option params [String] :name Monitor name
+    # @option params [Hash] :output_schema JSON schema for structured output (sent as given)
+    # @option params [Hash] :metadata Custom metadata (sent as given)
+    # @return [Resources::SearchMonitor] The new monitor. Its webhook_secret is returned only once.
+    def search_monitor_create(search:, webhook:, **params)
+      Services::SearchMonitors::Create.new(connection, search: search, webhook: webhook, **params).call
+    end
+
+    # List search monitors
+    #
+    # @param params [Hash] Filters and pagination
+    # @option params [String] :status Filter by status (active, paused, disabled)
+    # @option params [String] :name Filter by name (case-insensitive substring)
+    # @option params [Hash] :metadata Filter by metadata key-value pairs
+    # @option params [Integer] :limit Results per page
+    # @option params [String] :cursor Cursor for pagination
+    # @return [Resources::SearchMonitorList] One page of monitors
+    def search_monitor_list(**params)
+      Services::SearchMonitors::List.new(connection, **params).call
+    end
+
+    # Get a search monitor
+    #
+    # @param id [String] Monitor ID
+    # @return [Resources::SearchMonitor] The monitor
+    def search_monitor_get(id)
+      Services::SearchMonitors::Get.new(connection, id: id).call
+    end
+
+    # Update a search monitor. Only the keys given are changed.
+    #
+    # @param id [String] Monitor ID
+    # @param params [Hash] Fields to change: :name, :status, :search, :trigger,
+    #   :webhook, :output_schema, :metadata. Pass trigger: nil to remove the schedule.
+    # @return [Resources::SearchMonitor] The updated monitor
+    def search_monitor_update(id, **params)
+      Services::SearchMonitors::Update.new(connection, id: id, **params).call
+    end
+
+    # Delete a search monitor
+    #
+    # @param id [String] Monitor ID
+    # @return [Resources::SearchMonitor] The deleted monitor
+    def search_monitor_delete(id)
+      Services::SearchMonitors::Delete.new(connection, id: id).call
+    end
+
+    # Run a search monitor now. Works when its status is active or paused.
+    #
+    # @param id [String] Monitor ID
+    # @return [Resources::SearchMonitorTriggerResult] Whether a run started
+    def search_monitor_trigger(id)
+      Services::SearchMonitors::Trigger.new(connection, id: id).call
+    end
+
+    # Delete, pause or unpause every search monitor that matches a filter.
+    # Call again until has_more is false.
+    #
+    # @param action [String] "delete", "pause" or "unpause"
+    # @param filter [Hash] :name, :status and/or :metadata to match
+    # @param dry_run [Boolean] Only report what would change. True unless you pass false.
+    # @param limit [Integer, nil] Maximum monitors to change in this call
+    # @return [Resources::SearchMonitorBatchResult] What changed, or would change
+    def search_monitor_batch(action:, filter:, dry_run: true, limit: nil)
+      Services::SearchMonitors::Batch.new(connection, action: action, filter: filter, dry_run: dry_run, limit: limit).call
+    end
+
+    # List the runs of a search monitor
+    #
+    # @param monitor_id [String] Monitor ID
+    # @param params [Hash] Pagination: :limit, :cursor
+    # @return [Resources::SearchMonitorList] One page of runs
+    def search_monitor_runs_list(monitor_id, **params)
+      Services::SearchMonitors::RunsList.new(connection, monitor_id: monitor_id, **params).call
+    end
+
+    # Get one run of a search monitor
+    #
+    # @param monitor_id [String] Monitor ID
+    # @param run_id [String] Run ID
+    # @return [Resources::SearchMonitorRun] The run
+    def search_monitor_runs_get(monitor_id, run_id)
+      Services::SearchMonitors::RunsGet.new(connection, monitor_id: monitor_id, run_id: run_id).call
+    end
+
     # Search code repositories
     #
     # @param query [String] Code search query

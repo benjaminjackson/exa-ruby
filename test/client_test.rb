@@ -724,6 +724,103 @@ class ClientTest < Minitest::Test
     assert_equal "imp_123", result.id
   end
 
+  def stub_search_monitor_call(method, path, body)
+    stub_request(method, "https://api.exa.ai#{path}")
+      .to_return(status: 200, body: body.to_json, headers: { "Content-Type" => "application/json" })
+  end
+
+  def test_search_monitor_create_returns_search_monitor
+    stub_search_monitor_call(:post, "/monitors", { id: "mon_123", status: "active", webhookSecret: "whsec_1" })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_create(
+      search: { query: "AI/ML infrastructure startups with Series A funding" },
+      webhook: { url: "https://example.com/webhooks/exa" }
+    )
+
+    assert_instance_of Exa::Resources::SearchMonitor, result
+    assert_equal "whsec_1", result.webhook_secret
+  end
+
+  def test_search_monitor_list_returns_search_monitor_list
+    stub_search_monitor_call(:get, "/monitors?status=paused", { data: [{ id: "mon_123" }], hasMore: false })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_list(status: "paused")
+
+    assert_instance_of Exa::Resources::SearchMonitorList, result
+    assert_equal "mon_123", result.data.first.id
+  end
+
+  def test_search_monitor_get_returns_search_monitor
+    stub_search_monitor_call(:get, "/monitors/mon_123", { id: "mon_123", status: "active" })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_get("mon_123")
+
+    assert_equal "mon_123", result.id
+  end
+
+  def test_search_monitor_update_patches_search_monitor
+    stub_search_monitor_call(:patch, "/monitors/mon_123", { id: "mon_123", status: "paused" })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_update("mon_123", status: "paused")
+
+    assert_requested :patch, "https://api.exa.ai/monitors/mon_123", body: { status: "paused" }.to_json
+    assert result.paused?
+  end
+
+  def test_search_monitor_delete_returns_deleted_monitor
+    stub_search_monitor_call(:delete, "/monitors/mon_123", { id: "mon_123", status: "active" })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_delete("mon_123")
+
+    assert_requested :delete, "https://api.exa.ai/monitors/mon_123"
+    assert_equal "mon_123", result.id
+  end
+
+  def test_search_monitor_trigger_returns_trigger_result
+    stub_search_monitor_call(:post, "/monitors/mon_123/trigger", { triggered: true })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_trigger("mon_123")
+
+    assert_equal true, result.triggered
+  end
+
+  def test_search_monitor_batch_defaults_to_dry_run
+    stub_search_monitor_call(:post, "/monitors/batch", { action: "pause", affected: 0, ids: [], dry_run: true, has_more: false })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_batch(action: "pause", filter: { status: "active" })
+
+    assert_requested :post, "https://api.exa.ai/monitors/batch",
+      body: { action: "pause", filter: { status: "active" }, dry_run: true }.to_json
+    assert_instance_of Exa::Resources::SearchMonitorBatchResult, result
+  end
+
+  def test_search_monitor_runs_list_returns_run_list
+    stub_search_monitor_call(:get, "/monitors/mon_123/runs", { data: [{ id: "run_1", monitorId: "mon_123" }], hasMore: false })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_runs_list("mon_123")
+
+    assert_instance_of Exa::Resources::SearchMonitorList, result
+    assert_equal "run_1", result.data.first.id
+  end
+
+  def test_search_monitor_runs_get_returns_run
+    stub_search_monitor_call(:get, "/monitors/mon_123/runs/run_1", { id: "run_1", monitorId: "mon_123", status: "running" })
+
+    client = Exa::Client.new(api_key: "test_key")
+    result = client.search_monitor_runs_get("mon_123", "run_1")
+
+    assert_instance_of Exa::Resources::SearchMonitorRun, result
+    assert result.running?
+  end
+
   def test_create_monitor_returns_monitor
     stub_request(:post, "https://api.exa.ai/websets/v0/monitors")
       .with(body: hash_including(
