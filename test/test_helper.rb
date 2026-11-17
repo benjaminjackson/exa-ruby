@@ -37,8 +37,11 @@ VCR.configure do |config|
     match_requests_on: [:method, :uri, :body],
     allow_playback_repeats: true
   }
-  # Allow HTTP connections when no cassette is active (for polling outside cassette blocks)
-  config.allow_http_connections_when_no_cassette = true
+  # Integration runs make real requests outside cassette blocks: the leftover
+  # webset sweep before and after the suite, and the teardown that deletes
+  # created websets. Both run only with a real API key. In every other run, a
+  # request that matches no stub and no cassette must raise, never reach the network.
+  config.allow_http_connections_when_no_cassette = ENV["RUN_INTEGRATION_TESTS"] == "true"
   # Filter sensitive data
   config.filter_sensitive_data("<EXA_API_KEY>") { ENV["EXA_API_KEY"] }
 
