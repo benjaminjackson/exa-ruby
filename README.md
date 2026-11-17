@@ -150,6 +150,12 @@ puts code.response
 # Get page contents
 contents = client.get_contents(["https://ruby-lang.org"])
 puts contents.results.first["text"]
+
+# Stream a search with a synthesized answer (requires output_schema)
+schema = { type: "object", properties: { summary: { type: "string" } } }
+client.search_stream("Ruby 3.4 release highlights", output_schema: schema) do |chunk|
+  print chunk["delta"] if chunk["type"] == "text-delta"
+end
 ```
 
 ### Command Line
@@ -161,6 +167,9 @@ exa-ai find-similar "https://arxiv.org/abs/2307.06435"
 exa-ai answer "What is machine learning?"
 exa-ai context "React hooks" --tokens-num 5000
 exa-ai get-contents "https://ruby-lang.org"
+exa-ai search "climate tech seed rounds" --type lite --objective "Find primary sources"
+exa-ai get-contents --ids DOC_ID_1,DOC_ID_2 --highlights --highlights-verbosity low
+exa-ai answer "What is machine learning?" --model exa-pro --user-location US
 
 # Webset Management
 exa-ai webset-create --search '{"query":"technology companies","count":1}'
