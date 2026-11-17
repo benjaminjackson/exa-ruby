@@ -37,6 +37,21 @@ module Exa
     # @option params [Array<String>] :include_domains Domains to include in results
     # @option params [Array<String>] :exclude_domains Domains to exclude from results
     # @option params [Integer] :num_results Number of results to return
+    #
+    # Deprecated and legacy parameters still work, and the API reports them
+    # in the response's warnings:
+    # - :type "fast" and "instant" are legacy; use "lite". "deep-reasoning"
+    #   is legacy; use "deep".
+    # - :start_crawl_date and :end_crawl_date are deprecated. The API ignores
+    #   them and adds an IGNORED_FIELD warning.
+    # - :include_text and :exclude_text are deprecated.
+    # - :context (and :context_max_characters) is deprecated; use :highlights
+    #   or :text.
+    # - :highlights_num_sentences (highlights numSentences) is deprecated; use
+    #   :highlights_max_characters. :highlights_per_url is deprecated and
+    #   ignored by the API.
+    # - :subpages and :subpage_target are deprecated on search; pass them to
+    #   #get_contents instead.
     # @return [Resources::SearchResult] Search results with metadata
     def search(query, **params)
       Services::Search.new(connection, query: query, **params).call
@@ -44,10 +59,14 @@ module Exa
 
     # Find similar content to a given URL
     #
+    # @deprecated The API marks /findSimilar as deprecated. Use #search with
+    #   a query that describes the source page instead. This method still
+    #   works. Its :start_crawl_date, :end_crawl_date, :include_text,
+    #   :exclude_text and :context options are deprecated as on #search.
     # @param url [String] URL to find similar content for
     # @param options [Hash] Search options
     # @option options [Integer] :num_results Number of results to return
-    # @return [Resources::SearchResult] Similar results
+    # @return [Resources::FindSimilarResult] Similar results
     def find_similar(url, **options)
       Services::FindSimilar.new(connection, url: url, **options).call
     end
@@ -59,6 +78,10 @@ module Exa
     #   instead; urls is sent only when given. Nil and empty count as missing.
     # @param options [Hash] Fetch options
     # @option options [Array<String>] :ids Document IDs from earlier searches
+    # @option options [Boolean, Hash] :context Deprecated; use :highlights or
+    #   :text. The highlights numSentences and highlightsPerUrl keys are also
+    #   deprecated; use maxCharacters. :subpages and :subpage_target stay
+    #   valid here.
     # @raise [ArgumentError] when neither urls nor :ids is given
     # @return [Resources::ContentsResult] Page contents with metadata
     def get_contents(urls = nil, **options)
@@ -321,6 +344,9 @@ module Exa
 
     # Search code repositories
     #
+    # @deprecated The Exa API spec no longer lists POST /context. The
+    #   endpoint still answers and this method still works, but no
+    #   replacement is named. For code lookup, use #search.
     # @param query [String] Code search query
     # @param params [Hash] Search parameters
     # @option params [Array<String>] :languages Programming languages to search
