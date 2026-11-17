@@ -7,7 +7,7 @@ module Exa
       VALID_TEXT_VERBOSITY = ["compact", "standard", "full"].freeze
       VALID_COMPLIANCE = ["hipaa"].freeze
       VALID_CATEGORIES = [
-        "company", "publication", "news", "github",
+        "company", "publication", "news",
         "personal site", "people", "financial report"
       ].freeze
 

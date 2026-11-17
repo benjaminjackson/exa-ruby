@@ -21,7 +21,7 @@ def print_help
                                    deep/deep-lite/deep-reasoning synthesize an 'output' field
                                    only when --output-schema is provided
       --category CAT               Focus on specific data category
-                                   Options: "company", "publication", "news", "github",
+                                   Options: "company", "publication", "news",
                                    "personal site", "people", "financial report"
       --include-domains D          Comma-separated list of domains to include
       --exclude-domains D          Comma-separated list of domains to exclude

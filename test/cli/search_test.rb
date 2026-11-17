@@ -70,7 +70,7 @@ class Exa::CLI::SearchTest < Minitest::Test
   end
 
   def test_parses_all_valid_categories
-    valid_categories = ["company", "publication", "news", "github", "personal site", "people", "financial report"]
+    valid_categories = ["company", "publication", "news", "personal site", "people", "financial report"]
     valid_categories.each do |category|
       args = parse_search_args(["test query", "--category", category])
       assert_equal category, args[:category], "Failed to parse category: #{category}"
@@ -98,9 +98,14 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_includes error.message.downcase, "category"
   end
 
-  def test_parses_category_github_flag
-    args = parse_search_args(["test query", "--category", "github"])
-    assert_equal "github", args[:category]
+  # The spec dropped github from the category enum, so the CLI rejects it
+  # before any request is built.
+  def test_rejects_category_github
+    error = assert_raises(ArgumentError) do
+      parse_search_args(["Ruby HTTP client libraries", "--category", "github"])
+    end
+    assert_includes error.message.downcase, "category"
+    assert_not_requested :any, /api\.exa\.ai/
   end
 
   def test_parses_highlights_flag

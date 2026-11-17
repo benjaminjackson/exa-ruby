@@ -100,7 +100,7 @@ def parse_args(argv)
           --num-results N              Number of results to return (default: 10)
           --exclude-source-domain      Exclude results from the source URL's domain
           --category CAT               Focus on specific data category
-                                       Options: "company", "publication", "news", "github",
+                                       Options: "company", "publication", "news",
                                        "personal site", "people", "financial report"
           --include-domains D          Comma-separated list of domains to include
           --exclude-domains D          Comma-separated list of domains to exclude
