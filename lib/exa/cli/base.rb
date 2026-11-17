@@ -65,6 +65,16 @@ module Exa
         value
       end
 
+      # Return the value of a free-text option such as --summary-query. Like
+      # option_value, but also fails when the value starts with two dashes:
+      # that is the next flag, so the user left this option's value out.
+      def self.text_value(flag, value)
+        option_value(flag, value)
+        fail_with("#{flag} needs a value (got the flag #{value})") if value.start_with?("--")
+
+        value
+      end
+
       # Parse a base-10 integer option. "abc", "10abc", "1.5" and "0x10" all
       # fail with one error line instead of silently becoming a number.
       def self.parse_integer(flag, value)

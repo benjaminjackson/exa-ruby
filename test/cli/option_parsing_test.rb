@@ -61,4 +61,41 @@ class OptionParsingTest < Minitest::Test
     assert_equal "Error: --ids needs a value\n", stderr
     assert_not_requested :any, /exa\.ai/
   end
+
+  def test_search_rejects_subpage_target_given_last_without_value
+    stub_request(:post, "https://api.exa.ai/search")
+
+    _stdout, stderr, status = run_exe_in_process(
+      "exa-ai-search", "AI chip startups with Series A funding", "--api-key", "test_key", "--subpage-target"
+    )
+
+    assert_equal 1, status
+    assert_equal "Error: --subpage-target needs a value\n", stderr
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_search_rejects_flag_as_summary_query_value
+    stub_request(:post, "https://api.exa.ai/search")
+
+    _stdout, stderr, status = run_exe_in_process(
+      "exa-ai-search", "AI chip startups with Series A funding", "--api-key", "test_key",
+      "--summary", "--summary-query", "--text"
+    )
+
+    assert_equal 1, status
+    assert_equal "Error: --summary-query needs a value (got the flag --text)\n", stderr
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_search_rejects_unknown_flag_instead_of_adding_it_to_the_query
+    stub_request(:post, "https://api.exa.ai/search")
+
+    _stdout, stderr, status = run_exe_in_process(
+      "exa-ai-search", "--highlight", "AI chip startups with Series A funding", "--api-key", "test_key"
+    )
+
+    assert_equal 1, status
+    assert_equal "Error: unknown option --highlight\n", stderr
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
 end

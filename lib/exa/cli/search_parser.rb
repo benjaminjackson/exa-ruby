@@ -131,6 +131,11 @@ module Exa
             @args[:moderation] = true
             i += 1
           else
+            if arg.start_with?("--")
+              warn "Error: unknown option #{arg}"
+              exit 1
+            end
+
             query_parts << arg
             i += 1
           end

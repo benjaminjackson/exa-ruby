@@ -101,6 +101,24 @@ class Exa::CLI::BaseTest < Minitest::Test
     assert_equal "Error: --include-domains needs a value\n", stderr
   end
 
+  def test_text_value_returns_the_value
+    assert_equal "state-of-the-art", Exa::CLI::Base.text_value("--summary-query", "state-of-the-art")
+  end
+
+  def test_text_value_exits_when_value_missing
+    stderr, status = capture_exit { Exa::CLI::Base.text_value("--summary-query", nil) }
+
+    assert_equal 1, status
+    assert_equal "Error: --summary-query needs a value\n", stderr
+  end
+
+  def test_text_value_exits_when_next_argument_is_a_flag
+    stderr, status = capture_exit { Exa::CLI::Base.text_value("--summary-query", "--text") }
+
+    assert_equal 1, status
+    assert_equal "Error: --summary-query needs a value (got the flag --text)\n", stderr
+  end
+
   def test_parse_integer_returns_integer
     assert_equal 25, Exa::CLI::Base.parse_integer("--limit", "25")
   end
