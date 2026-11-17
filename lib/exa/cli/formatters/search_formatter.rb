@@ -20,8 +20,8 @@ module Exa
         end
 
         # Writes one line per API warning to io (stderr by default). The API
-        # says warnings are for logs, not for a model, so they stay out of
-        # stdout in every output format.
+        # says warnings are for logs, not for a model, so pretty and text
+        # output leave them out; json and toon still carry them through to_h.
         def self.print_warnings(result, io = $stderr)
           (result.warnings || []).each do |warning|
             io.puts "Warning: #{warning['message']} (#{warning['path']})"
