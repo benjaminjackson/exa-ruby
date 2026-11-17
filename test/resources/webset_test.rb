@@ -114,13 +114,6 @@ module Exa
         assert_equal "Test", hash[:title]
       end
 
-      private
-
-      def symbolize_keys(hash)
-        hash.transform_keys { |k| k.to_s.gsub(/([A-Z])/, '_\1').downcase.to_sym }
-            .transform_values { |v| v.is_a?(Hash) ? symbolize_keys(v) : v }
-      end
-
       # Every value of the spec's status enum has a helper that is true only for that value.
       def test_each_spec_status_has_a_helper
         %w[idle pending running paused].each do |status|
@@ -130,6 +123,13 @@ module Exa
             assert_equal other == status, resource.public_send("#{other}?"), "#{other}? with status #{status}"
           end
         end
+      end
+
+      private
+
+      def symbolize_keys(hash)
+        hash.transform_keys { |k| k.to_s.gsub(/([A-Z])/, '_\1').downcase.to_sym }
+            .transform_values { |v| v.is_a?(Hash) ? symbolize_keys(v) : v }
       end
     end
   end
