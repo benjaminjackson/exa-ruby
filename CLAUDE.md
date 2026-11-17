@@ -145,10 +145,10 @@ When making targeted fixes to a specific feature, avoid running the full test su
 **Example workflow:**
 ```bash
 # Write failing test, then run just that test
-bundle exec rake test TEST=test/services/websets/create_search_test.rb TESTOPTS="--name=test_creates_search_with_criteria"
+bundle exec rake test TEST=test/services/search_monitors/create_test.rb TESTOPTS="--name=test_call_posts_to_monitors"
 
 # Fix the code, re-run the single test
-bundle exec rake test TEST=test/services/websets/create_search_test.rb TESTOPTS="--name=test_creates_search_with_criteria"
+bundle exec rake test TEST=test/services/search_monitors/create_test.rb TESTOPTS="--name=test_call_posts_to_monitors"
 
 # Once green, run full suite ONLY if production code was modified
 bundle exec rake test
