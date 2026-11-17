@@ -4,6 +4,7 @@ require "test_helper"
 
 class AnswerTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
   end
 

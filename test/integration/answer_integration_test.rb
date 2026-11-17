@@ -4,6 +4,7 @@ require "test_helper"
 
 class AnswerIntegrationTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
   def test_answer_returns_answer_with_citations

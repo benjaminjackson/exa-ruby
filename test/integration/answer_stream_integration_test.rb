@@ -4,6 +4,7 @@ require "test_helper"
 
 class AnswerStreamIntegrationTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
   def test_answer_stream_yields_chunks

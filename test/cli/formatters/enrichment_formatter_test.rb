@@ -4,6 +4,7 @@ require "test_helper"
 
 class EnrichmentFormatterTest < Minitest::Test
   def setup
+    super
     @enrichment = Exa::Resources::WebsetEnrichment.new(
       id: "enr_123",
       object: "enrichment",

@@ -6,6 +6,7 @@ class AgentRunGetIntegrationTest < Minitest::Test
   VALID_STATUSES = %w[queued running completed failed cancelled].freeze
 
   def setup
+    super
     skip_unless_integration_enabled
   end
 

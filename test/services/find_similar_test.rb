@@ -3,6 +3,7 @@ require_relative "../../lib/exa/services/find_similar"
 
 class FindSimilarTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
   end
 

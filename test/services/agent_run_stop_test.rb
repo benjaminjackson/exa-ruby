@@ -4,6 +4,7 @@ require_relative "../../lib/exa/resources/agent_run"
 
 class AgentRunStopTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
     @run_id = "run-abc123"
     @stop_url = "https://api.exa.ai/agent/runs/#{@run_id}/stop"

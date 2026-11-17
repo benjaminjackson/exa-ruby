@@ -8,6 +8,7 @@ require "test_helper"
 
 class FindSimilarIntegrationTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
   # Test that we can make a real find_similar request and get results back

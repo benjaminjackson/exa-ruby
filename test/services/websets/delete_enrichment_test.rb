@@ -4,6 +4,7 @@ require "test_helper"
 
 class WebsetsDeleteEnrichmentTest < Minitest::Test
   def setup
+    super
     @connection = Minitest::Mock.new
   end
 

@@ -5,6 +5,7 @@ require "exa/cli/formatters/context_formatter"
 
 class Exa::CLI::Formatters::ContextFormatterTest < Minitest::Test
   def setup
+    super
     @result = Exa::Resources::ContextResult.new(
       request_id: "req_123",
       query: "ruby authentication",

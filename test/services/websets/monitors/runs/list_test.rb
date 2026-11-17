@@ -9,6 +9,7 @@ module Exa
         module Runs
           class ListTest < Minitest::Test
             def setup
+              super
               @connection = Exa::Connection.build(api_key: "test_key")
               @monitor_id = "mon_123"
             end

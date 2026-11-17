@@ -4,6 +4,7 @@ require "test_helper"
 
 class MonitorRunFormatterTest < Minitest::Test
   def setup
+    super
     @monitor_run = Exa::Resources::MonitorRun.new(
       id: "run_123",
       object: "monitor_run",

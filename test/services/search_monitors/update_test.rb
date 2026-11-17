@@ -2,6 +2,7 @@ require "test_helper"
 
 class SearchMonitorsUpdateTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
     stub_request(:patch, "https://api.exa.ai/monitors/mon_abc123")
       .to_return(

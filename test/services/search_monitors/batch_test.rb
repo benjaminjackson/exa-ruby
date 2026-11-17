@@ -2,6 +2,7 @@ require "test_helper"
 
 class SearchMonitorsBatchTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
     stub_request(:post, "https://api.exa.ai/monitors/batch")
       .to_return(

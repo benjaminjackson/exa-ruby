@@ -62,6 +62,18 @@ class OptionParsingTest < Minitest::Test
     assert_not_requested :any, /exa\.ai/
   end
 
+  def test_search_rejects_subpage_target_without_value_before_any_request
+    stub_request(:any, /api\.exa\.ai/)
+
+    _stdout, stderr, status = run_exe_in_process(
+      "exa-ai-search", "AI chip startups with Series A funding", "--api-key", "test_key", "--subpage-target"
+    )
+
+    assert_equal 1, status
+    assert_equal "Error: --subpage-target needs a value\n", stderr
+    assert_not_requested(:any, /api\.exa\.ai/)
+  end
+
   def test_search_rejects_subpage_target_given_last_without_value
     stub_request(:post, "https://api.exa.ai/search")
 

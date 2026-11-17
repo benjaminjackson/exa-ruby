@@ -7,6 +7,7 @@ module Exa
     module Websets
       class UpdateImportTest < Minitest::Test
         def setup
+          super
           @connection = Exa::Connection.build(api_key: "test_key")
           @import_id = "import_123"
         end

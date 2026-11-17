@@ -4,6 +4,7 @@ require_relative "../../lib/exa/resources/contents_result"
 
 class GetContentsTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
   end
 

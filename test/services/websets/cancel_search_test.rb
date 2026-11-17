@@ -7,6 +7,7 @@ module Exa
     module Websets
       class CancelSearchTest < Minitest::Test
         def setup
+          super
           @connection = Exa::Connection.build(api_key: "test_key")
           @webset_id = "ws_abc123"
           @search_id = "search_xyz789"

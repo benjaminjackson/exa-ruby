@@ -8,6 +8,7 @@ require "test_helper"
 # AgentRunCreate unit test; this exercises the response side end-to-end.
 class AgentRunStructuredOutputIntegrationTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
 

@@ -6,6 +6,7 @@ require "test_helper"
 # This is expected! We're creating the integration tests first (TDD approach).
 class GetContentsIntegrationTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
   # Test that we can retrieve contents for a URL

@@ -7,6 +7,7 @@ module Exa
     module Websets
       class DeleteItemTest < Minitest::Test
         def setup
+          super
           @connection = Exa::Connection.build(api_key: "test_key")
         end
 

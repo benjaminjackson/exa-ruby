@@ -3,6 +3,7 @@ require_relative "../../lib/exa/services/agent_run_get"
 
 class AgentRunGetTest < Minitest::Test
   def setup
+    super
     @connection = Exa::Connection.build(api_key: "test_key")
   end
 

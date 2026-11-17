@@ -4,6 +4,7 @@ require "test_helper"
 
 class AgentRunCancelIntegrationTest < Minitest::Test
   def setup
+    super
     skip_unless_integration_enabled
   end
 
