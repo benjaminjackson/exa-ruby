@@ -79,10 +79,8 @@ module Exa
           end
         end
 
-        unless @buffer.empty?
-          event = self.class.parse_frame(@buffer)
-          interceptor.call(*event) if event
-        end
+        event = self.class.parse_frame(@buffer)
+        interceptor.call(*event) if event
 
         @final_payload && Resources::AgentRun.from_response(@final_payload)
       end

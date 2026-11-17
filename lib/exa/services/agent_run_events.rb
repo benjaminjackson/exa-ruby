@@ -42,9 +42,7 @@ module Exa
 
         frames = response.body.to_s.gsub("\r\n", "\n").split("\n\n")
         parsed_frames = frames.filter_map { |frame| AgentRunStream.parse_frame(frame) }
-        events = parsed_frames.map do |event_type, data, event_id|
-          { "id" => event_id, "event" => event_type, "data" => data }
-        end
+        events = parsed_frames.map { |event_type, data, event_id| { "id" => event_id, "event" => event_type, "data" => data } }
 
         Resources::AgentRunEventList.new(data: events, has_more: false, next_cursor: nil)
       end

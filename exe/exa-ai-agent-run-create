@@ -19,7 +19,7 @@ end
 # converter). Prints one error line and exits 1 when the value is not a number.
 def parse_number_arg(value, flag_name, converter)
   send(converter, value.to_s)
-rescue ArgumentError, TypeError
+rescue ArgumentError
   $stderr.puts "Error: #{flag_name} must be a number (got #{value.inspect})"
   exit 1
 end
@@ -222,12 +222,8 @@ begin
   end
   run_params[:previous_run_id] = args[:previous_run_id] if args[:previous_run_id]
   run_params[:output_schema] = args[:output_schema] if args[:output_schema]
-  if args[:max_cost_dollars] || args[:max_duration_seconds]
-    budget = {}
-    budget[:max_cost_dollars] = args[:max_cost_dollars] if args[:max_cost_dollars]
-    budget[:max_duration_seconds] = args[:max_duration_seconds] if args[:max_duration_seconds]
-    run_params[:budget] = budget
-  end
+  budget = { max_cost_dollars: args[:max_cost_dollars], max_duration_seconds: args[:max_duration_seconds] }.compact
+  run_params[:budget] = budget unless budget.empty?
   run_params[:metadata] = args[:metadata] if args[:metadata]
   run_params[:user_identifier] = args[:user_identifier] if args[:user_identifier]
 

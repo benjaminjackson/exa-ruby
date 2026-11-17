@@ -84,10 +84,7 @@ module Exa
               total = run.cost_dollars.is_a?(Hash) ? (run.cost_dollars["total"] || run.cost_dollars[:total]) : run.cost_dollars
               output << "Cost: $#{total}"
             end
-            data_source_costs = data_source_costs_line(run)
-            output << data_source_costs if data_source_costs
-            usage = usage_line(run)
-            output << usage if usage
+            output.concat([data_source_costs_line(run), usage_line(run)].compact)
             output << "Completed: #{run.completed_at}" if run.completed_at
             output << "Stop reason: #{run.stop_reason}" if run.stop_reason
           when "failed"
