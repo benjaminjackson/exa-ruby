@@ -288,4 +288,12 @@ class Exa::CLI::GetContentsTest < Minitest::Test
 
     assert_equal "urls", JSON.parse(raw_body).keys.first
   end
+
+  def test_client_get_contents_without_urls_or_ids_raises_argument_error
+    stub_request(:post, "https://api.exa.ai/contents")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    assert_raises(ArgumentError) { Exa::Client.new(api_key: "test_key").get_contents(text: true) }
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
 end

@@ -58,8 +58,11 @@ module Exa
     #   Leave out when passing :ids instead; urls is sent only when given.
     # @param options [Hash] Fetch options
     # @option options [Array<String>] :ids Document IDs from earlier searches
+    # @raise [ArgumentError] when neither urls nor :ids is given
     # @return [Resources::ContentsResult] Page contents with metadata
     def get_contents(urls = nil, **options)
+      raise ArgumentError, "get_contents requires urls or the ids: option" unless urls || options[:ids]
+
       options = { urls: urls }.merge(options) if urls
       Services::GetContents.new(connection, **options).call
     end
