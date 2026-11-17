@@ -119,9 +119,14 @@ module Exa
     # The parameter converter turns snake_case keys into camelCase at every depth,
     # so +budget+, +input+ and +data_sources+ items can use snake_case keys. Keys
     # inside +metadata+ and +output_schema+ are user data and go out exactly as given.
-    # @yield [chunk] Yields each streamed event chunk as it arrives
-    # @yieldparam chunk [Hash] Partial agent run event data
-    # @return [void]
+    #
+    # @yield [event_type, data, event_id] Yields each streamed event as it arrives.
+    #   A block that takes only (event_type, data) also works.
+    # @yieldparam event_type [String] Event name, for example "agent_run.completed"
+    # @yieldparam data [Hash] The event's JSON payload
+    # @yieldparam event_id [String, nil] The SSE id of the event, if the server sent one
+    # @return [Resources::AgentRun, nil] The final run from the terminal event, or nil
+    #   if the stream ended before one arrived
     def agent_run_stream(query:, **params, &block)
       Services::AgentRunStream.new(connection, query: query, **params).call(&block)
     end
