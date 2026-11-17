@@ -106,6 +106,23 @@ module Exa
         fail_with("#{flag} file could not be read: #{e.message}")
       end
 
+      # Print one stderr line for each deprecated flag the user typed, given
+      # as flag table entries in command-line order. The line names the
+      # replacement, or the reason when there is none. A flag given twice
+      # gets one line. Without strict each line starts with "Warning:" and the
+      # command goes on; with strict each starts with "Error:" and the
+      # command exits 1, so wrappers can refuse deprecated flags.
+      def self.report_deprecated_flags(entries, strict:)
+        return if entries.empty?
+
+        prefix = strict ? "Error" : "Warning"
+        entries.uniq.each do |entry|
+          advice = entry[:replacement] ? "use #{entry[:replacement]}" : entry[:reason]
+          warn "#{prefix}: #{entry[:flag]} is deprecated; #{advice}"
+        end
+        exit 1 if strict
+      end
+
       # Print one error line to stderr and exit with status 1.
       def self.fail_with(message)
         warn "Error: #{message}"

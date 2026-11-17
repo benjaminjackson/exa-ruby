@@ -2,6 +2,7 @@
 
 require "test_helper"
 require "exa/cli/search_parser"
+require "minitest/mock"
 require "tempfile"
 
 class Exa::CLI::SearchTest < Minitest::Test
@@ -383,7 +384,10 @@ class Exa::CLI::SearchTest < Minitest::Test
                     '"extras":{"links":2,"imageLinks":3},' \
                     '"highlights":{"maxCharacters":10,"numSentences":2,"highlightsPerUrl":4,"query":"funding rounds"},' \
                     '"maxAgeHours":0,"livecrawlTimeout":1000}}'
-    assert_equal expected_body, stderr.lines.first.chomp
+    warned_flags = %w[--context --context-max-characters --subpages --subpage-target
+                      --highlights-num-sentences --highlights-per-url --livecrawl]
+    assert_equal warned_flags, stderr.lines[0...-1].map { |line| line[/\AWarning: (--[a-z-]+) is deprecated; /, 1] }
+    assert_equal expected_body, stderr.lines.last.chomp
   end
 
   {
@@ -439,7 +443,160 @@ class Exa::CLI::SearchTest < Minitest::Test
     end
   end
 
+  LIVECRAWL_WARNING = "--livecrawl is deprecated; use --max-age-hours 0 --livecrawl-timeout 5000"
+
+  def test_exe_warns_on_a_deprecated_flag_and_still_sends_the_request
+    stub_search_with_results
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key", "--livecrawl"
+    )
+
+    assert_nil exit_status
+    assert_equal "Warning: #{LIVECRAWL_WARNING}\n", stderr
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_exe_prints_the_deprecation_warning_before_the_printed_request_body
+    stub_search_with_results
+
+    _stdout, stderr, = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key", "--livecrawl", "--print-request"
+    )
+
+    assert_equal 2, stderr.lines.count
+    assert_equal "Warning: #{LIVECRAWL_WARNING}\n", stderr.lines[0]
+    assert_equal({ "maxAgeHours" => 0, "livecrawlTimeout" => 5000 }, JSON.parse(stderr.lines[1])["contents"])
+  end
+
+  def test_exe_prints_the_reason_for_a_deprecated_flag_with_no_replacement
+    stub_search_with_results
+
+    _stdout, stderr, = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key", "--start-crawl-date", "2024-01-01"
+    )
+
+    assert_equal "Warning: --start-crawl-date is deprecated; the API ignores it and returns a warning\n", stderr
+  end
+
+  def test_exe_with_strict_stops_on_a_deprecated_flag_before_reading_the_api_key
+    stub_search_with_results
+
+    Exa::CLI::Base.stub(:resolve_api_key, ->(_) { raise "the API key must not be read" }) do
+      stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-search", "venture-backed SaaS companies", "--livecrawl", "--strict"
+      )
+
+      assert_equal 1, exit_status
+      assert_empty stdout
+      assert_equal "Error: #{LIVECRAWL_WARNING}\n", stderr
+    end
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_exe_with_strict_before_the_deprecated_flag_also_stops
+    stub_search_with_results
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--strict", "--livecrawl", "--api-key", "test_key"
+    )
+
+    assert_equal 1, exit_status
+    assert_equal "Error: #{LIVECRAWL_WARNING}\n", stderr
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_exe_with_strict_lists_every_deprecated_flag
+    stub_search_with_results
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--strict", "--highlights",
+      "--highlights-num-sentences", "2", "--include-text", "funding", "--api-key", "test_key"
+    )
+
+    assert_equal 1, exit_status
+    assert_equal [
+      "Error: --highlights-num-sentences is deprecated; use --highlights-max-characters\n",
+      "Error: --include-text is deprecated; it still works, but the match is approximate " \
+      "(word-level, not exact phrase)\n"
+    ], stderr.lines
+    assert_not_requested :post, "https://api.exa.ai/search"
+  end
+
+  def test_exe_prints_one_warning_per_deprecated_flag_even_when_a_flag_repeats
+    stub_search_with_results
+
+    _stdout, stderr, = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key",
+      "--exclude-text", "acquired", "--livecrawl", "--exclude-text", "bankrupt"
+    )
+
+    assert_equal [
+      "Warning: --exclude-text is deprecated; it still works, but the match is approximate " \
+      "(word-level, not exact phrase)\n",
+      "Warning: #{LIVECRAWL_WARNING}\n"
+    ], stderr.lines
+  end
+
+  def test_exe_with_strict_and_no_deprecated_flag_changes_nothing
+    stub_search_with_results
+
+    stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key", "--strict", "--max-age-hours", "0"
+    )
+
+    assert_nil exit_status
+    assert_empty stderr
+    assert_equal "https://www.salesforce.com", JSON.parse(stdout)["results"].first["url"]
+    assert_requested :post, "https://api.exa.ai/search"
+  end
+
+  %w[json pretty text toon].each do |output_format|
+    define_method("test_exe_stdout_is_the_same_with_a_deprecation_warning_in_#{output_format}_format") do
+      stub_search_with_results
+
+      deprecated_stdout, deprecated_stderr, = run_exe_in_process(
+        "exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key",
+        "--output-format", output_format, "--livecrawl"
+      )
+      replacement_stdout, = run_exe_in_process(
+        "exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key",
+        "--output-format", output_format, "--max-age-hours", "0", "--livecrawl-timeout", "5000"
+      )
+
+      assert_equal "Warning: #{LIVECRAWL_WARNING}\n", deprecated_stderr
+      refute_empty deprecated_stdout
+      assert_equal replacement_stdout, deprecated_stdout
+    end
+  end
+
+  def test_exe_prints_both_the_deprecation_warning_and_the_api_warning
+    api_warnings = [{ "code" => "PARAM_IGNORED", "path" => "startCrawlDate", "message" => "startCrawlDate is ignored" }]
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: [], warnings: api_warnings }.to_json,
+                 headers: { "Content-Type" => "application/json" })
+
+    _stdout, stderr, = run_exe_in_process(
+      "exa-ai-search", "venture-backed SaaS companies", "--api-key", "test_key", "--start-crawl-date", "2024-01-01"
+    )
+
+    assert_equal [
+      "Warning: --start-crawl-date is deprecated; the API ignores it and returns a warning\n",
+      "Warning: startCrawlDate is ignored (startCrawlDate)\n"
+    ], stderr.lines
+  end
+
   private
+
+  # Stubs /search to return one result, so each output format has
+  # something to print.
+  def stub_search_with_results
+    results = [{ "id" => "https://www.salesforce.com", "url" => "https://www.salesforce.com",
+                 "title" => "Salesforce: The #1 AI CRM", "score" => 0.9 }]
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { requestId: "req_1", results: results }.to_json,
+                 headers: { "Content-Type" => "application/json" })
+  end
 
   # Helper method to parse command-line arguments
   # Uses the real SearchParser implementation to avoid code duplication

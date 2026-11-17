@@ -2,6 +2,7 @@
 
 require "test_helper"
 require "exa/cli/contents_flags"
+require "minitest/mock"
 
 class Exa::CLI::GetContentsTest < Minitest::Test
   def test_cli_help_shows_new_options
@@ -365,7 +366,9 @@ class Exa::CLI::GetContentsTest < Minitest::Test
                     '"extras":{"links":2,"imageLinks":3},' \
                     '"highlights":{"query":"funding rounds","maxCharacters":10,"verbosity":"low"},' \
                     '"livecrawlTimeout":1000,"maxAgeHours":0,"snapshotAsOf":"2024-01-01"}'
-    assert_equal expected_body, stderr.lines.first.chomp
+    warned_flags = %w[--context --context-max-characters]
+    assert_equal warned_flags, stderr.lines[0...-1].map { |line| line[/\AWarning: (--[a-z-]+) is deprecated; /, 1] }
+    assert_equal expected_body, stderr.lines.last.chomp
   end
 
   %w[--snapshot-as-of --summary-query --highlights-query --subpage-target].each do |flag|
@@ -554,15 +557,71 @@ class Exa::CLI::GetContentsTest < Minitest::Test
       "--compliance" => "hipaa", "--api-key" => "test_key", "--output-format" => "json",
       "--print-request" => nil
     }
-    assert_equal help_text.scan(/--[a-z][a-z-]*/).uniq.sort - ["--help", "--flags-json"], values_by_flag.keys.sort
+    # --strict is left out of the run: with --context in it, it would stop
+    # the command before the request.
+    assert_equal help_text.scan(/--[a-z][a-z-]*/).uniq.sort - ["--help", "--flags-json", "--strict"],
+                 values_by_flag.keys.sort
 
     _stdout, stderr, exit_status = run_exe_in_process(
       "exa-ai-get-contents", "https://exa.ai", *values_by_flag.flat_map { |flag, value| [flag, value].compact }
     )
 
     assert_nil exit_status
-    assert_equal 1, stderr.lines.count
+    # The --context and --context-max-characters warnings, then the request body.
+    assert_equal 3, stderr.lines.count
     assert_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_gives_no_warning_for_subpages_even_with_strict
+    stub_contents_and_capture_body
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key",
+      "--subpages", "1", "--subpage-target", "careers", "--strict"
+    )
+
+    assert_nil exit_status
+    assert_empty stderr
+    assert_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_warns_on_context_and_still_sends_the_request
+    stub_contents_and_capture_body
+
+    _stdout, stderr, exit_status = run_exe_in_process(
+      "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key", "--context"
+    )
+
+    assert_nil exit_status
+    assert_equal "Warning: --context is deprecated; use --highlights or --text\n", stderr
+    assert_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_with_strict_stops_on_context_before_reading_the_api_key
+    stub_contents_and_capture_body
+
+    Exa::CLI::Base.stub(:resolve_api_key, ->(_) { raise "the API key must not be read" }) do
+      stdout, stderr, exit_status = run_exe_in_process(
+        "exa-ai-get-contents", "https://www.anthropic.com/research", "--context", "--strict"
+      )
+
+      assert_equal 1, exit_status
+      assert_empty stdout
+      assert_equal "Error: --context is deprecated; use --highlights or --text\n", stderr
+    end
+    assert_not_requested :post, "https://api.exa.ai/contents"
+  end
+
+  def test_exe_prints_the_reason_for_context_max_characters
+    stub_contents_and_capture_body
+
+    _stdout, stderr, = run_exe_in_process(
+      "exa-ai-get-contents", "https://www.anthropic.com/research", "--api-key", "test_key",
+      "--context-max-characters", "500"
+    )
+
+    assert_equal "Warning: --context-max-characters is deprecated; it sets the length of --context, " \
+                 "which is deprecated\n", stderr
   end
 
   def test_contents_flags_parse_reads_a_contents_flag

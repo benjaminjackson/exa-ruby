@@ -49,13 +49,19 @@ def parse_args(args)
     context_max_characters: nil,
     livecrawl_timeout: nil,
     output_format: nil,
-    print_request: false
+    print_request: false,
+    strict: false,
+    deprecated_flags: []
   }
 
   i = 0
   while i < args.length
     arg = args[i]
-    Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--") && Exa::CLI::GetContents::FLAGS.none? { |entry| entry[:flag] == arg }
+    if arg.start_with?("--")
+      entry = Exa::CLI::GetContents::FLAGS.find { |candidate| candidate[:flag] == arg }
+      Exa::CLI::Base.reject_unknown_option(arg) unless entry
+      options[:deprecated_flags] << entry if entry[:deprecated]
+    end
 
     next_index = Exa::CLI::ContentsFlags.parse(args, i, options)
     if next_index
@@ -86,6 +92,9 @@ def parse_args(args)
       i += 2
     when "--print-request"
       options[:print_request] = true
+      i += 1
+    when "--strict"
+      options[:strict] = true
       i += 1
     when "--help", "-h"
       print_help
@@ -230,6 +239,8 @@ def print_help
         --output-format FMT          Output format: json, pretty, or text (default: json)
         --print-request              Write the JSON request body sent to the API to stderr
                                      (one line); the request is still sent
+        --strict                     Stop with an error instead of a warning when a
+                                     deprecated flag is given; no request is sent
         --flags-json                 Print every flag this command accepts as JSON and exit
         --help, -h                   Show this help message
 
@@ -253,6 +264,10 @@ begin
 
   # Parse arguments
   options = parse_args(ARGV)
+
+  # Warn about deprecated flags, or stop on them with --strict, before the
+  # API key is read or a request is sent.
+  Exa::CLI::Base.report_deprecated_flags(options[:deprecated_flags], strict: options[:strict])
 
   # Validate that there is something to fetch
   if options[:urls].empty? && options[:ids].empty?
