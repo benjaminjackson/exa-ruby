@@ -166,4 +166,15 @@ class ImportTest < Minitest::Test
     refute import.completed?
     assert import.failed?
   end
+
+  # Every value of the spec's status enum has a helper that is true only for that value.
+  def test_each_spec_status_has_a_helper
+    %w[pending processing completed failed canceled].each do |status|
+      resource = Exa::Resources::Import.new(id: "import_1", object: "import", status: status)
+
+      %w[pending processing completed failed canceled].each do |other|
+        assert_equal other == status, resource.public_send("#{other}?"), "#{other}? with status #{status}"
+      end
+    end
+  end
 end

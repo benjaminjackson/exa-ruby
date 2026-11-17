@@ -46,6 +46,10 @@ module Exa
       end
 
       # Status helper methods
+      def canceled?
+        status == "canceled"
+      end
+
       def pending?
         status == "pending"
       end
