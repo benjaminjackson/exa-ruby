@@ -1126,6 +1126,23 @@ class SearchTest < Minitest::Test
     assert_equal({ "funding" => "Series A" }, result.results.first["summary"])
   end
 
+  def test_keeps_summary_that_is_not_json_as_received
+    results = [
+      { "url" => "https://example.com/a", "summary" => '{"funding":"Series A"}' },
+      { "url" => "https://example.com/b", "summary" => "" },
+      { "url" => "https://example.com/c", "summary" => "The page lists open roles." }
+    ]
+    stub_request(:post, "https://api.exa.ai/search")
+      .to_return(status: 200, body: { results: results }.to_json,
+                 headers: { "Content-Type" => "application/json" })
+
+    result = Exa::Services::Search.new(@connection, query: "Series A climate tech startups",
+                                                    summary_schema: { type: "object" }).call
+
+    assert_equal [{ "funding" => "Series A" }, "", "The page lists open roles."],
+                 result.results.map { |item| item["summary"] }
+  end
+
   def test_parses_json_summary_for_summary_schema_inside_contents
     result = search_with_json_summary(contents: { summary: { schema: { type: "object" } } })
 

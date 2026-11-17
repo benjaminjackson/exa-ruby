@@ -33,12 +33,16 @@ module Exa
 
       # Parses each result whose summary is a String of JSON into a Hash. The
       # API returns a summary as JSON text when the request gave a schema.
+      # A summary that is not valid JSON, an empty one included, is kept as
+      # received, so one bad summary does not lose the other results.
       # GetContents uses it too.
       def self.parse_json_summaries(results)
         results&.map do |r|
-          if r["summary"].is_a?(String)
+          next r unless r["summary"].is_a?(String)
+
+          begin
             r.merge("summary" => JSON.parse(r["summary"]))
-          else
+          rescue JSON::ParserError
             r
           end
         end

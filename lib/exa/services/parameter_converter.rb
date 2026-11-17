@@ -46,7 +46,7 @@ module Exa
 
         consolidated.each do |key, value|
           converted_key = convert_key(key)
-          if key.to_s == "contents"
+          if key == :contents
             converted[:contents] = merge_option(converted[:contents], deep_convert(value))
           elsif content_key?(key)
             contents[converted_key] = convert_value(converted_key, value)
@@ -120,6 +120,7 @@ module Exa
         end
       end
 
+      # Folds each flat content key under its parent so the API gets one nested option per parent.
       def consolidate_content_params(params)
         result = {}
         params.each do |key, value|
@@ -191,6 +192,7 @@ module Exa
         deep_convert(value)
       end
 
+      # True for keys that convert moves under :contents, where /search and /findSimilar expect them.
       def content_key?(key)
         CONTENT_KEYS.include?(key)
       end

@@ -71,6 +71,7 @@ class ParameterConverterTest < Minitest::Test
 
     assert_equal({ contents: { summary: { schema: schema } } }, result)
   end
+
   def test_convert_contents_matches_string_parent_key_with_flat_symbol_key
     result = convert_contents("text" => true, text_max_characters: 500)
 
