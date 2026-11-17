@@ -39,7 +39,7 @@ while args.any?
     exit 0
   else
     if arg.start_with?("-") || monitor_id
-      warn "Unknown option: #{arg}"
+      $stderr.puts "Unknown option: #{arg}"
       exit 1
     end
     monitor_id = arg
@@ -47,7 +47,7 @@ while args.any?
 end
 
 unless monitor_id
-  warn "Error: MONITOR_ID is required. Run with --help for usage."
+  $stderr.puts "Error: MONITOR_ID is required. Run with --help for usage."
   exit 1
 end
 
@@ -57,19 +57,19 @@ begin
   result = client.search_monitor_runs_list(monitor_id, **params)
   puts Exa::CLI::Formatters::SearchMonitorFormatter.format(result, output_format)
 rescue Exa::Unauthorized => e
-  warn "Authentication failed: #{e.message}"
-  warn "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
+  $stderr.puts "Authentication failed: #{e.message}"
+  $stderr.puts "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
   exit 1
 rescue Exa::ClientError => e
-  warn "Client error: #{e.message}"
+  $stderr.puts "Client error: #{e.message}"
   exit 1
 rescue Exa::ServerError => e
-  warn "Server error: #{e.message}"
+  $stderr.puts "Server error: #{e.message}"
   exit 1
 rescue Exa::Error => e
-  warn "Error: #{e.message}"
+  $stderr.puts "Error: #{e.message}"
   exit 1
 rescue StandardError => e
-  warn "Unexpected error: #{e.message}"
+  $stderr.puts "Unexpected error: #{e.message}"
   exit 1
 end

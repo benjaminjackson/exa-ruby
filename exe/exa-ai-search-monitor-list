@@ -44,7 +44,7 @@ while args.any?
     HELP
     exit 0
   else
-    warn "Unknown option: #{arg}"
+    $stderr.puts "Unknown option: #{arg}"
     exit 1
   end
 end
@@ -55,19 +55,19 @@ begin
   result = client.search_monitor_list(**params)
   puts Exa::CLI::Formatters::SearchMonitorFormatter.format(result, output_format)
 rescue Exa::Unauthorized => e
-  warn "Authentication failed: #{e.message}"
-  warn "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
+  $stderr.puts "Authentication failed: #{e.message}"
+  $stderr.puts "Please provide a valid API key via --api-key or EXA_API_KEY environment variable"
   exit 1
 rescue Exa::ClientError => e
-  warn "Client error: #{e.message}"
+  $stderr.puts "Client error: #{e.message}"
   exit 1
 rescue Exa::ServerError => e
-  warn "Server error: #{e.message}"
+  $stderr.puts "Server error: #{e.message}"
   exit 1
 rescue Exa::Error => e
-  warn "Error: #{e.message}"
+  $stderr.puts "Error: #{e.message}"
   exit 1
 rescue StandardError => e
-  warn "Unexpected error: #{e.message}"
+  $stderr.puts "Unexpected error: #{e.message}"
   exit 1
 end
