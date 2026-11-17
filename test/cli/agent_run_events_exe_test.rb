@@ -34,11 +34,11 @@ class AgentRunEventsExeTest < Minitest::Test
         headers: { "Content-Type" => "application/json" }
       )
 
-    stdout, _, status = run_exe_in_process(
+    stdout, stderr, status = run_exe_in_process(
       "exa-ai-agent-run-events", "run_123", "--api-key", "test_key",
       "--limit", "2", "--cursor", "cur_1", "--output-format", "pretty"
     )
-    assert_nil status
+    assert_nil status, stderr
 
     assert_requested :get, EVENTS_URL, query: { limit: "2", cursor: "cur_1" }
     assert_includes stdout, "--cursor cur_2"
@@ -69,11 +69,11 @@ class AgentRunEventsExeTest < Minitest::Test
   def test_limit_reads_leading_zero_as_decimal
     stub_events_page
 
-    _, _, status = run_exe_in_process(
+    _, stderr, status = run_exe_in_process(
       "exa-ai-agent-run-events", "run_123", "--api-key", "test_key",
       "--limit", "010"
     )
-    assert_nil status
+    assert_nil status, stderr
 
     assert_requested :get, EVENTS_URL, query: { limit: "10" }
   end
@@ -87,11 +87,11 @@ class AgentRunEventsExeTest < Minitest::Test
   def test_text_output_prints_next_cursor
     stub_events_page
 
-    stdout, _, status = run_exe_in_process(
+    stdout, stderr, status = run_exe_in_process(
       "exa-ai-agent-run-events", "run_123", "--api-key", "test_key",
       "--limit", "2", "--output-format", "text"
     )
-    assert_nil status
+    assert_nil status, stderr
 
     assert_includes stdout, "--cursor cur_2"
   end

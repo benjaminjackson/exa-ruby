@@ -82,11 +82,11 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_budget_flags_send_budget_in_request_body
     stub_agent_run_create
 
-    _, _, status = run_exe_in_process(
+    _, stderr, status = run_exe_in_process(
       "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
       "--max-cost-dollars", "5", "--max-duration-seconds", "1800"
     )
-    assert_nil status
+    assert_nil status, stderr
 
     assert_equal({ "maxCostDollars" => 5.0, "maxDurationSeconds" => 1800 }, request_body["budget"])
   end
@@ -94,11 +94,11 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_one_budget_flag_sends_only_that_budget_field
     stub_agent_run_create
 
-    _, _, status = run_exe_in_process(
+    _, stderr, status = run_exe_in_process(
       "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
       "--max-cost-dollars", "2.5"
     )
-    assert_nil status
+    assert_nil status, stderr
 
     assert_equal({ "maxCostDollars" => 2.5 }, request_body["budget"])
   end
@@ -106,10 +106,10 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_no_budget_flags_send_no_budget
     stub_agent_run_create
 
-    _, _, status = run_exe_in_process(
+    _, stderr, status = run_exe_in_process(
       "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key"
     )
-    assert_nil status
+    assert_nil status, stderr
 
     refute request_body.key?("budget")
   end
@@ -117,11 +117,11 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_metadata_and_user_identifier_go_in_request_body
     stub_agent_run_create
 
-    _, _, status = run_exe_in_process(
+    _, stderr, status = run_exe_in_process(
       "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
       "--metadata", '{"crm_account_id":"acct_42"}', "--user-identifier", "user_7f3a"
     )
-    assert_nil status
+    assert_nil status, stderr
 
     body = request_body
     assert_equal({ "crm_account_id" => "acct_42" }, body["metadata"])
@@ -149,11 +149,11 @@ class AgentRunCreateExeTest < Minitest::Test
   def test_max_duration_seconds_reads_leading_zero_as_decimal
     stub_agent_run_create
 
-    _, _, status = run_exe_in_process(
+    _, stderr, status = run_exe_in_process(
       "exa-ai-agent-run-create", "--query", "Series A climate tech startups in Europe", "--api-key", "test_key",
       "--max-duration-seconds", "0300"
     )
-    assert_nil status
+    assert_nil status, stderr
 
     assert_equal({ "maxDurationSeconds" => 300 }, request_body["budget"])
   end

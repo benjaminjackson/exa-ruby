@@ -82,15 +82,19 @@ module Exa
         complete_parts.each { |frame| process_frame(frame, &block) }
       end
 
-      # Parses one SSE frame and yields its data. A frame with no data, or
-      # data that is not JSON such as [DONE], is skipped.
+      # Yields the data of each data: line in one SSE frame. Each line is its
+      # own JSON value, so a bad line does not drop a good one next to it.
+      # Lines that are not data lines, and data that is not JSON such as
+      # [DONE], are skipped.
       def process_frame(frame)
-        event = AgentRunStream.parse_frame(frame)
-        return unless event
+        frame.split("\n").each do |line|
+          event = AgentRunStream.parse_frame(line)
+          next unless event
 
-        data = event[1]
-        raise_if_error_chunk(data)
-        yield(data)
+          data = event[1]
+          raise_if_error_chunk(data)
+          yield(data)
+        end
       end
     end
   end

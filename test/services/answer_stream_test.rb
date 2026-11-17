@@ -157,4 +157,65 @@ class AnswerStreamTest < Minitest::Test
 
     assert_equal JSON.generate(error_chunk), error.message
   end
+
+  def test_call_yields_each_data_line_of_a_frame_as_its_own_chunk
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: "data: {\"a\":1}\ndata: {\"b\":2}\n\n", headers: { "Content-Type" => "text/event-stream" })
+
+    chunks = []
+    Exa::Services::AnswerStream.new(@connection, query: "What is the latest valuation of SpaceX?").call { |chunk| chunks << chunk }
+
+    assert_equal [{ "a" => 1 }, { "b" => 2 }], chunks
+  end
+
+  def test_call_keeps_good_data_line_after_bad_one_in_same_frame
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: "data: nope\ndata: {\"a\":1}\n\n", headers: { "Content-Type" => "text/event-stream" })
+
+    chunks = []
+    Exa::Services::AnswerStream.new(@connection, query: "What is the latest valuation of SpaceX?").call { |chunk| chunks << chunk }
+
+    assert_equal [{ "a" => 1 }], chunks
+  end
+
+  def test_call_yields_chunk_then_raises_on_error_line_in_same_frame
+    error_chunk = { "type" => "error", "error" => { "message" => "Answer generation failed" } }
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: "data: {\"a\":1}\ndata: #{JSON.generate(error_chunk)}\n\n",
+                 headers: { "Content-Type" => "text/event-stream" })
+
+    chunks = []
+    service = Exa::Services::AnswerStream.new(@connection, query: "What is the latest valuation of SpaceX?")
+
+    error = assert_raises(Exa::Error) { service.call { |chunk| chunks << chunk } }
+
+    assert_equal [{ "a" => 1 }], chunks
+    assert_equal "Answer generation failed", error.message
+  end
+
+  def test_call_yields_chunk_when_frame_end_is_split_inside_blank_line
+    # The first frame's closing "\r\n\r\n" arrives as "\r\n\r" and then "\n".
+    pieces = ["data: {\"a\":1}\r\n\r", "\n", "data: {\"b\":2}\r\n\r\n"]
+
+    chunks = []
+    counts_before_each_piece = []
+    connection = Faraday.new(url: "https://api.exa.ai") do |faraday|
+      faraday.request :json
+      faraday.adapter :test do |stub|
+        stub.post("/answer") do |env|
+          pieces.each do |piece|
+            counts_before_each_piece << chunks.length
+            env.request.on_data.call(piece, 0, env)
+          end
+          [200, { "Content-Type" => "text/event-stream" }, ""]
+        end
+      end
+    end
+
+    Exa::Services::AnswerStream.new(connection, query: "What changed in the Ruby 3.4 release?")
+                               .call { |chunk| chunks << chunk }
+
+    assert_equal 1, counts_before_each_piece.last
+    assert_equal [{ "a" => 1 }, { "b" => 2 }], chunks
+  end
 end
