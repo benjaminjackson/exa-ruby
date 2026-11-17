@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"AI startups in Silicon Valley","count":1},"metadata":{"original_key":"original_value","project":"initial_project"}}'
+      string: '{"search":{"query":"AI startups in Silicon Valley","count":1},"metadata":{"original_key":"original_value","project":"initial_project","test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"

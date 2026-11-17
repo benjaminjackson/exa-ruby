@@ -5,8 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"E-commerce companies in Europe","count":1},"enrichments":[{"description":"Find
-        company website","format":"url"}]}'
+      string: '{"search":{"query":"E-commerce companies in Europe","count":1},"enrichments":[{"description":"Find company website","format":"url"}],"metadata":{"test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"

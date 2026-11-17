@@ -5,8 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Open source sustainability projects","count":1,"entity":{"type":"custom","description":"environmental
-        conservation initiatives"}}}'
+      string: '{"search":{"query":"Open source sustainability projects","count":1,"entity":{"type":"custom","description":"environmental conservation initiatives"}},"metadata":{"test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"

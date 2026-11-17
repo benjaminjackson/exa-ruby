@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Tech companies in Seattle","count":1}}'
+      string: '{"search":{"query":"Tech companies in Seattle","count":1},"metadata":{"test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
@@ -678,7 +678,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"Tech companies in Pacific Northwest","count":1},"exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}]}'
+      string: '{"search":{"query":"Tech companies in Pacific Northwest","count":1},"exclude":[{"source":"webset","id":"webset_01kap3fzngs6bemq8kq1ajfwhs"}],"metadata":{"test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"

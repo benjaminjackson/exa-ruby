@@ -5,11 +5,7 @@ http_interactions:
     uri: https://api.exa.ai/websets/v0/websets
     body:
       encoding: UTF-8
-      string: '{"search":{"query":"E-commerce companies in California with recent
-        funding","count":1,"entity":{"type":"company"},"criteria":[{"description":"raised
-        funding in the last 12 months"},{"description":"focused on direct-to-consumer
-        products"}]},"enrichments":[{"description":"Recent funding amount","format":"text"},{"description":"LinkedIn
-        URL","format":"url"}],"metadata":{"project":"Q1-2024-research","team":"growth"}}'
+      string: '{"search":{"query":"E-commerce companies in California with recent funding","count":1,"entity":{"type":"company"},"criteria":[{"description":"raised funding in the last 12 months"},{"description":"focused on direct-to-consumer products"}]},"enrichments":[{"description":"Recent funding amount","format":"text"},{"description":"LinkedIn URL","format":"url"}],"metadata":{"project":"Q1-2024-research","team":"growth","test":"integration_test"}}'
     headers:
       X-Api-Key:
       - "<EXA_API_KEY>"
