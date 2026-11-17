@@ -258,6 +258,12 @@ class Exa::CLI::SearchTest < Minitest::Test
     end
   end
 
+  def test_help_marks_livecrawl_deprecated
+    output = `bundle exec exe/exa-ai-search --help`
+
+    assert_includes output, "Deprecated: use --max-age-hours 0 --livecrawl-timeout 5000"
+  end
+
   def test_exe_sends_new_flags_in_request_body
     posted_body = nil
     stub_request(:post, "https://api.exa.ai/search")
