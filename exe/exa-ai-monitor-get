@@ -63,7 +63,7 @@ begin
   client = Exa::CLI::Base.build_client(api_key)
 
   # Get monitor
-  monitor = client.get_monitor(monitor_id)
+  monitor = client.get_monitor(id: monitor_id)
 
   # Format and output
   output = Exa::CLI::Formatters::MonitorFormatter.format(monitor, output_format)
