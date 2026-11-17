@@ -92,12 +92,63 @@ class Exa::CLI::FlagValuesExeTest < Minitest::Test
     assert_equal "--terse answers only", posted_body["systemPrompt"]
   end
 
+  def test_answer_stops_when_system_prompt_gets_the_short_help_flag
+    assert_stops_before_request(
+      "Error: --system-prompt needs a value (got the flag -h)\n",
+      "exa-ai-answer", "What is the latest valuation of SpaceX?", "--system-prompt", "-h", "--api-key", "test_key"
+    )
+  end
+
+  def test_search_monitor_create_stops_when_query_gets_the_short_help_flag
+    assert_stops_before_request(
+      "Error: --query needs a value (got the flag -h)\n",
+      "exa-ai-search-monitor-create", "--query", "-h",
+      "--webhook-url", "https://hooks.example.com/exa", "--api-key", "test_key"
+    )
+  end
+
+  def test_answer_stops_at_an_unknown_option
+    assert_stops_before_request(
+      "Error: unknown option --bogus\n",
+      "exa-ai-answer", "What is the latest valuation of SpaceX?", "--bogus", "--api-key", "test_key"
+    )
+  end
+
+  def test_agent_run_create_stops_at_an_unknown_option
+    assert_stops_before_request(
+      "Error: unknown option --bogus\n",
+      "exa-ai-agent-run-create", "--query", "Find Series A AI infrastructure startups in Europe",
+      "--bogus", "--api-key", "test_key"
+    )
+  end
+
+  def test_context_stops_at_an_unknown_option
+    assert_stops_before_request(
+      "Error: unknown option --bogus\n",
+      "exa-ai-context", "React hooks for data fetching with suspense", "--bogus", "--api-key", "test_key"
+    )
+  end
+
   private
 
+  # Runs the command in this process with a stub for every Exa request, and
+  # checks that it printed exactly expected_stderr, exited 1 and sent no
+  # request.
+  def assert_stops_before_request(expected_stderr, exe_name, *argv)
+    stub_request(:any, /api\.exa\.ai/)
+    stdout, stderr, exit_status = run_exe_in_process(exe_name, *argv)
+
+    assert_equal 1, exit_status, stderr
+    assert_equal expected_stderr, stderr
+    assert_empty stdout
+    assert_not_requested :any, /api\.exa\.ai/
+  end
+
   # Runs each value-taking flag of the command, read from its --help, once
-  # with no value and once with another flag of the command as its value,
-  # after base_argv and a valid --api-key. --output-format stands in as the
-  # next flag, or --api-key when --output-format is the flag under test.
+  # with no value, once with another flag of the command as its value and
+  # once with the short help flag -h as its value, after base_argv and a
+  # valid --api-key. --output-format stands in as the next flag, or --api-key
+  # when --output-format is the flag under test.
   def assert_every_value_flag_checked(exe_name, base_argv, flags_without_value)
     help_text, = run_exe_in_process(exe_name, "--help")
     help_flags = help_text.scan(/^\s+(--[a-z][a-z-]*)/).flatten.uniq
@@ -105,7 +156,7 @@ class Exa::CLI::FlagValuesExeTest < Minitest::Test
 
     (help_flags - flags_without_value).each do |flag|
       next_flag = flag == "--output-format" ? "--api-key" : "--output-format"
-      [[], [next_flag]].each do |rest|
+      [[], [next_flag], ["-h"]].each do |rest|
         case_name = [exe_name, flag, *rest].join(" ")
         stub_request(:any, /api\.exa\.ai/)
         _stdout, stderr, exit_status = run_exe_in_process(exe_name, *base_argv, "--api-key", "test_key", flag, *rest)
@@ -113,6 +164,7 @@ class Exa::CLI::FlagValuesExeTest < Minitest::Test
         assert_equal 1, exit_status, "#{case_name}: #{stderr}"
         assert_equal 1, stderr.lines.size, "#{case_name}: #{stderr}"
         assert_match(/\AError: #{Regexp.escape(flag)}(?![\w-])/, stderr, case_name)
+        assert_match(/\AError: #{Regexp.escape(flag)} needs a value/, stderr, case_name) if rest == ["-h"]
         assert_not_requested :any, /api\.exa\.ai/
       end
     end
