@@ -55,6 +55,7 @@ module ExaCLI
     "agent-run-get" => "Get agent run details",
     "agent-run-list" => "List agent runs",
     "agent-run-cancel" => "Cancel an agent run",
+    "agent-run-stop" => "Stop an agent run early and keep its results",
     "agent-run-delete" => "Delete an agent run",
     "agent-run-events" => "Get events for an agent run"
   }.freeze
@@ -166,6 +167,8 @@ module ExaCLI
       exec File.expand_path("../exa-ai-agent-run-list", __FILE__), *ARGV[1..]
     when "agent-run-cancel"
       exec File.expand_path("../exa-ai-agent-run-cancel", __FILE__), *ARGV[1..]
+    when "agent-run-stop"
+      exec File.expand_path("../exa-ai-agent-run-stop", __FILE__), *ARGV[1..]
     when "agent-run-delete"
       exec File.expand_path("../exa-ai-agent-run-delete", __FILE__), *ARGV[1..]
     when "agent-run-events"
@@ -236,6 +239,7 @@ module ExaCLI
       ["agent-run-get", "Get agent run details"],
       ["agent-run-list", "List agent runs"],
       ["agent-run-cancel", "Cancel an agent run"],
+      ["agent-run-stop", "Stop an agent run early and keep its results"],
       ["agent-run-delete", "Delete an agent run"],
       ["agent-run-events", "Get events for an agent run"]
     ])

@@ -3,10 +3,19 @@
 
 require "exa-ai"
 
+# The line that tells the user how to get the next page, or nil when there
+# are no more events.
+def next_page_hint(events)
+  return nil unless events.has_more && events.next_cursor
+
+  "More events available. Use --cursor #{events.next_cursor} for the next page."
+end
+
 # Parse command-line arguments
 api_key = nil
 run_id = nil
 output_format = "json"
+list_params = {}
 
 args = ARGV.dup
 while args.any?
@@ -16,6 +25,16 @@ while args.any?
     api_key = args.shift
   when "--output-format"
     output_format = args.shift
+  when "--limit"
+    value = args.shift
+    begin
+      list_params[:limit] = Integer(value.to_s, 10)
+    rescue ArgumentError
+      warn "Error: --limit must be a number (got #{value.inspect})"
+      exit 1
+    end
+  when "--cursor"
+    list_params[:cursor] = args.shift
   when "--help", "-h"
     puts <<~HELP
       Usage: exa-ai agent-run-events <run_id> [options]
@@ -27,12 +46,15 @@ while args.any?
 
       Options:
         --api-key KEY           Exa API key (or use EXA_API_KEY env var)
+        --limit N               Maximum number of events to return
+        --cursor CURSOR         Cursor from a previous page, to get the next page
         --output-format FORMAT  Output format: json, pretty, or text (default: json)
         --help, -h              Show this help message
 
       Examples:
         exa-ai agent-run-events run_123
         exa-ai agent-run-events run_123 --output-format pretty
+        exa-ai agent-run-events run_123 --limit 50 --cursor CURSOR
     HELP
     exit 0
   else
@@ -62,7 +84,7 @@ begin
   client = Exa::CLI::Base.build_client(api_key)
 
   # Call API
-  events = client.agent_run_events(run_id)
+  events = client.agent_run_events(run_id, **list_params)
 
   # Format output
   items = events.respond_to?(:data) ? events.data : events
@@ -75,10 +97,14 @@ begin
     items.each_with_index do |event, i|
       puts "#{i + 1}. #{event.respond_to?(:to_h) ? event.to_h.inspect : event}"
     end
+    hint = next_page_hint(events)
+    puts "", hint if hint
   when "text"
     items.each do |event|
       puts event.respond_to?(:to_h) ? event.to_h.inspect : event.to_s
     end
+    hint = next_page_hint(events)
+    puts hint if hint
   else
     puts JSON.pretty_generate(events.respond_to?(:to_h) ? events.to_h : events)
   end

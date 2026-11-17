@@ -10,12 +10,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Monitors API** - `search_monitor_create`, `_list`, `_get`, `_update`, `_delete`, `_trigger`, `_batch`, `_runs_list` and `_runs_get` cover the `/monitors` API: scheduled searches that post new results to a webhook. CLI commands `exa-ai search-monitor-*`. This is a different product from Websets monitors (`create_monitor`, `exa-ai monitor-*`), which are unchanged
 - **Agent run errors** - `AgentRun#error` holds the `{type, code, message}` the API returns for a failed run, and `to_h` includes it. The CLI prints it for a failed run
+- **Stop an agent run** - `agent_run_stop` and `exa-ai agent-run-stop` call `POST /agent/runs/{id}/stop`. The run completes with stop reason `stopped` and keeps its results. The API supports it only for effort `high`, `xhigh` and `ultra`
+- **Agent run budget, metadata and user flags** - `exa-ai agent-run-create` takes `--max-cost-dollars`, `--max-duration-seconds`, `--metadata` and `--user-identifier`
+- **Agent run event replay** - `agent_run_events(run_id, last_event_id: "7")` replays the events after that id over server-sent events and returns the same `AgentRunEventList`
+- **Event pages on the CLI** - `exa-ai agent-run-events` takes `--limit` and `--cursor`
+- **More agent run output** - pretty and text output show the stop reason of a completed run. Pretty output also shows the cost of each data source, usage, and the field and confidence of each grounding item
 - **Status helpers for every spec status** - `Monitor#enabled?`, `#disabled?`; `Webset#pending?`, `#running?`, `#paused?`; `WebsetEnrichment#canceled?`; `WebsetSearch#pending?`; `MonitorRun#created?`, `#canceled?`; `Import#canceled?`
 
 ### Changed
 - **`agent_run_delete` returns `Exa::Resources::AgentRunDeletion`** - The API answers a delete with `{id, object: "agent_run.deleted", deleted: true}`. Use `#deleted?` and `#id`. Before, the method returned an `AgentRun` whose status was nil
 
 ### Fixed
+- **Agent run stream parsing** - the stream reads the `id:` line and passes it to the block as a third argument (blocks and procs that take two arguments keep working; a lambda must accept three), accepts `\r\n` line endings and fields with no space after the colon, and skips comment lines
+- **Exa Connect provider slugs** - the CLI help and README use the documented slugs `fiber` and `particle` (not `fiber_ai` and `particle_news`) and list `polymarket` and `macrobond`
+- **`agent-run-create --wait` limit** - when the stream drops, polling now waits up to 3 hours (the longest an `ultra` run can take) instead of 5 minutes
+- **`--effort` help includes `ultra`**
 - **camelCase request keys for contents, find-similar, answer, context and agent runs** - `get_contents`, `find_similar`, `answer`, `answer` streaming and `context` now send camelCase keys (for example `systemPrompt`, `outputSchema`, `subpageTarget`, `tokensNum`), and nested keys are converted too (for example `budget.maxCostDollars` on agent runs). Keys inside `outputSchema`, `schema`, `metadata`, `data` and `exclusion` are sent as given
 - **find-similar content options** - `text` and `summary` go under `contents`, as the spec requires
 

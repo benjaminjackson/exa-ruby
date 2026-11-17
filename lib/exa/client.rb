@@ -90,12 +90,16 @@ module Exa
     #
     # @param query [String] The query or task for the agent to execute (required)
     # @param params [Hash] Additional run parameters
-    # @option params [Hash] :input Input data for the agent run. Multi-word keys inside
-    #   +input+, +data_sources+ items, and +metadata+ must be supplied in the exact shape
-    #   the API expects — the parameter converter does not recurse into nested values
-    #   (same contract as +output_schema+).
-    # @option params [Array<Hash>] :data_sources Data sources for the agent run
+    # @option params [Hash] :input Input data for the agent run
+    # @option params [Array<Hash>] :data_sources Data sources for the agent run (up to 5)
+    # @option params [Hash] :budget Spend limits, for example
+    #   +{max_cost_dollars: 5.0, max_duration_seconds: 1800}+
+    # @option params [String] :user_identifier Your identifier for the end user of this run
     # @option params [Hash] :metadata Custom metadata
+    #
+    # The parameter converter turns snake_case keys into camelCase at every depth,
+    # so +budget+, +input+ and +data_sources+ items can use snake_case keys. Keys
+    # inside +metadata+ and +output_schema+ are user data and go out exactly as given.
     # @return [Resources::AgentRun] The newly created agent run
     def agent_run_create(query:, **params)
       Services::AgentRunCreate.new(connection, query: query, **params).call
@@ -105,15 +109,25 @@ module Exa
     #
     # @param query [String] The query or task for the agent to execute (required)
     # @param params [Hash] Additional run parameters
-    # @option params [Hash] :input Input data for the agent run. Multi-word keys inside
-    #   +input+, +data_sources+ items, and +metadata+ must be supplied in the exact shape
-    #   the API expects — the parameter converter does not recurse into nested values
-    #   (same contract as +output_schema+).
-    # @option params [Array<Hash>] :data_sources Data sources for the agent run
+    # @option params [Hash] :input Input data for the agent run
+    # @option params [Array<Hash>] :data_sources Data sources for the agent run (up to 5)
+    # @option params [Hash] :budget Spend limits, for example
+    #   +{max_cost_dollars: 5.0, max_duration_seconds: 1800}+
+    # @option params [String] :user_identifier Your identifier for the end user of this run
     # @option params [Hash] :metadata Custom metadata
-    # @yield [chunk] Yields each streamed event chunk as it arrives
-    # @yieldparam chunk [Hash] Partial agent run event data
-    # @return [void]
+    #
+    # The parameter converter turns snake_case keys into camelCase at every depth,
+    # so +budget+, +input+ and +data_sources+ items can use snake_case keys. Keys
+    # inside +metadata+ and +output_schema+ are user data and go out exactly as given.
+    #
+    # @yield [event_type, data, event_id] Yields each streamed event as it arrives.
+    #   Blocks and procs that take only (event_type, data) keep working; a lambda
+    #   passed with & must accept three arguments.
+    # @yieldparam event_type [String] Event name, for example "agent_run.completed"
+    # @yieldparam data [Hash] The event's JSON payload
+    # @yieldparam event_id [String, nil] The SSE id of the event, if the server sent one
+    # @return [Resources::AgentRun, nil] The final run from the terminal event, or nil
+    #   if the stream ended before one arrived
     def agent_run_stream(query:, **params, &block)
       Services::AgentRunStream.new(connection, query: query, **params).call(&block)
     end
@@ -136,12 +150,22 @@ module Exa
       Services::AgentRunList.new(connection, **params).call
     end
 
-    # Cancel an in-progress agent run
+    # Cancel an in-progress agent run. The run ends at once with no results.
     #
     # @param run_id [String] Agent run ID
     # @return [Resources::AgentRun] The cancelled agent run
     def agent_run_cancel(run_id)
       Services::AgentRunCancel.new(connection, run_id: run_id).call
+    end
+
+    # Stop an in-progress agent run early. Unlike cancel, the run completes
+    # with stop reason "stopped" and keeps the results gathered so far. The API
+    # supports this only for runs with effort high, xhigh or ultra.
+    #
+    # @param run_id [String] Agent run ID
+    # @return [Resources::AgentRun] The stopped agent run
+    def agent_run_stop(run_id)
+      Services::AgentRunStop.new(connection, run_id: run_id).call
     end
 
     # Delete an agent run
@@ -158,7 +182,15 @@ module Exa
     # @param params [Hash] Listing parameters
     # @option params [Integer] :limit Maximum number of events to return
     # @option params [String] :cursor Cursor for pagination
-    # @return [Array<Hash>] List of agent run events
+    # @option params [String] :last_event_id Replay the events after this event id.
+    #   The call then asks for server-sent events (Accept: text/event-stream with a
+    #   Last-Event-ID header) and reads the whole response before it returns. The
+    #   docs do not say whether the server closes the stream for a run that is still
+    #   in progress, so for such a run this call may block until the run ends.
+    #   If no data arrives within the connection's read timeout, the call raises
+    #   Faraday::TimeoutError.
+    #   The result has items {"id", "event", "data"}, has_more false and no cursor.
+    # @return [Resources::AgentRunEventList] Agent run events with has_more and next_cursor
     def agent_run_events(run_id, **params)
       Services::AgentRunEvents.new(connection, run_id: run_id, **params).call
     end
