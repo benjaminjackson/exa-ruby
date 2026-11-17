@@ -58,6 +58,7 @@ def print_help
       --output-format FMT          Output format: json, pretty, or text (default: json)
       --print-request              Write the JSON request body sent to the API to stderr
                                    (one line); the request is still sent
+      --flags-json                 Print every flag this command accepts as JSON and exit
       --help, -h                   Show this help message
 
     Examples:
@@ -73,6 +74,13 @@ end
 
 # Main execution
 begin
+  # Print the flag list for wrappers before anything else, so it needs no
+  # API key and wins over a query, --help and unknown flags.
+  if ARGV.include?("--flags-json")
+    puts JSON.generate(Exa::CLI::SearchParser::FLAGS)
+    exit 0
+  end
+
   # Handle help flag
   if ARGV.include?("--help") || ARGV.include?("-h")
     print_help
