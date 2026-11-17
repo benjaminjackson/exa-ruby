@@ -69,6 +69,8 @@ These options still work. The API reports some of them in the response's `warnin
 | `highlights: { num_sentences: }` | Deprecated | `highlights: { max_characters: }` |
 | `highlights: { highlights_per_url: }` | Deprecated. The API ignores it. | `highlights: { max_characters: }` |
 | `subpages`, `subpage_target` on `search` | Deprecated | Pass them to `get_contents` |
+| `livecrawl` | Deprecated | `max_age_hours` |
+| `crawled_before_date` | Deprecated. An alias of `snapshot_as_of` with identical behavior. | `snapshot_as_of` |
 | `category: "github"` | Not in the spec's category list. The CLI rejects it; the Ruby client still sends it. | Another category, or none |
 
 On the result, `resolved_search_type` is deprecated (it may be an empty string), `search_type` is not in the spec, and `context` is deprecated.
@@ -343,7 +345,7 @@ contents.search_time
 
 Flat keys work here as on `search`: `text_max_characters: 3000` sends `text: { maxCharacters: 3000 }`, and `summary_schema:` sends `summary: { schema: }`.
 
-`context` is deprecated here too; use `highlights` or `text`. In `highlights`, `num_sentences` and `highlights_per_url` are deprecated; use `max_characters`. `subpages` and `subpage_target` stay valid on `get_contents`.
+`context` is deprecated here too; use `highlights` or `text`. In `highlights`, `num_sentences` and `highlights_per_url` are deprecated; use `max_characters`. `subpages` and `subpage_target` stay valid on `get_contents`. `livecrawl` is deprecated; use `max_age_hours`. `crawled_before_date` is deprecated; use `snapshot_as_of`, an alias with identical behavior.
 
 ### By Document ID
 
