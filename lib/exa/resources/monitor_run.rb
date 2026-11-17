@@ -18,6 +18,14 @@ module Exa
         self
       end
 
+      def created?
+        status == "created"
+      end
+
+      def canceled?
+        status == "canceled"
+      end
+
       def pending?
         status == "pending"
       end

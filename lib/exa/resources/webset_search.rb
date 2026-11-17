@@ -56,6 +56,10 @@ module Exa
         status == "created"
       end
 
+      def pending?
+        status == "pending"
+      end
+
       def running?
         status == "running"
       end

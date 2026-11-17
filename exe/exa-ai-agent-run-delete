@@ -65,14 +65,7 @@ begin
   result = client.agent_run_delete(run_id)
 
   # Format output
-  if result.respond_to?(:to_h)
-    formatted = Exa::CLI::Formatters::AgentRunFormatter.format_run(result, output_format)
-    puts formatted
-  else
-    puts({ deleted: true, id: run_id }.to_json) if output_format == "json"
-    puts "Deleted agent run: #{run_id}" if output_format == "pretty"
-    puts run_id if output_format == "text"
-  end
+  puts Exa::CLI::Formatters::AgentRunFormatter.format_deletion(result, output_format)
 
 rescue Exa::NotFound => e
   warn "Agent run not found: #{e.message}"

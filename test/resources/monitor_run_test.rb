@@ -90,4 +90,15 @@ class MonitorRunTest < Minitest::Test
     refute_includes hash.keys, :failed_at
     refute_includes hash.keys, :failed_reason
   end
+
+  # Every value of the spec's status enum has a helper that is true only for that value.
+  def test_each_spec_status_has_a_helper
+    %w[created running completed canceled failed].each do |status|
+      resource = Exa::Resources::MonitorRun.new(status: status)
+
+      %w[created running completed canceled failed].each do |other|
+        assert_equal other == status, resource.public_send("#{other}?"), "#{other}? with status #{status}"
+      end
+    end
+  end
 end

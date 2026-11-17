@@ -109,4 +109,66 @@ class FindSimilarTest < Minitest::Test
 
     assert_requested :post, "https://api.exa.ai/findSimilar"
   end
+
+  def test_call_posts_snake_case_params_as_camel_case_keys
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::FindSimilar.new(
+      @connection,
+      url: "https://example.com",
+      num_results: 5,
+      start_published_date: "2025-01-01",
+      end_published_date: "2025-06-30",
+      include_text: ["Series A"],
+      exclude_domains: ["example.org"]
+    ).call
+
+    assert_requested(:post, "https://api.exa.ai/findSimilar") do |request|
+      body = JSON.parse(request.body)
+      assert_equal 5, body["numResults"]
+      assert_equal "2025-01-01", body["startPublishedDate"]
+      assert_equal "2025-06-30", body["endPublishedDate"]
+      assert_equal ["Series A"], body["includeText"]
+      assert_equal ["example.org"], body["excludeDomains"]
+      assert_empty snake_case_keys(body)
+    end
+  end
+
+  def test_call_posts_text_and_summary_under_contents
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::FindSimilar.new(
+      @connection,
+      url: "https://example.com",
+      text: { max_characters: 500 },
+      summary: { query: "What does this company build?" }
+    ).call
+
+    assert_requested(:post, "https://api.exa.ai/findSimilar") do |request|
+      body = JSON.parse(request.body)
+      refute body.key?("text")
+      refute body.key?("summary")
+      assert_equal({ "maxCharacters" => 500 }, body["contents"]["text"])
+      assert_equal({ "query" => "What does this company build?" }, body["contents"]["summary"])
+    end
+  end
+
+  def test_call_merges_contents_hash_with_content_params
+    stub_request(:post, "https://api.exa.ai/findSimilar")
+      .to_return(status: 200, body: { results: [] }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::FindSimilar.new(
+      @connection,
+      url: "https://example.com",
+      contents: { text: { include_html_tags: true } },
+      summary: true
+    ).call
+
+    assert_requested(:post, "https://api.exa.ai/findSimilar") do |request|
+      body = JSON.parse(request.body)
+      assert_equal({ "text" => { "includeHtmlTags" => true }, "summary" => true }, body["contents"])
+    end
+  end
 end

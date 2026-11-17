@@ -1,11 +1,13 @@
 require "json"
 
+require_relative "parameter_converter"
+
 module Exa
   module Services
     class AnswerStream
       def initialize(connection, **params)
         @connection = connection
-        @params = params.merge(stream: true)
+        @params = ParameterConverter.convert_keys(params.merge(stream: true))
       end
 
       def call(&block)

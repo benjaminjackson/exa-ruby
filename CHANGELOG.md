@@ -5,6 +5,19 @@ All notable changes to the exa-ai gem will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- **Agent run errors** - `AgentRun#error` holds the `{type, code, message}` the API returns for a failed run, and `to_h` includes it. The CLI prints it for a failed run
+- **Status helpers for every spec status** - `Monitor#enabled?`, `#disabled?`; `Webset#pending?`, `#running?`, `#paused?`; `WebsetEnrichment#canceled?`; `WebsetSearch#pending?`; `MonitorRun#created?`, `#canceled?`; `Import#canceled?`
+
+### Changed
+- **`agent_run_delete` returns `Exa::Resources::AgentRunDeletion`** - The API answers a delete with `{id, object: "agent_run.deleted", deleted: true}`. Use `#deleted?` and `#id`. Before, the method returned an `AgentRun` whose status was nil
+
+### Fixed
+- **camelCase request keys for contents, find-similar, answer, context and agent runs** - `get_contents`, `find_similar`, `answer`, `answer` streaming and `context` now send camelCase keys (for example `systemPrompt`, `outputSchema`, `subpageTarget`, `tokensNum`), and nested keys are converted too (for example `budget.maxCostDollars` on agent runs). Keys inside `outputSchema`, `schema`, `metadata`, `data` and `exclusion` are sent as given
+- **find-similar content options** - `text` and `summary` go under `contents`, as the spec requires
+
 ## [0.13.0] - 2026-11-16
 
 ### Removed

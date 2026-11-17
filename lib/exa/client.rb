@@ -147,7 +147,7 @@ module Exa
     # Delete an agent run
     #
     # @param run_id [String] Agent run ID
-    # @return [Resources::AgentRun] The deleted agent run
+    # @return [Resources::AgentRunDeletion] The id of the deleted run and deleted: true
     def agent_run_delete(run_id)
       Services::AgentRunDelete.new(connection, run_id: run_id).call
     end

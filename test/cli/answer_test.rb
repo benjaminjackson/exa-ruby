@@ -12,7 +12,7 @@ class Exa::CLI::AnswerTest < Minitest::Test
     stub_request(:post, "https://api.exa.ai/answer")
       .with(body: hash_including(
         query: "test",
-        output_schema: { type: "object", properties: { city: { type: "string" } } }
+        outputSchema: { type: "object", properties: { city: { type: "string" } } }
       ))
       .to_return(
         status: 200,
@@ -30,7 +30,7 @@ class Exa::CLI::AnswerTest < Minitest::Test
     result = client.answer("test", output_schema: parsed_schema)
 
     assert_requested :post, "https://api.exa.ai/answer",
-      body: hash_including(output_schema: parsed_schema)
+      body: hash_including(outputSchema: parsed_schema)
     assert_instance_of Exa::Resources::Answer, result
     assert_equal({ "city" => "Paris" }, result.answer)
   end
@@ -47,7 +47,7 @@ class Exa::CLI::AnswerTest < Minitest::Test
     }
 
     stub_request(:post, "https://api.exa.ai/answer")
-      .with(body: hash_including(query: "capital of New York", output_schema: output_schema))
+      .with(body: hash_including(query: "capital of New York", outputSchema: output_schema))
       .to_return(
         status: 200,
         body: {
@@ -69,7 +69,7 @@ class Exa::CLI::AnswerTest < Minitest::Test
     stub_request(:post, "https://api.exa.ai/answer")
       .with(body: hash_including(
         query: "What is Paris?",
-        system_prompt: "Respond in the voice of a pirate"
+        systemPrompt: "Respond in the voice of a pirate"
       ))
       .to_return(
         status: 200,
@@ -81,7 +81,7 @@ class Exa::CLI::AnswerTest < Minitest::Test
     result = client.answer("What is Paris?", system_prompt: "Respond in the voice of a pirate")
 
     assert_requested :post, "https://api.exa.ai/answer",
-      body: hash_including(system_prompt: "Respond in the voice of a pirate")
+      body: hash_including(systemPrompt: "Respond in the voice of a pirate")
     assert_instance_of Exa::Resources::Answer, result
   end
 
@@ -89,7 +89,7 @@ class Exa::CLI::AnswerTest < Minitest::Test
     stub_request(:post, "https://api.exa.ai/answer")
       .with(body: hash_including(
         query: "test",
-        system_prompt: "Be concise",
+        systemPrompt: "Be concise",
         text: true
       ))
       .to_return(
@@ -102,7 +102,7 @@ class Exa::CLI::AnswerTest < Minitest::Test
     result = client.answer("test", system_prompt: "Be concise", text: true)
 
     assert_requested :post, "https://api.exa.ai/answer",
-      body: hash_including(system_prompt: "Be concise", text: true)
+      body: hash_including(systemPrompt: "Be concise", text: true)
     assert_instance_of Exa::Resources::Answer, result
   end
 end

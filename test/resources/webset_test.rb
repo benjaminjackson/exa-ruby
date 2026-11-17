@@ -114,6 +114,17 @@ module Exa
         assert_equal "Test", hash[:title]
       end
 
+      # Every value of the spec's status enum has a helper that is true only for that value.
+      def test_each_spec_status_has_a_helper
+        %w[idle pending running paused].each do |status|
+          resource = Exa::Resources::Webset.new(id: "ws_1", object: "webset", status: status)
+
+          %w[idle pending running paused].each do |other|
+            assert_equal other == status, resource.public_send("#{other}?"), "#{other}? with status #{status}"
+          end
+        end
+      end
+
       private
 
       def symbolize_keys(hash)

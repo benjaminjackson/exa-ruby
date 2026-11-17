@@ -71,4 +71,25 @@ class AnswerStreamTest < Minitest::Test
 
     assert_equal "This endpoint has been retired", error.message
   end
+
+  def test_call_posts_snake_case_params_as_camel_case_keys
+    stub_request(:post, "https://api.exa.ai/answer")
+      .to_return(status: 200, body: "data: {}\n\n", headers: { "Content-Type" => "text/event-stream" })
+    output_schema = { "type" => "object", "properties" => { "lead_investor" => { "type" => "string" } } }
+
+    Exa::Services::AnswerStream.new(
+      @connection,
+      query: "Who led the Series A for Anthropic?",
+      system_prompt: "Answer in one sentence",
+      output_schema: output_schema
+    ).call { |_chunk| }
+
+    assert_requested(:post, "https://api.exa.ai/answer") do |request|
+      body = JSON.parse(request.body)
+      assert_equal true, body["stream"]
+      assert_equal "Answer in one sentence", body["systemPrompt"]
+      assert_equal output_schema, body["outputSchema"]
+      assert_empty snake_case_keys(body)
+    end
+  end
 end

@@ -38,6 +38,10 @@ module Exa
         freeze
       end
 
+      def canceled?
+        status == "canceled"
+      end
+
       def pending?
         status == "pending"
       end

@@ -74,4 +74,15 @@ class WebsetEnrichmentTest < Minitest::Test
 
     assert enrichment.frozen?
   end
+
+  # Every value of the spec's status enum has a helper that is true only for that value.
+  def test_each_spec_status_has_a_helper
+    %w[pending canceled completed].each do |status|
+      resource = Exa::Resources::WebsetEnrichment.new(id: "wenrich_1", object: "webset_enrichment", status: status)
+
+      %w[pending canceled completed].each do |other|
+        assert_equal other == status, resource.public_send("#{other}?"), "#{other}? with status #{status}"
+      end
+    end
+  end
 end

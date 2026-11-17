@@ -296,10 +296,11 @@ events = client.agent_run_events(run.id)
 
 # Cancel or delete a run
 client.agent_run_cancel(run.id)
-client.agent_run_delete(run.id)
+deletion = client.agent_run_delete(run.id) # => Exa::Resources::AgentRunDeletion
+deletion.deleted? # => true
 ```
 
-> **Note:** Multi-word keys inside `input`, `data_sources` items, and `metadata` are passed through verbatim — supply them in the exact shape the API expects, the same contract as `output_schema`.
+> **Note:** The gem converts snake_case keys to camelCase at every depth, including keys inside `input` and `data_sources` items. Keys under `output_schema`, `schema`, `metadata`, `data` and `exclusion` are your own data and are sent unchanged, so supply them in the exact shape the API expects.
 
 ### Command Line
 

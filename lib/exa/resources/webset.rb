@@ -47,6 +47,18 @@ module Exa
         status == "idle"
       end
 
+      def pending?
+        status == "pending"
+      end
+
+      def running?
+        status == "running"
+      end
+
+      def paused?
+        status == "paused"
+      end
+
       def processing?
         status == "processing"
       end

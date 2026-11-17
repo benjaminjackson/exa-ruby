@@ -149,4 +149,14 @@ class ContextTest < Minitest::Test
       service.call
     end
   end
+
+  def test_call_posts_tokens_num_as_tokens_num_camel_case
+    stub_request(:post, "https://api.exa.ai/context")
+      .with(body: { query: "React hooks for data fetching", tokensNum: 5000 })
+      .to_return(status: 200, body: { requestId: "abc123" }.to_json, headers: { "Content-Type" => "application/json" })
+
+    Exa::Services::Context.new(@connection, query: "React hooks for data fetching", tokens_num: 5000).call
+
+    assert_requested :post, "https://api.exa.ai/context", body: { query: "React hooks for data fetching", tokensNum: 5000 }
+  end
 end
