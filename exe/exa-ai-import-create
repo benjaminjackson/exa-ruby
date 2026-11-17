@@ -162,7 +162,7 @@ begin
 
   # Prepare import parameters
   entity = { type: args[:entity_type] }
-  entity[:description] = args[:entity_description] if args[:entity_description]
+  entity[:description] = args[:entity_description] if args[:entity_type] == "custom"
 
   import_params = {
     file_path: args[:file_path],

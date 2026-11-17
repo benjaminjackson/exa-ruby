@@ -75,16 +75,16 @@ class Exa::CLI::ImportCreateTest < Minitest::Test
     assert_not_requested :post, IMPORTS_URL
   end
 
-  # The command warns that it ignores --entity-description for a type
-  # other than custom, but it still sends the description to the API.
-  def test_warns_but_still_sends_entity_description_for_non_custom_type
+  # For a type other than custom, the command warns that it ignores
+  # --entity-description, and it does not send the description to the API.
+  def test_warns_and_drops_entity_description_for_non_custom_type
     body, stderr = post_import(
       "--count", "2", "--title", "AI researchers",
       "--entity-type", "person", "--entity-description", "machine learning researchers"
     )
 
     assert_includes stderr, "Warning: --entity-description is only used with --entity-type custom"
-    assert_equal({ "type" => "person", "description" => "machine learning researchers" }, body["entity"])
+    assert_equal({ "type" => "person" }, body["entity"])
   end
 
   def test_sends_csv_identifier_in_request_body
