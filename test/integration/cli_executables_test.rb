@@ -45,7 +45,7 @@ class CLIExecutablesTest < Minitest::Test
     assert_includes stdout, "QUERY"
   end
 
-  # Search monitor commands (the /monitors API, not Websets monitors)
+  # Search monitor commands (the /monitors API)
   def test_search_monitor_create_help
     stdout, stderr, status = run_executable("bundle exec exe/exa-ai-search-monitor-create --help")
 

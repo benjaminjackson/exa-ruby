@@ -42,7 +42,7 @@ while args.any?
       Usage: exa-ai search-monitor-create --query TEXT --webhook-url URL [options]
 
       Create a search monitor: a scheduled Exa search that posts new results to a webhook.
-      Search monitors are the /monitors API, not Websets monitors (exa-ai monitor-*).
+      Search monitors are the /monitors API.
 
       Required:
         --query TEXT            Search query

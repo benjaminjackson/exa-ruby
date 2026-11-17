@@ -1,7 +1,6 @@
 module Exa
   module Resources
     # A scheduled Exa search that sends new results to a webhook (/monitors).
-    # Not the same as Monitor, which belongs to Websets.
     class SearchMonitor < Struct.new(
       :id, :name, :status, :search, :trigger, :webhook, :output_schema,
       :metadata, :next_run_at, :created_at, :updated_at, :webhook_secret,

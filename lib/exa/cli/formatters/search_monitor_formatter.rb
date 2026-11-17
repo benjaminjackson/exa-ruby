@@ -1,7 +1,7 @@
 module Exa
   module CLI
     module Formatters
-      # Output for the exa-ai search-monitor-* commands (the /monitors API, not Websets monitors).
+      # Output for the exa-ai search-monitor-* commands (the /monitors API).
       class SearchMonitorFormatter
         # Format any search monitor result: a monitor, a run, a list of either,
         # a batch result or a trigger result.

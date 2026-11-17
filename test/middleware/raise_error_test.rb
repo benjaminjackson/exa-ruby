@@ -194,7 +194,7 @@ class RaiseErrorTest < Minitest::Test
     stub_request(:get, "https://api.exa.ai/test")
       .to_return(
         status: 403,
-        body: '{"statusCode":403,"timestamp":"2025-11-26T14:20:13.344Z","message":"Your team has reached the maximum number of concurrent requests","error":"Forbidden","path":"/v0/websets"}',
+        body: '{"statusCode":403,"timestamp":"2025-11-26T14:20:13.344Z","message":"Your team has reached the maximum number of concurrent requests","error":"Forbidden","path":"/test"}',
         headers: { "Content-Type" => "application/json" }
       )
 
