@@ -129,6 +129,22 @@ class Exa::CLI::FlagValuesExeTest < Minitest::Test
     )
   end
 
+  def test_agent_run_get_stops_at_a_leading_unknown_option
+    assert_stops_before_request("Unknown option: --bogus\n", "exa-ai-agent-run-get", "--bogus", "--api-key", "test_key")
+  end
+
+  def test_agent_run_cancel_stops_at_a_leading_unknown_option
+    assert_stops_before_request("Unknown option: --bogus\n", "exa-ai-agent-run-cancel", "--bogus", "--api-key", "test_key")
+  end
+
+  def test_agent_run_delete_stops_at_a_leading_unknown_option
+    assert_stops_before_request("Unknown option: --bogus\n", "exa-ai-agent-run-delete", "--bogus", "--api-key", "test_key")
+  end
+
+  def test_agent_run_stop_stops_at_a_leading_unknown_option
+    assert_stops_before_request("Unknown option: --bogus\n", "exa-ai-agent-run-stop", "--bogus", "--api-key", "test_key")
+  end
+
   private
 
   # Runs the command in this process with a stub for every Exa request, and

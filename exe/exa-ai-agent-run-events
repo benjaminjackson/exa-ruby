@@ -53,7 +53,7 @@ while args.any?
     exit 0
   else
     # First positional argument is the run_id
-    if run_id.nil?
+    if run_id.nil? && !arg.start_with?("--")
       run_id = arg
     else
       $stderr.puts "Unknown option: #{arg}"

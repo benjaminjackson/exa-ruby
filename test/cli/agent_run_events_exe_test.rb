@@ -59,6 +59,16 @@ class AgentRunEventsExeTest < Minitest::Test
     $VERBOSE = original_verbose
   end
 
+  def test_leading_unknown_option_is_not_used_as_the_run_id
+    stub_request(:any, /api\.exa\.ai/)
+    stdout, stderr, status = run_exe_in_process("exa-ai-agent-run-events", "--bogus", "--api-key", "test_key")
+
+    assert_equal 1, status
+    assert_equal "Unknown option: --bogus\n", stderr
+    assert_empty stdout
+    assert_not_requested :any, /api\.exa\.ai/
+  end
+
   def test_invalid_limit_exits_nonzero
     out = run_exe("run_123", "--limit", "ten")
     assert_includes out, "Error: --limit must be a number"
