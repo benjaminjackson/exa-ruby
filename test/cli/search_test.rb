@@ -47,7 +47,7 @@ class Exa::CLI::SearchTest < Minitest::Test
       error = assert_raises(ArgumentError) do
         parse_search_args(["test query", "--type", type])
       end
-      assert_includes error.message.downcase, "search type"
+      assert_includes error.message.downcase, "--type"
     end
   end
 

@@ -34,7 +34,7 @@ def parse_args(argv)
       category = Exa::CLI::Base.text_value("--category", argv[i + 1])
       valid_categories = Exa::CLI::SearchParser::VALID_CATEGORIES
       unless valid_categories.include?(category)
-        $stderr.puts "Error: Category must be one of: #{valid_categories.map { |c| "\"#{c}\"" }.join(', ')}"
+        $stderr.puts "Error: --category must be one of: #{valid_categories.map { |c| "\"#{c}\"" }.join(', ')}"
         exit 1
       end
       args[:category] = category
@@ -175,6 +175,10 @@ begin
   puts output
   $stdout.flush
 
+rescue ArgumentError => e
+  # A flag value the parser rejects, such as --text-verbosity loud.
+  $stderr.puts "Error: #{e.message}"
+  exit 1
 rescue Exa::ConfigurationError => e
   $stderr.puts "Configuration error: #{e.message}"
   exit 1

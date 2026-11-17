@@ -119,10 +119,11 @@ module Exa
       end
 
       # Raises ArgumentError unless verbosity is a value the API accepts.
+      # The message names the flag, so each command prints it as is.
       def self.validate_text_verbosity(verbosity)
         return if VALID_TEXT_VERBOSITY.include?(verbosity)
 
-        raise ArgumentError, "Text verbosity must be one of: #{VALID_TEXT_VERBOSITY.join(', ')}"
+        raise ArgumentError, "--text-verbosity must be one of: #{VALID_TEXT_VERBOSITY.join(', ')}"
       end
 
       # Builds the contents hash from the parsed flags, or nil when no

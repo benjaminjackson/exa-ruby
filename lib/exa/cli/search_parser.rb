@@ -228,23 +228,28 @@ module Exa
         raise ArgumentError, "Query is required" if @args[:query].nil? || @args[:query].empty?
       end
 
+      # Raises ArgumentError unless search_type is a value the API accepts.
+      # The message names the flag, so exa-ai search prints it as is.
       def validate_search_type(search_type)
         return if VALID_SEARCH_TYPES.include?(search_type)
 
-        raise ArgumentError, "Search type must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
+        raise ArgumentError, "--type must be one of: #{VALID_SEARCH_TYPES.join(', ')}"
       end
 
+      # Raises ArgumentError unless category is a value the API accepts.
+      # The message names the flag, so exa-ai search prints it as is.
       def validate_category(category)
         return if VALID_CATEGORIES.include?(category)
 
-        raise ArgumentError, "Category must be one of: #{VALID_CATEGORIES.map { |c| "\"#{c}\"" }.join(', ')}"
+        raise ArgumentError, "--category must be one of: #{VALID_CATEGORIES.map { |c| "\"#{c}\"" }.join(', ')}"
       end
 
       # Raises ArgumentError unless compliance is a value the API accepts.
+      # The message names the flag, so exa-ai search prints it as is.
       def validate_compliance(compliance)
         return if VALID_COMPLIANCE.include?(compliance)
 
-        raise ArgumentError, "Compliance must be one of: #{VALID_COMPLIANCE.join(', ')}"
+        raise ArgumentError, "--compliance must be one of: #{VALID_COMPLIANCE.join(', ')}"
       end
     end
   end
