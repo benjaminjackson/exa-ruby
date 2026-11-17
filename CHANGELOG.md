@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`agent_run_delete` returns `Exa::Resources::AgentRunDeletion`** - The API answers a delete with `{id, object: "agent_run.deleted", deleted: true}`. Use `#deleted?` and `#id`. Before, the method returned an `AgentRun` whose status was nil
 
 ### Fixed
-- **Agent run stream parsing** - the stream reads the `id:` line and passes it to the block as a third argument (two-argument blocks still work), accepts `\r\n` line endings and fields with no space after the colon, and skips comment lines
+- **Agent run stream parsing** - the stream reads the `id:` line and passes it to the block as a third argument (blocks and procs that take two arguments keep working; a lambda must accept three), accepts `\r\n` line endings and fields with no space after the colon, and skips comment lines
 - **Exa Connect provider slugs** - the CLI help and README use the documented slugs `fiber` and `particle` (not `fiber_ai` and `particle_news`) and list `polymarket` and `macrobond`
 - **`agent-run-create --wait` limit** - when the stream drops, polling now waits up to 3 hours (the longest an `ultra` run can take) instead of 5 minutes
 - **`--effort` help includes `ultra`**

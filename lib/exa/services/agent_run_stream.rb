@@ -48,8 +48,9 @@ module Exa
         nil
       end
 
-      # Streams SSE frames to the block as (event_type, data, event_id). A
-      # block that takes two arguments gets (event_type, data). Returns the
+      # Streams SSE frames to the block as (event_type, data, event_id). Blocks
+      # and procs that take only (event_type, data) keep working; a lambda
+      # must accept three arguments. Returns the
       # final AgentRun built from the terminal event's payload (completed/
       # failed/cancelled), or nil if the stream ended before a terminal event
       # arrived.

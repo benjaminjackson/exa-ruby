@@ -121,7 +121,8 @@ module Exa
     # inside +metadata+ and +output_schema+ are user data and go out exactly as given.
     #
     # @yield [event_type, data, event_id] Yields each streamed event as it arrives.
-    #   A block that takes only (event_type, data) also works.
+    #   Blocks and procs that take only (event_type, data) keep working; a lambda
+    #   passed with & must accept three arguments.
     # @yieldparam event_type [String] Event name, for example "agent_run.completed"
     # @yieldparam data [Hash] The event's JSON payload
     # @yieldparam event_id [String, nil] The SSE id of the event, if the server sent one
