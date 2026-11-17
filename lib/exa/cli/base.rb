@@ -66,13 +66,21 @@ module Exa
       end
 
       # Return the value of a free-text option such as --summary-query. Like
-      # option_value, but also fails when the value starts with two dashes:
-      # that is the next flag, so the user left this option's value out.
+      # option_value, but also fails when the value looks like the next flag,
+      # which means the user left this option's value out. A value counts as
+      # a flag when it starts with two dashes and has no whitespace: a flag
+      # name never contains whitespace, so "--autosquash behavior" is text.
       def self.text_value(flag, value)
         option_value(flag, value)
-        fail_with("#{flag} needs a value (got the flag #{value})") if value.start_with?("--")
+        fail_with("#{flag} needs a value (got the flag #{value})") if value.start_with?("--") && !value.match?(/\s/)
 
         value
+      end
+
+      # Stop the command for an argument that starts with two dashes but is
+      # not a flag the command knows, so it is not read as a query or a URL.
+      def self.reject_unknown_option(arg)
+        fail_with("unknown option #{arg}")
       end
 
       # Parse a base-10 integer option. "abc", "10abc", "1.5" and "0x10" all

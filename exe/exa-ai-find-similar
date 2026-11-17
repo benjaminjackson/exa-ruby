@@ -117,10 +117,7 @@ def parse_args(argv)
       HELP
       exit 0
     else
-      if arg.start_with?("--")
-        $stderr.puts "Error: unknown option #{arg}"
-        exit 1
-      end
+      Exa::CLI::Base.reject_unknown_option(arg) if arg.start_with?("--")
 
       unless url_found
         args[:url] = arg

@@ -85,6 +85,12 @@ class Exa::CLI::FindSimilarExeTest < Minitest::Test
     assert_equal({ "query" => "state-of-the-art chip designs" }, body.dig("contents", "summary"))
   end
 
+  def test_exe_keeps_highlights_query_that_starts_with_two_dashes_and_contains_a_space
+    body = post_find_similar("--highlights", "--highlights-query", "--autosquash behavior")
+
+    assert_equal({ "query" => "--autosquash behavior" }, body.dig("contents", "highlights"))
+  end
+
   def test_exe_rejects_unknown_flag_before_the_url
     stub_request(:post, "https://api.exa.ai/findSimilar")
 
