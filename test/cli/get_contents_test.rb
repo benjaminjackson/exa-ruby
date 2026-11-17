@@ -455,17 +455,57 @@ class Exa::CLI::GetContentsTest < Minitest::Test
     assert_not_requested :post, "https://api.exa.ai/contents"
   end
 
-  def test_exe_refuses_a_second_url_argument
-    stub_request(:post, "https://api.exa.ai/contents")
+  def test_exe_sends_every_url_argument
+    posted = stub_contents_and_capture_body
 
     _stdout, stderr, exit_status = run_exe_in_process(
       "exa-ai-get-contents", "https://exa.ai", "https://www.anthropic.com/research", "--api-key", "test_key"
     )
 
-    assert_equal 1, stderr.lines.count
-    assert_match(/\AError: .*https:\/\/www\.anthropic\.com\/research.*commas/, stderr)
-    refute_equal 0, exit_status
-    assert_not_requested :post, "https://api.exa.ai/contents"
+    assert_equal ["https://exa.ai", "https://www.anthropic.com/research"], posted[:body]["urls"]
+    assert_equal "", stderr
+    assert_nil exit_status
+  end
+
+  {
+    "comma_in_the_path" => "https://example.com/maps/@40.7,-74.0",
+    "commas_in_the_query" => "https://example.com/list?ids=1,2,3"
+  }.each do |name, url|
+    define_method("test_exe_sends_a_url_with_#{name}_whole") do
+      posted = stub_contents_and_capture_body
+
+      run_exe_in_process("exa-ai-get-contents", url, "--api-key", "test_key")
+
+      assert_equal [url], posted[:body]["urls"]
+    end
+  end
+
+  def test_exe_splits_one_argument_only_at_a_comma_before_a_scheme
+    posted = stub_contents_and_capture_body
+
+    run_exe_in_process(
+      "exa-ai-get-contents", "https://exa.ai/a,b,HTTPS://www.anthropic.com/research", "--api-key", "test_key"
+    )
+
+    assert_equal ["https://exa.ai/a,b", "HTTPS://www.anthropic.com/research"], posted[:body]["urls"]
+  end
+
+  def test_exe_splits_an_argument_with_no_scheme_at_every_comma
+    posted = stub_contents_and_capture_body
+
+    run_exe_in_process("exa-ai-get-contents", "exa.ai,anthropic.com", "--api-key", "test_key")
+
+    assert_equal ["exa.ai", "anthropic.com"], posted[:body]["urls"]
+  end
+
+  def test_exe_keeps_a_comma_inside_a_url_given_to_ids
+    posted = stub_contents_and_capture_body
+
+    run_exe_in_process(
+      "exa-ai-get-contents", "--ids", "https://example.com/maps/@40.7,-74.0,https://exa.ai", "--api-key", "test_key"
+    )
+
+    assert_equal ["https://example.com/maps/@40.7,-74.0", "https://exa.ai"], posted[:body]["ids"]
   end
 
   def test_exe_takes_the_url_after_an_empty_argument

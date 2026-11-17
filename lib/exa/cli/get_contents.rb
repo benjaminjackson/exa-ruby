@@ -45,6 +45,15 @@ module Exa
         { flag: "--flags-json", api_field: nil, deprecated: false, replacement: nil, reason: nil },
         { flag: "--help", api_field: nil, deprecated: false, replacement: nil, reason: nil }
       ].map(&:freeze).freeze
+
+      # Splits one command-line argument into URLs. A comma is a legal
+      # character inside a URL, so the text is cut only at a comma that
+      # comes right before http:// or https://. Text with no scheme at all
+      # is cut at every comma, as it was before commas in URLs were kept.
+      def self.split_urls(text)
+        separator = text.include?("://") ? %r{,(?=\s*https?://)}i : ","
+        text.split(separator).map(&:strip).reject(&:empty?)
+      end
     end
   end
 end
