@@ -38,8 +38,8 @@ module Exa
     # @option params [Array<String>] :exclude_domains Domains to exclude from results
     # @option params [Integer] :num_results Number of results to return
     #
-    # Deprecated and legacy parameters still work, and the API reports them
-    # in the response's warnings:
+    # Deprecated and legacy parameters still work. The API reports some of
+    # them in the response's warnings:
     # - :type "fast" and "instant" are legacy; use "lite". "deep-reasoning"
     #   is legacy; use "deep".
     # - :start_crawl_date and :end_crawl_date are deprecated. The API ignores

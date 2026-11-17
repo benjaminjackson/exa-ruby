@@ -103,8 +103,8 @@ exa-ai search "kubernetes" \
   --context \
   --context-max-characters 5000
 
-# Crawl subpages (deprecated on search: use exa-ai get-contents --subpages)
-exa-ai search "documentation" \
+# Crawl subpages: --subpages is deprecated on search, so send the result URLs to get-contents
+exa-ai get-contents "https://ruby-lang.org" \
   --subpages 1 \
   --subpage-target about \
   --subpage-target docs
@@ -129,7 +129,7 @@ exa-ai search "ruby" --output-format json
 
 - `QUERY` - Search query (required)
 - `--num-results N` - Number of results (default: 10)
-- `--type TYPE` - Search type: auto (default), lite, deep-lite, deep, neural. Legacy: fast and instant (use lite), deep-reasoning (use deep)
+- `--type TYPE` - Search type: auto (default), lite, deep-lite, deep. Legacy: fast and instant (use lite), deep-reasoning (use deep), neural (still accepted, not in the spec)
 - `--category CAT` - company, publication, news, personal site, people, or financial report. `github` is not in the spec and is rejected
 - `--include-domains DOMAINS` - Comma-separated domains
 - `--exclude-domains DOMAINS` - Comma-separated domains

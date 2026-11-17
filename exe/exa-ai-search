@@ -19,6 +19,7 @@ def print_help
                                    deep-reasoning, or instant (default: auto)
                                    fast and instant are legacy: use lite instead
                                    deep-reasoning is legacy: use deep instead
+                                   neural is legacy: still accepted, not in the spec
                                    lite accepts a limited set of parameters
                                    deep/deep-lite/deep-reasoning synthesize an 'output' field
                                    only when --output-schema is provided

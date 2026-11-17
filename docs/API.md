@@ -198,7 +198,7 @@ puts results.context
 `subpages` and `subpage_target` are deprecated on `search` and `find_similar`. They stay valid on `get_contents`: send the result URLs there instead.
 
 ```ruby
-results = client.search("documentation",
+contents = client.get_contents(["https://ruby-lang.org"],
   subpages: 1,
   subpage_target: ["about", "docs", "guide"]
 )
