@@ -65,6 +65,24 @@ class SearchMonitorsCreateTest < Minitest::Test
     end
   end
 
+  def test_call_converts_nested_contents_keys_in_search
+    stub_create
+
+    Exa::Services::SearchMonitors::Create.new(
+      @connection,
+      search: {
+        query: "AI/ML infrastructure startups with Series A funding",
+        contents: { max_age_hours: 1, text: { max_characters: 500 } }
+      },
+      webhook: { url: "https://example.com/webhooks/exa" }
+    ).call
+
+    assert_requested(:post, "https://api.exa.ai/monitors") do |request|
+      contents = JSON.parse(request.body)["search"]["contents"]
+      contents["maxAgeHours"] == 1 && contents["text"]["maxCharacters"] == 500
+    end
+  end
+
   def test_call_returns_search_monitor_with_webhook_secret
     stub_create
 
