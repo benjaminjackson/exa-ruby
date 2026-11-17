@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../../resources/search_monitor_run"
-require_relative "../../resources/search_monitor_run_list"
+require_relative "../../resources/search_monitor_list"
 
 module Exa
   module Services
@@ -17,7 +17,7 @@ module Exa
         def call
           body = @connection.get("/monitors/#{@monitor_id}/runs", @params).body
 
-          Resources::SearchMonitorRunList.new(
+          Resources::SearchMonitorList.new(
             data: body["data"].map { |run| Resources::SearchMonitorRun.from_response(run) },
             has_more: body["hasMore"],
             next_cursor: body["nextCursor"]

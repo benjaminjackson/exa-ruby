@@ -18,7 +18,7 @@ module Exa
           case result
           when Resources::SearchMonitor then format_monitor_pretty(result)
           when Resources::SearchMonitorRun then format_run_pretty(result)
-          when Resources::SearchMonitorList, Resources::SearchMonitorRunList then format_list_pretty(result)
+          when Resources::SearchMonitorList then format_list_pretty(result)
           when Resources::SearchMonitorBatchResult then format_batch_pretty(result)
           else JSON.pretty_generate(result.to_h)
           end
@@ -26,7 +26,7 @@ module Exa
 
         def self.format_text(result)
           case result
-          when Resources::SearchMonitorList, Resources::SearchMonitorRunList
+          when Resources::SearchMonitorList
             result.data.map { |item| summary_line(item) }.join("\n")
           when Resources::SearchMonitor, Resources::SearchMonitorRun
             summary_line(result)

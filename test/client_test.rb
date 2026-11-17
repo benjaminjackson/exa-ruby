@@ -807,7 +807,7 @@ class ClientTest < Minitest::Test
     client = Exa::Client.new(api_key: "test_key")
     result = client.search_monitor_runs_list("mon_123")
 
-    assert_instance_of Exa::Resources::SearchMonitorRunList, result
+    assert_instance_of Exa::Resources::SearchMonitorList, result
     assert_equal "run_1", result.data.first.id
   end
 

@@ -294,7 +294,7 @@ result.has_more # call again until false
 
 `action` is `delete`, `pause` or `unpause`. `filter` takes `name`, `status` and `metadata`. The request is a dry run unless you pass `dry_run: false`.
 
-Return types: `SearchMonitor` (with `active?`, `paused?`, `disabled?`), `SearchMonitorList`, `SearchMonitorRun`, `SearchMonitorRunList`, `SearchMonitorBatchResult`, `SearchMonitorTriggerResult`.
+Return types: `SearchMonitor` (with `active?`, `paused?`, `disabled?`), `SearchMonitorList` (also used for pages of runs), `SearchMonitorRun`, `SearchMonitorBatchResult`, `SearchMonitorTriggerResult`.
 
 ## Response Objects
 

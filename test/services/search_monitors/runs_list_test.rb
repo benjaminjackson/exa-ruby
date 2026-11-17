@@ -13,7 +13,7 @@ class SearchMonitorsRunsListTest < Minitest::Test
     result = Exa::Services::SearchMonitors::RunsList.new(connection, monitor_id: "mon_abc123", limit: 10).call
 
     assert_requested :get, "https://api.exa.ai/monitors/mon_abc123/runs?limit=10"
-    assert_instance_of Exa::Resources::SearchMonitorRunList, result
+    assert_instance_of Exa::Resources::SearchMonitorList, result
     run = result.data.first
     assert_instance_of Exa::Resources::SearchMonitorRun, run
     assert_equal "mon_abc123", run.monitor_id

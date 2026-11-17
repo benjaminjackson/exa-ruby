@@ -1,6 +1,6 @@
 module Exa
   module Resources
-    # One page of search monitors from GET /monitors.
+    # One page of search monitors (GET /monitors) or of their runs (GET /monitors/{id}/runs).
     class SearchMonitorList < Struct.new(:data, :has_more, :next_cursor, keyword_init: true)
       def initialize(data:, has_more:, next_cursor: nil)
         super

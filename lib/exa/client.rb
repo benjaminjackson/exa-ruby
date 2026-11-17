@@ -243,7 +243,7 @@ module Exa
     #
     # @param monitor_id [String] Monitor ID
     # @param params [Hash] Pagination: :limit, :cursor
-    # @return [Resources::SearchMonitorRunList] One page of runs
+    # @return [Resources::SearchMonitorList] One page of runs
     def search_monitor_runs_list(monitor_id, **params)
       Services::SearchMonitors::RunsList.new(connection, monitor_id: monitor_id, **params).call
     end
