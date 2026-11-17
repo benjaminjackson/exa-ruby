@@ -14,18 +14,6 @@ class AgentRunEventsExeTest < Minitest::Test
     `ruby -I#{LIB} #{EXE} #{quoted} 2>&1`
   end
 
-  # Runs the executable inside this process and restores ARGV afterwards.
-  # Returns [stdout, stderr].
-  def run_exe_in_process(*args)
-    original_argv = ARGV.dup
-    ARGV.replace(args)
-    capture_io { load EXE }
-  rescue SystemExit => e
-    flunk "the executable exited with status #{e.status}"
-  ensure
-    ARGV.replace(original_argv)
-  end
-
   def test_help_lists_limit_and_cursor
     out = run_exe("--help")
     assert_includes out, "--limit"
@@ -46,8 +34,11 @@ class AgentRunEventsExeTest < Minitest::Test
         headers: { "Content-Type" => "application/json" }
       )
 
-    stdout, = run_exe_in_process("run_123", "--api-key", "test_key", "--limit", "2", "--cursor", "cur_1",
-                                 "--output-format", "pretty")
+    stdout, _, status = run_exe_in_process(
+      "exa-ai-agent-run-events", "run_123", "--api-key", "test_key",
+      "--limit", "2", "--cursor", "cur_1", "--output-format", "pretty"
+    )
+    assert_nil status
 
     assert_requested :get, EVENTS_URL, query: { limit: "2", cursor: "cur_1" }
     assert_includes stdout, "--cursor cur_2"
@@ -78,7 +69,11 @@ class AgentRunEventsExeTest < Minitest::Test
   def test_limit_reads_leading_zero_as_decimal
     stub_events_page
 
-    run_exe_in_process("run_123", "--api-key", "test_key", "--limit", "010")
+    _, _, status = run_exe_in_process(
+      "exa-ai-agent-run-events", "run_123", "--api-key", "test_key",
+      "--limit", "010"
+    )
+    assert_nil status
 
     assert_requested :get, EVENTS_URL, query: { limit: "10" }
   end
@@ -92,7 +87,11 @@ class AgentRunEventsExeTest < Minitest::Test
   def test_text_output_prints_next_cursor
     stub_events_page
 
-    stdout, = run_exe_in_process("run_123", "--api-key", "test_key", "--limit", "2", "--output-format", "text")
+    stdout, _, status = run_exe_in_process(
+      "exa-ai-agent-run-events", "run_123", "--api-key", "test_key",
+      "--limit", "2", "--output-format", "text"
+    )
+    assert_nil status
 
     assert_includes stdout, "--cursor cur_2"
   end
