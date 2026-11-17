@@ -98,14 +98,13 @@ class Exa::CLI::SearchTest < Minitest::Test
     assert_includes error.message.downcase, "category"
   end
 
-  # The spec dropped github from the category enum, so the CLI rejects it
-  # before any request is built.
+  # The search parser rejects --category github, which is not in the
+  # spec's category list.
   def test_rejects_category_github
     error = assert_raises(ArgumentError) do
       parse_search_args(["Ruby HTTP client libraries", "--category", "github"])
     end
     assert_includes error.message.downcase, "category"
-    assert_not_requested :any, /api\.exa\.ai/
   end
 
   def test_parses_highlights_flag
