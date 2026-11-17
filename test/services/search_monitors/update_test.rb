@@ -27,6 +27,14 @@ class SearchMonitorsUpdateTest < Minitest::Test
     end
   end
 
+  def test_call_leaves_out_nil_values_of_keys_the_api_does_not_allow_as_null
+    Exa::Services::SearchMonitors::Update.new(@connection, id: "mon_abc123", search: nil, webhook: nil, trigger: nil).call
+
+    assert_requested(:patch, "https://api.exa.ai/monitors/mon_abc123") do |request|
+      JSON.parse(request.body) == { "trigger" => nil }
+    end
+  end
+
   def test_call_converts_partial_search_and_output_schema
     Exa::Services::SearchMonitors::Update.new(
       @connection,

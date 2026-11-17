@@ -7,8 +7,11 @@ module Exa
   module Services
     module SearchMonitors
       # PATCH /monitors/{id} — change part of a search monitor.
-      # nil values are sent as null on purpose: trigger: nil removes the schedule.
+      # nil is sent as null only for the keys the API accepts as null (name, trigger,
+      # metadata); trigger: nil removes the schedule. Other keys with nil are left out.
       class Update
+        NULLABLE_KEYS = %i[name trigger metadata].freeze
+
         def initialize(connection, id:, **params)
           @connection = connection
           @id = id
@@ -24,8 +27,10 @@ module Exa
 
         def request_body
           @params.each_with_object({}) do |(key, value), body|
+            next if value.nil? && !NULLABLE_KEYS.include?(key)
+
             case key
-            when :search then body[:search] = value && ParameterConverter.convert(value)
+            when :search then body[:search] = ParameterConverter.convert(value)
             when :output_schema then body[:outputSchema] = value
             else body[key] = value
             end

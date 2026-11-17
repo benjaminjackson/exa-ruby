@@ -82,6 +82,7 @@ unless %w[delete pause unpause].include?(action)
 end
 
 begin
+  output_format = Exa::CLI::Base.resolve_output_format(output_format)
   client = Exa::CLI::Base.build_client(Exa::CLI::Base.resolve_api_key(api_key))
   result = client.search_monitor_batch(action: action, filter: filter, dry_run: dry_run, limit: limit)
   puts Exa::CLI::Formatters::SearchMonitorFormatter.format(result, output_format)
